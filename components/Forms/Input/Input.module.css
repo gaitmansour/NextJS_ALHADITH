@@ -1,0 +1,9 @@
+.custom-input input{
+  background: #FFFFFF;
+  border: 1px solid #D8D8D8;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.custom-input .form-label {
+  color: #656D7A;
+}

@@ -1,0 +1,37 @@
+.section-title-box {
+  width: 425px;
+  height: 71px;
+  margin: 0 auto;
+  position: relative;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  background: #FAFAFA;
+}
+
+.section-title-box:after {
+  position: absolute;
+  background: #129D59;
+  content: "";
+  width: 106px;
+  height: 8px;
+  top: 0;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+}
+
+.section-title-box h2 {
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .section-title-box {
+    width: 80%;
+    height: 61px;
+  }
+  .section-title-box h2 {
+    font-size: 20px;
+  }
+  .section-title-box:after {
+    height: 6px;
+  }
+}

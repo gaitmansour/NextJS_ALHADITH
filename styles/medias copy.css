@@ -1,0 +1,94 @@
+/* Source
+ * https://gist.github.com/aelarassi/a903449c5536076b60c370cc9c63ff99
+*/
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) { 
+   
+  .TopBar .container-fluid {
+    justify-content: center;
+  }
+  .TopBar .box-search {
+    margin-bottom: 0 !important;
+  }
+  .TopBar .container-fluid a.active {
+    margin-right: 1em;
+  }
+  *[dir='rtl'] .TopBar .container-fluid a.active {
+    margin-left: 1em;
+  }
+  .NavBar .container-fluid {
+    flex-wrap: nowrap;
+  }
+  .NavBar .navBtnSwitch {
+    display: none !important;
+  }
+  .NavBar .menu-btn {
+    min-width: 20% !important;
+  }
+  .NavBar .btn-faq {
+    max-width: 80% !important;
+  }
+  .NavBar a {
+
+  }
+}

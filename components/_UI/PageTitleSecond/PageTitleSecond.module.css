@@ -1,0 +1,14 @@
+.PageTitleSecond {
+    background-color: #FAFAFA;
+}
+
+.PageTitleSecond .title {
+    position: relative;
+    color:#129D59;
+    font-weight: 800;
+    padding-right: .7em;
+}
+
+*[dir='ltr'] .PageTitleSecond .title {
+    padding-left: .7em;
+}

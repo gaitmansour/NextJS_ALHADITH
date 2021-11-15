@@ -1,0 +1,158 @@
+.boxSearch {
+    height: 46px;
+    padding: 0 1.5em;
+    width: 46px;
+    margin: 0 2em;
+    background: rgba(255, 255, 255, 0.21);
+    border: 1px solid #ffffff;
+    border-radius: 32px;
+}
+
+.boxSearch .iconFilter,
+.boxSearch .iconSearch {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+.boxSearch .iconSearch {
+    -webkit-mask: url("../../../assets/Images/icons/icon-search.svg") no-repeat center;
+    mask: url("../../../assets/Images/icons/icon-search.svg") no-repeat center;
+}
+
+.boxSearch .iconFilter {
+    -webkit-mask: url("../../../assets/Images/icons/icon-filter.svg") no-repeat center;
+    mask: url("../../../assets/Images/icons/icon-filter.svg") no-repeat center;
+}
+
+.boxSearch input {
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+    background: transparent;
+}
+
+/*::placeholder {
+  color: #ffffff;
+}*/
+
+.navbar-light .navbar-toggler {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* Style for viewports greater than 480px wide. */
+@media (max-width: 480px) {
+    .container-fluid {
+        padding: 0;
+    }
+
+    .boxSearch {
+        margin: 0;
+        padding: 0 17px;
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+.testme {
+    width: 100%;
+    max-width: 1030px;
+    background: #dadada;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    /* margin-top: 200px;
+     margin-right: 300px*/
+}
+
+.conatiner {
+    margin-top: 5cm;
+    z-index: 10000;
+    margin-right: 5cm;
+    position: absolute;
+    width: 400px;
+    left: calc(50% - 500px);
+}
+
+.input {
+    width: 800px;
+    padding: 0 1.5em;
+    background: rgba(255, 255, 255, 0.21);
+    border: 1px solid #ffffff;
+    border-radius: 32px;
+}
+
+.keyboardRow {
+    display: flex;
+}
+
+.keyboardButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 100px;
+    font-size: 18px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #F5F5F5;
+    border: 1px solid #CECECE;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.keyboardButton:focus {
+    outline: none;
+}
+
+.keyboardButton:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.keyboardButton:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.keyboardButton:active {
+    background-color: #cccccc;
+}
+
+.keyboardButton.shift-symbols {
+    flex-basis: 210px;
+}
+
+.keyboardButton.keyboardNumberButton {
+    flex-grow: 1;
+}
+
+.keyboardButton.keyboard-halfButton {
+    flex-basis: 56px;
+}
+
+.keyboardButton.keyboard-space {
+    flex-grow: 1;
+}
+
+.keyboardButton.keyboard-utilButton {
+    flex-grow: 2;
+    max-width: 55px;
+}
+
+.keyboardButton.keyboardAdditionalButton {
+    flex-basis: 128px;
+}
+
+.keyboardButton.keyboardSubmitButton, .keyboardButton.keyboard-submit-button {
+    flex-basis: 95px;
+    background-color: #129d59;
+    border-color: #fff;
+    color: #ffffff;
+}
+
+
+.keyboard-keysSet {
+    display: flex;
+    flex-grow: 1;
+}

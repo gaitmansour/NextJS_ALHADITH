@@ -1,0 +1,209 @@
+/* Source
+ * https://gist.github.com/aelarassi/a903449c5536076b60c370cc9c63ff99
+*/
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (max-width: 1024px) {  
+  .CarouselHome .carousel-caption{
+    left: 25%;
+  }
+  .CommanderieCroyants .col-md-3 {
+    width: 50%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .CommanderieCroyants .col-md-3 {
+    width: 100%;
+}     
+  .TopBar .container-fluid {
+    justify-content: center;
+  }
+  .TopBar .box-search {
+    margin: 0 .5em !important;
+  }
+  .TopBar .container-fluid a.active {
+    margin-right: 1em;
+  }
+  *[dir='rtl'] .TopBar .container-fluid a.active {
+    margin-left: 1em;
+  }
+  .NavBar .container-fluid {
+    flex-wrap: nowrap;
+  }
+  .NavBar .navBtnSwitch {
+    display: none !important;
+  }
+  .NavBar .menu-btn {
+    min-width: 80px !important;
+  }
+  .NavBar .btn-faq {
+    width: 100% !important;
+  }
+  .NavBar a {
+    padding: 0 !important;
+  }
+
+  /* Carousel Home */
+  /* .CarouselHome {
+    height: 300px;
+  } */
+  .CarouselHome #carouselExampleCaptions {
+    height: 100%;
+    background: rgb(15, 70, 43);
+  }
+  *[dir='rtl'] .CarouselHome .bg_dashed {
+    top: 1em;
+    left: 1em;
+  }
+  .CarouselHome .bg_dashed {
+    top: 1em;
+    left: 67%;
+    background-size: 40%;
+  }
+  .CarouselHome .bg_arabic_design_slide {
+    background-size: contain !important;
+}
+  .CarouselHome .carousel-control-box {
+    display: none !important;
+  }
+  .CommanderieCroyants {
+    margin-top: 2em /* -60px */;
+  }
+  .CommanderieCroyants .CardCommanderieCroyants {
+    margin: .5em 0 !important;
+  }
+  .Resources .content {
+    margin-left: 1em !important;
+  }
+
+  /* Footer style */
+  .Contact {
+    width: 80%;
+    border-top-right-radius: 150px;
+    border-top-left-radius: 0;
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+  }
+  *[dir='rtl'] .Contact{
+    border-top-left-radius: 150px;
+    border-top-right-radius: 0;
+  }
+  .footer-container {
+    border-top-right-radius: 90px !important;
+  }
+  *[dir='rtl'] .footer-container {
+    border-top-left-radius: 90px !important;
+    border-top-right-radius: 0px !important;
+  }
+  .Footer .Contact h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  .Footer .Contact .SMLinks a i {
+    font-size: 20px;
+    margin-left: .5em !important;
+    margin-right: .5em !important;
+  }
+  .Contact .devider {
+    height: 40px;
+  }
+  .CarouselHome .carousel-indicators [data-bs-target] {
+    margin: 0 .5em !important;
+  }
+  .CarouselHome .carousel-indicators,
+  *[dir='rtl'] .CarouselHome .carousel-indicators {
+    bottom: 8%;
+    width: auto;
+    margin: 0;
+    flex-direction: row !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .logo {
+    width: 100px;
+  }
+  .TopBar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .TopBar .container-fluid a.active {
+    margin: 0 !important;
+  }
+  .TopBar .box-search {
+    margin: 0 .7em !important;
+    flex: auto !important;
+    max-width: 65%;
+    padding: 0 8px;
+    height: 37px;
+  }
+  .box-search .icon-filter, .box-search .icon-search {
+    width: 16px;
+  }
+  .box-search input {
+    width: 80%;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .Contact {
+    width: 90%;
+    border-top-right-radius: 40px;
+  }
+  *[dir='rtl'] .Contact {
+      border-top-left-radius: 40px;
+  }
+  .footer-container {
+    border-top-right-radius: 40px !important;
+  }
+  *[dir='rtl'] .footer-container {
+    border-top-left-radius: 40px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    width: 80px;
+  }
+  .Contact {
+    width: 100%;
+    border-top-right-radius: 40px;
+  }
+  *[dir='rtl'] .Contact {
+      border-top-left-radius: 40px;
+  }
+  .footer-container {
+    border-top-right-radius: 0 !important;
+  }
+  *[dir='rtl'] .footer-container {
+    border-top-left-radius: 0 !important;
+  }
+}

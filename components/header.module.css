@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: #ebaa05;
+}
+.hola{
+  background-color: #0dcaf0;
+}

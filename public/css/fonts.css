@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Almarai';
+  src: url('../Fonts/Almarai-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../Fonts/Almarai-ExtraBold.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../Fonts/Almarai-Light.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../Fonts/Almarai-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font_Maghribi';
+  src: url('../Fonts/Samir_Khouaja_Maghribi.ttf');  
+  font-style: normal;
+}
+
+*[dir='rtl'] {
+  font-family: 'Almarai', sans-serif !important;
+}

@@ -1,0 +1,110 @@
+#col{
+  width: 100%;
+}
+.SliderVideoList1 .item-card img {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  margin-right: 1em;
+}
+a{
+  text-decoration: none;
+}
+*[dir='rtl'] .SliderVideoList1 .item-card img {
+  margin-left: 1em;
+  margin-right: 0;
+}
+
+.SliderVideoList1 .item-card {
+  text-align: left;
+  flex-direction: row-reverse;
+}
+
+*[dir='rtl'] .SliderVideoList1 .item-card {
+  text-align: right;
+  flex-direction: row;
+}
+
+.SliderVideoList-data1 .item-card {
+  text-decoration: none;
+}
+
+.SliderVideoList-data1 .item-card:hover {
+  background-color: rgba(251, 191, 49, 0.11);
+  border-radius: 20px;
+}
+
+.SliderVideoList-data1 p {
+    font-weight: bold;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.SliderVideoList-data1 .item-card span {
+  color: #129D59;
+  text-decoration: underline;
+}
+
+.SliderVideoList1 .item-card-content {
+  cursor: pointer;
+  width: 70%;
+  margin: 0 2%;
+}
+
+.SliderVideoList1 .item-card-content img{
+  border-radius: 10px;
+  filter: brightness(80%);
+  box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+  -webkit-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+  -moz-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+}
+
+.SliderVideoList1 .item-card-content p {
+  text-align: left;
+  font-weight: 600;
+}
+
+.SliderVideoList1 .item-card-content:hover p {
+  color: #FBBF31;
+}
+
+[dir='rtl'] .SliderVideoList1 .item-card-content p {
+  text-align: right;
+}
+
+
+.selectbox-scrollbar {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background:transparent;
+  overflow-y:scroll; 
+}
+
+
+@media (max-width: 770px) {
+  .SliderVideoList-data1 p {
+    -webkit-line-clamp: 3;
+  }
+  .SliderVideoList1 .item-card-content {
+    cursor: pointer;
+    width: 50%;
+  }
+}
+
+@media (max-width: 431px) { 
+  .SliderVideoList1 .item-card-content {
+    cursor: pointer;
+    width: 30%;
+  }
+}

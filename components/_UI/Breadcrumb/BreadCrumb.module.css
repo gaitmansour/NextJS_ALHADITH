@@ -1,0 +1,22 @@
+.Breadcrumb {
+    background-color: #FAFAFA;
+}
+
+.Breadcrumb .title {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.Breadcrumb i {
+    transform: rotate( 180deg );
+}
+
+*[dir='rtl'] .Breadcrumb i {
+    transform: none
+}
+
+
+/* *[dir='rtl'] .Breadcrumb .title {
+    margin-left: 1.5rem!important;
+    margin-right: 0 !important
+} */

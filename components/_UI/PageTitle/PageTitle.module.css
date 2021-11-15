@@ -1,0 +1,55 @@
+.PageTitle {
+    background-color: #FAFAFA;
+}
+.PageTitle a{
+    text-decoration: none;
+}
+.PageTitle .title {
+    position: relative;
+    color:#129D59;
+    font-weight: 700;
+    padding-right: .8em;
+}
+
+*[dir='ltr'] .PageTitle .title {
+    padding-left: .8em;
+}
+
+.PageTitle .title:after {
+    content: "";
+    width: 8px;
+    height: 54px;
+    right: 0;
+    top: -6px;
+    border-radius: 6px;
+    position: absolute;
+    background-color: #FBBF31;
+}
+
+*[dir='ltr'] .PageTitle .title:after {
+    left: 0;
+}
+
+@media screen and (max-width: 541px) {
+    .PageTitle{
+        width:100vw !important;
+    }
+    .PageTitle .title{
+        width: 60vw !important;
+    }
+    .PageTitle .dateCreat p{
+        width: 40vw !important;
+    }    
+}
+@media screen and (max-width: 361px) {
+    .PageTitle{
+        width:100vw !important;
+        display: block !important;
+    }
+    .PageTitle .title{
+        width: 100vw !important;
+    }
+    .PageTitle .dateCreat p{
+        width: 100vw !important;
+    } 
+}

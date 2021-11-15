@@ -1,0 +1,132 @@
+.SliderList .item-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  margin-right: 1em;
+}
+
+*[dir='rtl'] .SliderList .item-card img {
+  margin-left: 1em;
+  margin-right: 0;
+}
+
+.SliderList .item-card {
+  text-align: left;
+  flex-direction: row-reverse;
+}
+
+*[dir='rtl'] .SliderList .item-card {
+  text-align: right;
+  flex-direction: row;
+}
+
+.SliderList-data .item-card {
+  text-decoration: none;
+}
+
+.SliderList-data .item-card:hover {
+  background-color: rgba(251, 191, 49, 0.11);
+  border-radius: 20px;
+}
+
+.SliderList-data p {
+    font-weight: bold;
+    color: #000 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.SliderList-data .item-card span {
+  color: #129D59;
+  text-decoration: underline;
+}
+
+.SliderList .slick-slider .slick-dots {
+  top: -20px;
+  justify-content: flex-start;
+}
+
+*[dir='rtl'] .SliderList .slick-slider .slick-dots {  
+  justify-content: flex-end;
+}
+
+.SliderList .slick-slider .slick-prev:before,
+.SliderList .slick-slider .slick-next:before {
+  color: #000;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+.SliderList .slick-slider .slick-prev:before {
+  content: "\f054";
+}
+
+.SliderList .slick-slider .slick-next:before {
+  content: "\f053";
+}
+
+.SliderList .slick-slider .slick-prev, 
+.SliderList .slick-slider .slick-next {
+  top: -5px;
+}
+
+.SliderList .slick-slider .slick-prev {
+    right: auto;
+    left: 40px;
+}
+
+[dir='rtl'] .SliderList .slick-slider .slick-prev {
+    right: 0;
+    left: auto;
+}
+
+.SliderList .slick-slider .slick-next {
+    right: auto;
+    left: 0;
+}
+
+[dir='rtl'] .SliderList .slick-slider .slick-next {
+    right: 30px;
+    left: auto;
+}
+.imgContainer01{
+  width: 100%;
+  position: relative;
+}
+.imgContainer01 p{
+  position: absolute ;
+  top: 29% !important;
+  right: 39%;
+  color: rgb(255, 255, 255) !important;
+  font-size: 19px !important;
+  max-width: 200px;
+}
+@media (max-width: 767px) {
+  .SliderList-data p {
+    -webkit-line-clamp: 3;
+  }
+  .SliderList-data{
+    width: 100%;
+  }
+}
+@media (max-width:  480px) {
+  *[dir='rtl'] .SliderList .item-card img {
+    margin-left: 0em;
+    margin-right: 0;
+  }
+  .SliderList .item-card img{
+    margin-right: 0em !important;
+  }
+  .SliderList .itemCard {
+    width: 100% !important;
+    height: auto !important;
+}
+}
+@media (max-width: 376px) {
+  .imgContainer01 p {
+    font-size: 11px !important;
+  }
+ 
+}

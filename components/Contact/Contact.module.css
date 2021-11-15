@@ -1,0 +1,22 @@
+.Contact{
+    width: 50%;
+    border-top-right-radius: 100px;
+    left: 0%;
+    background-color: #129d59;
+}
+
+*[dir='rtl'] .Contact {
+    border-top-right-radius: 0;
+    border-top-left-radius: 100px;
+}
+
+.Contact .devider{
+    width: 1px;
+    height: 50px;
+    background-color: white;
+}
+
+.SMLinks i {
+    font-size: 28px;
+    margin: .5em !important;
+}

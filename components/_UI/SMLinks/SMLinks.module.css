@@ -1,0 +1,20 @@
+.SMLinks i {
+  color: #FFFFFF !important;
+  margin: .8em;
+  font-size: 22px;
+}
+#fb:hover{
+  color: #4267B2!important;
+}
+#yt:hover{
+  color: #FF0000 !important;
+}
+#tw:hover{
+  color: #1DA1F2 !important;
+}
+#ig:hover{
+  color: #E1306C !important;
+}
+#in:hover{
+  color: #0072b1 !important;
+}

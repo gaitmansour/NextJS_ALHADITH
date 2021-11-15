@@ -1,0 +1,149 @@
+.footerContainer {
+    background: linear-gradient(107.04deg, #129D59 -5.47%, #0F4128 61.73%);
+    border-top-left-radius: 200px;
+    position: relative;
+}
+
+.bgFooter {
+    background-image: url('../../assets/Images/backgrounds/bg-arabic-design.svg');
+    position: absolute;
+    z-index: 1;
+}
+
+.footer {
+    z-index: 2;
+    position: relative;
+}
+
+.Footer .footer h5 {
+    text-align: right;
+}
+
+.footer .brand img {
+    width: 200px;
+}
+
+.copyr {
+    text-align: center;
+}
+
+.footer .FooterLink {
+    margin-bottom: .5em !important;
+}
+
+.footer .FooterLink a {
+    color: white;
+    text-decoration: none;
+}
+
+.copyright {
+    background-color: #27ba735b;
+    z-index: 2;
+}
+
+.NavLink1 {
+    text-decoration: none;
+    color: white;
+    margin-top: 6%;
+    margin-bottom: 3%;
+}
+
+.NavLink1:hover {
+    text-decoration: none;
+    color: white;
+    cursor: default;
+}
+
+.NavLink {
+    text-decoration: none;
+    color: white;
+}
+
+.NavLink:hover {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.247);
+    cursor: pointer;
+}
+
+.info {
+    color: #FEB400;
+    text-decoration: none;
+    margin-bottom: 20%;
+}
+
+.info:hover {
+    color: #FEB400;
+}
+
+#first {
+    text-align: center;
+}
+
+/*li{
+    list-style: none;
+}*/
+
+*[dir='ltr'] .footerContainer .footer {
+    left: 0;
+    border-top-right-radius: 110px;
+    border-top-left-radius: 0px;
+}
+
+*[dir='ltr'] .footerContainer {
+    left: 0;
+    border-top-right-radius: 110px;
+    border-top-left-radius: 0px;
+}
+
+/* form*/
+.newsletter {
+    margin-right: 0px;
+}
+
+.form {
+    width: 70%;
+}
+
+.form input {
+    border-radius: 30px;
+    height: 47px;
+    box-shadow: 0px 0px 10px #4a695d;
+    background-color: #dddddc;
+    color: #fff;
+}
+
+.form input:focus {
+    background: none;
+    border: 2px solid #FEB400;
+    color: #fff;
+}
+
+.form .send {
+    background-color: #129D59;
+    box-shadow: 0px 0px 10px #4a695d;
+    border-radius: 30px;
+    color: #fff;
+}
+
+.form .send:hover {
+    /* background-color: #129D59; */
+    background: none;
+    border: 2px solid #FEB400;
+    color: #fff;
+}
+
+@media screen and (min-width: 550px) and (max-width: 720px) {
+    .Footer .footer div {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .Footer .footer .brand {
+        align-items: center !important;
+    }
+
+    /* .Footer .footer .newsletter input, button {
+         width: 50% !important;
+     }*/
+}

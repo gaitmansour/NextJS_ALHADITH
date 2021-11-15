@@ -1,0 +1,24 @@
+.SummaryPage {
+    background-color: #FAFAFA;
+}
+
+.SummaryPage .summary {
+    position: relative;
+    color:#000000;
+    font-weight: 600;
+    font-size: 18px;
+    padding-right: .7em;
+    list-style-type: none;
+}
+
+*[dir='ltr'] .SummaryPage .summary {
+    padding-left: .7em;
+}
+
+@media screen and (max-width: 541px) {
+    .SummaryPage{
+        width: 100% !important;
+        padding-left: 15% !important;
+        margin-left: 10% !important;
+    }
+}

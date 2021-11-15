@@ -1,0 +1,32 @@
+
+/* praytimes style */
+
+.praytimes {
+  margin: 0;
+  border-radius: 12px !important;
+}
+
+.praytimes .title,
+.praytimes .date  {
+  font-weight: bold;
+}
+
+.praytimes .date  {
+  font-size: 16px;
+}
+
+.box-pray {
+  padding-top: .8rem!important;
+  padding-bottom: .8rem!important;
+}
+
+.praytimes .custom-input > div {
+  padding: 0 !important;
+}
+
+.praytimes img{
+  width: 16%;
+  height: 16%;
+  padding: 0px;
+  margin: 0px;
+}
