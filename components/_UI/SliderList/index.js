@@ -10,6 +10,7 @@ import Side from './Sidebar.png'
 
 import styles from './SliderList.module.css';
 import Link from "next/link"
+import Image from "next/image"
 
 const SliderList = (props) => {
 
@@ -43,16 +44,12 @@ const SliderList = (props) => {
                                 pathN =  rmSpaces
                             }
                             return (
-                                <Link href={pathN} key={index.toString()} className="">
-                                    {/* <Brand className="img" /> */}
-                                    {/* <div className="item-card-content d-flex flex-column justify-content m-auto py-2"> */}
+                                <Link href={pathN} key={index.toString()} className="" as={pathN}>
 
-                                        {/* <span>لمعرفة المزيد</span> */}
-                                    {/* </div> */}
-                                    <div className={`${styles.imgContainer01} imgContainer01`}>
-                                        <img className="w-100" src={Side} alt="" />
+                                    <a className={`${styles.imgContainer01} imgContainer01`}>
+                                        <Image className="w-100" src={Side} alt="" />
                                         <p>{rmSpaces}</p>
-                                    </div>
+                                    </a>
 
                                 </Link>
                             )

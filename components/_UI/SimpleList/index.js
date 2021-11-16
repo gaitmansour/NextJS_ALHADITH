@@ -20,14 +20,17 @@ const SimpleList = (props) => {
                     return (
                         <Link href={{
                             pathname: path1,
-                            search: '',
-                            hash: '',
-                            state: {fromNav: props.data, selectedItem: item?.title}
-                        }} key={i.toString()} className={`${styles.item} item d-flex align-items-center py-3 px-1`}
+                            query: {fromNav: props.data, selectedItem: item?.title}
+                        }}
+                              as={path1}
+                              key={i.toString()}
+
                               style={{borderTop: i === 0 ? "1px solid #D8D8D8" : ""}}>
-                            <p className="flex-fill m-0" onClick={() => console.log(item?.title)}>{item?.title}</p>
-                            {/*props?.image && <img src={item?.image || props?.image} alt="" />}
-                            {!props?.hideIcon && <i className="fas fa-chevron-left mx-2"/>*/}
+                            <a className={`${styles.item} item d-flex align-items-center py-3 px-1`}>
+                                <p className="flex-fill m-0" onClick={() => console.log(item?.title)}>{item?.title}</p>
+                                {props?.image && <img src={item?.image || props?.image} alt=""/>}
+                                {!props?.hideIcon && <i className="fas fa-chevron-left mx-2"/>}
+                            </a>
                         </Link>
                     )
                 })}

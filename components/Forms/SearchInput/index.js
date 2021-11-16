@@ -98,8 +98,7 @@ const SearchInput = (props) => {
                            className="d-flex align-items-center align-self-center btn m-0 p-0"
                            href={{
                                pathname: '/search',
-                               search: '',
-                               state: {}
+                               query: {}
                            }}>
             <div className={styles.iconFilter} title="البحث المتخصص"/>
         </Link>

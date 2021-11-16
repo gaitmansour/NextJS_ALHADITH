@@ -44,21 +44,25 @@ const TopBar = (props) => {
 
     return (
         <div className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
-        style={{}}>
+             style={{}}>
             <div className="container-fluid">
                 <Brand/>
                 <SearchInput className={styles.search} styleIcon={{color: '#fff'}} {...props}
                              onChange={(v) => handleInput(v)} clickSearch={() => handleClickSearch()} input={input}
                              placeholder={t('inputSearch')}/>
 
-                <div className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`} id="navbarTop">
+                <div className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
+                     id="navbarTop">
                     <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
                         <li className={`${styles.navItem} nav-item mx-3`}>
-                            <Link exact activeClassName="active"
+                            <Link exact
+                                  activeClassName="active"
                                   href={`/${t('topBarLinks:links')}`}>{t('topBarLinks:links')}</Link>
                         </li>
-                        <li className={`${styles.navItem} nav-item mx-3 call-to-action align-items-center d-flex`}>
-                            <Link exact activeClassName="active"
+                        <li
+                            className={`${styles.navItem} nav-item mx-3 ${styles.callToAction} call-to-action align-items-center d-flex`}>
+                            <Link exact
+                                  activeClassName="active"
                                   href={`/${title}`}>{title}</Link>
                         </li>
                     </ul>

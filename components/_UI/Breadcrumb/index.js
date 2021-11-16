@@ -14,12 +14,13 @@ const Breadcrumb = (props) => {
                     const isLenght = props?.data.length !== index + 1
                     if(item !== lastItem) {
                         return (
-                            <Link passHref={true} href={`/${item?.path}`} className="btn d-flex align-items-center p-0"
+                            <Link passHref={true} href={`/${item?.path}`} as={`/${item?.path}`}
                                      key={index.toString()}>
-                                <p className="mb-0 title" style={{
+                               <a className="btn d-flex align-items-center p-0"> <p className={`mb-0 ${styles.title}`} style={{
                                     color: isLenght ? "#000000" : "#A1A8AE"
                                 }}>{item?.title || "عنوان"}</p>
-                                {/*isLenght && <i className="fas fa-chevron-left mx-4"/>*/}
+                                {isLenght && <i className="fas fa-chevron-left mx-4"/>}
+                               </a>
                             </Link>
                         )
                     }else {

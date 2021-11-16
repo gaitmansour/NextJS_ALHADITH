@@ -1,4 +1,4 @@
-.section-title-box {
+.sectionTitleBox {
   width: 425px;
   height: 71px;
   margin: 0 auto;
@@ -8,7 +8,7 @@
   background: #FAFAFA;
 }
 
-.section-title-box:after {
+.sectionTitleBox:after {
   position: absolute;
   background: #129D59;
   content: "";
@@ -19,19 +19,19 @@
   border-top-right-radius: 100px;
 }
 
-.section-title-box h2 {
+.sectionTitleBox h2 {
   font-weight: 700;
 }
 
 @media (max-width: 480px) {
-  .section-title-box {
+  .sectionTitleBox {
     width: 80%;
     height: 61px;
   }
-  .section-title-box h2 {
+  .sectionTitleBox h2 {
     font-size: 20px;
   }
-  .section-title-box:after {
+  .sectionTitleBox:after {
     height: 6px;
   }
 }

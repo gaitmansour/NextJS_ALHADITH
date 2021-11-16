@@ -8,8 +8,12 @@ import '../public/css/all.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+
+
+
 function MyApp({Component, pageProps}) {
-    useEffect(()=>{
+
+    useEffect(() => {
         import('../public/js/bootstrap.bundle.min');
     })
     return (<>
@@ -26,6 +30,7 @@ function MyApp({Component, pageProps}) {
             <link rel="apple-touch-icon" href="../public/logo192.png"/>
             <link rel="manifest" href="../public/manifest.json"/>
             <title>منصة محمد السادس للحديث النبوي الشريف</title>
+
         </Head>
         <Component {...pageProps} />
     </>)

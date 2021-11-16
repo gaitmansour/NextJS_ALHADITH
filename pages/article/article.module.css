@@ -1,0 +1,102 @@
+/* .TemplateArticleBody .page-title-second h3{
+    color: #000;
+    font-weight: 500;
+} */
+.summ{
+    margin-bottom: 4%;
+}
+.vv{
+    width: 100%;
+}
+.desc {
+    width: 90%;
+}
+.desc ul li::before {
+    content: "\2022";
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+  }
+  .desc ol li {
+    list-style: number !important;
+    display: list-item;
+  }
+.desc p{
+    font-family: 'Almarai', sans-serif !important;
+    font-size: 15px;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+.desc span{
+    font-family: 'Almarai', sans-serif !important;
+    font-size: 15px;
+}
+.desc cite{
+    float: left;
+    margin-top: 10px;
+}
+.desc table {
+    text-align: center !important;
+ }
+ .desc table tr td p{
+     text-align: center !important;
+ }
+.desc h2{
+    margin-top: 0%;
+    margin-bottom: -2%;
+    font-size: 19px;
+    font-weight: 600;
+}
+.desc h3{
+    margin-top: 0%;
+    margin-bottom: -2%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/*table{
+    background-color: transparent !important;
+}
+table td{
+    background-color: transparent !important;
+}
+table td p a{
+    text-decoration: underline !important;
+}*/
+
+@media (max-width: 480px)  {
+    .TemplateArticleBody .desc{
+        width:100vw !important;
+        max-width: 85% !important;
+        margin: 0px 5px !important ;
+    }
+    .slider{
+        width: 100% !important;
+    }
+    .TemplateArticleBody .summ{
+        width: 100% !important;
+        margin-left: 5% !important;
+    }
+
+}
+@media (max-width: 360px)  {
+    .TemplateArticleBody .desc{
+        width:100vw !important;
+        max-width: 85% !important;
+        margin-left: 5px !important;
+        padding-left: 8px;
+    }
+
+}
+@media screen and (min-width: 240px) and (max-width: 540px)  {
+    .slider{
+        width: 100% !important;
+    }
+
+}
+@media screen and (min-width: 760px) and (max-width: 1024px)  {
+    .slider{
+        width: 50% !important;
+    }
+
+}

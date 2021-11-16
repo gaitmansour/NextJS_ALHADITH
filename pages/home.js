@@ -4,14 +4,19 @@ import React from "react";
 import Body from "../components/Body";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
+import CarouselHome from "./CarouselHome";
+import CommanderieCroyants from "./CommanderieCroyants";
+import Resources from "./Resources";
 
 const HomeScreen = (props) => {
     return (
-        <Layout >
+        <Layout>
             <TopBar/>
             <NavBar/>
             <Body>
-
+                <CarouselHome/>
+                <CommanderieCroyants/>
+                <Resources/>
             </Body>
             <Footer/>
         </Layout>

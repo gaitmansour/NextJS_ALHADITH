@@ -39,7 +39,7 @@
   opacity: 0.8;
 }
 
-.TopBar .navbar-nav .call-to-action {
+.TopBar .navbarNav .callToAction {
   height: 46px;
   padding: 0 1.5em;
   margin: 0 5em;
@@ -48,12 +48,12 @@
   border-radius: 32px;
 }
 
-.TopBar .call-to-action:hover {
+.TopBar .callToAction:hover {
   background: rgba(255, 255, 255, 0.11);
   cursor: pointer;
 }
 
-.TopBar .call-to-action:hover a {
+.TopBar .callToAction:hover a {
   opacity: 1;
 }
 
@@ -81,7 +81,7 @@
 /* Style for viewports greater than 480px wide. */
 @media (max-width: 480px) {
   .TopBar .navItem,
-  .TopBar .navbar-nav .call-to-action {
+  .TopBar .navbar-nav .callToAction {
     margin-top: 1em;
   }
   .TopBar .dropdown .nav-link {
