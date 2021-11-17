@@ -343,13 +343,13 @@ const SearchPage = (props) => {
                                           title={`نتائج البحث (${searchSpacific ? searchSpacific : "0"}).`}/>
                         {displayData}
                         <ReactPaginate
-                            previousLabel={<i id="paginationn" className={`${styles.paginationn}fa fa-chevron-right`}/>}
+                            previousLabel={<i id="paginationn" className={`fa fa-chevron-right`}/>}
                             nextLabel={<i id="paginationn" className="fa fa-chevron-left"/>}
                             pageCount={pageCount}
                             forcePage={pageNum}
                             onPageChange={changePage}
                             containerClassName={styles.paginationButtons}
-                           // previousLinkClassName={"prevbtn"}
+                            //previousLinkClassName={"prevbtn"}
                             //nextLinkClassName={"nextbtn"}
                             activeClassName={styles.activebtn}
                         />
