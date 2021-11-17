@@ -71,37 +71,37 @@ const Footer = () => {
                             <Brand className={` ${styles.brand}brand`}/>
                         </div>
                         <div className="col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3">
-                            <h5 className="text-white pb-3">{title}</h5>
+                            <h5 className="text-white pb-3">{'روابط مهمة'}</h5>
                             <ul className="p-0">
                                 <p className={`${styles.FooterLink}`}>
-                                    <Link href={`/${t('footer:links')}`} >{t('links')}</Link>
+                                    <Link href={`/روابط`} >{'روابط'}</Link>
                                 </p>
                                 <p className={`${styles.FooterLink}`}>
-                                    <Link href={`/${t('footer:contact')}`}>{t('contact')}</Link>
+                                    <Link href={`/التواصل`}>{'التواصل'}</Link>
                                 </p>
                                 <p className={`${styles.FooterLink}`}>
-                                    <Link href={`/${t('footer:Conditions_utilisation')}`}>{t('footer:Conditions_utilisation')}</Link>
+                                    <Link href={`/اتفاقية استخدام الموقع`}>{'اتفاقية استخدام الموقع'}</Link>
                                 </p>
                             </ul>
                         </div>
                         <div className="col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3">
-                            <h5 className="text-white pb-3">{t('footer:contactVia')}</h5>
+                            <h5 className="text-white pb-3">{'تواصلوا معنا عبر'}</h5>
                             <ul className="p-0">
                                 <p className={`${styles.FooterLink}`}
                                    style={{
                                        color: '#FEB400',
                                        marginBottom: '20%'
-                                   }}>{t('footer:phone')}
+                                   }}>{'الهاتف'}
                                 </p>
                                 <p className={styles.FooterLink}>
-                                    <Link href='/'>{t('footer:phone1')}</Link>
+                                    <Link href='/'>{"111 522 522 212+"}</Link>
                                 </p>
                                 <p className={`${styles.FooterLink}`}
                                    style={{
                                        color: '#FEB400',
                                        marginBottom: '20%'
                                    }}>
-                                    {t('footer:email')}
+                                    {"البريد الالكتروني"}
                                 </p>
                                 <p className={`${styles.FooterLink}FooterLink email`} style={{color:'#fff'}}>
                                     {'contact@hadithnabawicharif.gov.ma'}
@@ -122,16 +122,16 @@ const Footer = () => {
                                 </div>
                             </div>)
                             }
-                            <h5 className="text-white pb-3">{t('footer:Newsletter')}</h5>
+                            <h5 className="text-white pb-3">{"النشرة البريدية"}</h5>
                             <div className="p-0 form">
                                 <div className="form-group">
                                     <label form="exampleInputEmail1"
-                                           className="form-label text-white ">{t('footer:email')}</label>
+                                           className="form-label text-white ">{"البريد الالكتروني"}</label>
                                     <input type="email"
                                            className="form-control"
                                            id="exampleInputEmail1"
                                            aria-describedby="emailHelp"
-                                           placeholder={t('footer:email')}
+                                           placeholder={"البريد الالكتروني"}
                                            onChange={(v) => setInputEmail(v.target.value)}/>
                                 </div>
                                 <div className="d-grid my-3">
@@ -141,7 +141,7 @@ const Footer = () => {
                                                 boxShadow: 10,
                                                 borderRadius: 30,
                                                 color: "#fff"}}
-                                            onClick={handleSubscribe}>{t('footer:send')}</button>
+                                            onClick={handleSubscribe}>{"أرسل"}</button>
                                 </div>
                             </div>
                         </div>

@@ -119,7 +119,7 @@ const Resources = () => {
                         console.log("title-----------------------", title)
                         return (
                             <Cards key={i.toString()}
-                                   className={`${styles.card} item-card me-4 ms-1 text-center mt-4 mb-2 child`}>
+                                   className={`${styles.card} item-card me-4 ms-1 text-center mt-4 w-25 mb-2 child`}>
                                 <div className={`${styles.boxImg} box-img m-auto`}>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <Image
