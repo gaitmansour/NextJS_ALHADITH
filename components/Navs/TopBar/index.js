@@ -11,7 +11,7 @@ const TopBar = (props) => {
     const [input, setInput] = useState('')
     const [show, setShow] = useState(false);
     const isRTL = i18n?.language === "ar"
-    const title = t('topBarLinks:contact')
+    const title = 'التواصل'
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const history = []
@@ -47,9 +47,13 @@ const TopBar = (props) => {
              style={{}}>
             <div className="container-fluid">
                 <Brand/>
-                <SearchInput className={styles.search} styleIcon={{color: '#fff'}} {...props}
-                             onChange={(v) => handleInput(v)} clickSearch={() => handleClickSearch()} input={input}
-                             placeholder={t('inputSearch')}/>
+                <SearchInput className={`${styles.search} text-white`}
+                             styleIcon={{color: '#fff'}}
+                             {...props}
+                             onChange={(v) => handleInput(v)}
+                             clickSearch={() => handleClickSearch()}
+                             input={input}
+                             placeholder={'تحقق من صحة الحديث'}/>
 
                 <div className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
                      id="navbarTop">
@@ -57,7 +61,7 @@ const TopBar = (props) => {
                         <li className={`${styles.navItem} nav-item mx-3`}>
                             <Link exact
                                   activeClassName="active"
-                                  href={`/${t('topBarLinks:links')}`}>{t('topBarLinks:links')}</Link>
+                                  href={`/روابط`}>{'روابط'}</Link>
                         </li>
                         <li
                             className={`${styles.navItem} nav-item mx-3 ${styles.callToAction} call-to-action align-items-center d-flex`}>

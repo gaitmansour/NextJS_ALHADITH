@@ -1,0 +1,96 @@
+.ItemList  {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 5px !important;
+}
+
+.ItemList .content {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.ItemList .content .myclass {
+    color:#A71010;
+    font-weight: bold;
+    font-style: normal;
+}
+.ItemList .content .metaData p span{
+    color: #324650;
+    margin: 0 5px;
+}
+
+.ItemList .content p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.ItemList .content .metaData .devider{
+    background: #324650;
+    width: 1.5px;
+    height: 19px;
+    margin: 0 2em;
+}
+
+.ItemList .smIcons {
+    padding-left: .6em;
+    padding-right: .6em;
+    border-top: 1px solid #D8D8D8;
+}
+
+.ItemList .smIcons a i {
+    color: #CEBB97;
+    margin-right: .7rem!important;
+    margin-left: .7rem!important;
+}
+
+.ItemList .smIcons a:hover i:hover {
+    color: #FEB400;
+}
+
+.ItemList .smIcons {
+    justify-content: flex-start;
+    flex-direction: row !important;
+}
+
+/* *[dir='rtl'] .ItemList .smIcons {
+    justify-content: flex-end
+} */
+
+.badge {
+    padding: 5px 5px;
+    border: 1px solid transparent;
+    min-width: 10px;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 8px;
+}
+
+.badge.badge-default {
+    background-color: #B0BEC5
+}
+
+.badge.badge-outlined {
+    background-color: #fff;
+}
+
+.badge.badge-outlined.badge-default {
+    border-color: #B0BEC5;
+    color: #000;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+@media (max-width: 480px)  {
+    .result{
+        width:90vw;
+        max-width: 100%;
+        height: auto;
+    }
+    .result .content .metaData .alignItem{
+        display: block !important;
+    }
+    .result .content .metaData .alignItem .devider{
+        display: none;
+    }
+}

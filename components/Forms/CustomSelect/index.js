@@ -65,7 +65,7 @@ const CustomSelect = (props) => {
                     name={"form-field-name"}
                     options={options}
                     onChange={data => onChange ? onChange(data) : {}}
-                    menuPortalTarget={document.body}
+                    //menuPortalTarget={document.body}
                     styles={colourStyles}
                     // defaultInputValue={defaultInputValue}
                     noOptionsMessage={() => 'لا يوجد خيارات'}

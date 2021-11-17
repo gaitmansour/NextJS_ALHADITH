@@ -2,7 +2,6 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import styles from './SearchInput.module.css';
 import Link from "next/link";
 import KeyboardedInput from "react-touch-screen-keyboard";
-
 const SearchInput = (props) => {
     // console.log(props.history)
     // const navigate = useHistory();
@@ -59,15 +58,22 @@ const SearchInput = (props) => {
     return (
         <div id={"inputdiv"}
              className={`${styles.boxSearch} box-search d-flex align-items-center justify-content-between flex-fill ${className}`}>
-            <div className="d-flex align-items-center align-self-center btn m-0 p-0"
-                 onClick={props?.clickSearch || goToSearchPage}>
-                <div className={`${styles.iconSearch} icon-search p-3`}/>
-            </div>
+            {props?.clickSearch ?
+                <div className="d-flex align-items-center align-self-center btn m-0 p-0"
+                     onClick={props?.clickSearch}>
+                    <div className={`${styles.iconSearch} icon-search p-3`} style={props.styleSerachIcon}/>
+                </div> :
+                <div className="d-flex align-items-center align-self-center btn m-0 p-0"
+                     onClick={goToSearchPage}>
+                    <div className={`${styles.iconSearch} icon-search p-3`} style={props.styleSerachIcon}/>
+                </div>}
 
             {InputShow ?
                 <input value={props.input}
-                       className="flex-fill mx-1 px-2"
+                       className={`flex-fill mx-1 px-2 ${props.className}`}
                        placeholder={props.placeholder}
+                       color={'red'}
+                       style={{color:'white'}}
                        onChange={props.onChange}/> :
                 <>
                     <KeyboardedInput
@@ -85,7 +91,7 @@ const SearchInput = (props) => {
                         showShift={false}
                         showSymbols={false}
                         ref={Myinput}
-                        inputClassName={[styles.input]}
+                        inputClassName={`${styles.input}`}
                         isFirstLetterUppercase={false}
                         keyboardClassName={`${styles.testme} testme p-2`}
                         containerClassName={styles.conatiner}
@@ -94,15 +100,18 @@ const SearchInput = (props) => {
                     <i className="far fa-keyboard mx-3 fa-1x"
                        style={props.styleIcon}
                        onClick={() => Myinput.current.focus()}/>
-                </>} <Link onClick={props.onClickSettings}
-                           className="d-flex align-items-center align-self-center btn m-0 p-0"
-                           href={{
-                               pathname: '/search',
-                               query: {}
-                           }}>
-            <div className={styles.iconFilter} title="البحث المتخصص"/>
-        </Link>
-
+                </>}
+            {props.onClickSettings ?
+                <div className={styles.iconFilter} onClick={props.onClickSettings} style={props.styleFilter}
+                     title="البحث المتخصص"/> :
+                <Link className="d-flex align-items-center align-self-center btn m-0 p-0"
+                      href={{
+                          pathname: '/search',
+                          query: {}
+                      }}>
+                    <div className={styles.iconFilter} style={props.styleFilter} title="البحث المتخصص"/>
+                </Link>
+            }
         </div>
     );
 }

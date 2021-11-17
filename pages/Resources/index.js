@@ -12,6 +12,7 @@ import Cards from "../../components/_UI/Cards";
 import SectionTitle from "../../components/_UI/SectionTitle";
 import Image from 'next/image'
 import styles from './Ressources.module.css'
+import {Logos} from "../../assets";
 
 const Resources = () => {
 
@@ -121,10 +122,10 @@ const Resources = () => {
                                    className={`${styles.card} item-card me-4 ms-1 text-center mt-4 mb-2 child`}>
                                 <div className={`${styles.boxImg} box-img m-auto`}>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                                    <Image
+                                        src={Logos.logo_web}
                                         alt="book"
-                                        className="img img-responsive"/>
+                                        className={`${styles.img} img img-responsive`}/>
                                 </div>
                                 <h5 className={`${styles.title}title my-4`}>{title}</h5>
                                 <div className={`${styles.desc}`}
@@ -155,7 +156,7 @@ const Resources = () => {
     }
 
     return (
-        <div className="Resources py-5 overflow-hidden">
+        <div className={`${styles.Resources}Resources py-5 overflow-hidden`}>
             <SectionTitle title={t('title')}/>
             {renderContent()}
         </div>

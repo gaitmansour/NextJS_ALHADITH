@@ -45,17 +45,24 @@ const CarouselHome = (props) => {
                 className={`${styles.carouselControlBox} carousel-control-box ${styles.wpx100} wpx-100 d-flex flex-column justify-content-end py-5`}>
                 <SMLinks className='smLinks'/>
             </div>
-            <div className={`${styles.CarouselHome} carouselHome position-relative`}>
+            <div className={`${styles.CarouselHome}carouselHome position-relative`}>
                 <Carousel controls={false} indicators={true}>
                     {dataAPI?.map((item, index) => {
                         const toShow = item?.body?.substring(0, 251) + "..";
                         if (item.field_image.includes("src=")) {
                             var str = item.field_image.substr(item.field_image.lastIndexOf("src=")).split(' ')[0].slice(5)
                         }
-                        let element = item.field_image[1].replace(str, base_url + str).replace(/height=\".*"/gm, '')
+                        let element = item.field_image.replace(str, base_url + str).replace(/height=\".*"/gm, '')
                         let image_filed = element.replace(/width=\".*"/gm, `class={${styles.imgCarousel}imgCarousel} alt="First slide"`)
+                        console.log(image_filed)
+
                         return (
-                            <Carousel.Item key={index.toString()}>
+                            <Carousel.Item key={index.toString()} className={styles.CarouselHome}>
+                                {/*<img
+                                    className="imgCarousel"
+                                    src={`${base_url}/sites/default/files/2021-11/mosque-verte.jpg`}
+                                    alt="First slide"
+                                />*/}
                                 <div
                                     dangerouslySetInnerHTML={{__html: image_filed}}/>
                                 <Carousel.Caption className={`${styles.carouselCaption}carousel-caption  d-md-block`}>
@@ -68,8 +75,8 @@ const CarouselHome = (props) => {
                                         }}
                                         as={"/article/" + item?.title}
                                     >
-                                        <a className={`${styles.btn} btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}>
-                                            <i className={`fas ${isRTL ? "fa-caret-right" : "fa-caret-left"} align-items-center d-flex align-self-stretch`}/>
+                                        <a className={`${styles.btn} btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}><i
+                                            className={`fas ${isRTL ? "fa-caret-right" : "fa-caret-left"} align-items-center d-flex align-self-stretch`}/>
                                             <h6 className="m-0 px-4">{t("readMore")}</h6>
                                         </a>
                                     </Link>
@@ -77,9 +84,11 @@ const CarouselHome = (props) => {
                             </Carousel.Item>
                         )
                     })}
+
                 </Carousel>
-                <div className={`${styles.bg_dashed} bg_dashed h-100 position-absolute w-100`}
+                <div className={`${styles.bg_dashed}bg_dashed h-100 position-absolute w-100`}
                      style={{backgroundImage: `url(${Backgrounds.bg_dashed})`}}/>
+                {/* <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */}
             </div>
         </div>
     );

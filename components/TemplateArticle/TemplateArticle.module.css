@@ -2,15 +2,16 @@
     background-color: #fafafa;
 }
 
-.pb0{
+.pb0 {
     max-width: 61vw;
 }
 
 .templateHeader .bg_dashed {
     background-repeat: no-repeat;
-    z-index: 9;
+
     top: 2em;
     left: 88%;
+    z-index: 9;
     width: 123px !important;
     height: 123px !important;
     transform: rotate(90deg);
@@ -37,13 +38,16 @@
     .TemplateArticleBody {
         flex-wrap: wrap;
     }
+
     .TemplateArticleBody .side-bar {
         width: 90% !important;
         margin-top: 2em;
     }
-    .TemplateArticle .templateHeader .bg_dashed{
+
+    .TemplateArticle .templateHeader .bg_dashed {
         background-image: none !important;
     }
+
     .TemplateArticle {
         width: 100% !important;
     }
@@ -53,11 +57,13 @@
     .TemplateArticleBody {
         flex-wrap: wrap;
     }
+
     .TemplateArticleBody .side-bar {
         width: 90% !important;
         margin: 2em 0 0 0 !important;
     }
-    .TemplateArticle .templateHeader .bg_dashed{
+
+    .TemplateArticle .templateHeader .bg_dashed {
         background-image: none !important;
     }
 }

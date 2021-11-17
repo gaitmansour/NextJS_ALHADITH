@@ -25,6 +25,9 @@
   margin-left: 8%;
   margin-right: 12%;
 }
+.TopBar .search ::placeholder {
+  color: white;
+}
 
 .TopBar .navItem .dropdown-toggle ion-icon {
   margin-right: 5px;
@@ -87,7 +90,7 @@
   .TopBar .dropdown .nav-link {
     padding: 0;
   }
-  .TopBar .navbar-collapse {
+  .TopBar .navbarCollapse {
     padding-bottom: 1em;
   }
   .TopBar .navbar-nav {

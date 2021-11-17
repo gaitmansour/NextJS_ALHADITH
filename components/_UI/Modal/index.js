@@ -6,7 +6,7 @@ const CustomModal = (props) => {
     return (
         <Modal show={props.show} onHide={props.onHide}>
 
-            <div className="modal-header justify-content-between">
+            <div className={`${styles.modal} modal-header justify-content-between`}>
                <div> <button type="button" className="btn-close" data-bs-dismiss="modal"
                         aria-label="Close" onClick={props.onClick}/></div>
 

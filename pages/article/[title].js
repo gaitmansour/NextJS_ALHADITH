@@ -136,10 +136,10 @@ export default function ArticlePage(props) {
     }
     let contentMeta = dataAPI?.data[0]?.attributes?.body?.summary;
     return (
-        <TemplateArticle {...props} ListBreadcrumb={data}
-                         titlePage={dataAPI?.data[0]?.attributes?.title}
-                         createdArticle={!!dataAPI?.data[0]?.attributes?.created}
-                         dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format('DD-MM-YYYY')}>
+        <TemplateArticle  {...props} ListBreadcrumb={data}
+                          titlePage={dataAPI?.data[0]?.attributes?.title}
+                          createdArticle={!!dataAPI?.data[0]?.attributes?.created}
+                          dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format('DD-MM-YYYY')}>
             <Body className={`${styles.TemplateArticleBody}TemplateArticleBody d-flex p-4`}>
                 <div className="flex-fill">
                     <PageSummary className={`${styles.summ} summ my-3`}

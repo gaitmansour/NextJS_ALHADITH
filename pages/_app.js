@@ -2,15 +2,16 @@ import React, {useEffect} from 'react'
 import appWithI18n from 'next-translate/appWithI18n'
 import i18nConfig from '../i18n'
 import Head from "next/head";
+import Script from 'next/script'
 import '../public/css/bootstrap.min.css';
 import '../public/css/fonts.css';
 import '../public/css/all.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-
-
-
+import '../styles/custom.css'
+//import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
+//import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 function MyApp({Component, pageProps}) {
 
     useEffect(() => {
@@ -30,7 +31,6 @@ function MyApp({Component, pageProps}) {
             <link rel="apple-touch-icon" href="../public/logo192.png"/>
             <link rel="manifest" href="../public/manifest.json"/>
             <title>منصة محمد السادس للحديث النبوي الشريف</title>
-
         </Head>
         <Component {...pageProps} />
     </>)

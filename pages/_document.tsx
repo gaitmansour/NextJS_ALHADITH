@@ -11,7 +11,8 @@ class MyDocument extends Document {
         const dir = locale === 'ar' ? 'rtl' : 'ltr';
         return (
             <Html>
-                <Head/>
+                <Head>
+                </Head>
                 <body dir={dir} lang={locale}>
                 <Main />
                 <NextScript />

@@ -60,7 +60,9 @@ const NavBar = (props) => {
                     <ul className={`${styles.dropdownMenu} dropdown-menu  shadow-card overflow-hidden`}
                         aria-labelledby={`menuLink-${index}`}>
                         {item?.items?.map((data, i) => {
-                            return <Link passHref={true} key={i.toString()} exact
+                            return <Link passHref={true}
+                                         key={i.toString()}
+                                         exact
                                          activeClassName={styles.navBarActive}
                                          href={{
                                              pathname: `/${data?.path}`,
@@ -68,7 +70,7 @@ const NavBar = (props) => {
                                          }}
                                          as={`/${data?.path}`}
                             >
-                                <a>
+                                <a className={styles.navBarActive}>
                                     <li className={`btn justify-content-start rounded-0 ${styles.p3}`}
                                         onClick={() => console.log('data----', item?.items)}>{data.label}</li>
                                 </a>
