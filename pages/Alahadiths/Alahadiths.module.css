@@ -31,10 +31,10 @@
     border-top-right-radius: 100px;
 } */
 
-.nav-tabs {
+.navTabs {
     border-bottom: 8px solid #129D59 !important;
-    /* margin-bottom: 0rem !important; */
-    padding-right: 20%;
+    /* margin-bottom: 0rem !important;
+    padding-right: 20%;*/
 }
 
 .Alhadiths .box-logo {
@@ -50,16 +50,16 @@
     height: 115px;
   } */
 
-  .Alhadiths .item-link .icon-1 {
-    background-image: url("../../assets/Images/icons/ahadiths/Ahadithsahiha.svg");
+  .icon1 {
+    background-image: url("../../assets/Images/icons/ahadiths/icon_sahih.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 170px;
     height: 170px;
     box-shadow: none !important;
   }
-  .Alhadiths .item-link .icon-2 {
-    background-image: url("../../assets/Images/icons/ahadiths/icon_daaifa.svg");
+  .icon2 {
+    background-image: url("../../assets/Images/icons/ahadiths/icon_daiifa.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 170px;
@@ -84,7 +84,7 @@
   }
 
   .Alhadiths .item-link:hover .icon{
-    background-image: url("../../assets/Images/icons/ahadiths/icon-ahadith.svg");
+    background-image: url("../../assets/Images/icons/ahadiths/icon_sahih.png");
   }
 
   .Alhadiths .item-link .icon img{

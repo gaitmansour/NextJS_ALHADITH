@@ -133,7 +133,7 @@ const SearchSection = (props) => {
             history && history.push({
                 pathname: '/search',
                 search: '',
-                state: {
+                query: {
                     from: 'section',
                     topic: ChoiceCategory,
                     door: ChoiceTopic,
@@ -148,7 +148,7 @@ const SearchSection = (props) => {
     }
     const handleKeyDown = (event, location) => {
         // console.log('A key was pressed', event.keyCode);
-        if(event.keyCode === 13){
+        if (event.keyCode === 13) {
             goToSearchPage()
         }
     };
@@ -164,19 +164,19 @@ const SearchSection = (props) => {
                 window.removeEventListener('keydown', handleKeyDown);
             }
         };
-    }, [input,ChoiceTopic,ChoiceSource,ChoiceNarrator,ChoiceDegree,ChoiceCategory]);
+    }, [input, ChoiceTopic, ChoiceSource, ChoiceNarrator, ChoiceDegree, ChoiceCategory]);
 
     function handleClickSearch() {
         goToSearchPage()
     }
 
     useEffect(() => {
-            getDataDegree()
-            getDataSource()
-            getDataNarrator()
-            getDataTopic()
-            getDataCategory()
-    },[])
+        getDataDegree()
+        getDataSource()
+        getDataNarrator()
+        getDataTopic()
+        getDataCategory()
+    }, [])
 
 
     return (
@@ -185,22 +185,23 @@ const SearchSection = (props) => {
             <div ref={resultsRef}
                  className="search-element d-flex flex-row align-items-center justify-content-between mt-4">
                 <SearchInput
+                    styleSerachIcon={{backgroundColor: '#656e7e'}}
                     styleIcon={{color: "#656e7e", width: 20}}
                     styleFilter={{backgroundColor: "#656e7e", width: 50}}
-                             onClickSettings={() => setShowForm(!showForm)}
-                             input={input}
-                             onChange={(v) => handleInput(v)}
-                             placeholder={t('search')}
-                             className="bg-white mx-0"
-                             clickSearch={() => handleClickSearch()}
+                    onClickSettings={() => setShowForm(!showForm)}
+                    input={input}
+                    onChange={(v) => handleInput(v)}
+                    placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
+                    className="bg-white mx-0"
+                    clickSearch={() => handleClickSearch()}
                 />
 
                 <div className="box-icon-setting d-flex align-items-center align-self-center btn m-0 p-0"
                      onClick={() => handleClickSearch()}>
-                    <i className="fas fa-search p-3" style={{color: "#fff"}}/>
+                    <i className="fas fa-search p-3 text-light" style={{backgroundColor: '#157646', borderRadius: 8}}/>
                 </div>
             </div>
-            {showForm && <Cards className="form-search p-2">
+            {showForm && <Cards className="form-search p-2" style={{backgroundColor: '#e9fbf1'}}>
                 <div className="d-flex flex-wrap flex-column">
 
                     <div className="d-flex alignIte">

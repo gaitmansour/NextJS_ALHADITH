@@ -2,6 +2,7 @@ import {Icons} from "../../../assets"
 import styles from './NotFound404.module.css';
 import Image from 'next/image'
 import Link from 'next/link'
+import React from "react";
 
 const NotFound404 = (props) => {
     return (

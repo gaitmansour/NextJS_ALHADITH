@@ -96,7 +96,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                     return (
                         <Link
                             key={i.toString()}
-                            className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                            className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             as={'/search'}
 
                             href={{
@@ -114,14 +114,16 @@ const HadithTab = ({CodeTopic, Content}) => {
                             <a className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             >
                                 <div
+                                    style={{justifyContent:'center',alignItems:'center'}}
                                     className={`${
                                         Content === 'صحيح'
-                                            ? 'icon-1'
+                                            ? styles.icon1
                                             : Content === 'ضعيف'
-                                            ? 'icon-2'
+                                            ? styles.icon2
                                             : styles.icon3
                                         } text-center box-logo m-auto d-flex justify-content-center align-items-center`}>
-                                    <p className="text-center my-auto text-light font-weight-bold">
+                                    <p className="text-center my-auto text-light font-weight-bold"
+                                       style={{textAlign:'justify',alignSelf:'center',fontSize:14}}>
                                         {item?.label}
                                     </p>
                                 </div>

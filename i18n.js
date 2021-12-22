@@ -7,7 +7,7 @@ module.exports = {
   pages: {
     '*': ['common','footer','topBarLinks','OurPartners'],
     '/404': ['error','footer','topBarLinks'],
-    '/': ['home','topBarLinks','footer','CommanderieCroyants','ressource','OurPartners'],
+    '/': ['home','topBarLinks','footer','CommanderieCroyants','ressource','PrayTimes','OurPartners','Videos'],
     '/search': ['topBarLinks','footer','OurPartners'],
     '/dashboard': ['home','footer','CommanderieCroyants','ressource','topBarLinks','OurPartners'],
     'rgx:^/more-examples': ['more-examples','footer','topBarLinks'],

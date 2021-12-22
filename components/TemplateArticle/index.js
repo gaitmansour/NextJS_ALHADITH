@@ -7,6 +7,7 @@ import PageTitle from '../_UI/PageTitle';
 import styles from './TemplateArticle.module.css'
 import { Backgrounds } from "../../assets"
 import Image from 'next/image'
+import React from "react";
 
 const TemplateArticle = (props) => {
     return (

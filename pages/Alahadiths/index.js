@@ -11,9 +11,9 @@ const Alahadiths = (props) => {
             defaultActiveKey="الصحيحة"
             transition={false}
             id="noanim-tab-example"
-            className="text-secondary"
+            className={`text-secondary nav-tabs ${styles.navTabs}`}
             // lang="ar" dir="rtl"
-            style={{justifyContent:'center'}}
+            style={{justifyContent:'center',}}
             >
                 {data.map((t,key)=>(
                     <Tab key={key} {...t} >

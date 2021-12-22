@@ -11,14 +11,14 @@ import _ from 'lodash'
 import 'moment/locale/fr';
 import 'moment/locale/ar-ma';
 import {api_search} from "../../../endpoints";
-
+import Image from 'next/image'
 const PrayTimes = () => {
     const [data, setData] = useState({})
     const [date, setDate] = useState("")
     const [dataCities, setDataCities] = useState([])
     const [currentCity, setCurrentCity] = useState(1)
 
-    const {t, i18n} = useTranslation();
+    const {t, i18n} = useTranslation('PrayTimes');
     // const isRTL = i18n?.language === "ar"
 
     const fetchAPI = async () => {
@@ -81,36 +81,36 @@ const PrayTimes = () => {
                     <div className="mt-4">
                         <div
                             className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.fajr")}</p>
+                            <p className="flex-fill m-0 text-success">{t("fajr")}</p>
                             <p className="m-0 text-success mx-4">{data?.Fajr}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
-                            className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.leverDuSoleil")}</p>
+                            className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
+                            <p className="flex-fill m-0 text-success">{t("leverDuSoleil")}</p>
                             <p className="m-0 text-success mx-4">{data?.Chorouq}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div className="box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2">
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.dhohr")}</p>
+                            <p className="flex-fill m-0 text-success">{t("dhohr")}</p>
                             <p className="m-0 text-success mx-4">{data?.Dhuhr}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
                             className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.asr")}</p>
+                            <p className="flex-fill m-0 text-success">{t("asr")}</p>
                             <p className="m-0 text-success mx-4">{data?.Asr}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
                             className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.maghrib")}</p>
+                            <p className="flex-fill m-0 text-success">{t("maghrib")}</p>
                             <p className="m-0 text-success mx-4">{data?.Maghrib}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
                             className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{t("prayTimes.ichaa")}</p>
+                            <p className="flex-fill m-0 text-success">{t("ichaa")}</p>
                             <p className="m-0 text-success mx-4">{data?.Ishae}</p>
                             <i className="far fa-clock"/>
                         </div>
@@ -126,10 +126,10 @@ const PrayTimes = () => {
         <Cards className={styles.praytimes}>
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className="d-flex flex-column align-self-stretch justify-content-between">
-                    <h3 className="title text-success m-0">{t("prayTimes.title")}</h3>
-                    {date && <p className="date m-0">{date}</p>}
+                    <h3 className={`${styles.title} title text-success m-0`}>{t("title")}</h3>
+                    {date && <p className={`${styles.date} date m-0`}>{date}</p>}
                 </div>
-                <img src={Icons.icon_mosque.default} className="img img-responsive"/>
+                <Image src={Icons.icon_mosque} className="img img-responsive"/>
             </div>
             {dataCities?.length > 0 &&
             <CustomSelect options={dataCities} placeholder="الرباط" onChange={city => setCurrentCity(city.value)}/>}

@@ -11,6 +11,7 @@ import Side from './Sidebar.png'
 import styles from './SliderList.module.css';
 import Link from "next/link"
 import Image from "next/image"
+import React from "react";
 
 const SliderList = (props) => {
 
