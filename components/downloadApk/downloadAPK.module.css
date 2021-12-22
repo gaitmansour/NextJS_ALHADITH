@@ -1,0 +1,115 @@
+.downloadApk{
+    background-image: url('../../assets/Images/icons/ahadiths/icon-background.svg');
+    background-repeat: no-repeat;
+   background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+   /*  height: 14vh;*/
+    margin-bottom: 11%;
+    margin-top: 12%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+}
+.downloadApk .mobile{
+    margin-top: -95px;
+    margin-right: 12%;
+
+}
+.downloadApk .downloadIcon{
+    display: inline;
+    text-align: center;
+    align-items: center;
+}
+.downloadApk .dwdApk{
+    margin: 2% 6% 8% 0%;
+    height: 70%;
+    padding: 0% 0%;
+    align-items: center;
+    background-color:#0a53be ;
+    text-align: center;
+}
+@media (max-width: 370px) {
+    .downloadApk {
+        height: 20vh !important;
+        display: flex;
+        width: 90% !important;
+        margin-top: 26% !important;
+        margin-bottom: 15% !important;
+    }
+}
+@media (max-width: 480px) {
+    .downloadApk {
+        height: 18vh;
+        display: flex;
+        width: 90% !important;
+        margin-top: 26% !important;
+        margin-bottom: 15% !important;
+    }
+    .downloadApk .mobile{
+        margin-right: 0% !important;
+        margin-bottom: -10% !important;
+    }
+    .downloadApk .downloadIcon{
+        display: flex;
+        flex-direction: column;
+    }
+    .downloadApk .dwdApk{
+        margin-bottom: 0% !important;
+        height: 90% !important;
+        width: 90% !important;
+        margin-right: 2% !important;
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 770px) {
+    .downloadApk .mobile{
+        margin-right: 0% !important;
+        /* margin-bottom: -0% !important; */
+    }
+    .downloadApk {
+        height: 15vh;
+        /* width: 90% !important; */
+    }
+    .downloadApk .dwdApk{
+        margin-bottom: 5% !important;
+        height: 50% !important;
+        width: 30% !important;
+        margin-right: 0% !important;
+    }
+}
+@media only screen and (min-width: 770px) and (max-width: 900px) {
+    .downloadApk .mobile{
+        margin-right: 5% !important;
+        margin-top: -98px !important;
+        /* margin-bottom: -0% !important; */
+    }
+    .downloadApk {
+        height: 14vh;
+        /* width: 90% !important; */
+    }
+    .downloadApk .dwdApk{
+        margin-bottom: 8% !important;
+        height: 70% !important;
+        width: 30% !important;
+        margin-right: 0% !important;
+    }
+}
+@media only screen and (min-width: 900px) and (max-width: 1024px) {
+    .downloadApk .mobile{
+        margin-right: 8% !important;
+        margin-top: -85px;
+        /* margin-bottom: -0% !important; */
+    }
+    .downloadApk {
+        height: 3% !important;
+        margin-bottom: 15% !important;
+        margin-top: 15% !important;
+        /* width: 90% !important; */
+    }
+    .downloadApk .dwdApk{
+        margin-bottom: 5% !important;
+        height: 70% !important;
+        width: 30% !important;
+        margin-right: 0% !important;
+    }
+}

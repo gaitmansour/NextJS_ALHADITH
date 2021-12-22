@@ -1,0 +1,19 @@
+.OurPartners .box-logo {
+  width: 200px;
+  height: 200px;
+}
+.OurPartners {
+  width: 100% !important;
+  overflow: hidden;
+
+}
+
+@media (max-width: 480px) {
+  .OurPartners .box-logo img, .OurPartners .box-logo {
+    width: 100px;
+    height: 100px;
+  }
+  .OurPartners .bg-body {
+    margin: .5em 1em !important
+  }
+}

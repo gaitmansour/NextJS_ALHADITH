@@ -45,7 +45,7 @@ const CarouselHome = (props) => {
                 className={`${styles.carouselControlBox} carousel-control-box ${styles.wpx100} wpx-100 d-flex flex-column justify-content-end py-5`}>
                 <SMLinks className='smLinks'/>
             </div>
-            <div className={`${styles.CarouselHome}carouselHome position-relative`}>
+            <div className={`${styles.CarouselHome} carouselHome position-relative`}>
                 <Carousel controls={false} indicators={true}>
                     {dataAPI?.map((item, index) => {
                         const toShow = item?.body?.substring(0, 251) + "..";
@@ -53,19 +53,13 @@ const CarouselHome = (props) => {
                             var str = item.field_image.substr(item.field_image.lastIndexOf("src=")).split(' ')[0].slice(5)
                         }
                         let element = item.field_image.replace(str, base_url + str).replace(/height=\".*"/gm, '')
-                        let image_filed = element.replace(/width=\".*"/gm, `class={${styles.imgCarousel}imgCarousel} alt="First slide"`)
-                        console.log(image_filed)
+                        let image_filed = element.replace(/width=\".*"/gm, `class={${styles.imgCarousel} imgCarousel} styles={{width:'100%'}} alt="First slide"`)
 
                         return (
                             <Carousel.Item key={index.toString()} className={styles.CarouselHome}>
-                                {/*<img
-                                    className="imgCarousel"
-                                    src={`${base_url}/sites/default/files/2021-11/mosque-verte.jpg`}
-                                    alt="First slide"
-                                />*/}
                                 <div
                                     dangerouslySetInnerHTML={{__html: image_filed}}/>
-                                <Carousel.Caption className={`${styles.carouselCaption}carousel-caption  d-md-block`}>
+                                <Carousel.Caption className={`${styles.carouselCaption} carousel-caption d-md-block`} style={{backgroundColor:'white',opacity:0.8}}>
                                     <p>{toShow}</p>
                                     <Link
                                         role="button"

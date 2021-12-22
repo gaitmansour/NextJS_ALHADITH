@@ -19,18 +19,18 @@ const SearchInput = (props) => {
     }
 
 
-    //let mql = window.matchMedia("screen and (max-device-width: 360px)");
     useEffect(() => {
         checkSizeWindow();
         if (typeof window !== undefined) {
             window.addEventListener("resize", checkSizeWindow);
             // Remove event listener on cleanup
-            return () => window.removeEventListener("resize", checkSizeWindow);
+            return () =>{if (typeof window !== undefined) {
+                window.removeEventListener("resize", checkSizeWindow);
+            }}
         }
     }, [])
 
     const checkSizeWindow = () => {
-        //    console.log(" ------ windows : ", window.innerWidth);
         if (typeof window !== undefined && window.innerWidth <= 450) {
             setInputShow(true)
         } else {

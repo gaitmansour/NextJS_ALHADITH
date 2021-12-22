@@ -1,0 +1,130 @@
+.nav-tabs .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #129D59 !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.nav-tabs .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #129D59 !important;
+    background-color: #129D59 !important;
+    color: #fff !important;
+    position: relative !important;
+}
+/* .nav-tabs .active::after{
+    position: absolute;
+    background: #129D59;
+    content: "";
+    width: 40%;
+    height: 8px;
+    left: 30%;
+    top: -9%;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+} */
+
+.nav-tabs {
+    border-bottom: 8px solid #129D59 !important;
+    /* margin-bottom: 0rem !important; */
+    padding-right: 20%;
+}
+
+.Alhadiths .box-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* .Alhadiths .item-link .icon {
+    background-image: url("../../../../assets/Images/icons/ahadiths/icon-ahadith.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 115px;
+    height: 115px;
+  } */
+
+  .Alhadiths .item-link .icon-1 {
+    background-image: url("../../assets/Images/icons/ahadiths/Ahadithsahiha.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 170px;
+    height: 170px;
+    box-shadow: none !important;
+  }
+  .Alhadiths .item-link .icon-2 {
+    background-image: url("../../assets/Images/icons/ahadiths/icon_daaifa.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 170px;
+    height: 170px;
+  }
+  .icon3 {
+    background-image: url("../../assets/Images/icons/ahadiths/icon_mawdoua.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 170px;
+    height: 170px;
+  }
+
+  .Alhadiths .item-link .box-logo p {
+    font-size: 15px;
+    font-family: Font_Maghribi;
+    width: 40%;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-right: 12%;
+  }
+
+  .Alhadiths .item-link:hover .icon{
+    background-image: url("../../assets/Images/icons/ahadiths/icon-ahadith.svg");
+  }
+
+  .Alhadiths .item-link .icon img{
+    width: 32px;
+  }
+
+  .Alhadiths .item-link p{
+    font-size: 13px;
+  }
+
+  .Alhadiths .slick-slider .slick-dots {
+    justify-content: center;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 900px) {
+    .nav-tabs .nav-link{
+      padding: 1% 2.5% !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .Alhadiths .container {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+    .Alhadiths .slick-next{
+      display: none !important;
+    }
+    .Alhadiths .item-link .icon {
+      width: 80px;
+      height: 80px;
+    }
+    .Alhadiths .item-link .icon img {
+      width: 22px;
+    }
+    .Alhadiths a.item-link {
+      margin: 10px !important;
+    }
+    .nav-tabs .nav-link{
+      width: 32% !important;
+    }
+    .nav-tabs {
+      padding-right: 5%;
+  }
+  }

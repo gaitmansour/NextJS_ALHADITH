@@ -1,3 +1,5 @@
+import React, {useEffect, useState} from 'react';
+
 import styles from './SectionTitle.module.css';
 
 const SectionTitle = (props) => {

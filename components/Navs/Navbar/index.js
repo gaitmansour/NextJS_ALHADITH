@@ -172,7 +172,7 @@ const NavBar = (props) => {
         </div>
 
         <div className={`btn rounded-0 p-0 border-0 bg-warning ${styles.btnFaq} btn-faq align-self-stretch justify-content-center d-flex`}>
-          <Link exact activeClassName="active" href="/pages/404.js">
+          <Link exact activeClassName="active" href="../../../pages/QandA" as={'/سؤال وجواب'}>
             <a className="align-items-center d-flex px-4 py-2">
               <Image className={`px-1 `} src={Icons.icon_faq} alt="icon faq" />
               <h4 className="m-0 p-0  text-white">سؤال وجواب</h4>

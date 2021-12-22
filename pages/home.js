@@ -7,6 +7,11 @@ import Footer from "../components/Footer";
 import CarouselHome from "./CarouselHome";
 import CommanderieCroyants from "./CommanderieCroyants";
 import Resources from "./Resources";
+import Alahadiths from "./Alahadiths";
+import SearchSection from "./searchHome";
+import OurPartners from "./OurPartners";
+import DownloadApk from "../components/downloadApk";
+import Videos from "./Videos";
 
 const HomeScreen = (props) => {
     return (
@@ -16,7 +21,11 @@ const HomeScreen = (props) => {
             <Body>
                 <CarouselHome/>
                 <CommanderieCroyants/>
+                <SearchSection/>
                 <Resources/>
+                <Alahadiths/>
+                <Videos />
+                <DownloadApk/>
             </Body>
             <Footer/>
         </Layout>

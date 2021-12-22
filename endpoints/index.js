@@ -1,9 +1,9 @@
 //export const base_url = `https://back.alhadith.dialtechnologies.net`
-export const base_url = `http://backend.7adith.ma:8000`
-
+//const {BASE_URL_CMS, BASE_URL_ES} = process.env;
+export const base_url = `https://backend.7adith.ma:8000`
 export const api_url = `${base_url}/en/jsonapi/node`
 //export const api_url = `http://backend.7adith.ma:8000/en/jsonapi/node`
-export const api_search = `http://apisearch.7adith.ma:8000`
+export const api_search = `https://apisearch.7adith.ma:8000`
 export const api_newsletter = `https://aqueous-basin-44895.herokuapp.com/https://us5.api.mailchimp.com/3.0/lists/75912977ff/members`
 // export const base_url = `https://api.pray.zone/`
 
@@ -11,7 +11,9 @@ export const getResourcesData = (langcode, value="موارد") => `${api_url}/se
 export const getCommanderieCroyantsData = (langcode, value="عناية أمير المومنين") => `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien,field_code_couleur&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
 export const getMawdouaData = (langcode, value="الاحاديت الموضوعة") => `${api_url}/mawdoua?fields[node--mawdoua]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alkism][condition][path]=field_alkism.name&filter[alkism][condition][value]=${value}`
 export const getSlideHome = (langcode) => `${api_url}/slider?fields[node--slider]=field_liens,field_texte&filter[langcode]=${langcode}&include=field_images`
-export const getVideo = (title) => `${api_url}/video?include=field_thumbnail_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=${title}`
+export const AllVideo = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video`
+
+export const getVideo = (title) => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=${title}`
 export const getArticleById = (title) => `${api_url}/article?include=field_image&fields[node--article]=title,body,created,field_image&filter[title]=${title}`
 export const getOurPartners = (langcode, value="شركاؤنا") => `${api_url}/section?include=field_icone&fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}`
 export const getSideArticle = (name,tid,parent_target)=>`${base_url}/en/article/preview?name_1=${name}&tid=${tid}&parent_target_id=${parent_target}`
@@ -38,3 +40,13 @@ export const getCarousel = () => `${api_url}/article?fields[node--article]=title
 export const getSlider =()=>`${base_url}/en/slider`
 export const getNewSections=()=>`${base_url}/section-accueil`
 export const getDataNewSections=(NewSection)=>`${api_url}/section_accueil?include=field_icone_accueil&fields[node--section_accueil]=title,body,field_lien_accueil,field_code_couleur_accueil&filter[alqsm][condition][path]=field_alqsm_accueil.name&filter[alqsm][condition][value]=${NewSection}`
+export const addQuestions = () => `${api_search}/api/addQuestion`
+export const searchQuestion = () => `${api_search}/api/question/search`
+export const getVideo1 = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=برامج على الشبكات الاجتماعية`
+export const getVideoBt = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=برامج تلفزية`
+export const getVideoBi = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=برامج اذاعية`
+export const getVideoDh = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=الدروس الحديثية`
+export const getVideoKi = () => `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=الدروس الحسنية`
+
+
+

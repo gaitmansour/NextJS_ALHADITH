@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import useTranslation from "next-translate/useTranslation";
 import Link from 'next/link'
 import styles from './CommanderieCroyants.module.css';
@@ -8,7 +7,8 @@ import FetchAPI from "../../API";
 import Loading from "../../components/_UI/Loading";
 import Cards from "../../components/_UI/Cards";
 import SectionTitle from "../../components/_UI/SectionTitle";
-
+import React, {useEffect, useState} from 'react';
+import $ from 'jquery'
 const CommanderieCroyants = () => {
 
     const {t, i18n} = useTranslation('CommanderieCroyants');
@@ -45,6 +45,19 @@ const CommanderieCroyants = () => {
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_code_couleur, field_lien} = item?.attributes
                         console.log(dataAPI?.data)
+                        $(document).ready(function(){
+                            $(".linksCroyants").contextmenu(function(event){
+                                localStorage.setItem('routeState', JSON.stringify({ fromNav:{},selectedItem:title ,from:"Croyants"}))
+                            });
+                        });
+
+                        $(document).ready(function(){
+                            $(".linksCroyants").bind('click', function(e) {
+                                console.log("hello ctrl")
+                                localStorage.setItem('routeState', JSON.stringify({ fromNav:{},selectedItem:title ,from:"Croyants"}))
+
+                            });
+                        });
 
                         return (
                             <div key={i.toString()} className="col-md-3">
@@ -62,11 +75,11 @@ const CommanderieCroyants = () => {
                                             pathname: field_lien[0]?.uri.slice(9),
                                             search: '',
                                             hash: '',
-                                            query: {from: 'Croyants', selectedItem: title}
+                                            query: {fromNav:{},selectedItem:title ,from:"Croyants"}
                                         }}
                                         as={field_lien[0]?.uri.slice(9)}
                                     >
-                                        <a className={`${styles.shadowSm} shadow-sm d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
+                                        <a className={`${styles.shadowSm} linksCroyants shadow-sm d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
                                            style={{background: `#${field_code_couleur}`}}
                                         >
                                             <i className="fas fa-long-arrow-alt-left text-white"/>
