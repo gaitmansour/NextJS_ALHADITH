@@ -17,7 +17,7 @@ const Alahadiths = (props) => {
             >
                 {data.map((t,key)=>(
                     <Tab key={key} {...t} >
-                         <HadithTab CodeTopic={t.CodeTopic} Content={t.content} />
+                         <HadithTab codetopic={t.CodeTopic} Content={t.content} />
                     </Tab>
                 ))}
 

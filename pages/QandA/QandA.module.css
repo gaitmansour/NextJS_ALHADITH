@@ -1,28 +1,58 @@
-.TemplateArticleBody .page-title-second h3{
+.TemplateArticleBody .page-title-second h3 {
     color: #000;
     font-weight: 500;
 }
-.summ{
+
+.summ {
     margin-bottom: 4%;
 }
-.desc p{
+
+
+#pagination {
+    color: #157BFF;
+    margin: 5px;
+}
+
+*[dir='ltr'] .paginationButtons {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: right;
+}
+
+.descriptionP{
+    text-decoration: none;
+    text-underline-style: none;
+    color: black;
+}
+
+*[dir='ltr'] #paginationn {
+    transform: rotate(180deg);
+}
+
+
+.desc p {
     font-family: 'Almarai', sans-serif !important;
     font-size: 15px;
 }
-.desc span{
+
+.desc span {
     font-family: 'Almarai', sans-serif !important;
     font-size: 15px;
 }
+
 .dateParagraph {
-text-align: left;
+    text-align: left;
     font-family: 'Almarai', sans-serif !important;
 }
-.TemplateArticleBody .activebtn a{
+
+.TemplateArticleBody .activebtn a {
     background-color: #29a669 !important;
     color: #fff !important;
     font-weight: 900 !important;
 }
-.side-bar1 .sel .selectt{
+
+.sideBar1 .sel .selectt {
     display: block;
     width: 100% !important;
     border: 1px solid #ced4da;
@@ -33,83 +63,100 @@ text-align: left;
     border-radius: .25rem;
 }
 
-.side-bar1 .sel .selectt > option{
+.sideBar1 .sel .selectt > option {
     color: black;
 }
-.btnquestion{
+
+.btnquestion {
     height: 50px;
     width: 20vw;
     border: none;
     border-radius: .2em;
-    text-align: center; 
+    text-align: center;
     margin-bottom: .3em;
     position: relative;
 }
 
-.btnquestion .logo{
+.btnquestion .logo {
     position: absolute;
     left: 12%;
 }
-.btnquestion p{
-    display: inline-block; 
+
+.btnquestion p {
+    display: inline-block;
     padding-top: 4%;
     font-family: inherit;
     font-size: inherit;
 }
 
 @media (max-width: 685px) {
-    .btnquestion{
+    .btnquestion {
         width: 40vw;
     }
 }
+
 @media (max-width: 430px) {
-    .btnquestion{
+    .btnquestion {
         width: 60vw;
     }
 }
+
 @media (max-width: 370px) {
-    .TemplateArticleBody{
+    .TemplateArticleBody {
         max-width: 100% !important;
         width: 100% !important;
         overflow: hidden;
         margin-left: 20px !important;
     }
-    .TemplateArticleBody .side-bar1 input, button, textarea, .captcha{
+
+    /*.TemplateArticleBody .sideBar1 input, button, textarea, .captcha{
+        max-width: 100% !important;
+        width: 95% !important;
+    }*/
+    .captcha {
         max-width: 100% !important;
         width: 95% !important;
     }
-    .TemplateArticleBody .searchInp{
+
+    .TemplateArticleBody .searchInp {
         width: 90% !important;
     }
-    .TemplateArticleBody .searchBtn{
+
+    .TemplateArticleBody .searchBtn {
         width: 8% !important;
         margin-right: 2% !important;
         margin-left: 2% !important;
     }
 }
-@media (max-width: 480px){
+
+@media (max-width: 480px) {
     .bg1 div h5 {
         margin-top: 2% !important;
         text-align: center !important;
     }
-    .TemplateArticleBody .searchInp{
+
+    .TemplateArticleBody .searchInp {
         width: 98% !important;
     }
-    .TemplateArticleBody .searchBtn{
+
+    .TemplateArticleBody .searchBtn {
         width: 20% !important;
         margin-right: 5%;
     }
-    .TemplateArticleBody .activebtn a{
+
+    .TemplateArticleBody .activebtn a {
         padding: 0px 15px 6px !important;
         margin: 7px 0px !important;
         font-weight: normal !important;
     }
-    .TemplateArticleBody .paginationButtons li{
+
+    .TemplateArticleBody .paginationButtons li {
         /* padding: 1px 15px 6px !important; */
         margin: 0px !important;
         padding: 0px !important;
     }
-    .TemplateArticleBody .paginationButtons{
+
+    .TemplateArticleBody .paginationButtons {
         width: 80% !important;
     }
 
@@ -117,15 +164,16 @@ text-align: left;
         max-width: 95% !important;
         width: 90% !important;
     }
-    .TemplateArticleBody .Card-question{
+    .TemplateArticleBody .CardQuestion{
         width: 90vw !important;
         overflow: hidden !important;
     } */
-    .TemplateArticleBody .Card-question .SimpleList .bg1 img{
+    .TemplateArticleBody .CardQuestion .SimpleList .bg1 img {
         width: 10% !important;
         max-width: 10% !important;
     }
-    .TemplateArticleBody .btnquestion img{
+
+    .TemplateArticleBody .btnquestion img {
         width: 14% !important;
         max-width: 20% !important;
     }

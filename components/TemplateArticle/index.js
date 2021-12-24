@@ -1,4 +1,4 @@
-import NavBar from '../Navs/Navbar';
+import NavBar from '../../pages/Navbar';
 import TopBar from '../Navs/TopBar';
 import Layout from '../Layout';
 import Footer from '../Footer';

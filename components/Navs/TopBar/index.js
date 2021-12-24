@@ -53,7 +53,8 @@ const TopBar = (props) => {
                              onChange={(v) => handleInput(v)}
                              clickSearch={() => handleClickSearch()}
                              input={input}
-                             placeholder={'تحقق من صحة الحديث'}/>
+                             placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
+                />
 
                 <div className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
                      id="navbarTop">

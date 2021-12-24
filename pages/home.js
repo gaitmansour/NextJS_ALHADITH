@@ -1,5 +1,5 @@
 import TopBar from "../components/Navs/TopBar";
-import NavBar from "../components/Navs/Navbar";
+import NavBar from "./Navbar";
 import React from "react";
 import Body from "../components/Body";
 import Layout from "../components/Layout";

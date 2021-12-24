@@ -279,7 +279,7 @@
         padding: .2em 1em !important;
         border: none;
         border-radius: 0;
-        background: url('../../../assets/Images/backgrounds/bg-arabic-design.svg'), linear-gradient(
+        background: url('../../assets/Images/backgrounds/bg-arabic-design.svg'), linear-gradient(
                 131deg,
                 rgba(23, 108, 66, 1) 0%,
                 rgba(14, 65, 40, 1) 100%) !important;
