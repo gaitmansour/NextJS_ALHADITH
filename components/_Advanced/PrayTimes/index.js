@@ -80,7 +80,7 @@ const PrayTimes = () => {
                 return (
                     <div className="mt-4">
                         <div
-                            className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
+                            className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
                             <p className="flex-fill m-0 text-success">{t("fajr")}</p>
                             <p className="m-0 text-success mx-4">{data?.Fajr}</p>
                             <i className="far fa-clock"/>
@@ -91,7 +91,7 @@ const PrayTimes = () => {
                             <p className="m-0 text-success mx-4">{data?.Chorouq}</p>
                             <i className="far fa-clock"/>
                         </div>
-                        <div className="box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2">
+                        <div className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
                             <p className="flex-fill m-0 text-success">{t("dhohr")}</p>
                             <p className="m-0 text-success mx-4">{data?.Dhuhr}</p>
                             <i className="far fa-clock"/>
@@ -103,13 +103,13 @@ const PrayTimes = () => {
                             <i className="far fa-clock"/>
                         </div>
                         <div
-                            className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
+                            className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
                             <p className="flex-fill m-0 text-success">{t("maghrib")}</p>
                             <p className="m-0 text-success mx-4">{data?.Maghrib}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
-                            className={`${styles.boxPray}box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
+                            className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
                             <p className="flex-fill m-0 text-success">{t("ichaa")}</p>
                             <p className="m-0 text-success mx-4">{data?.Ishae}</p>
                             <i className="far fa-clock"/>
@@ -129,7 +129,7 @@ const PrayTimes = () => {
                     <h3 className={`${styles.title} title text-success m-0`}>{t("title")}</h3>
                     {date && <p className={`${styles.date} date m-0`}>{date}</p>}
                 </div>
-                <Image src={Icons.icon_mosque} className="img img-responsive"/>
+                <Image src={Icons.icon_mosque} width={"100%"} height={"100%"} className="img img-responsive"/>
             </div>
             {dataCities?.length > 0 &&
             <CustomSelect options={dataCities} placeholder="الرباط" onChange={city => setCurrentCity(city.value)}/>}

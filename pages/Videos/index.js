@@ -99,7 +99,7 @@ const Videos = () => {
       <Link  href={"../AllMedia"} as="/allMedia" style={{textDecoration:"none"}}>
       <SectionTitle title={t('videos')} className="" />
       </Link>
-      <div className="row h-100">
+      <div className={`row h-100`}>
         <div className={`${styles.alignSec} Bslick col-md-7 mt-4 alignSec`}>
           <div className={`${styles.sec} sec w-100 h-100`}>
             <div className={`${styles.secTop} d-flex  secTop`}>
@@ -107,7 +107,9 @@ const Videos = () => {
                 <Image
                   src={Icons.icon_bg_dashed_tr}
                   alt=""
-                  width="20%"
+                  width={100}
+                  height={100}
+
                   className={`${styles.imgTR} imgTR`}
                 />
                 <Link href={"/media/الدروس الحسنية"} as="../media/الدروس الحسنية">
@@ -115,7 +117,7 @@ const Videos = () => {
                     <Image
                     src={Icons.icon_dorouss_hassania}
                     alt="الدروس-الحسنية"
-                    width="45%"
+                   // width="45%"
                   />
                   <h3>الدروس الحسنية</h3>
                   </a>
@@ -125,8 +127,8 @@ const Videos = () => {
                 <Image
                   src={Icons.icon_bg_dashed_br}
                   alt=""
-                  width="18%"
-                  className={`${styles.imgBR} imgBR`}
+                 // width="18%"
+                  //className={`${styles.imgBR} imgBR`}
                  // className="imgBR"
                 />
                 <Link href={"/media/الدروس الحديثية"}
@@ -136,9 +138,9 @@ const Videos = () => {
                   <Image
                     src={Icons.icon_dorouss_hadita}
                     alt="الدروس-الحديثية"
-                    width="30%"
-                    className="my-3"
-                    style={{marginRight: '38%'}}
+                   // width="30%"
+                   // className="my-3"
+                    //style={{marginRight: '38%'}}
                   />
                   <h3 style={{width: '100%', marginRight: '30%'}}>
                     الدروس الحديثية
@@ -151,9 +153,9 @@ const Videos = () => {
               <div className={`${styles.div1} div1 position-relative`}>
                 <Image
                   src={Icons.icon_bg_dashed_tr}
-                  width="30%"
+                  //width="30%"
                   alt="برامج-تلفزية"
-                  className={`${styles.imgdiv1} imgdiv1`}
+                  //className={`${styles.imgdiv1} imgdiv1`}
                 />
                 <Link href={"/media/برامج تلفزية"}
                       as="/media/برامج تلفزية"
@@ -162,8 +164,8 @@ const Videos = () => {
                    <Image
                     src={Icons.icon_tv}
                     alt=""
-                    width="50%"
-                    className="my-3"
+                    //width="50%"
+                   // className="my-3"
                   />
                   <h3>برامج تلفزية</h3>
                  </a>
@@ -173,8 +175,8 @@ const Videos = () => {
                 <Image
                   src={Icons.icon_bg_dashed_tr}
                   alt="برامج-اذاعية"
-                  width="22%"
-                  className={`${styles.imgdiv2} imgdiv2`}
+                 // width="22%"
+                  //className={`${styles.imgdiv2} imgdiv2`}
                 />
                 <Link href={"/media/برامج اذاعية"}
                       as="/media/برامج اذاعية">
@@ -182,8 +184,8 @@ const Videos = () => {
                    <Image
                     src={Icons.icon_media}
                     alt=""
-                    width="55%"
-                    className="my-3"
+                    //width="55%"
+                    //className="my-3"
                     style={{marginRight: '55%'}}
                   />
                   <h3 style={{width: '100%', marginRight: '45%'}}>
@@ -196,16 +198,16 @@ const Videos = () => {
                 <Image
                   src={Icons.icon_bg_dashed_tl}
                   alt=""
-                  width="20%"
+                  //width="20%"
                   className={`${styles.imgdiv3} imgdiv3`}
                  // className="imgdiv3"
                 />
                 <Link href={"/media/برامج على الشبكات الاجتماعية"} as="/media/برامج على الشبكات الاجتماعية">
-                 <a> <Image
+                 <a > <Image
                     src={Icons.icon_res_sociaux}
                     alt=""
-                    width="28%"
-                    className="my-3"
+                   // width="28%"
+                   // className="my-3"
                     style={{marginRight: '31%'}}
                   />
                   <h3 style={{width: '85%', marginRight: '28%'}}>
