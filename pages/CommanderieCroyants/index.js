@@ -14,11 +14,12 @@ const CommanderieCroyants = () => {
     const {t, i18n} = useTranslation('CommanderieCroyants');
     const [dataAPI, setDataAPI] = useState({})
     const getLanguage = i18n?.language === "ar" ? "ar" : "fr"
-    const url = getCommanderieCroyantsData(getLanguage, "عناية أمير المؤمنين")
+    const url = getCommanderieCroyantsData("ar", "عناية أمير المؤمنين")
 
     const getData = async () => {
+        // console.log("fi khitab data  ==> ", data)
         FetchAPI(url).then(data => {
-            //console.log("fi khitab data  ==> ", data)
+            console.log("fi khitab data  ==> ", data)
             if (data.success) {
                 setDataAPI(data?.data)
             }
@@ -39,8 +40,7 @@ const CommanderieCroyants = () => {
                     </div>
                 )
             }
-
-            return (
+                        return (
                 <div className="row my-4">
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_code_couleur, field_lien} = item?.attributes
@@ -62,12 +62,12 @@ const CommanderieCroyants = () => {
                         return (
                             <div key={i.toString()} className="col-md-3">
                                 <Cards
-                                    className={`${styles.CardCommanderieCroyants} CardCommanderieCroyants m-auto d-flex justify-content-right align-items-right flex-column`}
+                                    className={`${styles.CardCommanderieCroyants}  m-auto d-flex justify-content-right align-items-right flex-column`}
                                     style={{justifyContent: 'flex-end', flex: 1, alignItems: "center"}}
                                 >
-                                    <h5 className={`${styles.title} title mt-3`}
+                                    <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
-                                    {<div className={`${styles.description} description pt-3 pb-2`}
+                                    {<div className={`${styles.description}  pt-3 pb-2`}
                                           dangerouslySetInnerHTML={{__html: body?.processed}}/>}
                                     <Link
                                         role="button"
@@ -79,11 +79,12 @@ const CommanderieCroyants = () => {
                                         }}
                                         as={field_lien[0]?.uri.slice(9)}
                                     >
-                                        <a className={`${styles.shadowSm} linksCroyants shadow-sm d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
+                                        <a className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
                                            style={{background: `#${field_code_couleur}`}}
                                         >
-                                            <i className="fas fa-long-arrow-alt-left text-white"/>
-                                            <p className="m-0">{t('btnMore')}</p>
+                                            <i className="fas fa-long-arrow-alt-left text-white" 
+                                            style={{  marginRight: '1em',transform: 'rotate(0deg )'}} />
+                                            <p className="m-0" style={{textAlign: 'justify !important'}}>{t('btnMore')}</p>
                                         </a>
                                     </Link>
                                 </Cards>
@@ -98,7 +99,7 @@ const CommanderieCroyants = () => {
     }
 
     return (
-        <div className={`container ${styles.CommanderieCroyants} CommanderieCroyants`}>
+        <div className={`container ${styles.CommanderieCroyants} `}>
             <SectionTitle title={t('title')}/>
             {renderContent()}
         </div>
