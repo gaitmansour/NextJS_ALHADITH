@@ -11,7 +11,7 @@ import Loading from "../../components/_UI/Loading";
 import Cards from "../../components/_UI/Cards";
 import SectionTitle from "../../components/_UI/SectionTitle";
 import Image from 'next/image'
-import styles from './Resources.module.css'
+import styles from './Ressources.module.css'
 import {Logos} from "../../assets";
 
 const Resources = () => {
