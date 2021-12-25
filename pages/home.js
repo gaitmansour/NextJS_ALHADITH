@@ -1,4 +1,4 @@
-import TopBar from "../components/Navs/TopBar";
+import TopBar from "./TopBar";
 import NavBar from "./Navbar";
 import React from "react";
 import Body from "../components/Body";

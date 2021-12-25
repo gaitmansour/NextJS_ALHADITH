@@ -119,13 +119,14 @@ const Resources = () => {
                         console.log("title-----------------------", title)
                         return (
                             <Cards key={i.toString()}
-                                   className={`${styles.card} item-card me-4 ms-1 text-center mt-4 w-25 mb-2 child`}>
+                                   className={`${styles.card}   m-auto d-flex justify-content-right align-items-right flex-column`}
+                                   style={{justifyContent: 'flex-end', flex: 1, alignItems: "center"}}>
                                 <div className={`${styles.boxImg}  m-auto`}>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    {/* <Image
+                                     <Image
                                         src={Logos.logo_web}
                                         alt="book"
-                                        className={`${styles.img} img img-responsive`}/> */}
+                                        className={`${styles.img} img img-responsive`}/>
                                 </div>
                                 <h5 className={`${styles.title} my-4`}>{title}</h5>
                                 <div className={`${styles.desc}`}
@@ -142,8 +143,10 @@ const Resources = () => {
                                         className={`${styles.action}  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
                                     >
                                         <i className="fas fa-long-arrow-alt-left text-white"/>
-                                        <p className="m-0" style={{  textAlign: 'justify !important',
-  textJustify: 'inter-word !important'}}>{t('btnMore')}</p>
+                                        <p className="m-0" style={{
+                                            textAlign: 'justify !important',
+                                            textJustify: 'inter-word !important'
+                                        }}>{t('btnMore')}</p>
                                     </a>
                                 </Link>
                             </Cards>

@@ -2,11 +2,12 @@ import useTranslation from 'next-translate/useTranslation';
 import Link from "next/link"
 import React, {useState} from "react";
 import styles from './TopBar.module.css'
-import Brand from "../../_UI/Brand";
-import SearchInput from "../../Forms/SearchInput";
-
+import Brand from "../../components/_UI/Brand";
+import SearchInput from "../../components/Forms/SearchInput";
+import {useRouter} from "next/router";
 const TopBar = (props) => {
     // console.log(props)
+    let router=useRouter();
     const {t, i18n} = useTranslation();
     const [input, setInput] = useState('')
     const [show, setShow] = useState(false);
@@ -28,12 +29,17 @@ const TopBar = (props) => {
         if (input === '') {
             handleShow()
         } else {
+             router.push({
+                 pathname: '../search',
+                 search: '',
+                 query: {from: 'topBar', topic: '', content: "", word: input}
+             })
             // console.log("go to")
-            history && history.push({
-                pathname: '/search',
+            /*history && history.push({
+                pathname: '../search',
                 search: '',
                 state: {from: 'topBar', topic: '', content: "", word: input}
-            })
+            })*/
         }
 
     }
@@ -50,6 +56,7 @@ const TopBar = (props) => {
                 <SearchInput className={`${styles.search} text-white`}
                              styleIcon={{color: '#fff'}}
                              {...props}
+                             inputClassName={'text-white'}
                              onChange={(v) => handleInput(v)}
                              clickSearch={() => handleClickSearch()}
                              input={input}

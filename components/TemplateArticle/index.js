@@ -1,5 +1,5 @@
 import NavBar from '../../pages/Navbar';
-import TopBar from '../Navs/TopBar';
+import TopBar from '../../pages/TopBar';
 import Layout from '../Layout';
 import Footer from '../Footer';
 import Breadcrumb from '../_UI/Breadcrumb';

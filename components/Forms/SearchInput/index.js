@@ -72,8 +72,9 @@ const SearchInput = (props) => {
                 <input value={props.input}
                        className={`flex-fill mx-1 px-2 ${props.className}`}
                        placeholder={props.placeholder}
+                       //color={'red'}
+                       style={{color:'red'}}
                        color={'red'}
-                       style={{color:'white'}}
                        onChange={props.onChange}/> :
                 <>
                     <KeyboardedInput
@@ -91,7 +92,7 @@ const SearchInput = (props) => {
                         showShift={false}
                         showSymbols={false}
                         ref={Myinput}
-                        inputClassName={`${styles.input}`}
+                        inputClassName={`${styles.input} text-dark ${props.inputClassName}`}
                         isFirstLetterUppercase={false}
                         keyboardClassName={`${styles.testme} testme p-2`}
                         containerClassName={styles.conatiner}

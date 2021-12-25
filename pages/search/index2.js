@@ -1,14 +1,13 @@
 import React, {useEffect, useRef, useState} from "react"
-import {useTranslation} from 'react-i18next';
+import useTranslation from "next-translate/useTranslation";
 import styles from "./search.module.css"
-import Link from "next/link";
-import {useRouter} from "next/router";
-
+import ItemList from "../../components/ItemList"
+import Link from 'next/link'
 import ReactPaginate from 'react-paginate'
 import {getCategory, getDegree, getNarrator, getSource, getTopic, Search} from "../../endpoints";
 import FetchAPI from "../../API";
 import FetchPostAPI from "./API";
-import ItemList from "../../components/ItemList";
+import {useRouter} from "next/router";
 import TemplateArticle from "../../components/TemplateArticle";
 import Body from "../../components/Body";
 import SearchInput from "../../components/Forms/SearchInput";
@@ -19,17 +18,14 @@ import PageTitleSecond from "../../components/_UI/PageTitleSecond";
 import CustomModal from "../../components/_UI/Modal";
 
 const SearchPage = (props) => {
-
     let router = useRouter().query;
-    console.log("---------------------------------router")
-    console.log(router)
     const {state} = useRouter().query;
-    const content = useRouter()?.query?.content;
-    const topic = useRouter()?.query?.topic;
-    const degree = useRouter()?.query?.degree
-    const door = useRouter()?.query?.door
-    const source = useRouter()?.query?.source
-    const narrator = useRouter()?.query?.narrator
+    const content = router?.content;
+    const topic = router?.topic;
+    const degree = router?.degree;
+    const door = state?.door;
+    const source = router?.source;
+    const narrator = router?.narrator;
 
     const [showForm, setShowForm] = useState(true)
     const [dataDegree, setdataDegree] = useState([])
@@ -73,7 +69,6 @@ const SearchPage = (props) => {
     const urlNarrator = getNarrator();
     const urlCategory = getCategory();
     const urlSearch = Search();
-
 
     const getDataDegree = async () => {
         return FetchAPI(urlDegree).then(data => {
@@ -176,7 +171,6 @@ const SearchPage = (props) => {
     const handleTopicFrom = async (res, r, router) => {
         const word = router?.word;
         const from = router?.from;
-        console.log("from ----------------",from)
         if (from === 'home') {
             const ArrayCategory = res && res.length > 0 && res?.filter((item) => item.label === topic.label)
             const ArrayDegree = r && r.length > 0 && r?.filter((item) => item.label === content)
@@ -247,7 +241,7 @@ const SearchPage = (props) => {
         if (StartPage === 0) {
             getDataDegree().then((r) =>
                 getDataCategory().then((res) =>
-                    handleTopicFrom(res, r, router)
+                    handleTopicFrom(res, r, props.location)
                 ));
             getDataSource();
             getDataNarrator();

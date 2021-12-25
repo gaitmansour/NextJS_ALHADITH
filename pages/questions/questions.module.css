@@ -1,0 +1,135 @@
+.card-header{
+ background: #E8FEFC;
+ height: 100px;
+ justify-content: center;
+}
+.Card-answer1{
+    height: auto;
+    border-top: solid 7px #129D59;
+}
+.Card-answer{
+    height: auto;
+}
+
+.card1{
+    height: 30vh;
+}
+
+.Card-question{
+     height: auto;
+     border-top: solid 7px #FEB400;
+     border-radius: 7px;
+ }
+ .card .card-body .p {
+    text-align: justify;
+    text-justify: inter-word;
+ }
+
+ .p{
+    font-family: beIN Normal ;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+.headerText{
+    font-size: 33px;
+    font-weight: 900;
+    line-height: 40px;
+}
+.card-ques{
+    position: relative;
+}
+.infos{
+    position: absolute;
+    right: 1%;
+    top: 10%;
+}
+.det{
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    width: 30%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.icn{
+    padding: 5%;
+}
+.card-text1{
+    color: #656D7A;
+}
+.h3{
+    margin-top: 6%;
+    margin-bottom: -4%;
+    font-size: 28px;
+    font-weight: 900;
+    color: #08262C;
+}
+
+.inp{
+    border: none !important;
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+    padding: 0 1em;
+}
+
+.box-icon-setting{
+    background-color: #157646;
+    border-radius: 8px;
+    margin-left: 1em !important;
+}
+.icon-setting{
+    width: 42px;
+    height: 42px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.search-element .icon-search ,.search-element .icon-filter {
+    background-color: #656e7e !important;
+}
+.tiitle{
+    font-family: beIN Black ;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 61px;
+    /* identical to box height */
+    text-align: right;
+}
+
+#parent{
+    height: auto;
+    display: flex;
+    margin-bottom: 6%;
+    width: 400px;
+    padding: 3%;
+}
+.tiitle{
+    font-family: beIN Black ;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 61px;
+    /* identical to box height */
+    text-align: right;
+}
+
+#parent p{
+    margin-left: 5%;
+}
+@media (max-width: 480px){
+    .icn{
+        width: 40px;
+    }
+    .box-icon-setting{
+        margin-top: 0.5em !important;
+    }
+}
