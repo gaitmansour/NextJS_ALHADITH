@@ -7,7 +7,6 @@
     margin-bottom: 4%;
 }
 
-
 #pagination {
     color: #157BFF;
     margin: 5px;
@@ -45,11 +44,14 @@
     text-align: left;
     font-family: 'Almarai', sans-serif !important;
 }
-
+.pagination {
+    padding:10px
+}
 .TemplateArticleBody .activebtn a {
     background-color: #29a669 !important;
     color: #fff !important;
     font-weight: 900 !important;
+    padding:10px
 }
 
 .sideBar1 .sel .selectt {

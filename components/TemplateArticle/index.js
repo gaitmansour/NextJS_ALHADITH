@@ -15,8 +15,10 @@ const TemplateArticle = (props) => {
             <TopBar {...props} />
             <NavBar />
             <div className={`${styles.templateHeader}template-header position-relative pb-2`} >
-                <div className={'p-1 flex-row-reverse position-absolute flex-row'} style={{marginRight:"90%"}}>
-                    <Image src={Backgrounds.bg_dashed}
+                <div className={'p-1 flex-row-reverse position-absolute flex-row'} style={{left:10,marginTop:10}}>
+                    <Image alt={''} src={Backgrounds.bg_dashed}
+                           width={100}
+                           height={100}
                            className={`${styles.bg_dashed} bg_dashed h-100 position-absolute w-100`}/>
                 </div>
                 <Breadcrumb data={props?.ListBreadcrumb} />

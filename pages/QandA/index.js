@@ -411,6 +411,25 @@ const ListQuestions = (props) => {
                     </div>
                     <ReactPaginate
                         previousLabel={
+                            <i id="pagination" className="fa fa-chevron-right"/>
+                        }
+                        nextLabel={<i id="pagination" className="fa fa-chevron-left"/>}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        activeClassName={styles.activebtn}
+                        containerClassName={'pagination justify-content-evenly align-content-around w-25 py-2'}
+                       // subContainerClassName={'pages  pagination'}
+
+                       // initialPage={currentPage - 1}
+                        pageCount={pageCount}
+                        //marginPagesDisplayed={2}
+                        //pageRangeDisplayed={5}
+                        onPageChange={changePage}
+                        forcePage={pageNumber}
+                    />
+                    {/*
+                    <ReactPaginate
+                        previousLabel={
                             <i id="pagination" className=" pagination fa fa-chevron-right"/>
                         }
                         nextLabel={<i id="pagination" className="pagination fa fa-chevron-left"/>}
@@ -421,7 +440,7 @@ const ListQuestions = (props) => {
                         previousLinkClassName={'prevbtn'}
                         nextLinkClassName={'nextbtn'}
                         activeClassName={`${styles.activebtn} activebtn`}
-                    />
+                    />*/}
                 </div>
 
                 <div className="side-bar">
