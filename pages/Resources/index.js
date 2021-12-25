@@ -11,7 +11,7 @@ import Loading from "../../components/_UI/Loading";
 import Cards from "../../components/_UI/Cards";
 import SectionTitle from "../../components/_UI/SectionTitle";
 import Image from 'next/image'
-import styles from './Ressources.module.css'
+import styles from './Resources.module.css'
 import {Logos} from "../../assets";
 
 const Resources = () => {
@@ -83,7 +83,7 @@ const Resources = () => {
     const {t, i18n} = useTranslation('ressource');
 
     const [dataAPI, setDataAPI] = useState({})
-    const getLanguage = i18n?.language === "ar" ? "ar" : "fr"
+    const getLanguage = i18n?.language === "fr" ? "fr" : "ar"
     const url = getResourcesData(getLanguage)
 
     const getData = async () => {
@@ -112,7 +112,7 @@ const Resources = () => {
                 )
             }
 
-            return <div className={`${styles.content} content row my-3 mx-0`}>
+            return <div className={`${styles.content}  row my-3 mx-0`}>
                 <Slider {...settings} className="slide px-2">
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_icone, field_lien} = item?.attributes
@@ -120,14 +120,14 @@ const Resources = () => {
                         return (
                             <Cards key={i.toString()}
                                    className={`${styles.card} item-card me-4 ms-1 text-center mt-4 w-25 mb-2 child`}>
-                                <div className={`${styles.boxImg} box-img m-auto`}>
+                                <div className={`${styles.boxImg}  m-auto`}>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <Image
+                                    {/* <Image
                                         src={Logos.logo_web}
                                         alt="book"
-                                        className={`${styles.img} img img-responsive`}/>
+                                        className={`${styles.img} img img-responsive`}/> */}
                                 </div>
-                                <h5 className={`${styles.title}title my-4`}>{title}</h5>
+                                <h5 className={`${styles.title} my-4`}>{title}</h5>
                                 <div className={`${styles.desc}`}
                                      dangerouslySetInnerHTML={{__html: body?.processed}}/>
                                 <Link
@@ -139,10 +139,11 @@ const Resources = () => {
                                     as={field_lien[0]?.uri.slice(9)}
                                 >
                                     <a
-                                        className={`${styles.action} action d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
+                                        className={`${styles.action}  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
                                     >
                                         <i className="fas fa-long-arrow-alt-left text-white"/>
-                                        <p className="m-0">{t('btnMore')}</p>
+                                        <p className="m-0" style={{  textAlign: 'justify !important',
+  textJustify: 'inter-word !important'}}>{t('btnMore')}</p>
                                     </a>
                                 </Link>
                             </Cards>
@@ -156,7 +157,7 @@ const Resources = () => {
     }
 
     return (
-        <div className={`${styles.Resources}Resources py-5 overflow-hidden`}>
+        <div className={`${styles.Resources} py-5 overflow-hidden`}>
             <SectionTitle title={t('title')}/>
             {renderContent()}
         </div>

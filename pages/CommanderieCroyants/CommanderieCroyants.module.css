@@ -9,11 +9,11 @@
   align-self: flex-start;
 }
 
-.CardCommanderieCroyants .title {
+ .title {
   font-weight: bold;
 }
 
-.CardCommanderieCroyants .description {
+ .description {
   font-size: 13px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -24,37 +24,37 @@
   padding: 0 !important;
   max-height: 115px !important;
 }
-.CardCommanderieCroyants .description p{
+ .description p{  
   text-align: justify !important;
   /* text-justify: inter-word !important; */
 }
 
-.CommanderieCroyants .shadow-card {
+ .shadowCard {
   background: #FFFFFF;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08);
   border-radius: 17px !important;
 }
 
-.CommanderieCroyants .shadowSm {
+ .shadowSm {
   border-radius: 9px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   flex-direction: row-reverse;
 }
 
-.CommanderieCroyants .btn.shadowSm:hover {
+.shadowSm:hover {
   opacity: .85;
 }
 
-.CommanderieCroyants .btn.shadowSm {
+.shadowSm {
   width: fit-content;
 }
 
-.CommanderieCroyants .btn.shadowSm i {
+.shadowSm i {
   margin-left: 1em;
   transform: rotate( 180deg );
 }
 
-*[dir='rtl'] .CommanderieCroyants .btn.shadowSm i{
+*[dir='rtl']  .btn.shadow-sm i{
   margin-right: 1em;
   margin-left: 0;
   transform: rotate(0);
@@ -63,5 +63,5 @@
 
 
 /* @media (max-width: 480px) {
-
+  
 } */
