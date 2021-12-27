@@ -347,7 +347,9 @@ const SearchPage = (props) => {
                                 pageCount={pageCount}
                                 forcePage={pageNum}
                                 onPageChange={changePage}
-                                containerClassName={styles.paginationButtons}
+                               // containerClassName={styles.paginationButtons}
+                                containerClassName={`pagination justify-content-evenly align-content-around w-50 py-2 ${styles.paginationButtons}`}
+
                                 //previousLinkClassName={"prevbtn"}
                                 //nextLinkClassName={"nextbtn"}
                                 activeClassName={styles.activebtn}
