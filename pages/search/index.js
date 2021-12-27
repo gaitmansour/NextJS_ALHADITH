@@ -281,7 +281,7 @@ const SearchPage = (props) => {
                                      onClickSettings={() => setShowForm(!showForm)}
                                      input={input}
                                      onChange={(v) => handleInput(v)}
-                                     placeholder={'تحقق من صحة الحديث'}
+                                     placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
                                      className="bg-white mx-0 shadow-card"
                                      clickSearch={() => handleClickSearch()}
                         />

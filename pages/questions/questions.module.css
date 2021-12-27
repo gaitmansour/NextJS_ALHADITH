@@ -112,15 +112,6 @@
     width: 400px;
     padding: 3%;
 }
-.tiitle{
-    font-family: beIN Black ;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 26px;
-    line-height: 61px;
-    /* identical to box height */
-    text-align: right;
-}
 
 #parent p{
     margin-left: 5%;

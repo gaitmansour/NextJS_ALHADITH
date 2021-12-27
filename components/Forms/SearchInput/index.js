@@ -2,19 +2,26 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import styles from './SearchInput.module.css';
 import Link from "next/link";
 import KeyboardedInput from "react-touch-screen-keyboard";
+import {useRouter} from "next/router";
+
 const SearchInput = (props) => {
     // console.log(props.history)
     // const navigate = useHistory();
     const initInput = props?.value || ""
     const [input, setInput] = useState(initInput)
     const [InputShow, setInputShow] = useState(false)
-
+    let route = useRouter()
     const goToSearchPage = () => {
-        props.history && props.history.push({
+        route.push({
+            pathname: '/search',
+            search: '',
+            query: {keywords: input}
+        })
+        /*props.history && props.history.push({
             pathname: '/search',
             search: '',
             state: {keywords: input}
-        })
+        })*/
         // console.log('input=================', input)
     }
 
@@ -24,9 +31,11 @@ const SearchInput = (props) => {
         if (typeof window !== undefined) {
             window.addEventListener("resize", checkSizeWindow);
             // Remove event listener on cleanup
-            return () =>{if (typeof window !== undefined) {
-                window.removeEventListener("resize", checkSizeWindow);
-            }}
+            return () => {
+                if (typeof window !== undefined) {
+                    window.removeEventListener("resize", checkSizeWindow);
+                }
+            }
         }
     }, [])
 
@@ -72,8 +81,8 @@ const SearchInput = (props) => {
                 <input value={props.input}
                        className={`flex-fill mx-1 px-2 ${props.className}`}
                        placeholder={props.placeholder}
-                       //color={'red'}
-                       style={{color:'red'}}
+                    //color={'red'}
+                       style={{color: 'red'}}
                        color={'red'}
                        onChange={props.onChange}/> :
                 <>
@@ -94,8 +103,8 @@ const SearchInput = (props) => {
                         ref={Myinput}
                         inputClassName={`${styles.input} text-dark ${props.inputClassName}`}
                         isFirstLetterUppercase={false}
-                        keyboardClassName={`${styles.testme} testme p-2`}
-                        containerClassName={styles.conatiner}
+                        keyboardClassName={`${styles.testme} keyboardButton testme p-2`}
+                        containerClassName={`${styles.conatiner} keyboardButton keyboardRow`}
                         enabled
                     />
                     <i className="far fa-keyboard mx-3 fa-1x"
@@ -109,7 +118,9 @@ const SearchInput = (props) => {
                       href={{
                           pathname: '/search',
                           query: {}
-                      }}>
+                      }}
+                      passHref={true}
+                      as={'/search'}>
                     <div className={styles.iconFilter} style={props.styleFilter} title="البحث المتخصص"/>
                 </Link>
             }

@@ -114,7 +114,7 @@ const SearchSection = (props) => {
     }
 
     //const history = useHistory()
-    const history = useRouter().history;
+    let history = useRouter();
 
     function handleInput(v) {
         if (typeof v == "string") {
