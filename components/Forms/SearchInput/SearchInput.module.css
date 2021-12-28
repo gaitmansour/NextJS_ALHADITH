@@ -55,15 +55,15 @@ er {
         margin-bottom: 0.5rem !important;
     }
 }
-
+/*
 .testme {
     width: 100%;
     max-width: 1030px;
     background: #dadada;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    /* margin-top: 200px;
-     margin-right: 300px*/
+     margin-top: 200px;
+     margin-right: 300px
 }
 
 .conatiner {
@@ -73,14 +73,15 @@ er {
     position: absolute;
     width: 400px;
     left: calc(50% - 500px);
+    justify-content: space-evenly;
 }
 
 .input {
     width: 800px;
     padding: 0 1.5em;
-    /*background: rgba(255, 255, 255, 0.21);
+    background: rgba(255, 255, 255, 0.21);
     border: 1px solid #ffffff;
-    border-radius: 32px;*/
+    border-radius: 32px;
     color:black;
     border-bottom-color: #0dcaf0;
 }
@@ -89,7 +90,7 @@ er {
     display: flex;
 }
 
-.keyboardButton {
+.conatiner .keyboardButton {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -158,3 +159,10 @@ er {
     display: flex;
     flex-grow: 1;
 }
+.keyboard .keyboard-wrapper{
+    background-color: #0a58ca;
+}
+.keyboard-row {
+    background-color: #0dcaf0;
+}
+*/

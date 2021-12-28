@@ -103,8 +103,8 @@ const SearchInput = (props) => {
                         ref={Myinput}
                         inputClassName={`${styles.input} text-dark ${props.inputClassName}`}
                         isFirstLetterUppercase={false}
-                        keyboardClassName={`${styles.testme} keyboardButton testme p-2`}
-                        containerClassName={`${styles.conatiner} keyboardButton keyboardRow`}
+                        keyboardClassName={`testme  p-2`}
+                        containerClassName={`conatiner `}
                         enabled
                     />
                     <i className="far fa-keyboard mx-3 fa-1x"

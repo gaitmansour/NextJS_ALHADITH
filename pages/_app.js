@@ -9,6 +9,7 @@ import "../public/css/all.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/custom.css";
+import "../styles/Keyboard.scss"
 //import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
 //import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import {SSRProvider} from '@react-aria/ssr';

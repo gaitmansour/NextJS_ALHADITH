@@ -1,4 +1,4 @@
-.nav-tabs .nav-link{
+.navTabs .nav-link{
     margin-bottom: -8px !important;
     border:3px solid #ccc !important;
     border-bottom: 8px solid #129D59 !important;
@@ -12,14 +12,14 @@
     padding: 1%;
     text-align: center !important;
 }
-.nav-tabs .active{
+.navTabs .active{
     border-width: 5px 0px 0px 0px !important;
     border-color: #129D59 !important;
     background-color: #129D59 !important;
     color: #fff !important;
     position: relative !important;
 }
-/* .nav-tabs .active::after{
+/* .navTabs .active::after{
     position: absolute;
     background: #129D59;
     content: "";
@@ -99,7 +99,7 @@
     justify-content: center;
   }
   @media only screen and (min-width: 500px) and (max-width: 900px) {
-    .nav-tabs .nav-link{
+    .navTabs .nav-link{
       padding: 1% 2.5% !important;
     }
   }
@@ -121,10 +121,10 @@
     .Alhadiths a.item-link {
       margin: 10px !important;
     }
-    .nav-tabs .nav-link{
+    .navTabs .nav-link{
       width: 32% !important;
     }
-    .nav-tabs {
+    .navTabs {
       padding-right: 5%;
   }
   }
