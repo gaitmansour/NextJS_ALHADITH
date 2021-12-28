@@ -203,6 +203,7 @@ const SearchPage = (props) => {
 
 
     const displayData = dataSearch?.hits?.hits?.map((item, index) => {
+        console.log(item?.highlight)
         return <ItemList key={index}
                          topic={item?._source?.topic?.label}
                          category={item?._source?.categorie?.label}

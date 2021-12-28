@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { TemplateArticle, Body, SimpleListMedia, SearchInput, PageTitleSecond, SliderVideoList, SliderList,Loading ,ScrollButton} from "../../shared/components"
-import { useTranslation } from 'react-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import photo from "./photo.png";
 import _ from "lodash"
 import $ from 'jquery';
@@ -12,6 +11,12 @@ import Slider from "react-slick";
 import FetchAPI from "../../API";
 import ReactPlayer from 'react-player'
 import {useRouter} from "next/router";
+import Loading from "../../components/_UI/Loading";
+import TemplateArticle from "../../components/TemplateArticle";
+import ScrollButton from "../../components/ScrollButton";
+import Body from "../../components/Body";
+import PageTitleSecond from "../../components/_UI/PageTitleSecond";
+import SimpleListMedia from "../../components/_UI/SimpleListMedia";
 
 
 const Media = (props) => {
@@ -96,7 +101,7 @@ const Media = (props) => {
             "path": 'article/'+title,
         },
     ]
-    // console.log("-----datside----,",dataSide)
+
         const sideData11 = [
         {
             "title": "برامج على الشبكات الاجتماعية",
@@ -113,7 +118,6 @@ const Media = (props) => {
             "path": "media/برامج اذاعية",
             "parentLabel" :  'البرامج الإعلامية'
         },
-        ,
         {
             "title":"الدروس الحسنية",
             "path": "/media/الدروس الحسنية",
@@ -126,9 +130,6 @@ const Media = (props) => {
         },
     ]
 
-    // const dataSlideList = [
-    //     { title: "اﻟﺴﺎدس ﻣﺮﻓﻮﻗﺎ ﺑﺎﻟﺄﻣﻴﺮ ﻣﻮﻟﺎي رﺷﻴﺪ ﺗﺮأس أﻣﻴﺮ اﻟﻤﺆﻣﻨﻴﻦ ﺟﻠﺎﻟﺔ اﻟﻤﻠﻚ ﻣﺤﻤﺪ" },
-    // ]
     function handleStart(){
         setStart(true)
     }
@@ -163,11 +164,6 @@ const Media = (props) => {
     }
     var leng = dataAPI.included.length
 
-
-        // const data12 = dataAPI.data
-        // if(dataAPI?.data?.length > 0){
-        //  var stripedTitle = dataAPI.data[0].attributes.field_description_video.processed.replace(/<[^>]+>/g, '');
-        // }
     return (
         <TemplateArticle {...props} ListBreadcrumb={data} titlePage={title}>
             <ScrollButton />
@@ -178,7 +174,7 @@ const Media = (props) => {
                     <div className="box-first-video">
                         <div className="btn-play">
                             <button type="button" className="btn  p-0 position-relative" id="bttn" onClick={() => handleStart()}>
-                               <div className="player-wrapper">
+                               <div className="player-wrapper" style={{height:400,width:800}}>
                                 <ReactPlayer
                                         url={[{src:`${base_url}${dataAPI.included[leng / 2]?.attributes?.uri?.url}`, type: 'video/mp4'}]}
                                         light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
@@ -187,12 +183,12 @@ const Media = (props) => {
                                         className="react-player"
                                         width='100%'
                                         height='100%'
+
                                     />
                                     </div>
                             </button>
                         </div>
-                        <PageTitleSecond className="title-video px-0" title={dataAPI.data[0].attributes.title} />
-                        {/* <h6>{stripedTitle}</h6> */}
+                        <PageTitleSecond className="title-video px-0 mt-5" title={dataAPI.data[0].attributes.title} />
                     </div>
                     <div>
                         {/* <SliderVideoList data={VideosList} className="pt-5" /> */}
@@ -203,11 +199,10 @@ const Media = (props) => {
 
                                         return (
                                             <div key={i.toString()} className="SliderVideoList-data d-flex flex-wrap">
-                                                <div key={i.toString()} className="item-card-content position-relative d-flex flex-column mt-4 mb-2">
-                                                    {/* {dataAPI && dataAPI.included && <img className="image w-100" src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`} alt="" />}
-                                                    <p className="m-0 py-3 description">{item?.attributes?.title}</p>
-                                                    {item?.attributes?.field_lien_video.uri && <i className={`fas fa-play`}></i>} */}
-                                                    <div className="player-wrapper">
+                                                <div key={i.toString()}
+                                                     className="item-card-content position-relative d-flex flex-column mt-4 mb-2 w-75">
+
+                                                    <div className="player-wrapper" style={{height:200}}>
                                                     <ReactPlayer
                                                         url={[{src:`${base_url}${dataAPI?.included[i + (leng / 2)]?.attributes?.uri?.url}`, type: 'video/mp4'}]}
                                                             light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}

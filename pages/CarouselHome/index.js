@@ -9,7 +9,7 @@ import FetchAPI from "../../API";
 import {Carousel} from "react-bootstrap"
 import Loading from "../../components/_UI/Loading";
 import SMLinks from "../../components/_UI/SMLinks";
-
+import Image from 'next/image'
 const CarouselHome = (props) => {
 
     const [dataAPI, setDataAPI] = useState([])
@@ -53,13 +53,14 @@ const CarouselHome = (props) => {
                             var str = item.field_image.substr(item.field_image.lastIndexOf("src=")).split(' ')[0].slice(5)
                         }
                         let element = item.field_image.replace(str, base_url + str).replace(/height=\".*"/gm, '')
-                        let image_filed = element.replace(/width=\".*"/gm, `class={${styles.imgCarousel} imgCarousel} styles={{width:'100%'}} alt="First slide"`)
+                        let image_filed = element.replace(/width=\".*"/gm, `className={${styles.imgCarousel} imgCarousel} style={{width:'100%'}} alt="First slide"`)
 
                         return (
                             <Carousel.Item key={index.toString()} className={styles.CarouselHome}>
                                 <div
+                                    className={''}
                                     dangerouslySetInnerHTML={{__html: image_filed}}/>
-                                <Carousel.Caption className={`${styles.carouselCaption} carousel-caption d-md-block`} style={{backgroundColor:'white',opacity:0.8}}>
+                               <Carousel.Caption className={`${styles.carouselCaption} carousel-caption d-md-block`} style={{backgroundColor:'white',opacity:0.8}}>
                                     <p>{toShow}</p>
                                     <Link
                                         role="button"

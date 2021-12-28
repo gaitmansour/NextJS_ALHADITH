@@ -5,6 +5,7 @@
 .PageTitleSecond .title {
     position: relative;
     color:#129D59;
+    font-size: medium;
     font-weight: 800;
     padding-right: .7em;
 }

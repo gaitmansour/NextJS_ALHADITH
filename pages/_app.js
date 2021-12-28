@@ -11,6 +11,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/custom.css";
 import "../styles/Keyboard.scss"
 import "../styles/Tabs.css"
+import "../styles/WebTV.css"
+import "../styles/CarouselHome.css"
+import "../styles/SocialMedia.css"
+import "../styles/SearchResult.css"
 //import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
 //import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import {SSRProvider} from '@react-aria/ssr';

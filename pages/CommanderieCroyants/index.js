@@ -51,7 +51,7 @@ const CommanderieCroyants = () => {
                                 localStorage.setItem('routeState', JSON.stringify({
                                     fromNav: {},
                                     selectedItem: title,
-                                    title:title,
+                                    title: title,
                                     from: "Croyants"
                                 }))
                             });
@@ -63,13 +63,13 @@ const CommanderieCroyants = () => {
                                 localStorage.setItem('routeState', JSON.stringify({
                                     fromNav: {},
                                     selectedItem: title,
-                                    title:title,
+                                    title: title,
                                     from: "Croyants"
                                 }))
 
                             });
                         });
-
+                        const toShow = body?.processed.replace(<br/>, "")
                         return (
                             <div key={i.toString()} className="col-md-3">
                                 <Cards
@@ -79,14 +79,14 @@ const CommanderieCroyants = () => {
                                     <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
                                     {<div className={`${styles.description}  pt-3 pb-2`}
-                                          dangerouslySetInnerHTML={{__html: body?.processed}}/>}
+                                          dangerouslySetInnerHTML={{__html: body?.processed}} />}
                                     <Link
                                         role="button"
                                         href={{
                                             pathname: field_lien[0]?.uri.slice(9),
                                             search: '',
                                             hash: '',
-                                            query: {fromNav: {},title:title, selectedItem: title, from: "Croyants"}
+                                            query: {fromNav: {}, title: title, selectedItem: title, from: "Croyants"}
                                         }}
                                         as={field_lien[0]?.uri.slice(9)}
                                     >
