@@ -49,7 +49,7 @@
   justify-content: flex-start;
 }
 
-*[dir='rtl'] .SliderList .slick-slider .slick-dots {  
+*[dir='rtl'] .SliderList .slick-slider .slick-dots {
   justify-content: flex-end;
 }
 
@@ -67,7 +67,7 @@
   content: "\f053";
 }
 
-.SliderList .slick-slider .slick-prev, 
+.SliderList .slick-slider .slick-prev,
 .SliderList .slick-slider .slick-next {
   top: -5px;
 }
@@ -94,6 +94,7 @@
 .imgContainer01{
   width: 100%;
   position: relative;
+    align-items: center;
 }
 .imgContainer01 p{
   position: absolute ;
@@ -128,5 +129,5 @@
   .imgContainer01 p {
     font-size: 11px !important;
   }
- 
+
 }

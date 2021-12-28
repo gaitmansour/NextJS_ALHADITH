@@ -12,16 +12,24 @@ import PageSummary from "../../components/_UI/PageSummary";
 import SimpleList from "../../components/_UI/SimpleList";
 import SliderList from "../../components/_UI/SliderList";
 import loadNamespaces from "next-translate/loadNamespaces";
+import Image from 'next/image';
+import Link from 'next/link';
 
 
 export default function ArticlePage(props) {
 
     console.log('useRouter()?.query---------------------------')
     console.log(useRouter()?.query)
-    const title = useRouter()?.query?.selectedItem;
+    const title = useRouter()?.query?.title;
     const parentBigTitle = useRouter()?.query?.parentBigTitle
-    //console.log('title----------------------------', title)
-    //console.log('parentBigTitle----------------------------', parentBigTitle)
+
+    console.log('title---------------------------',useRouter()?.query)
+
+    const myLoader = ({src, width, quality}) => {
+        return `${base_url}/${src}`;
+    };
+
+
     const [dataAPI, setDataAPI] = useState({})
     const [dataMenu, setdataMenu] = useState({})
     const [dataSlider, setdataSlider] = useState({})
@@ -45,6 +53,8 @@ export default function ArticlePage(props) {
         FetchAPI(urlSlider).then(data => {
             if (data.success) {
                 setdataSlider(data?.data)
+                console.log("data?.data")
+                console.log(data?.data)
             }
         })
     }
@@ -78,11 +88,12 @@ export default function ArticlePage(props) {
         })
     }
     let router = useRouter().query;
+    let route=useRouter();
     const handleSideData = (router) => {
-        console.log('router')
+        // console.log('router')
         const data = router?.fromNav ? router?.fromNav : dataSide;
-        console.log("data------------------------------")
-        console.log(data)
+        // console.log("data------------------------------")
+        //console.log(data)
         sessionStorage.setItem('dataSide', JSON.stringify(data))
         const selectedItem = router?.selectedItem ? router?.selectedItem : parentTitle;
         let routeState
@@ -95,6 +106,7 @@ export default function ArticlePage(props) {
                 routeState = JSON.parse(routeState)
         }
         setDataSide(routeState.fromNav)
+        console.log("routeState.fromNav--------------------", routeState.fromNav)
         setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
     }
 
@@ -106,7 +118,7 @@ export default function ArticlePage(props) {
             handleSideData(router);
         })
         getData();
-    }, [parentTitle, router])
+    }, [parentTitle, route])
 
     const data = [
         {
@@ -123,7 +135,7 @@ export default function ArticlePage(props) {
         },
     ]
 
-
+    console.log("data-----------", data)
     if (_.isEmpty(dataAPI)) {
         return (
             <div className="d-flex align-items-center justify-content-center py-5">
@@ -141,13 +153,18 @@ export default function ArticlePage(props) {
                           createdArticle={!!dataAPI?.data[0]?.attributes?.created}
                           dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format('DD-MM-YYYY')}>
             <Body className={`${styles.TemplateArticleBody}TemplateArticleBody d-flex p-4`}>
-                <div className="flex-fill">
+                <div className="flex-fill w-25">
                     <PageSummary className={`${styles.summ} summ my-3`}
                                  summary={dataAPI?.data[0]?.attributes?.body?.summary}/>
                     {/* <PageTitleSecond className="page-title-second py-3" title="مبادرة ملكية لتعميم الحديث النبوي الشريف الصحيح على نطاق واسع" /> */}
                     {dataAPI && dataAPI.included &&
-                    <img className="m-auto w-100 my-4" src={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
-                         alt=""/>}
+                        <Image src={dataAPI?.included[0]?.attributes?.uri?.url}
+                               className="m-auto w-100 my-4"
+                               width={850}
+                               height={500}
+                               loader={myLoader}
+                               alt=""/>
+                    }
                     <div className={styles.desc}
                          dangerouslySetInnerHTML={{__html: dataAPI?.data[0]?.attributes?.body?.value.replace(str, base_url + str)}}/>
                 </div>
@@ -156,7 +173,7 @@ export default function ArticlePage(props) {
                         {/*<Alahadith/>*/}
                     </div>
                     :
-                    <div className="side-bar" style={{width: "30%"}}>
+                    <div className="side-bar px-3" style={{width: "30%"}}>
                         {!items ? <SimpleList data={dataSide}/> : <SimpleList data={items}/>}
                         <SliderList className="pt-5" data={dataSlider}/>
                     </div>

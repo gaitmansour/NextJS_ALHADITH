@@ -99,6 +99,10 @@ const Resources = () => {
         getData()
     }, [])
 
+    const myLoader = ({src, width, quality}) => {
+        return `${base_url}/${src}`;
+    };
+
     const renderContent = () => {
         try {
             if (dataAPI?.data?.length <= 4) {
@@ -122,9 +126,11 @@ const Resources = () => {
                                    className={`${styles.card}   m-auto d-flex justify-content-right align-items-right flex-column`}
                                    style={{justifyContent: 'flex-end', flex: 1, alignItems: "center"}}>
                                 <div className={`${styles.boxImg}  m-auto`}>
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                     <Image
-                                        src={Logos.logo_web}
+                                    <Image
+                                        loader={myLoader}
+                                        src={dataAPI?.included[i]?.attributes?.uri?.url}
+                                        width={100}
+                                        height={100}
                                         alt="book"
                                         className={`${styles.img} img img-responsive`}/>
                                 </div>

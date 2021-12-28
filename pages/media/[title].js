@@ -4,21 +4,19 @@ import { useTranslation } from 'react-i18next';
 import photo from "./photo.png";
 import _ from "lodash"
 import $ from 'jquery';
-import Recaptcha from "react-recaptcha";
 import "./media.module.css";
-import VideosList from "./VideosList";
-import {base_url, getArticleById, getMenuByName, getSideArticle,getVideo} from "../../shared/endpoints"
+import {base_url, getArticleById, getMenuByName, getSideArticle,getVideo} from "../../endpoints"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import FetchAPI from "../home/API";
-import {useLocation} from "react-router-dom";
+import FetchAPI from "../../API";
 import ReactPlayer from 'react-player'
+import {useRouter} from "next/router";
 
 
 const Media = (props) => {
-    const {state} = useLocation();
-    const title = props?.match?.params?.title
+    //const {state} = useLocation();
+    const title = useRouter().query.title
     const [start, setStart] =  useState(false)
     const [dataAPI,setDataAPI] = useState({})
     const [dataMenu,setdataMenu] = useState({})

@@ -3,8 +3,8 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 import _ from "lodash"
-import { Article } from "../../../assets"
-import useTranslation  from 'next-translate/useTranslation';
+import {Article} from "../../../assets"
+import useTranslation from 'next-translate/useTranslation';
 import Brand from "../Brand"
 import Side from './Sidebar.png'
 
@@ -15,7 +15,7 @@ import React from "react";
 
 const SliderList = (props) => {
 
-    const { i18n } = useTranslation();
+    const {i18n} = useTranslation();
     const isRTL = i18n?.language === "ar"
 
     const settings = {
@@ -38,18 +38,24 @@ const SliderList = (props) => {
                         const newData = item.map((data, index) => {
                             var stripedTitle = data.title.replace(/<[^>]+>/g, '');
                             var rmSpaces = stripedTitle.trim()
-                            if (rmSpaces == "جدول الدروس الحسنية"){
+                            if (rmSpaces === "جدول الدروس الحسنية") {
                                 var pathN = "/جدول الدروس الحسنية"
-                            }
-                            else{
-                                pathN =  rmSpaces
+                            } else {
+                                pathN = rmSpaces
                             }
                             return (
                                 <Link href={pathN} key={index.toString()} className="" as={pathN}>
 
                                     <a className={`${styles.imgContainer01} imgContainer01`}>
-                                        <Image className="w-100" src={Side} alt="" />
-                                        <p>{rmSpaces}</p>
+                                        <Image className="w-100" src={Side} alt=""/>
+                                        <p
+                                            style={{
+                                                //backgroundColor: 'red',
+                                                alignSelf: 'center',
+                                                marginTop: -110,
+                                                textAlign: 'right',
+
+                                            }}>{rmSpaces}</p>
                                     </a>
 
                                 </Link>
@@ -61,7 +67,7 @@ const SliderList = (props) => {
                     })}
                 </Slider>
             </div>
-        </Widget >
+        </Widget>
     );
 }
 

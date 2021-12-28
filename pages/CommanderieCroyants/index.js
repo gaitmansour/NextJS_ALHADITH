@@ -9,6 +9,7 @@ import Cards from "../../components/_UI/Cards";
 import SectionTitle from "../../components/_UI/SectionTitle";
 import React, {useEffect, useState} from 'react';
 import $ from 'jquery'
+
 const CommanderieCroyants = () => {
 
     const {t, i18n} = useTranslation('CommanderieCroyants');
@@ -40,21 +41,31 @@ const CommanderieCroyants = () => {
                     </div>
                 )
             }
-                        return (
+            return (
                 <div className="row my-4">
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_code_couleur, field_lien} = item?.attributes
                         console.log(dataAPI?.data)
-                        $(document).ready(function(){
-                            $(".linksCroyants").contextmenu(function(event){
-                                localStorage.setItem('routeState', JSON.stringify({ fromNav:{},selectedItem:title ,from:"Croyants"}))
+                        $(document).ready(function () {
+                            $(".linksCroyants").contextmenu(function (event) {
+                                localStorage.setItem('routeState', JSON.stringify({
+                                    fromNav: {},
+                                    selectedItem: title,
+                                    title:title,
+                                    from: "Croyants"
+                                }))
                             });
                         });
 
-                        $(document).ready(function(){
-                            $(".linksCroyants").bind('click', function(e) {
-                                console.log("hello ctrl")
-                                localStorage.setItem('routeState', JSON.stringify({ fromNav:{},selectedItem:title ,from:"Croyants"}))
+                        $(document).ready(function () {
+                            $(".linksCroyants").bind('click', function (e) {
+                                //console.log("hello ctrl")
+                                localStorage.setItem('routeState', JSON.stringify({
+                                    fromNav: {},
+                                    selectedItem: title,
+                                    title:title,
+                                    from: "Croyants"
+                                }))
 
                             });
                         });
@@ -75,16 +86,17 @@ const CommanderieCroyants = () => {
                                             pathname: field_lien[0]?.uri.slice(9),
                                             search: '',
                                             hash: '',
-                                            query: {fromNav:{},selectedItem:title ,from:"Croyants"}
+                                            query: {fromNav: {},title:title, selectedItem: title, from: "Croyants"}
                                         }}
                                         as={field_lien[0]?.uri.slice(9)}
                                     >
                                         <a className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
                                            style={{background: `#${field_code_couleur}`}}
                                         >
-                                            <i className="fas fa-long-arrow-alt-left text-white" 
-                                            style={{  marginRight: '1em',transform: 'rotate(0deg )'}} />
-                                            <p className="m-0" style={{textAlign: 'justify !important'}}>{t('btnMore')}</p>
+                                            <i className="fas fa-long-arrow-alt-left text-white"
+                                               style={{marginRight: '1em', transform: 'rotate(0deg )'}}/>
+                                            <p className="m-0"
+                                               style={{textAlign: 'justify !important'}}>{t('btnMore')}</p>
                                         </a>
                                     </Link>
                                 </Cards>

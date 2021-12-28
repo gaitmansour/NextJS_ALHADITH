@@ -72,9 +72,11 @@ const NavBar = (props) => {
                                                        }, ref) => {
                     if (item?.items?.length > 0) {
                         return (
-                            <ul ref={ref} style={style}
+                            <ul ref={ref}
+                                style={style}
                                 className={`${className} ${styles.dropdownMenu} dropdown-menu shadow-card overflow-hidden ${styleAlignText}`}
-                                aria-labelledby={labeledBy}>
+                                aria-labelledby={labeledBy}
+                            >
                                 {item?.items?.map((data, i) => {
                                     return (
                                         <Link
@@ -152,7 +154,10 @@ const NavBar = (props) => {
                                                 onClick={() => {
                                                     setShowMenu(!showMenu);
                                                 }}>
-                                                <li key={i} className="btn rounded-0 mx-0 px-0">
+                                                <li key={i} className="btn rounded-0 mx-0 px-0"
+                                                    onClick={() => {
+                                                        setShowMenu(!showMenu);
+                                                    }}>
                                                     {data.label}
                                                 </li>
                                             </Link>

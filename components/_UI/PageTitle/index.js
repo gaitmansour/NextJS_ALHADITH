@@ -9,11 +9,15 @@ const PageTitle = (props) => {
                 color: '#129D59',
                 fontWeight: 700
             }}>{props?.title}</h1></div>
-            {props.created && <div className={styles.dateCreat} style={{alignItems: 'center', marginTop: 25}}>
-                <p className="h-full" style={{alignSelf: 'center', color: "#A1A8AE"}}>
-                    <i className="fa fa-calendar mx-2"/>
-                    {props.dateArticle}
-                </p></div>}
+            {props.created &&
+                <div className={styles.dateCreat}
+                     style={{alignItems: 'center', marginTop: 25}}
+                >
+                    <p className="h-full"
+                       style={{alignSelf: 'center', color: "#A1A8AE"}}>
+                        <i className="fa fa-calendar mx-2"/>
+                        {props.dateArticle}
+                    </p></div>}
         </div>
     );
 }
