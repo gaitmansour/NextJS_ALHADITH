@@ -88,7 +88,6 @@ const Resources = () => {
 
     const getData = async () => {
         FetchAPI(url).then(data => {
-            //  console.log("data Resources ==> ", data)
             if (data.success) {
                 setDataAPI(data?.data)
             }
@@ -152,7 +151,8 @@ const Resources = () => {
                                         className={`${styles.action}  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
                                     >
                                         <i className="fas fa-long-arrow-alt-left text-white"/>
-                                        <p className="m-0" style={{
+                                        <p className="m-0"
+                                           style={{
                                             textAlign: 'justify !important',
                                             textJustify: 'inter-word !important'
                                         }}>{t('btnMore')}</p>

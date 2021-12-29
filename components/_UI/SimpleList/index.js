@@ -11,18 +11,18 @@ const SimpleList = (props) => {
                 {props.data && props.data?.length > 0 && props.data.map((item, i) => {
                     //  console.log('this data to show ------>',item)
                     if (item?.title == 'المصحف المحمدي') {
-                        var path1 = '/المصحف المحمدي'
+                        var path1 = {path: '/Almoshaf', as: '/المصحف المحمدي'}
                     } else if (item?.parentLabel == 'البرامج الإعلامية') {
-                        var path1 = `/media/${item?.title}`
+                        var path1 = {path: `/media/${item?.title}`, as: `/media/${item?.title}`}
                     } else {
-                        var path1 = `/article/${item?.title}`
+                        var path1 = {path: `/article/${item?.title}`, as: `/article/${item?.title}`}
                     }
                     return (
                         <Link href={{
-                            pathname: path1,
+                            pathname: path1.path,
                             query: {fromNav: props.data, selectedItem: item?.title}
                         }}
-                              as={path1}
+                              as={path1.as}
                               key={i.toString()}
 
                               style={{borderTop: i === 0 ? "1px solid #D8D8D8" : ""}}>

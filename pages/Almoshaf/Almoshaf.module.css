@@ -1,0 +1,15 @@
+#bdy{
+    padding-top: 120px !important;
+
+}
+.ifr{
+    height: 150vh;
+    width: 85%;
+    margin-right: 8%;
+    margin-top: 5%;
+}
+@media (max-width: 400px) {
+    .ifr{
+        height: 85vh;
+    }
+}

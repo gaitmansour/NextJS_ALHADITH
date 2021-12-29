@@ -75,7 +75,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                 );
             } else {
                 const dataList = dataAPI?.map((item, i) => {
-                    console.log('item--------------------------------', item)
+                    //console.log('item--------------------------------', item)
                     $(document).ready(function () {
                         $(`.${i}`).contextmenu(function (event) {
                             localStorage.setItem('searchData', JSON.stringify({
@@ -84,7 +84,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: item,
+                                    topic: JSON.stringify(item),
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',
