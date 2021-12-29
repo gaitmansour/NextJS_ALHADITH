@@ -1,3 +1,87 @@
 .SliderVideoList1 .item-card-content:hover p {
     color: #FBBF31;
 }
+.btn-play i {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 5em !important;
+    top: 42%;
+    left: 47%;
+}
+.item-card-content i{
+    position: absolute;
+    z-index: 2;
+    color: white !important;
+    font-size: 3em !important;
+    top: 30% !important;
+    left: 40%;
+}
+#bttn{
+    width: 100% !important;
+}
+
+.btn-play img {
+    filter: brightness(70%);
+    width: 100% !important;
+
+}
+
+.iconBo{
+    margin-left:10px;
+    margin-top: 3px;
+    /* float: right !important; */
+}
+.SliderVideoList1 .slick-slider .slick-dots {
+    top: -20px;
+    justify-content: flex-end;
+}
+
+*[dir='rtl'] .SliderVideoList1 .slick-slider .slick-dots {
+    justify-content: flex-end;
+}
+.line{
+    justify-content: flex-start;
+    width: 90%;
+}
+
+.SliderVideoList1 .slick-slider .slick-prev:before,
+.SliderVideoList1 .slick-slider .slick-next:before {
+    color: #000;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.SliderVideoList1 .slick-slider .slick-prev:before {
+    content: "\f054";
+}
+
+.SliderVideoList1 .slick-slider .slick-next:before {
+    content: "\f053";
+}
+
+.SliderVideoList1 .slick-slider .slick-prev,
+.SliderVideoList1 .slick-slider .slick-next {
+    top: -25px;
+}
+
+.SliderVideoList1 .slick-slider .slick-prev {
+    /* left: auto; */
+    left: 50px;
+}
+
+[dir='rtl'] .SliderVideoList .slick-slider .slick-prev {
+    right: 30px;
+    left: auto;
+}
+
+.SliderVideoList1 .slick-slider .slick-next {
+    /* left: auto; */
+    left: 30px !important;
+}
+
+[dir='rtl'] .SliderVideoList1 .slick-slider .slick-next {
+    right: 60px;
+    left: auto;
+}
+

@@ -215,9 +215,9 @@ const AllMedia = (props) => {
                                                                 height={150}
                                                             />
                                                         </div>
-                                                        <p className="m-0 py-3 px-4 description " style={{
+                                                        <p className="m-0 py-3 px-4" style={{
                                                             fontSize: 12,
-                                                            textAlign: 'right'
+                                                            textAlign: 'right',
                                                         }}>{item?.attributes?.title}</p>
                                                     </div>
                                                 </div>
@@ -259,20 +259,20 @@ const AllMedia = (props) => {
                                                     <div
                                                         className="col col-lg-6 col-md-12 col-sm-12 text-left d-flex icon-holder"
                                                         style={{width: "50%"}}>
-                                                        <i className="fa fa-calendar iconBo" style={{}}></i>
+                                                        <i className="fa fa-calendar iconBo" style={{}}/>
                                                         <p style={{}}>{Moment(item.field_date_debut, 'YYYY-MM-DDTHH:mm:ssZ').format('DD/MM/YYYY')}</p>
                                                     </div>
                                                     <div
                                                         className="col col-lg-6  col-md-12 col-sm-12 icon-holder d-flex"
                                                         style={{width: "50%"}}>
-                                                        <i className="fa fa-clock iconBo" style={{}}></i>
+                                                        <i className="fa fa-clock iconBo" style={{}}/>
                                                         <p style={{}}>{Moment(item.field_date_debut, 'YYYY-MM-DDTHH:mm:ssZ').format('HH:mm')}</p>
                                                     </div>
                                                     <div className="col col-lg-12  col-md-12 col-sm-12 ">
                                                         <p className="card-text">{item.title}</p>
                                                     </div>
                                                 </div>
-                                                <Link href="/">
+                                                <Link passHref={true} href="/">
                                                     <button style={{
                                                         backgroundColor: '#FF794D',
                                                         color: '#fff',
