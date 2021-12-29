@@ -116,15 +116,18 @@ const Resources = () => {
                 )
             }
 
-            return <div className={`${styles.content}  row my-3 mx-0`}>
+            return <div className={`${styles.content}  row my-3 mx-5 justify-content-evenly `} style={{marginRight:50}}>
                 <Slider {...settings} className="slide px-2">
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_icone, field_lien} = item?.attributes
                         console.log("title-----------------------", title)
+                        const toShow = body?.processed?.substring(0, 80) + '.....';
+
                         return (
                             <Cards key={i.toString()}
-                                   className={`${styles.card}   m-auto d-flex justify-content-right align-items-right flex-column`}
-                                   style={{justifyContent: 'flex-end', flex: 1, alignItems: "center"}}>
+                                   className={`mx-5 d-flex justify-content-center align-items-center flex-column `}
+
+                            >
                                 <div className={`${styles.boxImg}  m-auto`}>
                                     <Image
                                         loader={myLoader}

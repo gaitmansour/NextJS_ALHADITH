@@ -69,7 +69,8 @@ const CommanderieCroyants = () => {
 
                             });
                         });
-                        const toShow = body?.processed.replace(<br/>, "")
+                        const toShow = body?.processed?.substring(0, 80) + '.....';
+
                         return (
                             <div key={i.toString()} className="col-md-3">
                                 <Cards
@@ -78,8 +79,8 @@ const CommanderieCroyants = () => {
                                 >
                                     <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
-                                    {<div className={`${styles.description}  pt-3 pb-2`}
-                                          dangerouslySetInnerHTML={{__html: body?.processed}} />}
+                                    {<div className={`${styles.description} pt-3 pb-2`}
+                                          dangerouslySetInnerHTML={{__html: toShow}} />}
                                     <Link
                                         role="button"
                                         href={{
