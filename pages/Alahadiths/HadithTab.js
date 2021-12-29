@@ -75,14 +75,14 @@ const HadithTab = ({CodeTopic, Content}) => {
                 );
             } else {
                 const dataList = dataAPI?.map((item, i) => {
-
+                    console.log('item--------------------------------', item)
                     $(document).ready(function () {
                         $(`.${i}`).contextmenu(function (event) {
                             localStorage.setItem('searchData', JSON.stringify({
                                 pathname: '/search',
                                 search: '',
                                 hash: '',
-                                state: {
+                                query: {
                                     word: '',
                                     topic: item,
                                     content: Content,
@@ -96,16 +96,15 @@ const HadithTab = ({CodeTopic, Content}) => {
                     return (
                         <Link
                             key={i.toString()}
-                            className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                            //className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             as={'/search'}
-
                             href={{
                                 pathname: '/search',
                                 search: '',
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: item,
+                                    topic: JSON.stringify(item),
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',
@@ -114,16 +113,23 @@ const HadithTab = ({CodeTopic, Content}) => {
                             <a className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             >
                                 <div
-                                    style={{justifyContent:'center',alignItems:'center'}}
+                                    onClick={()=> console.log('item--------------------------------', {
+                                        word: '',
+                                        topic: item,
+                                        content: Content,
+                                        codeDegree: CodeTopic,
+                                        from: 'home',
+                                    })}
+                                    style={{justifyContent: 'center', alignItems: 'center'}}
                                     className={`${
                                         Content === 'صحيح'
                                             ? styles.icon1
                                             : Content === 'ضعيف'
-                                            ? styles.icon2
-                                            : styles.icon3
-                                        } text-center box-logo m-auto d-flex justify-content-center align-items-center`}>
+                                                ? styles.icon2
+                                                : styles.icon3
+                                    } text-center box-logo m-auto d-flex justify-content-center align-items-center`}>
                                     <p className="text-center my-auto text-light font-weight-bold"
-                                       style={{textAlign:'justify',alignSelf:'center',fontSize:14}}>
+                                       style={{textAlign: 'justify', alignSelf: 'center', fontSize: 14}}>
                                         {item?.label}
                                     </p>
                                 </div>

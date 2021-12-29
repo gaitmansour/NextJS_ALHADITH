@@ -25,7 +25,10 @@ const SearchPage = (props) => {
     console.log(router)
     const {state} = useRouter().query;
     const content = useRouter()?.query?.content;
-    const topic = useRouter()?.query?.topic;
+    console.log('content-----------',content)
+    const topic = JSON.parse(useRouter()?.query?.topic);
+   // console.log('topic-----------',topic.label)
+
     const degree = useRouter()?.query?.degree
     const door = useRouter()?.query?.door
     const source = useRouter()?.query?.source
