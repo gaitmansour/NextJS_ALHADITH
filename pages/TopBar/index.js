@@ -5,6 +5,7 @@ import styles from './TopBar.module.css'
 import Brand from "../../components/_UI/Brand";
 import SearchInput from "../../components/Forms/SearchInput";
 import {useRouter} from "next/router";
+import CustomModal from "../../components/_UI/Modal";
 const TopBar = (props) => {
     // console.log(props)
     let router=useRouter();
@@ -81,6 +82,7 @@ const TopBar = (props) => {
                 </div>
             </div>
 
+            <CustomModal title={'تنبيه'} body={'يرجى ملء كلمة البحث '} show={show} onHide={handleClose} onClick={handleClose}/>
 
         </div>
     );
