@@ -17,6 +17,7 @@ import Input from "../../components/Forms/Input";
 import CustomSelect from "../../components/Forms/CustomSelect";
 import PageTitleSecond from "../../components/_UI/PageTitleSecond";
 import CustomModal from "../../components/_UI/Modal";
+import _ from "lodash";
 
 const SearchPage = (props) => {
 
@@ -217,7 +218,8 @@ const SearchPage = (props) => {
                          source={item?._source?.source?.label}
                          degree={item?._source?.degree?.label}
                          sourceGlobal={item?._source?.evaluationSource}
-                         description={item?._source?.refsStatutHadith[0]?.description}
+                         description={_.head(item?._source?.refsStatutHadith)?.description}
+
         />
     });
 
