@@ -140,7 +140,7 @@ const NavBar = props => {
                 if (item?.label !== 'الرئيسية') {
                     return (
                         <div
-                            className="col-md-2 nav-item flex-column my-3"
+                            className="col-md-2 nav-item flex-column pt-2"
                             key={index.toString()}
                             ref={ref}>
                             <Link
@@ -155,7 +155,7 @@ const NavBar = props => {
                             </Link>
                             {item?.items?.length > 0 && (
                                 <ul className="m-0 p-0 d-flex flex-column align-items-start list-items"
-                                    style={{backgroundColor: 'red'}}>
+                                    >
                                     {item?.items?.map((data, i) => {
                                         return (
                                             <Link
@@ -249,7 +249,7 @@ const NavBar = props => {
                     </ul>
                 </div>
                 <div
-                    className={`bg-white global-menu position-absolute py-3 px-4 ${
+                    className={`bg-white global-menu position-absolute px-4 ${
                         showMenu ? 'global-menu-show' : 'global-menu-hide'
                     } overflow-hidden`}>
                     <i
