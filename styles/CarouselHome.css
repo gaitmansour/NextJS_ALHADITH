@@ -1,6 +1,12 @@
-.carousel-indicators li {
+.carouselCustom .carousel-indicators li {
     width: 10px;
     height: 10px;
     border-radius: 100%;
     background-color: red;
+}
+.carousel-control-box ol li{
+    height: 0.5em;
+    width: 0.5em;
+
+    background-color: #fff !important;
 }

@@ -13,7 +13,7 @@ import SectionTitle from "../../components/_UI/SectionTitle";
 import Image from 'next/image'
 import styles from './Ressources.module.css'
 import {Logos} from "../../assets";
-
+import $ from 'jquery'
 const Resources = () => {
 
     let settings = {
@@ -115,13 +115,25 @@ const Resources = () => {
                 )
             }
 
-            return <div className={`${styles.content}  row my-3 mx-5 justify-content-evenly `} style={{marginRight:50}}>
+            return <div className={`${styles.content}  row my-3 mx-5 justify-content-evenly `}
+                        style={{marginRight:50}}>
                 <Slider {...settings} className="slide px-2">
                     {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_icone, field_lien} = item?.attributes
                         console.log("title-----------------------", title)
                         const toShow = body?.processed?.substring(0, 80) + '.....';
-
+                        $(document).ready(function () {
+                            $('.links').contextmenu(function (event) {
+                                localStorage.setItem(
+                                    'routeState',
+                                    JSON.stringify({
+                                        fromNav: {},
+                                        selectedItem: title,
+                                        from: 'ressources',
+                                    }),
+                                );
+                            });
+                        });
                         return (
                             <Cards key={i.toString()}
                                    className={`mx-5 d-flex justify-content-center align-items-center flex-column `}
@@ -140,15 +152,16 @@ const Resources = () => {
                                 <div className={`${styles.desc}`}
                                      dangerouslySetInnerHTML={{__html: body?.processed}}/>
                                 <Link
+                                    class={"links"}
                                     role="button"
                                     href={{
-                                        pathname: field_lien[0]?.uri.slice(9),
+                                        pathname: field_lien[0]?.uri.slice(9) ==='/المصحف المحمدي' ? '/Almoshaf' : field_lien[0]?.uri.slice(9),
                                         query: {from: 'ressources', selectedItem: title}
                                     }}
-                                    as={field_lien[0]?.uri.slice(9)}
+                                    as={field_lien[0]?.uri.slice(9) ==='/المصحف المحمدي' ? '/المصحف المحمدي' : field_lien[0]?.uri.slice(9)}
                                 >
                                     <a
-                                        className={`${styles.action}  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
+                                        className={`${styles.action} d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${dataAPI?.data.length < 4 ? "flex-row-reverse" : "flex-row"} button`}
                                     >
                                         <i className="fas fa-long-arrow-alt-left text-white"/>
                                         <p className="m-0"

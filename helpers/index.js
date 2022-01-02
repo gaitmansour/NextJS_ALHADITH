@@ -9,6 +9,7 @@ export function handleMenu(Menu){
             if (subItem.parent_target_id_1 === 'البرامج الإعلامية'){
                 let _subItem = {
                     path:`media/${subItem.name_1}`,
+                    //as:`media/${subItem.name_1}`,
                     label: subItem.name_1,
                     tID:subItem.tid,
                     title: subItem.name_1,
@@ -20,7 +21,8 @@ export function handleMenu(Menu){
             }
             else  if (subItem.name_1 === 'المصحف المحمدي'){
                 let _subItem = {
-                    path:'المصحف المحمدي',
+                    path:'/Almoshaf',
+                    as:'المصحف المحمدي/',
                     label: subItem.name_1,
                     tID:subItem.tid,
                     title: subItem.name_1,
@@ -33,6 +35,7 @@ export function handleMenu(Menu){
             else {
                 let _subItem = {
                     path:`article/${subItem.name_1}`,
+                    //as:`article/${subItem.name_1}`,
                     label: subItem.name_1,
                     title: subItem.name_1,
                     tID:subItem.tid,
@@ -46,6 +49,7 @@ export function handleMenu(Menu){
         }) : [];
         let _item = {
             path:items.length>0 ?items[0].path:`/${item.name_1}`,
+            //as:items.length>0 ?items[0].path:`/${item.name_1}`,
             label: item.name_1,
             tID:item.tid,
             items:items

@@ -91,7 +91,8 @@ const NavBar = props => {
                                                 pathname: `/${data?.path}`,
                                                 query: {fromNav: item?.items, selectedItem: data?.title},
                                             }}
-                                            as={`/${data?.path}`}>
+                                            as={data?.path==='/Almoshaf'?`/${data?.as}`:`/${data?.path}`}
+                                            >
                                             <a className={styles.navBarActive}>
                                                 <li className={`btn justify-content-start rounded-0 ${styles.p3}`}
                                                     onClick={() => console.log("data----", item?.items)}>
