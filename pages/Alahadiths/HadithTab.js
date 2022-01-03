@@ -84,7 +84,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: JSON.stringify(item),
+                                    topic: item,
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',
@@ -104,12 +104,14 @@ const HadithTab = ({CodeTopic, Content}) => {
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: JSON.stringify(item),
+                                    topic: item,
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',
                                 },
-                            }}>
+                            }}
+                        passHref={true}
+                        >
                             <a className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             >
                                 <div
