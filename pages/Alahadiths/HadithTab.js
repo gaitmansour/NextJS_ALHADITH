@@ -84,7 +84,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: item,
+                                    topic: item.label,
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',
@@ -104,7 +104,7 @@ const HadithTab = ({CodeTopic, Content}) => {
                                 hash: '',
                                 query: {
                                     word: '',
-                                    topic: item,
+                                    topic: item.label,
                                     content: Content,
                                     codeDegree: CodeTopic,
                                     from: 'home',

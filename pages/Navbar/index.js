@@ -266,7 +266,7 @@ const NavBar = props => {
                     <Link
                         exact
                         activeClassName="active"
-                        href="../QandA" as={'hjhgj'}>
+                        href="../QandA" as={'سؤال وجواب/'}>
                         <a className="align-items-center d-flex px-4 py-2 linkQa">
                             <Image
                                 className="logo mx-3"

@@ -180,3 +180,14 @@
         max-width: 20% !important;
     }
 }
+.btnFacebook {
+    width: 65px;
+    height:45px;
+    border-radius: 4px;
+    background: #3b5998;
+    color:white;
+    border:0px transparent;
+    text-align: center;
+    margin-right:5px;
+    display: inline-block;
+}

@@ -1,0 +1,16 @@
+
+.TemplateArticleBody .side-bar1 .facebkLogin{
+    width: 54px;
+    height: 45px;
+    border-radius: 5px;
+    box-shadow:0px 0px 4px 0px rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    background-color: #2B5C93;
+}
+
+#linkA:hover{
+    color: #feb400!important;
+}

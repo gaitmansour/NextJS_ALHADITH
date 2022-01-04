@@ -22,13 +22,12 @@ import _ from "lodash";
 const SearchPage = (props) => {
 
     let router = useRouter().query;
-    console.log("---------------------------------router")
-    console.log(router)
+
     const {state} = useRouter().query;
     const content = useRouter()?.query?.content;
-    console.log('content-----------',content)
     const topic = useRouter()?.query?.topic;
-   // console.log('topic-----------',topic.label)
+    console.log("---------------------------------useRouter()?.query?.topic")
+    console.log(useRouter()?.query)
 
     const degree = useRouter()?.query?.degree
     const door = useRouter()?.query?.door
@@ -168,7 +167,8 @@ const SearchPage = (props) => {
             "start": StartPage < 1 ? 0 : StartPage,
             "tags": ""
         };
-
+        console.log("data---------------------------")
+        console.log(data)
         FetchPostAPI(urlSearch, data).then(data => {
             if (data.success) {
                 setdataSearch(data?.data);
@@ -180,9 +180,9 @@ const SearchPage = (props) => {
     const handleTopicFrom = async (res, r, router) => {
         const word = router?.word;
         const from = router?.from;
-        console.log("from ----------------",from)
+        console.log("from ----------------", from)
         if (from === 'home') {
-            const ArrayCategory = res && res.length > 0 && res?.filter((item) => item.label === topic.label)
+            const ArrayCategory = res && res.length > 0 && res?.filter((item) => item.label === topic)
             const ArrayDegree = r && r.length > 0 && r?.filter((item) => item.label === content)
             setChoiceCategory(ArrayCategory[0]);
             setChoiceDegree(ArrayDegree[0]);
@@ -315,7 +315,7 @@ const SearchPage = (props) => {
                             <div className={`d-flex alignIte${styles.alignIte}`}>
                                 <CustomSelect className="col-md-4"
                                               options={dataCategory && dataCategory}
-                                              defaultInputValue={topic ? topic : ChoiceCategory ? ChoiceCategory : ""}
+                                              defaultInputValue={ChoiceCategory ? ChoiceCategory : ""}
                                               label="موضوع"
                                               placeholder="اكتب الموضوع"
                                               onChange={v => setChoiceCategory(v)}/>
@@ -353,7 +353,7 @@ const SearchPage = (props) => {
                                 pageCount={pageCount}
                                 forcePage={pageNum}
                                 onPageChange={changePage}
-                               // containerClassName={styles.paginationButtons}
+                                // containerClassName={styles.paginationButtons}
                                 containerClassName={`pagination justify-content-evenly align-content-around w-50 py-2 ${styles.paginationButtons}`}
 
                                 //previousLinkClassName={"prevbtn"}

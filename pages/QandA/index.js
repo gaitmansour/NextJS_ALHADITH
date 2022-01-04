@@ -23,6 +23,8 @@ import CustomModal from "../../components/_UI/Modal";
 import ScrollButton from "../../components/ScrollButton";
 import Loading from "../../components/_UI/Loading";
 import Image from 'next/image'
+import FacebookLogin from 'react-facebook-login';
+
 
 const ListQuestions = (props) => {
     const title = props?.match?.params?.title
@@ -119,17 +121,17 @@ const ListQuestions = (props) => {
             }
         })
     }
-    const responseFacebook = (response) => {
-        console.log(response);
-    }
-    const onLoginSuccess = (res) => {
-        console.log("result", res.profileObj)
-        setLogged(true)
-        setMail(res.profileObj.email)
-    }
-    const onLoginFail = (res) => {
-        console.log("result", res)
-    }
+    const responseFacebook = response => {
+        setLogged(true);
+        setMail(response.email);
+    };
+    const onLoginSuccess = res => {
+        setLogged(true);
+        setMail(res.profileObj.email);
+    };
+    const onLoginFail = res => {
+        console.log('resultFail22', res);
+    };
 
     function handleSubmitQuestion() {
         if (!question || !Subject) {
@@ -209,7 +211,7 @@ const ListQuestions = (props) => {
                         },
                     }}
                     as={'/questions'}>
-                    <a className="descriptionP item d-flex align-items-center  px-1"
+                    <a  id={"linkA"} className="descriptionP item d-flex align-items-center  px-1"
                        style={{textDecoration: 'none', paddingBottom: 20}}>
                         <Image
                             alt={"icon"}
@@ -250,25 +252,8 @@ const ListQuestions = (props) => {
                             onClick={() => handleShowHide()}
                             className={`${styles.btnquestion} btnquestion`}>
                         {!showForum ?
-                            /*<div style={{
-                                backgroundColor: 'red',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                flexDirection: 'row'
-                            }}>
-                                <p style={{
-                                    color: 'yellow',
-                                    alignSelf: 'center',
-                                    paddingBottom: 50
-                                }}>اطرح سؤالك
-                                </p>
-                                <Image
-                                    className={`${styles.logo} logo py-2`}
-                                    //style={{width: '30px'}}
-                                    src={Icons.icon_faq}
-                                    alt="icon faq"/>
-                            </div>*/ <div className="descriptionP item d-flex align-items-center  px-1"
-                                          style={{textDecoration: 'none', paddingBottom: 20}}>
+                            <div className="descriptionP item d-flex align-items-center  px-1"
+                                 style={{textDecoration: 'none', paddingBottom: 20}}>
                                 <p className={`flex-fill m-2 `}>
                                     {"اطرح سؤالك"}
                                 </p> <Image
@@ -295,6 +280,16 @@ const ListQuestions = (props) => {
                                             onSuccess={onLoginSuccess}
                                             onFailure={onLoginFail}
                                             cookiePolicy={'single_host_origin'}
+                                            className="googleLogin"
+                                        />
+                                        <FacebookLogin
+                                            appId="451461503355998"
+                                            autoLoad={false}
+                                            fields="name,email"
+                                            callback={responseFacebook}
+                                            icon="fa-facebook"
+                                            textButton=""
+                                            cssClass={styles.btnFacebook}
                                         />
                                     </div>
                                     : <div>
@@ -328,8 +323,9 @@ const ListQuestions = (props) => {
                                                                      className={`${styles.bg1} container-flex bg1`}>
                                                                     <div
                                                                         className={'row justify-content-between align-items-center'}>
-                                                                        <h5 className="col col-12 col-lg-9 col-md-9 col-sm-1 d-flex card-subtitle">{item?._source?.sujetQuestion}</h5>
-                                                                        <p className={`${styles.dateParagraphcol} col-12 col-lg-3 col-md-3 col-sm-1 dateParagraph align-self-center pt-3`}>
+                                                                        <h5 className="col col-12 col-lg-9 col-md-9 col-sm-1 d-flex card-subtitle">
+                                                                            {item?._source?.sujetQuestion}</h5>
+                                                                        <p className={`${styles.dateParagraph} col-12 col-lg-3 col-md-3 col-sm-1 dateParagraph align-self-center pt-3`}>
                                                                             {'تاريخ النشر: ' + Moment(item?.attributes?.created).format('DD-MM-YYYY')}</p>
                                                                     </div>
                                                                     <Link
@@ -344,12 +340,12 @@ const ListQuestions = (props) => {
                                                                         }}
                                                                         as={'/questions'}
                                                                     >
-                                                                        <a className="item d-flex align-items-center py-3 px-1">
+                                                                        <a id={"linkA"} className=" item d-flex align-items-center py-3 px-1 text-decoration-none text-black">
                                                                             <Image src={Iicon}
                                                                                    alt={'iconn'}
-                                                                                   style={{marginHorizontal: 10}}
-                                                                                   className="mx-3"/>
-                                                                            <p className="flex-fill m-0">{item?._source?.descriptionQuestion}</p>
+                                                                                   //style={{marginHorizontal: 10}}
+                                                                                   className="px-0"/>
+                                                                            <p className="flex-fill mx-2 my-2 justify-content-center">{item?._source?.descriptionQuestion}</p>
                                                                         </a>
                                                                     </Link>
                                                                 </div>
@@ -418,29 +414,15 @@ const ListQuestions = (props) => {
                         breakClassName={'break-me'}
                         activeClassName={styles.activebtn}
                         containerClassName={'pagination justify-content-evenly align-content-around w-25 py-2'}
-                       // subContainerClassName={'pages  pagination'}
+                        // subContainerClassName={'pages  pagination'}
 
-                       // initialPage={currentPage - 1}
+                        // initialPage={currentPage - 1}
                         pageCount={pageCount}
                         //marginPagesDisplayed={2}
                         //pageRangeDisplayed={5}
                         onPageChange={changePage}
                         forcePage={pageNumber}
                     />
-                    {/*
-                    <ReactPaginate
-                        previousLabel={
-                            <i id="pagination" className=" pagination fa fa-chevron-right"/>
-                        }
-                        nextLabel={<i id="pagination" className="pagination fa fa-chevron-left"/>}
-                        pageCount={pageCount}
-                        forcePage={pageNumber}
-                        onPageChange={changePage}
-                        containerClassName={`${styles.paginationButtons} paginationButtons`}
-                        previousLinkClassName={'prevbtn'}
-                        nextLinkClassName={'nextbtn'}
-                        activeClassName={`${styles.activebtn} activebtn`}
-                    />*/}
                 </div>
 
                 <div className="side-bar">
