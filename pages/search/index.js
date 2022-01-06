@@ -20,19 +20,27 @@ import CustomModal from "../../components/_UI/Modal";
 import _ from "lodash";
 
 const SearchPage = (props) => {
+    let router = ''
+    if (typeof window !== "undefined") {
+        var params = JSON.parse(localStorage.getItem('searchData'))
+        console.log('params2------------')
+        console.log(params.query)
+    }
 
-    let router = useRouter().query;
+    let varRouter = useRouter().query
 
-    const {state} = useRouter().query;
-    const content = useRouter()?.query?.content;
-    const topic = useRouter()?.query?.topic;
-    console.log("---------------------------------useRouter()?.query?.topic")
-    console.log(useRouter()?.query)
+    router = params ? params.query : varRouter;
+    console.log("router-----------------------")
+    console.log(router)
+    const state = router;
+    const content = state?.content;
+    const topic = state?.topic;
+    console.log("topic-------------------",topic)
 
-    const degree = useRouter()?.query?.degree
-    const door = useRouter()?.query?.door
-    const source = useRouter()?.query?.source
-    const narrator = useRouter()?.query?.narrator
+    const degree = state?.degree
+    const door = state?.door
+    const source = state?.source
+    const narrator = state?.narrator
 
     const [showForm, setShowForm] = useState(true)
     const [dataDegree, setdataDegree] = useState([])
@@ -249,6 +257,9 @@ const SearchPage = (props) => {
 
     }
 
+    let route = useRouter()
+
+
     useEffect(() => {
         if (StartPage === 0) {
             getDataDegree().then((r) =>
@@ -269,10 +280,10 @@ const SearchPage = (props) => {
                 behavior: "smooth",
                 top: resultsRef.current.offsetTop
             });
-
         }
+        route.isReady && console.log("route----------------------------------", route);
 
-    }, [router, pageNum, StartPage]);
+    }, [pageNum, StartPage]);
 
 
     return (
