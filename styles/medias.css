@@ -99,6 +99,7 @@
     height: 8px;
     border: 0;
     border-radius: 50px;
+    background-color: #cfddd5;
   }
   .carousel .carousel-indicators {
     position: absolute;
@@ -153,6 +154,7 @@
   *[dir='rtl'] .CarouselHome .carousel-indicators {
     bottom: 8%;
     width: auto;
+    top: 96%;
     margin: 0;
     flex-direction: row !important;
   }
@@ -167,6 +169,9 @@
   
 }
 @media (max-width: 425px) {
+  .CarouselHome{
+    margin-bottom: 10%;
+  }
   .logo {
     width: 100px;
   }
