@@ -184,9 +184,7 @@
         height: 62vh !important;
     }
     .carousel .carousel-indicators{
-        /* position: absolute; */
         top: 94% !important;
-        /* z-index: 99; */
     }
 }
 @media screen and (min-width: 480px) and (max-width: 541px) {
@@ -195,7 +193,6 @@
     }
     *[dir='rtl'] .CarouselHome .carouselCaption {
         right: 1% !important;
-        /* width: 70%; */
     }
 }
 @media (max-width: 541px){
@@ -221,18 +218,15 @@
         left: 0 !important;
         text-align: center;
         position: relative;
-        /* bottom: -4px; */
         top: -34px;
         bottom: -2px;
         width: 95%;
         height: 80%;
-        /* z-index: 99; */
         box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
     }
     .carousel .carousel-indicators{
         position: absolute;
         top: 90%;
-        /* z-index: 99; */
     }
     .CarouselHome div li {
         background-color: rgba(240, 228, 228, 0.548);

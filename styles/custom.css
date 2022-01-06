@@ -17,7 +17,15 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
+/* html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+} */
 
 #root {
   display: flex;

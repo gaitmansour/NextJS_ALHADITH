@@ -94,6 +94,17 @@
   .CarouselHome .carousel-control-box {
     display: none !important;
   }
+  .CarouselHome .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-radius: 50px;
+  }
+  .carousel .carousel-indicators {
+    position: absolute;
+    top: 90%;
+}
+  
   .CommanderieCroyants {
     margin-top: 2em /* -60px */;
   }
@@ -146,7 +157,15 @@
     flex-direction: row !important;
   }
 }
-
+@media screen and (max-width: 541px){
+  .CarouselHome div li {
+    background-color: rgba(240, 228, 228, 0.548);
+  }
+  .carousel .carousel-indicators .active{
+    background-color: #129D59 !important;
+  }
+  
+}
 @media (max-width: 425px) {
   .logo {
     width: 100px;
