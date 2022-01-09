@@ -1,0 +1,67 @@
+.CommanderieCroyants {
+  margin-top: -70px;
+  z-index: 13;
+  position: relative;
+}
+
+.CardCommanderieCroyants img {
+  height: 56px;
+  align-self: flex-start;
+}
+
+.CardCommanderieCroyants .title {
+  font-weight: bold;
+}
+
+.CardCommanderieCroyants .description {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin: 1.5em 0 2em 0;
+  padding: 0 !important;
+  max-height: 115px !important;
+}
+/* .CardCommanderieCroyants .description p{  
+  text-align: justify !important;
+  text-justify: inter-word !important;
+} */
+
+.CommanderieCroyants .shadow-card {
+  background: #FFFFFF;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 17px !important;
+}
+
+.CommanderieCroyants .shadow-sm {
+  border-radius: 9px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  flex-direction: row-reverse;
+}
+
+.CommanderieCroyants .btn.shadow-sm:hover {
+  opacity: .85;
+}
+
+.CommanderieCroyants .btn.shadow-sm {
+  width: fit-content;
+}
+
+.CommanderieCroyants .btn.shadow-sm i {
+  margin-left: 1em;
+  transform: rotate( 180deg );
+}
+
+*[dir='rtl'] .CommanderieCroyants .btn.shadow-sm i{
+  margin-right: 1em;
+  margin-left: 0;
+  transform: rotate(0);
+}
+
+
+
+/* @media (max-width: 480px) {
+  
+} */
