@@ -1,9 +1,12 @@
 .Resources .content{
     margin-left: 15em !important;
 }
-.Resources .slick-slider{
-    padding-right: 0;
-}
+.slick-slide > div {
+    margin: 0 10px !important;
+  }
+  .slick-list {
+    margin: 0 -10px !important;
+  }
 
 .itemCard .boxImg {
     width: 188px;
@@ -32,8 +35,9 @@
     min-height: 115px !important;
 }
 .itemCard .desc p{
-    text-align: justify !important;
-    text-justify: inter-word !important;
+    /* text-align: justify !important;
+    text-justify: inter-word !important; */
+    line-height: 1.6;
 }
 
 .Resources .shadow-card {
@@ -54,17 +58,17 @@
     flex-direction: row-reverse !important;
 }
 
-*[dir='rtl']  .Resources .btn.action {
+*[dir='rtl']  .Resources .btn .action {
     width: fit-content;
     flex-direction: row;
 }
 
-.Resources .btn.action i {
+.Resources .btn .action i {
     margin-left: 2em;
     transform: rotate( 180deg );
 }
 
-*[dir='rtl'] .Resources .btn.action i {
+*[dir='rtl'] .Resources .btn .action i {
     margin-right: 2em;
     margin-left: 0;
     transform: rotate(0);
@@ -111,7 +115,7 @@
         width: 130px;
         height: 130px;
     }
-    .Resources .btn.action p{
+    .Resources .btn .action p{
         font-size: 14px;
     }
 
