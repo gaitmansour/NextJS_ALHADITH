@@ -314,9 +314,9 @@ const SearchPage = (props) => {
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
-        className={`${styles.SearchPage} TemplateArticleBody SearchPage d-flex p-4`}
+        className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
-        <div className={`${styles.SearchBox} flex-fill`}>
+        <div className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}
             className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}
@@ -334,7 +334,7 @@ const SearchPage = (props) => {
             />
 
             <div
-              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn m-0 p-0`}
+              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn m-2 p-0`}
               onClick={() => handleClickSearch()}
               style={{ backgroundColor: '#157646' }}
             >

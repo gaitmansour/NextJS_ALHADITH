@@ -198,7 +198,7 @@ const SearchSection = (props) => {
   }, [])
 
   return (
-    <div className={`${styles.secSearch} flex-fill secSearch`}>
+    <div className={`${styles.secSearch} container flex-fill secSearch`}>
       <SectionTitle title='البحث' className='' />
       <div
         ref={resultsRef}

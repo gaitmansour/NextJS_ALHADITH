@@ -27,6 +27,9 @@
 .SearchPage .box-search .icon-search {
     background-color: #656D7A;
 }
+.SearchPage .SearchBox{
+    width: 70% ;
+}
 
 .SearchPage .searchElement .boxIconSetting {
     background-color: #157646;
