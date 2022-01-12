@@ -1,12 +1,12 @@
 .Resources .content{
     margin-left: 15em !important;
 }
-.slick-slide > div {
-    margin: 0 10px !important;
+/* .slick-list .slick-track .slick-slide > div {
+    margin: 0 10% !important;
   }
   .slick-list {
     margin: 0 -10px !important;
-  }
+  } */
 
 .itemCard .boxImg {
     width: 188px;

@@ -116,19 +116,7 @@
     margin-bottom: 0% !important;
     padding-bottom: 0% !important;
   }
-  .slick-slide {
-    margin: 0 10px !important;
-  }
-  .slick-list {
-    margin: 0 -10px !important;
-    text-align: center !important;
-  }
-  .slick-dots {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-    color: #129D59;	
-  }
+ 
 
   /* Footer style */
   .Contact {
@@ -211,7 +199,9 @@
     font-size: 14px;
     font-weight: 500;
   }
-
+  /* .slick-list .slick-track .slick-slide > div {
+    text-align: start !important;
+  } */
   .Contact {
     width: 90%;
     border-top-right-radius: 40px;

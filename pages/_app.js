@@ -19,6 +19,7 @@ import '../styles/AllMedia.css'
 import '../styles/Modal.css'
 import '../styles/QandA.css'
 import '../styles/medias.css'
+import '../styles/styleFix.css'
 //import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
 //import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import { SSRProvider } from '@react-aria/ssr'

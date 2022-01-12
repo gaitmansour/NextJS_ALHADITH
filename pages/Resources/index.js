@@ -19,7 +19,7 @@ const Resources = () => {
     dots: true,
     infinite: true,
     autoplay: true,
-    slidesToShow: 3.5,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
@@ -53,8 +53,8 @@ const Resources = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: '60px',
-          className: 'center',
+          // centerPadding: '60px',
+          // className: 'center',
           centerMode: true,
         },
       },
@@ -62,8 +62,8 @@ const Resources = () => {
         breakpoint: 426,
         settings: {
           slidesToShow: 1,
-          centerPadding: '60px',
-          className: 'center',
+          // centerPadding: '60px',
+          // className: 'center',
           centerMode: true,
           slidesToScroll: 1,
         },
