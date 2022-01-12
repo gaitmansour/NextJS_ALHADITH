@@ -29,30 +29,29 @@ const HadithTab = ({ CodeTopic, Content }) => {
     autoplay: true,
     slidesToShow: 7,
     slidesToScroll: 4,
-    arrows: true,
+    dots: false,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          //slidesToScroll: 2,
-          infinite: true,
-          dots: true,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          //slidesToScroll: 2,
-          initialSlide: 6,
+          slidesToScroll: 2,
+          // initialSlide: 6,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          //slidesToScroll: 2
+          slidesToScroll: 2,
         },
       },
       {
@@ -60,7 +59,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
         settings: {
           centerPadding: '10px',
           slidesToShow: 1,
-          //slidesToScroll: 1
+          slidesToScroll: 1,
         },
       },
     ],
@@ -116,7 +115,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
               passHref={true}
             >
               <a
-                className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
                   onClick={() =>
@@ -135,16 +134,11 @@ const HadithTab = ({ CodeTopic, Content }) => {
                       : Content === 'ضعيف'
                       ? styles.icon2
                       : styles.icon3
-                  } text-center box-logo m-auto d-flex justify-content-center align-items-center`}
+                  } text-center ${
+                    styles.tabIcon
+                  } box-logo m-auto d-flex justify-content-center align-items-center`}
                 >
-                  <p
-                    className='text-center my-auto text-light font-weight-bold'
-                    style={{
-                      textAlign: 'justify',
-                      alignSelf: 'center',
-                      fontSize: 14,
-                    }}
-                  >
+                  <p className='text-center my-auto text-light font-weight-bold'>
                     {item?.label}
                   </p>
                 </div>
