@@ -7,8 +7,14 @@ module.exports = withCSS({
         url: false
     }
 });*/
+const eslint = {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+};
 const withPlugins = require("next-compose-plugins");
 
 module.exports = withPlugins([
-    nextTranslate
+    nextTranslate,
+    eslint,
 ], {trailingSlash: true,})
