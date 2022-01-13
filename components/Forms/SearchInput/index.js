@@ -1,7 +1,7 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import styles from './SearchInput.module.css';
 import Link from "next/link";
-import KeyboardedInput from "react-touch-screen-keyboard";
+//import KeyboardedInput from "react-touch-screen-keyboard";
 import {useRouter} from "next/router";
 
 const SearchInput = (props) => {
@@ -87,27 +87,14 @@ const SearchInput = (props) => {
                        color={'red'}
                        onChange={props.onChange}/> :
                 <>
-                    <KeyboardedInput
-                        //id={"keyboardinput"}
-                        value={props.input}
-                        onChange={props.onChange}
-                        isDraggable={true} // optional, default is `true`
-                        //opacity={0.7}
-                        onFocus={() => !Myinput.current.focus()}
-                        onBlur={() => Myinput.current}
-                        placeholder={props.placeholder}
-                        //onFocus={props.onChange}
-                        defaultKeyboard={CustomMapping}
-                        //required
-                        showShift={false}
-                        showSymbols={false}
-                        ref={Myinput}
-                        inputClassName={`${styles.input} text-dark ${props.inputClassName}`}
-                        isFirstLetterUppercase={false}
-                        keyboardClassName={`testme  p-2`}
-                        containerClassName={`conatiner `}
-                        enabled
-                    />
+                    <input value={props.input}
+                           className={`flex-fill mx-1 px-2 ${props.className}`}
+                           placeholder={props.placeholder}
+                        //color={'red'}
+                           style={{color: 'red'}}
+                           color={'red'}
+                           onChange={props.onChange}/>
+                    
                     <i className="far fa-keyboard mx-3 fa-1x"
                        style={props.styleIcon}
                        onClick={() => Myinput.current.focus()}/>
