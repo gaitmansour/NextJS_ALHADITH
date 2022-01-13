@@ -3,4 +3,4 @@
   to = "/pages/app.js"
   status = 200
 [build]
-  command = "npm install && cp -f {$HOME/custom-event-polyfill} ${NODE_PATH} && npm run build"
+  command = "npm install --save custom-event-polyfill"
