@@ -94,7 +94,7 @@ const SearchInput = (props) => {
                            style={{color: 'red'}}
                            color={'red'}
                            onChange={props.onChange}/>
-                    
+
                     <i className="far fa-keyboard mx-3 fa-1x"
                        style={props.styleIcon}
                        onClick={() => Myinput.current.focus()}/>

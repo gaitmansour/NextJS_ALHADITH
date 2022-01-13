@@ -1,3 +1,5 @@
+import React from "react";
+
 import photo from "./photo.png"
 
 const VideosList = [
