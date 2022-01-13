@@ -17,6 +17,7 @@ import Body from '../../components/Body'
 import PageSummary from '../../components/_UI/PageSummary'
 import SimpleList from '../../components/_UI/SimpleList'
 import SliderList from '../../components/_UI/SliderList'
+import Badgs from '../../components/_UI/Badgs'
 import loadNamespaces from 'next-translate/loadNamespaces'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -34,6 +35,7 @@ export default function ArticlePage(props) {
   }
 
   const [dataAPI, setDataAPI] = useState({})
+  const [dataTags, setDataTags] = useState([])
   const [dataMenu, setdataMenu] = useState({})
   const [dataSlider, setdataSlider] = useState({})
   const [dataSide, setDataSide] = useState({})
@@ -46,8 +48,8 @@ export default function ArticlePage(props) {
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
-        console.log('data?', data?.data)
         setDataAPI(data?.data)
+        setDataTags(data?.data?.included)
       }
     })
   }
@@ -165,7 +167,7 @@ export default function ArticlePage(props) {
       )}
     >
       <Body
-        className={`${styles.TemplateArticleBody}TemplateArticleBody d-flex p-4`}
+        className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
       >
         <div className='flex-fill w-25'>
           <PageSummary
@@ -205,6 +207,12 @@ export default function ArticlePage(props) {
               __html: dataAPI?.data[0]?.attributes?.body?.value,
             }}
           />
+          <div className={`d-flex ${styles.articleTags}`}>
+            {dataTags &&
+              dataTags?.map((tag, index) => {
+                return <Badgs key={index} tags={tag?.attributes?.name} />
+              })}
+          </div>
         </div>
         {items[0]?.path === 'article/تعریف' ? (
           <div className={styles.slider} style={{ width: '30%' }}>

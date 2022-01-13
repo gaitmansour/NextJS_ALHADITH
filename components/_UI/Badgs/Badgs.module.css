@@ -1,0 +1,9 @@
+.bgd{
+    background-color: #badbcb;
+}
+.badge{
+    font-size: 16px !important;
+    padding: 0.5em 1.65em !important;
+    color: #fff;
+    font-weight: bold;
+}
