@@ -5,7 +5,7 @@ const Badgs = (props) => {
   return (
     <div>
       {props.tags?.length > 0 && (
-        <span class={`${styles.badge} rounded-pill bg-success my-2 mx-1`}>
+        <span class={`${styles.badge} rounded-pill bg-success mx-3`}>
           {props.tags}
         </span>
       )}

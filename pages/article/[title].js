@@ -6,6 +6,7 @@ import {
   getMenuByName,
   getSideArticle,
   getSideItems,
+  getTopic,
 } from '../../endpoints'
 import FetchAPI from '../../API'
 import { useRouter } from 'next/router'
@@ -18,6 +19,7 @@ import PageSummary from '../../components/_UI/PageSummary'
 import SimpleList from '../../components/_UI/SimpleList'
 import SliderList from '../../components/_UI/SliderList'
 import Badgs from '../../components/_UI/Badgs'
+import ListAhadith from '../../components/_UI/ListAhadith'
 import loadNamespaces from 'next-translate/loadNamespaces'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -42,6 +44,9 @@ export default function ArticlePage(props) {
   const [parentTitle, setparentTitle] = useState()
   const [parent, setParent] = useState()
   const [items, setItems] = useState({})
+  const [dataAhadith, setDataAhadith] = useState([])
+  const urlAhadith = getTopic()
+  const CodeTopic = 28
 
   const url = getArticleById(title)
   const urlMenu = getMenuByName(parentTitle ? parentTitle : title)
@@ -129,6 +134,13 @@ export default function ArticlePage(props) {
     getData()
   }, [parentTitle, route])
 
+  useEffect(() => {
+    FetchAPI(`${urlAhadith}/${CodeTopic}`).then((data) => {
+      if (data.success) {
+        setDataAhadith(data?.data)
+      }
+    })
+  }, [])
   const data = [
     {
       title: 'الرئيسية',
@@ -169,7 +181,7 @@ export default function ArticlePage(props) {
       <Body
         className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
       >
-        <div className='flex-fill w-25'>
+        <div className='flex-fill'>
           <PageSummary
             className={`${styles.summ} summ my-3`}
             summary={dataAPI?.data[0]?.attributes?.body?.summary}
@@ -207,19 +219,29 @@ export default function ArticlePage(props) {
               __html: dataAPI?.data[0]?.attributes?.body?.value,
             }}
           />
-          <div className={`d-flex ${styles.articleTags}`}>
+          <div className={`${styles.articleTags} d-flex `}>
             {dataTags &&
               dataTags?.map((tag, index) => {
-                return <Badgs key={index} tags={tag?.attributes?.name} />
+                return (
+                  <Badgs
+                    className={`${styles.badgTag}`}
+                    key={index}
+                    tags={tag?.attributes?.name}
+                  />
+                )
               })}
           </div>
         </div>
         {items[0]?.path === 'article/تعریف' ? (
           <div className={styles.slider} style={{ width: '30%' }}>
-            {/*<Alahadith/>*/}
+            <ListAhadith data={dataAhadith} />
+            <SliderList className='pt-5' data={dataSlider} />
           </div>
         ) : (
-          <div className='side-bar px-3' style={{ width: '30%' }}>
+          <div
+            className={` ${styles.slider} side-bar px-3`}
+            style={{ width: '30%' }}
+          >
             {!items ? (
               <SimpleList data={dataSide} />
             ) : (

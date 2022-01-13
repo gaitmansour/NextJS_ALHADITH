@@ -117,6 +117,16 @@
     padding-bottom: 0% !important;
   }
  
+  /* .badge{
+        
+    margin-bottom: 1em !important;
+} */
+.TemplateArticleBody .badgTag{
+  margin-bottom: 10% !important;
+}
+.TemplateArticle .templateHeader .bgDashed {
+  display: none !important;
+}
 
   /* Footer style */
   .Contact {

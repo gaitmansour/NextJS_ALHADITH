@@ -3,7 +3,14 @@
 }
 .badge{
     font-size: 16px !important;
-    padding: 0.5em 1.65em !important;
+    padding: 0.5em 1em !important;
     color: #fff;
     font-weight: bold;
 }
+
+/* @media screen and (min-width: 240px) and (max-width: 540px)  {
+    .badge{
+        margin-top: 1em !important;
+        margin-bottom: 1em !important;
+    }
+} */
