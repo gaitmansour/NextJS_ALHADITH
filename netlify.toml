@@ -2,3 +2,5 @@
   from = "/*"
   to = "/pages/app.js"
   status = 200
+[build]
+  command = "npm install --save react-touch-screen-keyboard@0.3.15 && npm run build"
