@@ -2,3 +2,5 @@
   from = "/*"
   to = "/pages/app.js"
   status = 200
+[build]
+  command = "cp -f /node_modules/custom-event-pollyfill /custom-event-pollyfill && npm run build"
