@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/pages/app.js"
+  status = 200

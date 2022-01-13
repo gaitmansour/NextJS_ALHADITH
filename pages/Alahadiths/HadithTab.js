@@ -10,6 +10,7 @@ import FetchAPI from '../../API';
 import $ from "jquery";
 import styles from "./Alahadiths.module.css"
 import Loading from "../../components/_UI/Loading";
+import {useRouter} from "next/router";
 
 const HadithTab = ({CodeTopic, Content}) => {
     const url = getTopic();
@@ -65,6 +66,8 @@ const HadithTab = ({CodeTopic, Content}) => {
             },
         ],
     };
+    let router = useRouter();
+
     const renderData = () => {
         try {
             if (_.isEmpty(dataAPI)) {
@@ -78,18 +81,19 @@ const HadithTab = ({CodeTopic, Content}) => {
                     //console.log('item--------------------------------', item)
                     $(document).ready(function () {
                         $(`.${i}`).contextmenu(function (event) {
-                            localStorage.setItem('searchData', JSON.stringify({
-                                pathname: '/search',
-                                search: '',
-                                hash: '',
-                                query: {
-                                    word: '',
-                                    topic: item.label,
-                                    content: Content,
-                                    codeDegree: CodeTopic,
-                                    from: 'home',
-                                },
-                            }));
+                             localStorage.setItem('searchData', JSON.stringify({
+                                 pathname: '/search',
+                                 search: '',
+                                 hash: '',
+                                 query: {
+                                     word: '',
+                                     topic: item.label,
+                                     content: Content,
+                                     codeDegree: CodeTopic,
+                                     from: 'home',
+                                 },
+                             }));
+
                         });
                     });
 
@@ -110,18 +114,11 @@ const HadithTab = ({CodeTopic, Content}) => {
                                     from: 'home',
                                 },
                             }}
-                        passHref={true}
+                            passHref
                         >
-                            <a className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                            <a  className={`${i} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
                             >
                                 <div
-                                    onClick={()=> console.log('item--------------------------------', {
-                                        word: '',
-                                        topic: item,
-                                        content: Content,
-                                        codeDegree: CodeTopic,
-                                        from: 'home',
-                                    })}
                                     style={{justifyContent: 'center', alignItems: 'center'}}
                                     className={`${
                                         Content === 'صحيح'
