@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import styles from './Videos.module.css';
 import {Icons} from '../../assets';
-import VideosList from './VideosList';
+import VideosList from '../../data/VideosList';
 import useTranslation from 'next-translate/useTranslation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

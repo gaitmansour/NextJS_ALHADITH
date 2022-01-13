@@ -2,7 +2,7 @@ import React from "react";
 
 import photo from "./photo.png"
 
-export const VideosList = [
+const VideosList = [
   {
     colorss: "FEB400",
     label: "برامج على الشبكات الاجتماعية",
@@ -39,3 +39,4 @@ export const VideosList = [
   },
 ]
 
+export default VideosList
