@@ -11,25 +11,37 @@
 .desc {
     width: 90%;
 }
-.desc ul li::before {
+/* .desc ul li::before {
     content: "\2022";
     font-weight: bold;
     display: inline-block;
     width: 1em;
-  }
-  .desc ol li {
-    list-style: number !important;
+  } */
+.desc ul {
+    list-style-type: disc;
+}
+.desc ul li{
+    list-style-image:url('../../assets/Images/icons/ahadiths/actions-arrow-left-icon.png');
     display: list-item;
-  }
+    text-align: -webkit-match-parent !important;
+    line-height: 1.6;
+}
+.desc ol li {
+list-style: number !important;
+display: list-item;
+}
+
 .desc p{
     font-family: 'Almarai', sans-serif !important;
-    font-size: 15px;
-    text-align: justify !important;
-    text-justify: inter-word !important;
+    font-size: 17px !important;
+    line-height: 1.6;
+    margin-bottom: 15px !important;
+    /* text-align: justify !important;
+    text-justify: inter-word !important; */
 }
 .desc span{
     font-family: 'Almarai', sans-serif !important;
-    font-size: 15px;
+    font-size: 18px;
 }
 .desc cite{
     float: left;
@@ -43,13 +55,18 @@
  }
 .desc h2{
     margin-top: 0%;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 600;
+    color: #129D59;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 .desc h3{
     margin-top: 0%;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 .desc figure {
     text-align: center;

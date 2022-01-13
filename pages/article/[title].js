@@ -176,7 +176,7 @@ export default function ArticlePage(props) {
           {dataAPI?.included &&
             dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
               ?.url && (
-              <div className={`${styles.sectionImage}`}>
+              <div className={`${styles.sectionImage} px-3`}>
                 <Image
                   src={
                     dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
