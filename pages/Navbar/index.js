@@ -19,6 +19,7 @@ const NavBar = props => {
     const [Menu, setMenu] = useState([]);
     const [MenuGlobal, setMenuGlobal] = useState([]);
     const [MenuLinks, setMenuLinks] = useState([]);
+    const [shownavLink, setShownavlink] = useState(false);
 
     //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
     const styleAlignText = `${lang === "ar" ? "text-lg-end" : "text-lg-start"}`;
@@ -93,9 +94,10 @@ const NavBar = props => {
                                             }}
                                             as={data?.path==='/Almoshaf'?`/${data?.as}`:`/${data?.path}`}
                                             >
-                                            <a className={styles.navBarActive}>
+                                            <a className={`${styles.navBarActive}`}>
                                                 <li className={`btn justify-content-start rounded-0 ${styles.p3}`}
-                                                    onClick={() => console.log("data----", item?.items)}>
+                                                    onClick={()=>setShownavlink(!shownavLink)}>
+                                                    {/*onClick = {() => console.log("data----", item?.items)}>*/}
                                                     {data.label}
                                                 </li>
                                             </a>
