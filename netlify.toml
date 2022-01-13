@@ -3,4 +3,4 @@
   to = "/pages/app.js"
   status = 200
 [build]
-  command = "npm install --save custom-event-polyfill"
+  command = "npm install --save custom-event-polyfill && npm i --legacy-peer-deps"
