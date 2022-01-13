@@ -51,6 +51,24 @@
     font-size: 16px;
     font-weight: 600;
 }
+.desc figure {
+    text-align: center;
+    /* padding: 5px; */
+    color: darkgray;
+}
+.desc figcaption p{
+    text-align: center;
+}
+.sectionImage{
+    border: 1px solid rgb(204, 201, 201);
+    text-align: center;
+    /* padding: 5px; */
+    color: darkgray;
+    width: 90%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+}
 
 /*table{
     background-color: transparent !important;

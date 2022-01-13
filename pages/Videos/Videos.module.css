@@ -39,10 +39,10 @@
   background-color: #139656;
 }
 .alignSec .sec .secTop .divA .imgTR{
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #86b7fe;
+  position: absolute !important;
+  top: 15px !important;
+  right: 15px !important;
+  /* background-color: #10346b; */
 }
 .alignSec .sec .secTop .divB {
   border-top-left-radius: 3rem !important;
@@ -52,9 +52,9 @@
   background-color: #22CABE;
 }
 .alignSec .sec .secTop .divB .imgBR {
-  position: absolute;
-  bottom: 14px;
-  right: 28%;
+  position: absolute !important;
+  bottom: 14px !important;
+  right: 28% !important;
 }
 .alignSec .sec .secBottom .div1 {
   width: 30% ;
@@ -64,7 +64,7 @@
   background-color: #FF794D;
 }
 .alignSec .sec .secBottom .div1 .imgdiv1{
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   right: 15px;
 }
@@ -77,7 +77,7 @@
   background-color: #FEB400;
 }
 .alignSec .sec .secBottom .div2 .imgdiv2{
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   right: 40%;
 }
@@ -88,7 +88,7 @@
   background-color: #CEBB97;
 }
 .alignSec .sec .secBottom .div3 .imgdiv3{
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   left: 15px;
 }
