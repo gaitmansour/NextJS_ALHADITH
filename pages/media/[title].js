@@ -19,7 +19,7 @@ import PageTitleSecond from "../../components/_UI/PageTitleSecond";
 import SimpleListMedia from "../../components/_UI/SimpleListMedia";
 
 
-export default function Media  (props)  {
+export default function Media(props){
     //const {state} = useLocation();
     const title = useRouter().query.title
     const [start, setStart] =  useState(false)
