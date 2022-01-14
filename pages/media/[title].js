@@ -19,7 +19,7 @@ import PageTitleSecond from "../../components/_UI/PageTitleSecond";
 import SimpleListMedia from "../../components/_UI/SimpleListMedia";
 
 
-const Media = (props) => {
+export const Media = (props) => {
     //const {state} = useLocation();
     const title = useRouter().query.title
     const [start, setStart] =  useState(false)
@@ -257,5 +257,3 @@ const Media = (props) => {
         </TemplateArticle>
     );
 }
-
-export default Media;

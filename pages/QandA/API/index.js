@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const FetchAPIWthData = async (url,data) => {
+export const FetchAPIWthData = async (url,data) => {
     return await axios.post(url ,data,{
         headers:{
             "Content-Type": "application/vnd.api+json",
@@ -35,4 +35,3 @@ const FetchAPIWthData = async (url,data) => {
         })
 
 }
-export default FetchAPIWthData;

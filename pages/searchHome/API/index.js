@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const FetchPostAPI = async (url,data) => {
+export const FetchPostAPI = async (url,data) => {
 
     return await axios.post(url,data/*,{
         headers: {
@@ -40,5 +40,3 @@ const FetchPostAPI = async (url,data) => {
         })
 
 }
-
-export default FetchPostAPI
