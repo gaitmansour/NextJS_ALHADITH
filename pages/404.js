@@ -24,7 +24,7 @@ export default function Error404(props) {
     <Footer />
   </Layout>)
 }
-
+/*
 export async function getStaticProps(ctx) {
   return {
     props: await loadNamespaces({
@@ -33,3 +33,4 @@ export async function getStaticProps(ctx) {
     }),
   }
 }
+*/
