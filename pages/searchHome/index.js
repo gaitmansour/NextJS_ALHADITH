@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 
 import {getCategory, getDegree, getNarrator, getSource, getTopic, Search} from "../../endpoints";
 import FetchAPI from "../../API";
-import {FetchPostAPI} from "./API";
+import {FetchPostAPI} from "../../data/APiSectionSearch/API";
 import SectionTitle from "../../components/_UI/SectionTitle";
 import SearchInput from "../../components/Forms/SearchInput";
 import Cards from "../../components/_UI/Cards";
