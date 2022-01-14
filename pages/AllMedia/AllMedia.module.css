@@ -1,6 +1,6 @@
 
 .Media .PageTitleSecond h3 {
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .titlePage{
@@ -11,7 +11,7 @@
     color: #08262c;
 }
 
-.Media .box-search input,
+/* .Media .box-search input,
 .Media .box-search input::placeholder {
     color: #30A96E;
 }
@@ -19,9 +19,9 @@
 .Media .box-search .icon-filter,
 .Media .box-search .icon-search  {
     background-color: #30A96E;
-}
+} */
 
-.btn-play  {
+.btnPlay  {
     width: 100%;
     height: auto;
     margin: 0 auto;
@@ -29,21 +29,21 @@
     overflow: hidden;
     background: transparent;
 }
-.player-wrapper {
+/* .playerWrapper {
   position: relative;
   padding-top: 56.25% ;
 }
 
-.react-player {
+.reactPlayer {
   position: absolute;
   top: 0;
   left: 0;
-}
+} */
 /* .player{
   height: 100%;
 } */
 
-.btn-play i {
+.btnPlay i {
   position: absolute;
   z-index: 2;
   color: white;
@@ -52,19 +52,19 @@
   left: 47%;
 }
 
-.item-card-content i{
+/* .itemCardContent i{
   position: absolute;
   z-index: 2;
   color: white !important;
   font-size: 3em !important;
   top: 30% !important;
   left: 40%;
-}
+} */
 #bttn{
   width: 100% !important;
 }
 
-.btn-play img {
+.btnPlay img {
     filter: brightness(70%);
     width: 100% !important;
 
@@ -76,15 +76,15 @@
   /* float: right !important; */
 }
 
-.box-first-video {
+/* .boxFirstVideo {
     width: 90%;
     margin: 3em auto 2em auto;
-}
+} */
 
-.Media .PageTitleSecond{
+/* .Media .PageTitleSecond{
     padding: 0 !important;
     margin: 1em 0;
-}
+} */
 
 .Media .title-video h3{
     padding: 0 !important;
@@ -102,14 +102,14 @@
       -webkit-box-orient: vertical;
   }
 
-  .SliderVideoList1 .slick-slider .slick-dots {
+  /* .SliderVideoList1 .slick-slider .slick-dots {
     top: -20px;
     justify-content: flex-end;
   }
 
   *[dir='rtl'] .SliderVideoList1 .slick-slider .slick-dots {
     justify-content: flex-end;
-  }
+  } */
   .line{
     justify-content: flex-start;
     width: 90%;
@@ -156,34 +156,34 @@
   }
 
 
-  .SliderVideoList1 .item-card-content {
+  /* .SliderVideoList1 .itemCardContent {
     cursor: pointer;
     width: 85% !important;
     margin-left: 10% !important;
-  }
+  } */
 
-  .SliderVideoList1 .item-card-content img{
+  /* .SliderVideoList1 .itemCardContent img{
     border-radius: 10px;
     filter: brightness(80%);
     box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
     -webkit-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
     -moz-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
-  }
+  } */
 
-  .SliderVideoList1 .item-card-content p {
+  .SliderVideoList1 .itemCardContent p {
     text-align: left;
     font-weight: 600;
   }
 
-  .SliderVideoList1 .item-card-content:hover p {
+  .SliderVideoList1 .itemCardContent:hover p {
     color: #FBBF31;
   }
 
-  [dir='rtl'] .SliderVideoList .item-card-content p {
+  [dir='rtl'] .SliderVideoList .itemCardContent p {
     text-align: right;
   }
 
-  .SliderVideoList1 .item-card-content i {
+  .SliderVideoList1 .itemCardContent i {
     position: absolute;
     z-index: 2;
     color: white;
@@ -198,7 +198,7 @@
   }
 
   @media (max-width: 1025px) {
-    .btn-play i {
+    .btnPlay i {
       position: absolute;
       z-index: 3;
       color: white;
@@ -206,7 +206,7 @@
       top: 40%;
       left: 45%;
     }
-    .item-card-content i{
+    .itemCardContent i{
       position: absolute;
       z-index: 2;
       color: white !important;
@@ -229,7 +229,7 @@
     .SliderVideoList-data p {
       -webkit-line-clamp: 3;
     }
-    .btn-play i {
+    .btnPlay i {
       position: absolute;
       z-index: 2;
       color: white;
@@ -237,7 +237,7 @@
       top: 40%;
       left: 45%;
     }
-    .item-card-content i{
+    .itemCardContent i{
       position: absolute;
       z-index: 2;
       color: white !important;
@@ -256,10 +256,14 @@
   }
   }
   @media (max-width: 450px) {
+    .reactPlayer{
+      width: 100% !important;
+      height: 22vh !important;
+    }
     .description{
       padding-bottom: 2px !important;
     }
-    .btn-play i {
+    .btnPlay i {
       position: absolute;
       z-index: 2;
       color: white;
@@ -267,7 +271,7 @@
       top: 40%;
       left: 45%;
     }
-    .item-card-content i{
+    .itemCardContent i{
       position: absolute;
       z-index: 2;
       color: white !important;
@@ -275,14 +279,14 @@
       top: 20% !important;
       left: 40%;
     }
-    .first-roww{
+    .firstRoww{
       display: flex;
       flex-direction: column-reverse;
     }
   }
 
   @media (max-width: 321px) {
-    .btn-play i {
+    .btnPlay i {
       position: absolute;
       z-index: 2;
       color: white;
@@ -290,7 +294,7 @@
       top: 40%;
       left: 45%;
     }
-    .item-card-content i{
+    .itemCardContent i{
       position: absolute;
       z-index: 2;
       color: white !important;
