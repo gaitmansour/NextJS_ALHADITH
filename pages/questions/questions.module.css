@@ -3,29 +3,34 @@
  height: 100px;
  justify-content: center;
 }
-.Card-answer1{
+.cardAnswer{
     height: auto;
     border-top: solid 7px #129D59;
 }
 .Card-answer{
     height: auto;
 }
-
+.quesList{
+    width: 70%;
+}
+.sidBar{
+    width: 30%;
+}
 .card1{
     height: 30vh;
 }
 
-.Card-question{
+.CardQuestion{
      height: auto;
      border-top: solid 7px #FEB400;
-     border-radius: 7px;
- }
- .card .card-body .p {
+     border-radius: 5px;
+}
+.card .card-body .p {
     text-align: justify;
     text-justify: inter-word;
- }
+}
 
- .p{
+.p{
     font-family: beIN Normal ;
     font-size: 14px;
     font-style: normal;
@@ -62,9 +67,11 @@
 .icn{
     padding: 5%;
 }
+
 .card-text1{
     color: #656D7A;
 }
+
 .h3{
     margin-top: 6%;
     margin-bottom: -4%;

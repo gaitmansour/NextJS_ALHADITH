@@ -2,11 +2,23 @@
     color: #000;
     font-weight: 500;
 }
-
+.CardQuestion{
+    height: auto;
+    border-top: solid 7px #FEB400;
+    border-radius: 7px;
+}
 .summ {
     margin-bottom: 4%;
 }
-
+.questionList{
+    width: 90%;
+}
+.bg1{
+    width: 100% !important;
+}
+.sideBar1{
+    width: 75%;
+}
 #pagination {
     color: #157BFF;
     margin: 5px;
