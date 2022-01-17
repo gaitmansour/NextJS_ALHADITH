@@ -178,73 +178,96 @@ const SearchSection = (props) => {
         getDataCategory()
     }, [])
 
+  return (
+    <div className={`${styles.secSearch} container flex-fill secSearch`}>
+      <SectionTitle title='البحث' className='' />
+      <div
+        ref={resultsRef}
+        className={`${styles.searchElement} d-flex flex-row align-items-center justify-content-between mt-4`}
+      >
+        <SearchInput
+          styleSerachIcon={{ backgroundColor: '#656e7e' }}
+          styleIcon={{ color: '#656e7e', width: 20 }}
+          styleFilter={{ backgroundColor: '#656e7e', width: 50 }}
+          onClickSettings={() => setShowForm(!showForm)}
+          input={input}
+          onChange={(v) => handleInput(v)}
+          placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
+          className='bg-white mx-0'
+          clickSearch={() => handleClickSearch()}
+        />
 
-    return (
-        <div className={`${styles.secSearch} flex-fill secSearch`}>
-            <SectionTitle title="البحث" className=""/>
-            <div ref={resultsRef}
-                 className="search-element d-flex flex-row align-items-center justify-content-between mt-4">
-                <SearchInput
-                    styleSerachIcon={{backgroundColor: '#656e7e'}}
-                    styleIcon={{color: "#656e7e", width: 20}}
-                    styleFilter={{backgroundColor: "#656e7e", width: 50}}
-                    onClickSettings={() => setShowForm(!showForm)}
-                    input={input}
-                    onChange={(v) => handleInput(v)}
-                    placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
-                    className="bg-white mx-0"
-                    clickSearch={() => handleClickSearch()}
-                />
-
-                <div className="box-icon-setting d-flex align-items-center align-self-center btn m-0 p-0"
-                     onClick={() => handleClickSearch()}>
-                    <i className="fas fa-search p-3 text-light" style={{backgroundColor: '#157646', borderRadius: 8}}/>
-                </div>
+        <div
+          className='box-icon-setting d-flex align-items-center align-self-center btn mx-2 mb-2 p-0'
+          onClick={() => handleClickSearch()}
+        >
+          <i
+            className='fas fa-search p-3 text-light'
+            style={{ backgroundColor: '#157646', borderRadius: 8 }}
+          />
+        </div>
+      </div>
+      {showForm && (
+        <Cards
+          className={`${styles.formSearch} form-search p-2`}
+          style={{ backgroundColor: '#e9fbf1' }}
+        >
+          <div className='d-flex flex-wrap flex-column'>
+            <div className={`${styles.alignsec} d-flex alignIte`}>
+              <Input
+                className='col-md-4'
+                label='الكلمات المفتاح'
+                placeholder='ابحث بالكلمات المفتاح'
+              />
+              <CustomSelect
+                className='col-md-4'
+                options={dataTopic && dataTopic}
+                defaultInputValue={ChoiceTopic ? ChoiceTopic : ''}
+                label='باب'
+                placeholder='اكتب الباب'
+                onChange={(v) => setChoiceTopic(v)}
+              />
             </div>
-            {showForm && <Cards className="form-search p-2" style={{backgroundColor: '#e9fbf1'}}>
-                <div className="d-flex flex-wrap flex-column">
+            <div className={`${styles.alignsec} d-flex alignIte`}>
+              {/*<Input className="col-md-4" label="نص الحديث" placeholder="ابحث نص الحديث"/>
+               */}
+              <CustomSelect
+                className='col-md-4'
+                options={dataCategory && dataCategory}
+                defaultInputValue={ChoiceCategory ? ChoiceCategory : ''}
+                label='موضوع'
+                placeholder='اكتب الموضوع'
+                onChange={(v) => setChoiceCategory(v)}
+              />
 
-                    <div className="d-flex alignIte">
-                        <Input className="col-md-4" label="الكلمات المفتاح"
-                               placeholder="ابحث بالكلمات المفتاح"/>
-                        <CustomSelect className="col-md-4"
-                                      options={dataTopic && dataTopic}
-                                      defaultInputValue={ChoiceTopic ? ChoiceTopic : ""}
-                                      label="باب"
-                                      placeholder="اكتب الباب"
-                                      onChange={v => setChoiceTopic(v)}/>
-                    </div>
-                    <div className="d-flex alignIte">
-                        {/*<Input className="col-md-4" label="نص الحديث" placeholder="ابحث نص الحديث"/>
-                                */}
-                        <CustomSelect className="col-md-4"
-                                      options={dataCategory && dataCategory}
-                                      defaultInputValue={ChoiceCategory ? ChoiceCategory : ""}
-                                      label="موضوع"
-                                      placeholder="اكتب الموضوع"
-                                      onChange={v => setChoiceCategory(v)}/>
+              <Input
+                className='col-md-4'
+                label='مصدر الحكم'
+                placeholder='ابحث بمصدر الحكم'
+                value={EvaluationSource && EvaluationSource}
+                onChange={(v) => setEvaluationSource(v.target.value)}
+              />
+            </div>
+            <div className={`${styles.alignsec} d-flex alignIte`}>
+              <CustomSelect
+                className='col-md-4'
+                options={dataSource && dataSource}
+                defaultInputValue={ChoiceSource ? ChoiceSource : ''}
+                label='المصدر'
+                placeholder='اكتب اسم المصدر'
+                onChange={(v) => {
+                  setChoiceSource(v)
+                }}
+              />
 
-
-                        <Input className="col-md-4" label="مصدر الحكم" placeholder="ابحث بمصدر الحكم"
-                               value={EvaluationSource && EvaluationSource}
-                               onChange={(v) => setEvaluationSource(v.target.value)}/>
-                    </div>
-                    <div className="d-flex alignIte">
-
-                        <CustomSelect className="col-md-4" options={dataSource && dataSource}
-                                      defaultInputValue={ChoiceSource ? ChoiceSource : ""}
-                                      label="المصدر"
-                                      placeholder="اكتب اسم المصدر"
-                                      onChange={v => {
-                                          setChoiceSource(v);
-                                      }}/>
-
-                        <CustomSelect className="col-md-4"
-                                      options={dataDegree && dataDegree}
-                                      label="الحكم"
-                                      defaultInputValue={ChoiceDegree ? ChoiceDegree : ""}
-                                      placeholder="اكتب الحكم"
-                                      onChange={v => setChoiceDegree(v)}/>
+              <CustomSelect
+                className='col-md-4'
+                options={dataDegree && dataDegree}
+                label='الحكم'
+                defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
+                placeholder='اكتب الحكم'
+                onChange={(v) => setChoiceDegree(v)}
+              />
 
                         <CustomSelect className="col-md-4"
                                       options={dataNarrator && dataNarrator}
@@ -254,7 +277,7 @@ const SearchSection = (props) => {
                                       onChange={v => setChoiceNarrator(v)}/>
                     </div>
                 </div>
-            </Cards>}
+            </Cards>)}
             <CustomModal title={'تنبيه'}
                          body={'يرجى ملء كلمة البحث '}
                          show={show}

@@ -8,28 +8,44 @@
 .vv{
     width: 100%;
 }
+.articls{
+    padding-right: 3rem!important;
+    padding-left: 3rem!important;
+}
 .desc {
     width: 90%;
 }
-.desc ul li::before {
+/* .desc ul li::before {
     content: "\2022";
     font-weight: bold;
     display: inline-block;
     width: 1em;
-  }
-  .desc ol li {
-    list-style: number !important;
+  } */
+.desc ul {
+    list-style-type: disc;
+}
+.desc ul li{
+    list-style-image:url('../../assets/Images/icons/ahadiths/actions-arrow-left-icon.png');
     display: list-item;
-  }
+    text-align: -webkit-match-parent !important;
+    line-height: 1.6;
+}
+.desc ol li {
+list-style: number !important;
+display: list-item;
+}
+
 .desc p{
     font-family: 'Almarai', sans-serif !important;
-    font-size: 15px;
-    text-align: justify !important;
-    text-justify: inter-word !important;
+    font-size: 17px !important;
+    line-height: 1.6;
+    margin-bottom: 15px !important;
+    /* text-align: justify !important;
+    text-justify: inter-word !important; */
 }
 .desc span{
     font-family: 'Almarai', sans-serif !important;
-    font-size: 15px;
+    font-size: 18px;
 }
 .desc cite{
     float: left;
@@ -43,13 +59,36 @@
  }
 .desc h2{
     margin-top: 0%;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 600;
+    color: #129D59;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 .desc h3{
     margin-top: 0%;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.desc figure {
+    text-align: center;
+    /* padding: 5px; */
+    color: darkgray;
+}
+.desc figcaption p{
+    text-align: center;
+}
+.sectionImage{
+    border: 1px solid rgb(204, 201, 201);
+    text-align: center;
+    /* padding: 5px; */
+    color: darkgray;
+    width: 90%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
 }
 
 /*table{
@@ -75,6 +114,9 @@ table td p a{
         width: 100% !important;
         margin-left: 5% !important;
     }
+    .TemplateArticleBody .badg{
+        width: 100%;
+    }
 
 }
 @media (max-width: 360px)  {
@@ -89,6 +131,54 @@ table td p a{
 @media screen and (min-width: 240px) and (max-width: 540px)  {
     .slider{
         width: 100% !important;
+    }
+    .TemplateArticleBody .desc ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    .TemplateArticleBody .desc ::-webkit-scrollbar:horizontal {
+        height: 12px;
+    }
+    .TemplateArticleBody .desc ::-webkit-scrollbar-thumb {
+        background-color: rgba(82, 81, 81, 0.5);
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+    }
+    .TemplateArticleBody .desc ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+    .TemplateArticleBody .desc{
+        width:94vw !important;
+        max-width: 95vw !important;
+        
+    }
+    .TemplateArticleBody .desc{
+        padding-right: 0.5rem!important;
+        padding-left: 0.5rem!important;
+    }
+    .articls{
+        padding-right: 1rem !important;
+        padding-left: 2rem !important;
+    }
+    .TemplateArticleBody{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+    }
+    .sectionImage{
+        width: 100% !important;
+        margin: 0% !important;
+    }
+    .sectionImage Image{
+        width: 100% !important;
+    }
+
+    .articleTags{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .TemplateArticleBody .badgTag{
+        margin-bottom: 5% !important;
     }
 
 }

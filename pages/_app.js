@@ -1,24 +1,27 @@
-import React, {useEffect} from "react";
-import appWithI18n from "next-translate/appWithI18n";
-import i18nConfig from "../i18n";
-import Head from "next/head";
-import Script from "next/script";
-import "../public/css/bootstrap.min.css";
-import "../public/css/fonts.css";
-import "../public/css/all.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import "../styles/custom.css";
-import "../styles/Keyboard.scss"
-import "../styles/Tabs.css"
-import "../styles/WebTV.css"
-import "../styles/CarouselHome.css"
-import "../styles/SocialMedia.css"
-import "../styles/SearchResult.css"
-import "../styles/AllMedia.css"
-import "../styles/Modal.css"
-import "../styles/QandA.css"
+import React, { useEffect } from 'react'
+import appWithI18n from 'next-translate/appWithI18n'
+import i18nConfig from '../i18n'
+import Head from 'next/head'
+import Script from 'next/script'
+import '../public/css/bootstrap.min.css'
+import '../public/css/fonts.css'
+import '../public/css/all.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import '../styles/custom.css'
+import '../styles/Keyboard.scss'
+import '../styles/Tabs.css'
+import '../styles/WebTV.css'
+import '../styles/CarouselHome.css'
+import '../styles/SocialMedia.css'
+import '../styles/SearchResult.css'
+import '../styles/AllMedia.css'
+import '../styles/Modal.css'
+import '../styles/QandA.css'
+import '../styles/medias.css'
+import '../styles/styleFix.css'
 import "../styles/DownloadAPK.css"
+
 //import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
 //import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import {SSRProvider} from '@react-aria/ssr';
