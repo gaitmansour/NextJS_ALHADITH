@@ -17,7 +17,19 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  /*overflow-x: hidden;*/
 }
+/*::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+/*}*/
+/* html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+} */
 
 #root {
   display: flex;
@@ -99,7 +111,8 @@ a:active, a:focus, .btn-check:focus+.btn, .btn:focus {
 ul.slick-dots {
   display: flex !important;
   justify-content: flex-start;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
   padding: 0;
 }
 
@@ -111,7 +124,7 @@ ul.slick-dots {
 
 .slick-dots li.slick-active button:before {
   opacity: 1;
-  color: #129D59;
+  color: #129D59 !important;
   font-size: 16px;
 }
 

@@ -1,0 +1,7 @@
+.slick-list .slick-track .slick-slide > div {
+    margin: 0 15px !important;
+  }
+  .slick-list {
+    margin: 0 -15px !important;
+  }
+

@@ -55,9 +55,9 @@ const SearchInput = (props) => {
     const className = props?.className ? props.className : ""
     let Myinput = useRef(null);
     const CustomMapping = [
-        ["ا","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض"],
-        ["ط","ظ","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"],
-        ["؟","!","-","،",".","ء", "ؤ", "ى", "ة","أ","إ","ٱ","آ","ئ"],
+        ["ا", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض"],
+        ["ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"],
+        ["؟", "!", "-", "،", ".", "ء", "ؤ", "ى", "ة", "أ", "إ", "ٱ", "آ", "ئ"],
 
     ];
 
@@ -109,10 +109,11 @@ const SearchInput = (props) => {
                         containerClassName={`conatiner `}
                         enabled
                     />
-
-                    <i className="far fa-keyboard mx-3 fa-1x"
-                       style={props.styleIcon}
-                       onClick={() => Myinput.current.focus()}/>
+                    <div style={props.styleDiv}>
+                        <i className="far fa-keyboard mx-3 fa-1x"
+                           style={props.styleIcon}
+                           onClick={() => Myinput.current.focus()}/>
+                    </div>
                 </>}
             {props.onClickSettings ?
                 <div className={styles.iconFilter} onClick={props.onClickSettings} style={props.styleFilter}

@@ -1,0 +1,25 @@
+.SimpleList .item { 
+    border-bottom: 1px solid #D8D8D8;
+  }
+  
+  .SimpleList .item { 
+    text-decoration: none;
+    color:#000000
+  }
+  
+  .SimpleList .item:hover,
+  .SimpleList .item:hover p { 
+    /* background-color: rgba(251, 191, 49, 0.11); */
+    color:#FBBF31
+  }
+  
+  .SimpleList i {
+    margin-left: 1em;
+    transform: rotate( 180deg );
+  }
+  
+  *[dir='rtl'] .SimpleList i{
+    margin-right: 1em;
+    margin-left: 0;
+    transform: rotate(0);
+  }

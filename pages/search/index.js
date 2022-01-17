@@ -284,30 +284,37 @@ const SearchPage = (props) => {
     }, [pageNum, StartPage]);
 
 
-    return (
-        <TemplateArticle {...props} ListBreadcrumb={data} titlePage="البحث">
-            <Body className={`${styles.SearchPage} TemplateArticleBody SearchPage d-flex p-4`}>
-                <div className="flex-fill" style={{marginLeft: 200}}>
-                    <div ref={resultsRef}
-                         className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}>
-                        <SearchInput styleIcon={{color: "#656e7e", width: 20}}
-                                     styleFilter={{backgroundColor: "#656e7e", width: 50}}
-                                     styleSerachIcon={{backgroundColor: '#656e7e'}}
-                                     onClickSettings={() => setShowForm(!showForm)}
-                                     input={input}
-                                     onChange={(v) => handleInput(v)}
-                                     placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
-                                     className="bg-white mx-0 shadow-card"
-                                     clickSearch={() => handleClickSearch()}
-                        />
+  return (
+    <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
+      <Body
+        className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
+      >
+        <div className={`${styles.SearchBox} `}>
+          <div
+            ref={resultsRef}
+            className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}
+          >
+            <SearchInput
+              styleIcon={{ color: '#656e7e', width: 20 }}
+              styleFilter={{ backgroundColor: '#656e7e', width: 50 }}
+              styleDiv={{position:'absolute',right:"55%"}}
+              styleSerachIcon={{ backgroundColor: '#656e7e' }}
+              onClickSettings={() => setShowForm(!showForm)}
+              input={input}
+              onChange={(v) => handleInput(v)}
+              placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
+              className='bg-white mx-0 shadow-card'
+              clickSearch={() => handleClickSearch()}
+            />
 
                         <div
-                            className={`${styles.boxIconSetting}box-icon-setting d-flex align-items-center align-self-center btn m-0 p-0`}
+                            className={`${styles.boxIconSetting}box-icon-setting d-flex align-items-center align-self-center btn m-2 p-0`}
                             onClick={() => handleClickSearch()} style={{backgroundColor: '#157646'}}>
                             <i className="fas fa-search p-3" style={{color: "#fff"}}/>
                         </div>
                     </div>
-                    {showForm && <Cards className={`${styles.formSearch} form-search p-2`}>
+                    {showForm &&
+                        <Cards className={`${styles.formSearch} form-search p-2`}>
                         <div className="d-flex flex-wrap flex-column">
 
                             <div className={`d-flex alignIte${styles.alignIte}`}>

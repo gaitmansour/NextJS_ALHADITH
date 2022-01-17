@@ -9,7 +9,7 @@
     border-top-right-radius: 4rem !important;
     width: 18vw !important;
     background-color: #F1F5F7 !important;
-    padding: 1%;
+    padding: 3%;
     text-align: center !important;
 }
 .navTabs .active{
@@ -65,10 +65,16 @@
     .Alhadiths a.item-link {
         margin: 10px !important;
     }
-    .navTabs .nav-link{
+    /* .navTabs .nav-link{
         width: 32% !important;
-    }
+    } */
+
     .navTabs {
         padding-right: 5%;
+        display: flex;
+        flex-wrap: nowrap;
     }
+    .navTabs .nav-link{
+        width: 27vw !important;
+      }
 }

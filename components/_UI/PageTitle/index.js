@@ -5,10 +5,19 @@ const PageTitle = (props) => {
     return (
         <div className={`${styles.PageTitle} PageTitle p-4 ${className}`}
              style={{display: "flex", alignItems: 'center', justifyContent: 'space-between'}}>
-            <div><h1 className={`${styles.title}title m-0`} style={{
-                color: '#129D59',
-                fontWeight: 700
-            }}>{props?.title}</h1></div>
+            <div>
+                <div style={{
+                    width: 8,
+                    height: 54,
+                    right: 10,
+                    borderRadius: 6,
+                    position: 'absolute',
+                    backgroundColor: '#FBBF31'
+                }}/>
+                <h1 className={`${styles.title}title m-0`} style={{
+                    color: '#129D59',
+                    fontWeight: 700
+                }}>{props?.title}</h1></div>
             {props.created &&
                 <div className={styles.dateCreat}
                      style={{alignItems: 'center', marginTop: 25}}
