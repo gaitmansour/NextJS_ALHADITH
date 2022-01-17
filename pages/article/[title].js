@@ -181,7 +181,7 @@ export default function ArticlePage(props) {
       <Body
         className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
       >
-        <div className='flex-fill'>
+        <div className={`${styles.articleContent} flex-fill`}>
           <PageSummary
             className={`${styles.summ} summ my-3`}
             summary={dataAPI?.data[0]?.attributes?.body?.summary}

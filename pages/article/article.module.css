@@ -15,6 +15,9 @@
 .desc {
     width: 90%;
 }
+.articleContent{
+    width: 70% ;
+}
 /* .desc ul li::before {
     content: "\2022";
     font-weight: bold;
