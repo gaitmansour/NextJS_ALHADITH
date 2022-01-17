@@ -22,4 +22,6 @@ export async function getStaticProps(ctx) {
     })
 
     return {props:JSON.parse(JSON.stringify(props))}
+
+
 }
