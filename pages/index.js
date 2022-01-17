@@ -16,10 +16,11 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(ctx) {
-    return {
+    const loadNames={
         props: await loadNamespaces({
             ...ctx,
             pathname: '/',
         }),
     }
+    return loadNames
 }
