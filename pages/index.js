@@ -10,17 +10,16 @@ export default function Home(props) {
 
     return (
         <>
-           <HomeScreen/>
+            <HomeScreen/>
         </>
     )
 }
 
 export async function getStaticProps(ctx) {
-    const loadNames={
-        props: await loadNamespaces({
-            ...ctx,
-            pathname: '/',
-        }),
-    }
-    return loadNames
+    const props = await loadNamespaces({
+        ...ctx,
+        pathname: '/',
+    })
+
+    return {props:JSON.parse(JSON.stringify(props))}
 }
