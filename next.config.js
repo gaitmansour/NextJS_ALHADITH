@@ -24,3 +24,6 @@ module.exports = {
         ignoreDuringBuilds: true,
     },
 }
+module.exports = {
+    assetPrefix: './'
+}
