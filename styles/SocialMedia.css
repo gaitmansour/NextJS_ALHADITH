@@ -1,3 +1,15 @@
+.PageTitle .title::after {
+    content: "";
+    width: 8px;
+    height: 54px;
+    right: 0;
+    top: -6px;
+    border-radius: 6px;
+    position: absolute;
+    background-color: #FBBF31;
+}
+
+
 .SMLinks i {
     color: #FFFFFF !important;
     margin: .8em;
