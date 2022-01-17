@@ -1,6 +1,7 @@
 import React from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import HomeScreen from "./home";
+import loadNamespaces from "next-translate/loadNamespaces";
 
 export default function Home(props) {
     const {t} = useTranslation()
@@ -13,7 +14,7 @@ export default function Home(props) {
         </>
     )
 }
-/*
+
 export async function getStaticProps(ctx) {
     return {
         props: await loadNamespaces({
@@ -21,4 +22,4 @@ export async function getStaticProps(ctx) {
             pathname: '/',
         }),
     }
-}*/
+}

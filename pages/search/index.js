@@ -23,13 +23,11 @@ const SearchPage = (props) => {
     let router = ''
     if (typeof window !== "undefined") {
         var params = JSON.parse(localStorage.getItem('searchData'))
-        console.log('params2------------')
-        console.log(params.query)
     }
 
-    let varRouter = useRouter().query
+    let varRouter = useRouter()?.query
 
-    router = params ? params.query : varRouter;
+    router = params ? params?.query : varRouter;
     console.log("router-----------------------")
     console.log(router)
     const state = router;
