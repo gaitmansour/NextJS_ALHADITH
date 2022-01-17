@@ -1,4 +1,6 @@
-export const data =  [
+import React from "react";
+
+export  const data =  [
     {
         eventKey:"الصحيحة",
         title:"الأحاديث الصحيحة",
