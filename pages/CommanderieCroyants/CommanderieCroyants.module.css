@@ -13,7 +13,7 @@
   font-weight: bold;
 }
 
- .description {
+.CardCommanderieCroyants .description {
   font-size: 13px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -23,9 +23,11 @@
   margin: 1.5em 0 2em 0;
   padding: 0 !important;
   max-height: 115px !important;
+  height: 115px !important;
 }
- .description p{  
-  text-align: justify !important;
+ .description p{ 
+  line-height: 1.6; 
+  /* text-align: justify !important; */
   /* text-justify: inter-word !important; */
 }
 
