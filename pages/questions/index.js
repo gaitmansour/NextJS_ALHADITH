@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getQuestionbyID, AllForums } from '../../endpoints'
+import { getQuestionbyID, AllForums, searchQuestion } from '../../endpoints'
 import FetchAPI from '../../API'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -8,43 +8,36 @@ import Loading from '../../components/_UI/Loading'
 import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
 import styles from './questions.module.css'
+import FetchPostAPI from '../QandA/API/questions'
 
 const Questions = () => {
-  // const {state} = useLocation();
-  console.log('useRouter()?.query------------------')
-  console.log(useRouter()?.query)
   const { state } = useRouter()?.query
-  const nID = useRouter()?.query?.nID
   const itemQuestion = useRouter()?.query?.itemQuestion
+  const itemReponse = useRouter()?.query?.itemReponse
   const itemTitle = useRouter()?.query?.itemTitle
-  const categoryId = useRouter()?.query?.itemId
-  const [DataQuestion, setDataQuestion] = useState([])
-  const [DataQuestions1, setDataQuestions1] = useState([])
-  const url = getQuestionbyID(nID)
-  const url1 = AllForums()
+  const [dataQuestion, setDataQuestion] = useState([])
+  const urlSearchQuestion = searchQuestion()
 
-  const getDataQuestionID = async () => {
-    return FetchAPI(url).then((data) => {
-      if (data.success) {
-        setDataQuestion(data?.data)
-        return data?.data
-      }
-    })
-  }
-
-  const getDataQuestions1 = async () => {
-    return FetchAPI(url1).then((data1) => {
-      if (data1.success) {
-        setDataQuestions1(data1?.data)
-        return data1?.data
+  const handleSearchQuestion = async () => {
+    const data = {
+      query: itemTitle,
+      size: 10,
+      start: 0,
+    }
+    FetchPostAPI(urlSearchQuestion, data).then((data) => {
+      console.log('questions', data)
+      if (itemTitle !== '' && data.success) {
+        return setDataQuestion(data?.data)
+      } else {
+        setDataQuestion([])
       }
     })
   }
 
   useEffect(() => {
-    getDataQuestionID()
-    getDataQuestions1()
-  }, [])
+    handleSearchQuestion()
+  }, [itemQuestion])
+  // console.log('mawad dat sila', dataQuestion?.hits?.hits)
 
   const data = [
     {
@@ -57,18 +50,18 @@ const Questions = () => {
     },
   ]
 
-  if (_.isEmpty(DataQuestions1.data)) {
-    return (
-      <div className='d-flex align-items-center justify-content-center py-5'>
-        <Loading />
-      </div>
-    )
-  }
+  // if (_.isEmpty(dataQuestion.data)) {
+  //   return (
+  //     <div className='d-flex align-items-center justify-content-center py-5'>
+  //       <Loading />
+  //     </div>
+  //   )
+  // }
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='سؤال و جواب'>
       <Body className={`${styles.TemplateArticleBody} Media d-flex p-4`}>
-        <div className={`${styles.quesList} flex-fill`}>
-          {DataQuestion && DataQuestion.length > 0 ? (
+        <div className={`${styles.quesList} px-4 flex-fill`}>
+          {itemReponse ? (
             <div>
               <h3>السؤال</h3>
               <div className={`${styles.card} card w-100 my-5`}>
@@ -80,23 +73,14 @@ const Questions = () => {
                 </div>
               </div>
               <h3>الإجابة</h3>
-              {DataQuestion &&
-                DataQuestion.map((item, index) => {
-                  // console.log("-------------||||||",item)
-                  return (
-                    <div
-                      key={index}
-                      className={` ${styles.cardAnswer} card Card-answer1 w-100 my-5`}
-                      style={styles.CardAnswer1}
-                    >
-                      <div className='card-body '>
-                        <p className='p card-text text-justify '>
-                          {item?.comment_body.replace(/<[^>]+>/g, '')}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
+              <div
+                className={` ${styles.cardAnswer} card Card-answer1 w-100 my-5`}
+                style={styles.CardAnswer1}
+              >
+                <div className='card-body '>
+                  <p className='p card-text text-justify '>{itemReponse}</p>
+                </div>
+              </div>
             </div>
           ) : (
             <div>
@@ -120,43 +104,37 @@ const Questions = () => {
           )}
         </div>
         <div className={`${styles.sidBar} side-bar px-4`}>
-          <p className='p tiitle'>مواد ذات صلة</p>
-          <div className='SimpleList'>
-            {DataQuestions1?.data
-              .filter(
-                (item) =>
-                  item.relationships.taxonomy_forums.data.id === categoryId
-              )
-              .map((item, i) => {
-                return (
-                  <Link
-                    key={i}
-                    exact
-                    className='item d-flex align-items-center py-3 px-1'
-                    passHref={true}
-                    href={{
-                      pathname: '/questions',
-                      query: {
-                        itemTitle: item?.attributes?.title,
-                        itemQuestion: item?.attributes?.body?.processed.replace(
-                          /<[^>]+>/g,
-                          ''
-                        ),
-                        nID: item?.attributes?.drupal_internal__nid,
-                        itemId: item.relationships.taxonomy_forums.data.id,
-                      },
-                    }}
-                    as={'/questions'}
-                    onClick={() => {
-                      if (typeof window != 'undefined') {
-                        window.location.reload()
-                      }
-                    }}
+          <p className={`${styles.p} ${styles.tiitle}`}>مواد ذات صلة</p>
+          <div className={styles.SimpleList}>
+            {dataQuestion?.hits?.hits?.map((item, i) => {
+              return (
+                <Link
+                  key={i}
+                  exact
+                  passHref={true}
+                  href={{
+                    pathname: '/questions',
+                    query: {
+                      itemTitle: item?._source?.sujetQuestion,
+                      itemQuestion: item?._source?.descriptionQuestion,
+                      itemReponse: item?._source?.descriptionReponse,
+                    },
+                  }}
+                  as={'/questions'}
+                  onClick={() => {
+                    if (typeof window != 'undefined') {
+                      window.location.reload()
+                    }
+                  }}
+                >
+                  <a
+                    className={`${styles.item} d-flex align-items-center py-3 px-1 text-decoration-none`}
                   >
-                    {item.attributes.title}
-                  </Link>
-                )
-              })}
+                    {item?._source?.sujetQuestion}
+                  </a>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </Body>
