@@ -1,8 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
-import loadNamespaces from 'next-translate/loadNamespaces'
 import HomeScreen from "./home";
+import loadNamespaces from "next-translate/loadNamespaces";
 
 export default function Home(props) {
     const {t} = useTranslation()
@@ -11,19 +10,16 @@ export default function Home(props) {
 
     return (
         <>
-           <HomeScreen/>
-            {/*<Link href="./more-examples">
-                <a>{linkName}</a>
-            </Link>*/}
+            <HomeScreen/>
         </>
     )
 }
 
 export async function getStaticProps(ctx) {
-    return {
-        props: await loadNamespaces({
-            ...ctx,
-            pathname: '/',
-        }),
-    }
+    const props = await loadNamespaces({
+        ...ctx,
+        pathname: '/',
+    })
+
+    return {props:JSON.parse(JSON.stringify(props))}
 }

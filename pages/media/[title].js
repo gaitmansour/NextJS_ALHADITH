@@ -19,7 +19,7 @@ import PageTitleSecond from "../../components/_UI/PageTitleSecond";
 import SimpleListMedia from "../../components/_UI/SimpleListMedia";
 
 
-const Media = (props) => {
+function Media(props){
     //const {state} = useLocation();
     const title = useRouter().query.title
     const [start, setStart] =  useState(false)
@@ -135,26 +135,6 @@ const Media = (props) => {
     }
 
     console.log('show start------',start)
-    const listenerIframe1 = (video) => {
-        const exampleModal = document.getElementById("modalVideo1")
-        var modalBodyInput = exampleModal.querySelector('.modal-body iframe')
-        modalBodyInput.src = video
-    }
-    const listenerIframe = (video) => {
-        const exampleModal = document.getElementById("SliderVideoListModal")
-        var modalBodyInput = exampleModal.querySelector('.modal-body iframe')
-        modalBodyInput.src = video
-    }
-    $(document).ready(function(){
-        $('.modal').each(function(){
-            var src = $(this).find('iframe').attr('src');
-            $(this).on('click', function(){
-                $(this).find('iframe').attr('src', '');
-                $(this).find('iframe').attr('src', src);
-
-            });
-        });
-    });
     if (_.isEmpty(dataAPI)) {
         return (
           <div className="d-flex align-items-center justify-content-center py-5">
@@ -257,5 +237,4 @@ const Media = (props) => {
         </TemplateArticle>
     );
 }
-
 export default Media;

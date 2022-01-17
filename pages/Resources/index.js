@@ -168,7 +168,7 @@ const Resources = () => {
                                            style={{
                                             textAlign: 'justify !important',
                                             textJustify: 'inter-word !important'
-                                        }}>{t('btnMore')}</p>
+                                        }}>{"لمعرفة المزيد"}</p>
                                     </a>
                                 </Link>
                             </Cards>
@@ -183,7 +183,7 @@ const Resources = () => {
 
     return (
         <div className={`${styles.Resources} py-5 overflow-hidden`}>
-            <SectionTitle title={t('title')}/>
+            <SectionTitle title={'موارد'}/>
             {renderContent()}
         </div>
     )

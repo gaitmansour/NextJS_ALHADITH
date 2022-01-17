@@ -1,8 +1,9 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import styles from './SearchInput.module.css';
 import Link from "next/link";
-import KeyboardedInput from "react-touch-screen-keyboard";
+//import KeyboardedInput from "react-touch-screen-keyboard";
 import {useRouter} from "next/router";
+import KeyboardedInput from "react-touch-screen-keyboard/lib/KeyboardedInput";
 
 const SearchInput = (props) => {
     // console.log(props.history)
@@ -108,6 +109,7 @@ const SearchInput = (props) => {
                         containerClassName={`conatiner `}
                         enabled
                     />
+
                     <i className="far fa-keyboard mx-3 fa-1x"
                        style={props.styleIcon}
                        onClick={() => Myinput.current.focus()}/>

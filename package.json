@@ -36,7 +36,8 @@
     "react-select": "^5.2.1",
     "react-share": "^4.4.0",
     "react-slick": "^0.28.1",
-    "react-touch-screen-keyboard": "^1.0.0",
+    "react-touch-screen-keyboard": "^0.3.15",
+    "custom-event-polyfill":"^1.0.7",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

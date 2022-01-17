@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import styles from './Videos.module.css';
 import {Icons} from '../../assets';
-import VideosList from './VideosList';
+import VideosList from '../../data/VideosList';
 import useTranslation from 'next-translate/useTranslation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -97,7 +97,7 @@ const Videos = () => {
     return (
         <div className={`${styles.container} container Videos px-lg-5 py-5`}>
             <Link passHref={true} href={"../AllMedia"} as="/allMedia" style={{textDecoration: "none"}}>
-                <a style={{textDecoration: "none"}}> <SectionTitle title={t('videos')} className=""/>
+                <a style={{textDecoration: "none"}}> <SectionTitle title={'التلفزة الرقمية'} className=""/>
                 </a>
             </Link>
             <div className={`row h-100`}>

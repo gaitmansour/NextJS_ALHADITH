@@ -97,7 +97,7 @@ const CommanderieCroyants = () => {
                                             <i className="fas fa-long-arrow-alt-left text-white"
                                                style={{marginRight: '1em', transform: 'rotate(0deg )'}}/>
                                             <p className="m-0"
-                                               style={{textAlign: 'justify !important'}}>{t('btnMore')}</p>
+                                               style={{textAlign: 'justify !important'}}>{"لمعرفة المزيد"}</p>
                                         </a>
                                     </Link>
                                 </Cards>
@@ -113,7 +113,7 @@ const CommanderieCroyants = () => {
 
     return (
         <div className={`container ${styles.CommanderieCroyants} `}>
-            <SectionTitle title={t('title')}/>
+            <SectionTitle title={'عناية أمير المؤمنين'}/>
             {renderContent()}
         </div>
     );

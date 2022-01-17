@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Tabs, Tab} from 'react-bootstrap';
 import HadithTab from './HadithTab';
 import styles from './Alahadiths.module.css'
-import {data} from "./tabData"
+import {data} from "../../data/tabData"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Alahadiths = (props) => {

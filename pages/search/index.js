@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 import ReactPaginate from 'react-paginate'
 import {getCategory, getDegree, getNarrator, getSource, getTopic, Search} from "../../endpoints";
 import FetchAPI from "../../API";
-import FetchPostAPI from "./API";
+import {FetchPostAPI} from "../../data/API_Search/API";
 import ItemList from "../../components/ItemList";
 import TemplateArticle from "../../components/TemplateArticle";
 import Body from "../../components/Body";
@@ -25,7 +25,7 @@ const SearchPage = (props) => {
         var params = JSON.parse(localStorage.getItem('searchData'))
     }
 
-    let varRouter = useRouter().query
+    let varRouter = useRouter()?.query
 
     router = params ? params?.query : varRouter;
     console.log("router-----------------------")

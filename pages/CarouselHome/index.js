@@ -17,7 +17,7 @@ const CarouselHome = (props) => {
     const {t, i18n} = useTranslation("home");
     const isRTL = i18n?.language === "ar"
     const getLanguage = isRTL ? "ar" : "fr"
-    const more = t("readMore")
+    const more = "اقرأ المزيد"
     const url = getCarousel()
     const urlSlider = getSlider()
 
