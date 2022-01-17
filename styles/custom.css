@@ -17,12 +17,12 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
+  background: transparent;
+} */
 /* html {
   overflow:   scroll;
 }
