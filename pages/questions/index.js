@@ -59,7 +59,9 @@ const Questions = () => {
   // }
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='سؤال و جواب'>
-      <Body className={`${styles.TemplateArticleBody} Media d-flex p-4`}>
+      <Body
+        className={`${styles.TemplateArticleBody} ${styles.QuAnswer} Media d-flex p-4`}
+      >
         <div className={`${styles.quesList} px-4 flex-fill`}>
           {itemReponse ? (
             <div>

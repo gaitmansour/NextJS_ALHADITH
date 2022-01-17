@@ -149,6 +149,22 @@
     margin-left: 0;
     transform: rotate(0);
   }
+@media screen and (min-width: 240px) and (max-width: 540px) {
+    .QuAnswer{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .quesList{
+        width: 100%;
+        padding: 0px !important;
+    }
+    .sidBar{
+        width: 100%;
+    }
+    /* .card{
+        width: 95%;
+    } */
+}
 @media (max-width: 480px){
     .icn{
         width: 40px;
