@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   locales: ['ar','fr'],
   defaultLocale: 'ar',
@@ -12,6 +10,8 @@ module.exports = {
     '/': ['home','topBarLinks','footer','CommanderieCroyants','ressource','PrayTimes','OurPartners','Videos'],
     '/search': ['topBarLinks','footer','CommanderieCroyants','ressource','PrayTimes','OurPartners','Videos'],
     '/dashboard': ['home','footer','CommanderieCroyants','ressource','topBarLinks','PrayTimes','Videos'],
+    'rgx:^/more-examples': ['more-examples','footer','topBarLinks','CommanderieCroyants'],
   },
-  localePath: path.resolve('./locales'),
+  loadLocaleFrom: (locale, namespace) =>
+    import(`./locales/${locale}/${namespace}`).then((m) => m.default),
 }
