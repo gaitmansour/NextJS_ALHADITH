@@ -97,7 +97,7 @@ const Videos = () => {
     return (
         <div className={`${styles.container} container Videos px-lg-5 py-5`}>
             <Link passHref={true} href={"../AllMedia"} as="/allMedia" style={{textDecoration: "none"}}>
-                <a style={{textDecoration: "none"}}> <SectionTitle title={t('videos')} className=""/>
+                <a style={{textDecoration: "none"}}> <SectionTitle title={'التلفزة الرقمية'} className=""/>
                 </a>
             </Link>
             <div className={`row h-100`}>
