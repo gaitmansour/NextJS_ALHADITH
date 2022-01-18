@@ -11,7 +11,77 @@ import Loading from "../../../components/_UI/Loading";
 import SMLinks from "../../../components/_UI/SMLinks";
 import Image from 'next/image'
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 const CarouselHome = (props) => {
+    let settings = {
+        dotsClass: "vertical-dots",
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 771,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 495,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    // centerPadding: '60px',
+                    // className: 'center',
+                    centerMode: true,
+                },
+            },
+            {
+                breakpoint: 426,
+                settings: {
+                    slidesToShow: 1,
+                    // centerPadding: '60px',
+                    // className: 'center',
+                    centerMode: true,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 380,
+                settings: {
+                    centerPadding: '5px',
+                    className: 'center',
+                    centerMode: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    }
 
     const [dataAPI, setDataAPI] = useState([])
     const {t, i18n} = useTranslation("home");
@@ -44,64 +114,43 @@ const CarouselHome = (props) => {
         return `${base_url}/${src}`;
     };
 
-  return (
-    <div
-      className={`${styles.CarouselHome} ${styles.carouselIndicators} CarouselHome d-flex`}
-    >
-      <div
-        className={`${styles.carouselControlBox} carousel-control-box ${styles.wpx100} wpx-100 d-flex flex-column justify-content-end py-5`}
-      >
-        <ol
-          className='carousel-indicators'
-          style={{ marginBottom: 200, marginRight: 45 }}
+    return (
+        <div
+            className={`${styles.CarouselHome} ${styles.carouselIndicators} CarouselHome d-flex`}
         >
-          <li
-            data-target='#carouselExampleIndicators'
-            data-slide-to='0'
-            className='active'
-          />
-          <li data-target='#carouselExampleIndicators' data-slide-to='1' />
-          <li data-target='#carouselExampleIndicators' data-slide-to='2' />
-        </ol>
-        <SMLinks className='smLinks' />
-      </div>
-      <div className={`${styles.CarouselHome} carouselHome position-relative`}>
-        <Carousel controls={false} indicators={true}>
-          {dataAPI?.map((item, index) => {
-            const toShow = item?.body?.substring(0, 251) + '..'
-            if (item.field_image.includes('src=')) {
-              var str = item.field_image
-                .substr(item.field_image.lastIndexOf('src='))
-                .split(' ')[0]
-                .slice(5)
-              var element2 = str.slice(0, -1)
-            }
-            let element = item.field_image
-              .replace(str, base_url + str)
-              .replace(/height=\".*"/gm, '')
-            let image_filed = element.replace(
-              /width=\".*"/gm,
-              `className={${styles.imgCarousel} imgCarousel} style={{width:'100%'}} alt="First slide"`
-            )
-            console.log('image*---------------------', element2)
+            <div
+                className={`${styles.carouselControlBox} position-relative carousel-control-box ${styles.wpx100} wpx-100 d-flex flex-column justify-content-end py-5`}
+            >
+                <SMLinks className='smLinks'/>
+            </div>
+                <Slider {...settings} className={`w-100 slide`}>
+                    {dataAPI?.map((item, index) => {
+                        const toShow = item?.body?.substring(0, 251) + '..'
+                        if (item.field_image.includes('src=')) {
+                            var str = item.field_image
+                                .substr(item.field_image.lastIndexOf('src='))
+                                .split(' ')[0]
+                                .slice(5)
+                            var element2 = str.slice(0, -1)
+                        }
 
-            return (
-              <Carousel.Item
-                key={index.toString()}
-                className={'carouselCustom'}
-              >
-                <Image
-                  src={element2}
-                  className={styles.imgCarousel}
-                  loader={myLoader}
-                  alt={''}
-                  height={740}
-                  width={1400}
-                />
+                        return (
+                            <Carousel.Item key={index.toString()} className={"w-100"}>
+                                <Image
+                                    src={element2}
+                                    loader={myLoader}
+                                    alt={''}
+                                    height={1850}
+                                    width={5000}
+                                />
 
 
-                                <Carousel.Caption className={`${styles.carouselCaption} carousel-caption d-md-block`}
-                                                  style={{backgroundColor: 'white', opacity: 0.8}}>
+                                <div className={`${styles.carouselCaption} carousel-caption d-md-block`}
+                                     style={{
+                                         backgroundColor: 'white',
+                                         opacity: 0.8,
+                                         marginLeft: 150
+                                     }}>
                                     <p style={{fontSize: 12}}>{toShow}</p>
                                     <Link
                                         role="button"
@@ -116,18 +165,20 @@ const CarouselHome = (props) => {
                                             <h6 className="m-0 px-4">{more}</h6>
                                         </a>
                                     </Link>
-                                </Carousel.Caption>
+                                </div>
                             </Carousel.Item>
                         )
                     })}
 
-                </Carousel>
+                </Slider>
+
                 <div className={`${styles.bg_dashed}bg_dashed h-100 position-absolute w-100`}
                      style={{backgroundImage: `url(${Backgrounds.bg_dashed})`}}/>
-                {/* <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */}
-            </div>
+                {/* <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */
+                }
         </div>
-    );
+    )
+        ;
 }
 
 export default CarouselHome
