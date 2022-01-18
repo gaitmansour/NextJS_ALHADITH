@@ -1,5 +1,4 @@
 .CommanderieCroyants {
-  margin-top: -70px;
   z-index: 13;
   position: relative;
 }
@@ -24,7 +23,7 @@
   padding: 0 !important;
   max-height: 115px !important;
 }
- .description p{  
+ .description p{
   text-align: justify !important;
   /* text-justify: inter-word !important; */
 }
@@ -63,5 +62,5 @@
 
 
 /* @media (max-width: 480px) {
-  
+
 } */

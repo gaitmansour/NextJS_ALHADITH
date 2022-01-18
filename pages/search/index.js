@@ -297,12 +297,12 @@ const SearchPage = (props) => {
             <SearchInput
               styleIcon={{ color: '#656e7e', width: 20 }}
               styleFilter={{ backgroundColor: '#656e7e', width: 50 }}
-              styleDiv={{position:'absolute',right:"55%"}}
+             // styleDiv={{position:'absolute',right:"55%"}}
               styleSerachIcon={{ backgroundColor: '#656e7e' }}
               onClickSettings={() => setShowForm(!showForm)}
               input={input}
               onChange={(v) => handleInput(v)}
-              placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
+              placeholder='البحث في منصة الحديث النبوي الشريف'
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
@@ -317,17 +317,6 @@ const SearchPage = (props) => {
                         <Cards className={`${styles.formSearch} form-search p-2`}>
                         <div className="d-flex flex-wrap flex-column">
 
-                            <div className={`d-flex alignIte${styles.alignIte}`}>
-                                <Input className="col-md-4" label="الكلمات المفتاح"
-                                       placeholder="ابحث بالكلمات المفتاح"/>
-                                <CustomSelect className="col-md-4"
-                                              options={dataTopic && dataTopic}
-                                              defaultInputValue={door ? door : ChoiceTopic ? ChoiceTopic : ""}
-                                              label="باب"
-                                              placeholder="اكتب الباب"
-                                              onChange={v => setChoiceTopic(v)}/>
-
-                            </div>
                             <div className={`d-flex alignIte${styles.alignIte}`}>
                                 <CustomSelect className="col-md-4"
                                               options={dataCategory && dataCategory}

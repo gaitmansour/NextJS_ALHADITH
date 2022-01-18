@@ -129,7 +129,7 @@ const PrayTimes = () => {
                     <h3 className={`${styles.title} title text-success m-0`}>{'مواقيت الصلاة'}</h3>
                     {date && <p className={`${styles.date} date m-0`}>{date}</p>}
                 </div>
-                <Image alt={""} src={Icons.mosque_icon} width={150} height={200} className="img img-responsive"/>
+                <Image alt={""} src={Icons.mosque_icon} width={100} height={100} className="img img-responsive"/>
             </div>
             {dataCities?.length > 0 &&
             <CustomSelect options={dataCities} placeholder="الرباط" onChange={city => setCurrentCity(city.value)}/>}

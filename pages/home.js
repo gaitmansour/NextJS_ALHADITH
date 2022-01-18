@@ -57,8 +57,8 @@ const HomeScreen = (props) => {
             <NavBar/>
             <Body>
                 <CarouselHome/>
-                <CommanderieCroyants/>
                 <SearchSection/>
+                <CommanderieCroyants/>
                 <Resources/>
                 <Alahadiths/>
                 <Videos />

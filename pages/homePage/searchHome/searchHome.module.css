@@ -1,8 +1,15 @@
+.SearchSection{
+    margin-top: -70px;
+    z-index: 13;
+    position: relative;
+}
+
+
 .box-icon-setting{
     background-color: #157646 !important;
     border-radius: 8px !important;
     margin-left: 1em !important;
-    
+
 }
 /* .secSearch {
     padding: 3rem;

@@ -1,5 +1,6 @@
 .Resources .content{
-    margin-left: 15em !important;
+
+    margin-right: 5em !important;
 }
 /* .slick-list .slick-track .slick-slide > div {
     margin: 0 10% !important;
@@ -7,10 +8,10 @@
   .slick-list {
     margin: 0 -10px !important;
   } */
-
 .itemCard {
     background-color: #fff;
 }
+
 .itemCard .boxImg {
     width: 188px;
     height: 200px;

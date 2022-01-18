@@ -80,7 +80,7 @@ const CommanderieCroyants = () => {
                                     <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
                                     {<div className={`${styles.description} pt-3 pb-2`}
-                                          dangerouslySetInnerHTML={{__html: toShow}} />}
+                                          dangerouslySetInnerHTML={{__html: body?.processed}} />}
                                     <Link
                                         role="button"
                                         href={{

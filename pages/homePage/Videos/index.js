@@ -95,7 +95,7 @@ const Videos = () => {
     )
   }
   return (
-    <div className={`${styles.container} container Videos px-lg-5 py-5`}>
+    <div className={`${styles.container} container Videos px-lg-5 py-5 mx-7`}>
       <Link
         passHref={true}
         href={'../AllMedia'}
