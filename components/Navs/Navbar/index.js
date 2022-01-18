@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import Link from 'next/link';
-import {Icons} from '../../../assets';
+import {Icons, Logos} from '../../../assets';
 
 import styles from './Navbar.module.css';
 import _ from 'lodash';
@@ -20,11 +20,23 @@ const NavBar = props => {
     const [MenuGlobal, setMenuGlobal] = useState([]);
     const [MenuLinks, setMenuLinks] = useState([]);
     const [shownavLink, setShownavlink] = useState(false);
+    const [showLogo, setShowLogo] = useState(false);
 
     //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
     const styleAlignText = `${lang === "ar" ? "text-lg-end" : "text-lg-start"}`;
     const styleDropdownToggle = `${styles.navLink} ${styles.dropdownToggle} nav-link dropdown-toggle d-flex align-items-center text-dark ${styleAlignText}`;
     const url = getMenu();
+
+    const checkSizeWindow = () => {
+        if (typeof window != "undefined") {
+            if (window.innerWidth <= 450) {
+                setShowLogo(true);
+            } else {
+                setShowLogo(false);
+            }
+        }
+    };
+
 
     const getMenuList = () => {
         FetchAPI(url).then(data => {
@@ -92,11 +104,11 @@ const NavBar = props => {
                                                 pathname: `/${data?.path}`,
                                                 query: {fromNav: item?.items, selectedItem: data?.title},
                                             }}
-                                            as={data?.path==='/Almoshaf'?`/${data?.as}`:`/${data?.path}`}
-                                            >
+                                            as={data?.path === '/Almoshaf' ? `/${data?.as}` : `/${data?.path}`}
+                                        >
                                             <a className={`${styles.navBarActive}`}>
                                                 <li className={`btn justify-content-start rounded-0 ${styles.p3}`}
-                                                    onClick={()=>setShownavlink(!shownavLink)}>
+                                                    onClick={() => setShownavlink(!shownavLink)}>
                                                     {/*onClick = {() => console.log("data----", item?.items)}>*/}
                                                     {data.label}
                                                 </li>
@@ -158,7 +170,7 @@ const NavBar = props => {
                             </Link>
                             {item?.items?.length > 0 && (
                                 <ul className="m-0 p-0 d-flex flex-column align-items-start list-items"
-                                    >
+                                >
                                     {item?.items?.map((data, i) => {
                                         return (
                                             <Link
@@ -220,6 +232,7 @@ const NavBar = props => {
     return (
         <div className="NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0">
             <div className="container-fluid p-0">
+
                 <div
                     className={`btn rounded-0 p-0 border-0 align-self-stretch d-flex align-items-center justify-content-center menu-btn bg-gradient-green`}
                     style={props?.styleBtnBars}
@@ -228,22 +241,24 @@ const NavBar = props => {
                         <i className="fas fa-bars text-dark"/>
                     </div>
                 </div>
-                <div>
-                    <Link
+                {!showLogo ? (
+                    <>
 
-                        href={'../search'}>
-                        <a onClick={props.onClickSettings}
-                           className={`${
-                               visible ? 'd-block' : 'd-none'
-                           } d-flex align-items-center btn m-0 p-0 searchSticky`}>
-                            <i
-                                className="fas fa-search p-3 fa-2x iconSearch"
-                                style={{color: '#ADABAB'}}
-                            />
-                        </a>
-                        {/* <div className="sepText mx-2"></div> */}
-                    </Link>
-                </div>
+                        <div
+                            className={`${
+                                visible ? 'd-block' : 'd-none'
+                            } d-flex align-items-center btn m-0 p-0 searchSticky`}>
+                            <Link className="my-2" href="/">
+                                <Image
+                                    className="logoNav"
+                                    src={Logos.logo_new}
+                                    alt="logo-Al-hadith-Mohammed-VI"
+                                    title="logo Al hadith Mohammed VI"
+                                />
+                            </Link>
+                        </div>
+                    </>
+                ) : null}
                 <div
                     className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
                     id="navbarNav">
@@ -262,7 +277,22 @@ const NavBar = props => {
                     <Contact title="الشبكات الاجتماعية" className="social-media"/>
                 </div>
 
+                <div>
+                    <Link
 
+                        href={'../search'}>
+                        <a onClick={props.onClickSettings}
+                           className={`${
+                               visible ? 'd-block' : 'd-none'
+                           } d-flex align-items-center btn m-0 p-0 searchSticky`}>
+                            <i
+                                className="fas fa-search p-3 fa-2x iconSearch"
+                                style={{color: '#ADABAB'}}
+                            />
+                        </a>
+                        {/* <div className="sepText mx-2"></div> */}
+                    </Link>
+                </div>
                 <div
                     className="btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex secQa">
                     <Link
