@@ -99,7 +99,7 @@ const Videos = () => {
       <Link
         passHref={true}
         href={'../AllMedia'}
-        as='/allMedia'
+        as='/AllMedia'
         style={{ textDecoration: 'none' }}
       >
         <a style={{ textDecoration: 'none' }}>
@@ -120,7 +120,7 @@ const Videos = () => {
                 />
                 <Link
                   href={'/media/الدروس الحسنية'}
-                  as='../media/الدروس الحسنية'
+                  as='/media/الدروس الحسنية'
                 >
                   <a>
                     <Image

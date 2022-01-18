@@ -12,17 +12,17 @@ import {
   getVideoBi,
   getVideoKi,
   getVideoBt,
-} from '../../../endpoints'
+} from '../../endpoints'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
-import FetchAPI from '../../../API'
+import FetchAPI from '../../API'
 import ReactPlayer from 'react-player'
 import Link from 'next/link'
-import TemplateArticle from '../../../components/TemplateArticle'
-import ScrollButton from '../../../components/ScrollButton'
-import Body from '../../../components/Body'
-import Loading from '../../../components/_UI/Loading'
+import TemplateArticle from '../../components/TemplateArticle'
+import ScrollButton from '../../components/ScrollButton'
+import Body from '../../components/Body'
+import Loading from '../../components/_UI/Loading'
 import Image from 'next/image'
 
 const AllMedia = (props) => {

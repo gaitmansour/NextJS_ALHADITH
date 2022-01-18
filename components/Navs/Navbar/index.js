@@ -280,7 +280,7 @@ const NavBar = props => {
                 <div>
                     <Link
 
-                        href={'../search'}>
+                        href={'/search'}>
                         <a onClick={props.onClickSettings}
                            className={`${
                                visible ? 'd-block' : 'd-none'
@@ -298,7 +298,7 @@ const NavBar = props => {
                     <Link
                         exact
                         activeClassName="active"
-                        href="../listQuestions" as={'سؤال وجواب/'}>
+                        href="/listQuestions" as={'سؤال وجواب/'}>
                         <a className="align-items-center d-flex px-4 py-2 linkQa">
                             <Image
                                 className="logo mx-0 px-1"
