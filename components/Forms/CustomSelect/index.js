@@ -10,7 +10,8 @@ const CustomSelect = (props) => {
     const {message, label, placeholder, name, options, onChange, value, defaultInputValue} = props
 
     const colourStyles = {
-        menuPortal: base => ({...base, zIndex: 10}),
+        menuPortal: base => ({...base, zIndex: 9999,backgroundColor:'red'}),
+        menu: provided => ({ ...provided, zIndex: 9999 }),
         control: styles => ({...styles, backgroundColor: 'white'}),
         option: (provided, state) => {
             return ({
@@ -61,6 +62,7 @@ const CustomSelect = (props) => {
                     placeholder={placeholder}
                     isMulti={false}
                     isClearable
+                    menuPortalTarget={typeof window !== "undefined" && document.body}
                     value={defaultInputValue}
                     name={"form-field-name"}
                     options={options}
