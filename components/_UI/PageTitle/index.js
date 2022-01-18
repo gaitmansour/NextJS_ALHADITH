@@ -5,11 +5,11 @@ const PageTitle = (props) => {
     return (
         <div className={`${styles.PageTitle} PageTitle p-4 ${className}`}
              style={{display: "flex", alignItems: 'center', justifyContent: 'space-between'}}>
-            <div>
+            <div style={{marginRight:15}}>
                 <div style={{
                     width: 8,
+                    right:5,
                     height: 54,
-                    right: 10,
                     borderRadius: 6,
                     position: 'absolute',
                     backgroundColor: '#FBBF31'

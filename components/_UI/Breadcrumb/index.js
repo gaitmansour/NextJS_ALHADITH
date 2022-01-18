@@ -43,7 +43,7 @@ const Breadcrumb = (props) => {
 
 
     return (
-        <div className={`${styles.Breadcrumb} d-flex p-4`}>
+        <div className={`${styles.Breadcrumb} d-flex p-4`} style={{marginRight:-5}}>
             {renderData()}
         </div>
     )
