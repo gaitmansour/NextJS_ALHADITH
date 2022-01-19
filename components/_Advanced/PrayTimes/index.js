@@ -98,19 +98,19 @@ const PrayTimes = () => {
                         </div>
                         <div
                             className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{"ﺍﻟﻌﺼﺮ"}</p>
+                            <p className="flex-fill m-0 text-success">{"العصر"}</p>
                             <p className="m-0 text-success mx-4">{data?.Asr}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
                             className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{"ﺍﻟﻤﻐﺮﺏ"}</p>
+                            <p className="flex-fill m-0 text-success">{"المغرب"}</p>
                             <p className="m-0 text-success mx-4">{data?.Maghrib}</p>
                             <i className="far fa-clock"/>
                         </div>
                         <div
                             className={`${styles.boxPray} box-pray d-flex bg-success-100 rounded-9 align-items-center px-4 my-2`}>
-                            <p className="flex-fill m-0 text-success">{"ﺍﻟﻌﺸﺎء"}</p>
+                            <p className="flex-fill m-0 text-success">{"العشاء"}</p>
                             <p className="m-0 text-success mx-4">{data?.Ishae}</p>
                             <i className="far fa-clock"/>
                         </div>

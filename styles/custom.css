@@ -5,7 +5,7 @@
    rgba(18, 157, 89, 1) 20%,
    rgba(23, 106, 65, 1) 70%
  );
- 
+
  --DegradF : linear-gradient(
    101deg,
    rgb(66, 185, 128) 20%,
@@ -43,15 +43,15 @@ a:active, a:focus, .btn-check:focus+.btn, .btn:focus {
 
 .fw-100{
   font-weight: 100;
-} 
+}
 
 .fw-400{
   font-weight: 400;
-} 
+}
 
 .fw-700{
   font-weight: 700;
-} 
+}
 
 .bg-arabic-design {
   z-index: 1;
@@ -122,10 +122,10 @@ ul.slick-dots {
 }
 
 .slick-dots li {
-  margin-left: 5px  
+  margin-left: 5px
 }
 
 *[dir='rtl'] .slick-dots li {
-  margin-left: 0;  
-  margin-right: 2px  
+  margin-left: 0;
+  margin-right: 2px
 }
