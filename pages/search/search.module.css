@@ -114,12 +114,20 @@
     .formSearch .alignIte {
         display: block !important;
     }
+    .SearchPage{
+        width: 100vw !important;
+        padding: 0px !important;
+    }
+    .searchElement{
+        width: 100% !important;
+    }
     /* .SearchPage{
         padding: 0% !important;
     } */
     .SearchPage .searchBox{
-        width: 85vw !important;
-        max-width: 90vw !important;
+        width: 90vw !important;
+        max-width: 95vw !important;
+        padding: 0px !important;
     }
     /* .formSearch{
         overflow: hidden !important;
