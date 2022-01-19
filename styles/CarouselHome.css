@@ -9,7 +9,6 @@
     height: 0.5em;
     width: 0.5em;
 
-    background-color: #fff !important;
 }
 
 .vertical-dots {
@@ -21,12 +20,14 @@
     top: 10%;
     margin-top: -10px;
     text-align: right;
+    justify-content: center;
+    padding: 1rem 0;
 }
 
 .vertical-dots li {
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
     z-index: 9999;
 }
@@ -35,15 +36,19 @@
     font-size: 0;
     line-height: 0;
     display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
     cursor: pointer;
     color: white;
     border: 0;
     outline: none;
-    background: transparent;
     z-index: 9999;
+    display: block;
+    width: 1.2rem;
+    height:1.2rem;
+    padding: 0;
+    border: none;
+    border-radius: 100%;
+    background-color: transparent;
+    text-indent: -9999px;
 }
 
 .vertical-dots li button:hover,
@@ -79,10 +84,10 @@
 }
 
 .vertical-dots li.slick-active button:before {
-    opacity: .75;
-    color: white;
-    border: 0;
-    outline: none;
-    z-index: 9999;
+    background-color: #FFFFFF;
+    opacity: 1;
+    border-radius: 100%;
+    width: 0.6rem;
+    height:0.6rem;
 }
 
