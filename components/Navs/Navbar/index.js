@@ -24,7 +24,7 @@ const NavBar = props => {
 
     //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
     const styleAlignText = `${lang === "ar" ? "text-lg-end" : "text-lg-start"}`;
-    const styleDropdownToggle = `${styles.navLink} ${styles.dropdownToggle} nav-link dropdown-toggle d-flex align-items-center text-dark ${styleAlignText}`;
+    const styleDropdownToggle = `${styles.navLink} ${styles.menuLinks} ${styles.dropdownToggle} nav-link dropdown-toggle d-flex align-items-center text-dark ${styleAlignText}`;
     const url = getMenu();
 
     const checkSizeWindow = () => {
