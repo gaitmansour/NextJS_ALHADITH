@@ -8,7 +8,7 @@ import Loading from '../../components/_UI/Loading'
 import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
 import styles from './detailsQuestion.module.css'
-import FetchPostAPI from '../QandA/API/questions'
+import {FetchPostAPI} from '../../data/API/questions'
 
 const Questions = () => {
   const { state } = useRouter()?.query
