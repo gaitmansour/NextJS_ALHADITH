@@ -6,6 +6,8 @@ import Brand from "../../_UI/Brand";
 import SearchInput from "../../Forms/SearchInput";
 import {useRouter} from "next/router";
 import CustomModal from "../../_UI/Modal";
+import {Logos} from "../../../assets";
+import Image from "next/image";
 const TopBar = (props) => {
     // console.log(props)
     let router=useRouter();
@@ -52,8 +54,8 @@ const TopBar = (props) => {
     return (
         <div className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
              style={{}}>
-            <div className="container-fluid">
-                <Brand/>
+            <div className="container-fluid my-2">
+                <Image src={Logos.logo_new} width={230} height={120} alt="logo-Al-hadith-Mohammed-VI"/>
                 <SearchInput className={`${styles.search} text-white`}
                              styleIcon={{color: '#fff'}}
                              styleDiv={{position:'absolute',right:"65%"}}
