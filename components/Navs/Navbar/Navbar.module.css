@@ -7,7 +7,7 @@
 }
 .menuLinks{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 16px !important;
 }
 .NavBar .bgGradientGreen:hover {
     opacity: 0.9;

@@ -190,6 +190,12 @@
     .TemplateArticleBody .btnquestion img {
         width: 14% !important;
         max-width: 20% !important;
+    } 
+    .questionList{
+        width: 100% !important;
+    }
+    .cardListAnswer{
+        width: 100% !important;
     }
 }
 .btnFacebook {
