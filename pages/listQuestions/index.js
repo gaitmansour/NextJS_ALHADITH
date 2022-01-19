@@ -473,7 +473,7 @@ const ListQuestions = (props) => {
               </div>
             </div>
           ) : null}
-          <div className='card w-75 px-1 '>
+          <div className={`${styles.cardListAnswer} card w-75 px-1`}>
             <div className={`${styles.CardQuestion} card-body Card-question`}>
               <div className={`${styles.SimpleList} SimpleList`}>
                 {displayQuestions}

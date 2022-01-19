@@ -123,6 +123,48 @@
 #parent p{
     margin-left: 5%;
 }
+
+.SimpleList .item { 
+    border-bottom: 1px solid #D8D8D8;
+  }
+  
+  .SimpleList .item { 
+    text-decoration: none;
+    color:#000000
+  }
+  
+  .SimpleList .item:hover,
+  .SimpleList .item:hover p { 
+    /* background-color: rgba(251, 191, 49, 0.11); */
+    color:#FBBF31
+  }
+  
+  .SimpleList i {
+    margin-left: 1em;
+    transform: rotate( 180deg );
+  }
+  
+  *[dir='rtl'] .SimpleList i{
+    margin-right: 1em;
+    margin-left: 0;
+    transform: rotate(0);
+  }
+@media screen and (min-width: 240px) and (max-width: 540px) {
+    .QuAnswer{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .quesList{
+        width: 100%;
+        padding: 0px !important;
+    }
+    .sidBar{
+        width: 100%;
+    }
+    /* .card{
+        width: 95%;
+    } */
+}
 @media (max-width: 480px){
     .icn{
         width: 40px;
