@@ -148,12 +148,12 @@ const Footer = () => {
                   </label>
                   <input
                     type='email'
-                    className='form-control w-75'
+                    className={`form-control w-75`}
                     id='exampleInputEmail1'
                     aria-describedby='emailHelp'
                     placeholder={'البريد الالكتروني'}
                     onChange={(v) => setInputEmail(v.target.value)}
-                    style={{ borderRadius: '25px' }}
+                    style={{ borderRadius:30 }}
                   />
                 </div>
                 <div className='d-grid w-75 my-3'>
