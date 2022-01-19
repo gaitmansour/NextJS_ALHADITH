@@ -147,3 +147,8 @@
          width: 50% !important;
      }*/
 }
+@media screen and (max-width: 480px){
+    .Footer{
+        margin-top: 55px !important;
+    }
+}
