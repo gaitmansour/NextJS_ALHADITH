@@ -201,7 +201,7 @@ const NavBar = props => {
                                                     });
                                                     setShowMenu(!showMenu);
                                                 }}>
-                                                <li key={i} className="btn rounded-0 mx-0 px-0">
+                                                <li key={i} className="btn rounded-0 mx-0 px-0" onClick={()=> setShowMenu(!showMenu)}>
                                                     {data.label}
                                                 </li>
                                             </Link>
