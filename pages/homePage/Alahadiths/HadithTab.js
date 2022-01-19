@@ -25,7 +25,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
     })
   }, [])
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     autoplay: true,
     slidesToShow: 7,

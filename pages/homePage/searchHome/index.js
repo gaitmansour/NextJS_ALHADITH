@@ -180,7 +180,9 @@ const SearchSection = (props) => {
 
   return (
     <div className={`${styles.secSearch} container flex-fill secSearch`}>
+        <div className={`container ${styles.SearchSection} `}>
       <SectionTitle title='البحث' className='' />
+        </div>
       <div
         ref={resultsRef}
         className={`${styles.searchElement} d-flex flex-row align-items-center justify-content-between mt-4`}
@@ -188,6 +190,7 @@ const SearchSection = (props) => {
         <SearchInput
           styleSerachIcon={{ backgroundColor: '#656e7e' }}
           styleIcon={{ color: '#656e7e', width: 20 }}
+          styleDiv={{position:'absolute',right:"78%"}}
           styleFilter={{ backgroundColor: '#656e7e', width: 50 }}
           onClickSettings={() => setShowForm(!showForm)}
           input={input}
@@ -213,21 +216,6 @@ const SearchSection = (props) => {
           style={{ backgroundColor: '#e9fbf1' }}
         >
           <div className='d-flex flex-wrap flex-column'>
-            <div className={`${styles.alignsec} d-flex alignIte`}>
-              <Input
-                className='col-md-4'
-                label='الكلمات المفتاح'
-                placeholder='ابحث بالكلمات المفتاح'
-              />
-              <CustomSelect
-                className='col-md-4'
-                options={dataTopic && dataTopic}
-                defaultInputValue={ChoiceTopic ? ChoiceTopic : ''}
-                label='باب'
-                placeholder='اكتب الباب'
-                onChange={(v) => setChoiceTopic(v)}
-              />
-            </div>
             <div className={`${styles.alignsec} d-flex alignIte`}>
               {/*<Input className="col-md-4" label="نص الحديث" placeholder="ابحث نص الحديث"/>
                */}

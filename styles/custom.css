@@ -5,6 +5,7 @@
    rgba(18, 157, 89, 1) 20%,
    rgba(23, 106, 65, 1) 70%
  );
+
  --DegradF : linear-gradient(
    101deg,
    rgb(66, 185, 128) 20%,
@@ -17,19 +18,8 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  font-family: 'NotoKufiArabic', sans-serif !important;
 }
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
-/* html {
-  overflow:   scroll;
-}
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
-} */
 
 #root {
   display: flex;
@@ -111,8 +101,7 @@ a:active, a:focus, .btn-check:focus+.btn, .btn:focus {
 ul.slick-dots {
   display: flex !important;
   justify-content: flex-start;
-  margin-top: 20px;
-  margin-bottom: 15px;
+  margin-top: 10px;
   padding: 0;
 }
 
@@ -124,11 +113,11 @@ ul.slick-dots {
 
 .slick-dots li.slick-active button:before {
   opacity: 1;
-  color: #129D59 !important; 
+  color: #129D59;
   font-size: 16px;
 }
 
-.slick-prev:before, .slick-next:before{
+.slick-prev:before, .slick-next:befor{
   color: #129D59;
 }
 
@@ -140,5 +129,3 @@ ul.slick-dots {
   margin-left: 0;
   margin-right: 2px
 }
-
-

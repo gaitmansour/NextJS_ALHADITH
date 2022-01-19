@@ -61,26 +61,26 @@ const CommanderieCroyants = () => {
                             $(".linksCroyants").bind('click', function (e) {
                                 //console.log("hello ctrl")
                                 localStorage.setItem('routeState', JSON.stringify({
-                                    fromNav: {},
-                                    selectedItem: title,
-                                    title: title,
-                                    from: "Croyants"
+                                    pathname: field_lien[0]?.uri.slice(9),
+                                    search: '',
+                                    hash: '',
+                                    query: {fromNav: {}, title: title, selectedItem: title, from: "Croyants"}
                                 }))
 
                             });
                         });
-                        const toShow = body?.processed?.substring(0, 80) + '.....';
+                        const toShow = body?.processed?.substring(0, 50) + '...';
 
                         return (
                             <div key={i.toString()} className="col-md-3">
                                 <Cards
                                     className={`${styles.CardCommanderieCroyants}  m-auto d-flex justify-content-right align-items-right flex-column`}
-                                    style={{justifyContent: 'flex-end', flex: 1, alignItems: "center"}}
+                                    style={{justifyContent: 'flex-end', flex: 1, alignItems: "center",backgroundColor:'white'}}
                                 >
                                     <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
                                     {<div className={`${styles.description} pt-3 pb-2`}
-                                          dangerouslySetInnerHTML={{__html: toShow}} />}
+                                          dangerouslySetInnerHTML={{__html: body?.processed}} />}
                                     <Link
                                         role="button"
                                         href={{

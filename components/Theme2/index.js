@@ -150,7 +150,7 @@ const Theme2 = props => {
                                         <a className={`action d-flex justify-content-between btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${
                                             dataAPI?.data.length < 4 ? 'flex-row-reverse' : 'flex-row'
                                         } button`}><i className="fas fa-long-arrow-alt-left text-white"/>
-                                            <p className="m-0">{t('btnMore')}</p></a>
+                                            <p className="m-0">{'لمعرفة المزيد'}</p></a>
                                         {/* </a> */}
                                     </Link>
                                 </Cards>

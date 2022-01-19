@@ -62,7 +62,7 @@ const Theme1 = (props) => {
                                         <a className="shadow-sm d-flex justify-content-between btn align-items-center mb-2 text-white"
                                            style={{background: field_code_couleur_accueil ? `#${field_code_couleur_accueil}` : "#129d59"}} >
                                             <i className="fas fa-long-arrow-alt-left text-white"/>
-                                            <p className="m-0">{t('btnMore')}</p></a>
+                                            <p className="m-0">{'لمعرفة المزيد'}</p></a>
                                     </Link>
                                 </Cards>
                             </div>

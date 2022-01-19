@@ -56,6 +56,7 @@ const TopBar = (props) => {
                 <Brand/>
                 <SearchInput className={`${styles.search} text-white`}
                              styleIcon={{color: '#fff'}}
+                             styleDiv={{position:'absolute',right:"65%"}}
                              {...props}
                              inputClassName={'text-white'}
                              onChange={(v) => handleInput(v)}

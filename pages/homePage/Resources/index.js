@@ -118,8 +118,7 @@ const Resources = () => {
 
       return (
         <div
-          className={`${styles.content} container row my-3 mx-0 `}
-          style={{ marginRight: 50 }}
+          className={`${styles.content} container row my-5 mx-0 `}
         >
           <Slider {...settings} className={`${styles.slide} slide px-2 `}>
             {dataAPI?.data?.map((item, i) => {
@@ -140,6 +139,7 @@ const Resources = () => {
               })
               return (
                 <Cards
+                    id={"cards"}
                   key={i.toString()}
                   className={`${styles.itemCard} me-4 ms-1 text-center mt-4 child`}
                 >
@@ -147,8 +147,8 @@ const Resources = () => {
                     <Image
                       loader={myLoader}
                       src={dataAPI?.included[i]?.attributes?.uri?.url}
-                      width={100}
-                      height={100}
+                      width={350}
+                      height={400}
                       alt='book'
                       className={`${styles.img} img img-responsive`}
                     />

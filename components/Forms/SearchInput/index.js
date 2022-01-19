@@ -55,9 +55,9 @@ const SearchInput = (props) => {
     const className = props?.className ? props.className : ""
     let Myinput = useRef(null);
     const CustomMapping = [
-        ["ا","ب","ت","ث","ج","ح","خ","د","ذ","ر","ز","س","ش","ص","ض"],
-        ["ط","ظ","ع","غ","ف","ق","ك","ل","م","ن","ه","و","ي"],
-        ["؟","!","-","،",".","ء", "ؤ", "ى", "ة","أ","إ","ٱ","آ","ئ"],
+        ["ا", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض"],
+        ["ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"],
+        ["؟", "!", "-", "،", ".", "ء", "ؤ", "ى", "ة", "أ", "إ", "ٱ", "آ", "ئ"],
 
     ];
 
@@ -82,7 +82,7 @@ const SearchInput = (props) => {
             {InputShow ?
                 <input value={props.input}
                        className={`flex-fill mx-1 px-2 ${props.className}`}
-                       placeholder={props.placeholder}
+                       placeholder={'البحث في منصة الحديث النبوي الشريف'}
                     //color={'red'}
                        style={{color: 'red'}}
                        color={'red'}
@@ -96,23 +96,22 @@ const SearchInput = (props) => {
                         //opacity={0.7}
                         onFocus={() => !Myinput.current.focus()}
                         onBlur={() => Myinput.current}
-                        placeholder={props.placeholder}
+                        placeholder={'البحث في منصة الحديث النبوي الشريف'}
                         //onFocus={props.onChange}
                         defaultKeyboard={CustomMapping}
                         //required
                         showShift={false}
                         showSymbols={false}
                         ref={Myinput}
-                        inputClassName={`${styles.input} text-dark ${props.inputClassName}`}
+                        inputClassName={`${styles.input} input text-dark ${props.inputClassName}`}
                         isFirstLetterUppercase={false}
                         keyboardClassName={`testme  p-2`}
                         containerClassName={`conatiner `}
                         enabled
                     />
-
-                    <i className="far fa-keyboard mx-3 fa-1x"
-                       style={props.styleIcon}
-                       onClick={() => Myinput.current.focus()}/>
+                        <i className="far fa-keyboard mx-3 fa-1x"
+                           style={props.styleIcon}
+                           onClick={() => Myinput.current.focus()}/>
                 </>}
             {props.onClickSettings ?
                 <div className={styles.iconFilter} onClick={props.onClickSettings} style={props.styleFilter}

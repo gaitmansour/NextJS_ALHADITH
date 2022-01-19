@@ -6,6 +6,15 @@
   border-radius: 15px;
 }
 
+.input {
+  width: 400px;
+  padding: 0 1.5em;
+  background: rgba(255, 255, 255, 0.21);
+  border: 1px solid #ffffff;
+  border-radius: 32px;
+  color:black;
+  border-bottom-color: #0dcaf0;
+}
 .keyboard-wrapper {
   margin-top: 1cm;
   z-index: 10000;

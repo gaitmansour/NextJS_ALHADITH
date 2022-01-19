@@ -1,0 +1,314 @@
+
+.Media .PageTitleSecond h3 {
+    font-weight: bold;
+}
+
+.titlePage{
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
+    font-size: 25px;
+    font-weight: 400;
+    color: #08262c;
+}
+
+/* .Media .box-search input,
+.Media .box-search input::placeholder {
+    color: #30A96E;
+}
+
+.Media .box-search .icon-filter,
+.Media .box-search .icon-search  {
+    background-color: #30A96E;
+} */
+
+.btnPlay  {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 17px;
+    overflow: hidden;
+    background: transparent;
+}
+/* .playerWrapper {
+  position: relative;
+  padding-top: 56.25% ;
+}
+
+.reactPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+/* .player{
+  height: 100%;
+} */
+
+.btnPlay i {
+  position: absolute;
+  z-index: 2;
+  color: white;
+  font-size: 5em !important;
+  top: 42%;
+  left: 47%;
+}
+
+/* .itemCardContent i{
+  position: absolute;
+  z-index: 2;
+  color: white !important;
+  font-size: 3em !important;
+  top: 30% !important;
+  left: 40%;
+} */
+#bttn{
+  width: 100% !important;
+}
+
+.btnPlay img {
+    filter: brightness(70%);
+    width: 100% !important;
+
+}
+
+.iconBo{
+  margin-left:10px;
+  margin-top: 3px;
+  /* float: right !important; */
+}
+
+/* .boxFirstVideo {
+    width: 90%;
+    margin: 3em auto 2em auto;
+} */
+
+/* .Media .PageTitleSecond{
+    padding: 0 !important;
+    margin: 1em 0;
+} */
+
+.Media .title-video h3{
+    padding: 0 !important;
+    color: #000;
+}
+
+
+  .SliderVideoList1 p {
+      font-weight: bold;
+      color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  }
+
+  /* .SliderVideoList1 .slick-slider .slick-dots {
+    top: -20px;
+    justify-content: flex-end;
+  }
+
+  *[dir='rtl'] .SliderVideoList1 .slick-slider .slick-dots {
+    justify-content: flex-end;
+  } */
+  .line{
+    justify-content: flex-start;
+    width: 90%;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-prev:before,
+  .SliderVideoList1 .slick-slider .slick-next:before {
+    color: #000;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-prev:before {
+    content: "\f054";
+  }
+
+  .SliderVideoList1 .slick-slider .slick-next:before {
+    content: "\f053";
+  }
+
+  .SliderVideoList1 .slick-slider .slick-prev,
+  .SliderVideoList1 .slick-slider .slick-next {
+    top: -25px;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-prev {
+      /* left: auto; */
+      left: 50px;
+  }
+
+  [dir='rtl'] .SliderVideoList .slick-slider .slick-prev {
+      right: 30px;
+      left: auto;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-next {
+    /* left: auto; */
+    left: 30px !important;
+  }
+
+  [dir='rtl'] .SliderVideoList1 .slick-slider .slick-next {
+      right: 60px;
+      left: auto;
+  }
+
+
+  /* .SliderVideoList1 .itemCardContent {
+    cursor: pointer;
+    width: 85% !important;
+    margin-left: 10% !important;
+  } */
+
+  /* .SliderVideoList1 .itemCardContent img{
+    border-radius: 10px;
+    filter: brightness(80%);
+    box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+    -webkit-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+    -moz-box-shadow: -1px 8px 14px -7px rgba(0,26,39,0.5);
+  } */
+
+  .SliderVideoList1 .itemCardContent p {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .SliderVideoList1 .itemCardContent:hover p {
+    color: #FBBF31;
+  }
+
+  [dir='rtl'] .SliderVideoList .itemCardContent p {
+    text-align: right;
+  }
+
+  .SliderVideoList1 .itemCardContent i {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 2em;
+    top: 32%;
+    left: 47%;
+  }
+
+  #SliderVideoListModal iframe {
+    width: 100%;
+    height: 520px;
+  }
+
+  @media (max-width: 1025px) {
+    .btnPlay i {
+      position: absolute;
+      z-index: 3;
+      color: white;
+      font-size: 3em !important;
+      top: 40%;
+      left: 45%;
+    }
+    .itemCardContent i{
+      position: absolute;
+      z-index: 2;
+      color: white !important;
+      font-size: 2em  !important;
+      top: 25% !important;
+      left: 40%;
+    }
+    .SliderVideoList1 .slick-slider .slick-prev {
+      /* left: auto; */
+      left: 25px;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-next {
+    /* left: auto; */
+    left: 10px !important;
+  }
+  }
+
+  @media (max-width: 769px) {
+    .SliderVideoList-data p {
+      -webkit-line-clamp: 3;
+    }
+    .btnPlay i {
+      position: absolute;
+      z-index: 2;
+      color: white;
+      font-size: 3em !important;
+      top: 40%;
+      left: 45%;
+    }
+    .itemCardContent i{
+      position: absolute;
+      z-index: 2;
+      color: white !important;
+      font-size: 1.6em  !important;
+      top: 22% !important;
+      left: 40%;
+    }
+    .SliderVideoList1 .slick-slider .slick-prev {
+      /* left: auto; */
+      left: 20px;
+  }
+
+  .SliderVideoList1 .slick-slider .slick-next {
+    /* left: auto; */
+    left: 5px !important;
+  }
+  }
+  @media (max-width: 450px) {
+    .reactPlayer{
+      width: 100% !important;
+      height: 22vh !important;
+    }
+    .description{
+      padding-bottom: 2px !important;
+    }
+    .btnPlay i {
+      position: absolute;
+      z-index: 2;
+      color: white;
+      font-size: 2em !important;
+      top: 40%;
+      left: 45%;
+    }
+    .itemCardContent i{
+      position: absolute;
+      z-index: 2;
+      color: white !important;
+      font-size: 1em;
+      top: 20% !important;
+      left: 40%;
+    }
+    .firstRoww{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media (max-width: 321px) {
+    .btnPlay i {
+      position: absolute;
+      z-index: 2;
+      color: white;
+      font-size: 2em !important;
+      top: 40%;
+      left: 45%;
+    }
+    .itemCardContent i{
+      position: absolute;
+      z-index: 2;
+      color: white !important;
+      font-size: 1em !important;
+      top: 18% !important;
+      left: 40%;
+    }
+    .SliderVideoList1 .slick-slider .slick-prev {
+      /* left: auto; */
+      left: -100px;
+    }
+
+    .SliderVideoList1 .slick-slider .slick-next {
+      /* left: auto; */
+      left: -120px !important;
+    }
+  }

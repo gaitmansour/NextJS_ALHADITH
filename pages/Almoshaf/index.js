@@ -4,7 +4,7 @@ import TemplateArticle from "../../components/TemplateArticle";
 import Body from "../../components/Body";
 
 const Almoshaf = (props) => {
-    const title = "اﻟﻤﺼﺤﻒ اﻟﻤﺤﻤﺪي"
+    const title = "المصحف المحمدي"
 
     const data = [
         {

@@ -1,4 +1,22 @@
 @font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('../Fonts/NotoKufiArabic.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AALMAGHRIBI';
+  src: url('../Fonts/AALMAGHRIBI.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Aljazeera';
+  src: url('../Fonts/Aljazeera.ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Almarai';
   src: url('../Fonts/Almarai-Bold.ttf');
   font-weight: 700;
@@ -33,5 +51,5 @@
 }
 
 *[dir='rtl'] {
-  font-family: 'Almarai', sans-serif !important;
+  font-family: 'NotoKufiArabic', sans-serif !important;
 }

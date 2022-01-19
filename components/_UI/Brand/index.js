@@ -9,7 +9,7 @@ const Brand = (props) => {
     return (
         <div className={`my-2 ${className}`}>
             <Link href='/' passHref={true}>
-                <Image src={Logos.logo_web} className={styles.logo} alt="logo-Al-hadith-Mohammed-VI"/>
+                <Image src={Logos.logo_new} className={styles.logo} alt="logo-Al-hadith-Mohammed-VI"/>
             </Link>
         </div>
     );
