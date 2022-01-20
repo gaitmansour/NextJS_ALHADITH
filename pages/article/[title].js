@@ -25,12 +25,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ArticlePage(props) {
-    console.log('useRouter()?.query---------------------------')
-    console.log(useRouter()?.query)
+
     const title = useRouter()?.query?.title
     const parentBigTitle = useRouter()?.query?.parentBigTitle
-
-    console.log('title---------------------------', useRouter()?.query)
+    console.log('useRouter()?.query---------------------------')
+    console.log(useRouter()?.query)
 
     const myLoader = ({src, width, quality}) => {
         return `${base_url}/${src}`

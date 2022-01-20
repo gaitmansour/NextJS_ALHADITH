@@ -173,9 +173,11 @@ const CarouselHome = (props) => {
                                         }}
                                         as={"/article/" + item?.title}
                                     >
-                                        <a role={'button'} className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}><i
-                                            className={`fas ${isRTL ? "fa-caret-right" : "fa-caret-left"} align-items-center d-flex align-self-stretch`}/>
+                                        <a role={'button'}
+                                           className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}>
+
                                             <h6 className="m-0 px-4">{more}</h6>
+                                            <i className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}/>
                                         </a>
                                     </Link>
                                 </div>
