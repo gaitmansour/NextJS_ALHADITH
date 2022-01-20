@@ -116,25 +116,18 @@
     }
     .SearchPage{
         width: 100vw !important;
-        padding: 0px !important;
     }
     .searchElement{
-        width: 100% !important;
+        width: 90vw !important;
     }
-    /* .SearchPage{
-        padding: 0% !important;
-    } */
     .SearchPage .searchBox{
         width: 90vw !important;
-        max-width: 95vw !important;
-        padding: 0px !important;
     }
-    /* .formSearch{
-        overflow: hidden !important;
-    } */
+    .formSearch{
+        width: 85vw !important;
+    }
     .paginationButtons {
         width: 100% !important;
-        margin-right: -30px !important;
     }
 
     .paginationButtons a {
