@@ -6,7 +6,7 @@ build_image:
   stage: containerize
   image: docker:latest
   only:
-    - main
+    - master
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE:staging -f .docker/Dockerfile .
@@ -18,7 +18,7 @@ deploy_image:
     name: registry.devops.os/ci-tools/kubectl:1.22
     entrypoint: [""]
   only:
-    - main
+    - master
   script:
      - |
       export  currenttime=$(date +%H%M)
