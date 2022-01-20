@@ -30,6 +30,7 @@
   .secBottom .div3 a{
     text-decoration: none !important;
   }
+ 
 
 .alignSec .sec .secTop .divA {
   width: 50% ;
@@ -119,8 +120,27 @@
     height: 100% !important;
     font-size: 14px !important;
   }
+  .alignSec .sec 
+  .secTop .divB a img,
+  .secBottom .div2 a img,
+  .secBottom .div3 a img{
+    margin-right: 15% !important;
+    
+  }
+  .alignSec .sec .secTop .divA a img,
+  .secTop .divB a img,
+  .secBottom .div1 a img,
+  .secBottom .div2 a img,
+  .secBottom .div3 a img{
+    width: 50% !important;
+    height: 50% !important;
+  }
   .alignSec .sec .secTop h3,.secBottom h3{
     font-size: 11px;
+  }
+  .imgWebTv{
+    height: 50% !important;
+    width: 50% !important;
   }
 }
 @media screen and (min-width: 500px) and (max-width: 900px) {

@@ -10,6 +10,7 @@
   } */
 .itemCard {
     background-color: #fff;
+    margin: 0px !important;
 }
 
 .itemCard .boxImg {
@@ -130,6 +131,11 @@
     *[dir='rtl'] .Resources .btn.action i {
         margin-right: 1em;
         margin-left: 0;
+    }
+    .Resources .content{
+        margin-top: 2em !important;
+        margin-bottom: 2em !important;
+        margin-right: 0em !important;
     }
 }
 @media (max-width: 1200px) {
