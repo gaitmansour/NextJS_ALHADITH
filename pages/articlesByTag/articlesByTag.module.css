@@ -1,0 +1,46 @@
+.card-title{
+    color: #129D59;
+}
+
+.tags .card{
+    position: relative;
+    width: 30% !important;
+}
+.tags .card .card-text{
+    margin-bottom: 40px !important;
+}
+.tags .card .card-img-top{
+    margin: 0;
+    width: 100%;
+    object-fit: cover !important;
+}
+.tags .btn{
+    position: absolute;
+    bottom: 10px;
+    right: 20%;
+    background-color: #129D59;
+    border: none;
+    width: 60%;
+    color: white;
+}
+.logoempty{
+    /* height: 90% !important; */
+    width: 85% !important;
+    margin-right: 5% !important;
+}
+
+.tags .btn:hover{
+    background-color: #47bb83;
+    color: white;
+}
+@media screen and (max-width: 760px){
+    .tags .card{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 350px){
+    .tags .card{
+        width: 100% !important;
+    }
+}
+

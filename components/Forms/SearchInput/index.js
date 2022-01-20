@@ -103,7 +103,7 @@ const SearchInput = (props) => {
                         showShift={false}
                         showSymbols={false}
                         ref={Myinput}
-                        inputClassName={`${styles.input} input text-dark ${props.inputClassName}`}
+                        inputClassName={`${styles.input} h5 input text-dark ${props.inputClassName}`}
                         isFirstLetterUppercase={false}
                         keyboardClassName={`testme  p-2`}
                         containerClassName={`conatiner `}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import appWithI18n from 'next-translate/appWithI18n'
 import i18nConfig from '../i18n'
 import Head from 'next/head'
@@ -21,7 +21,7 @@ import '../styles/QandA.css'
 import '../styles/medias.css'
 import '../styles/styleFix.css'
 import "../styles/DownloadAPK.css"
-
+import '../styles/articleByTags.css'
 //import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
 //import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import {SSRProvider} from '@react-aria/ssr';
