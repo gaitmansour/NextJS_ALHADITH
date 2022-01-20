@@ -207,7 +207,7 @@ const ListQuestions = (props) => {
         >
           <a
             id={'linkA'}
-            className='descriptionP item d-flex align-items-center  px-1'
+            className={`${styles.questionDesc} item d-flex align-items-center  px-1`}
             style={{ textDecoration: 'none', paddingBottom: 20 }}
           >
             <Image
