@@ -1,89 +1,89 @@
-import {useEffect, useState} from 'react';
-import styles from './Videos.module.css';
-import {Icons} from '../../../assets';
-import VideosList from '../../../data/VideosList';
-import useTranslation from 'next-translate/useTranslation';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Link from 'next/link';
-import {getLive} from '../../../endpoints';
-import _ from 'lodash';
-import FetchAPI from '../../../API';
-import Moment from 'moment';
-import SectionTitle from "../../../components/_UI/SectionTitle";
-import PrayTimes from "../../../components/_Advanced/PrayTimes";
+import { useEffect, useState } from 'react'
+import styles from './Videos.module.css'
+import { Icons } from '../../../assets'
+import VideosList from '../../../data/VideosList'
+import useTranslation from 'next-translate/useTranslation'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Link from 'next/link'
+import { getLive } from '../../../endpoints'
+import _ from 'lodash'
+import FetchAPI from '../../../API'
+import Moment from 'moment'
+import SectionTitle from '../../../components/_UI/SectionTitle'
+import PrayTimes from '../../../components/_Advanced/PrayTimes'
 import Image from 'next/image'
-import Loading from "../../../components/_UI/Loading";
-import React from "react";
+import Loading from '../../../components/_UI/Loading'
+import React from 'react'
 
 const Videos = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        autoplay: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        rows: 2,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                    dots: false,
-                    rows: 2,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                },
-            },
-            {
-                breakpoint: 771,
-                settings: {
-                    arrows: true,
-                    dots: false,
-                    slidesToShow: 1,
-                    rows: 1,
-                    infinite: true,
-                    centerPadding: '2px',
-                },
-            },
-        ],
-    };
-    var myCurrentDate = new Date();
-    var curD = Moment(myCurrentDate).format('YYYY-MM-DDTHH:mm:ssZ');
-    const {t} = useTranslation('Videos');
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    rows: 2,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: true,
+          dots: false,
+          rows: 2,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 771,
+        settings: {
+          arrows: true,
+          dots: false,
+          slidesToShow: 1,
+          rows: 1,
+          infinite: true,
+          centerPadding: '2px',
+        },
+      },
+    ],
+  }
+  var myCurrentDate = new Date()
+  var curD = Moment(myCurrentDate).format('YYYY-MM-DDTHH:mm:ssZ')
+  const { t } = useTranslation('Videos')
 
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
-    const [ApiData, setDataAPI] = useState({});
-    const url = getLive();
+  const [ApiData, setDataAPI] = useState({})
+  const url = getLive()
 
-    const getData = async () => {
-        FetchAPI(url).then(data1 => {
-            if (data1.success) {
-                setDataAPI(data1.data);
-            }
-        });
-    };
+  const getData = async () => {
+    FetchAPI(url).then((data1) => {
+      if (data1.success) {
+        setDataAPI(data1.data)
+      }
+    })
+  }
 
-    useEffect(() => {
-        getData();
-        setData(VideosList);
-    }, []);
+  useEffect(() => {
+    getData()
+    setData(VideosList)
+  }, [])
 
-    try {
-        if (!data?.length > 0) {
-            return (
-                <div className="d-flex align-items-center justify-content-center py-5">
-                    <Loading/>
-                </div>
-            );
-        }
-    } catch (error) {
-        console.log(`CATCH Videos ${error}`);
+  try {
+    if (!data?.length > 0) {
+      return (
+        <div className='d-flex align-items-center justify-content-center py-5'>
+          <Loading />
+        </div>
+      )
     }
-    console.log('ApiData----', ApiData);
+  } catch (error) {
+    console.log(`CATCH Videos ${error}`)
+  }
+  console.log('ApiData----', ApiData)
 
   var Exist = []
   if (!_.isEmpty(ApiData)) {
@@ -118,10 +118,7 @@ const Videos = () => {
                   height={100}
                   className={`${styles.imgTR} imgTR`}
                 />
-                <Link
-                  href={'/media/الدروس الحسنية'}
-                  as='/media/الدروس الحسنية'
-                >
+                <Link href={'/media/الدروس الحسنية'} as='/media/الدروس الحسنية'>
                   <a>
                     <Image
                       src={Icons.icon_dorouss_hassania}
@@ -238,4 +235,4 @@ const Videos = () => {
   )
 }
 
-export default Videos;
+export default Videos

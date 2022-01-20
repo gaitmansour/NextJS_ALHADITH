@@ -65,7 +65,7 @@ const ArticlesByTag = props => {
                                             className="card-img-top logoempty p-2"
                                             src={Logos.logo_web}
                                             width={150}
-                                            height={170}
+                                            height={180}
                                             alt="logo-Al-hadith-Mohammed-VI"
                                             title="logo Al hadith Mohammed VI"/>
                                     }

@@ -36,6 +36,13 @@
   .CommanderieCroyants .col-md-3 {
     width: 50%;
   }
+  html {
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+  }
 }
 
 

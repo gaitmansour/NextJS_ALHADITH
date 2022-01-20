@@ -48,6 +48,8 @@ const CarouselHome = (props) => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    dotsClass: 'vertical-dots',
+                    dots: true,
                 },
             },
             {
@@ -55,29 +57,30 @@ const CarouselHome = (props) => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    // centerPadding: '60px',
-                    // className: 'center',
-                    centerMode: true,
+                    dotsClass: 'vertical-dots',
+                    dots: true,
                 },
             },
             {
                 breakpoint: 426,
                 settings: {
                     slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dotsClass: 'vertical-dots',
+                    dots: true,
+                    // centerMode: true,
                     // centerPadding: '60px',
                     // className: 'center',
-                    centerMode: true,
-                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 380,
                 settings: {
-                    centerPadding: '5px',
-                    className: 'center',
-                    centerMode: true,
+                    //   centerMode: true,
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    dotsClass: 'vertical-dots',
+                    dots: true,
                 },
             },
         ],
@@ -123,54 +126,54 @@ const CarouselHome = (props) => {
             >
                 <SMLinks className='smLinks'/>
             </div>
-            <Slider {...settings} className={`w-100 slide`}>
-                {dataAPI?.map((item, index) => {
-                    const toShow = item?.body?.substring(0, 251) + '..'
-                    if (item.field_image.includes('src=')) {
-                        var str = item.field_image
-                            .substr(item.field_image.lastIndexOf('src='))
-                            .split(' ')[0]
-                            .slice(5)
-                        var element2 = str.slice(0, -1)
-                    }
+                <Slider {...settings} className={`w-100 slide`}>
+                    {dataAPI?.map((item, index) => {
+                        const toShow = item?.body?.substring(0, 251) + '..'
+                        if (item.field_image.includes('src=')) {
+                            var str = item.field_image
+                                .substr(item.field_image.lastIndexOf('src='))
+                                .split(' ')[0]
+                                .slice(5)
+                            var element2 = str.slice(0, -1)
+                        }
 
-                    return (
-                        <Carousel.Item key={index.toString()} className={"w-100"}>
-                            <Image
-                                src={element2}
-                                loader={myLoader}
-                                alt={''}
-                                height={1850}
-                                width={5000}
-                            />
-                            <div className={`${styles.carouselCaption} carousel-caption d-md-block`}
-                                 style={{
-                                     backgroundColor: 'white',
-                                     opacity: 0.8,
-                                     marginLeft: 150,
-                                 }}>
-                                <p style={{fontSize: 12}}>{toShow}</p>
-                                <Link
-                                    role="button"
-                                    passHref={true}
-                                    href={{
-                                        pathname: "/article/" + item?.title,
-                                        query: {from: 'CarouselHome', selectedItem: item?.term_node_tid}
-                                    }}
-                                    as={"/article/" + item?.title}
-                                >
-                                    <a role={'button'} className={`${styles.btn} btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}>
-                                        <i
+                        return (
+                            <Carousel.Item key={index.toString()} className={`${styles.ImgSlide} w-100`}>
+                                <Image
+                                    src={element2}
+                                    loader={myLoader}
+                                    alt={''}
+                                    height={1850}
+                                    width={5000}
+                                />
+
+
+                                <div className={`${styles.carouselCaption} carousel-caption d-md-block`}
+                                     style={{
+                                         backgroundColor: 'white',
+                                         opacity: 0.8,
+                                         marginLeft: 150
+                                     }}>
+                                    <p style={{fontSize: 12}}>{toShow}</p>
+                                    <Link
+                                        role="button"
+                                        href={{
+                                            pathname: "/article/" + item?.title,
+                                            query: {from: 'CarouselHome', selectedItem: item?.term_node_tid}
+                                        }}
+                                        as={"/article/" + item?.title}
+                                    >
+                                        <a role={'button'} className={`${styles.btn} btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}><i
                                             className={`fas ${isRTL ? "fa-caret-right" : "fa-caret-left"} align-items-center d-flex align-self-stretch`}/>
-                                        <h6 className="m-0 px-4" onClick={()=>console.log('eeded')}>{more}</h6>
-                                    </a>
-                                </Link>
-                            </div>
-                        </Carousel.Item>
-                    )
-                })}
+                                            <h6 className="m-0 px-4">{more}</h6>
+                                        </a>
+                                    </Link>
+                                </div>
+                            </Carousel.Item>
+                        )
+                    })}
 
-            </Slider>
+                </Slider>
 
             <div className={`${styles.bg_dashed}bg_dashed h-100 position-absolute w-100`}
                  style={{backgroundImage: `url(${Backgrounds.bg_dashed})`}}/>

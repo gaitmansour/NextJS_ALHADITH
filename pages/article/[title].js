@@ -237,7 +237,6 @@ export default function ArticlePage(props) {
                                     as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
                                     >
                                         <a style={{textDecoration:'none'}}>
-
                                         <Badgs
                                             className={`${styles.badgTag}`}
                                             key={index}
