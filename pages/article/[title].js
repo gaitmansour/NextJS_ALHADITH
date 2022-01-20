@@ -196,7 +196,7 @@ export default function ArticlePage(props) {
                     dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
                       ?.uri?.url
                   }
-                  className='m-auto w-100 my-4'
+                  className='m-auto w-100 my-3'
                   width={850}
                   height={500}
                   loader={myLoader}

@@ -5,6 +5,10 @@
 .pb0 {
     max-width: 61vw;
 }
+.bodyTemplate{
+    padding-right: 5% !important;
+    padding-left: 5% !important;
+}
 
 .templateHeader .bgDashed {
     background-repeat: no-repeat;
@@ -66,4 +70,11 @@
     /* .TemplateArticle .templateHeader .bgDashed {
         display: none !important;
     } */
+}
+
+@media screen and (max-width: 500px) {
+    .bodyTemplate{
+        padding-right: 0% !important;
+        padding-left: 0% !important;
+    }
 }
