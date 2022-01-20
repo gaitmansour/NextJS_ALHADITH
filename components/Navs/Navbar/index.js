@@ -11,6 +11,7 @@ import Contact from "../../Contact";
 import Image from 'next/image'
 import {Dropdown} from "react-bootstrap";
 import useTranslation from "next-translate/useTranslation";
+import $ from 'jquery'
 
 const NavBar = props => {
     const {t, lang} = useTranslation();
@@ -61,6 +62,7 @@ const NavBar = props => {
         ref && ref.current && ref.current.scrollIntoView({behavior: 'smooth'});
 
     const renderLinksMenu = () => {
+
         const navLinks =
             MenuLinks &&
             MenuLinks?.map((item, index) => {
@@ -128,7 +130,11 @@ const NavBar = props => {
                         key={index.toString()}>
                         <Dropdown>
                             <Dropdown.Toggle as={CustomDropDown}/>
-                            <Dropdown.Menu as={MenuDropDown}/>
+
+                            <div onClick={() => {
+                                document.body.click()
+                            }}>
+                                <Dropdown.Menu as={MenuDropDown}/></div>
                         </Dropdown>
                     </li>
                 );
@@ -201,7 +207,8 @@ const NavBar = props => {
                                                     });
                                                     setShowMenu(!showMenu);
                                                 }}>
-                                                <li key={i} className="btn rounded-0 mx-0 px-0" onClick={()=> setShowMenu(!showMenu)}>
+                                                <li key={i} className="btn rounded-0 mx-0 px-0"
+                                                    onClick={() => setShowMenu(!showMenu)}>
                                                     {data.label}
                                                 </li>
                                             </Link>
