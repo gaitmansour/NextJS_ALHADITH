@@ -4,10 +4,7 @@
     margin-left: 6%;
 }
 
-.resultat {
-    color: black;
-    background-color: #0dcaf0;
-}
+
 
 .bckg1 {
     background-color: #d4ede1;
@@ -52,7 +49,7 @@
     font-style: normal;
 }
 
-.ItemList .content .meta-data p span {
+.ItemList .content .metaData p span {
     color: #324650;
     margin: 0 5px;
 }
@@ -69,7 +66,7 @@
     margin: 0 2em;
 }
 
-.ItemList .content .meta-data .devider {
+.ItemList .content .metaData .devider {
     background: #324650;
     width: 1.5px;
     height: 19px;
@@ -130,8 +127,8 @@
 
 @media (max-width: 480px) {
     .result {
-        width: 90vw;
-        max-width: 100%;
+        width: 85vw !important;
+        max-width: 100vw !important;
         height: auto;
     }
 
@@ -139,29 +136,29 @@
         text-align: right !important;
     }
 
-    .result .content .meta-data .alignItem {
+     .alignItem {
         display: block !important;
     }
 
-    .result .content .meta-data .alignItem .devider {
+   .alignItem .devider {
         display: none;
     }
 
-    .result .content .meta-data .alignItem .output {
+  .alignItem .output {
         width: 30%;
     }
 
-    .result .content .meta-data .alignItem .resultat {
+   .alignItem .resultat {
         width: 70%;
     }
 }
 
 @media only screen and (max-width: 361px) {
-    .result .content .meta-data .alignItem .output {
+    .alignItem .output {
         width: 30% !important;
     }
 
-    .result .content .meta-data .alignItem .resultat {
+    .alignItem .resultat {
         width: 60% !important;
     }
 }
