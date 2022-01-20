@@ -10,7 +10,7 @@ import {Carousel} from "react-bootstrap"
 import Loading from "../../../components/_UI/Loading";
 import SMLinks from "../../../components/_UI/SMLinks";
 import Image from 'next/image'
-
+import $ from "jquery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -136,7 +136,18 @@ const CarouselHome = (props) => {
                                 .slice(5)
                             var element2 = str.slice(0, -1)
                         }
-
+                        $(document).ready(function () {
+                            $('.linksCarousel').contextmenu(function (event) {
+                                localStorage.setItem(
+                                    'routeState',
+                                    JSON.stringify({
+                                        fromNav: {},
+                                        selectedItem: item?.term_node_tid,
+                                        from: 'CarouselHome',
+                                    }),
+                                );
+                            });
+                        });
                         return (
                             <Carousel.Item key={index.toString()} className={`${styles.ImgSlide} w-100`}>
                                 <Image
@@ -156,14 +167,13 @@ const CarouselHome = (props) => {
                                      }}>
                                     <p style={{fontSize: 12}}>{toShow}</p>
                                     <Link
-                                        role="button"
                                         href={{
                                             pathname: "/article/" + item?.title,
                                             query: {from: 'CarouselHome', selectedItem: item?.term_node_tid}
                                         }}
                                         as={"/article/" + item?.title}
                                     >
-                                        <a role={'button'} className={`${styles.btn} btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}><i
+                                        <a role={'button'} className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}><i
                                             className={`fas ${isRTL ? "fa-caret-right" : "fa-caret-left"} align-items-center d-flex align-self-stretch`}/>
                                             <h6 className="m-0 px-4">{more}</h6>
                                         </a>
@@ -175,9 +185,9 @@ const CarouselHome = (props) => {
 
                 </Slider>
 
-            <div className={`${styles.bg_dashed}bg_dashed h-100 position-absolute w-100`}
+            {/*  <div className={`${styles.bg_dashed}bg_dashed position-absolute w-100`}
                  style={{backgroundImage: `url(${Backgrounds.bg_dashed})`}}/>
-            {/* <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */
+           <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */
             }
         </div>
     )
