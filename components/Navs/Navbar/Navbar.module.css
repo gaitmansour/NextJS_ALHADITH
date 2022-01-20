@@ -356,22 +356,14 @@
 }
 
 @media (max-width: 320px) {
-    .linkQa img {
+    .logo {
         width: 80px;
     }
 }
 
-@media (max-width: 480px) {
-    .linkQa img {
-        width: 60px !important;
-        padding-left: 0.5em !important;
-        padding-right: 0.5em !important;
-        margin-right: 0em !important;
-    }
-    .linkQa{
-        padding-right: 1em !important;
-        margin-right: 2em !important;
-        width: 95% !important;
+@media (max-width: 425px) {
+    .logo {
+        width: 100px;
     }
 }
 
