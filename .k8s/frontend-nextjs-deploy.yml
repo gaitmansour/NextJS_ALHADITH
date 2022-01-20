@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-nextjs
+  name: frontend-nextjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-nextjs
+  template:
+    metadata:
+      annotations:
+        deployment.omnishore.ma/id: "$CI_JOB_ID"
+        deployment.omnishore.ma/commit: "$CI_COMMIT_SHA"
+        kubectl.kubernetes.io/restartedAt: ""
+      labels:
+        app: frontend-nextjs
+    spec:
+      containers:
+      - image: registry.devops.os/minassat-mohammed-vi-du-hadith/frontend-nextjs:staging
+        imagePullPolicy: Always
+        name: frontend-nextjs
+        env:
+        - name: BASE_URL_CMS
+          value: http://backend.7adith.ma:8000
+          #value: http://drupal.7adith.ma:8000
+          #value: http://drupal.7adith.ma
+          #value: http://drupal.devops.os
+          #value: http://drupal:9000
+        - name: BASE_URL_ES
+          value: http://elasticsearch:9200
+          #value: http://elasticsearch.devops.os
+          #value: http://elasticsearch.7adith.ma:8000
+        ports:
+        - name: http
+          containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+      imagePullSecrets:
+      - name: regcred

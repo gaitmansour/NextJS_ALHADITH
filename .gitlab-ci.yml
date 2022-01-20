@@ -1,0 +1,26 @@
+stages:
+  - containerize
+  - deploy
+
+build_image:
+  stage: containerize
+  image: docker:latest
+  only:
+    - main
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:staging -f .docker/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE:staging
+
+deploy_image:
+  stage: deploy
+  image: 
+    name: registry.devops.os/ci-tools/kubectl:1.22
+    entrypoint: [""]
+  only:
+    - main
+  script:
+     - |
+      export  currenttime=$(date +%H%M)
+      echo $currenttime
+      if [[ $currenttime -gt 1569 ]]; then envsubst < .k8s/frontend-nextjs-deploy.yml | kubectl apply -f -; else echo "false"; fi
