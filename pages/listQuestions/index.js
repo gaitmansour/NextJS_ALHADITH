@@ -2,167 +2,165 @@ import React, { useEffect, useState, useRef } from 'react'
 import styles from './listQuestions.module.css'
 import Iicon from '../../components/_UI/QuestionsList/speech-bubblee1.png'
 import {
-    AllForums,
-    getQuestionAPI,
-    getTaxonomyForum,
-    addQuestions,
-    searchQuestion,
-} from '../../endpoints';
-import Link from 'next/link';
-import {Icons} from '../../assets';
-import _ from 'lodash';
-import Moment from 'moment';
-import {FetchAPIWthData} from '../../data/API';
-import ReCAPTCHA from 'react-google-recaptcha';
-import ReactPaginate from 'react-paginate';
-import {FetchPostAPI} from '../../data/API/questions';
-import {GoogleLogin} from 'react-google-login';
-import TemplateArticle from "../../components/TemplateArticle";
-import Body from "../../components/Body";
-import CustomModal from "../../components/_UI/Modal";
-import ScrollButton from "../../components/ScrollButton";
-import Loading from "../../components/_UI/Loading";
+  AllForums,
+  getQuestionAPI,
+  getTaxonomyForum,
+  addQuestions,
+  searchQuestion,
+} from '../../endpoints'
+import Link from 'next/link'
+import { Icons } from '../../assets'
+import _ from 'lodash'
+import Moment from 'moment'
+import { FetchAPIWthData } from '../../data/API'
+import ReCAPTCHA from 'react-google-recaptcha'
+import ReactPaginate from 'react-paginate'
+import { FetchPostAPI } from '../../data/API/questions'
+import { GoogleLogin } from 'react-google-login'
+import TemplateArticle from '../../components/TemplateArticle'
+import Body from '../../components/Body'
+import CustomModal from '../../components/_UI/Modal'
+import ScrollButton from '../../components/ScrollButton'
+import Loading from '../../components/_UI/Loading'
 import Image from 'next/image'
-import FacebookLogin from 'react-facebook-login';
-
+import FacebookLogin from 'react-facebook-login'
 
 const ListQuestions = (props) => {
-    const title = props?.match?.params?.title
-    const [DataQuestions, setDataQuestions] = useState([])
-    const [DataQuestions1, setDataQuestions1] = useState([])
-    const [question, setQuestion] = useState('')
-    const [checked, setChecked] = useState(false)
-    const [logged, setLogged] = useState(false)
-    const [Subject, setSubject] = useState('')
-    const [email, setEmail] = useState('')
-    const [Forum, setForum] = useState('')
-    const [output, setOutput] = useState([])
-    const [message, setMessage] = useState('')
-    const [showForum, setShowForum] = useState(false)
-    const [show, setShow] = useState(false);
-    const [mail, setMail] = useState("");
-    const [sendSuccess, setsendSuccess] = useState(false);
-    const [pageNumber, setPAgeNumber] = useState(0);
-    const [pagePagination, setPagePagination] = useState(1);
-    const [StartPage, setStartPage] = useState(0);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const url = AllForums();
-    const url1 = getTaxonomyForum();
-    const urlSubmit = getQuestionAPI();
-    const urlAddQuestion = addQuestions()
-    const urlSearchQuestion = searchQuestion()
-    const clientId = "293585459501-peieeq4508t355rdtmq6244u2nhnsqqc.apps.googleusercontent.com"
+  const title = props?.match?.params?.title
+  const [DataQuestions, setDataQuestions] = useState([])
+  const [DataQuestions1, setDataQuestions1] = useState([])
+  const [question, setQuestion] = useState('')
+  const [checked, setChecked] = useState(false)
+  const [logged, setLogged] = useState(false)
+  const [Subject, setSubject] = useState('')
+  const [email, setEmail] = useState('')
+  const [Forum, setForum] = useState('')
+  const [output, setOutput] = useState([])
+  const [message, setMessage] = useState('')
+  const [showForum, setShowForum] = useState(false)
+  const [show, setShow] = useState(false)
+  const [mail, setMail] = useState('')
+  const [sendSuccess, setsendSuccess] = useState(false)
+  const [pageNumber, setPAgeNumber] = useState(0)
+  const [pagePagination, setPagePagination] = useState(1)
+  const [StartPage, setStartPage] = useState(0)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const url = AllForums()
+  const url1 = getTaxonomyForum()
+  const urlSubmit = getQuestionAPI()
+  const urlAddQuestion = addQuestions()
+  const urlSearchQuestion = searchQuestion()
+  const clientId =
+    '293585459501-peieeq4508t355rdtmq6244u2nhnsqqc.apps.googleusercontent.com'
 
-    function handleShowHide() {
-        setShowForum(!showForum);
-        setChecked(false);
-    }
+  function handleShowHide() {
+    setShowForum(!showForum)
+    setChecked(false)
+  }
 
-    function onChange() {
-        setChecked(true);
-    }
+  function onChange() {
+    setChecked(true)
+  }
 
-    const SubmitQuestion = async () => {
-        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (mailformat.test(email) === false && mailformat.test(mail) === false) {
-            console.log('email false')
-            setMessage('البريد الإلكتروني غير صحيح!');
-            console.log(message)
-        } else {
-            const data = {
-                "sujetQuestion": Subject,
-                "descriptionQuestion": question,
-                "email": email,
+  const SubmitQuestion = async () => {
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (mailformat.test(email) === false && mailformat.test(mail) === false) {
+      console.log('email false')
+      setMessage('البريد الإلكتروني غير صحيح!')
+      console.log(message)
+    } else {
+      const data = {
+        sujetQuestion: Subject,
+        descriptionQuestion: question,
+        email: email,
+      }
+      console.log('forum_______', data)
+      return FetchAPIWthData(urlAddQuestion, data).then((data) => {
+        if (data.success) {
+          setsendSuccess(true)
+          const timer = setTimeout(() => {
+            if (typeof window != 'undefined') {
+              // window.location.reload(false);
             }
-            console.log("forum_______", data)
-            return FetchAPIWthData(urlAddQuestion, data).then(data => {
-                if (data.success) {
-                    setsendSuccess(true)
-                    const timer = setTimeout(() => {
-                        if (typeof window != "undefined") {
-                            // window.location.reload(false);
-                        }
-                    }, 2000);
-
-
-                }
-            })
+          }, 2000)
         }
+      })
     }
+  }
 
-    const handleSearchQuestion = async () => {
-        const data = {
-            "query": Subject,
-            "size": 10,
-            "start": 0
-        }
-        FetchPostAPI(urlSearchQuestion, data).then(data => {
-            // console.log("testtttttt",data)
-            if (Subject !== '' && data.success) {
-                return setOutput(data?.data)
-            } else {
-                setOutput([])
-            }
-        });
-    };
-
-    const getDataQuestions = async () => {
-        const data = {
-            "query": "",
-            "size": 10,
-            "start": StartPage < 1 ? 0 : StartPage,
-        }
-        FetchPostAPI(urlSearchQuestion, data).then(data => {
-            if (data.success) {
-                setDataQuestions(data?.data?.hits?.hits);
-                setPagePagination(data?.data?.hits?.total?.value);
-                return data?.data?.hits?.hits;
-            }
-        })
+  const handleSearchQuestion = async () => {
+    const data = {
+      query: Subject,
+      size: 10,
+      start: 0,
     }
-    const responseFacebook = response => {
-        setLogged(true);
-        setMail(response.email);
-    };
-    const onLoginSuccess = res => {
-        setLogged(true);
-        setMail(res.profileObj.email);
-    };
-    const onLoginFail = res => {
-        console.log('resultFail22', res);
-    };
+    FetchPostAPI(urlSearchQuestion, data).then((data) => {
+      // console.log("testtttttt",data)
+      if (Subject !== '' && data.success) {
+        return setOutput(data?.data)
+      } else {
+        setOutput([])
+      }
+    })
+  }
 
-    function handleSubmitQuestion() {
-        if (!question || !Subject) {
-            handleShow();
-        } else {
-            SubmitQuestion();
-        }
+  const getDataQuestions = async () => {
+    const data = {
+      query: '',
+      size: 10,
+      start: StartPage < 1 ? 0 : StartPage,
     }
+    FetchPostAPI(urlSearchQuestion, data).then((data) => {
+      if (data.success) {
+        setDataQuestions(data?.data?.hits?.hits)
+        setPagePagination(data?.data?.hits?.total?.value)
+        return data?.data?.hits?.hits
+      }
+    })
+  }
+  const responseFacebook = (response) => {
+    setLogged(true)
+    setMail(response.email)
+  }
+  const onLoginSuccess = (res) => {
+    setLogged(true)
+    setMail(res.profileObj.email)
+  }
+  const onLoginFail = (res) => {
+    console.log('resultFail22', res)
+  }
 
-    useEffect(() => {
-        handleSearchQuestion();
-        getDataQuestions();
-        // getDataQuestions1()
-        if (typeof window != "undefined") {
-            //  window.scrollTo(0, 0);
-        }
-    }, [StartPage, pageNumber]);
+  function handleSubmitQuestion() {
+    if (!question || !Subject) {
+      handleShow()
+    } else {
+      SubmitQuestion()
+    }
+  }
 
-    const questionPerPage = 5;
-    const pagesVisited = pageNumber * questionPerPage;
+  useEffect(() => {
+    handleSearchQuestion()
+    getDataQuestions()
+    // getDataQuestions1()
+    if (typeof window != 'undefined') {
+      //  window.scrollTo(0, 0);
+    }
+  }, [StartPage, pageNumber])
 
-    const data = [
-        {
-            title: 'الرئيسية',
-            path: '',
-        },
-        {
-            title: 'سؤال و جواب',
-            path: '/listQuestions',
-        },
-    ];
+  const questionPerPage = 5
+  const pagesVisited = pageNumber * questionPerPage
+
+  const data = [
+    {
+      title: 'الرئيسية',
+      path: '',
+    },
+    {
+      title: 'سؤال و جواب',
+      path: '/listQuestions',
+    },
+  ]
 
   if (_.isEmpty(DataQuestions)) {
     return (
@@ -517,4 +515,4 @@ const ListQuestions = (props) => {
   )
 }
 
-export default ListQuestions;
+export default ListQuestions
