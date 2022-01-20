@@ -32,42 +32,42 @@ const SliderList = (props) => {
   return (
     <Widget className={`${className}`}>
       <div className={`${styles.SliderList} SliderList`}>
-        <Slider {...settings} className='slide my-4'>
-          {data?.map((item, i) => {
-            const newData = item.map((data, index) => {
-              var stripedTitle = data.title.replace(/<[^>]+>/g, '')
-              var rmSpaces = stripedTitle.trim()
-              if (rmSpaces === 'جدول الدروس الحسنية') {
-                var pathN = '/جدول الدروس الحسنية'
-              } else {
-                pathN = rmSpaces
-              }
-              return (
-                <Link
-                  href={pathN}
-                  key={index.toString()}
-                  className=''
-                  as={pathN}
-                >
-                  <a style={{ textDecoration: 'none' }}>
-                    {/* <Image className="w-100" src={Side} alt=""/> */}
-                    <div className={`${styles.imgContainer01} imgContainer01`}>
-                      <p>{rmSpaces}</p>
-                    </div>
-                  </a>
-                </Link>
-              )
-            })
+        {/* <Slider {...settings} className='slide my-4'> */}
+        {data?.map((item, i) => {
+          const newData = item.map((data, index) => {
+            var stripedTitle = data.title.replace(/<[^>]+>/g, '')
+            var rmSpaces = stripedTitle.trim()
+            if (rmSpaces === 'جدول الدروس الحسنية') {
+              var pathN = '/جدول الدروس الحسنية'
+            } else {
+              pathN = rmSpaces
+            }
             return (
-              <div
-                key={i.toString()}
-                className={`${styles.SliderListData} SliderList-data`}
-              >
-                {newData}
-              </div>
+              <Link href={pathN} key={index.toString()} className='' as={pathN}>
+                <a
+                  className={`${styles.cardSlid} item-card-content d-flex align-items-center py-2`}
+                >
+                  <Image src={Article.photo_sliderlist.default} alt='' />
+                  <div className='mx-3 w-100'>
+                    <p>{rmSpaces}</p>
+                    <span className='text-success text-decoration-underline'>
+                      لمعرفة المزيد
+                    </span>
+                  </div>
+                </a>
+              </Link>
             )
-          })}
-        </Slider>
+          })
+          return (
+            <div
+              key={i.toString()}
+              className={`${styles.SliderListData} SliderList-data`}
+            >
+              {newData}
+            </div>
+          )
+        })}
+        {/* </Slider> */}
       </div>
     </Widget>
   )
