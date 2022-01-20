@@ -89,7 +89,7 @@ display: list-item;
     /* padding: 5px; */
     color: darkgray;
     width: 90%;
-    margin-bottom: 3%;
+    /* margin-bottom: 2%; */
     display: flex;
     flex-direction: column;
 }
@@ -108,14 +108,14 @@ table td p a{
     .TemplateArticleBody .desc{
         width:100vw !important;
         max-width: 85% !important;
-        margin: 0px 5px !important ;
+        /* margin: 0px 5px !important ; */
     }
     .slider{
         width: 100% !important;
     }
     .TemplateArticleBody .summ{
         width: 100% !important;
-        margin-left: 5% !important;
+        /* margin-left: 5% !important; */
     }
     .TemplateArticleBody .badg{
         width: 100%;
@@ -155,21 +155,21 @@ table td p a{
         max-width: 95vw !important;
         
     }
-    .TemplateArticleBody .desc{
-        padding-right: 0.5rem!important;
+    /* .TemplateArticleBody .desc{
+        padding-right: 0.2rem!important;
         padding-left: 0.5rem!important;
-    }
-    .articls{
-        padding-right: 1rem !important;
+    } */
+    /* .articls{
+        padding-right: 0.5rem !important;
         padding-left: 2rem !important;
-    }
+    } */
     .TemplateArticleBody{
         display: flex !important;
         flex-direction: column !important;
         width: 100%;
     }
     .sectionImage{
-        width: 100% !important;
+        width: 90vw !important;
         margin: 0% !important;
     }
     .sectionImage Image{
@@ -179,9 +179,10 @@ table td p a{
     .articleTags{
         display: flex !important;
         flex-direction: column !important;
+        width: 90vw !important;
     }
     .TemplateArticleBody .badgTag{
-        margin-bottom: 5% !important;
+        margin-bottom: 5em !important;
     }
 
 }

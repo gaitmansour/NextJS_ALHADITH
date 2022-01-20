@@ -3,7 +3,7 @@ import styles from './Badgs.module.css'
 
 const Badgs = (props) => {
   return (
-    <div>
+    <div className='my-3'>
       {props.tags?.length > 0 && (
         <span class={`${styles.badge} rounded-pill bg-success mx-3`}>
           {props.tags}
