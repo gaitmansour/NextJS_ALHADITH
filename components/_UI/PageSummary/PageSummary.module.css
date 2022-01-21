@@ -33,3 +33,17 @@
         width: 100% !important;
     }
 }
+@media screen and (max-width : 360px){
+    .SummaryPage{
+        width: 100vw !important;
+        margin-left: 0% !important;
+    }
+    .SummaryPage .summary {
+        width: 95vw !important;
+        margin-top: 0px !important;
+    }
+    *[dir='ltr'] .SummaryPage .summary {
+        padding-left: 0em;
+        width: 95vw !important;
+    }
+}

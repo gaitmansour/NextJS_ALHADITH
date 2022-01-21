@@ -192,3 +192,8 @@ table td p a{
     }
 
 }
+@media screen and (max-width : 360px){
+    .summ{
+       width: 95vw !important;
+    }
+}
