@@ -234,7 +234,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 330px) {
   .logo {
     width: 80px;
   }
@@ -250,5 +250,14 @@
   }
   *[dir='rtl'] .footer-container {
     border-top-left-radius: 0 !important;
+  }
+  .react-player{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    width: 90vw !important;
+  }
+  .itemCardContent{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
   }
 }

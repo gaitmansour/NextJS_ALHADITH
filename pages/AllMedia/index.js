@@ -64,7 +64,14 @@ const AllMedia = (props) => {
         },
       },
       {
-        breakpoint: 321,
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 330,
         settings: {
           arrows: false,
           dots: true,
@@ -230,7 +237,7 @@ const AllMedia = (props) => {
                       return (
                         <div
                           key={i.toString()}
-                          className='SliderVideoList-data1 d-flex flex-wrap'
+                          className={`${styles.SliderVideoList} SliderVideoList-data1 d-flex flex-wrap`}
                         >
                           <div
                             key={i.toString()}

@@ -312,3 +312,24 @@
       left: -120px !important;
     }
   }
+  @media screen and (max-width : 330px){
+    .RPlayer{
+      text-align: center !important;
+  }
+  .itemCardContent{
+    width: 100vw !important;
+    text-align: center !important;
+  }
+    /* 
+    .RPlayer{
+      width: 100vw !important;
+    }
+    
+    
+    .playerWrapper{
+      width: 100vw !important;
+    }
+    .SliderVideoList{
+      margin: auto 15px !important;
+    } */
+}
