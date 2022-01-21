@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from 'react'
 
-export const FetchAPIWthData = async (url,data) => {
-    return await axios.post(url ,data,{
-        headers:{
+export const FetchAPIWthData = async (url, data) => {
+    return await axios.post(url, data, {
+        headers: {
             "Content-Type": "application/vnd.api+json",
             "Authorization": "Basic ZGlhbHk6ZGlhbHk="
         }
@@ -14,6 +14,15 @@ export const FetchAPIWthData = async (url,data) => {
             const data = {
                 data: response?.data,
                 success: true
+            }
+            return data
+        }
+        if (response.status === 500) {
+            const data = {
+                data: null,
+                success:false,
+                status: response.status,
+                message: "bla bla bla"
             }
             return data
         }
