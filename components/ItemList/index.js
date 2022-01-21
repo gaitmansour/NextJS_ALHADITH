@@ -15,17 +15,18 @@ import Cards from '../_UI/Cards'
 const ItemList = (props) => {
   const className = props?.className ? props.className : ''
   const params = `${props.content}\n  # الباب : ${props.topic} \n# الموضوع : ${
-    props.category
+      props.category
   } \n# المصدر : ${props.source} \n # الراوي : ${props.narrator} \n# الحكم : ${
-    props.degree
-  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''}`
+      props.degree
+  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''}`;
 
-  const toShow = params.substring(0, 251) + ' ...'
+  const toShow = params.substring(0, 251) + ' ...';
   // console.log("toShow",toShow)
+
 
   return (
     <Cards
-      className={`${styles.ItemList} my-2 px-0 pb-0 ${className} ${
+      className={`${styles.ItemList} my-2 w-100 px-0 pb-0 ${className} ${
         styles.result
       } result ${
         props.degree === 'صحيح'
@@ -47,54 +48,52 @@ const ItemList = (props) => {
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex m-0'>
-              <span className={`text-warning ${styles.output}`}>الحكم</span>:{' '}
-              <span className={styles.resultat}>{props.degree}</span>
+            <p className='d-flex text-warning m-0'>
+              <span className={'fw-bold'} style={{color:'#b17d00'}} >الحكم</span>:{' '}
+              <span className={`${styles.resultat} fw-bold`}>{props.degree}</span>
             </p>
-            <div className={styles.devider} />
-            <p className='d-flex m-0'>
-              <span className={`text-warning ${styles.output}`}>الراوي</span>:{' '}
+          </div>
+          <div className="d-flex align-items-center alignItem">
+            <p className='d-flex  m-0'>
+              <span  style={{color:'#b17d00'}} >الراوي</span>:{' '}
               <span className={styles.resultat}>{props.narrator}</span>
             </p>
             <div className={styles.devider} />
             <p className='d-flex m-0'>
-              <span className={`text-warning ${styles.output}`}>المصدر</span>:{' '}
+              <span  style={{color:'#b17d00'}} >المصدر</span>:{' '}
               <span className={styles.resultat}>{props.source}</span>
             </p>
-          </div>
-          <div
-            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
-          >
-            <p className='d-flex m-0'>
-              <span className={`text-success ${styles.output}`}>
-                مصدر الحكم
-              </span>
-              :<span className={styles.resultat}>{props.sourceGlobal}</span>
-            </p>
             <div className={styles.devider} />
-            <p className='d-flex m-0'>
-              <span className={`text-success ${styles.output}`}>الموضوع</span>:{' '}
-              <span className={styles.resultat} color={'black'}>
-                {props.category}
-              </span>
-            </p>
-            <div className={styles.devider} />
-            <p className='d-flex m-0'>
-              <span className={`text-success ${styles.output}`}>باب</span>:{' '}
-              <span className={styles.resultat}>{props.topic}</span>
+            <p className="d-flex text-success m-0">
+              <span className="text-success output">مصدر الحكم</span>:
+              <span className={styles.resultat}>{props.sourceGlobal}</span>
             </p>
           </div>
-          <div
-            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
-          >
-            <p className='d-flex text-success m-0'>
+          <div className="d-flex align-items-center alignItem">
+            <p className="d-flex text-success m-0">
+              <span className="text-success output">الموضوع</span>:{' '}
+              <span className={styles.resultat}>{props.category}</span>
+            </p>
+            {/* <div className="devider" />
+            <p className="d-flex text-success m-0">
+              <span className="text-success output">باب</span>:{' '}
+              <span className="resultat">{props.topic}</span>
+            </p> */}
+          </div>
+          {props.comments && (
+              <div className="d-flex align-items-center alignItem">
+                <p className="d-flex text-success m-0">
+                  {' '}
+                  <span className="text-success output"> ملاحظات </span>:{' '}
+                  <span className="resultat">{props.comments}</span>
+                </p>
+              </div>
+          )}
+          <div className="d-flex align-items-center alignItem">
+            <p className="d-flex text-warning m-0">
               {' '}
-              <span className={`text-success ${styles.output}`}> ملاحظات </span>
-              :{' '}
-              <span
-                className={styles.resultat}
-                dangerouslySetInnerHTML={{ __html: props.description }}
-              />
+              <span style={{color:'#b17d00'}}> رقم الحديث </span>:{' '}
+              <span className="resultat">{props.numeroHadith}</span>
             </p>
           </div>
           {/*props.tags && props.tags.map((item, index) =>
