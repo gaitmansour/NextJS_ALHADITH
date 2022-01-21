@@ -24,4 +24,8 @@ module.exports = {
         ignoreDuringBuilds: true,
     },
 }
-
+module.exports = {
+  experimental: {
+    outputStandalone: true,
+  },
+}
