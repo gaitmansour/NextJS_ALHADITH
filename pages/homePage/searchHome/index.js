@@ -16,7 +16,7 @@ import CustomModal from "../../../components/_UI/Modal";
 
 const SearchSection = (props) => {
     //const {state} = useLocation();
-    let router = useRouter().query
+    let router=useRouter();
     const {state} = useRouter().query;
     const [showForm, setShowForm] = useState(true)
     const [dataDegree, setdataDegree] = useState([])
@@ -130,21 +130,30 @@ const SearchSection = (props) => {
             handleShow()
         } else {
             // console.log("go to")
-            history && history.push({
+            router && router.push({
                 pathname: '/search',
                 search: '',
                 query: {
                     from: 'section',
-                    topic: ChoiceCategory,
-                    door: ChoiceTopic,
-                    degree: ChoiceDegree,
-                    source: ChoiceSource,
-                    narrator: ChoiceNarrator,
+                    topic: ChoiceCategory.label,
+                    content: ChoiceDegree.label,
+                    source: ChoiceSource.label,
+                    sourceHokm:EvaluationSource,
+                    narrator: ChoiceNarrator.label,
                     word: input
                 }
             })
         }
-
+console.log("search home")
+        console.log({
+            from: 'section',
+            topic: ChoiceCategory.label,
+            door: ChoiceTopic,
+            content: ChoiceDegree.label,
+            source: ChoiceSource,
+            narrator: ChoiceNarrator,
+            word: input
+        })
     }
     const handleKeyDown = (event, location) => {
         // console.log('A key was pressed', event.keyCode);
