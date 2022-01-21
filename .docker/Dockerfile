@@ -1,29 +1,46 @@
-# To build the image you have just to run "docker build -t front:v0.0.1" from the root of the project
-# where "front" is the name of the image and "v0.0.1" is the tag of the image
-FROM node:16.6.1-alpine3.11 as packager
+# Install dependencies only when needed
+FROM node:16-alpine AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# Define here a default value of the BASE_URL_CMS, you can override it later in the building
-ARG BASE_URL_CMS="http://cms"
-# Define here a default value of the BASE_URL_ES, you can override it later in the building
-ARG BASE_URL_ES="http://es"
+# Rebuild the source code only when needed
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN yarn build
 
-ENV BASE_URL_CMS ${BASE_URL_CMS}
-# This variable needs to be replaced with apisearch
-# and all this new comments are to test automatic build/deploy
-ENV BASE_URL_ES ${BASE_URL_ES}
+# Production image, copy all the files and run next
+FROM node:16-alpine AS runner
+WORKDIR /app
 
-WORKDIR /app_front
+ENV NODE_ENV production
 
-COPY . /app_front
-RUN npm install -g npm@7.18.1 --silent && \
-    npm install  --legacy-peer-deps && \
-    npm run build
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
 
-FROM httpd:2.4.48-alpine3.14
+# You only need to copy next.config.js if you are NOT using the default configuration
+# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
 
+# Automatically leverage output traces to reduce image size 
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+USER nextjs
 
-COPY --from=packager /app_front/build /usr/local/apache2/htdocs/
-COPY .docker/httpd.conf  conf/httpd.conf
+EXPOSE 3000
 
-EXPOSE 80
+ENV PORT 3000
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD ["node", "server.js"]
