@@ -99,3 +99,21 @@
   display: flex;
   flex-grow: 1;
 }
+
+
+.inputName:focus {
+  border:1px solid #ced4da !important;
+}
+/* input:focus{
+
+} */
+
+.inputName {
+  justify-content: center;
+  border-radius: 5px;
+  width: 95%;
+  height: 10%;
+  border-color: #ced4da !important;
+  border-top-color:  #ced4da !important;
+  border-left-color:  #ced4da !important;
+}
