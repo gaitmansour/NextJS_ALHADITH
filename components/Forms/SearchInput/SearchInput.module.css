@@ -54,6 +54,9 @@ er {
         padding: 0 17px;
         margin-bottom: 0.5rem !important;
     }
+    .input{
+        box-shadow: none !important;
+    }
 }
 /*
 .testme {

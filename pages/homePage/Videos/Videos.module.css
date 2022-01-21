@@ -186,4 +186,13 @@
   }
 
 }
+@media screen and (max-width : 360px){
+  .sec .secTop, .secBottom {
+    width: 100%;
+    height: 58% !important;
+  }
+  .div2 h3{
+    margin-right: 20% !important;
+  }
+}
 

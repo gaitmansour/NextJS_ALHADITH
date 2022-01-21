@@ -92,7 +92,7 @@
 }
 
 
-@media screen and (max-width : 500px){
+@media screen and (max-width : 480px){
     .vertical-dots {
         z-index: 1000;
         right: 20px !important;
@@ -130,5 +130,12 @@
         cursor: pointer;
         /* z-index: 9999; */
     }
+}
+@media screen and (max-width : 330px){
+    .vertical-dots {
+        right: 20px !important;
+        top: 95% !important;
+        margin-right: 34%;
+    } 
 }
 

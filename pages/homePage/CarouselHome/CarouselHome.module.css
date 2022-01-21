@@ -269,8 +269,18 @@
 
 }
 
-/* @media (max-width: 481px) {
-    .carouselCaption{
-
+@media (max-width: 330px) {
+    .CarouselHome {
+        height: 82vh !important;
+        margin-bottom: 5px !important;
     }
-} */
+    .carouselControlBox{
+        height: auto !important;
+    }
+    .CarouselHome .carouselCaption{
+        margin-bottom: 10px !important;
+    }
+    .ImgSlide img{
+        height: 38vh !important;
+    }
+}

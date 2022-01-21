@@ -56,4 +56,10 @@
     .secSearch .searchElement input {
         color: black !important;
     }
+
+}
+@media screen and (max-width : 360px){
+    .SearchSection{
+        margin-top: 0px !important;
+    }
 }
