@@ -99,7 +99,7 @@ const ListQuestions = (props) => {
                     // setMail('')
                     // setSubject('')
                     // setQuestion('')
-                }else{
+                } else {
                     setsendFailed(true)
                 }
             });
@@ -276,7 +276,7 @@ const ListQuestions = (props) => {
                             style={{marginHorizontal: 20}}
                             className='mx-0 ml-5 mr-4'
                         />
-                        <p className={`${styles.descriptionP} flex-fill m-2`} style={{width:'100%'}}>
+                        <p className={`${styles.descriptionP} flex-fill m-2`} style={{width: '100%'}}>
                             {item?._source?.descriptionQuestion}
                         </p>
                     </a>
@@ -584,10 +584,10 @@ const ListQuestions = (props) => {
                                             )}
                                         </div>
                                         <ReCAPTCHA
-                                            /*sitekey="6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts"
-                                            secretkey="6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa"*/
-                                            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                                                                  secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+                                            sitekey="6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts"
+                                            secretkey="6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa"
+                                            /*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                                                                  secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
                                             className="captcha"
                                             onChange={onChange}
                                         />
@@ -610,7 +610,7 @@ const ListQuestions = (props) => {
                             </div>
                         </div>
                     ) : null}
-                     {displayQuestions && displayQuestions.length > 0 ? (
+                    {displayQuestions && displayQuestions.length > 0 ? (
                         <div className={`${styles.cardListAnswer} card w-75 px-1`}>
                             <div className={`${styles.CardQuestion} card-body Card-question`}>
                                 <div className={`${styles.SimpleList} SimpleList`}>
