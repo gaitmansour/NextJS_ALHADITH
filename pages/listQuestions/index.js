@@ -276,7 +276,7 @@ const ListQuestions = (props) => {
                             style={{marginHorizontal: 20}}
                             className='mx-0 ml-5 mr-4'
                         />
-                        <p className={`${styles.descriptionP} flex-fill m-2 `}>
+                        <p className={`${styles.descriptionP} flex-fill m-2`} style={{width:'100%'}}>
                             {item?._source?.descriptionQuestion}
                         </p>
                     </a>
