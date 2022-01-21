@@ -320,7 +320,11 @@ const NavBar = (props) => {
           </Link>
         </div>
         <div
-          className={`${styles.btn} btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${styles.secQa}`}
+          className={`${visible ? styles.quesAnserImg : styles.quesAnser} ${
+            styles.btn
+          } btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${
+            styles.secQa
+          }`}
         >
           <Link
             exact
@@ -329,7 +333,7 @@ const NavBar = (props) => {
             as={'سؤال وجواب/'}
           >
             <a
-              className={`align-items-center d-flex px-4 py-2 ${styles.linkQa}`}
+              className={` align-items-center d-flex px-4 py-2 ${styles.linkQa}`}
             >
               <Image
                 className={`logo mx-0 px-1`}
