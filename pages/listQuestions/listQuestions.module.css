@@ -36,6 +36,9 @@
     text-underline-style: none;
     color: black;
 }
+.descriptionP:hover{
+    color:#FEB400;
+}
 
 *[dir='ltr'] #paginationn {
     transform: rotate(180deg);
@@ -174,29 +177,10 @@
         width: 80% !important;
     }
 
-    /* .TemplateArticleBody{
-        max-width: 95% !important;
-        width: 90% !important;
-    }
-    .TemplateArticleBody .CardQuestion{
-        width: 90vw !important;
-        overflow: hidden !important;
-    } */
-    .questionDesc img {
-        
-    }
     .descriptionP{
         width: 80% !important;
     }
-    /* .TemplateArticleBody .CardQuestion .SimpleList .bg1 img {
-        width: 10% !important;
-        max-width: 10% !important;
-    } */
-
-    /* .TemplateArticleBody .btnquestion img {
-        width: 14% !important;
-        max-width: 20% !important;
-    }  */
+   
     .questionList{
         width: 100% !important;
     }

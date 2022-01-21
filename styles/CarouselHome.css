@@ -91,3 +91,51 @@
     height:0.6rem;
 }
 
+
+@media screen and (max-width : 480px){
+    .vertical-dots {
+        z-index: 1000;
+        right: 20px !important;
+        list-style: none;
+        display: flex !important;
+        position: absolute;
+        top: 89% !important;
+        margin-right: 34%;
+        text-align: center !important;
+        /* background-color: rebeccapurple; */
+    } 
+    .vertical-dots li button {
+        width: 10px;
+        height: 10px;
+        padding: 5px;
+        cursor: pointer;
+        border: 0;
+        outline: none;
+        z-index: 9999;
+    }
+    .vertical-dots li.slick-active{
+        color: #129D59 !important;
+        background: #129D59 !important;
+    }
+    .vertical-dots li{
+        background: rgba(212, 205, 205, 0.719) !important;
+    }
+    .vertical-dots li button:before {
+        content: '';
+        color: transparent;
+    }
+    .vertical-dots li {
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        /* z-index: 9999; */
+    }
+}
+@media screen and (max-width : 330px){
+    .vertical-dots {
+        right: 20px !important;
+        top: 95% !important;
+        margin-right: 34%;
+    } 
+}
+

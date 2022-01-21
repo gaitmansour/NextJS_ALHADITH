@@ -1,13 +1,13 @@
-import React, {useEffect, useRef, useState} from "react";
-import Link from 'next/link';
-import {Icons, Logos} from '../../../assets';
+import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { Icons, Logos } from '../../../assets'
 
-import styles from './Navbar.module.css';
-import _ from 'lodash';
-import FetchAPI from '../../../API';
-import {getMenu, getMenuLinks, base_url} from '../../../endpoints';
-import {getMenuLink, handleMenu} from '../../../helpers';
-import Contact from "../../Contact";
+import styles from './Navbar.module.css'
+import _ from 'lodash'
+import FetchAPI from '../../../API'
+import { getMenu, getMenuLinks, base_url } from '../../../endpoints'
+import { getMenuLink, handleMenu } from '../../../helpers'
+import Contact from '../../Contact'
 import Image from 'next/image'
 import {Dropdown} from "react-bootstrap";
 import useTranslation from "next-translate/useTranslation";
@@ -284,40 +284,50 @@ const NavBar = props => {
                     <Contact title="الشبكات الاجتماعية" className="social-media"/>
                 </div>
 
-                <div>
-                    <Link
-
-                        href={'/search'}>
-                        <a onClick={props.onClickSettings}
-                           className={`${
-                               visible ? 'd-block' : 'd-none'
-                           } d-flex align-items-center btn m-0 p-0 searchSticky`}>
-                            <i
-                                className="fas fa-search p-3 fa-2x iconSearch"
-                                style={{color: '#ADABAB'}}
-                            />
-                        </a>
-                        {/* <div className="sepText mx-2"></div> */}
-                    </Link>
-                </div>
-                <div
-                    className="btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex secQa">
-                    <Link
-                        exact
-                        activeClassName="active"
-                        href="/listQuestions" as={'سؤال وجواب/'}>
-                        <a className="align-items-center d-flex px-4 py-2 linkQa">
-                            <Image
-                                className="logo mx-0 px-1"
-                                src={Icons.icon_faq}
-                                alt="icon faq"
-                            />
-                            <h4 className="m-0 p-0 text-white">سؤال وجواب</h4></a>
-                    </Link>
-                </div>
-            </div>
+        <div>
+          <Link href={'/search'}>
+            <a
+              onClick={props.onClickSettings}
+              className={`${
+                visible ? 'd-block' : 'd-none'
+              } d-flex align-items-center btn m-0 p-0 searchSticky`}
+            >
+              <i
+                className='fas fa-search p-3 fa-2x iconSearch'
+                style={{ color: '#ADABAB' }}
+              />
+            </a>
+            {/* <div className="sepText mx-2"></div> */}
+          </Link>
         </div>
-    );
-};
+        <div
+          className={`${visible ? styles.quesAnserImg : styles.quesAnser} ${
+            styles.btn
+          } btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${
+            styles.secQa
+          }`}
+        >
+          <Link
+            exact
+            activeClassName='active'
+            href='/listQuestions'
+            as={'سؤال وجواب/'}
+          >
+            <a
+              className={` align-items-center d-flex px-4 py-2 ${styles.linkQa}`}
+            >
+              <Image
+                className={`logo mx-0 px-1`}
+                src={Icons.icon_faq}
+                alt='icon faq'
+              />
+              <h4 className='m-0 p-0 text-white'>سؤال وجواب</h4>
+            </a>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default NavBar;
