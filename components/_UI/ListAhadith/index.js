@@ -20,7 +20,7 @@ const ListAhadith = (props) => {
                   hash: '',
                   query: {
                     word: '',
-                    topic: item,
+                    topic: item.label,
                     content: 'موضوع',
                     from: 'home',
                   },
