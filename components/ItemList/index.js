@@ -15,14 +15,13 @@ import Cards from '../_UI/Cards'
 const ItemList = (props) => {
   const className = props?.className ? props.className : ''
   const params = `${props.content}\n  # الباب : ${props.topic} \n# الموضوع : ${
-      props.category
+    props.category
   } \n# المصدر : ${props.source} \n # الراوي : ${props.narrator} \n# الحكم : ${
-      props.degree
-  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''}`;
+    props.degree
+  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''}`
 
-  const toShow = params.substring(0, 251) + ' ...';
+  const toShow = params.substring(0, 251) + ' ...'
   // console.log("toShow",toShow)
-
 
   return (
     <Cards
@@ -49,29 +48,47 @@ const ItemList = (props) => {
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
             <p className='d-flex text-warning m-0'>
-              <span className={'fw-bold'} style={{color:'#b17d00'}} >الحكم</span>:{' '}
-              <span className={`${styles.resultat} fw-bold`}>{props.degree}</span>
+              <span
+                className={`fw-bold ${styles.output}`}
+                style={{ color: '#b17d00' }}
+              >
+                الحكم
+              </span>
+              :{' '}
+              <span className={`${styles.resultat} fw-bold`}>
+                {props.degree}
+              </span>
             </p>
           </div>
-          <div className="d-flex align-items-center alignItem">
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
             <p className='d-flex  m-0'>
-              <span  style={{color:'#b17d00'}} >الراوي</span>:{' '}
-              <span className={styles.resultat}>{props.narrator}</span>
+              <span className={styles.output} style={{ color: '#b17d00' }}>
+                الراوي
+              </span>
+              : <span className={styles.resultat}>{props.narrator}</span>
             </p>
             <div className={styles.devider} />
             <p className='d-flex m-0'>
-              <span  style={{color:'#b17d00'}} >المصدر</span>:{' '}
-              <span className={styles.resultat}>{props.source}</span>
+              <span className={styles.output} style={{ color: '#b17d00' }}>
+                المصدر
+              </span>
+              : <span className={styles.resultat}>{props.source}</span>
             </p>
             <div className={styles.devider} />
-            <p className="d-flex text-success m-0">
-              <span className="text-success output">مصدر الحكم</span>:
-              <span className={styles.resultat}>{props.sourceGlobal}</span>
+            <p className='d-flex text-success m-0'>
+              <span className={`text-success ${styles.output}`}>
+                مصدر الحكم
+              </span>
+              :<span className={styles.resultat}>{props.sourceGlobal}</span>
             </p>
           </div>
-          <div className="d-flex align-items-center alignItem">
-            <p className="d-flex text-success m-0">
-              <span className="text-success output">الموضوع</span>:{' '}
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex text-success m-0'>
+              <span className={`text-success ${styles.output}`}>الموضوع</span>:{' '}
               <span className={styles.resultat}>{props.category}</span>
             </p>
             {/* <div className="devider" />
@@ -81,19 +98,29 @@ const ItemList = (props) => {
             </p> */}
           </div>
           {props.comments && (
-              <div className="d-flex align-items-center alignItem">
-                <p className="d-flex text-success m-0">
+            <div
+              className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+            >
+              <p className='d-flex text-success m-0'>
+                {' '}
+                <span className={`text-success ${styles.output}`}>
                   {' '}
-                  <span className="text-success output"> ملاحظات </span>:{' '}
-                  <span className="resultat">{props.comments}</span>
-                </p>
-              </div>
+                  ملاحظات{' '}
+                </span>
+                : <span className={styles.resultat}>{props.comments}</span>
+              </p>
+            </div>
           )}
-          <div className="d-flex align-items-center alignItem">
-            <p className="d-flex text-warning m-0">
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex text-warning m-0'>
               {' '}
-              <span style={{color:'#b17d00'}}> رقم الحديث </span>:{' '}
-              <span className="resultat">{props.numeroHadith}</span>
+              <span className={styles.output} style={{ color: '#b17d00' }}>
+                {' '}
+                رقم الحديث{' '}
+              </span>
+              : <span className={styles.resultat}>{props.numeroHadith}</span>
             </p>
           </div>
           {/*props.tags && props.tags.map((item, index) =>
