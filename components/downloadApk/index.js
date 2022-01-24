@@ -5,22 +5,20 @@ import Image from 'next/image'
 
 const DownloadApk = () => {
   return (
-    <div className={`${styles.mobile} container`}>
+    <div className={`${styles.downloadApp} container`}>
       <Image src={Icons.icon_mobil} alt='' />
-      <div
-        className={`container ${styles.downloadApk}`}
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          className={styles.download}
-          style={{ marginRight: 350, marginTop: -290 }}
-        >
-          <Image src={Icons.icon_googlPlay} alt='' className={styles.dwdApk} />
-          <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
+      <div className={` ${styles.downloadApk}`}>
+        <div className={styles.download}>
+          <Image
+            src={Icons.icon_googlPlay}
+            alt=''
+            className={`${styles.dwdApk}`}
+          />
+          <Image
+            src={Icons.icon_appStor}
+            alt=''
+            className={`${styles.dwdApk} `}
+          />
         </div>
       </div>
     </div>
