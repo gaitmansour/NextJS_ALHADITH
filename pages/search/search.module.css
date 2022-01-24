@@ -3,10 +3,9 @@
     padding-right: 0 !important;
 }
 
-.SearchPage .pageTitleSecond h3 {
-    color: #656D7A;
-    font-weight: 700;
-    font-size: 18px;
+.SearchPage .pageTitleSecond h2{
+    font-weight: 800;
+    font-size: 2rem;
     padding: 0;
 }
 

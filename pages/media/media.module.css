@@ -299,6 +299,9 @@
     .play{
       width: 100% !important;
     }
+    .play img{
+      width: 100vw !important;
+    }
     
 
 }

@@ -240,7 +240,7 @@ function Media(props) {
                             controls
                             playing
                             className='react-player'
-                            width='100%'
+                            width={'100%'}
                             height='100%'
                           />
                         </div>
