@@ -267,3 +267,38 @@
       left: 40%;
     }
   }
+  @media (max-width: 480px) {
+    .Media{
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .playerWrapper{
+      width: 90vw !important;
+      height: 22vh !important;
+    }
+    .playerWrapper img{
+      width: 100vw !important;
+      height: 15vw !important;
+    }
+    /* .sliderVedio{
+      width: 90vw !important;
+    }
+    .sliderVedio img{
+      width: 100% !important;
+    } */
+    .sliderVedio img{
+      width: 100vw !important;
+    }
+    .itemCard{
+      width: 100% !important;
+      margin-left: 0px !important;
+    }
+    .sideBar{
+      width: 85vw !important;
+    }
+    .play{
+      width: 100% !important;
+    }
+    
+
+}
