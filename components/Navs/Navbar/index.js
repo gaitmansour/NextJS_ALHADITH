@@ -161,7 +161,7 @@ const NavBar = props => {
         if (item?.label !== 'الرئيسية') {
           return (
             <div
-              className='col-md-2 nav-item flex-column pt-2'
+              className='col-md-2 nav-item flex-column pt-4'
               key={index.toString()}
               ref={ref}
             >
