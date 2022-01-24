@@ -13,6 +13,13 @@
     opacity: 0.9;
 }
 
+.menuBlog{
+    height: 100px !important;
+  }
+  .menuAl{
+    height: 68px;
+  }
+
 .NavBar .iconBox {
     width: 34px;
     height: 34px;
@@ -117,7 +124,7 @@
 .NavBar .menuBtn {
     min-width: 100px;
     width: 100px;
-    height: 68px;
+    
 }
 
 /**[dir='rtl'] .NavBar .dropdownMenu[data-bs-popper] {
