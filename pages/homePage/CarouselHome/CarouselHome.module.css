@@ -5,10 +5,12 @@
 .CarouselHome .wpx100 {
     min-width: 100px !important;
 }
-
+.ImgSlide img{
+    height: 80vh !important;
+}
 .CarouselHome .carouselControlBox {
     background: linear-gradient(0, #176C42 1.48%, #0F462B 91.47%);
-    height: 500px;
+    height: 80vh;
     z-index: 1;
 }
 

@@ -7,17 +7,10 @@ const DownloadApk = () => {
   return (
     <div className={`${styles.mobile} container`}>
       <Image src={Icons.icon_mobil} alt='' />
-      <div
-        className={`container ${styles.downloadApk}`}
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+      <div className={`container ${styles.downloadApk}`}>
         <div
           className={styles.download}
-          style={{ marginRight: 350, marginTop: -290 }}
+          style={{ marginRight: 350, marginTop: -350 }}
         >
           <Image src={Icons.icon_googlPlay} alt='' className={styles.dwdApk} />
           <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />

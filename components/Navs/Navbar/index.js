@@ -154,135 +154,148 @@ const NavBar = props => {
         // // });
     };
 
-    const renderGlobalMenu = () => {
-        const menuLinks =
-            MenuGlobal &&
-            MenuGlobal?.map((item, index) => {
-                if (item?.label !== 'الرئيسية') {
+  const renderGlobalMenu = () => {
+    const menuLinks =
+      MenuGlobal &&
+      MenuGlobal?.map((item, index) => {
+        if (item?.label !== 'الرئيسية') {
+          return (
+            <div
+              className='col-md-2 nav-item flex-column pt-2'
+              key={index.toString()}
+              ref={ref}
+            >
+              <Link
+                //className="nav-link d-flex align-items-center text-dark p-0 fw-bold title-link"
+                id='clickable'
+                role='button'
+                exact
+                activeClassName='nav-bar-active'
+                href='#'
+              >
+                <a
+                  className={`nav-link d-flex align-items-center text-dark p-0 fw-bold title-link`}
+                >
+                  {item?.label}
+                </a>
+              </Link>
+              {item?.items?.length > 0 && (
+                <ul className='m-0 p-0 d-flex flex-column align-items-start list-items'>
+                  {item?.items?.map((data, i) => {
                     return (
-                        <div
-                            className="col-md-2 nav-item flex-column pt-4"
-                            key={index.toString()}
-                            ref={ref}>
-                            <Link
-                                //className="nav-link d-flex align-items-center text-dark p-0 fw-bold title-link"
-                                id="clickable"
-                                role="button"
-                                exact
-                                activeClassName="nav-bar-active"
-                                href="#">
-                                <a className={`nav-link d-flex align-items-center text-dark p-0 fw-bold title-link`}>
-                                    {item?.label}</a>
-                            </Link>
-                            {item?.items?.length > 0 && (
-                                <ul className="m-0 p-0 d-flex flex-column align-items-start list-items"
-                                >
-                                    {item?.items?.map((data, i) => {
-                                        return (
-                                            <Link
-                                                passHref={true}
-                                                key={i.toString()}
-                                                exact
-                                                activeClassName="nav-bar-active"
-                                                as={`/${data?.path}`}
-                                                href={{
-                                                    pathname: `/${data?.path}`,
-                                                    search: '',
-                                                    hash: '',
-                                                    query: {
-                                                        fromNav: item?.items,
-                                                        selectedItem: data?.title,
-                                                    },
-                                                }}
-                                                onClick={() => {
-                                                    console.log('---------------------------');
-                                                    console.log({
-                                                        pathname: `/${data?.path}`,
-                                                        search: '',
-                                                        hash: '',
-                                                        state: {
-                                                            fromNav: item?.items,
-                                                            selectedItem: data?.title,
-                                                        },
-                                                    });
-                                                    setShowMenu(!showMenu);
-                                                }}>
-                                                <li key={i} className="btn rounded-0 mx-0 px-0"
-                                                    onClick={() => setShowMenu(!showMenu)}>
-                                                    {data.label}
-                                                </li>
-                                            </Link>
-                                        );
-                                    })}
-                                </ul>
-                            )}
-                        </div>
-                    );
-                }
-            });
-        return menuLinks;
-    };
-    const [visible, setVisible] = useState(false);
-
-    const toggleVisible = () => {
-        const scrolled = document.documentElement.scrollTop;
-        if (scrolled > 100) {
-            setVisible(true);
-        } else if (scrolled <= 100) {
-            setVisible(false);
+                      <Link
+                        passHref={true}
+                        key={i.toString()}
+                        exact
+                        activeClassName='nav-bar-active'
+                        as={`/${data?.path}`}
+                        href={{
+                          pathname: `/${data?.path}`,
+                          search: '',
+                          hash: '',
+                          query: {
+                            fromNav: item?.items,
+                            selectedItem: data?.title,
+                          },
+                        }}
+                        onClick={() => {
+                          console.log('---------------------------')
+                          console.log({
+                            pathname: `/${data?.path}`,
+                            search: '',
+                            hash: '',
+                            state: {
+                              fromNav: item?.items,
+                              selectedItem: data?.title,
+                            },
+                          })
+                          setShowMenu(!showMenu)
+                        }}
+                      >
+                        <li
+                          key={i}
+                          className='btn rounded-0 mx-0 px-0'
+                          onClick={() => setShowMenu(!showMenu)}
+                        >
+                          {data.label}
+                        </li>
+                      </Link>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
+          )
         }
-    };
-    // console.log(visible)
-    if (typeof window !== 'undefined') {
-        window.addEventListener('scroll', toggleVisible);
+      })
+    return menuLinks
+  }
+  const [visible, setVisible] = useState(false)
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop
+    if (scrolled > 100) {
+      setVisible(true)
+    } else if (scrolled <= 100) {
+      setVisible(false)
     }
-    return (
-        <div className="NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0">
-            <div className="container-fluid p-0">
-
-                <div
-                    className={`btn rounded-0 p-0 border-0 align-self-stretch d-flex align-items-center justify-content-center menu-btn bg-gradient-green`}
-                    style={props?.styleBtnBars}
-                    onClick={() => setShowMenu(!showMenu)}>
-                    <div className="bg-light rounded-pill icon-box d-flex align-items-center justify-content-center">
-                        <i className="fas fa-bars text-dark"/>
-                    </div>
-                </div>
-                {!showLogo ? (
-                    <>
-
-                        <div
-                            className={`${
-                                visible ? 'd-block' : 'd-none'
-                            } d-flex align-items-center btn m-0 p-0 searchSticky`}>
-                            <Link className="my-2" href="/">
-                                <Image
-                                    className="logoNav"
-                                    src={Logos.logo_new}
-                                    alt="logo-Al-hadith-Mohammed-VI"
-                                    title="logo Al hadith Mohammed VI"
-                                />
-                            </Link>
-                        </div>
-                    </>
-                ) : null}
-                <div
-                    className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
-                    id="navbarNav">
-                    <ul className="navbar-nav align-items-center p-0 align-self-stretch">
-                        {renderLinksMenu()}
-                    </ul>
-                </div>
-                <div
-                    className={`bg-white global-menu position-absolute px-4 ${
-                        showMenu ? 'global-menu-show' : 'global-menu-hide'
-                    } overflow-hidden`}>
-                    <i
-                        className="fas fa-times-circle text-white icon-close"
-                        onClick={() => setShowMenu(!showMenu)}/>
-                    <div className="row">{renderGlobalMenu()}</div>
-                    <Contact title="الشبكات الاجتماعية" className="social-media"/>
-                </div>
+  }
+  // console.log(visible)
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', toggleVisible)
+  }
+  return (
+    <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
+      <div className='container-fluid p-0'>
+        <div
+          className={`${
+            visible ? styles.menuBlog : styles.menuAl
+          } btn rounded-0 p-0 border-0 align-self-stretch d-flex align-items-center justify-content-center menu-btn bg-gradient-green`}
+          style={props?.styleBtnBars}
+          onClick={() => setShowMenu(!showMenu)}
+        >
+          <div className='bg-light rounded-pill icon-box d-flex align-items-center justify-content-center'>
+            <i className='fas fa-bars text-dark' />
+          </div>
+        </div>
+        {!showLogo ? (
+          <>
+            <div
+              className={`${
+                visible ? 'd-block' : 'd-none'
+              } d-flex align-items-center btn m-0 p-0 searchSticky`}
+            >
+              <Link className='my-2' href='/'>
+                <Image
+                  className='logoNav'
+                  src={Logos.logo_new}
+                  alt='logo-Al-hadith-Mohammed-VI'
+                  title='logo Al hadith Mohammed VI'
+                />
+              </Link>
+            </div>
+          </>
+        ) : null}
+        <div
+          className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
+          id='navbarNav'
+        >
+          <ul className='navbar-nav align-items-center p-0 align-self-stretch'>
+            {renderLinksMenu()}
+          </ul>
+        </div>
+        <div
+          className={`bg-white global-menu position-absolute px-4 ${
+            showMenu ? 'global-menu-show' : 'global-menu-hide'
+          } overflow-hidden`}
+        >
+          <i
+            className='fas fa-times-circle text-white icon-close'
+            onClick={() => setShowMenu(!showMenu)}
+          />
+          <div className='row'>{renderGlobalMenu()}</div>
+          <Contact title='الشبكات الاجتماعية' className='social-media' />
+        </div>
 
         <div>
           <Link href={'/search'}>
