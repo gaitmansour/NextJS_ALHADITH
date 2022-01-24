@@ -232,6 +232,11 @@
   *[dir='rtl'] .footer-container {
     border-top-left-radius: 40px !important;
   }
+  .react-player{
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 330px) {
@@ -251,11 +256,7 @@
   *[dir='rtl'] .footer-container {
     border-top-left-radius: 0 !important;
   }
-  .react-player{
-    margin-left: 15px !important;
-    margin-right: 15px !important;
-    width: 90vw !important;
-  }
+  
   .itemCardContent{
     margin-left: 15px !important;
     margin-right: 15px !important;
