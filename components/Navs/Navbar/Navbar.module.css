@@ -360,6 +360,9 @@
     .NavBar .btnFaq {
         width: 100% !important;
     }
+    .menuBlog{
+        height: 68px !important;
+      }
 }
 
 @media (max-width: 320px) {
