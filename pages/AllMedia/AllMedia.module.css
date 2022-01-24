@@ -320,6 +320,9 @@
     width: 100vw !important;
     text-align: center !important;
   }
+  .reactPlayer{
+    height: 30vh !important;
+  }
     /* 
     .RPlayer{
       width: 100vw !important;
