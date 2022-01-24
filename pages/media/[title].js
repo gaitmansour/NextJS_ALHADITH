@@ -173,8 +173,8 @@ function Media(props) {
         className={` ${styles.TemplateArticleBody} ${styles.Media} d-flex p-4`}
       >
         {dataAPI?.data?.length > 0 ? (
-          <div className='' style={{ width: '67%' }}>
-            <div className='box-first-video'>
+          <div className={styles.playerVideo} style={{ width: '67%' }}>
+            <div className={`${styles.boxFirstVideo} box-first-video`}>
               <div className='btn-play'>
                 <button
                   type='button'
@@ -198,7 +198,7 @@ function Media(props) {
                       light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
                       controls
                       playing
-                      className='react-player'
+                      className={`${styles.reactPlay} react-player`}
                       width='100%'
                       height='100%'
                     />
@@ -239,8 +239,8 @@ function Media(props) {
                             light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
                             controls
                             playing
-                            className='react-player'
-                            width={'100%'}
+                            className={'react-player'}
+                            width='100%'
                             height='100%'
                           />
                         </div>
