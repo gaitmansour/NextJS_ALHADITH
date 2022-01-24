@@ -79,12 +79,12 @@
     justify-content: center;
 }
 
-.paginationButtons a:hover {
+/* .paginationButtons:hover {
     color: rgb(255, 255, 255);
-}
+} */
 
-.activebtn a {
-    background: #157646;
+.activebtn {
+    background: #29a669;
     color: white;
     border-radius: 5px;
 }
