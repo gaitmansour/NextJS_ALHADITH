@@ -173,7 +173,10 @@ function Media(props) {
         className={` ${styles.TemplateArticleBody} ${styles.Media} d-flex p-4`}
       >
         {dataAPI?.data?.length > 0 ? (
-          <div className={styles.playerVideo} style={{ width: '67%' }}>
+          <div
+            className={`${styles.playerVideo} px-3`}
+            style={{ width: '70%' }}
+          >
             <div className={`${styles.boxFirstVideo} box-first-video`}>
               <div className='btn-play'>
                 <button
@@ -212,7 +215,7 @@ function Media(props) {
             </div>
             <div>
               {/* <SliderVideoList data={VideosList} className="pt-5" /> */}
-              <div className='SliderVideoList row'>
+              <div className={`${styles.SliderVideoList} row`}>
                 <Slider {...settings} className='slide my-4'>
                   {dataAPI?.data.map((item, i) => {
                     console.log('-item----', item)
@@ -241,7 +244,7 @@ function Media(props) {
                             playing
                             className={'react-player'}
                             width='100%'
-                            height='100%'
+                            height='115%'
                           />
                         </div>
                         <p className='m-0 py-3 description'>
@@ -285,7 +288,10 @@ function Media(props) {
         ) : (
           <div className='flex-fill' style={{ width: '67%' }}></div>
         )}
-        <div className={`${styles.sideBar} side-bar`} style={{ width: '30%' }}>
+        <div
+          className={`${styles.sideBar} px-3 side-bar`}
+          style={{ width: '30%' }}
+        >
           {<SimpleListMedia data={sideData11} />}
         </div>
       </Body>
