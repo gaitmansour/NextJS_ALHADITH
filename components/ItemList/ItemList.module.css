@@ -54,8 +54,8 @@
 }
 
 .ItemList .content p {
-    text-align: justify;
-    text-justify: inter-word;
+    /* text-align: justify;
+    text-justify: inter-word; */
     font-size: 15px;
 }
 
