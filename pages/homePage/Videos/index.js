@@ -145,9 +145,6 @@ const Videos = () => {
                     <Image
                       src={Icons.icon_dorouss_hadita}
                       alt='الدروس-الحديثية'
-                      // width="30%"
-                      //   className='my-3'
-                      style={{ marginRight: '38%' }}
                     />
                     <h3 style={{ width: '100%', marginRight: '30%' }}>
                       الدروس الحديثية
