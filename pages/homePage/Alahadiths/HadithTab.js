@@ -28,7 +28,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
     dots: false,
     infinite: true,
     autoplay: true,
-    slidesToShow: 7,
+    slidesToShow: dataAPI.length >7 ?7 :dataAPI.length,
     slidesToScroll: 4,
     arrows: false,
     responsive: [
