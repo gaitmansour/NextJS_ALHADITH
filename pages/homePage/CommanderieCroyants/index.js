@@ -21,10 +21,10 @@ const fetchData = async () => FetchAPI(url).then(data => ({
         }),
     );
 
-const CommanderieCroyants = (data,error) => {
+const CommanderieCroyants = () => {
 
     const {t, i18n} = useTranslation('CommanderieCroyants');
-    /* const [dataAPI, setDataAPI] = useState({})
+     const [data, setDataAPI] = useState({})
     const getLanguage = i18n?.language === "ar" ? "ar" : "fr"
    const url = getCommanderieCroyantsData("ar", "عناية أمير المؤمنين")
 
@@ -41,7 +41,7 @@ const CommanderieCroyants = (data,error) => {
     useEffect(() => {
         getData()
     }, [])
-*/
+
 
     const renderContent = () => {
         try {

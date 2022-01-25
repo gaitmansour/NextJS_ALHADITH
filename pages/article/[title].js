@@ -262,7 +262,9 @@ export default function ArticlePage(props) {
                         ) : (
                             <SimpleList data={items}/>
                         )}
-                        <SliderList className='pt-5' data={dataSlider}/>
+                        <SliderList ImageSlider={dataAPI?.included &&
+                            dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
+                                ?.url} className='pt-5'  loader={myLoader} data={dataSlider}/>
                     </div>
                 )}
             </Body>

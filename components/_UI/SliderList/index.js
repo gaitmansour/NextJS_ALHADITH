@@ -53,8 +53,9 @@ const SliderList = (props) => {
                       <a style={{textDecoration:'none'}}
                          className={`${styles.cardSlid} item-card-content d-flex align-items-center py-2`}>
                         <Image
-                            src={Article.photo_sliderlist}
+                            src={props.ImageSlider ? props.ImageSlider:Article.photo_sliderlist}
                             alt=""
+                            loader={props.loader}
                             className={"ImageSlider"}
                             width={100}
                             height={100}
