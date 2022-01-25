@@ -111,13 +111,13 @@ const Videos = () => {
           <div className={`${styles.sec} sec w-100 h-100`}>
             <div className={`${styles.secTop} d-flex  secTop`}>
               <div className={`${styles.divA} divA position-relative`}>
-                <Image
+                {/* <Image
                   src={Icons.icon_bg_dashed_tr}
                   alt=''
                   width={100}
                   height={100}
                   className={`${styles.imgTR} imgTR`}
-                />
+                /> */}
                 <Link href={'/media/الدروس الحسنية'} as='/media/الدروس الحسنية'>
                   <a>
                     <Image
@@ -130,13 +130,13 @@ const Videos = () => {
                 </Link>
               </div>
               <div className={`${styles.divB} divB position-relative`}>
-                <Image
+                {/* <Image
                   src={Icons.icon_bg_dashed_br}
                   alt=''
                   // width="18%"
                   className={`${styles.imgBR} imgBR`}
                   // className="imgBR"
-                />
+                /> */}
                 <Link
                   href={'/media/الدروس الحديثية'}
                   as='/media/الدروس الحديثية'
@@ -158,12 +158,12 @@ const Videos = () => {
             </div>
             <div className={`${styles.secBottom} d-flex  secBottom`}>
               <div className={`${styles.div1} div1 position-relative`}>
-                <Image
+                {/* <Image
                   src={Icons.icon_bg_dashed_tr}
                   //width="30%"
                   alt='برامج-تلفزية'
                   //className={`${styles.imgdiv1} imgdiv1`}
-                />
+                /> */}
                 <Link href={'/media/برامج تلفزية'} as='/media/برامج تلفزية'>
                   <a>
                     <Image
@@ -177,12 +177,12 @@ const Videos = () => {
                 </Link>
               </div>
               <div className={`${styles.div2} div2 position-relative`}>
-                <Image
+                {/* <Image
                   src={Icons.icon_bg_dashed_tr}
                   alt='برامج-اذاعية'
                   // width="22%"
                   //className={`${styles.imgdiv2} imgdiv2`}
-                />
+                /> */}
                 <Link href={'/media/برامج اذاعية'} as='/media/برامج اذاعية'>
                   <a>
                     <Image
@@ -199,13 +199,13 @@ const Videos = () => {
                 </Link>
               </div>
               <div className={`${styles.div3} div3 position-relative`}>
-                <Image
+                {/* <Image
                   src={Icons.icon_bg_dashed_tl}
                   alt=''
                   //width="20%"
                   className={`${styles.imgdiv3} imgdiv3`}
                   // className="imgdiv3"
-                />
+                /> */}
                 <Link
                   href={'/media/برامج على الشبكات الاجتماعية'}
                   as='/media/برامج على الشبكات الاجتماعية'
