@@ -248,22 +248,84 @@
       left: 40%;
     }
   }
+  @media (max-width: 480px) {
+    .Media{
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0px !important;
+    }
+    .playerWrapper{
+      width: 90vw !important;
+      height: 22vh !important;
+    }
+    .playerWrapper img{
+      width: 100vw !important;
+      height: 15vw !important;
+    }
+    .sliderVedio img{
+      width: 100vw !important;
+    }
+    .itemCard{
+      width: 100% !important;
+      margin-left: 0px !important;
+    }
+    .sideBar{
+      width: 85vw !important;
+      margin-right: 20px !important;
+    }
+    /* .play{
+      width: 100% !important;
+    }
+    .play img{
+      width: 100vw !important;
+    } */
+    .playerVideo{
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+      width: 95vw !important;
+    }
+
+}
   
-  @media (max-width: 321px) {
-    .btn-play i {
-      position: absolute;
-      z-index: 2;
-      color: white;
-      font-size: 2em !important;
-      top: 40%;
-      left: 45%;
-    }
-    .item-card-content i{
-      position: absolute;
-      z-index: 2;
-      color: white !important;
-      font-size: 1em !important;
-      top: 18% !important;
-      left: 40%;
-    }
+@media (max-width: 321px) {
+  .btn-play i {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 2em !important;
+    top: 40%;
+    left: 45%;
   }
+  .item-card-content i{
+    position: absolute;
+    z-index: 2;
+    color: white !important;
+    font-size: 1em !important;
+    top: 18% !important;
+    left: 40%;
+  }
+  .playerWrapper{
+    width: 90vw !important;
+    height: 30vh !important;
+  }
+  .playerVideo{
+    margin-left: 15px !important;
+    margin-right: 10px !important;
+    width: 95vw !important;
+  }
+  .boxFirstVideo{
+    margin-left: 20px !important;
+    padding-left: 20px !important;
+    width: 90vw !important;
+  }
+  .itemCard{
+    width: 90vw !important;
+    margin-right: 15px !important;
+  }
+  .reactPlay{
+    width: 100% !important;
+  }
+  .reactPlay img{
+    width: 90% !important;
+  }
+}

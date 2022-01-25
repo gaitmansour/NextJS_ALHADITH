@@ -104,6 +104,9 @@
         text-align: center !important;
         /* background-color: rebeccapurple; */
     } 
+    .vertical-dots li.slick-active button:before {
+        background-color: transparent !important;
+    }
     .vertical-dots li button {
         width: 10px;
         height: 10px;

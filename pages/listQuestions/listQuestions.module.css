@@ -62,11 +62,12 @@
 .pagination {
     padding:10px
 }
-.TemplateArticleBody .activebtn a {
+.TemplateArticleBody .activebtn {
     background-color: #29a669 !important;
     color: #fff !important;
-    font-weight: 900 !important;
-    padding:10px
+    font-weight: 800 !important;
+     padding:5px ;
+    border-radius: 4px;
 }
 
 .sideBar1 .sel .selectt {
@@ -161,16 +162,11 @@
         margin-right: 5%;
     }
 
-    .TemplateArticleBody .activebtn a {
-        padding: 0px 15px 6px !important;
-        margin: 7px 0px !important;
-        font-weight: normal !important;
-    }
-
     .TemplateArticleBody .paginationButtons li {
         /* padding: 1px 15px 6px !important; */
         margin: 0px !important;
-        padding: 0px !important;
+        padding: 4px !important;
+        border-radius: 5px;
     }
 
     .TemplateArticleBody .paginationButtons {
@@ -180,7 +176,7 @@
     .descriptionP{
         width: 80% !important;
     }
-   
+
     .questionList{
         width: 100% !important;
     }

@@ -4,10 +4,9 @@
 
 }
 
-.SearchPage .pageTitleSecond h3 {
-    color: #656D7A;
-    font-weight: 700;
-    font-size: 18px;
+.SearchPage .pageTitleSecond h2{
+    font-weight: 800;
+    font-size: 2rem;
     padding: 0;
 }
 
@@ -81,12 +80,12 @@
     justify-content: center;
 }
 
-.paginationButtons a:hover {
+/* .paginationButtons:hover {
     color: rgb(255, 255, 255);
-}
+} */
 
-.activebtn a {
-    background: #157646;
+.activebtn {
+    background: #29a669;
     color: white;
     border-radius: 5px;
 }
