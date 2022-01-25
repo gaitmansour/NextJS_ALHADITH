@@ -24,13 +24,26 @@
       -moz-box-shadow: 0px -10px 40px -17px rgba(0,0,0,0.6);
 }
 .alignSec .sec .secTop .divA a,
-  .secTop .divB a,
-  .secBottom .div1 a,
-  .secBottom .div2 a,
-  .secBottom .div3 a{
-    text-decoration: none !important;
-  }
- 
+.secTop .divB a,
+.secBottom .div1 a,
+.secBottom .div2 a,
+.secBottom .div3 a{
+  text-decoration: none !important;
+}
+
+/* .alignSec .sec .secTop
+.secTop .divB a img,
+.secBottom .div2 a img,
+.secBottom .div3 a img{
+  width: 100% !important;
+}
+
+.alignSec .sec 
+.secTop .divB a img,
+.secBottom .div2 a img,
+.secBottom .div3 a img{
+  margin-right: 25% !important;  
+} */
 
 .alignSec .sec .secTop .divA {
   width: 50% ;

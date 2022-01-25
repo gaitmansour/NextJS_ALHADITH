@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
-import useTranslation from "next-translate/useTranslation";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import Link from 'next/link';
-import _ from "lodash"
-import {getResourcesData, base_url} from "../../../endpoints"
-import FetchAPI from "../../../API";
-import Loading from "../../../components/_UI/Loading";
-import Cards from "../../../components/_UI/Cards";
-import SectionTitle from "../../../components/_UI/SectionTitle";
+import React, { useEffect, useState } from 'react'
+import useTranslation from 'next-translate/useTranslation'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
+import Link from 'next/link'
+import _ from 'lodash'
+import { getResourcesData, base_url } from '../../../endpoints'
+import FetchAPI from '../../../API'
+import Loading from '../../../components/_UI/Loading'
+import Cards from '../../../components/_UI/Cards'
+import SectionTitle from '../../../components/_UI/SectionTitle'
 import Image from 'next/image'
 import styles from './Resources.module.css'
 import { Logos } from '../../../assets'
@@ -62,9 +62,10 @@ const Resources = () => {
         breakpoint: 426,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
           // centerPadding: '60px',
-          // className: 'center',
-          centerMode: true,
+          className: 'center',
+          // centerMode: true,
           slidesToScroll: 1,
         },
       },
@@ -73,7 +74,7 @@ const Resources = () => {
         settings: {
           centerPadding: '5px',
           className: 'center',
-          centerMode: true,
+          // centerMode: true,
           slidesToShow: 1,
           slidesToScroll: 1,
         },
@@ -81,45 +82,43 @@ const Resources = () => {
     ],
   }
 
-    const {t, i18n} = useTranslation('ressource');
+  const { t, i18n } = useTranslation('ressource')
 
-    const [dataAPI, setDataAPI] = useState({})
-    const getLanguage = i18n?.language === "fr" ? "fr" : "ar"
-    const url = getResourcesData(getLanguage)
+  const [dataAPI, setDataAPI] = useState({})
+  const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
+  const url = getResourcesData(getLanguage)
 
-    const getData = async () => {
-        FetchAPI(url).then(data => {
-            if (data.success) {
-                setDataAPI(data?.data)
-            }
-        })
-    }
+  const getData = async () => {
+    FetchAPI(url).then((data) => {
+      if (data.success) {
+        setDataAPI(data?.data)
+      }
+    })
+  }
 
-    useEffect(() => {
-        getData()
-    }, [])
+  useEffect(() => {
+    getData()
+  }, [])
 
-    const myLoader = ({src, width, quality}) => {
-        return `${base_url}/${src}`;
-    };
+  const myLoader = ({ src, width, quality }) => {
+    return `${base_url}/${src}`
+  }
 
-    const renderContent = () => {
-        try {
-            if (dataAPI?.data?.length <= 4) {
-                settings.slidesToShow = dataAPI?.data?.length
-            }
-            if (_.isEmpty(dataAPI)) {
-                return (
-                    <div className="d-flex align-items-center justify-content-center py-5">
-                        <Loading/>
-                    </div>
-                )
-            }
+  const renderContent = () => {
+    try {
+      if (dataAPI?.data?.length <= 4) {
+        settings.slidesToShow = dataAPI?.data?.length
+      }
+      if (_.isEmpty(dataAPI)) {
+        return (
+          <div className='d-flex align-items-center justify-content-center py-5'>
+            <Loading />
+          </div>
+        )
+      }
 
       return (
-        <div
-          className={`${styles.content} container row my-5 mx-0 `}
-        >
+        <div className={`${styles.content} container row my-5 mx-0 `}>
           <Slider {...settings} className={`${styles.slide} slide px-2 `}>
             {dataAPI?.data?.map((item, i) => {
               const { title, body, field_icone, field_lien } = item?.attributes
@@ -139,7 +138,7 @@ const Resources = () => {
               })
               return (
                 <Cards
-                    id={"cards"}
+                  id={'cards'}
                   key={i.toString()}
                   className={`${styles.itemCard} me-4 ms-1 text-center mt-4 child`}
                 >
@@ -193,7 +192,7 @@ const Resources = () => {
                           textJustify: 'inter-word !important',
                         }}
                       >
-                        {"لمعرفة المزيد"}
+                        {'لمعرفة المزيد'}
                       </p>
                     </a>
                   </Link>
@@ -208,12 +207,12 @@ const Resources = () => {
     }
   }
 
-    return (
-        <div className={`${styles.Resources} py-5 overflow-hidden`}>
-            <SectionTitle title={'موارد'}/>
-            {renderContent()}
-        </div>
-    )
+  return (
+    <div className={`${styles.Resources} py-5 overflow-hidden`}>
+      <SectionTitle title={'موارد'} />
+      {renderContent()}
+    </div>
+  )
 }
 
-export default Resources;
+export default Resources

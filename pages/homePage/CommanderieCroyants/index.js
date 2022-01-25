@@ -10,23 +10,12 @@ import SectionTitle from "../../../components/_UI/SectionTitle";
 import React, {useEffect, useState} from 'react';
 import $ from 'jquery'
 
-const url = getCommanderieCroyantsData("ar", "عناية أمير المؤمنين")
-const fetchData = async () => FetchAPI(url).then(data => ({
-    error: false,
-    data: data,
-}))
-    .catch(() => ({
-            error: true,
-            data: null,
-        }),
-    );
-
 const CommanderieCroyants = () => {
 
     const {t, i18n} = useTranslation('CommanderieCroyants');
-     const [data, setDataAPI] = useState({})
+    const [dataAPI, setDataAPI] = useState({})
     const getLanguage = i18n?.language === "ar" ? "ar" : "fr"
-   const url = getCommanderieCroyantsData("ar", "عناية أمير المؤمنين")
+    const url = getCommanderieCroyantsData("ar", "عناية أمير المؤمنين")
 
     const getData = async () => {
         // console.log("fi khitab data  ==> ", data)
@@ -45,7 +34,7 @@ const CommanderieCroyants = () => {
 
     const renderContent = () => {
         try {
-            if (_.isEmpty(data)) {
+            if (_.isEmpty(dataAPI)) {
                 return (
                     <div className="d-flex align-items-center justify-content-center py-5">
                         <Loading/>
@@ -54,8 +43,9 @@ const CommanderieCroyants = () => {
             }
             return (
                 <div className="row my-4">
-                    {data?.data?.map((item, i) => {
+                    {dataAPI?.data?.map((item, i) => {
                         const {title, body, field_code_couleur, field_lien} = item?.attributes
+                        console.log(dataAPI?.data)
                         $(document).ready(function () {
                             $(".linksCroyants").contextmenu(function (event) {
                                 localStorage.setItem('routeState', JSON.stringify({
@@ -85,17 +75,12 @@ const CommanderieCroyants = () => {
                             <div key={i.toString()} className="col-md-3">
                                 <Cards
                                     className={`${styles.CardCommanderieCroyants}  m-auto d-flex justify-content-right align-items-right flex-column`}
-                                    style={{
-                                        justifyContent: 'flex-end',
-                                        flex: 1,
-                                        alignItems: "center",
-                                        backgroundColor: 'white'
-                                    }}
+                                    style={{justifyContent: 'flex-end', flex: 1, alignItems: "center",backgroundColor:'white'}}
                                 >
                                     <h5 className={`${styles.title}  mt-3`}
                                         style={{color: `#${field_code_couleur}`}}>{title}</h5>
                                     {<div className={`${styles.description} pt-3 pb-2`}
-                                          dangerouslySetInnerHTML={{__html: body?.processed}}/>}
+                                          dangerouslySetInnerHTML={{__html: body?.processed}} />}
                                     <Link
                                         role="button"
                                         href={{
@@ -133,10 +118,5 @@ const CommanderieCroyants = () => {
         </div>
     );
 }
-export const getServerSideProps = async () => {
-    const data = await fetchData();
-    return {
-        props: data,
-    };
-}
+
 export default CommanderieCroyants

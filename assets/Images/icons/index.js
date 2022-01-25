@@ -31,6 +31,7 @@ const Icons = {
   icon_googlPlay: require('./ahadiths/icon-googlPlay.svg'),
   icon_mobil: require('./ahadiths/icon-mobile.svg'),
   icon_background: require('./ahadiths/icon-background.svg'),
-};
+  icon_image: require('./ahadiths/image.png'),
+}
 
-export default Icons;
+export default Icons
