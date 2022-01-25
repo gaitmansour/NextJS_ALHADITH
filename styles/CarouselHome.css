@@ -99,7 +99,7 @@
         list-style: none;
         display: flex !important;
         position: absolute;
-        top: 89% !important;
+        top: 78% !important;
         margin-right: 34%;
         text-align: center !important;
         /* background-color: rebeccapurple; */
@@ -133,6 +133,13 @@
         cursor: pointer;
         /* z-index: 9999; */
     }
+}
+@media screen and (max-width : 361px){
+    .vertical-dots {
+        right: 20px !important;
+        top: 91% !important;
+        margin-right: 34%;
+    } 
 }
 @media screen and (max-width : 330px){
     .vertical-dots {

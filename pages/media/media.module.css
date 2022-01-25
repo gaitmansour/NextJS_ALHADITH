@@ -86,7 +86,9 @@
 }
 
 
-  
+ .SliderVideoList{
+   width: 90% !important;
+ } 
   .SliderVideoList p {
       font-weight: bold;
       color: #000;
@@ -95,6 +97,7 @@
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      /* margin-top: 15px; */
   }
 
   .SliderVideoList .slick-slider .slick-dots {

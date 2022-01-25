@@ -54,8 +54,8 @@
 }
 
 .ItemList .content p {
-    text-align: justify;
-    text-justify: inter-word;
+    /* text-align: justify;
+    text-justify: inter-word; */
     font-size: 15px;
 }
 
@@ -140,26 +140,26 @@
         display: block !important;
     }
 
-    .alignItem .devider {
+     .devider {
         display: none;
     }
 
-    .alignItem .output {
-        width: 30%;
+     .output {
+        width: 30% !important;
         color: #b17d00
     }
 
-    .alignItem .resultat {
-        width: 70%;
+  .resultat {
+        width: 70% !important;
     }
 }
 
 @media only screen and (max-width: 361px) {
-    .alignItem .output {
+    .output {
         width: 30% !important;
     }
 
-    .alignItem .resultat {
+    .resultat {
         width: 60% !important;
     }
 }

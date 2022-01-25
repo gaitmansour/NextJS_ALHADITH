@@ -68,7 +68,7 @@
     justify-content: right;
 }
 
-.paginationButtons a {
+.paginationButtons li{
     padding: 5px;
     margin: 15px;
     border-radius: 5px;
@@ -86,7 +86,7 @@
 
 .activebtn {
     background: #29a669;
-    color: white;
+    color: white !important;
     border-radius: 5px;
 }
 
@@ -130,19 +130,26 @@
         width: 100% !important;
     }
 
-    .paginationButtons a {
-        padding: 4px !important;
-        margin: 9px !important;
-        height: 50%;
-        width: 50%;
+    .paginationButtons li {
+        padding:0px 2px !important;
+        margin: 4px !important;
+        height: 5%;
+        width: 10%;
     }
 }
 
 @media (max-width: 375px) {
-    .paginationButtons a {
-        padding: 3px !important;
-        margin: 6px !important;
-        height: 50%;
-        width: 50%;
+    .paginationButtons li {
+        padding:0% 0% 0% 5% !important;
+        /* margin: 4px !important; */
+        height: 5%;
+        width: 15% !important;
     }
+    .paginationButtons a {
+        padding:0% 0% 0% 10% !important;
+        /* margin:0px 4px !important; */
+        height: 10%;
+        width: 25%;
+    }
+    
 }
