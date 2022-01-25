@@ -326,7 +326,8 @@ const AllMedia = (props) => {
                             src={item.field_thumbnail_live}
                             className='img-fluid'
                             alt=''
-                            style={{ height: '110px', width: '110px' }}
+                            height={110}
+                            width={110}
                           />
                         </div>
                         <div className='col'>
