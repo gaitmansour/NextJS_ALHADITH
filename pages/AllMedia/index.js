@@ -222,8 +222,7 @@ const AllMedia = (props) => {
                         controls
                         playing
                         className={`${styles.reactPlayer} react-player`}
-                        width='95%'
-                        height={330}
+                        layout='fill'
                       />
                     </div>
                   </button>
