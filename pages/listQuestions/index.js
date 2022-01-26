@@ -380,7 +380,7 @@ const ListQuestions = (props) => {
                                             className={`${styles.btnFacebook} btn searchBtn`}
                                             onClick={handleShowModalQuestions}
                                         >
-                                            تسجيل الدخول
+                                            ملء الاستمارة
 
                                         </button>
                                     </div>
@@ -934,32 +934,32 @@ const ListQuestions = (props) => {
                             )}
                         </div>
                         <ReCAPTCHA
-                            /* sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
-                            secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'*/
-                            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                            secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
-                            className='captcha'
-                            onChange={onChange}
-                        />
-                        <button
-                            type='button'
-                            style={{
-                                backgroundColor: '#129D59',
-                                color: '#fff',
-                                width: '100%',
-                                height: '50px',
-                            }}
-                            className='btn my-4'
-                            onClick={handleSubmitQuestion}
-                            disabled={enableButton}
-                        >
-                            اطرح سؤالك
-                        </button>
-                    </div>
-                </ModalQuestionForm>
-            </Body>
-        </TemplateArticle>
-    )
+                             sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
+                            secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
+/*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
+className='captcha'
+onChange={onChange}
+/>
+<button
+type='button'
+style={{
+    backgroundColor: '#129D59',
+    color: '#fff',
+    width: '100%',
+    height: '50px',
+}}
+className='btn my-4'
+onClick={handleSubmitQuestion}
+disabled={enableButton}
+>
+اطرح سؤالك
+</button>
+</div>
+</ModalQuestionForm>
+</Body>
+</TemplateArticle>
+)
 }
 
 export default ListQuestions
