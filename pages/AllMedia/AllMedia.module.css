@@ -191,6 +191,10 @@
     top: 32%;
     left: 47%;
   }
+  /* .playerWrapper img{
+    width: 90% !important;
+    height: 20vh !important;
+  } */
 
   #SliderVideoListModal iframe {
     width: 100%;

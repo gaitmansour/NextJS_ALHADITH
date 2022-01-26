@@ -222,8 +222,8 @@ const AllMedia = (props) => {
                         controls
                         playing
                         className={`${styles.reactPlayer} react-player`}
-                        width='100%'
-                        height={400}
+                        width='95%'
+                        height={330}
                       />
                     </div>
                   </button>
@@ -360,7 +360,12 @@ const AllMedia = (props) => {
                               <p className='card-text'>{item.title}</p>
                             </div>
                           </div>
-                          <Link passHref={true} href='/'>
+                          <Link
+                            passHref={true}
+                            exact
+                            href={{ pathname: '/Live' }}
+                            as={'/Live'}
+                          >
                             <button
                               style={{
                                 backgroundColor: '#FF794D',
