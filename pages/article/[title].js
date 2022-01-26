@@ -62,8 +62,6 @@ export default function ArticlePage(props) {
     FetchAPI(urlSlider).then((data) => {
       if (data.success) {
         setdataSlider(data?.data)
-        console.log('data?.data')
-        console.log(data?.data)
       }
     })
   }
@@ -116,7 +114,8 @@ export default function ArticlePage(props) {
       if (routeState) routeState = JSON.parse(routeState)
     }
     setDataSide(routeState.fromNav)
-    console.log('routeState.fromNav--------------------', routeState.fromNav)
+    console.log('routeState.fromNav--------------------')
+    console.log(routeState.fromNav)
     setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
   }
 
@@ -126,7 +125,7 @@ export default function ArticlePage(props) {
       parentTitle ? parentTitle : title
     )
     getDataMenu(parentTitle ? parentTitle : title).then((r) => {
-      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
+      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr----------------------------------', r)
       getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
       handleSideData(router)
     })
