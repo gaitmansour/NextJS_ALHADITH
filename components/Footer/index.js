@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { getMenuLink } from '../../helpers'
 import { useEffect, useState } from 'react'
-import FetchAPIData from './API'
+import FetchAPIData from '../../data/API_Newsletter'
 import { newsletter } from '../../endpoints'
 import CustomModal from '../_UI/Modal'
 import styles from './Footer.module.css'
@@ -12,13 +12,15 @@ import styles from './Footer.module.css'
 const Footer = () => {
   const [MenuLinks, setMenuLinks] = useState([])
   const [inputEmail, setInputEmail] = useState('')
+  const [contentMessage, setContentMessage] = useState('')
   const [show, setShow] = useState(false)
   const [sendSuccess, setsendSuccess] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const urlSubscribe = newsletter()
-  const { t } = useTranslation('footer')
-  const title = t('importantLinks')
+  const { t } = useTranslation()
+
   const handleLinks = () => {
     getMenuLink().then((r) => {
       setMenuLinks(r)
@@ -28,25 +30,27 @@ const Footer = () => {
 
   const subscribed = async () => {
     const data = {
-      apikey: 'd38b503de172d45b4d194857cbe16d19-us5',
       email_address: inputEmail,
-      status: 'subscribed',
     }
+    setIsLoading(true)
     return FetchAPIData(urlSubscribe, data).then((data) => {
-      // console.log('data-------|-------',data)
-      if (data.success) {
-        // console.log('submit-------------',data.success)
-
-        setsendSuccess(true)
-      } else {
-        console.log('else', data.success)
+      if (data.success === true) {
         handleShow()
+        setContentMessage('شكرا لإشتراكك في القائمة البريدية')
+      } else if (data.success === false) {
+        handleShow()
+        setContentMessage(
+          'يرجى ملء الإستمارة ببريد إلكتروني غير مشترك أو التحقق من بريدك الإلكتروني'
+        )
       }
+      setInputEmail('')
+      setIsLoading(false)
     })
   }
 
   const handleSubscribe = () => {
     if (!inputEmail) {
+      setContentMessage('يرجى ملء الإستمارة')
       handleShow()
     } else {
       subscribed()
@@ -152,8 +156,9 @@ const Footer = () => {
                     id='exampleInputEmail1'
                     aria-describedby='emailHelp'
                     placeholder={'البريد الالكتروني'}
+                    value={inputEmail}
                     onChange={(v) => setInputEmail(v.target.value)}
-                    style={{ borderRadius:30 }}
+                    style={{ borderRadius: 30 }}
                   />
                 </div>
                 <div className='d-grid w-75 my-3'>
@@ -169,6 +174,13 @@ const Footer = () => {
                     onClick={handleSubscribe}
                   >
                     {'أرسل'}
+                    {isLoading && (
+                      <span
+                        class='spinner-grow spinner-grow-sm mx-2'
+                        role='status'
+                        aria-hidden='true'
+                      ></span>
+                    )}
                   </button>
                 </div>
               </div>
@@ -183,9 +195,7 @@ const Footer = () => {
       </div>
       <CustomModal
         title={'تنبيه'}
-        body={
-          ' يرجى ملء الإستمارة ببريد إلكتروني غير مشترك أو التحقق من بريدك الإلكتروني '
-        }
+        body={contentMessage}
         show={show}
         onHide={handleClose}
         onClick={handleClose}

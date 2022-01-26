@@ -6,7 +6,7 @@ const CustomModal = (props) => {
     return (
         <Modal show={props.show} onHide={props.onHide}>
 
-            <div className={`modal-header flex-row-reverse justify-content-between p-2`}>
+            <div className={`modal-header flex-row justify-content-between p-2`}>
                 <div>
                     <button type="button" className="btn-close" data-bs-dismiss="modal"
                             aria-label="Close" onClick={props.onClick}/>

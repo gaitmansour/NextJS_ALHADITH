@@ -39,7 +39,9 @@ const SliderList = (props) => {
         <Slider {...settings} className='slide my-4'>
           {data?.map((item, i) => {
             const newData = item.map((data, index) => {
+              // console.log('item =>', data)
               var stripedTitle = data.title.replace(/<[^>]+>/g, '')
+
               var rmSpaces = stripedTitle.trim()
               if (rmSpaces === 'جدول الدروس الحسنية') {
                 var pathN = '/جدول الدروس الحسنية'
@@ -57,9 +59,9 @@ const SliderList = (props) => {
                     style={{ textDecoration: 'none' }}
                     className={`${styles.cardSlid} item-card-content d-flex align-items-center py-2`}
                   >
-                    {props.imgList ? (
+                    {data?.field_image ? (
                       <Image
-                        src={props.imgList}
+                        src={data?.field_image}
                         alt=''
                         className={'ImageSlider'}
                         width={100}

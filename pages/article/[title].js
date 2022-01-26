@@ -44,7 +44,6 @@ export default function ArticlePage(props) {
   const [parent, setParent] = useState()
   const [items, setItems] = useState({})
   const [dataAhadith, setDataAhadith] = useState([])
-  const [imageList, setImageList] = useState('')
   const urlAhadith = getTopic()
   const CodeTopic = 28
 
@@ -63,8 +62,6 @@ export default function ArticlePage(props) {
     FetchAPI(urlSlider).then((data) => {
       if (data.success) {
         setdataSlider(data?.data)
-        console.log('data?.data')
-        console.log(data?.data)
       }
     })
   }
@@ -117,7 +114,8 @@ export default function ArticlePage(props) {
       if (routeState) routeState = JSON.parse(routeState)
     }
     setDataSide(routeState.fromNav)
-    console.log('routeState.fromNav--------------------', routeState.fromNav)
+    console.log('routeState.fromNav--------------------')
+    console.log(routeState.fromNav)
     setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
   }
 
@@ -127,7 +125,7 @@ export default function ArticlePage(props) {
       parentTitle ? parentTitle : title
     )
     getDataMenu(parentTitle ? parentTitle : title).then((r) => {
-      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
+      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr----------------------------------', r)
       getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
       handleSideData(router)
     })
@@ -252,16 +250,7 @@ export default function ArticlePage(props) {
         {items[0]?.path === 'article/تعریف' ? (
           <div className={styles.slider} style={{ width: '30%' }}>
             <ListAhadith data={dataAhadith} />
-            <SliderList
-              className='pt-5'
-              data={dataSlider}
-              imgList={
-                dataAPI?.included &&
-                dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
-                  ?.uri?.url
-              }
-              loader={myLoader}
-            />
+            <SliderList className='pt-5' data={dataSlider} loader={myLoader} />
           </div>
         ) : (
           <div
@@ -273,16 +262,7 @@ export default function ArticlePage(props) {
             ) : (
               <SimpleList data={items} />
             )}
-            <SliderList
-              className='pt-5'
-              data={dataSlider}
-              imgList={
-                dataAPI?.included &&
-                dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
-                  ?.uri?.url
-              }
-              loader={myLoader}
-            />
+            <SliderList className='pt-5' data={dataSlider} loader={myLoader} />
           </div>
         )}
       </Body>
