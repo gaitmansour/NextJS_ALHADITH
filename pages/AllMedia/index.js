@@ -260,7 +260,7 @@ const AllMedia = (props) => {
                                 controls
                                 playing
                                 className={`${styles.RPlayer} react-player`}
-                                width={300}
+                                width='100%'
                                 height={150}
                               />
                             </div>
