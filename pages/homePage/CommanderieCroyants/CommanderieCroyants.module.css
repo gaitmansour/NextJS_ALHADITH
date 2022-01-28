@@ -11,6 +11,9 @@
  .title {
   font-weight: bold;
 }
+.CardCommanderieCroyants{
+  height: 32vh;
+}
 
 .CardCommanderieCroyants .description {
   font-size: 13px;
@@ -21,8 +24,8 @@
   -webkit-box-orient: vertical;
   margin: 1.5em 0 2em 0;
   padding: 0 !important;
-  max-height: 115px !important;
-  height: 115px !important;
+  max-height: 130px !important;
+  /* height: 128px !important; */
 }
  .description p{
   line-height: 1.6;
