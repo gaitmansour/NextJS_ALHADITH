@@ -399,9 +399,9 @@ const SearchPage = (props) => {
                                     <CustomSelect
                                         className='col-md-4'
                                         options={dataDegree && dataDegree}
-                                        label='درجة الصحة'
+                                        label='الحكم'
                                         defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
-                                        placeholder='اكتب درجة الصحة'
+                                        placeholder='اكتب الحكم'
                                         onChange={(v) => setChoiceDegree(v)}
                                     />
                                     <CustomSelect

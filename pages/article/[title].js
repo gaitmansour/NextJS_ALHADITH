@@ -25,6 +25,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '../../assets'
 
+import Router from 'next/router'
+
 export default function ArticlePage(props) {
   const title = useRouter()?.query?.title
   const parentBigTitle = useRouter()?.query?.parentBigTitle
@@ -62,6 +64,7 @@ export default function ArticlePage(props) {
     FetchAPI(urlSlider).then((data) => {
       if (data.success) {
         setdataSlider(data?.data)
+        localStorage.setItem("datSliderLeft",JSON.stringify(data?.data))
       }
     })
   }
@@ -69,6 +72,8 @@ export default function ArticlePage(props) {
     return FetchAPI(getMenuByName(x)).then((data) => {
       if (data.success) {
         setdataMenu(data?.data[0])
+        localStorage.setItem("parent",JSON.stringify(data?.data[0]))
+
         setParent(data?.data[0]?.name_1)
         getItemsMenu(data?.data[0]?.parent_target_id)
         return data?.data[0]
@@ -90,6 +95,7 @@ export default function ArticlePage(props) {
           }
         })
         setItems(items)
+        localStorage.setItem("items",JSON.stringify(items))
         return items
       }
     })
@@ -120,15 +126,22 @@ export default function ArticlePage(props) {
   }
 
   useEffect(() => {
-    console.log(
-      'parentTitle ? parentTitle : title',
-      parentTitle ? parentTitle : title
-    )
-    getDataMenu(parentTitle ? parentTitle : title).then((r) => {
-      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr----------------------------------', r)
-      getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
-      handleSideData(router)
-    })
+    let sliderCheck=JSON.parse(localStorage.getItem("dataSlider"))
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD || sliderCheck?.from ==='slider') {
+      console.info( "This page is reloaded" );
+      let sliders = JSON.parse(localStorage.getItem("datSliderLeft"))
+      let parent = JSON.parse(localStorage.getItem("parent"))
+      let items = JSON.parse(localStorage.getItem("items"))
+      setdataSlider(sliders)
+      setdataMenu(parent)
+      setItems(items)
+    }
+    else {
+      getDataMenu(parentTitle ? parentTitle : title).then((r) => {
+        getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+        handleSideData(router)
+      })
+    }
     getData()
   }, [parentTitle, route])
 

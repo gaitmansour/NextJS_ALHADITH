@@ -125,19 +125,10 @@ function Media(props) {
   ]
 
   const sideData11 = [
+
     {
-      title: 'برامج على الشبكات الاجتماعية',
-      path: '/media/برامج على الشبكات الاجتماعية',
-      parentLabel: 'البرامج الإعلامية',
-    },
-    {
-      title: 'برامج تلفزية',
+      title: 'الدروس الحديثية',
       path: '/media/برامج تلفزية',
-      parentLabel: 'البرامج الإعلامية',
-    },
-    {
-      title: 'برامج اذاعية',
-      path: 'media/برامج اذاعية',
       parentLabel: 'البرامج الإعلامية',
     },
     {
@@ -146,10 +137,20 @@ function Media(props) {
       parentLabel: 'البرامج الإعلامية',
     },
     {
-      title: 'الدروس الحديثية',
+      title: 'برامج اذاعية',
+      path: 'media/برامج اذاعية',
+      parentLabel: 'البرامج الإعلامية',
+    },
+    {
+      title: 'برامج تلفزية',
       path: '/media/برامج تلفزية',
       parentLabel: 'البرامج الإعلامية',
     },
+    {
+      title: 'برامج على الشبكات الاجتماعية',
+      path: '/media/برامج على الشبكات الاجتماعية',
+      parentLabel: 'البرامج الإعلامية',
+    }
   ]
 
   function handleStart() {
