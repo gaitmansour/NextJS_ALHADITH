@@ -71,9 +71,9 @@ const Footer = () => {
         <div className={`${styles.footer} footer w-100 h-100`}>
           <div className='row p-3'>
             <div
-              className={`col col-lg-3 col-md-12 col-sm-1 d-flex justify-content-center brd`}
+              className={`col col-lg-3 col-md-12 col-sm-1 d-flex justify-content-center align-items-center brd`}
             >
-              <Brand className={` ${styles.brand}brand`} />
+              <Brand className={` ${styles.brand} brand`} />
             </div>
             <div className='col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3'>
               <h5 className='text-white pb-3'>{'روابط مهمة'}</h5>
