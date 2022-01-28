@@ -324,21 +324,23 @@ const ListQuestions = (props) => {
           >
             {!showForum ? (
               <div
-                className='descriptionP item d-flex align-items-center  px-1'
-                style={{ textDecoration: 'none', paddingBottom: 20 }}
+                className={`${styles.paragraph} item d-flex align-items-center justify-content-evenly`}
+                style={{ textDecoration: 'none' }}
               >
-                <p className={`flex-fill pb-3 `}>{'اطرح سؤالك'}</p>{' '}
+                <p className={`fw-bold pt-2 ${styles.question}`}>
+                  {'اطرح سؤالك'}
+                </p>{' '}
                 <Image
                   alt={'icon'}
                   src={Icons.icon_faq}
                   width={'40%'}
                   height={'40%'}
                   style={{ marginHorizontal: 20 }}
-                  className='pb-3'
+                  className=''
                 />
               </div>
             ) : (
-              <p>إغلاق</p>
+              <p className='fw-bold'>إغلاق</p>
             )}
           </button>
           {showForum ? (
