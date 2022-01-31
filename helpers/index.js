@@ -21,8 +21,8 @@ export function handleMenu(Menu){
             }
             else  if (subItem.name_1 === 'المصحف المحمدي'){
                 let _subItem = {
-                    path:'/Almoshaf',
-                    as:'المصحف المحمدي/',
+                    path:'Almoshaf',
+                    as:'المصحف المحمدي',
                     label: subItem.name_1,
                     tID:subItem.tid,
                     title: subItem.name_1,

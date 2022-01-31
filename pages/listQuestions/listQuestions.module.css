@@ -19,10 +19,10 @@
 .sideBar1{
     width: 75%;
 }
-#pagination {
+/* #pagination {
     color: #157BFF;
     margin: 5px;
-}
+} */
 
 *[dir='ltr'] .paginationButtons {
     width: 80%;
@@ -30,14 +30,14 @@
     display: flex;
     justify-content: right;
 }
-
-.descriptionP{
-    text-decoration: none;
-    text-underline-style: none;
-    color: black;
+.paragraph .question{
+    font-size: 20px !important;
 }
-.descriptionP:hover{
-    color:#FEB400;
+.questionDesc{
+    color: #000;
+}
+.questionDesc:hover{
+    color:#129D59;
 }
 
 *[dir='ltr'] #paginationn {
@@ -100,12 +100,12 @@
     left: 12%;
 }
 
-.btnquestion p {
+/* .btnquestion p {
     display: inline-block;
     padding-top: 4%;
     font-family: inherit;
     font-size: inherit;
-}
+} */
 
 @media (max-width: 685px) {
     .btnquestion {

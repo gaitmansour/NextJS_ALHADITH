@@ -14,7 +14,7 @@ import Cards from '../_UI/Cards'
 
 const ItemList = (props) => {
   const className = props?.className ? props.className : ''
-  const params = `${props.content}\n  # الباب : ${props.topic} \n# الموضوع : ${
+  const params = `${props.content}\n# الموضوع : ${
     props.category
   } \n# المصدر : ${props.source} \n # الراوي : ${props.narrator} \n# الحكم : ${
     props.degree
@@ -136,21 +136,8 @@ const ItemList = (props) => {
         className={`sm-icons d-flex align-items-center flex-row mb-2`}
         style={{ alignItems: 'center' }}
       >
-        {/*<a href='https://www.facebook.com/' alt="facebook">
-                    <i className="fab fa-facebook-f mx-2"></i>
-                </a>
-                    <a href='https://www.youtube.com/' alt="youtube">
-                    <i className="fab fa-youtube mx-2"></i>
-                    </a>
-                    <a href='https://www.instagram.com/' alt="instagram">
-                    <i className="fab fa-instagram mx-2"></i>
-                    </a>
-                    <a href='https://www.linkedin.com/' alt="linkedin">
-                    <i className="fab fa-linkedin-in mx-2"></i>
-                    </a>*/}
-
         <FacebookShareButton
-          url={'www.habouss.com'}
+          url={'https://hadithm6.ma/'}
           quote={params}
           className='justify-content-center mx-2'
         >
@@ -164,14 +151,14 @@ const ItemList = (props) => {
                     <LinkedinIcon size={32} round/>
                 </LinkedinShareButton> */}
         <TwitterShareButton
-          url={'www.habouss.com'}
+          url={'https://hadithm6.ma/'}
           title={toShow}
           className='mx-2'
         >
           <TwitterIcon size={32} round />
         </TwitterShareButton>
         <WhatsappShareButton
-          url={'www.habouss.com'}
+          url={'https://hadithm6.ma/'}
           title={params}
           separator=':: '
           className='mx-2'

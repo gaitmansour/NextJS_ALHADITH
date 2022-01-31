@@ -14,6 +14,7 @@ import styles from './SliderList.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+import $ from "jquery";
 
 const SliderList = (props) => {
   const { i18n } = useTranslation()
@@ -48,6 +49,13 @@ const SliderList = (props) => {
               } else {
                 pathN = rmSpaces
               }
+              $(document).ready(function () {
+                $(".linksSlider").contextmenu(function (event) {
+                  localStorage.setItem('dataSlider', JSON.stringify({
+                    from: "slider"
+                  }))
+                });
+              });
               return (
                 <Link
                   passHref
@@ -57,7 +65,7 @@ const SliderList = (props) => {
                 >
                   <a
                     style={{ textDecoration: 'none' }}
-                    className={`${styles.cardSlid} item-card-content d-flex align-items-center py-2`}
+                    className={`${styles.cardSlid} linksSlider item-card-content d-flex align-items-center py-2`}
                   >
                     {data?.field_image ? (
                       <Image
@@ -79,7 +87,7 @@ const SliderList = (props) => {
                     )}
 
                     <div className='mx-3  w-100'>
-                      <p>{rmSpaces}</p>
+                      <p onClick={props.onClick}>{rmSpaces}</p>
                       <span className='text-success text-decoration-underline'>
                         لمعرفة المزيد
                       </span>

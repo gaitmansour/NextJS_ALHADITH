@@ -9,150 +9,169 @@ import { getMenu, getMenuLinks, base_url } from '../../../endpoints'
 import { getMenuLink, handleMenu } from '../../../helpers'
 import Contact from '../../Contact'
 import Image from 'next/image'
-import {Dropdown} from "react-bootstrap";
-import useTranslation from "next-translate/useTranslation";
+import { Dropdown } from 'react-bootstrap'
+import useTranslation from 'next-translate/useTranslation'
 import $ from 'jquery'
 
-const NavBar = props => {
-    const {t, lang} = useTranslation();
+const NavBar = (props) => {
+  const { t, lang } = useTranslation()
 
-    const [showMenu, setShowMenu] = useState(false);
-    const [Menu, setMenu] = useState([]);
-    const [MenuGlobal, setMenuGlobal] = useState([]);
-    const [MenuLinks, setMenuLinks] = useState([]);
-    const [shownavLink, setShownavlink] = useState(false);
-    const [showLogo, setShowLogo] = useState(false);
+  const [showMenu, setShowMenu] = useState(false)
+  const [Menu, setMenu] = useState([])
+  const [MenuGlobal, setMenuGlobal] = useState([])
+  const [MenuLinks, setMenuLinks] = useState([])
+  const [shownavLink, setShownavlink] = useState(false)
+  const [showLogo, setShowLogo] = useState(false)
 
-    //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
-    const styleAlignText = `${lang === "ar" ? "text-lg-end" : "text-lg-start"}`;
-    const styleDropdownToggle = `${styles.navLink} ${styles.menuLinks} ${styles.dropdownToggle} nav-link dropdown-toggle d-flex align-items-center text-dark ${styleAlignText}`;
-    const url = getMenu();
+  //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
+  const styleAlignText = `${lang === 'ar' ? 'text-lg-end' : 'text-lg-start'}`
+  const styleDropdownToggle = `${styles.navLink} ${styles.menuLinks} ${styles.dropdownToggle} nav-link dropdown-toggle d-flex align-items-center text-dark ${styleAlignText}`
+  const url = getMenu()
 
-    const checkSizeWindow = () => {
-        if (typeof window != "undefined") {
-            if (window.innerWidth <= 450) {
-                setShowLogo(true);
+  const checkSizeWindow = () => {
+    if (typeof window != 'undefined') {
+      if (window.innerWidth <= 450) {
+        setShowLogo(true)
+      } else {
+        setShowLogo(false)
+      }
+    }
+  }
+
+  const getMenuList = () => {
+    FetchAPI(url).then((data) => {
+      if (data.success) {
+        const Menu = handleMenu(data?.data)
+        setMenuGlobal(Menu)
+      }
+    })
+  }
+
+  const handleLinks = () => {
+    getMenuLink().then((r) => setMenuLinks(r))
+  }
+
+  useEffect(() => {
+    handleLinks()
+    getMenuList()
+  }, [])
+
+  const ref = useRef()
+  const scroll = () =>
+    ref && ref.current && ref.current.scrollIntoView({ behavior: 'smooth' })
+
+  const renderLinksMenu = () => {
+    const navLinks =
+      MenuLinks &&
+      MenuLinks?.map((item, index) => {
+        const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
+          <a
+            className={styleDropdownToggle}
+            href=''
+            ref={ref}
+            onClick={(e) => {
+              e.preventDefault()
+              onClick(e)
+            }}
+          >
+            {item?.label}
+            {item?.items?.length > 0 && (
+              <i className='fas fa-chevron-down text-success mx-2' />
+            )}
+          </a>
+        ))
+
+        // forwardRef again here!
+        // Dropdown needs access to the DOM of the Menu to measure it
+        const MenuDropDown = React.forwardRef(
+          (
+            { children, style, className, 'aria-labelledby': labeledBy },
+            ref
+          ) => {
+            if (item?.items?.length > 0) {
+              return (
+                <ul
+                  ref={ref}
+                  style={style}
+                  className={`${className} ${styles.dropdownMenu} dropdown-menu shadow-card overflow-hidden ${styleAlignText}`}
+                  aria-labelledby={labeledBy}
+                >
+                  {item?.items?.map((data, i) => {
+                    return (
+                      <Link
+                        passHref={true}
+                        key={i.toString()}
+                        exact
+                        activeClassName={styles.navBarActive}
+                        href={{
+                          pathname: `/${data?.path}`,
+                          query: {
+                            fromNav: item?.items,
+                            selectedItem: data?.title,
+                          },
+                        }}
+                        as={
+                          data?.path === '/Almoshaf'
+                            ? `/${data?.as}`
+                            : `/${data?.path}`
+                        }
+                      >
+                        <a className={`${styles.navBarActive}`}>
+                          <li
+                            className={`btn justify-content-start rounded-0 ${styles.p3}`}
+                            onClick={() => {
+                              localStorage.removeItem("dataSlider")
+                              setShownavlink(!shownavLink)
+                            }}
+                          >
+                            {/*onClick = {() => console.log("data----", item?.items)}>*/}
+                            {data.label}
+                          </li>
+                        </a>
+                      </Link>
+                    )
+                  })}
+                </ul>
+              )
             } else {
-                setShowLogo(false);
+              return null
             }
-        }
-    };
+          }
+        )
 
+        return (
+          <li
+            className={`${styles.navItem} ${styles.dropdown} align-self-stretch d-flex dropdown mx-1 nav-item`}
+            key={index.toString()}
+          >
+            <Dropdown>
+              <Dropdown.Toggle as={CustomDropDown} />
 
-    const getMenuList = () => {
-        FetchAPI(url).then(data => {
-            if (data.success) {
-                const Menu = handleMenu(data?.data);
-                setMenuGlobal(Menu);
-            }
-        });
-    };
+              <div
+                onClick={() => {
+                  document.body.click()
+                }}
+              >
+                <Dropdown.Menu as={MenuDropDown} />
+              </div>
+            </Dropdown>
+          </li>
+        )
+      })
+    return navLinks
+  }
 
-    const handleLinks = () => {
-        getMenuLink().then(r => setMenuLinks(r));
-    };
-
-    useEffect(() => {
-        handleLinks();
-        getMenuList();
-    }, []);
-
-    const ref = useRef();
-    const scroll = () =>
-        ref && ref.current && ref.current.scrollIntoView({behavior: 'smooth'});
-
-    const renderLinksMenu = () => {
-
-        const navLinks =
-            MenuLinks &&
-            MenuLinks?.map((item, index) => {
-                const CustomDropDown = React.forwardRef(({onClick}, ref) => (
-                    <a
-                        className={styleDropdownToggle}
-                        href=""
-                        ref={ref}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            onClick(e);
-                        }}>
-                        {item?.label}
-                        {item?.items?.length > 0 && <i className="fas fa-chevron-down text-success mx-2"/>}
-                    </a>
-                ));
-
-                // forwardRef again here!
-                // Dropdown needs access to the DOM of the Menu to measure it
-                const MenuDropDown = React.forwardRef(({
-                                                           children,
-                                                           style,
-                                                           className,
-                                                           "aria-labelledby": labeledBy
-                                                       }, ref) => {
-                    if (item?.items?.length > 0) {
-                        return (
-                            <ul ref={ref}
-                                style={style}
-                                className={`${className} ${styles.dropdownMenu} dropdown-menu shadow-card overflow-hidden ${styleAlignText}`}
-                                aria-labelledby={labeledBy}
-                            >
-                                {item?.items?.map((data, i) => {
-                                    return (
-                                        <Link
-                                            passHref={true}
-                                            key={i.toString()}
-                                            exact
-                                            activeClassName={styles.navBarActive}
-                                            href={{
-                                                pathname: `/${data?.path}`,
-                                                query: {fromNav: item?.items, selectedItem: data?.title},
-                                            }}
-                                            as={data?.path === '/Almoshaf' ? `/${data?.as}` : `/${data?.path}`}
-                                        >
-                                            <a className={`${styles.navBarActive}`}>
-                                                <li className={`btn justify-content-start rounded-0 ${styles.p3}`}
-                                                    onClick={() => setShownavlink(!shownavLink)}>
-                                                    {/*onClick = {() => console.log("data----", item?.items)}>*/}
-                                                    {data.label}
-                                                </li>
-                                            </a>
-                                        </Link>
-                                    );
-                                })}
-                            </ul>
-                        );
-                    } else {
-                        return null;
-                    }
-                });
-
-                return (
-                    <li className={`${styles.navItem} ${styles.dropdown} align-self-stretch d-flex dropdown mx-1 nav-item`}
-                        key={index.toString()}>
-                        <Dropdown>
-                            <Dropdown.Toggle as={CustomDropDown}/>
-
-                            <div onClick={() => {
-                                document.body.click()
-                            }}>
-                                <Dropdown.Menu as={MenuDropDown}/></div>
-                        </Dropdown>
-                    </li>
-                );
-            });
-        return navLinks;
-    };
-
-    const clicked = e => {
-        e.preventDefault();
-        // console.log("left < click")
-        // var element = document.querySelector("#navbarNav > ul")
-        // console.log(element)
-        // element.scrollTop -= 10;
-        // // element.scroll({
-        // //     right: 100,
-        // //     behavior: 'smooth'
-        // // });
-    };
+  const clicked = (e) => {
+    e.preventDefault()
+    // console.log("left < click")
+    // var element = document.querySelector("#navbarNav > ul")
+    // console.log(element)
+    // element.scrollTop -= 10;
+    // // element.scroll({
+    // //     right: 100,
+    // //     behavior: 'smooth'
+    // // });
+  }
 
   const renderGlobalMenu = () => {
     const menuLinks =
@@ -343,4 +362,4 @@ const NavBar = props => {
   )
 }
 
-export default NavBar;
+export default NavBar

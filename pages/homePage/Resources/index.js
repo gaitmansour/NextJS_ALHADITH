@@ -66,7 +66,6 @@ const Resources = () => {
           // centerPadding: '60px',
           className: 'center',
           // centerMode: true,
-          slidesToScroll: 1,
         },
       },
       {
