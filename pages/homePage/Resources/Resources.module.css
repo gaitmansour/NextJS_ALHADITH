@@ -1,13 +1,7 @@
 .Resources .content{
-
     margin-right: 5em !important;
 }
-/* .slick-list .slick-track .slick-slide > div {
-    margin: 0 10% !important;
-  }
-  .slick-list {
-    margin: 0 -10px !important;
-  } */
+
 .itemCard {
     background-color: #fff;
     margin: 0px !important;
@@ -138,6 +132,11 @@
         margin-right: 0em !important;
     }
 }
+@media (max-width: 770px) {
+    .Resources .content{
+        margin-right: 0.5em !important;
+    }
+}
 @media (max-width: 1200px) {
     .itemCard .desc {
         min-height: 93px !important;
@@ -147,45 +146,4 @@
     }
 }
 
-/* @media (max-width: 771px) {
-  .card{
-      text-align: center;
-      border-radius: 9px;
-      width: 35vw;
-  }
 
-}
-
-
-
-@media (max-width: 495px) {
-  .card{
-      text-align: center;
-      border-radius: 9px;
-      width: 30vw;
-  }
-  .btnM{
-      width: 11vw;
-  }
-}
-@media (max-width: 426px) {
-  .card{
-      text-align: center;
-      border-radius: 9px;
-      width: 50vw;
-  }
-  .btnM{
-      width: 20vw;
-  }
-}
-
-@media (max-width: 746px) {
-  .btnM{
-      width: 20vw;
-  }
-}
-@media (max-width: 374px) {
-  .btnM{
-      width: 30vw;
-  }
-} */

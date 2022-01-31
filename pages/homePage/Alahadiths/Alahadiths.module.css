@@ -99,6 +99,11 @@
   .Alhadiths .slick-slider .slick-dots {
     justify-content: center;
   }
+  @media (max-width: 770px) {
+    .navTabs .nav-link{
+      padding: 4%  !important;
+    }
+}
   @media only screen and (min-width: 500px) and (max-width: 900px) {
     .navTabs .nav-link{
       padding: 1% 2.5% !important;

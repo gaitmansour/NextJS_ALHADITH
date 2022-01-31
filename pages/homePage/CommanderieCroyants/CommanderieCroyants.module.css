@@ -66,6 +66,9 @@
 
 
 
-/* @media (max-width: 480px) {
+@media all and (min-width: 1024px) and (min-width: 1400px){
+  .CardCommanderieCroyants{
+    height: 45vh;
+  }
+}
 
-} */

@@ -42,8 +42,28 @@ er {
     color: #ffffff;
     border-color: #ffffff;
 }
-
+/* .inputSearch::placeholder{
+    text-overflow: ellipsis;
+} */
+.inputSearch::placeholder{
+    overflow: hidden;
+    text-overflow:ellipsis !important;
+}
 /* Style for viewports greater than 480px wide. */
+@media (max-width: 835px) {
+    .boxSearch input{
+        box-shadow: none !important;
+        background: none !important;
+        width: 80% !important;
+    }
+}
+@media (max-width: 770px) {
+    .boxSearch input{
+        box-shadow: none !important;
+        background: none !important;
+        width: 80% !important;
+    }
+}
 @media (max-width: 480px) {
     .container-fluid {
         padding: 0;
@@ -57,6 +77,7 @@ er {
     .boxSearch input{
         box-shadow: none !important;
         background: none !important;
+        width: 80% !important;
     }
 }
 
