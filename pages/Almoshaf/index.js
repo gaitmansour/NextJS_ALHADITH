@@ -24,7 +24,7 @@ const Almoshaf = (props) => {
     return (
         <TemplateArticle {...props} ListBreadcrumb={data} titlePage={title}>
             <Body className="TemplateArticleBody d-flex p-4" id='bdy'>
-                    <iframe src={process.env.ALMOSHAF_PRODUCTION_ENV_VARIABLE} className={styles.ifr} title="Iframe Example"/>
+                    <iframe src="https://dev.dialy.net/coranM6/Coran/#p=2" className={styles.ifr} title="Iframe Example"/>
             </Body>
         </TemplateArticle>
     )
