@@ -93,7 +93,7 @@ const NavBar = (props) => {
                 <ul
                   ref={ref}
                   style={style}
-                  className={`${className} ${styles.dropdownMenu} dropdown-menu shadow-card overflow-hidden ${styleAlignText}`}
+                  className={`${className} ${styles.dropdownMenu} dropdown-menu bg-success shadow-card overflow-hidden ${styleAlignText}`}
                   aria-labelledby={labeledBy}
                 >
                   {item?.items?.map((data, i) => {
