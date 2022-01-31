@@ -85,7 +85,7 @@ const Footer = () => {
                   <Link href={`/التواصل`}>{'التواصل'}</Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/اتفاقية استخدام الموقع`}>
+                  <Link href={`/conditionUser`} as={'/اتفاقية استخدام الموقع'}>
                     {'اتفاقية استخدام الموقع'}
                   </Link>
                 </p>
@@ -176,10 +176,10 @@ const Footer = () => {
                     {'أرسل'}
                     {isLoading && (
                       <span
-                        class='spinner-grow spinner-grow-sm mx-2'
+                        className='spinner-grow spinner-grow-sm mx-2'
                         role='status'
                         aria-hidden='true'
-                      ></span>
+                      />
                     )}
                   </button>
                 </div>

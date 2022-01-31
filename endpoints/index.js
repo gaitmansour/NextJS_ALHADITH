@@ -1,10 +1,10 @@
 //export const base_url = `https://back.alhadith.dialtechnologies.net`
-export const base_url = `https://backend.7adith.ma:8000`;
+export const base_url = process.env.PRODUCTION_ENV_VARIABLE;
 const {BASE_URL_CMS} = process.env;
 export const api_url = `${base_url}/en/jsonapi/node`;
 //export const api_url = `http://backend.7adith.ma:8000/en/jsonapi/node`
-export const api_search = `https://apisearch.7adith.ma:8000`;
-export const api_newsletter = `https://apisearch.7adith.ma:8000/api/addmembre`;
+export const api_search = process.env.SEARCH_PRODUCTION_ENV_VARIABLE;
+export const api_newsletter = `${api_search}/api/addmembre`;
 // export const base_url = `https://api.pray.zone/`
 
 export const getResourcesData = (langcode, value = 'موارد') =>
