@@ -126,21 +126,6 @@ const Footer = () => {
             <div
               className={`${styles.newsletter}col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
             >
-              {sendSuccess && (
-                <div
-                  className='mb-3 border-success'
-                  style={{
-                    borderColor: '#fff',
-                    borderRadius: 5,
-                    backgroundColor: '#44b27c',
-                    width: '80%',
-                  }}
-                >
-                  <div className='card-body text-white'>
-                    شكرا لإشتراكك في القائمة البريدية
-                  </div>
-                </div>
-              )}
               <h5 className='text-white pb-3'>{'النشرة البريدية'}</h5>
               <div className='p-0 form'>
                 <div className='form-group'>
