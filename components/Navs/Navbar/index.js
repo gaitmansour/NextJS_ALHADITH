@@ -119,7 +119,10 @@ const NavBar = (props) => {
                         <a className={`${styles.navBarActive}`}>
                           <li
                             className={`btn justify-content-start rounded-0 ${styles.p3}`}
-                            onClick={() => setShownavlink(!shownavLink)}
+                            onClick={() => {
+                              localStorage.removeItem("dataSlider")
+                              setShownavlink(!shownavLink)
+                            }}
                           >
                             {/*onClick = {() => console.log("data----", item?.items)}>*/}
                             {data.label}
