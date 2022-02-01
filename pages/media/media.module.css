@@ -70,9 +70,8 @@
   height: 520px;
 }
 
-.box-first-video {
-    width: 90%;
-    margin: 3em auto 2em auto;
+.boxFirstVideo {
+    width: 80% !important;
 }
 
 .Media .PageTitleSecond{
@@ -269,23 +268,25 @@
       width: 100vw !important;
     }
     .itemCard{
-      width: 100% !important;
-      margin-left: 0px !important;
+      width: 100vw !important;
+      margin: 1rem !important;
+      /* padding: 0 2rem !important; */
+    }
+    .play{
+      width: 100vw !important;
+      padding: 1rem !important;
+    }
+    .playerVideo{
+      /* margin-left: 10px !important;
+      margin-right: 10px !important; */
+      width: 95vw !important;
+    }
+    .ReactP{
+      width: 100vw !important;
     }
     .sideBar{
       width: 85vw !important;
       margin-right: 20px !important;
-    }
-    /* .play{
-      width: 100% !important;
-    }
-    .play img{
-      width: 100vw !important;
-    } */
-    .playerVideo{
-      margin-left: 10px !important;
-      margin-right: 10px !important;
-      width: 95vw !important;
     }
 
 }

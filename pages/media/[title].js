@@ -174,7 +174,7 @@ function Media(props) {
       >
         {dataAPI?.data?.length > 0 ? (
           <div
-            className={`${styles.playerVideo} px-3`}
+            className={`${styles.playerVideo} pl-4`}
             style={{ width: '70%' }}
           >
             <div className={`${styles.boxFirstVideo} box-first-video`}>
@@ -202,7 +202,8 @@ function Media(props) {
                       controls
                       playing
                       className={`${styles.reactPlay} react-player`}
-                      layout='fill'
+                      width='90%'
+                      height='90%'
                     />
                   </div>
                 </button>
@@ -214,7 +215,7 @@ function Media(props) {
             </div>
             <div>
               {/* <SliderVideoList data={VideosList} className="pt-5" /> */}
-              <div className={`${styles.SliderVideoList} row`}>
+              <div className={`${styles.SliderVideoList} `}>
                 <Slider {...settings} className='slide my-4'>
                   {dataAPI?.data.map((item, i) => {
                     console.log('-item----', item)
@@ -226,7 +227,7 @@ function Media(props) {
                       >
                         <div
                           className={`${styles.play} player-wrapper`}
-                          style={{ height: 200 }}
+                          style={{ height: 200, textAlign: 'center' }}
                         >
                           <ReactPlayer
                             url={[
@@ -241,7 +242,7 @@ function Media(props) {
                             light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
                             controls
                             playing
-                            className={'react-player'}
+                            className={`${styles.ReactP} react-player`}
                             width='100%'
                             height='90%'
                           />
