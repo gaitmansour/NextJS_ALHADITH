@@ -202,8 +202,7 @@ function Media(props) {
                       controls
                       playing
                       className={`${styles.reactPlay} react-player`}
-                      width='100%'
-                      height='100%'
+                      layout='fill'
                     />
                   </div>
                 </button>
@@ -244,7 +243,7 @@ function Media(props) {
                             playing
                             className={'react-player'}
                             width='100%'
-                            height='115%'
+                            height='90%'
                           />
                         </div>
                         <p className='m-0 py-3 description'>
