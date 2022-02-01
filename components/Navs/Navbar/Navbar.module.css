@@ -126,15 +126,22 @@
     width: 100px;
     
 }
-
+.dropdownMenu{
+    width: auto !important;
+    margin-right: 15px !important;
+}
+.listMenu{
+    width: 25vw !important;
+}
 /**[dir='rtl'] .NavBar .dropdownMenu[data-bs-popper] {
   left: 0;
 }*/
 .p3 {
-    padding: 0.4rem !important;
+    padding: 0.4rem 1rem !important;
     text-align: right;
-    display: block;
-    width: 15vw;
+    display: inline-block;
+    width: 15vw !important;
+    max-width: 15vw;
 }
 
 .btnFaq {
