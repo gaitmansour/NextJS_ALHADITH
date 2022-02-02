@@ -151,14 +151,14 @@ const CarouselHome = (props) => {
           return (
             <Carousel.Item
               key={index.toString()}
-              className={`${styles.ImgSlide} w-100`}
+              className={`${styles.ImgSlide} w-100 `}
             >
               <Image
                 src={element2}
                 loader={myLoader}
                 alt={''}
-                height={1850}
-                width={5000}
+                layout='fill'
+                objectFit='cover'
               />
 
               <div
