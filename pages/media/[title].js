@@ -179,36 +179,36 @@ function Media(props) {
             style={{ width: '70%' }}
           >
             <div className={`${styles.boxFirstVideo} box-first-video`}>
-              <div className='btn-play'>
+              {/* <div className='btn-play'>
                 <button
                   type='button'
                   className='btn  p-0 position-relative'
                   id='bttn'
                   onClick={() => handleStart()}
-                >
-                  <div
-                    className={`${styles.playerWrapper} player-wrapper`}
-                    style={{ height: 400, width: 800 }}
-                  >
-                    <ReactPlayer
-                      url={[
-                        {
-                          src: `${base_url}${
-                            dataAPI.included[leng / 2]?.attributes?.uri?.url
-                          }`,
-                          type: 'video/mp4',
-                        },
-                      ]}
-                      light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
-                      controls
-                      playing
-                      className={`${styles.reactPlay} react-player`}
-                      width='90%'
-                      height='90%'
-                    />
-                  </div>
-                </button>
+                > */}
+              <div
+                className={`${styles.playerWrapper} player-wrapper`}
+                onClick={() => handleStart()}
+              >
+                <ReactPlayer
+                  url={[
+                    {
+                      src: `${base_url}${
+                        dataAPI.included[leng / 2]?.attributes?.uri?.url
+                      }`,
+                      type: 'video/mp4',
+                    },
+                  ]}
+                  light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
+                  controls
+                  playing
+                  className={`${styles.reactPlayer} react-player`}
+                  width='90%'
+                  height='90%'
+                />
               </div>
+              {/* </button>
+              </div> */}
               <PageTitleSecond
                 className='title-video px-0 mt-5'
                 title={dataAPI.data[0].attributes.title}
@@ -227,8 +227,7 @@ function Media(props) {
                         className={`${styles.itemCard} mt-4 mb-2`}
                       >
                         <div
-                          className={`${styles.play} player-wrapper`}
-                          style={{ height: 200, textAlign: 'center' }}
+                          className={`${styles.playerWrapper} player-wrapper`}
                         >
                           <ReactPlayer
                             url={[
@@ -243,8 +242,8 @@ function Media(props) {
                             light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
                             controls
                             playing
-                            className={`${styles.ReactP} react-player`}
-                            width='100%'
+                            className={`${styles.reactPlay} react-player`}
+                            width='90%'
                             height='90%'
                           />
                         </div>
