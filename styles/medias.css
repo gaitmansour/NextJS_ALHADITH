@@ -232,14 +232,14 @@
   *[dir='rtl'] .footer-container {
     border-top-left-radius: 40px !important;
   }
-  .react-player{
+  /* .react-player{
     margin-left: 15px !important;
     margin-right: 20px !important;
     width: 100% !important;
   }
   .react-player__preview{
     width: 90vw !important;
-  }
+  } */
 }
 
 @media (max-width: 330px) {
