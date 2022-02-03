@@ -25,6 +25,7 @@ import CustomSelect from '../../components/Forms/CustomSelect'
 import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
+import ScrollButton from '../../components/ScrollButton'
 
 const SearchPage = (props) => {
     let router = ''
@@ -351,6 +352,7 @@ const SearchPage = (props) => {
       <Body
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
+        <ScrollButton />
         <div className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}
