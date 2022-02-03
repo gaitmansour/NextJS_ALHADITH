@@ -3,6 +3,12 @@
   position: relative;
 }
 
+.groupCard{
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .CardCommanderieCroyants img {
   height: 56px;
   align-self: flex-start;
@@ -12,7 +18,11 @@
   font-weight: bold;
 }
 .CardCommanderieCroyants{
-  height: 34vh;
+  width: 100%;
+  margin: 0px;
+  flex: 2;
+  display: flex;         
+  flex-direction: column; 
 }
 
 .CardCommanderieCroyants .description {
@@ -24,7 +34,7 @@
   -webkit-box-orient: vertical;
   margin: 1.5em 0 2em 0;
   padding: 0 !important;
-  max-height: 130px !important;
+  max-height: 135px !important;
   /* height: 128px !important; */
 }
  .description p{
@@ -65,10 +75,4 @@
 }
 
 
-
-@media all and (min-width: 1024px) and (min-width: 1400px){
-  .CardCommanderieCroyants{
-    height: 45vh;
-  }
-}
 

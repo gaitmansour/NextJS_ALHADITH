@@ -182,7 +182,7 @@ const AllMedia = (props) => {
                 <h3
                   className={`${styles.titlePage}`}
                   style={{
-                    width: '30%',
+                    width: '50%',
                     color: '#CEBB97',
                     fontSize: 20,
                     fontWeight: 900,
@@ -193,41 +193,36 @@ const AllMedia = (props) => {
                 </h3>
                 <hr
                   style={{
-                    width: '70%',
+                    width: '50%',
                     float: 'right',
                     color: '#CEBB97',
                     border: '6px #CEBB97  solid',
                   }}
                 />
               </div>
-              <div className={`${styles.boxFirstVideo} box-first-video`}>
-                <div className={`${styles.btnPlay} btn-play`}>
-                  <button
-                    type='button'
-                    className='btn  p-0 position-relative'
-                    id='bttn'
-                    onClick={() => handleStart()}
-                  >
-                    <div className={`${styles.playerWrapper} player-wrapper`}>
-                      <ReactPlayer
-                        url={[
-                          {
-                            src: `${base_url}${
-                              dataAPI.included[leng / 2]?.attributes?.uri?.url
-                            }`,
-                            type: 'video/mp4',
-                          },
-                        ]}
-                        light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
-                        controls
-                        playing
-                        className={`${styles.reactPlayer} react-player`}
-                        layout='fill'
-                      />
-                    </div>
-                  </button>
+              <div className={`box-first-video`}>
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPI.included[leng / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
                 </div>
-                <h3 className={`${styles.titlePage}`} style={{ fontSize: 18 }}>
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {dataAPI.data[0].attributes.title}
                 </h3>
                 <hr className='line' />
@@ -235,45 +230,44 @@ const AllMedia = (props) => {
                   <Slider {...settings} className='slide my-4'>
                     {dataAPI?.data.map((item, i) => {
                       return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className={`${styles.SliderVideoList} SliderVideoList-data1 d-flex flex-wrap`}
+                        // >
                         <div
                           key={i.toString()}
-                          className={`${styles.SliderVideoList} SliderVideoList-data1 d-flex flex-wrap`}
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                         >
                           <div
-                            key={i.toString()}
-                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                            className={`${styles.playerWrapper} player-wrapper`}
                           >
-                            <div
-                              className={`${styles.playerWrapper} player-wrapper`}
-                            >
-                              <ReactPlayer
-                                url={[
-                                  {
-                                    src: `${base_url}${
-                                      dataAPI?.included[i + leng / 2]
-                                        ?.attributes?.uri?.url
-                                    }`,
-                                    type: 'video/mp4',
-                                  },
-                                ]}
-                                light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
-                                controls
-                                playing
-                                className={`${styles.RPlayer} react-player`}
-                                width='100%'
-                                height={150}
-                              />
-                            </div>
-                            <p
-                              className='m-0 py-3 px-4'
-                              style={{
-                                fontSize: 12,
-                                textAlign: 'right',
-                              }}
-                            >
-                              {item?.attributes?.title}
-                            </p>
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPI?.included[i + leng / 2]?.attributes
+                                      ?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
                           </div>
+                          <p
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
                         </div>
                       )
                     })}
@@ -412,36 +406,38 @@ const AllMedia = (props) => {
                   }}
                 />
               </div>
-              <div className={`${styles.boxFirstVideo} box-first-video`}>
-                <div className={`${styles.btnPlay} btn-play`}>
+              <div className={` box-first-video`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
                   <button
                     type='button'
                     className='btn  p-0 position-relative'
                     id='bttn'
                     onClick={() => handleStart()}
-                  >
-                    <div className={`${styles.playerWrapper} player-wrapper`}>
-                      <ReactPlayer
-                        url={[
-                          {
-                            src: `${base_url}${
-                              dataAPIBt.included[leng2 / 2]?.attributes?.uri
-                                ?.url
-                            }`,
-                            type: 'video/mp4',
-                          },
-                        ]}
-                        light={`${base_url}/${dataAPIBt?.included[0]?.attributes?.uri?.url}`}
-                        controls
-                        playing
-                        className={`${styles.reactPlayer} react-player`}
-                        width='100%'
-                        height={380}
-                      />
-                    </div>
-                  </button>
+                  > */}
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPIBt.included[leng2 / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPIBt?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
                 </div>
-                <h3 className='titlePage' style={{ fontSize: 18 }}>
+                {/* </button>
+                </div> */}
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {dataAPIBt.data[0].attributes.title}
                 </h3>
                 <hr className={`${styles.line}`} />
@@ -449,48 +445,44 @@ const AllMedia = (props) => {
                   <Slider {...settings} className='slide my-4'>
                     {dataAPIBt?.data.map((item, i) => {
                       return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
+                        // >
                         <div
                           key={i.toString()}
-                          className='SliderVideoList-data1 d-flex flex-wrap'
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                         >
                           <div
-                            key={i.toString()}
-                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                            className={`${styles.playerWrapper} player-wrapper`}
                           >
-                            {/* {dataAPI && dataAPI.included && <img className="image w-100" src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`} alt="" />}
-                                                    <p className="m-0 py-3 description">{item?.attributes?.title}</p>
-                                                    {item?.attributes?.field_lien_video.uri && <i className={`fas fa-play`}></i>} */}
-                            <div
-                              className={`${styles.playerWrapper} player-wrapper`}
-                            >
-                              <ReactPlayer
-                                url={[
-                                  {
-                                    src: `${base_url}${
-                                      dataAPIBt?.included[i + leng2 / 2]
-                                        ?.attributes?.uri?.url
-                                    }`,
-                                    type: 'video/mp4',
-                                  },
-                                ]}
-                                light={`${base_url}${dataAPIBt?.included[i]?.attributes?.uri?.url}`}
-                                controls
-                                playing
-                                className={`${styles.RPlayer} react-player`}
-                                width={300}
-                                height={150}
-                              />
-                            </div>
-                            <p
-                              className='m-0 py-3 px-4'
-                              style={{
-                                fontSize: 12,
-                                textAlign: 'right',
-                              }}
-                            >
-                              {item?.attributes?.title}
-                            </p>
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPIBt?.included[i + leng2 / 2]
+                                      ?.attributes?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPIBt?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
                           </div>
+                          <p
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
                         </div>
                       )
                     })}
@@ -522,35 +514,37 @@ const AllMedia = (props) => {
                 />
               </div>
               <div className={`${styles.boxFirstVideo} box-first-video`}>
-                <div className={`${styles.btnPlay} btn-play`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
                   <button
                     type='button'
                     className='btn  p-0 position-relative'
                     id='bttn'
                     onClick={() => handleStart()}
-                  >
-                    <div className={`${styles.playerWrapper} player-wrapper`}>
-                      <ReactPlayer
-                        url={[
-                          {
-                            src: `${base_url}${
-                              dataAPIBi.included[leng3 / 2]?.attributes?.uri
-                                ?.url
-                            }`,
-                            type: 'video/mp4',
-                          },
-                        ]}
-                        light={`${base_url}/${dataAPIBi?.included[0]?.attributes?.uri?.url}`}
-                        controls
-                        playing
-                        className={`${styles.reactPlayer} react-player`}
-                        width='100%'
-                        height={380}
-                      />
-                    </div>
-                  </button>
+                  > */}
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPIBi.included[leng3 / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPIBi?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
                 </div>
-                <h3 className={`${styles.titlePage}`} style={{ fontSize: 18 }}>
+                {/* </button>
+                </div> */}
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {dataAPIBi.data[0].attributes.title}
                 </h3>
                 <hr className={styles.line} />
@@ -558,45 +552,44 @@ const AllMedia = (props) => {
                   <Slider {...settings} className='slide my-4'>
                     {dataAPIBi?.data.map((item, i) => {
                       return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
+                        // >
                         <div
                           key={i.toString()}
-                          className='SliderVideoList-data1 d-flex flex-wrap'
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                         >
                           <div
-                            key={i.toString()}
-                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                            className={`${styles.playerWrapper} player-wrapper`}
                           >
-                            <div
-                              className={`${styles.playerWrapper} player-wrapper`}
-                            >
-                              <ReactPlayer
-                                url={[
-                                  {
-                                    src: `${base_url}${
-                                      dataAPIBi?.included[i + leng3 / 2]
-                                        ?.attributes?.uri?.url
-                                    }`,
-                                    type: 'video/mp4',
-                                  },
-                                ]}
-                                light={`${base_url}${dataAPIBi?.included[i]?.attributes?.uri?.url}`}
-                                controls
-                                playing
-                                className={`${styles.RPlayer} react-player`}
-                                width={300}
-                                height={150}
-                              />
-                            </div>
-                            <p
-                              className='m-0 py-3 px-4'
-                              style={{
-                                fontSize: 12,
-                                textAlign: 'right',
-                              }}
-                            >
-                              {item?.attributes?.title}
-                            </p>
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPIBi?.included[i + leng3 / 2]
+                                      ?.attributes?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPIBi?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
                           </div>
+                          <p
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
                         </div>
                       )
                     })}
@@ -630,35 +623,37 @@ const AllMedia = (props) => {
                 />
               </div>
               <div className={`${styles.boxFirstVideo} box-first-video`}>
-                <div className={`${styles.btnPlay} btn-play`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
                   <button
                     type='button'
                     className='btn  p-0 position-relative'
                     id='bttn'
                     onClick={() => handleStart()}
-                  >
-                    <div className={`${styles.playerWrapper} player-wrapper`}>
-                      <ReactPlayer
-                        url={[
-                          {
-                            src: `${base_url}${
-                              dataAPIKi.included[leng4 / 2]?.attributes?.uri
-                                ?.url
-                            }`,
-                            type: 'video/mp4',
-                          },
-                        ]}
-                        light={`${base_url}/${dataAPIKi?.included[0]?.attributes?.uri?.url}`}
-                        controls
-                        playing
-                        className={`${styles.reactPlayer} react-player`}
-                        width='100%'
-                        height={380}
-                      />
-                    </div>
-                  </button>
+                  > */}
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPIKi.included[leng4 / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPIKi?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
                 </div>
-                <h3 className={`${styles.titlePage}`} style={{ fontSize: 18 }}>
+                {/* </button>
+                </div> */}
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {dataAPIKi.data[0].attributes.title}
                 </h3>
                 <hr className='line' />
@@ -666,48 +661,44 @@ const AllMedia = (props) => {
                   <Slider {...settings} className='slide my-4'>
                     {dataAPIKi?.data.map((item, i) => {
                       return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
+                        // >
                         <div
                           key={i.toString()}
-                          className='SliderVideoList-data1 d-flex flex-wrap'
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                         >
                           <div
-                            key={i.toString()}
-                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                            className={`${styles.playerWrapper} player-wrapper`}
                           >
-                            {/* {dataAPI && dataAPI.included && <img className="image w-100" src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`} alt="" />}
-                                                    <p className="m-0 py-3 description">{item?.attributes?.title}</p>
-                                                    {item?.attributes?.field_lien_video.uri && <i className={`fas fa-play`}></i>} */}
-                            <div
-                              className={`${styles.playerWrapper} player-wrapper`}
-                            >
-                              <ReactPlayer
-                                url={[
-                                  {
-                                    src: `${base_url}${
-                                      dataAPIKi?.included[i + leng4 / 2]
-                                        ?.attributes?.uri?.url
-                                    }`,
-                                    type: 'video/mp4',
-                                  },
-                                ]}
-                                light={`${base_url}${dataAPIKi?.included[i]?.attributes?.uri?.url}`}
-                                controls
-                                playing
-                                className={`${styles.RPlayer} react-player`}
-                                width={300}
-                                height={150}
-                              />
-                            </div>
-                            <p
-                              className='m-0 py-3 px-4'
-                              style={{
-                                fontSize: 12,
-                                textAlign: 'right',
-                              }}
-                            >
-                              {item?.attributes?.title}
-                            </p>
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPIKi?.included[i + leng4 / 2]
+                                      ?.attributes?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPIKi?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
                           </div>
+                          <p
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
                         </div>
                       )
                     })}
@@ -739,35 +730,37 @@ const AllMedia = (props) => {
                 />
               </div>
               <div className={`${styles.boxFirstVideo} box-first-video`}>
-                <div className={`${styles.btnPlay} btn-play`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
                   <button
                     type='button'
                     className='btn  p-0 position-relative'
                     id='bttn'
                     onClick={() => handleStart()}
-                  >
-                    <div className={`${styles.playerWrapper} player-wrapper`}>
-                      <ReactPlayer
-                        url={[
-                          {
-                            src: `${base_url}${
-                              dataAPIDh.included[leng1 / 2]?.attributes?.uri
-                                ?.url
-                            }`,
-                            type: 'video/mp4',
-                          },
-                        ]}
-                        light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
-                        controls
-                        playing
-                        className={`${styles.reactPlayer} react-player`}
-                        width='100%'
-                        height={380}
-                      />
-                    </div>
-                  </button>
+                  > */}
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPIDh.included[leng1 / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
                 </div>
-                <h3 className={`${styles.titlePage}`} style={{ fontSize: 18 }}>
+                {/* </button>
+                </div> */}
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {dataAPIDh.data[0].attributes.title}
                 </h3>
                 <hr className='line' />
@@ -775,48 +768,44 @@ const AllMedia = (props) => {
                   <Slider {...settings} className='slide my-4'>
                     {dataAPIDh?.data.map((item, i) => {
                       return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
+                        // >
                         <div
                           key={i.toString()}
-                          className='SliderVideoList-data1 d-flex flex-wrap'
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                         >
                           <div
-                            key={i.toString()}
-                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                            className={`${styles.playerWrapper} player-wrapper`}
                           >
-                            {/* {dataAPI && dataAPI.included && <img className="image w-100" src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`} alt="" />}
-                                                    <p className="m-0 py-3 description">{item?.attributes?.title}</p>
-                                                    {item?.attributes?.field_lien_video.uri && <i className={`fas fa-play`}></i>} */}
-                            <div
-                              className={`${styles.playerWrapper} player-wrapper`}
-                            >
-                              <ReactPlayer
-                                url={[
-                                  {
-                                    src: `${base_url}${
-                                      dataAPIDh?.included[i + leng1 / 2]
-                                        ?.attributes?.uri?.url
-                                    }`,
-                                    type: 'video/mp4',
-                                  },
-                                ]}
-                                light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
-                                controls
-                                playing
-                                className={`${styles.RPlayer} react-player`}
-                                width={300}
-                                height={150}
-                              />
-                            </div>
-                            <p
-                              className={`${styles.description} m-0 py-3 description px-4`}
-                              style={{
-                                fontSize: 12,
-                                textAlign: 'right',
-                              }}
-                            >
-                              {item?.attributes?.title}
-                            </p>
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPIDh?.included[i + leng1 / 2]
+                                      ?.attributes?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
                           </div>
+                          <p
+                            className={`${styles.description} m-0 py-3 description px-4`}
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
                         </div>
                       )
                     })}

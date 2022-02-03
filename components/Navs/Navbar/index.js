@@ -93,7 +93,7 @@ const NavBar = (props) => {
                 <ul
                   ref={ref}
                   style={style}
-                  className={`${className} ${styles.dropdownMenu} dropdown-menu bg-success shadow-card overflow-hidden ${styleAlignText}`}
+                  className={`${className} ${styles.dropdownMenu} dropdown-menu shadow-card overflow-hidden ${styleAlignText}`}
                   aria-labelledby={labeledBy}
                 >
                   {item?.items?.map((data, i) => {
@@ -116,7 +116,9 @@ const NavBar = (props) => {
                             : `/${data?.path}`
                         }
                       >
-                        <a className={`${styles.navBarActive}`}>
+                        <a
+                          className={`${styles.navBarActive} ${styles.listMenu}`}
+                        >
                           <li
                             className={`btn justify-content-start rounded-0 ${styles.p3}`}
                             onClick={() => {
@@ -299,7 +301,7 @@ const NavBar = (props) => {
           className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
           id='navbarNav'
         >
-          <ul className='navbar-nav align-items-center p-0 align-self-stretch'>
+          <ul className='navbar-nav align-items-center pr-4 align-self-stretch'>
             {renderLinksMenu()}
           </ul>
         </div>
