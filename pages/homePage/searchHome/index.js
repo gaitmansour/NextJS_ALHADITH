@@ -126,7 +126,7 @@ const SearchSection = (props) => {
 
     const goToSearchPage = () => {
 
-        if (!input && !ChoiceTopic && !ChoiceSource && !ChoiceNarrator && !ChoiceDegree && !ChoiceCategory) {
+        if (!EvaluationSource && !input && !ChoiceTopic && !ChoiceSource && !ChoiceNarrator && !ChoiceDegree && !ChoiceCategory) {
             handleShow()
         } else {
             // console.log("go to")
