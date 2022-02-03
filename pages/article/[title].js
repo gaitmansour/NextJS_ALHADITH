@@ -24,6 +24,7 @@ import loadNamespaces from 'next-translate/loadNamespaces'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '../../assets'
+import ScrollButton from '../../components/ScrollButton'
 
 export default function ArticlePage(props) {
   const title = useRouter()?.query?.title
@@ -181,6 +182,7 @@ export default function ArticlePage(props) {
       <Body
         className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
       >
+        <ScrollButton />
         <div className={`${styles.articleContent} flex-fill`}>
           <PageSummary
             className={`${styles.summ} summ my-3`}
