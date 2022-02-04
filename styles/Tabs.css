@@ -9,7 +9,7 @@
     border-top-right-radius: 4rem !important;
     width: 18vw !important;
     background-color: #F1F5F7 !important;
-    padding: 3%;
+    padding: 1%;
     text-align: center !important;
 }
 .navTabs .active{
@@ -20,9 +20,66 @@
     position: relative !important;
 }
 
+
+.navTabs1 .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #feb80f !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.navTabs1 .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #feb80f !important;
+    background-color: #feb80f !important;
+    color: #fff !important;
+    position: relative !important;
+}
+
+
+.navTabs2 .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #ff7e4c !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.navTabs2 .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #ff7e4c !important;
+    background-color: #ff7e4c !important;
+    color: #fff !important;
+    position: relative !important;
+}
+
 .navTabs {
     border-bottom: 8px solid #129D59 !important;
 }
+.navTabs1 {
+    border-bottom: 8px solid #feb80f !important;
+}
+.navTabs2 {
+    border-bottom: 8px solid #ff7e4c !important;
+}
+
+
+
+
+
 
 .Alhadiths .item-link .box-logo p {
     font-size: 15px;
