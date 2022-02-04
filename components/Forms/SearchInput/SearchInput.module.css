@@ -1,11 +1,16 @@
 .boxSearch {
     height: 46px;
-    padding: 0 1.5em;
+    padding: 0 0.5em;
     width: 46px;
     margin: 0 2em;
     background: rgba(255, 255, 255, 0.21);
     border: 1px solid #ffffff;
     border-radius: 32px;
+}
+.boxSearch input{
+    box-shadow: none !important;
+    background: none !important;
+    width: 100% !important;
 }
 
 .boxSearch .iconFilter,

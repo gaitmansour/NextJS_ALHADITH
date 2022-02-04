@@ -136,12 +136,18 @@
 /**[dir='rtl'] .NavBar .dropdownMenu[data-bs-popper] {
   left: 0;
 }*/
-.p3 {
+/*_______________ styles dropdown____________________*/
+/* .p3 {
     padding: 0.4rem 1rem !important;
     text-align: right;
     display: inline-block;
-    width: 15vw !important;
-    max-width: 15vw;
+} */
+.dropdownContent li{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
 }
 
 .btnFaq {
