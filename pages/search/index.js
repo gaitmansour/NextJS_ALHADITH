@@ -25,6 +25,7 @@ import CustomSelect from '../../components/Forms/CustomSelect'
 import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
+import ScrollButton from '../../components/ScrollButton'
 
 const SearchPage = (props) => {
     let router = ''
@@ -208,6 +209,7 @@ const SearchPage = (props) => {
   const handleTopicFrom = async (res, r, router, narList, sourceList) => {
     const word = router?.word
     const from = router?.from
+      console.log('from-----------------------------------------------------------------',from)
     if (from === 'home') {
       const ArrayCategory =
         res && res.length > 0 && res?.filter((item) => item.label === topic)
@@ -219,6 +221,8 @@ const SearchPage = (props) => {
       setShowForm(false)
     }
     if (from === 'topBar') {
+        console.log('wordddddddddddddddddddddd')
+        console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)
@@ -344,13 +348,14 @@ const SearchPage = (props) => {
     }
     route.isReady &&
       console.log('route----------------------------------', route)
-  }, [pageNum, StartPage])
+  }, [pageNum, StartPage,route])
 
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
+        <ScrollButton />
         <div className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}
@@ -363,6 +368,7 @@ const SearchPage = (props) => {
               styleSerachIcon={{ backgroundColor: '#656e7e' }}
               onClickSettings={() => setShowForm(!showForm)}
               input={input}
+              inputClassName={'h-25'}
               onChange={(v) => handleInput(v)}
               placeholder='البحث في منصة الحديث النبوي الشريف'
               className='bg-white mx-0 shadow-card'

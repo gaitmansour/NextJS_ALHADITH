@@ -34,6 +34,16 @@
     color: black;
 }
 
+.buttonSearch{
+    height: 46px;
+    padding: 0 1.5em;
+    margin: 0 5em;
+    color: #fff;
+    background-color: #129D59;
+    border:none;
+    border-radius: 32px;
+}
+
 @media (max-width: 480px){
     .secSearch{
         padding: 1rem !important;

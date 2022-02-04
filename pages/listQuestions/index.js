@@ -292,6 +292,28 @@ const ListQuestions = (props) => {
                         </p>
                     </a>
                 </Link>
+                {item?._source?.descriptionReponse && <Link
+                    passHref={true}
+                    exact
+                    href={{
+                        pathname: '/detailsQuestion',
+                        search: '',
+                        hash: '',
+                        query: {
+                            itemTitle: item?._source?.sujetQuestion,
+                            itemQuestion: item?._source?.descriptionQuestion,
+                            itemReponse: item?._source?.descriptionReponse,
+                            itemId: item?._id,
+                        },
+                    }}
+                    as={'/detailsQuestion'}
+                >
+                    <a style={{textDecoration:'none'}}>
+                    <span className='text-success text-decoration-underline'>
+                        لمعرفة الإجابة
+                      </span>
+                    </a>
+                </Link>}
                 <hr/>
             </div>
         )
@@ -304,21 +326,6 @@ const ListQuestions = (props) => {
             >
                 <ScrollButton/>
                 <div className='flex-fill'>
-                    {/*sendSuccess && (
-                        <div
-                            className='mb-3 border-success'
-                            style={{
-                                borderColor: '#fff',
-                                borderRadius: 5,
-                                backgroundColor: '#44b27c',
-                            }}
-                        >
-                            <div className={`card-body text-white`}>
-                                لقد تم إرسال سؤالك بنجاح، ستتوصلون بإشعار على بريدكم الإلكتروني
-                                حين توفر الإجابة
-                            </div>
-                        </div>
-                    )*/}
                     <button
                         type='button'
                         style={{
@@ -335,10 +342,10 @@ const ListQuestions = (props) => {
                                 className={`${styles.paragraph} item d-flex align-items-center justify-content-evenly`}
                                 style={{textDecoration: 'none'}}
                             >
-                              <p className={`fw-bold pt-2 ${styles.question}`}>
-                                {'اطرح سؤالك'}
-                              </p>{' '}
-                              <Image
+                                <p className={`fw-bold pt-2 ${styles.question}`}>
+                                    {'اطرح سؤالك'}
+                                </p>{' '}
+                                <Image
                                     alt={'icon'}
                                     src={Icons.icon_faq}
                                     width={'40%'}
@@ -936,32 +943,32 @@ const ListQuestions = (props) => {
                             )}
                         </div>
                         <ReCAPTCHA
-                             sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
+                            sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
                             secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
-/*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
-className='captcha'
-onChange={onChange}
-/>
-<button
-type='button'
-style={{
-    backgroundColor: '#129D59',
-    color: '#fff',
-    width: '100%',
-    height: '50px',
-}}
-className='btn my-4'
-onClick={handleSubmitQuestion}
-disabled={enableButton}
->
-اطرح سؤالك
-</button>
-</div>
-</ModalQuestionForm>
-</Body>
-</TemplateArticle>
-)
+                            /*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                            secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
+                            className='captcha'
+                            onChange={onChange}
+                        />
+                        <button
+                            type='button'
+                            style={{
+                                backgroundColor: '#129D59',
+                                color: '#fff',
+                                width: '100%',
+                                height: '50px',
+                            }}
+                            className='btn my-4'
+                            onClick={handleSubmitQuestion}
+                            disabled={enableButton}
+                        >
+                            اطرح سؤالك
+                        </button>
+                    </div>
+                </ModalQuestionForm>
+            </Body>
+        </TemplateArticle>
+    )
 }
 
 export default ListQuestions

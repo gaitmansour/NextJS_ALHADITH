@@ -128,7 +128,7 @@ const CarouselHome = (props) => {
       </div>
       <Slider {...settings} className={`w-100 slide`}>
         {dataAPI?.map((item, index) => {
-          const toShow = item?.body?.substring(0, 251) + '..'
+          const toShow = item?.body_1?.substring(0, 251)
           if (item.field_image.includes('src=')) {
             var str = item.field_image
               .substr(item.field_image.lastIndexOf('src='))
@@ -151,14 +151,14 @@ const CarouselHome = (props) => {
           return (
             <Carousel.Item
               key={index.toString()}
-              className={`${styles.ImgSlide} w-100`}
+              className={`${styles.ImgSlide} w-100 `}
             >
               <Image
                 src={element2}
                 loader={myLoader}
                 alt={''}
-                height={1850}
-                width={5000}
+                layout='fill'
+                objectFit='cover'
               />
 
               <div

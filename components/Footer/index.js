@@ -126,7 +126,7 @@ const Footer = () => {
             <div
               className={`${styles.newsletter}col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
             >
-              <h5 className='text-white pb-3'>{'النشرة البريدية'}</h5>
+              <h5 className='text-white pb-3'>{'التسجيل في النشرة البريدية'}</h5>
               <div className='p-0 form'>
                 <div className='form-group'>
                   <label
