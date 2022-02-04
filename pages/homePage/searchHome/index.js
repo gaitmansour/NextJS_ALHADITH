@@ -142,7 +142,7 @@ const SearchSection = (props) => {
                     narrator: ChoiceNarrator.label,
                     word: input
                 }
-            })
+            },'/search')
         }
     }
     const handleKeyDown = (event, location) => {

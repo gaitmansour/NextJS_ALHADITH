@@ -32,11 +32,13 @@ const TopBar = (props) => {
         if (input === '') {
             handleShow()
         } else {
+            localStorage.removeItem(
+                'searchData')
              router.push({
                  pathname: '../search',
                  search: '',
                  query: {from: 'topBar', topic: '', content: "", word: input}
-             })
+             },'/search', { shallow: true })
             // console.log("go to")
             /*history && history.push({
                 pathname: '../search',
@@ -60,7 +62,7 @@ const TopBar = (props) => {
                              styleIcon={{color: '#fff'}}
                              styleDiv={{position:'absolute',right:"65%"}}
                              {...props}
-                             inputClassName={'text-white'}
+                             inputClassName={'text-white h-25'}
                              onChange={(v) => handleInput(v)}
                              clickSearch={() => handleClickSearch()}
                              input={input}

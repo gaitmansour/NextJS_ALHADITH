@@ -308,7 +308,7 @@ const ListQuestions = (props) => {
                     }}
                     as={'/detailsQuestion'}
                 >
-                    <a style={{marginRight: 630}}>
+                    <a style={{textDecoration:'none'}}>
                     <span className='text-success text-decoration-underline'>
                         لمعرفة الإجابة
                       </span>
