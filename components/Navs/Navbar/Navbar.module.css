@@ -376,22 +376,20 @@
         text-align: center;
     }
 
-    /* .NavBar .btnFaq {
-        width: 100% !important;
-    } */
     .menuBlog{
         height: 68px !important;
       }
     .quesAnserImg h4{
         display: none;
     }
-    .quesAnserImg {
-        padding: 0% !important;
-        width: 5vw !important;
+    .inputSearch{
+        width: 90% !important;
     }
-    .quesAnserImg .linkQa {
-        width: 5vw !important;
-        padding: 0% !important;
+    .responsiveSearch div{
+        width: 96% !important;
+    }
+    .search{
+        color: #000 !important;
     }
 }
 

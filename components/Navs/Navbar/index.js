@@ -12,16 +12,24 @@ import Image from 'next/image'
 import { Dropdown } from 'react-bootstrap'
 import useTranslation from 'next-translate/useTranslation'
 import $ from 'jquery'
+import SearchInput from '../../Forms/SearchInput'
+import CustomModal from '../../_UI/Modal'
+import { useRouter } from 'next/router'
 
 const NavBar = (props) => {
   const { t, lang } = useTranslation()
-
+  let router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
   const [Menu, setMenu] = useState([])
   const [MenuGlobal, setMenuGlobal] = useState([])
   const [MenuLinks, setMenuLinks] = useState([])
   const [shownavLink, setShownavlink] = useState(false)
   const [showLogo, setShowLogo] = useState(false)
+  const [InputShow, setInputShow] = useState(false)
+  const [input, setInput] = useState('')
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   //const scroll = () => ref && ref.current && ref.current.scrollIntoView({behavior: "smooth"});
   const styleAlignText = `${lang === 'ar' ? 'text-lg-end' : 'text-lg-start'}`
@@ -271,6 +279,50 @@ const NavBar = (props) => {
   if (typeof window !== 'undefined') {
     window.addEventListener('scroll', toggleVisible)
   }
+
+  useEffect(() => {
+    checkSize()
+    if (typeof window !== undefined) {
+      window.addEventListener('resize', checkSize)
+      // Remove event listener on cleanup
+      return () => {
+        if (typeof window !== undefined) {
+          window.removeEventListener('resize', checkSize)
+        }
+      }
+    }
+  }, [])
+
+  const checkSize = () => {
+    if (typeof window !== undefined && window.innerWidth <= 450) {
+      setInputShow(true)
+    } else {
+      setInputShow(false)
+    }
+    //var x = document.getElementById("inputdiv");
+  }
+  function handleInput(v) {
+    if (typeof v == 'string') {
+      setInput(v)
+    } else {
+      setInput(v.target.value)
+    }
+  }
+  const goToSearchPage = () => {
+    if (input === '') {
+      handleShow()
+    } else {
+      router.push({
+        pathname: '/search',
+        search: '',
+        query: { from: 'topBar', topic: '', content: '', word: input },
+      })
+    }
+  }
+
+  function handleClickSearch() {
+    goToSearchPage()
+  }
   return (
     <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
       <div className='container-fluid p-0'>
@@ -324,21 +376,34 @@ const NavBar = (props) => {
           <Contact title='الشبكات الاجتماعية' className='social-media' />
         </div>
 
-        <div>
-          <Link href={'/search'}>
-            <a
-              onClick={props.onClickSettings}
-              className={`${
-                visible ? 'd-block' : 'd-none'
-              } d-flex align-items-center btn m-0 p-0 searchSticky`}
-            >
-              <i
-                className='fas fa-search p-3 fa-2x iconSearch'
-                style={{ color: '#ADABAB' }}
+        <div className={`${visible ? 'd-block' : 'd-none'}`}>
+          {InputShow ? (
+            <div className={styles.responsiveSearch} style={{ width: '60vw' }}>
+              <SearchInput
+                styleIcon={{ color: '#157646', width: 20 }}
+                styleFilter={{ backgroundColor: '#157646', width: 50 }}
+                styleSerachIcon={{ backgroundColor: '#157646' }}
+                {...props}
+                input={input}
+                onChange={(v) => handleInput(v)}
+                clickSearch={() => handleClickSearch()}
+                placeholder='البحث في منصة الحديث النبوي الشريف'
+                className={`${styles.searchSection} bg-white mx-0 shadow-card`}
               />
-            </a>
-            {/* <div className="sepText mx-2"></div> */}
-          </Link>
+            </div>
+          ) : (
+            <Link href={'/search'}>
+              <a
+                onClick={props.onClickSettings}
+                className={` d-flex align-items-center btn m-0 p-0 searchSticky`}
+              >
+                <i
+                  className='fas fa-search p-3 fa-2x iconSearch'
+                  style={{ color: '#ADABAB' }}
+                />
+              </a>
+            </Link>
+          )}
         </div>
         <div
           className={`${visible ? styles.quesAnserImg : styles.quesAnser} 
@@ -365,6 +430,13 @@ const NavBar = (props) => {
           </Link>
         </div>
       </div>
+      <CustomModal
+        title={'تنبيه'}
+        body={'يرجى ملء كلمة البحث '}
+        show={show}
+        onHide={handleClose}
+        onClick={handleClose}
+      />
     </div>
   )
 }

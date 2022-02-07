@@ -66,7 +66,7 @@ const TopBar = (props) => {
           onChange={(v) => handleInput(v)}
           clickSearch={() => handleClickSearch()}
           input={input}
-          placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
+          placeholder='البحث في منصة الحديث النبوي الشريف'
         />
 
         <div
