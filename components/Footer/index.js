@@ -119,7 +119,7 @@ const Footer = () => {
                   className={`${styles.FooterLink}FooterLink email`}
                   style={{ color: '#fff' }}
                 >
-                  {'contact@hadithnabawicharif.gov.ma'}
+                  {'contact@hadithm6.ma'}
                 </p>
               </ul>
             </div>
