@@ -208,7 +208,7 @@ const Resources = () => {
   }
 
   return (
-    <div className={`${styles.Resources} py-5 overflow-hidden`}>
+    <div className={`${styles.Resources} container py-5 overflow-hidden`}>
       <SectionTitle title={'موارد'} />
       {renderContent()}
     </div>
