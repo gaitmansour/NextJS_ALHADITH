@@ -68,7 +68,41 @@ const NavBar = (props) => {
         // $('.dropdown-toggle').on('click', function () {
         //   $('.dropdown-menu.show').removeClass('show')
         // })
+        ;(function () {
+          var dropBtns = document.querySelectorAll('.dropdown')
 
+          function closeOpenItems() {
+            var openMenus = document.querySelectorAll('.dropMenu')
+            openMenus.forEach(function (menus) {
+              menus.classList.remove('show')
+            })
+          }
+
+          dropBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+              var dropContent = btn.querySelector('.dropMenu'),
+                shouldOpen = !dropContent.classList.contains('show')
+              e.preventDefault()
+
+              // First close all open items.
+              // closeOpenItems()
+              // Check if the clicked item should be opened. It is already closed at this point so no further action is required if it should be closed.
+              if (shouldOpen) {
+                // Open the clicked item.
+                dropContent.classList.add('show')
+              }
+              e.stopPropagation()
+            })
+          })
+
+          //   close menus when clicking outside of them
+          window.addEventListener('click', function (event) {
+            if (event.target != dropBtns) {
+              // Moved the code here to its own function.
+              closeOpenItems()
+            }
+          })
+        })()
         return (
           <li
             className='align-self-stretch d-flex dropdown mx-1 nav-item menuLinks'
@@ -92,7 +126,7 @@ const NavBar = (props) => {
 
             {item?.items?.length > 0 && (
               <ul
-                className={` ${styles.dropdownMenu} dropdown-menu  shadow-card overflow-hidden`}
+                className={` ${styles.dropdownMenu} dropdown-menu dropMenu shadow-card overflow-hidden`}
                 aria-labelledby={`menuLink-${index}`}
               >
                 {item?.items?.map((data, i) => {
@@ -273,7 +307,7 @@ const NavBar = (props) => {
           className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
           id='navbarNav'
         >
-          <ul className='navbar-nav align-items-center pr-4 align-self-stretch'>
+          <ul className='menu-principal navbar-nav align-items-center pr-4 align-self-stretch'>
             {renderLinksMenu()}
           </ul>
         </div>
@@ -307,11 +341,10 @@ const NavBar = (props) => {
           </Link>
         </div>
         <div
-          className={`${visible ? styles.quesAnserImg : styles.quesAnser} ${
-            styles.btn
-          } btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${
-            styles.secQa
-          }`}
+          className={`${visible ? styles.quesAnserImg : styles.quesAnser} 
+           btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${
+             styles.secQa
+           }`}
         >
           <Link
             exact

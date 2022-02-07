@@ -5,6 +5,10 @@
             rgba(14, 65, 40, 1) 100%
     );
 }
+.show {
+    display: block;
+  }
+
 .menuLinks{
     font-weight: bold;
     font-size: 18px !important;
@@ -372,12 +376,23 @@
         text-align: center;
     }
 
-    .NavBar .btnFaq {
+    /* .NavBar .btnFaq {
         width: 100% !important;
-    }
+    } */
     .menuBlog{
         height: 68px !important;
       }
+    .quesAnserImg h4{
+        display: none;
+    }
+    .quesAnserImg {
+        padding: 0% !important;
+        width: 5vw !important;
+    }
+    .quesAnserImg .linkQa {
+        width: 5vw !important;
+        padding: 0% !important;
+    }
 }
 
 @media (max-width: 320px) {
