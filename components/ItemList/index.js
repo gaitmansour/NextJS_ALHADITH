@@ -18,7 +18,8 @@ const ItemList = (props) => {
     props.category
   } \n# المصدر : ${props.source} \n # الراوي : ${props.narrator} \n# الحكم : ${
     props.degree
-  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''}`
+  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''} \n 
+  منصة محمد السادس للحديث النبوي الشريف `
 
   const toShow = params.substring(0, 251) + ' ...'
   // console.log("toShow",toShow)
@@ -161,7 +162,7 @@ const ItemList = (props) => {
         <WhatsappShareButton
           url={'https://hadithm6.ma/'}
           title={params}
-          separator=':: '
+          separator={'\n'}
           className='mx-2'
         >
           <WhatsappIcon size={32} round />
