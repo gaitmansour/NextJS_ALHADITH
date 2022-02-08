@@ -8,10 +8,7 @@ const DownloadApk = () => {
     <div className={`${styles.mobile} container`}>
       <Image src={Icons.icon_mobil} alt='' />
       <div className={`container ${styles.downloadApk}`}>
-        <div
-          className={styles.download}
-          style={{ marginRight: 350, marginTop: -350 }}
-        >
+        <div className={styles.download}>
           <Image src={Icons.icon_googlPlay} alt='' className={styles.dwdApk} />
           <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
         </div>

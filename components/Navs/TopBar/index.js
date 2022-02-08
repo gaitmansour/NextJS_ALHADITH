@@ -52,21 +52,24 @@ const TopBar = (props) => {
     goToSearchPage()
   }
 
-    return (
-        <div className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
-             style={{}}>
-            <div className="container-fluid my-2">
-                <Brand />
-                <SearchInput className={`${styles.search} text-white`}
-                             styleIcon={{color: '#fff'}}
-                             styleDiv={{position:'absolute',right:"65%"}}
-                             {...props}
-                             inputClassName={'text-white h-25'}
-                             onChange={(v) => handleInput(v)}
-                             clickSearch={() => handleClickSearch()}
-                             input={input}
-                             placeholder="البحث في منصة محمد السادس للحديث النبوي الشريف"
-                />
+  return (
+    <div
+      className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
+      style={{}}
+    >
+      <div className='container-fluid my-2'>
+        <Brand />
+        <SearchInput
+          className={`${styles.search} text-white `}
+          styleIcon={{ color: '#fff' }}
+          styleDiv={{ position: 'absolute', right: '65%' }}
+          {...props}
+          inputClassName={'text-white'}
+          onChange={(v) => handleInput(v)}
+          clickSearch={() => handleClickSearch()}
+          input={input}
+          placeholder='البحث في منصة الحديث النبوي الشريف'
+        />
 
         <div
           className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`}

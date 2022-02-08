@@ -1,5 +1,5 @@
-//export const base_url = `https://back.alhadith.dialtechnologies.net`
-export const base_url = `https://backend.7adith.ma:8000`;
+export const base_url = `https://back.alhadith.dialtechnologies.net`
+//export const base_url = `https://backend.7adith.ma:8000`;
 const {BASE_URL_CMS} = process.env;
 export const api_url = `${base_url}/en/jsonapi/node`;
 //export const api_url = `http://backend.7adith.ma:8000/en/jsonapi/node`

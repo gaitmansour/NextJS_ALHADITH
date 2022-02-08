@@ -241,7 +241,7 @@ const ListQuestions = (props) => {
         setStartPage(10 * v.selected)
     }
     const displayQuestions = DataQuestions.map((item, i) => {
-        // console.log("TID-----",item)
+         console.log("TID-----",item)
         return (
             <div key={i} className={` container-flex ${styles.bg1} bg1`}>
                 <div className={'p-2 row justify-content-between align-items-center'}>
@@ -309,11 +309,18 @@ const ListQuestions = (props) => {
                     as={'/detailsQuestion'}
                 >
                     <a style={{textDecoration:'none'}}>
+                        <p
+                            className={`${styles.dateParagraph} dateParagraph`}
+                        >
+                            {'تاريخ الاجابة: ' +
+                                Moment(item?._source?.dateHeureReponse).format('DD-MM-YYYY')}
+                        </p>
                     <span className='text-success text-decoration-underline'>
                         لمعرفة الإجابة
                       </span>
                     </a>
                 </Link>}
+
                 <hr/>
             </div>
         )
