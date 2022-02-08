@@ -73,44 +73,9 @@ const NavBar = (props) => {
       MenuLinks &&
       MenuLinks?.map((item, index) => {
         //console.log('--------menu',item)
-        // $('.dropdown-toggle').on('click', function () {
-        //   $('.dropdown-menu.show').removeClass('show')
-        // })
-        ;(function () {
-          var dropBtns = document.querySelectorAll('.dropdown')
-
-          function closeOpenItems() {
-            var openMenus = document.querySelectorAll('.dropMenu')
-            openMenus.forEach(function (menus) {
-              menus.classList.remove('show')
-            })
-          }
-
-          dropBtns.forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-              var dropContent = btn.querySelector('.dropMenu'),
-                shouldOpen = !dropContent.classList.contains('show')
-              e.preventDefault()
-
-              // First close all open items.
-              // closeOpenItems()
-              // Check if the clicked item should be opened. It is already closed at this point so no further action is required if it should be closed.
-              if (shouldOpen) {
-                // Open the clicked item.
-                dropContent.classList.add('show')
-              }
-              e.stopPropagation()
-            })
-          })
-
-          //   close menus when clicking outside of them
-          window.addEventListener('click', function (event) {
-            if (event.target != dropBtns) {
-              // Moved the code here to its own function.
-              closeOpenItems()
-            }
-          })
-        })()
+        $('.dropdown-toggle').on('click', function () {
+          $('.dropdown-menu.show').removeClass('show')
+        })
         return (
           <li
             className='align-self-stretch d-flex dropdown mx-1 nav-item menuLinks'
