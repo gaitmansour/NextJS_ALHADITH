@@ -251,7 +251,7 @@ const ListQuestions = (props) => {
                     <p
                         className={`${styles.dateParagraph} dateParagraph col col-12 col-lg-3 col-md-3 col-sm-1 align-self-center pt-3`}
                     >
-                        {'تاريخ النشر: ' +
+                        {'تاريخ السؤال: ' +
                             Moment(item?._source?.dateHeureQuestion).format('DD-MM-YYYY')}
                     </p>
                 </div>
@@ -310,7 +310,8 @@ const ListQuestions = (props) => {
                 >
                     <a style={{textDecoration:'none'}}>
                         <p
-                            className={`${styles.dateParagraph} dateParagraph`}
+                            className={`${styles.dateParagraph} dateParagraph text-black`}
+                            style={{marginLeft:10}}
                         >
                             {'تاريخ الاجابة: ' +
                                 Moment(item?._source?.dateHeureReponse).format('DD-MM-YYYY')}
