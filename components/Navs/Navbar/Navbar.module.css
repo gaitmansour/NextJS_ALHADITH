@@ -5,6 +5,10 @@
             rgba(14, 65, 40, 1) 100%
     );
 }
+.show {
+    display: block;
+  }
+
 .menuLinks{
     font-weight: bold;
     font-size: 18px !important;
@@ -372,12 +376,21 @@
         text-align: center;
     }
 
-    .NavBar .btnFaq {
-        width: 100% !important;
-    }
     .menuBlog{
         height: 68px !important;
       }
+    .quesAnserImg h4{
+        display: none;
+    }
+    .inputSearch{
+        width: 90% !important;
+    }
+    .responsiveSearch div{
+        width: 96% !important;
+    }
+    .search{
+        color: #000 !important;
+    }
 }
 
 @media (max-width: 320px) {
