@@ -126,7 +126,9 @@ const Footer = () => {
             <div
               className={`${styles.newsletter}col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
             >
-              <h5 className='text-white pb-3'>{'التسجيل في النشرة البريدية'}</h5>
+              <h5 className='text-white pb-3'>
+                {'التسجيل في النشرة البريدية'}
+              </h5>
               <div className='p-0 form'>
                 <div className='form-group'>
                   <label
@@ -173,7 +175,7 @@ const Footer = () => {
           </div>
           <div className={`${styles.copyright} copyright text-center p-3`}>
             <p className={`${styles.copyr} copyr text-white m-0`}>
-              منصة محمد السادس للحديث النبوي الشريف- جميع الحقوق محفوظة - 2021 ©{' '}
+              منصة محمد السادس للحديث النبوي الشريف- جميع الحقوق محفوظة - 2022 ©{' '}
             </p>
           </div>
         </div>
