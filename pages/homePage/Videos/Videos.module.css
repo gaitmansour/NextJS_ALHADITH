@@ -31,19 +31,10 @@
   text-decoration: none !important;
 }
 
-/* .alignSec .sec .secTop
-.secTop .divB a img,
-.secBottom .div2 a img,
-.secBottom .div3 a img{
+.alignSec .sec .secTop
+.secTop .divB a {
   width: 100% !important;
 }
-
-.alignSec .sec 
-.secTop .divB a img,
-.secBottom .div2 a img,
-.secBottom .div3 a img{
-  margin-right: 25% !important;  
-} */
 
 .alignSec .sec .secTop .divA {
   width: 50% ;
@@ -52,24 +43,16 @@
   z-index: 1;
   background-color: #139656;
 }
-.alignSec .sec .secTop .divA .imgTR{
-  position: absolute !important;
-  top: 15px !important;
-  right: 15px !important;
-  /* background-color: #10346b; */
-}
+
 .alignSec .sec .secTop .divB {
   border-top-left-radius: 3rem !important;
   width: 62% ;
   margin-right: -14% ;
-  padding: 5%;
+  /* padding: 5%; */
+  padding-right: 18% ;
   background-color: #22CABE;
 }
-.alignSec .sec .secTop .divB .imgBR {
-  position: absolute !important;
-  bottom: 14px !important;
-  right: 28% !important;
-}
+
 .alignSec .sec .secBottom .div1 {
   width: 30% ;
   border-top-left-radius: 3rem !important;
@@ -77,35 +60,25 @@
   z-index: 2;
   background-color: #FF794D;
 }
-.alignSec .sec .secBottom .div1 .imgdiv1{
-  position: absolute !important;
-  top: 15px;
-  right: 15px;
-}
+
 .alignSec .sec .secBottom .div2 {
   width: 46% ;
   margin-right: -14% ;
   border-top-left-radius: 3rem !important;
-  padding: 5%;
+  /* padding: 5%; */
+  padding-right: 18% ;
   z-index: 1;
   background-color: #FEB400;
 }
-.alignSec .sec .secBottom .div2 .imgdiv2{
-  position: absolute !important;
-  top: 15px;
-  right: 40%;
-}
+
 .alignSec .sec .secBottom .div3 {
   width: 50% ;
   margin-right: -14% ;
-  padding: 5%;
+  /* padding: 5%; */
+  padding-right: 16% ;
   background-color: #CEBB97;
 }
-.alignSec .sec .secBottom .div3 .imgdiv3{
-  position: absolute !important;
-  top: 15px;
-  left: 15px;
-}
+
 /*=========Media============*/
 
 @media (max-width: 480px) {
@@ -120,11 +93,6 @@
     align-items: center;
     margin: 0% !important;
   }
-  /* .sec .secTop, .secBottom {
-    text-align: center;
-    width: 100%;
-    height: 45%;
-  } */
   .alignSec .sec .secTop .divA,
   .secTop .divB,
   .secBottom .div1,
@@ -132,6 +100,15 @@
   .secBottom .div3 {
     height: 100% !important;
     font-size: 14px !important;
+    padding: 5% !important;
+  }
+  .alignSec .sec .secBottom .div3 h3{
+    width: 90% !important;
+    margin-right: 25% !important;
+  }
+  .alignSec .sec .secTop .divB h3{
+    margin-right: 25% !important;
+    margin-top: 5% !important;
   }
   .alignSec .sec 
   .secTop .divB a img,
@@ -151,6 +128,7 @@
   .alignSec .sec .secTop h3,.secBottom h3{
     font-size: 11px;
   }
+ 
   .imgWebTv{
     height: 50% !important;
     width: 50% !important;
