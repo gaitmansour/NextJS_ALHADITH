@@ -1,20 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {useTranslation} from 'react-i18next'
+import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './search.module.css'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 import ReactPaginate from 'react-paginate'
 import {
-    getCategory,
-    getDegree,
-    getNarrator,
-    getSource,
-    getTopic,
-    Search,
+  getCategory,
+  getDegree,
+  getNarrator,
+  getSource,
+  getTopic,
+  Search,
 } from '../../endpoints'
 import FetchAPI from '../../API'
-import {FetchPostAPI} from '../../data/API_Search/API'
+import { FetchPostAPI } from '../../data/API_Search/API'
 import ItemList from '../../components/ItemList'
 import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
@@ -28,100 +28,100 @@ import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
 
 const SearchPage = (props) => {
-    let router = ''
-    if (typeof window !== 'undefined') {
-        var params = JSON.parse(localStorage.getItem('searchData'))
-    }
+  let router = ''
+  if (typeof window !== 'undefined') {
+    var params = JSON.parse(localStorage.getItem('searchData'))
+  }
 
-    let varRouter = useRouter()?.query
+  let varRouter = useRouter()?.query
 
-    router = params ? params?.query : varRouter
+  router = params ? params?.query : varRouter
 
-    const state = router
-    const content = state?.content
-    const topic = state?.topic
-    console.log('topic-------------------', topic)
+  const state = router
+  const content = state?.content
+  const topic = state?.topic
+  console.log('topic-------------------', topic)
 
-    const degree = state?.degree
-    const door = state?.content
-    const source = state?.source
-    const narrator = state?.narrator
-    const hokm = state?.sourceHokm
+  const degree = state?.degree
+  const door = state?.content
+  const source = state?.source
+  const narrator = state?.narrator
+  const hokm = state?.sourceHokm
 
-    console.log('narrator-------------------', narrator)
-    console.log('source-------------------', source)
+  console.log('narrator-------------------', narrator)
+  console.log('source-------------------', source)
 
-    const [showForm, setShowForm] = useState(true)
-    const [dataDegree, setdataDegree] = useState([])
-    const [ChoiceDegree, setChoiceDegree] = useState('')
-    const [dataSource, setdataSource] = useState([])
-    const [ChoiceSource, setChoiceSource] = useState('')
-    const [dataTopic, setdataTopic] = useState([])
-    const [ChoiceTopic, setChoiceTopic] = useState('')
-    const [dataNarrator, setdataNarrator] = useState([])
-    const [dataCategory, setdataCategory] = useState([])
-    const [ChoiceCategory, setChoiceCategory] = useState('')
-    const [ChoiceNarrator, setChoiceNarrator] = useState('')
-    const [EvaluationSource, setEvaluationSource] = useState('')
-    const [dataSearch, setdataSearch] = useState([])
-    const [input, setInput] = useState('')
-    const [pageNum, setPageNum] = useState(0)
-    const [pagePagination, setPagePagination] = useState(1)
-    const [StartPage, setStartPage] = useState(0)
-    const dataPerPage = dataSearch?.hits?.hits?.length
-    const pagevisited = pageNum * dataPerPage
-    const [show, setShow] = useState(false)
-    const {t} = useTranslation()
-    const data = [
-        {
-            title: 'الرئيسية',
-            path: '',
-        },
-        {
-            title: 'البحث',
-            path: '/search',
-        },
-    ]
-    const searchSpacific = dataSearch?.hits?.total?.value
-    const searchNotSpacific = 336
-    let resultsRef = useRef()
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
-    const urlDegree = getDegree()
-    const urlSource = getSource()
-    const urlTopic = getTopic()
-    const urlNarrator = getNarrator()
-    const urlCategory = getCategory()
-    const urlSearch = Search()
+  const [showForm, setShowForm] = useState(true)
+  const [dataDegree, setdataDegree] = useState([])
+  const [ChoiceDegree, setChoiceDegree] = useState('')
+  const [dataSource, setdataSource] = useState([])
+  const [ChoiceSource, setChoiceSource] = useState('')
+  const [dataTopic, setdataTopic] = useState([])
+  const [ChoiceTopic, setChoiceTopic] = useState('')
+  const [dataNarrator, setdataNarrator] = useState([])
+  const [dataCategory, setdataCategory] = useState([])
+  const [ChoiceCategory, setChoiceCategory] = useState('')
+  const [ChoiceNarrator, setChoiceNarrator] = useState('')
+  const [EvaluationSource, setEvaluationSource] = useState('')
+  const [dataSearch, setdataSearch] = useState([])
+  const [input, setInput] = useState('')
+  const [pageNum, setPageNum] = useState(0)
+  const [pagePagination, setPagePagination] = useState(1)
+  const [StartPage, setStartPage] = useState(0)
+  const dataPerPage = dataSearch?.hits?.hits?.length
+  const pagevisited = pageNum * dataPerPage
+  const [show, setShow] = useState(false)
+  const { t } = useTranslation()
+  const data = [
+    {
+      title: 'الرئيسية',
+      path: '',
+    },
+    {
+      title: 'البحث',
+      path: '/search',
+    },
+  ]
+  const searchSpacific = dataSearch?.hits?.total?.value
+  const searchNotSpacific = 336
+  let resultsRef = useRef()
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const urlDegree = getDegree()
+  const urlSource = getSource()
+  const urlTopic = getTopic()
+  const urlNarrator = getNarrator()
+  const urlCategory = getCategory()
+  const urlSearch = Search()
 
-    const getDataDegree = async () => {
-        return FetchAPI(urlDegree).then((data) => {
-            if (data.success) {
-                const newDegree = data?.data.map((item) => {
-                    return (item = {
-                        label: item.label,
-                        value: item.id,
-                    })
-                })
-                setdataDegree(newDegree)
-                return newDegree
-            }
+  const getDataDegree = async () => {
+    return FetchAPI(urlDegree).then((data) => {
+      if (data.success) {
+        const newDegree = data?.data.map((item) => {
+          return (item = {
+            label: item.label,
+            value: item.id,
+          })
         })
-    }
-    const getDataSource = async () => {
-        return FetchAPI(urlSource).then((data) => {
-            if (data.success) {
-                const newSource = data?.data.map((item) => {
-                    return (item = {
-                        label: item.label,
-                        value: item.id,
-                    })
-                })
-                setdataSource(newSource)
-                return newSource
-            }
+        setdataDegree(newDegree)
+        return newDegree
+      }
+    })
+  }
+  const getDataSource = async () => {
+    return FetchAPI(urlSource).then((data) => {
+      if (data.success) {
+        const newSource = data?.data.map((item) => {
+          return (item = {
+            label: item.label,
+            value: item.id,
+          })
         })
-    }
+        setdataSource(newSource)
+        return newSource
+      }
+    })
+  }
 
   const getDataTopic = async () => {
     return FetchAPI(urlTopic).then((data) => {
@@ -209,7 +209,10 @@ const SearchPage = (props) => {
   const handleTopicFrom = async (res, r, router, narList, sourceList) => {
     const word = router?.word
     const from = router?.from
-      console.log('from-----------------------------------------------------------------',from)
+    console.log(
+      'from-----------------------------------------------------------------',
+      from
+    )
     if (from === 'home') {
       const ArrayCategory =
         res && res.length > 0 && res?.filter((item) => item.label === topic)
@@ -221,8 +224,8 @@ const SearchPage = (props) => {
       setShowForm(false)
     }
     if (from === 'topBar') {
-        console.log('wordddddddddddddddddddddd')
-        console.log(word)
+      console.log('wordddddddddddddddddddddd')
+      console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)
@@ -348,7 +351,7 @@ const SearchPage = (props) => {
     }
     route.isReady &&
       console.log('route----------------------------------', route)
-  }, [pageNum, StartPage,route])
+  }, [pageNum, StartPage, route])
 
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
@@ -439,9 +442,7 @@ const SearchPage = (props) => {
             <div>
               <PageTitleSecond
                 className={`${styles.pageTitleSecond} page-title-second pb-2 mt-5`}
-                title={`نتائج البحث (${
-                  searchSpacific ? searchSpacific : '0'
-                }).`}
+                title={`نتائج البحث (${searchSpacific ? searchSpacific : '0'})`}
               />
               {displayData}
               <ReactPaginate
