@@ -315,6 +315,39 @@ const SearchPage = (props) => {
     }
   }
 
+  const handleKeyDown = (event, location) => {
+    // console.log('A key was pressed', event.keyCode);
+    if (event.keyCode === 13) {
+      if (
+        input ||
+        EvaluationSource ||
+        ChoiceSource ||
+        ChoiceNarrator ||
+        ChoiceDegree ||
+        ChoiceCategory
+      ) {
+        handleSearch(input)
+        // console.log('handle')
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+
+    // cleanup this component
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [
+    input,
+    EvaluationSource,
+    ChoiceSource,
+    ChoiceNarrator,
+    ChoiceDegree,
+    ChoiceCategory,
+  ])
+
   let route = useRouter()
 
   useEffect(() => {
