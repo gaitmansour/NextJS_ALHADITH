@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {Backgrounds} from '../../../assets';
-import Link from 'next/link';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import _ from 'lodash';
-import {getTopic} from '../../../endpoints';
-import FetchAPI from '../../../API';
-import $ from "jquery";
-import styles from "./Alahadiths.module.css"
-import Loading from "../../../components/_UI/Loading";
-import {useRouter} from "next/router";
+import React, { useEffect, useState } from 'react'
+import { Backgrounds } from '../../../assets'
+import Link from 'next/link'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
+import _ from 'lodash'
+import { getTopic } from '../../../endpoints'
+import FetchAPI from '../../../API'
+import $ from 'jquery'
+import styles from './Alahadiths.module.css'
+import Loading from '../../../components/_UI/Loading'
+import { useRouter } from 'next/router'
 
 const HadithTab = ({ CodeTopic, Content }) => {
   const url = getTopic()
@@ -25,10 +25,10 @@ const HadithTab = ({ CodeTopic, Content }) => {
     })
   }, [])
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     autoplay: true,
-    slidesToShow: dataAPI.length >7 ?7 :dataAPI.length,
+    slidesToShow: dataAPI.length > 7 ? 7 : dataAPI.length,
     slidesToScroll: 4,
     arrows: false,
     responsive: [
@@ -65,7 +65,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
     ],
   }
 
-let router = useRouter();
+  let router = useRouter()
 
   const renderData = () => {
     try {
@@ -175,4 +175,4 @@ let router = useRouter();
   )
 }
 
-export default HadithTab;
+export default HadithTab
