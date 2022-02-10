@@ -90,7 +90,12 @@ const SliderList = (props) => {
                     )}
 
                     <div className='mx-3  w-100'>
-                      <p onClick={props.onClick}>{rmSpaces}</p>
+                      <p
+                        className='text-success text-decoration-underline'
+                        onClick={props.onClick}
+                      >
+                        {rmSpaces}
+                      </p>
                       {/* <span className='text-success text-decoration-underline'>
                         لمعرفة المزيد
                       </span> */}
