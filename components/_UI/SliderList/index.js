@@ -14,7 +14,7 @@ import styles from './SliderList.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import $ from "jquery";
+import $ from 'jquery'
 
 const SliderList = (props) => {
   const { i18n } = useTranslation()
@@ -50,12 +50,15 @@ const SliderList = (props) => {
                 pathN = rmSpaces
               }
               $(document).ready(function () {
-                $(".linksSlider").contextmenu(function (event) {
-                  localStorage.setItem('dataSlider', JSON.stringify({
-                    from: "slider"
-                  }))
-                });
-              });
+                $('.linksSlider').contextmenu(function (event) {
+                  localStorage.setItem(
+                    'dataSlider',
+                    JSON.stringify({
+                      from: 'slider',
+                    })
+                  )
+                })
+              })
               return (
                 <Link
                   passHref
@@ -88,9 +91,9 @@ const SliderList = (props) => {
 
                     <div className='mx-3  w-100'>
                       <p onClick={props.onClick}>{rmSpaces}</p>
-                      <span className='text-success text-decoration-underline'>
+                      {/* <span className='text-success text-decoration-underline'>
                         لمعرفة المزيد
-                      </span>
+                      </span> */}
                     </div>
                   </a>
                 </Link>
