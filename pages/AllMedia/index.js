@@ -55,7 +55,8 @@ const AllMedia = (props) => {
     autoplay: true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
+    dots: true,
     responsive: [
       {
         breakpoint: 500,
