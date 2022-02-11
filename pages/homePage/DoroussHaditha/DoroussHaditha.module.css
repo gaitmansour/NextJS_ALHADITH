@@ -1,0 +1,125 @@
+.navTabs .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #129D59 !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.navTabs .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #129D59 !important;
+    background-color: #129D59 !important;
+    color: #fff !important;
+    position: relative !important;
+}
+
+
+.navTabs1 .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #feb80f !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.navTabs1 .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #feb80f !important;
+    background-color: #feb80f !important;
+    color: #fff !important;
+    position: relative !important;
+}
+
+
+.navTabs2 .nav-link{
+    margin-bottom: -8px !important;
+    border:3px solid #ccc !important;
+    border-bottom: 8px solid #ff7e4c !important;
+    border-width: 0px 0px 8px 0px !important;
+    color : #656D7A !important;
+    font-weight: 900 !important;
+    border-top-left-radius: 4rem !important;
+    border-top-right-radius: 4rem !important;
+    width: 18vw !important;
+    background-color: #F1F5F7 !important;
+    padding: 1%;
+    text-align: center !important;
+}
+.navTabs2 .active{
+    border-width: 5px 0px 0px 0px !important;
+    border-color: #ff7e4c !important;
+    background-color: #ff7e4c !important;
+    color: #fff !important;
+    position: relative !important;
+}
+
+.navTabs {
+    border-bottom: 8px solid #129D59 !important;
+}
+.navTabs1 {
+    border-bottom: 8px solid #feb80f !important;
+}
+.navTabs2 {
+    border-bottom: 8px solid #ff7e4c !important;
+}
+/* .itemCard{
+  border-radius: 15% !important;
+  width: 30% !important;
+} */
+.playerWrapper{
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 5% !important;
+}
+.reactPlayer{
+  position: absolute;
+  top: 0%;
+  left: 10;
+}
+.reactPlay{
+  position: absolute;
+  top: 0%;
+  left: 10;
+}
+
+/* .slick-slide{
+  width: 40% !important;
+} */
+
+  .Alhadiths .slick-slider .slick-dots {
+    justify-content: center;
+  }
+  @media (max-width: 770px) {
+    .navTabs .nav-link{
+      padding: 4%  !important;
+    }
+}
+  @media only screen and (min-width: 500px) and (max-width: 900px) {
+    .navTabs .nav-link{
+      padding: 1% 2.5% !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .Alhadiths .container {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+    .Alhadiths .slick-next{
+      display: none !important;
+    }
+
+
+  }
