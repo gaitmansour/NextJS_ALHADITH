@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './DoroussHaditha.module.css'
 
 const DoroussHaditha = () => {
-  const [key, setKey] = useState('الصحيحة')
+  const [key, setKey] = useState('البيانية')
 
   return (
     <Tabs
@@ -21,10 +21,10 @@ const DoroussHaditha = () => {
       activeKey={key}
       className={`${
         key === 'البيانية'
-          ? 'navTabs'
+          ? 'navTabs2'
           : key === 'التمهيدية'
-          ? 'navTabs1'
-          : 'navTabs2'
+          ? 'navTabs'
+          : 'navTabs1'
       }
       text-secondary  mt-5`}
       style={{ justifyContent: 'center' }}

@@ -73,6 +73,7 @@ function Media(props) {
       if (data.success) {
         setDataAPI(data?.data)
       }
+      console.log('media', dataAPI)
     })
   }
 
@@ -125,7 +126,6 @@ function Media(props) {
   ]
 
   const sideData11 = [
-
     {
       title: 'الدروس الحديثية',
       path: '/media/برامج تلفزية',
@@ -150,7 +150,7 @@ function Media(props) {
       title: 'برامج على الشبكات الاجتماعية',
       path: '/media/برامج على الشبكات الاجتماعية',
       parentLabel: 'البرامج الإعلامية',
-    }
+    },
   ]
 
   function handleStart() {

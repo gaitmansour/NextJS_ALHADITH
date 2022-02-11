@@ -30,7 +30,6 @@ const DoroussTab = ({ title }) => {
 
   const settings = {
     dots: true,
-    infinite: true,
     infinite: dataAPI?.included?.length > 3,
     autoplay: true,
     slidesToShow: dataAPI?.included?.length > 4 ? 4 : dataAPI?.included?.length,
@@ -80,24 +79,26 @@ const DoroussTab = ({ title }) => {
         )
       } else {
         if (dataAPI?.data?.length > 0) {
-          return dataAPI?.included?.map((item, i) => {
+          return dataAPI?.data?.map((item, i) => {
             var leng = dataAPI.included.length
             console.log('-item----', item)
 
             return (
               <div
                 key={i.toString()}
-                className={`${styles.itemCard} mt-4 mb-2`}
+                className={`${styles.itemCard} mt-4 mb-2 w-50`}
               >
                 <div className={`${styles.playerWrapper} player-wrapper`}>
                   <ReactPlayer
                     url={[
                       {
-                        src: `${base_url}${item?.attributes?.uri?.url}`,
+                        src: `${base_url}${
+                          dataAPI?.included[i + leng / 2]?.attributes?.uri?.url
+                        }`,
                         type: 'video/mp4',
                       },
                     ]}
-                    light={`${base_url}${item.attributes?.uri?.url}`}
+                    light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
                     controls
                     playing
                     className={`${styles.reactPlay} react-player`}
@@ -105,7 +106,9 @@ const DoroussTab = ({ title }) => {
                     height='90%'
                   />
                 </div>
-                {/* <p className=' description'>{item?.attributes?.title}</p> */}
+                <p className='text-center fw-bold description'>
+                  {item?.attributes?.title}
+                </p>
               </div>
             )
           })
