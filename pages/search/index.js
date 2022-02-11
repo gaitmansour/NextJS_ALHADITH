@@ -40,16 +40,12 @@ const SearchPage = (props) => {
   const state = router
   const content = state?.content
   const topic = state?.topic
-  console.log('topic-------------------', topic)
 
   const degree = state?.degree
   const door = state?.content
   const source = state?.source
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
-
-  console.log('narrator-------------------', narrator)
-  console.log('source-------------------', source)
 
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
@@ -169,7 +165,7 @@ const SearchPage = (props) => {
       }
     })
   }
-
+  console.log('masderlhokem', EvaluationSource)
   const handleSearch = async (word, topic, degree, src, nrs) => {
     const data = {
       content: word,
@@ -301,6 +297,7 @@ const SearchPage = (props) => {
     if (
       !input &&
       !ChoiceTopic &&
+      !EvaluationSource &&
       !ChoiceSource &&
       !ChoiceNarrator &&
       !ChoiceDegree &&
@@ -369,6 +366,7 @@ const SearchPage = (props) => {
     if (
       input ||
       ChoiceTopic ||
+      EvaluationSource ||
       ChoiceSource ||
       ChoiceNarrator ||
       ChoiceDegree ||
@@ -436,7 +434,7 @@ const SearchPage = (props) => {
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
-                    value={EvaluationSource && EvaluationSource}
+                    value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
                   />
                 </div>
