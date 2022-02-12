@@ -86,7 +86,7 @@ const DoroussTab = ({ title }) => {
             return (
               <div
                 key={i.toString()}
-                className={`${styles.itemCard} mt-4 mb-2 w-50`}
+                className={`${styles.itemCard} mt-4 mb-2 `}
               >
                 <div className={`${styles.playerWrapper} player-wrapper`}>
                   <ReactPlayer

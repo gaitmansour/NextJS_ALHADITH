@@ -7,7 +7,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 18vw !important;
+    width: 25vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -30,7 +30,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 18vw !important;
+    width: 25vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -53,7 +53,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 18vw !important;
+    width: 25vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -75,10 +75,9 @@
 .navTabs2 {
     border-bottom: 8px solid #ff7e4c !important;
 }
-/* .itemCard{
-  border-radius: 15% !important;
-  width: 30% !important;
-} */
+.itemCard{
+  width: 50% !important;
+}
 .playerWrapper{
   position: relative;
   padding-top: 56.25%;
@@ -120,6 +119,10 @@
     .Alhadiths .slick-next{
       display: none !important;
     }
-
-
+    .itemCard{
+        width: 100% !important;
+    }
+    .navTabs .nav-link{
+        width: 27vw !important;
+    }
   }

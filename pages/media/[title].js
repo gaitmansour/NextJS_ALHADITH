@@ -42,7 +42,8 @@ function Media(props) {
     autoplay: true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: true,
+    arows: false,
+    dots: true,
     responsive: [
       {
         breakpoint: 500,

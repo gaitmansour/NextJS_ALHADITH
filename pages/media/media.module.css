@@ -53,9 +53,8 @@
       /* margin-top: 15px; */
   }
 
-  .SliderVideoList .slick-slider .slick-dots {
-    top: -20px;
-    justify-content: flex-start;
+  .slick-slider .slick-arrow {
+    background-color: forestgreen !important;
   }
   
   *[dir='rtl'] .SliderVideoList .slick-slider .slick-dots {  
