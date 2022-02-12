@@ -312,8 +312,9 @@ const SearchPage = (props) => {
     }
   }
 
-  const handleKeyDown = (event, location) => {
+  const handleKeyDown = (event) => {
     // console.log('A key was pressed', event.keyCode);
+
     if (event.keyCode === 13) {
       if (
         input ||
@@ -324,7 +325,6 @@ const SearchPage = (props) => {
         ChoiceCategory
       ) {
         handleSearch(input)
-        // console.log('handle')
       }
     }
   }
@@ -343,6 +343,7 @@ const SearchPage = (props) => {
     ChoiceNarrator,
     ChoiceDegree,
     ChoiceCategory,
+    router,
   ])
 
   let route = useRouter()
