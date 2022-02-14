@@ -82,16 +82,20 @@ export default function ArticlePage(props) {
   const getItemsMenu = async (x) => {
     return FetchAPI(getSideItems(x)).then((data) => {
       if (data.success) {
-        const items = data?.data.map((item, index) => {
-          return {
-            label: item.name,
-            title: item.name,
-            tID: item.tid,
-            path: `article/${item.name}`,
-            parentLabel: item.parent_target_id_1,
-            parentID: item.parent_target_id,
-          }
-        })
+        const items = data?.data
+          ?.sort((a, b) => {
+            return b.weight - a.weight
+          })
+          .map((item, index) => {
+            return {
+              label: item.name,
+              title: item.name,
+              tID: item.tid,
+              path: `article/${item.name}`,
+              parentLabel: item.parent_target_id_1,
+              parentID: item.parent_target_id,
+            }
+          })
         setItems(items)
         return items
       }
