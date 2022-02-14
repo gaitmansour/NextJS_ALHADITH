@@ -164,14 +164,14 @@ const CarouselHome = (props) => {
               />
 
               <div
-                className={`${styles.carouselCaption} carousel-caption d-md-block`}
+                className={`${styles.carouselCaption} px-4 carousel-caption d-md-block`}
                 style={{
                   backgroundColor: 'white',
                   opacity: 0.8,
                   marginLeft: 150,
                 }}
               >
-                <p style={{ fontSize: 12 }}>{toShow}</p>
+                <p>{toShow}</p>
                 <Link
                   href={{
                     pathname: '/article/' + item?.title,

@@ -98,16 +98,19 @@
 }
 
 .CarouselHome .carouselCaption p {
-    font-weight: 600;
-    padding-left: 3em;
+    /* font-weight: 400; */
+    line-height: 1.3rem;
+    /* padding-left: 3em;
     padding-right: 10px;
-    text-align: left;
+    text-align: left; */
 }
 
 *[dir='rtl'] .CarouselHome .carouselCaption p {
     padding-right: 3em;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     text-align: right;
+    line-height: 1.3rem;
+    font-size: medium;
 }
 
 .CarouselHome .carouselCaption .btn {
@@ -252,6 +255,9 @@
     .ImgSlide img{
         height: 44vh !important;
         /* position: relative !important; */
+    }
+    .carouselCaption{
+        padding: 5% 5% 0% 0% !important;
     }
 }
 
