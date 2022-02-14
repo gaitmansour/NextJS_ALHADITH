@@ -157,8 +157,10 @@ const CarouselHome = (props) => {
                 src={element2}
                 loader={myLoader}
                 alt={''}
-                layout='fill'
+                // layout='fill'
                 objectFit='cover'
+                height={1850}
+                width={5000}
               />
 
               <div

@@ -316,16 +316,18 @@ const SearchPage = (props) => {
     // console.log('A key was pressed', event.keyCode);
 
     if (event.keyCode === 13) {
-      if (
-        input ||
-        EvaluationSource ||
-        ChoiceSource ||
-        ChoiceNarrator ||
-        ChoiceDegree ||
-        ChoiceCategory
-      ) {
-        handleSearch(input)
-      }
+      handleClickSearch()
+      // if (
+      //   input ||
+      //   EvaluationSource ||
+      //   ChoiceSource ||
+      //   ChoiceNarrator ||
+      //   ChoiceDegree ||
+      //   ChoiceCategory
+      // ) {
+      //   setShow(false)
+      //   handleSearch(input)
+      // }
     }
   }
 
@@ -343,7 +345,6 @@ const SearchPage = (props) => {
     ChoiceNarrator,
     ChoiceDegree,
     ChoiceCategory,
-    router,
   ])
 
   let route = useRouter()
