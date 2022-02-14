@@ -203,6 +203,7 @@ export default function ArticlePage(props) {
                       ?.uri?.url
                   }
                   className='m-auto w-100 my-4'
+                  objectFit='cover'
                   width={850}
                   height={500}
                   loader={myLoader}
