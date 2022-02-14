@@ -111,6 +111,9 @@ table td p a{
         max-width: 85% !important;
         /* margin: 0px 5px !important ; */
     }
+    .articls{
+        padding: 5% !important;
+    }
     .slider{
         width: 100% !important;
     }
