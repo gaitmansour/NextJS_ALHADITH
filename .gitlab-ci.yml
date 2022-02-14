@@ -1,7 +1,7 @@
 stages:
   - containerize
   - deploy
-
+  
 build_image:
   stage: containerize
   image: docker:latest
@@ -11,7 +11,7 @@ build_image:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE:staging -f .docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE:staging
-
+    
 deploy_image:
   stage: deploy
   image: 
