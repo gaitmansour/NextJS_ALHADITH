@@ -38,7 +38,8 @@
 }
 .cardSlid p {
     font-weight: bold;
-    color:  #10653B !important;
+    /* color:  #10653B !important; */
+    color:  #000 !important;
     width: 100% !important;
     /* overflow: hidden;
     text-overflow: ellipsis; */
