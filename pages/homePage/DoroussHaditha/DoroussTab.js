@@ -122,10 +122,7 @@ const DoroussTab = ({ title }) => {
                 width='100%'
                 height='100%'
               />
-              <h4 className='mt-3'>{'لا توجد نتائج'}</h4>
-              <p className='fw-100 link-primary'>
-                {'يرجي طرح سؤالك أو محاولة البحث في الموقع'}
-              </p>
+              <h4 className='mt-3 mb-4'>{'لا توجد نتائج'}</h4>
             </div>
           )
         }
