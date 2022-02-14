@@ -184,7 +184,7 @@ export default function ArticlePage(props) {
       )}
     >
       <Body
-        className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
+        className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
       >
         <ScrollButton />
         <div className={`${styles.articleContent} flex-fill`}>
@@ -196,7 +196,7 @@ export default function ArticlePage(props) {
           {dataAPI?.included &&
             dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
               ?.url && (
-              <div className={`${styles.sectionImage} px-3`}>
+              <div className={`${styles.sectionImage}`}>
                 <Image
                   src={
                     dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
@@ -211,7 +211,7 @@ export default function ArticlePage(props) {
                       ?.alt
                   }
                 />
-                <span>
+                <span className='my-3'>
                   {
                     dataAPI?.data[0]?.relationships?.field_image?.data?.meta
                       ?.alt

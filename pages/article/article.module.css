@@ -4,6 +4,7 @@
 } */
 .summ{
     margin-bottom: 4%;
+    width: 90%;
 }
 .vv{
     width: 100%;
@@ -84,7 +85,7 @@ display: list-item;
     text-align: center;
 }
 .sectionImage{
-    border: 1px solid rgb(204, 201, 201);
+    /* border: 1px solid rgb(204, 201, 201); */
     text-align: center;
     /* padding: 5px; */
     color: darkgray;
