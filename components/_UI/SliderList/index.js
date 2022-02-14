@@ -38,8 +38,8 @@ const SliderList = (props) => {
   return (
     <Widget className={`${className}`}>
       <div className={`${styles.SliderList} SliderList`}>
-        <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2>
-        {/* <SectionTitle title={'مواضيع ذات صلة'} /> */}
+        {/* <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2> */}
+        <SectionTitle title={'مواضيع ذات صلة'} />
         <Slider {...settings} className='slide my-4'>
           {data?.map((item, i) => {
             const newData = item.map((data, index) => {
