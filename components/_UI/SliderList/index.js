@@ -15,6 +15,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import $ from 'jquery'
+import SectionTitle from '../SectionTitle'
 
 const SliderList = (props) => {
   const { i18n } = useTranslation()
@@ -37,6 +38,8 @@ const SliderList = (props) => {
   return (
     <Widget className={`${className}`}>
       <div className={`${styles.SliderList} SliderList`}>
+        <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2>
+        {/* <SectionTitle title={'مواضيع ذات صلة'} /> */}
         <Slider {...settings} className='slide my-4'>
           {data?.map((item, i) => {
             const newData = item.map((data, index) => {
