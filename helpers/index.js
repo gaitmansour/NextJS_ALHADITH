@@ -6,7 +6,7 @@ export function handleMenu(Menu){
     let MenuHeaders= [];
     MenuHeaders = groupedMenu && groupedMenu[""].map((item, i) => {
         let items =  groupedMenu[item.tid] ? groupedMenu && groupedMenu[item.tid].map((subItem, j) => {
-            if (subItem.parent_target_id_1 === 'البرامج الإعلامية'){
+            if (subItem.parent_target_id_1 === 'التلفزة الرقمية'){
                 let _subItem = {
                     path:`media/${subItem.name_1}`,
                     //as:`media/${subItem.name_1}`,

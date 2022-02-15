@@ -12,7 +12,7 @@ const SimpleList = (props) => {
                     //  console.log('this data to show ------>',item)
                     if (item?.title == 'المصحف المحمدي') {
                         var path1 = {path: '/Almoshaf', as: '/المصحف المحمدي'}
-                    } else if (item?.parentLabel == 'البرامج الإعلامية') {
+                    } else if (item?.parentLabel == 'التلفزة الرقمية') {
                         var path1 = {path: `/media/${item?.title}`, as: `/media/${item?.title}`}
                     } else {
                         var path1 = {path: `/article/${item?.title}`, as: `/article/${item?.title}`}
