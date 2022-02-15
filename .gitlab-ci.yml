@@ -21,6 +21,4 @@ deploy_image:
     - master
   script:
      - |
-      export  currenttime=$(date +%H%M)
-      echo $currenttime
-      if [[ $currenttime -gt 1569 ]]; then envsubst < .k8s/frontend-nextjs-deploy.yml | kubectl apply -f -; else echo "false"; fi
+      envsubst < .k8s/frontend-nextjs-deploy.yml | kubectl apply -f -

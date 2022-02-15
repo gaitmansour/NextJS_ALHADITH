@@ -25,7 +25,7 @@ spec:
           value: http://backend.7adith.ma:8000
         - name: BASE_URL_ES
           value: http://elasticsearch:9200
-        image: registry.devops.os/minassat-mohammed-vi-du-hadith/frontend-nextjs:staging
+        image: registry.devops.os/minassat-mohammed-vi-du-hadith/frontend-next-js:staging
         imagePullPolicy: Always
         name: frontend-nextjs
         ports:
