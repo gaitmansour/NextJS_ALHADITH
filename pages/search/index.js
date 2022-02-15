@@ -419,9 +419,12 @@ const SearchPage = (props) => {
             />
 
             <div
-              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn m-2 p-0`}
+              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
               onClick={() => handleClickSearch()}
-              style={{ backgroundColor: '#157646' }}
+              style={{
+                backgroundColor: '#157646',
+                height: '46px',
+              }}
             >
               <i className='fas fa-search p-3' style={{ color: '#fff' }} />
             </div>
