@@ -116,7 +116,7 @@ function Media(props) {
       path: '',
     },
     {
-      title: 'البرامج الإعلامية',
+      title: 'التلفزة الرقمية',
       path: '',
     },
     {
@@ -129,27 +129,27 @@ function Media(props) {
     {
       title: 'الدروس الحديثية',
       path: '/media/برامج تلفزية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'الدروس الحسنية',
       path: '/media/الدروس الحسنية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج اذاعية',
       path: 'media/برامج اذاعية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج تلفزية',
       path: '/media/برامج تلفزية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج على الشبكات الاجتماعية',
       path: '/media/برامج على الشبكات الاجتماعية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
   ]
   const sideDataDoroussHaditha = [
