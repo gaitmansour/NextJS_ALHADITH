@@ -8,7 +8,10 @@ const DownloadApk = () => {
     <div className={`${styles.mobile} container`}>
       <Image src={Icons.icon_mobil} alt='' />
       <div className={`container ${styles.downloadApk}`}>
-        <div className={styles.download}>
+        <div className={`${styles.download} p-4`}>
+          <h4 className={`${styles.titleSec} `}>
+            {'تحميل التطبيق الخاص بمنصة محمد السادس للحديث النبوي الشريف'}
+          </h4>
           <Image src={Icons.icon_googlPlay} alt='' className={styles.dwdApk} />
           <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
         </div>
