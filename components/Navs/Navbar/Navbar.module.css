@@ -152,6 +152,7 @@
     text-decoration: none;
     display: block;
     white-space: nowrap;
+    text-align: right;
 }
 /* .contentDropdown{
     position: fixed !important;
