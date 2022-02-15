@@ -43,7 +43,6 @@ function Media(props) {
     slidesToShow: 2,
     slidesToScroll: 1,
     arows: false,
-    dots: true,
     responsive: [
       {
         breakpoint: 500,

@@ -110,9 +110,9 @@ const TopBar = (props) => {
                 exact
                 activeClassName='active'
                 href={`/choroutMinassa`}
-                as={'/شروط المنصة'}
+                as={'/شرط المنصة'}
               >
-                {'شروط المنصة'}
+                {'شرط المنصة'}
               </Link>
             </li>
             <Lottie options={defaultOptions} height={55} width={55} />

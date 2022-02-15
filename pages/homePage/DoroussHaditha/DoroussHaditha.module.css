@@ -7,7 +7,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 25vw !important;
+    width: 18vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -30,7 +30,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 25vw !important;
+    width: 18vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -53,7 +53,7 @@
     font-weight: 900 !important;
     border-top-left-radius: 4rem !important;
     border-top-right-radius: 4rem !important;
-    width: 25vw !important;
+    width: 18vw !important;
     background-color: #F1F5F7 !important;
     padding: 1%;
     text-align: center !important;
@@ -123,6 +123,15 @@
         width: 100% !important;
     }
     .navTabs .nav-link{
-        width: 27vw !important;
+      width: 27vw !important;
+      padding: 2% !important;
     }
+  .navTabs1 .nav-link{
+      width: 27vw !important;
+      padding: 2% !important;
+  }
+  .navTabs2 .nav-link{
+      width: 27vw !important;
+      padding: 2% !important;
+  }
   }

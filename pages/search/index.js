@@ -306,6 +306,7 @@ const SearchPage = (props) => {
       handleShow()
     } else {
       setShowForm(false)
+      handleClose()
       setPageNum(0)
       setStartPage(0)
       handleSearch(input)
@@ -315,28 +316,34 @@ const SearchPage = (props) => {
   const handleKeyDown = (event) => {
     // console.log('A key was pressed', event.keyCode);
 
-    if (event.keyCode === 13) {
-      handleClickSearch()
-      // if (
-      //   input ||
-      //   EvaluationSource ||
-      //   ChoiceSource ||
-      //   ChoiceNarrator ||
-      //   ChoiceDegree ||
-      //   ChoiceCategory
-      // ) {
-      //   setShow(false)
-      //   handleSearch(input)
-      // }
+    if (event.which == 13 || event.keyCode == 13) {
+      // handleClickSearch()
+      if (
+        input ||
+        EvaluationSource ||
+        ChoiceSource ||
+        ChoiceNarrator ||
+        ChoiceDegree ||
+        ChoiceCategory
+      ) {
+        setShow(false)
+        handleSearch(input)
+      } else {
+        handleShow()
+      }
     }
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-
+    if (typeof window != 'undefined') {
+      window.addEventListener('keydown', handleKeyDown)
+    }
     // cleanup this component
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+      if (typeof window != 'undefined') {
+        window.removeEventListener('keydown', handleKeyDown)
+        handleClose()
+      }
     }
   }, [
     input,

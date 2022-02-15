@@ -82,16 +82,20 @@ export default function ArticlePage(props) {
   const getItemsMenu = async (x) => {
     return FetchAPI(getSideItems(x)).then((data) => {
       if (data.success) {
-        const items = data?.data.map((item, index) => {
-          return {
-            label: item.name,
-            title: item.name,
-            tID: item.tid,
-            path: `article/${item.name}`,
-            parentLabel: item.parent_target_id_1,
-            parentID: item.parent_target_id,
-          }
-        })
+        const items = data?.data
+          ?.sort((a, b) => {
+            return b.weight - a.weight
+          })
+          .map((item, index) => {
+            return {
+              label: item.name,
+              title: item.name,
+              tID: item.tid,
+              path: `article/${item.name}`,
+              parentLabel: item.parent_target_id_1,
+              parentID: item.parent_target_id,
+            }
+          })
         setItems(items)
         return items
       }
@@ -180,7 +184,7 @@ export default function ArticlePage(props) {
       )}
     >
       <Body
-        className={`${styles.TemplateArticleBody} ${styles.articls}TemplateArticleBody d-flex p-4`}
+        className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
       >
         <ScrollButton />
         <div className={`${styles.articleContent} flex-fill`}>
@@ -192,13 +196,14 @@ export default function ArticlePage(props) {
           {dataAPI?.included &&
             dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
               ?.url && (
-              <div className={`${styles.sectionImage} px-3`}>
+              <div className={`${styles.sectionImage}`}>
                 <Image
                   src={
                     dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
                       ?.uri?.url
                   }
                   className='m-auto w-100 my-4'
+                  objectFit='cover'
                   width={850}
                   height={500}
                   loader={myLoader}
@@ -207,7 +212,7 @@ export default function ArticlePage(props) {
                       ?.alt
                   }
                 />
-                <span>
+                <span className='my-3'>
                   {
                     dataAPI?.data[0]?.relationships?.field_image?.data?.meta
                       ?.alt
