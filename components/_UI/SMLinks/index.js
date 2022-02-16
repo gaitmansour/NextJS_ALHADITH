@@ -48,7 +48,7 @@ const SMLinks = (props) => {
         <i className='fab fa-tiktok mx-2' id='tik' target='_blank'></i>
       </a>
       <a href='/' alt='whatsapp' target='_blank'>
-        <i class='fab fa-whatsapp mx-2' id='tik' target='_blank'></i>
+        <i class='fab fa-whatsapp mx-2' id='wp' target='_blank'></i>
       </a>
     </div>
   )
