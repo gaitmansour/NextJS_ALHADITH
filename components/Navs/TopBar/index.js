@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './TopBar.module.css'
 import Brand from '../../_UI/Brand'
 import SearchInput from '../../Forms/SearchInput'
@@ -28,6 +28,7 @@ const TopBar = (props) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const history = []
+  const elementRef = useRef()
 
   function handleInput(v) {
     if (typeof v == 'string') {
@@ -38,7 +39,7 @@ const TopBar = (props) => {
   }
 
   const goToSearchPage = () => {
-    if (input === '') {
+    if (!input) {
       handleShow()
     } else {
       localStorage.removeItem('searchData')
@@ -60,18 +61,25 @@ const TopBar = (props) => {
     }
   }
 
-  const handleKeyDown = (event) => {
-    if (event.keyCode === 13) {
-      goToSearchPage()
-    }
-  }
-
+  console.log('go to', input)
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    const handleKeyDown = (event) => {
+      // const x = window.matchMedia('(max-height: 200px)')
+      if (event.keyCode === 13) {
+        goToSearchPage()
+      }
+    }
+    if (elementRef && elementRef?.current) {
+      elementRef?.current?.addEventListener('keydown', handleKeyDown, false)
 
-    // cleanup this component
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+      // cleanup this component
+      return function cleanup() {
+        elementRef?.current?.removeEventListener(
+          'keydown',
+          handleKeyDown,
+          false
+        )
+      }
     }
   }, [input])
 
@@ -83,6 +91,7 @@ const TopBar = (props) => {
     <div
       className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
       style={{}}
+      ref={elementRef}
     >
       <div className='container-fluid my-2'>
         <Brand />

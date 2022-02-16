@@ -64,6 +64,7 @@ const SearchPage = (props) => {
   const [pageNum, setPageNum] = useState(0)
   const [pagePagination, setPagePagination] = useState(1)
   const [StartPage, setStartPage] = useState(0)
+  const [success, setSuccess] = useState(false)
   const dataPerPage = dataSearch?.hits?.hits?.length
   const pagevisited = pageNum * dataPerPage
   const [show, setShow] = useState(false)
@@ -89,6 +90,7 @@ const SearchPage = (props) => {
   const urlNarrator = getNarrator()
   const urlCategory = getCategory()
   const urlSearch = Search()
+  let elementRef = useRef()
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -197,6 +199,7 @@ const SearchPage = (props) => {
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
         setdataSearch(data?.data)
+        setSuccess(true)
         setPagePagination(data?.data?.hits?.total?.value)
       }
     })
@@ -293,7 +296,7 @@ const SearchPage = (props) => {
     }
   }
 
-  function handleClickSearch() {
+  const handleClickSearch = (e) => {
     if (
       !input &&
       !ChoiceTopic &&
@@ -306,40 +309,35 @@ const SearchPage = (props) => {
       handleShow()
     } else {
       setShowForm(false)
-      handleClose()
       setPageNum(0)
       setStartPage(0)
       handleSearch(input)
-    }
-  }
-
-  const handleKeyDown = (event, location) => {
-    // console.log('A key was pressed', event.keyCode);
-    if (event.keyCode === 13) {
-      if (
-        input ||
-        EvaluationSource ||
-        ChoiceSource ||
-        ChoiceNarrator ||
-        ChoiceDegree ||
-        ChoiceCategory
-      ) {
-        handleSearch(input)
-        // console.log('handle')
-      }
+      handleClose()
     }
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    const handleKeyDown = (event) => {
+      // const x = window.matchMedia('(max-height: 200px)')
+      if (event.keyCode === 13) {
+        handleSearch(input)
+      }
+    }
+    if (elementRef && elementRef?.current) {
+      elementRef?.current?.addEventListener('keydown', handleKeyDown, false)
 
-    // cleanup this component
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+      // cleanup this component
+      return function cleanup() {
+        elementRef?.current?.removeEventListener(
+          'keydown',
+          handleKeyDown,
+          false
+        )
+      }
     }
   }, [
     input,
-    EvaluationSource,
+    ChoiceTopic,
     ChoiceSource,
     ChoiceNarrator,
     ChoiceDegree,
@@ -391,7 +389,7 @@ const SearchPage = (props) => {
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
         <ScrollButton />
-        <div className={`${styles.SearchBox} `}>
+        <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}
             className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}

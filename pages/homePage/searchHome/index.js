@@ -49,6 +49,7 @@ const SearchSection = (props) => {
   const urlTopic = getTopic()
   const urlNarrator = getNarrator()
   const urlCategory = getCategory()
+  let elementRef = useRef()
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -132,42 +133,55 @@ const SearchSection = (props) => {
     }
   }
 
-    const goToSearchPage = () => {
-
-        if (!EvaluationSource && !input && !ChoiceTopic && !ChoiceSource && !ChoiceNarrator && !ChoiceDegree && !ChoiceCategory) {
-            handleShow()
-        } else {
-            // console.log("go to")
-            router && router.push({
-                pathname: '/search',
-                search: '',
-                query: {
-                    from: 'section',
-                    topic: ChoiceCategory.label,
-                    content: ChoiceDegree.label,
-                    source: ChoiceSource.label,
-                    sourceHokm: EvaluationSource,
-                    narrator: ChoiceNarrator.label,
-                    word: input
-                }
-            },'/search')
-        }
+  const goToSearchPage = () => {
+    if (
+      !EvaluationSource &&
+      !input &&
+      !ChoiceTopic &&
+      !ChoiceSource &&
+      !ChoiceNarrator &&
+      !ChoiceDegree &&
+      !ChoiceCategory
+    ) {
+      handleShow()
+    } else {
+      // console.log("go to")
+      router &&
+        router.push(
+          {
+            pathname: '/search',
+            search: '',
+            query: {
+              from: 'section',
+              topic: ChoiceCategory.label,
+              content: ChoiceDegree.label,
+              source: ChoiceSource.label,
+              sourceHokm: EvaluationSource,
+              narrator: ChoiceNarrator.label,
+              word: input,
+            },
+          },
+          '/search'
+        )
     }
-    const handleKeyDown = (event, location) => {
-        // console.log('A key was pressed', event.keyCode);
-        if (event.keyCode === 13) {
-            goToSearchPage()
-        }
-    };
-
+  }
   useEffect(() => {
-    if (typeof window !== undefined) {
-      window.addEventListener('keydown', handleKeyDown)
+    const handleKeyDown = (event) => {
+      // const x = window.matchMedia('(max-height: 200px)')
+      if (event.keyCode === 13) {
+        goToSearchPage()
+      }
     }
-    // cleanup this component
-    return () => {
-      if (typeof window !== undefined) {
-        window.removeEventListener('keydown', handleKeyDown)
+    if (elementRef && elementRef?.current) {
+      elementRef?.current?.addEventListener('keydown', handleKeyDown, false)
+
+      // cleanup this component
+      return function cleanup() {
+        elementRef?.current?.removeEventListener(
+          'keydown',
+          handleKeyDown,
+          false
+        )
       }
     }
   }, [
@@ -192,7 +206,10 @@ const SearchSection = (props) => {
   }, [])
 
   return (
-    <div className={`${styles.secSearch} container flex-fill secSearch mb-4`}>
+    <div
+      ref={elementRef}
+      className={`${styles.secSearch} container flex-fill secSearch mb-4`}
+    >
       <div className={`container ${styles.SearchSection} `}>
         <SectionTitle title='البحث' className='' />
       </div>
