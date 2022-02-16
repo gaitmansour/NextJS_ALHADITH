@@ -26,7 +26,10 @@
 .logoempty{
     /* height: 90% !important; */
     width: 85% !important;
-    margin-right: 5% !important;
+    /* margin-right: 5% !important; */
+}
+.btnLearnMore{
+    margin-top: 15% !important;
 }
 
 .tags .btn:hover{
