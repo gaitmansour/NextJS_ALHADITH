@@ -14,11 +14,11 @@ import Cards from '../_UI/Cards'
 
 const ItemList = (props) => {
   const className = props?.className ? props.className : ''
-  const params = `${props.content}\n# الموضوع : ${
-    props.category
-  } \n# المصدر : ${props.source} \n # الراوي : ${props.narrator} \n# الحكم : ${
-    props.degree
-  } \n# مصدر الحكم : ${props.sourceGlobal ? props.sourceGlobal : ''} \n 
+  const params = `${props.content}\n# الحكم : ${props.degree} \n # الراوي : ${
+    props.narrator
+  } \n# مصدر الحكم : ${
+    props.sourceGlobal ? props.sourceGlobal : ''
+  } \n# الموضوع : ${props.category} \n# المصدر : ${props.source} \n 
   منصة محمد السادس للحديث النبوي الشريف `
 
   const toShow = params.substring(0, 251) + ' ...'

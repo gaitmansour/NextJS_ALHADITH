@@ -313,11 +313,9 @@ const SearchPage = (props) => {
     }
   }
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event, location) => {
     // console.log('A key was pressed', event.keyCode);
-
-    if (event.which == 13 || event.keyCode == 13) {
-      // handleClickSearch()
+    if (event.keyCode === 13) {
       if (
         input ||
         EvaluationSource ||
@@ -326,24 +324,18 @@ const SearchPage = (props) => {
         ChoiceDegree ||
         ChoiceCategory
       ) {
-        setShow(false)
         handleSearch(input)
-      } else {
-        handleShow()
+        // console.log('handle')
       }
     }
   }
 
   useEffect(() => {
-    if (typeof window != 'undefined') {
-      window.addEventListener('keydown', handleKeyDown)
-    }
+    window.addEventListener('keydown', handleKeyDown)
+
     // cleanup this component
     return () => {
-      if (typeof window != 'undefined') {
-        window.removeEventListener('keydown', handleKeyDown)
-        handleClose()
-      }
+      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [
     input,
