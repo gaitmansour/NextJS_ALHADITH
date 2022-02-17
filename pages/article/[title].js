@@ -63,8 +63,7 @@ export default function ArticlePage(props) {
     FetchAPI(urlSlider).then((data) => {
       if (data.success) {
         setdataSlider(data?.data)
-        console.log('data?.data')
-        console.log(data?.data)
+        console.log('data?.data', data?.data)
       }
     })
   }

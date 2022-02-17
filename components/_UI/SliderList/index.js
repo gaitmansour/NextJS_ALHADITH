@@ -26,7 +26,7 @@ const SliderList = (props) => {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    dots: true,
     rows: 4,
     slidesPerRow: 1,
   }
