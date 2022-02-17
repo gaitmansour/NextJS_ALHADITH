@@ -111,13 +111,6 @@ const Videos = () => {
           <div className={`${styles.sec} sec w-100 h-100`}>
             <div className={`${styles.secTop} d-flex  secTop`}>
               <div className={`${styles.divA} divA position-relative`}>
-                {/* <Image
-                  src={Icons.icon_bg_dashed_tr}
-                  alt=''
-                  width={100}
-                  height={100}
-                  className={`${styles.imgTR} imgTR`}
-                /> */}
                 <Link href={'/media/الدروس الحسنية'} as='/media/الدروس الحسنية'>
                   <a>
                     <Image
@@ -129,14 +122,7 @@ const Videos = () => {
                   </a>
                 </Link>
               </div>
-              <div className={`${styles.divB} divB position-relative`}>
-                {/* <Image
-                  src={Icons.icon_bg_dashed_br}
-                  alt=''
-                  // width="18%"
-                  className={`${styles.imgBR} imgBR`}
-                  // className="imgBR"
-                /> */}
+              <div className={`${styles.divB} divB`}>
                 <Link
                   href={'/media/الدروس الحديثية'}
                   as='/media/الدروس الحديثية'
@@ -146,7 +132,10 @@ const Videos = () => {
                       src={Icons.icon_dorouss_hadita}
                       alt='الدروس-الحديثية'
                     />
-                    <h3 style={{ width: '100%', marginRight: '30%' }}>
+                    <h3
+                      className='mt-3'
+                      style={{ width: '100%', marginRight: '10%' }}
+                    >
                       الدروس الحديثية
                     </h3>
                   </a>
@@ -155,12 +144,6 @@ const Videos = () => {
             </div>
             <div className={`${styles.secBottom} d-flex  secBottom`}>
               <div className={`${styles.div1} div1 position-relative`}>
-                {/* <Image
-                  src={Icons.icon_bg_dashed_tr}
-                  //width="30%"
-                  alt='برامج-تلفزية'
-                  //className={`${styles.imgdiv1} imgdiv1`}
-                /> */}
                 <Link href={'/media/برامج تلفزية'} as='/media/برامج تلفزية'>
                   <a>
                     <Image
@@ -174,12 +157,6 @@ const Videos = () => {
                 </Link>
               </div>
               <div className={`${styles.div2} div2 position-relative`}>
-                {/* <Image
-                  src={Icons.icon_bg_dashed_tr}
-                  alt='برامج-اذاعية'
-                  // width="22%"
-                  //className={`${styles.imgdiv2} imgdiv2`}
-                /> */}
                 <Link href={'/media/برامج اذاعية'} as='/media/برامج اذاعية'>
                   <a>
                     <Image
@@ -189,20 +166,13 @@ const Videos = () => {
                       //className="my-3"
                       style={{ marginRight: '55%' }}
                     />
-                    <h3 style={{ width: '100%', marginRight: '45%' }}>
+                    <h3 style={{ width: '100%', marginRight: '10%' }}>
                       برامج اذاعية
                     </h3>
                   </a>
                 </Link>
               </div>
               <div className={`${styles.div3} div3 position-relative`}>
-                {/* <Image
-                  src={Icons.icon_bg_dashed_tl}
-                  alt=''
-                  //width="20%"
-                  className={`${styles.imgdiv3} imgdiv3`}
-                  // className="imgdiv3"
-                /> */}
                 <Link
                   href={'/media/برامج على الشبكات الاجتماعية'}
                   as='/media/برامج على الشبكات الاجتماعية'
@@ -215,7 +185,7 @@ const Videos = () => {
                       // className="my-3"
                       style={{ marginRight: '31%' }}
                     />
-                    <h3 style={{ width: '85%', marginRight: '28%' }}>
+                    <h3 style={{ width: '100%', marginRight: '5%' }}>
                       برامج على الشبكات الاجتماعية
                     </h3>
                   </a>

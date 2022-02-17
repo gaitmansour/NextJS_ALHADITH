@@ -337,7 +337,7 @@ const NavBar = (props) => {
               <Link className='my-2' href='/'>
                 <Image
                   className='logoNav'
-                  src={Logos.logo_new}
+                  src={Logos.logo_web}
                   alt='logo-Al-hadith-Mohammed-VI'
                   title='logo Al hadith Mohammed VI'
                 />
@@ -378,7 +378,7 @@ const NavBar = (props) => {
                 onChange={(v) => handleInput(v)}
                 clickSearch={() => handleClickSearch()}
                 placeholder='البحث في منصة الحديث النبوي الشريف'
-                className={`${styles.searchSection} bg-white mx-0 shadow-card`}
+                className={`${styles.searchSection} text-black bg-white mx-0 shadow-card`}
               />
             </div>
           ) : (

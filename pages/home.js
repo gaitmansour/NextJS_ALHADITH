@@ -16,6 +16,7 @@ import { getNewSections } from '../endpoints'
 import Theme1 from '../components/Theme1'
 import Theme2 from '../components/Theme2'
 import ScrollButton from '../components/ScrollButton'
+import DoroussHaditha from './homePage/DoroussHaditha'
 
 const HomeScreen = (props) => {
   const [sections, setSections] = useState([])
@@ -61,6 +62,7 @@ const HomeScreen = (props) => {
         <CarouselHome />
         <SearchSection />
         <CommanderieCroyants />
+        <DoroussHaditha />
         <Resources />
         <Alahadiths />
         <Videos />

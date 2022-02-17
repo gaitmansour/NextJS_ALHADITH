@@ -4,6 +4,7 @@
 } */
 .summ{
     margin-bottom: 4%;
+    width: 90%;
 }
 .vv{
     width: 100%;
@@ -84,7 +85,7 @@ display: list-item;
     text-align: center;
 }
 .sectionImage{
-    border: 1px solid rgb(204, 201, 201);
+    /* border: 1px solid rgb(204, 201, 201); */
     text-align: center;
     /* padding: 5px; */
     color: darkgray;
@@ -109,6 +110,9 @@ table td p a{
         width:100vw !important;
         max-width: 85% !important;
         /* margin: 0px 5px !important ; */
+    }
+    .articls{
+        padding: 5% !important;
     }
     .slider{
         width: 100% !important;

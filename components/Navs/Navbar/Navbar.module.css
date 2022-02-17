@@ -152,6 +152,7 @@
     text-decoration: none;
     display: block;
     white-space: nowrap;
+    text-align: right;
 }
 /* .contentDropdown{
     position: fixed !important;
@@ -426,6 +427,22 @@
 
     .NavBar a {
         padding: 0 !important;
+    }
+}
+@media screen and (max-width: 450px){
+    .quesAnserImg{
+        display: flex !important;
+        justify-content: flex-start !important;
+    }
+    .quesAnserImg .linkQa img{
+        margin: 0% !important;
+        padding: 0%  20% 0% 0% !important;
+    }
+    /* .quesAnserImg .linkQa h4{
+        padding: 0%  5% !important;
+    } */
+    .quesAnserImg .linkQa{
+        width: 50% !important;
     }
 }
 @media screen and (max-width: 360px){

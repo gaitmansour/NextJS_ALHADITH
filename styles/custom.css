@@ -20,6 +20,11 @@ body,
   font-family: 'NotoKufiArabic', sans-serif !important;
 }
 
+.slick-prev:before,
+.slick-next:before {
+  color: #129D59 !important;
+}
+
 #root {
   display: flex;
   flex-direction: column;

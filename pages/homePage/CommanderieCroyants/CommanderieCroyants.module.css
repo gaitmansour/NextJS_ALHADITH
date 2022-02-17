@@ -34,11 +34,12 @@
   -webkit-box-orient: vertical;
   margin: 1.5em 0 2em 0;
   padding: 0 !important;
-  max-height: 135px !important;
+  max-height: 115px !important;
   /* height: 128px !important; */
 }
  .description p{
   line-height: 1.6;
+  margin-bottom: 0.2rem;
   /* text-align: justify !important; */
   /* text-justify: inter-word !important; */
 }

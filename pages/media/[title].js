@@ -38,11 +38,11 @@ function Media(props) {
   const url = getVideo(title)
   const urlMenu = getMenuByName(title)
   const settings = {
-    infinite: true,
+    infinite: dataAPI?.included?.length > 3,
     autoplay: true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: true,
+    arows: false,
     responsive: [
       {
         breakpoint: 500,
@@ -73,6 +73,7 @@ function Media(props) {
       if (data.success) {
         setDataAPI(data?.data)
       }
+      console.log('media', dataAPI)
     })
   }
 
@@ -115,7 +116,7 @@ function Media(props) {
       path: '',
     },
     {
-      title: 'البرامج الإعلامية',
+      title: 'التلفزة الرقمية',
       path: '',
     },
     {
@@ -125,32 +126,48 @@ function Media(props) {
   ]
 
   const sideData11 = [
-
     {
       title: 'الدروس الحديثية',
       path: '/media/برامج تلفزية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'الدروس الحسنية',
       path: '/media/الدروس الحسنية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج اذاعية',
       path: 'media/برامج اذاعية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج تلفزية',
       path: '/media/برامج تلفزية',
-      parentLabel: 'البرامج الإعلامية',
+      parentLabel: 'التلفزة الرقمية',
     },
     {
       title: 'برامج على الشبكات الاجتماعية',
       path: '/media/برامج على الشبكات الاجتماعية',
-      parentLabel: 'البرامج الإعلامية',
-    }
+      parentLabel: 'التلفزة الرقمية',
+    },
+  ]
+  const sideDataDoroussHaditha = [
+    {
+      title: 'الدروس التمهيدية',
+      path: '/media/الدروس التمهيدية',
+      parentLabel: 'الدروس الحديثية',
+    },
+    {
+      title: 'الدروس البيانية',
+      path: '/media/الدروس البيانية',
+      parentLabel: 'الدروس الحديثية',
+    },
+    {
+      title: 'الدروس التفاعلية',
+      path: 'media/الدروس التفاعلية',
+      parentLabel: 'الدروس الحديثية',
+    },
   ]
 
   function handleStart() {
@@ -165,7 +182,7 @@ function Media(props) {
       </div>
     )
   }
-  var leng = dataAPI.included.length
+  var leng = dataAPI?.included?.length
 
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage={title}>
@@ -194,7 +211,7 @@ function Media(props) {
                   url={[
                     {
                       src: `${base_url}${
-                        dataAPI.included[leng / 2]?.attributes?.uri?.url
+                        dataAPI?.included[leng / 2]?.attributes?.uri?.url
                       }`,
                       type: 'video/mp4',
                     },
@@ -211,14 +228,14 @@ function Media(props) {
               </div> */}
               <PageTitleSecond
                 className='title-video px-0 mt-5'
-                title={dataAPI.data[0].attributes.title}
+                title={dataAPI?.data[0]?.attributes?.title}
               />
             </div>
             <div>
               {/* <SliderVideoList data={VideosList} className="pt-5" /> */}
               <div className={`${styles.SliderVideoList} `}>
                 <Slider {...settings} className='slide my-4'>
-                  {dataAPI?.data.map((item, i) => {
+                  {dataAPI?.data?.map((item, i) => {
                     console.log('-item----', item)
 
                     return (
@@ -292,6 +309,12 @@ function Media(props) {
           className={`${styles.sideBar} px-3 side-bar`}
           style={{ width: '30%' }}
         >
+          {title === 'الدروس الحديثية' ||
+          title === 'الدروس التفاعلية' ||
+          title === 'الدروس التمهيدية' ||
+          title === 'الدروس البيانية' ? (
+            <SimpleListMedia data={sideDataDoroussHaditha} />
+          ) : null}
           {<SimpleListMedia data={sideData11} />}
         </div>
       </Body>

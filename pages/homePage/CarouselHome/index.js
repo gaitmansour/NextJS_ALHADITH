@@ -157,19 +157,21 @@ const CarouselHome = (props) => {
                 src={element2}
                 loader={myLoader}
                 alt={''}
-                layout='fill'
+                // layout='fill'
                 objectFit='cover'
+                height={1850}
+                width={5000}
               />
 
               <div
-                className={`${styles.carouselCaption} carousel-caption d-md-block`}
+                className={`${styles.carouselCaption} px-4 carousel-caption d-md-block`}
                 style={{
                   backgroundColor: 'white',
                   opacity: 0.8,
                   marginLeft: 150,
                 }}
               >
-                <p style={{ fontSize: 12 }}>{toShow}</p>
+                <p>{toShow}</p>
                 <Link
                   href={{
                     pathname: '/article/' + item?.title,

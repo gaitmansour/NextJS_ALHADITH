@@ -14,7 +14,8 @@ import styles from './SliderList.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import $ from "jquery";
+import $ from 'jquery'
+import SectionTitle from '../SectionTitle'
 
 const SliderList = (props) => {
   const { i18n } = useTranslation()
@@ -37,6 +38,8 @@ const SliderList = (props) => {
   return (
     <Widget className={`${className}`}>
       <div className={`${styles.SliderList} SliderList`}>
+        {/* <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2> */}
+        <SectionTitle title={'مواضيع ذات صلة'} />
         <Slider {...settings} className='slide my-4'>
           {data?.map((item, i) => {
             const newData = item.map((data, index) => {
@@ -50,12 +53,15 @@ const SliderList = (props) => {
                 pathN = rmSpaces
               }
               $(document).ready(function () {
-                $(".linksSlider").contextmenu(function (event) {
-                  localStorage.setItem('dataSlider', JSON.stringify({
-                    from: "slider"
-                  }))
-                });
-              });
+                $('.linksSlider').contextmenu(function (event) {
+                  localStorage.setItem(
+                    'dataSlider',
+                    JSON.stringify({
+                      from: 'slider',
+                    })
+                  )
+                })
+              })
               return (
                 <Link
                   passHref
@@ -87,10 +93,12 @@ const SliderList = (props) => {
                     )}
 
                     <div className='mx-3  w-100'>
-                      <p onClick={props.onClick}>{rmSpaces}</p>
-                      <span className='text-success text-decoration-underline'>
+                      <p className='text-success' onClick={props.onClick}>
+                        {rmSpaces}
+                      </p>
+                      {/* <span className='text-success text-decoration-underline'>
                         لمعرفة المزيد
-                      </span>
+                      </span> */}
                     </div>
                   </a>
                 </Link>

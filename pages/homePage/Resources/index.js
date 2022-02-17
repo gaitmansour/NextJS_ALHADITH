@@ -141,21 +141,6 @@ const Resources = () => {
                   key={i.toString()}
                   className={`${styles.itemCard} me-4 ms-1 text-center mt-4 child`}
                 >
-                  <div className={`${styles.boxImg} m-auto`}>
-                    <Image
-                      loader={myLoader}
-                      src={dataAPI?.included[i]?.attributes?.uri?.url}
-                      width={350}
-                      height={400}
-                      alt='book'
-                      className={`${styles.img} img img-responsive`}
-                    />
-                  </div>
-                  <h5 className={`${styles.title} my-4`}>{title}</h5>
-                  <div
-                    className={`${styles.desc}`}
-                    dangerouslySetInnerHTML={{ __html: body?.processed }}
-                  />
                   <Link
                     class={'links'}
                     role='button'
@@ -172,27 +157,45 @@ const Resources = () => {
                         : field_lien[0]?.uri.slice(9)
                     }
                   >
-                    <a
-                      className={`${
-                        styles.action
-                      } d-flex justify-content-between ${
-                        styles.btn
-                      } btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${
-                        dataAPI?.data.length < 4
-                          ? 'flex-row-reverse'
-                          : 'flex-row'
-                      } button`}
-                    >
-                      <i className='fas fa-long-arrow-alt-left text-white' />
-                      <p
-                        className='m-0'
-                        style={{
-                          textAlign: 'justify !important',
-                          textJustify: 'inter-word !important',
-                        }}
+                    <a className='text-decoration-none'>
+                      <div className={`${styles.boxImg} m-auto`}>
+                        <Image
+                          loader={myLoader}
+                          src={dataAPI?.included[i]?.attributes?.uri?.url}
+                          width={350}
+                          height={400}
+                          alt='book'
+                          className={`${styles.img} img img-responsive`}
+                        />
+                      </div>
+                      <h5 className={`${styles.title} my-4`}>{title}</h5>
+                      <div
+                        className={`${styles.desc}`}
+                        dangerouslySetInnerHTML={{ __html: body?.processed }}
+                      />
+
+                      <a
+                        className={`${
+                          styles.action
+                        } d-flex justify-content-between ${
+                          styles.btn
+                        } btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${
+                          dataAPI?.data.length < 4
+                            ? 'flex-row-reverse'
+                            : 'flex-row'
+                        } button`}
                       >
-                        {'لمعرفة المزيد'}
-                      </p>
+                        <i className='fas fa-long-arrow-alt-left text-white' />
+                        <p
+                          className='m-0'
+                          style={{
+                            textAlign: 'justify !important',
+                            textJustify: 'inter-word !important',
+                          }}
+                        >
+                          {'لمعرفة المزيد'}
+                        </p>
+                      </a>
                     </a>
                   </Link>
                 </Cards>

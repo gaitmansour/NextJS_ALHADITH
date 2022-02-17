@@ -40,16 +40,12 @@ const SearchPage = (props) => {
   const state = router
   const content = state?.content
   const topic = state?.topic
-  console.log('topic-------------------', topic)
 
   const degree = state?.degree
   const door = state?.content
   const source = state?.source
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
-
-  console.log('narrator-------------------', narrator)
-  console.log('source-------------------', source)
 
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
@@ -68,6 +64,7 @@ const SearchPage = (props) => {
   const [pageNum, setPageNum] = useState(0)
   const [pagePagination, setPagePagination] = useState(1)
   const [StartPage, setStartPage] = useState(0)
+  const [success, setSuccess] = useState(false)
   const dataPerPage = dataSearch?.hits?.hits?.length
   const pagevisited = pageNum * dataPerPage
   const [show, setShow] = useState(false)
@@ -93,6 +90,7 @@ const SearchPage = (props) => {
   const urlNarrator = getNarrator()
   const urlCategory = getCategory()
   const urlSearch = Search()
+  let elementRef = useRef()
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -169,7 +167,7 @@ const SearchPage = (props) => {
       }
     })
   }
-
+  console.log('masderlhokem', EvaluationSource)
   const handleSearch = async (word, topic, degree, src, nrs) => {
     const data = {
       content: word,
@@ -201,6 +199,7 @@ const SearchPage = (props) => {
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
         setdataSearch(data?.data)
+        setSuccess(true)
         setPagePagination(data?.data?.hits?.total?.value)
       }
     })
@@ -297,10 +296,11 @@ const SearchPage = (props) => {
     }
   }
 
-  function handleClickSearch() {
+  const handleClickSearch = (e) => {
     if (
       !input &&
       !ChoiceTopic &&
+      !EvaluationSource &&
       !ChoiceSource &&
       !ChoiceNarrator &&
       !ChoiceDegree &&
@@ -312,8 +312,37 @@ const SearchPage = (props) => {
       setPageNum(0)
       setStartPage(0)
       handleSearch(input)
+      handleClose()
     }
   }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // const x = window.matchMedia('(max-height: 200px)')
+      if (event.keyCode === 13) {
+        handleSearch(input)
+      }
+    }
+    if (elementRef && elementRef?.current) {
+      elementRef?.current?.addEventListener('keydown', handleKeyDown, false)
+
+      // cleanup this component
+      return function cleanup() {
+        elementRef?.current?.removeEventListener(
+          'keydown',
+          handleKeyDown,
+          false
+        )
+      }
+    }
+  }, [
+    input,
+    ChoiceTopic,
+    ChoiceSource,
+    ChoiceNarrator,
+    ChoiceDegree,
+    ChoiceCategory,
+  ])
 
   let route = useRouter()
 
@@ -336,6 +365,7 @@ const SearchPage = (props) => {
     if (
       input ||
       ChoiceTopic ||
+      EvaluationSource ||
       ChoiceSource ||
       ChoiceNarrator ||
       ChoiceDegree ||
@@ -359,7 +389,7 @@ const SearchPage = (props) => {
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
         <ScrollButton />
-        <div className={`${styles.SearchBox} `}>
+        <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}
             className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}
@@ -379,9 +409,12 @@ const SearchPage = (props) => {
             />
 
             <div
-              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn m-2 p-0`}
+              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
               onClick={() => handleClickSearch()}
-              style={{ backgroundColor: '#157646' }}
+              style={{
+                backgroundColor: '#157646',
+                height: '46px',
+              }}
             >
               <i className='fas fa-search p-3' style={{ color: '#fff' }} />
             </div>
@@ -403,7 +436,7 @@ const SearchPage = (props) => {
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
-                    value={EvaluationSource && EvaluationSource}
+                    value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
                   />
                 </div>

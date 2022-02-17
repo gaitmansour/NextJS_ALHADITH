@@ -169,6 +169,17 @@
     /* .navTabs .nav-link{
       width: 32% !important;
     } */
-
+    .navTabs .nav-link{
+      width: 27vw !important;
+      padding: 2% !important;
+    }
+  .navTabs1 .nav-link{
+      width: 27vw !important;
+      padding: 2% !important;
+  }
+  .navTabs2 .nav-link{
+      width: 27vw !important;
+      padding: 2% !important;
+  }
 
   }

@@ -32,6 +32,7 @@ const Icons = {
   icon_mobil: require('./ahadiths/icon-mobile.svg'),
   icon_background: require('./ahadiths/icon-background.svg'),
   icon_image: require('./ahadiths/image.png'),
+  icon_video: require('./ahadiths/video.png'),
 }
 
 export default Icons
