@@ -39,7 +39,7 @@ export default function ArticlePage(props) {
   const [dataAPI, setDataAPI] = useState({})
   const [dataTags, setDataTags] = useState([])
   const [dataMenu, setdataMenu] = useState({})
-  const [dataSlider, setdataSlider] = useState({})
+  const [dataSlider, setdataSlider] = useState([])
   const [dataSide, setDataSide] = useState({})
   const [parentTitle, setparentTitle] = useState()
   const [parent, setParent] = useState()
