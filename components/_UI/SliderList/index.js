@@ -29,7 +29,7 @@ const SliderList = (props) => {
     slidesToScroll: 1,
     dots: true,
     arrows: false,
-    rows: 4,
+    rows: 5,
     slidesPerRow: 1,
   }
 
@@ -63,7 +63,7 @@ const SliderList = (props) => {
               >
                 <a
                   style={{ textDecoration: 'none' }}
-                  className={`${data?.length > 4 ? 'flex-row-reverse' : ''} ${
+                  className={`${data?.length > 5 ? 'flex-row-reverse' : ''} ${
                     styles.cardSlid
                   } linksSlider item-card-content d-flex  align-items-center  py-2`}
                 >

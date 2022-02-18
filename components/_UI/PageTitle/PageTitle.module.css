@@ -13,6 +13,7 @@
 
 *[dir='ltr'] .PageTitle .title {
     padding-left: .8em;
+    line-height: 1.4;
 }
 
 .PageTitle .title::after {
@@ -24,6 +25,7 @@
     border-radius: 6px;
     position: absolute;
     background-color: #FBBF31;
+    
 }
 
 *[dir='ltr'] .PageTitle .title::after {
