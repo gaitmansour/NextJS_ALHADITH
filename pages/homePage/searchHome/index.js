@@ -228,6 +228,8 @@ const SearchSection = (props) => {
           placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
           className='bg-white mx-0'
           clickSearch={() => handleClickSearch()}
+          conatinerClassName={styles.conatinerClassName}
+          inputClassName={styles.searchHomeInput}
         />
 
         <div

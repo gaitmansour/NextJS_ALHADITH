@@ -4,7 +4,14 @@
     position: relative;
 }
 
-
+.conatinerClassName{
+    margin-right: -300px;
+    margin-top: 5px;
+    margin-left: -20px;
+}
+.searchHomeInput{
+    color:red;
+}
 .box-icon-setting{
     background-color: #157646 !important;
     border-radius: 8px !important;

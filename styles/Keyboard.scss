@@ -13,6 +13,7 @@
   border: 1px solid #ffffff;
   border-radius: 32px;
   color:black;
+  font-size: 18px;
   border-bottom-color: #0dcaf0;
 }
 .keyboard-wrapper {
@@ -100,7 +101,11 @@
   flex-grow: 1;
 }
 
-
+.conatiner {
+  margin-right: -18px;
+  margin-top: 5px;
+  margin-left: -20px;
+}
 .inputName:focus {
   border:1px solid #ced4da !important;
 }
