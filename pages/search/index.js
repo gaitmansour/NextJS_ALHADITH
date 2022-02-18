@@ -503,8 +503,8 @@ const SearchPage = (props) => {
                 <h4>{'لا توجد نتائج توافق معايير البحث'}</h4>
                 <Link
                   role='button'
-                  href={'/listQuestions'}
-                  as={'/listQuestions'}
+                  href={'/QuestionsReponses'}
+                  as={'/QuestionsReponses'}
                   style={{ color: 'black' }}
                 >
                   <p className='fw-100 link-primary'>
