@@ -404,10 +404,11 @@ const NavBar = (props) => {
           <Link
             exact
             activeClassName='active'
-            href='/listQuestions'
-            as={'سؤال وجواب/'}
+            href='/QuestionsReponses'
+            passHref={true}
+            as={'/QuestionsReponses'}
           >
-            <a
+            <a href={'/dkfjhskj'}
               className={` align-items-center d-flex px-4 py-2 ${styles.linkQa}`}
             >
               <Image

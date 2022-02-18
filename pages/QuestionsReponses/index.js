@@ -224,7 +224,7 @@ const ListQuestions = (props) => {
         },
         {
             title: 'سؤال و جواب',
-            path: '/listQuestions',
+            path: '/QuestionsReponses',
         },
     ]
 
