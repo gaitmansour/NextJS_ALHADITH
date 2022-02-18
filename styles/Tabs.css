@@ -24,7 +24,7 @@
 .navTabs1 .nav-link{
     margin-bottom: -8px !important;
     border:3px solid #ccc !important;
-    border-bottom: 8px solid #feb80f !important;
+    border-bottom: 8px solid #C08529 !important;
     border-width: 0px 0px 8px 0px !important;
     color : #656D7A !important;
     font-weight: 900 !important;
@@ -37,8 +37,8 @@
 }
 .navTabs1 .active{
     border-width: 5px 0px 0px 0px !important;
-    border-color: #feb80f !important;
-    background-color: #feb80f !important;
+    border-color: #C08529 !important;
+    background-color: #C08529 !important;
     color: #fff !important;
     position: relative !important;
 }
@@ -70,7 +70,7 @@
     border-bottom: 8px solid #129D59 !important;
 }
 .navTabs1 {
-    border-bottom: 8px solid #feb80f !important;
+    border-bottom: 8px solid #C08529 !important;
 }
 .navTabs2 {
     border-bottom: 8px solid #ff7e4c !important;
