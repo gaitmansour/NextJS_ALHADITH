@@ -9,6 +9,7 @@ import useTranslation from 'next-translate/useTranslation'
 import Brand from '../Brand'
 import Side from './Sidebar.png'
 import { Icons } from '../../../assets'
+import { Logos } from '../../../assets'
 import { base_url } from '../../../endpoints'
 
 import styles from './SliderList.module.css'
@@ -70,18 +71,20 @@ const SliderList = (props) => {
                     <Image
                       src={item?.field_image}
                       alt=''
+                      objectFit='cover'
                       className={'ImageSlider'}
-                      width={100}
-                      height={100}
+                      width='100%'
+                      height='100%'
                       loader={props.loader}
                     />
                   ) : (
                     <Image
-                      src={Icons.icon_image}
+                      src={Logos.logo_web}
                       alt=''
+                      objectFit='cover'
                       className={'ImageSlider'}
-                      width={100}
-                      height={100}
+                      width={160}
+                      height='90%'
                     />
                   )}
 
