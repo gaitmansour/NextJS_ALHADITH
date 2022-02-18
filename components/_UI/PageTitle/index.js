@@ -34,7 +34,7 @@ const PageTitle = (props) => {
       </div>
       {props.created && (
         <div
-          className={styles.dateCreat}
+          className={`${styles.dateCreat} w-25`}
           style={{ alignItems: 'center', marginTop: 25 }}
         >
           <p

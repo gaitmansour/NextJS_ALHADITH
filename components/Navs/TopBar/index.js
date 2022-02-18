@@ -61,7 +61,6 @@ const TopBar = (props) => {
     }
   }
 
-  console.log('go to', input)
   useEffect(() => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
