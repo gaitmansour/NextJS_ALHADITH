@@ -58,24 +58,30 @@ const ArticlesByTag = (props) => {
                       <Image
                         className='card-img-top p-2 pt-3'
                         objectFit='cover'
-                        width={150}
-                        height={280}
+                        width={16}
+                        height={9}
+                        layout='responsive'
+                        quality={65}
                         loader={myLoader}
                         src={data.field_image}
                         alt='Card image cap'
                       />
                     ) : (
-                      <Image
-                        className={`card-img-top ${styles.logoempty} p-2 pt-3`}
-                        src={Logos.logo_web}
-                        objectFit='cover'
-                        width={150}
-                        height={280}
-                        alt='logo-Al-hadith-Mohammed-VI'
-                        title='logo Al hadith Mohammed VI'
-                      />
+                      <div className={`${styles.logoempty}`}>
+                        <Image
+                          className={`card-img-top  p-2 pt-3`}
+                          src={Logos.logo_web}
+                          objectFit='cover'
+                          width={16}
+                          height={9}
+                          layout='responsive'
+                          quality={65}
+                          alt='logo-Al-hadith-Mohammed-VI'
+                          title='logo Al hadith Mohammed VI'
+                        />
+                      </div>
                     )}
-                    <div className='card-body'>
+                    <div className={`${styles.cardBody} card-body`}>
                       <h5 className='card-title text-center'>{data.title}</h5>
                       <p className='card-text mb-3'>{data.body_1}</p>
                       <Link
