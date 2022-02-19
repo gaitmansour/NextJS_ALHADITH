@@ -123,6 +123,13 @@ const TopBar = (props) => {
                 {'شرط المنصة'}
               </Link>
             </li>
+            {/* <li
+              className={`${styles.navItem} nav-item mx-3 ${styles.callToAction} call-to-action align-items-center d-flex`}
+            >
+              <Link exact activeClassName='active' href={`/${title}`}>
+                {title}
+              </Link>
+            </li> */}
             <Lottie options={defaultOptions} height={55} width={55} />
             <li className={`${styles.navItem} nav-item`}>
               <div style={{ marginLeft: 20 }}>
@@ -131,13 +138,6 @@ const TopBar = (props) => {
                 </Link>
               </div>
             </li>
-            {/*<li
-                            className={`${styles.navItem} nav-item mx-3 ${styles.callToAction} call-to-action align-items-center d-flex`}
-                        >
-                            <Link exact activeClassName='active' href={`/${title}`}>
-                                {title}
-                            </Link>
-                        </li>*/}
           </ul>
         </div>
       </div>
