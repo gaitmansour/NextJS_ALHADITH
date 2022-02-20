@@ -82,7 +82,14 @@ const Footer = () => {
                   <Link href={`/روابط`}>{'روابط'}</Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/التواصل`}>{'التواصل'}</Link>
+                  <Link
+                    exact
+                    activeClassName='active'
+                    href={`/ContactUs`}
+                    as={`/التواصل`}
+                  >
+                    {'التواصل'}
+                  </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
                   <Link href={`/conditionUser`} as={'/اتفاقية استخدام الموقع'}>
