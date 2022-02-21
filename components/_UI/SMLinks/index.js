@@ -14,41 +14,41 @@ const SMLinks = (props) => {
         alt='facebook'
         target='_blank'
       >
-        <i className='fab fa-facebook-f mx-2' id='fb'></i>
+        <i className='fab fa-facebook-f' id='fb'></i>
       </a>
       <a
         href='https://www.youtube.com/channel/UCOjv6HfVD2oCaJ4FGqXIEkQ'
         alt='youtube'
         target='_blank'
       >
-        <i className='fab fa-youtube mx-2' id='yt'></i>
+        <i className='fab fa-youtube' id='yt'></i>
       </a>
       <a
         href='https://www.instagram.com/minasathadithm6/'
         alt='instagram'
         target='_blank'
       >
-        <i className='fab fa-instagram mx-2' id='ig'></i>
+        <i className='fab fa-instagram' id='ig'></i>
       </a>
       <a href='https://twitter.com/MinasatH ' alt='twitter' target='_blank'>
-        <i className='fab fa-twitter mx-2' id='tw'></i>
+        <i className='fab fa-twitter' id='tw'></i>
       </a>
       <a
         href='https://www.linkedin.com/company/minasat-hadith/?viewAsMember=true'
         alt='linkedin'
         target='_blank'
       >
-        <i className='fab fa-linkedin-in mx-2' id='in' target='_blank'></i>
+        <i className='fab fa-linkedin-in' id='in' target='_blank'></i>
       </a>
       <a
         href='https://www.tiktok.com/@minasathadithm6?lang=fr'
         alt='tiktok'
         target='_blank'
       >
-        <i className='fab fa-tiktok mx-2' id='tik' target='_blank'></i>
+        <i className='fab fa-tiktok' id='tik' target='_blank'></i>
       </a>
       {/* <a href='/' alt='whatsapp' target='_blank'>
-        <i class='fab fa-whatsapp mx-2' id='wp' target='_blank'></i>
+        <i class='fab fa-whatsapp' id='wp' target='_blank'></i>
       </a> */}
     </div>
   )

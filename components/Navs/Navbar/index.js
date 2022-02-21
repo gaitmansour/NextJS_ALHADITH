@@ -152,7 +152,7 @@ const NavBar = (props) => {
           //   key={index.toString()}
           // >
           <Dropdown key={index.toString()}>
-            <Dropdown.Toggle as={CustomDropDown} id='dropdown-basic' />
+            <Dropdown.Toggle as={CustomDropDown} />
 
             <React.Fragment
               onClick={() => {
