@@ -666,7 +666,7 @@ const ListQuestions = (props) => {
                         </div>
                     )}{' '}
                     <br/>
-                    <ReactPaginate
+                    {displayQuestions && displayQuestions.length > 0 && <ReactPaginate
                         previousLabel={
                             <i id='pagination' className='fa fa-chevron-right'/>
                         }
@@ -683,7 +683,7 @@ const ListQuestions = (props) => {
                         //pageRangeDisplayed={5}
                         onPageChange={changePage}
                         forcePage={pageNumber}
-                    />
+                    />}
                 </div>
 
                 <div className='side-bar'>
