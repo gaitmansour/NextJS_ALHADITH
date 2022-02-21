@@ -53,6 +53,7 @@ er {
 .inputSearch::placeholder{
     overflow: hidden;
     text-overflow:ellipsis !important;
+    font-size: 18px;
 }
 /* Style for viewports greater than 480px wide. */
 @media (max-width: 835px) {

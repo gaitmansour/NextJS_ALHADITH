@@ -72,6 +72,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
+        console.log('---------------------------------',item)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <a
             className={styleDropdownToggle}
@@ -105,6 +106,8 @@ const NavBar = (props) => {
                   aria-labelledby={labeledBy}
                 >
                   {item?.items?.map((data, i) => {
+                    console.log("item?.field_contenu_default")
+                    console.log(data)
                     return (
                       <Link
                         passHref={true}
@@ -116,6 +119,7 @@ const NavBar = (props) => {
                           query: {
                             fromNav: item?.items,
                             selectedItem: data?.title,
+                            contenuArticle:data?.field_contenu_default
                           },
                         }}
                         as={
@@ -138,6 +142,7 @@ const NavBar = (props) => {
                                     child: data?.title,
                                   })
                                 )
+                              localStorage.setItem("tid",JSON.stringify(item.tID))
                             }}
                           >
                             {/*onClick = {() => console.log("data----", item?.items)}>*/}
@@ -230,6 +235,7 @@ const NavBar = (props) => {
                           query: {
                             fromNav: item?.items,
                             selectedItem: data?.title,
+                            contenuArticle:data?.field_contenu_default
                           },
                         }}
                         onClick={() => {
@@ -258,6 +264,7 @@ const NavBar = (props) => {
                                   child: data?.title,
                                 })
                               )
+                            localStorage.setItem("tid",JSON.stringify(item.tID))
                           }}
                         >
                           {data.label}

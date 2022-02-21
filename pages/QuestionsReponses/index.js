@@ -228,13 +228,13 @@ const ListQuestions = (props) => {
         },
     ]
 
-    if (_.isEmpty(DataQuestions)) {
+    /*if (_.isEmpty(DataQuestions)) {
         return (
             <div className='d-flex align-items-center justify-content-center py-5'>
                 <Loading/>
             </div>
         )
-    }
+    }*/
     const pageCount = Math.ceil(pagePagination / 10)
     const changePage = (v) => {
         setPAgeNumber(v.selected)

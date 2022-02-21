@@ -57,7 +57,7 @@ const SliderList = (props) => {
             return (
               <Link
                 passHref
-                href={pathN}
+                href={{pathname:pathN,query:{contenuArticle:""}}}
                 key={index.toString()}
                 className='text-white'
               >
