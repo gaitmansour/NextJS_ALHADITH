@@ -28,6 +28,7 @@ import ScrollButton from '../../components/ScrollButton'
 
 export default function ArticlePage(props) {
   const title = useRouter()?.query?.title
+  console.log('title======', title)
   const parentBigTitle = useRouter()?.query?.parentBigTitle
   console.log('useRouter()?.query---------------------------')
   console.log(useRouter()?.query)
@@ -63,7 +64,7 @@ export default function ArticlePage(props) {
     FetchAPI(urlSlider).then((data) => {
       if (data.success) {
         setdataSlider(data?.data)
-        console.log('data?.data', data?.data)
+        console.log('data?.data =>', data?.data)
       }
     })
   }

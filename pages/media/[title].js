@@ -263,7 +263,7 @@ function Media(props) {
                             height='90%'
                           />
                         </div>
-                        <p className='m-0 py-3 description'>
+                        <p className='m-0 py-3 description text-center'>
                           {item?.attributes?.title}
                         </p>
                       </div>
