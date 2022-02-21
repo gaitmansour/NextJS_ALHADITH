@@ -1,17 +1,11 @@
 .SearchSection{
-    margin-top: -70px;
+    /* margin-top: -70px;
     z-index: 13;
-    position: relative;
+    position: relative; */
+    margin-top: 3%;
 }
 
-.conatinerClassName{
-    margin-right: -300px;
-    margin-top: 5px;
-    margin-left: -20px;
-}
-.searchHomeInput{
-    color:red;
-}
+
 .box-icon-setting{
     background-color: #157646 !important;
     border-radius: 8px !important;

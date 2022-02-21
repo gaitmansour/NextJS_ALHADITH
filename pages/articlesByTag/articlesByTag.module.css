@@ -24,9 +24,8 @@
     color: white;
 }
 .logoempty{
-    /* height: 90% !important; */
-    width: 85% !important;
-    /* margin-right: 5% !important; */
+    width: 100% !important;
+    height: 100% !important;
 }
 .btnLearnMore{
     margin-top: 15% !important;
@@ -35,6 +34,9 @@
 .tags .btn:hover{
     background-color: #47bb83;
     color: white;
+}
+@media screen and (min-width: 1024px) and (max-width: 1370px) {
+    /* .logoempty{} */
 }
 @media screen and (max-width: 760px){
     .tags .card{

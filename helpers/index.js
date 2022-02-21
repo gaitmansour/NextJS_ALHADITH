@@ -36,6 +36,7 @@ export function handleMenu(Menu){
                 let _subItem = {
                     path:`article/${subItem.name_1}`,
                     //as:`article/${subItem.name_1}`,
+                    field_contenu_default:subItem.field_contenu_default,
                     label: subItem.name_1,
                     title: subItem.name_1,
                     tID:subItem.tid,

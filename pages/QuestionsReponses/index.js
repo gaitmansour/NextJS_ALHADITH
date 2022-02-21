@@ -228,13 +228,13 @@ const ListQuestions = (props) => {
         },
     ]
 
-    if (_.isEmpty(DataQuestions)) {
+    /*if (_.isEmpty(DataQuestions)) {
         return (
             <div className='d-flex align-items-center justify-content-center py-5'>
                 <Loading/>
             </div>
         )
-    }
+    }*/
     const pageCount = Math.ceil(pagePagination / 10)
     const changePage = (v) => {
         setPAgeNumber(v.selected)
@@ -666,7 +666,7 @@ const ListQuestions = (props) => {
                         </div>
                     )}{' '}
                     <br/>
-                    <ReactPaginate
+                    {displayQuestions && displayQuestions.length > 0 && <ReactPaginate
                         previousLabel={
                             <i id='pagination' className='fa fa-chevron-right'/>
                         }
@@ -683,7 +683,7 @@ const ListQuestions = (props) => {
                         //pageRangeDisplayed={5}
                         onPageChange={changePage}
                         forcePage={pageNumber}
-                    />
+                    />}
                 </div>
 
                 <div className='side-bar'>

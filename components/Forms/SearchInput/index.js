@@ -114,7 +114,7 @@ const SearchInput = (props) => {
                             isDraggable={true} // optional, default is `true`
                             //opacity={0.7}
                             onFocus={() => !Myinput.current.focus()}
-                            onBlur={() => Myinput.current.focus()}
+                            onBlur={() => setClick(false)}
                             placeholder={'البحث في منصة الحديث النبوي الشريف'}
                             //onFocus={props.onChange}
                             defaultKeyboard={CustomMapping}
