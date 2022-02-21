@@ -145,22 +145,29 @@ export default function ArticlePage(props) {
       }
     })
   }, [])
+  let dataValue =
+    typeof window !== 'undefined' &&
+    JSON.parse(localStorage.getItem('categorieTitle'))
   const data = [
     {
       title: 'الرئيسية',
       path: '',
     },
     {
-      title: parentBigTitle ? parentBigTitle : dataMenu?.parent_target_id_1,
+      title: parentBigTitle
+        ? parentBigTitle
+        : dataMenu?.parent_target_id_1
+        ? dataMenu?.parent_target_id_1
+        : dataValue.parent,
       path: '',
     },
     {
-      title: title,
+      title: dataValue.child,
       path: '#',
     },
   ]
 
-  console.log('data-----------', data)
+  console.log('data-----------', dataValue)
   if (_.isEmpty(dataAPI)) {
     return (
       <div className='d-flex align-items-center justify-content-center py-5'>

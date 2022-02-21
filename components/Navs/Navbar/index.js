@@ -129,7 +129,16 @@ const NavBar = (props) => {
                         >
                           <li
                             className={`btn justify-content-start rounded-0 ${styles.p3}`}
-                            onClick={() => setShownavlink(!shownavLink)}
+                            onClick={() => {
+                              setShownavlink(!shownavLink),
+                                localStorage.setItem(
+                                  'categorieTitle',
+                                  JSON.stringify({
+                                    parent: item?.label,
+                                    child: data?.title,
+                                  })
+                                )
+                            }}
                           >
                             {/*onClick = {() => console.log("data----", item?.items)}>*/}
                             {data.label}
@@ -152,7 +161,7 @@ const NavBar = (props) => {
           //   key={index.toString()}
           // >
           <Dropdown key={index.toString()}>
-            <Dropdown.Toggle as={CustomDropDown} />
+            <Dropdown.Toggle as={CustomDropDown} id='dropdown-basic' />
 
             <React.Fragment
               onClick={() => {
@@ -224,23 +233,32 @@ const NavBar = (props) => {
                           },
                         }}
                         onClick={() => {
-                          console.log('---------------------------')
-                          console.log({
-                            pathname: `/${data?.path}`,
-                            search: '',
-                            hash: '',
-                            state: {
-                              fromNav: item?.items,
-                              selectedItem: data?.title,
-                            },
-                          })
+                          // console.log('---------------------------')
+                          // console.log({
+                          //   pathname: `/${data?.path}`,
+                          //   search: '',
+                          //   hash: '',
+                          //   state: {
+                          //     fromNav: item?.items,
+                          //     selectedItem: data?.title,
+                          //   },
+                          // })
                           setShowMenu(!showMenu)
                         }}
                       >
                         <li
                           key={i}
                           className='btn rounded-0 mx-0 px-0'
-                          onClick={() => setShowMenu(!showMenu)}
+                          onClick={() => {
+                            setShowMenu(!showMenu),
+                              localStorage.setItem(
+                                'categorieTitle',
+                                JSON.stringify({
+                                  parent: item?.label,
+                                  child: data?.title,
+                                })
+                              )
+                          }}
                         >
                           {data.label}
                         </li>
