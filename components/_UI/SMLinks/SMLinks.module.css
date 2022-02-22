@@ -1,14 +1,14 @@
 .SMLinks{
-  margin-bottom: -30% !important;
+  /* margin-bottom: -30% !important; */
 }
 .SMLinks i {
   color: #FFFFFF !important;
-  /* margin: .8em; */
+  margin: .5em;
   font-size: 22px;
 }
 
 .SMLinks a{
-  margin: 0% 0% -10% 0% !important;
+  margin: 0% !important;
   padding: 0% !important;
 }
 #fb:hover{

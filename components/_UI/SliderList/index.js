@@ -57,7 +57,7 @@ const SliderList = (props) => {
             return (
               <Link
                 passHref
-                href={{pathname:pathN,query:{contenuArticle:""}}}
+                href={{pathname:pathN,query:{contenuArticle:rmSpaces}}}
                 key={index.toString()}
                 className='text-white'
               >
@@ -66,6 +66,7 @@ const SliderList = (props) => {
                   className={`${data?.length > 5 ? 'flex-row-reverse' : ''} ${
                     styles.cardSlid
                   } linksSlider item-card-content d-flex  align-items-center  py-2`}
+                  onClick={()=>console.log('item????????????????????',item)}
                 >
                   {item?.field_image ? (
                     <Image

@@ -27,25 +27,28 @@ const SimpleList = (props) => {
                                 as: `/article/${item?.title}`,
                             }
                         }
-                       /* $(document).ready(function () {
-                            $('.categorieTitle').contextmenu(function (event) {
-                                console.log('item.title')
-                                console.log(item?.title)
-                                localStorage.setItem(
-                                    'categorieTitle',
-                                    JSON.stringify({
-                                        parent: item?.parentID,
-                                        child: item?.title
-                                    })
-                                )
-                            })
-                        })*/
+                        /* $(document).ready(function () {
+                             $('.categorieTitle').contextmenu(function (event) {
+                                 console.log('item.title')
+                                 console.log(item?.title)
+                                 localStorage.setItem(
+                                     'categorieTitle',
+                                     JSON.stringify({
+                                         parent: item?.parentID,
+                                         child: item?.title
+                                     })
+                                 )
+                             })
+                         })*/
 
                         return (
                             <Link
                                 href={{
                                     pathname: path1.path,
-                                    query: {fromNav: props.data, selectedItem: item?.title,contenuArticle:""},
+                                    query: {
+                                        fromNav: props.data, selectedItem: item?.title,
+                                        contenuArticle: item?.field_contenu_default !== "" ? item?.field_contenu_default : item?.title
+                                    },
                                 }}
                                 as={path1.as}
                                 key={i.toString()}
@@ -53,6 +56,18 @@ const SimpleList = (props) => {
                             >
                                 <a
                                     className={`${styles.item} categorieTitle item d-flex align-items-center py-3 px-1`}
+                                    onClick={() => {
+                                        console.log('items--------------------selected')
+                                        console.log(item)
+                                        localStorage.setItem(
+                                            'categorieTitle',
+                                            JSON.stringify({
+                                                parent: item.parentID,
+                                                child: item?.title,
+                                                contenuArticle: item?.field_contenu_default !== "" ? item?.field_contenu_default : item?.title
+                                            })
+                                        )
+                                    }}
                                 >
                                     <p
                                         className='flex-fill m-0'

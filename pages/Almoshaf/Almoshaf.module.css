@@ -3,13 +3,14 @@
 
 }
 .ifr{
-    height: 150vh;
+    height: 90vh;
     width: 85%;
     margin-right: 8%;
     margin-top: 5%;
 }
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .ifr{
-        height: 85vh;
+        height: 70vh !important;
+        width: 95% !important;
     }
 }

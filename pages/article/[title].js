@@ -29,13 +29,10 @@ import ScrollButton from '../../components/ScrollButton'
 export default function ArticlePage(props) {
     let params = useRouter()?.query
     const title = useRouter()?.query?.title
-    //console.log('title======', title)
-    const parentBigTitle = useRouter()?.query?.parentBigTitle
-    console.log('useRouter()?.query---------------------------')
-    console.log(useRouter()?.query)
-    let contenuArticle = params?.contenuArticle !== "" ? params?.contenuArticle : title
-
-    console.log('contenuArticle---------------',contenuArticle)
+    let dataValue =
+        typeof window !== 'undefined' &&
+        JSON.parse(localStorage.getItem('categorieTitle'))
+    let contenuArticle = params?.contenuArticle !== "" || dataValue.contenuArticle !== "" ? params?.contenuArticle || dataValue.contenuArticle : title
     const myLoader = ({src, width, quality}) => {
         return `${base_url}/${src}`
     }
@@ -51,9 +48,7 @@ export default function ArticlePage(props) {
     const [dataAhadith, setDataAhadith] = useState([])
     const urlAhadith = getTopic()
     const CodeTopic = 28
-
     const url = getArticleById(contenuArticle)
-    const urlMenu = getMenuByName(parentTitle ? parentTitle : title)
     const getData = async () => {
         FetchAPI(url).then((data) => {
             if (data.success) {
@@ -98,7 +93,7 @@ export default function ArticlePage(props) {
                             path: `article/${item.name}`,
                             parentLabel: item.parent_target_id_1,
                             parentID: item.parent_target_id,
-                            contenuArticle:""
+                            field_contenu_default: item.field_contenu_default
                         }
                     })
                 setItems(items)
@@ -108,30 +103,7 @@ export default function ArticlePage(props) {
     }
     let router = useRouter().query
     let route = useRouter()
-    const handleSideData = (router) => {
-        // console.log('router')
-        const data = router?.fromNav ? router?.fromNav : dataSide
-        // console.log("data------------------------------")
-        //console.log(data)
-        sessionStorage.setItem('dataSide', JSON.stringify(data))
-        const selectedItem = router?.selectedItem
-            ? router?.selectedItem
-            : parentTitle
-        let routeState
-        if (router) {
-            localStorage.setItem('routeState', JSON.stringify(router))
-            routeState = router
-        } else {
-            routeState = localStorage.getItem('routeState')
-            if (routeState) routeState = JSON.parse(routeState)
-        }
-        setDataSide(routeState.fromNav)
-        console.log('routeState.fromNav--------------------', routeState.fromNav)
-        setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
-    }
-    let dataValue =
-        typeof window !== 'undefined' &&
-        JSON.parse(localStorage.getItem('categorieTitle'))
+
     useEffect(() => {
         getDataMenu(dataValue.child).then((r) => {
             console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
@@ -154,7 +126,7 @@ export default function ArticlePage(props) {
     let TID =
         typeof window !== 'undefined' &&
         JSON.parse(localStorage.getItem("tid"))
-
+    console.log('TID:--------------------', TID)
     useEffect(() => {
 
         getItemsMenu(TID)
@@ -259,7 +231,9 @@ export default function ArticlePage(props) {
                                         }}
                                         as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
                                     >
-                                        <a style={{textDecoration: 'none'}}>
+                                        <a style={{textDecoration: 'none'}} onClick={() => {
+                                            localStorage.setItem('tagTitle', JSON.stringify(tag?.attributes?.drupal_internal__tid))
+                                        }}>
                                             <Badgs
                                                 className={`${styles.badgTag}`}
                                                 key={index}
