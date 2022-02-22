@@ -40,7 +40,7 @@ const SearchInput = (props) => {
   }, [])
 
   const checkSizeWindow = () => {
-    if (typeof window !== undefined && window.innerWidth <= 450) {
+    if (typeof window !== undefined && window.innerWidth <= 850) {
       setInputShow(true)
     } else {
       setInputShow(false)
