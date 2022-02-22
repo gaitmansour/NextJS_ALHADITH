@@ -36,7 +36,7 @@ const ScrollButton = () => {
         width='40'
         height='40'
         fill='#129D59'
-        className='bi bi-arrow-up-square-fill'
+        className={`${styles.iconToTop} bi bi-arrow-up-square-fill`}
         viewBox='0 0 16 16'
         alt='العودة لأعلى الموقع'
         onClick={() => scrollToTop()}

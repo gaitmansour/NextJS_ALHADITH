@@ -6,7 +6,7 @@ import Image from 'next/image'
 const DownloadApk = () => {
   return (
     <div className={`${styles.mobile} container`}>
-      <Image src={Icons.icon_mobil} alt='' />
+      <Image src={Icons.icon_mobil} alt='' className={styles.iconMobile} />
       <div className={`container ${styles.downloadApk}`}>
         <div className={`${styles.download} p-4`}>
           <h4 className={`${styles.titleSec} `}>
