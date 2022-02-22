@@ -57,15 +57,16 @@ const SimpleList = (props) => {
                                 <a
                                     className={`${styles.item} categorieTitle item d-flex align-items-center py-3 px-1`}
                                     onClick={() => {
-                                        /*localStorage.setItem(
+                                        console.log('items--------------------selected')
+                                        console.log(item)
+                                        localStorage.setItem(
                                             'categorieTitle',
                                             JSON.stringify({
-                                                parent: item.parent_target_id_1,
+                                                parent: item.parentID,
                                                 child: item?.title,
                                                 contenuArticle: item?.field_contenu_default !== "" ? item?.field_contenu_default : item?.title
                                             })
                                         )
-                                        localStorage.setItem("tid", JSON.stringify(item.parent_target_id))*/
                                     }}
                                 >
                                     <p

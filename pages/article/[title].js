@@ -103,27 +103,6 @@ export default function ArticlePage(props) {
     }
     let router = useRouter().query
     let route = useRouter()
-    const handleSideData = (router) => {
-        // console.log('router')
-        const data = router?.fromNav ? router?.fromNav : dataSide
-        // console.log("data------------------------------")
-        //console.log(data)
-        sessionStorage.setItem('dataSide', JSON.stringify(data))
-        const selectedItem = router?.selectedItem
-            ? router?.selectedItem
-            : parentTitle
-        let routeState
-        if (router) {
-            localStorage.setItem('routeState', JSON.stringify(router))
-            routeState = router
-        } else {
-            routeState = localStorage.getItem('routeState')
-            if (routeState) routeState = JSON.parse(routeState)
-        }
-        setDataSide(routeState.fromNav)
-        console.log('routeState.fromNav--------------------', routeState.fromNav)
-        setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
-    }
 
     useEffect(() => {
         getDataMenu(dataValue.child).then((r) => {
@@ -147,7 +126,7 @@ export default function ArticlePage(props) {
     let TID =
         typeof window !== 'undefined' &&
         JSON.parse(localStorage.getItem("tid"))
-
+console.log('TID:--------------------',TID)
     useEffect(() => {
 
         getItemsMenu(TID)
