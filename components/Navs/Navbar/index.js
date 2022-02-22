@@ -364,10 +364,10 @@ const NavBar = (props) => {
           </>
         ) : null}
         <div
-          className={`collapse navbar-collapse flex-grow-0 align-self-center  itemNav`}
+          className={`collapse navbar-collapse flex-grow-0 align-self-center w-auto itemNav`}
           id='navbarNav'
         >
-          <ul className='menu-principal navbar-nav align-items-center pr-4 align-self-stretch'>
+          <ul className='menu-principal navbar-nav align-items-center pr-4 align-self-stretch '>
             {renderLinksMenu()}
           </ul>
         </div>
