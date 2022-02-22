@@ -11,7 +11,7 @@
     font-size: 18px; /* Increase font size */
 }
 
-.backToTop svg{
+.backToTop .iconToTop{
   background-color: #ffffff;
   border: 1px solid #ffffff;
   border-radius: 5px;
