@@ -126,7 +126,7 @@ export default function ArticlePage(props) {
     let TID =
         typeof window !== 'undefined' &&
         JSON.parse(localStorage.getItem("tid"))
-console.log('TID:--------------------',TID)
+    console.log('TID:--------------------', TID)
     useEffect(() => {
 
         getItemsMenu(TID)
@@ -231,7 +231,9 @@ console.log('TID:--------------------',TID)
                                         }}
                                         as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
                                     >
-                                        <a style={{textDecoration: 'none'}}>
+                                        <a style={{textDecoration: 'none'}} onClick={() => {
+                                            localStorage.setItem('tagTitle', JSON.stringify(tag?.attributes?.drupal_internal__tid))
+                                        }}>
                                             <Badgs
                                                 className={`${styles.badgTag}`}
                                                 key={index}
