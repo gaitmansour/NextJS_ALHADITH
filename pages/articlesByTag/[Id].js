@@ -14,11 +14,14 @@ import Image from 'next/image'
 
 const ArticlesByTag = (props) => {
     let TagID = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tagTitle'))
+    console.log("TAGID----------------------", TagID)
     let routerQuery = useRouter()
-    const Id = routerQuery?.query ? routerQuery?.query?.title : TagID
+    const Id = TagID
     const [dataAPI, setDataAPI] = useState({})
     console.log('--------55---', Id)
-
+    let dataValue =
+        typeof window !== 'undefined' &&
+        JSON.parse(localStorage.getItem('categorieTitle'))
     const url = getArticlesByTag(Id)
     const getData = async () => {
         FetchAPI(url).then((data) => {
@@ -51,6 +54,7 @@ const ArticlesByTag = (props) => {
                     <div className='row tags'>
                         {dataAPI &&
                             dataAPI?.map((data, index) => {
+                                console.log("articleTag-----------------------", data)
                                 return (
                                     <div
                                         key={index}
@@ -97,10 +101,21 @@ const ArticlesByTag = (props) => {
                                                         title: data.title,
                                                     },
                                                 }}
+                                                as={`/article/${data.title}`}
                                             >
                                                 <a
                                                     className={`${styles.btnLearnMore} btn`}
                                                     role='button'
+                                                    onClick={() => {
+                                                        localStorage.setItem(
+                                                            'categorieTitle',
+                                                            JSON.stringify({
+                                                                parent: dataValue.parent,
+                                                                child: data?.title,
+                                                                contenuArticle: data?.title
+                                                            })
+                                                        )
+                                                    }}
                                                 >
                                                     <p style={{textAlign: 'center'}} className='m-0'>
                                                         {'إقرأ المزيد '}
