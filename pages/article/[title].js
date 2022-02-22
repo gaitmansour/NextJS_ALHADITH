@@ -29,13 +29,10 @@ import ScrollButton from '../../components/ScrollButton'
 export default function ArticlePage(props) {
     let params = useRouter()?.query
     const title = useRouter()?.query?.title
-    //console.log('title======', title)
-    const parentBigTitle = useRouter()?.query?.parentBigTitle
-    console.log('useRouter()?.query---------------------------')
-    console.log(useRouter()?.query)
-    let contenuArticle = params?.contenuArticle !== "" ? params?.contenuArticle : title
-
-    console.log('contenuArticle---------------',contenuArticle)
+    let dataValue =
+        typeof window !== 'undefined' &&
+        JSON.parse(localStorage.getItem('categorieTitle'))
+    let contenuArticle = params?.contenuArticle !== "" || dataValue.contenuArticle !== "" ? params?.contenuArticle || dataValue.contenuArticle : title
     const myLoader = ({src, width, quality}) => {
         return `${base_url}/${src}`
     }
@@ -51,9 +48,7 @@ export default function ArticlePage(props) {
     const [dataAhadith, setDataAhadith] = useState([])
     const urlAhadith = getTopic()
     const CodeTopic = 28
-
     const url = getArticleById(contenuArticle)
-    const urlMenu = getMenuByName(parentTitle ? parentTitle : title)
     const getData = async () => {
         FetchAPI(url).then((data) => {
             if (data.success) {
@@ -98,7 +93,7 @@ export default function ArticlePage(props) {
                             path: `article/${item.name}`,
                             parentLabel: item.parent_target_id_1,
                             parentID: item.parent_target_id,
-                            contenuArticle:""
+                            field_contenu_default: item.field_contenu_default
                         }
                     })
                 setItems(items)
@@ -129,9 +124,7 @@ export default function ArticlePage(props) {
         console.log('routeState.fromNav--------------------', routeState.fromNav)
         setparentTitle(selectedItem ? selectedItem : routeState.selectedItem)
     }
-    let dataValue =
-        typeof window !== 'undefined' &&
-        JSON.parse(localStorage.getItem('categorieTitle'))
+
     useEffect(() => {
         getDataMenu(dataValue.child).then((r) => {
             console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)

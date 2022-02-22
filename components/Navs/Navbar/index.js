@@ -140,6 +140,7 @@ const NavBar = (props) => {
                                   JSON.stringify({
                                     parent: item?.label,
                                     child: data?.title,
+                                    contenuArticle: data?.field_contenu_default!==""?data?.field_contenu_default:data?.title
                                   })
                                 )
                               localStorage.setItem("tid",JSON.stringify(item.tID))
@@ -262,6 +263,7 @@ const NavBar = (props) => {
                                 JSON.stringify({
                                   parent: item?.label,
                                   child: data?.title,
+                                  contenuArticle: data?.field_contenu_default!==""?data?.field_contenu_default:data?.title
                                 })
                               )
                             localStorage.setItem("tid",JSON.stringify(item.tID))
