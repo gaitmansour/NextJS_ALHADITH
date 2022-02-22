@@ -73,20 +73,22 @@ const NavBar = (props) => {
       MenuLinks &&
       MenuLinks?.map((item, index) => {
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
-          <a
-            className={styleDropdownToggle}
-            href=''
-            ref={ref}
-            onClick={(e) => {
-              e.preventDefault()
-              onClick(e)
-            }}
-          >
-            {item?.label}
-            {item?.items?.length > 0 && (
-              <i className='fas fa-chevron-down text-success mx-2' />
-            )}
-          </a>
+          <li className={styleDropdownToggle}>
+            <a
+              href=''
+              ref={ref}
+              onClick={(e) => {
+                e.preventDefault()
+                onClick(e)
+              }}
+              // style={{ width: '12em', textAlign: 'center' }}
+            >
+              {item?.label}
+              {item?.items?.length > 0 && (
+                <i className='fas fa-chevron-down text-success mx-2' />
+              )}
+            </a>
+          </li>
         ))
 
         // forwardRef again here!

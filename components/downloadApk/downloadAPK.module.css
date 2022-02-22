@@ -63,32 +63,45 @@
 @media screen and (max-width : 480px){
     .download{
         margin: 0px !important;
-        padding-top: 10px;
+        padding: 8px 0% 0% 0% !important;
+    }
+    .download .titleSec{
+        font-size: 15px !important;
+        width: 55%;
+        margin: 0% 0% 10px 0% !important;
+        float: left;
     }
     .download img{
         width: 45% !important;
         height: 45% !important;
-        margin-right: 90px !important;
+        margin-right: 70px !important;
         margin-left: 0px !important;
     }
     .downloadApk{
-        margin-top: -180px !important;
+        margin-top: -230px !important;
         margin-right: 0px !important;
+        padding: 0% !important;
+        height: 22% !important;
     }
     .download img{
         margin-top: 0px !important;
     }
-    
+    .mobile .iconMobile{
+        margin-right: -18px !important;
+    }
 }
 
 @media screen and (max-width : 330px){
     .downloadApk{
-        margin-top: -175px !important;
+        /* margin-top: -175px !important; */
         margin-right: 0px !important;
-        height: 26vh !important;
+        /* height: 26 !important; */
     }
     .download img{
         margin-top: 0px !important;
-        margin-right: 80px !important;
+        /* margin-right: 80px !important; */
+    }
+    .mobile .iconMobile{
+        margin-right: -26px !important;
     }
 }
