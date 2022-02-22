@@ -94,7 +94,9 @@ display: list-item;
     display: flex;
     flex-direction: column;
 }
-
+.sectionImage span {
+    font-size: 13px;
+}
 /*table{
     background-color: transparent !important;
 }
