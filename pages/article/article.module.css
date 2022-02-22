@@ -192,12 +192,20 @@ table td p a{
     }
 
 }
-@media screen and (min-width: 760px) and (max-width: 1024px)  {
+@media screen and (min-width: 540px) and (max-width: 900px)  {
+    .articleContent{
+        width: 60% !important;
+    }
+    .slider{
+        width: 40% !important;
+    }
+}
+/* @media screen and (min-width: 760px) and (max-width: 1024px)  {
     .slider{
         width: 50% !important;
     }
 
-}
+} */
 @media screen and (max-width : 360px){
     .summ{
        width: 95vw !important;

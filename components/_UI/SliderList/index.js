@@ -43,7 +43,10 @@ const SliderList = (props) => {
     <Widget className={`${className}`}>
       <div className={`${styles.SliderList} SliderList`}>
         {/* <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2> */}
-        <SectionTitle title={'مواضيع ذات صلة'} />
+        <SectionTitle
+          className={styles.titleSection}
+          title={'مواضيع ذات صلة'}
+        />
         <Slider {...settings} className='slide my-4'>
           {data?.map((item, index) => {
             var stripedTitle = item.title.replace(/<[^>]+>/g, '')
