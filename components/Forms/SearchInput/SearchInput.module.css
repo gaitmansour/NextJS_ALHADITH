@@ -85,6 +85,9 @@ er {
         background: none !important;
         width: 80% !important;
     }
+    .inputSearch::placeholder{
+        font-size: 13px;
+    }
 }
 
 /*

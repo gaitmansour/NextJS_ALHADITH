@@ -72,7 +72,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-        console.log('---------------------------------',item)
+        console.log('---------------------------------', item)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -108,7 +108,7 @@ const NavBar = (props) => {
                   aria-labelledby={labeledBy}
                 >
                   {item?.items?.map((data, i) => {
-                    console.log("item?.field_contenu_default")
+                    console.log('item?.field_contenu_default')
                     console.log(data)
                     return (
                       <Link
@@ -121,7 +121,7 @@ const NavBar = (props) => {
                           query: {
                             fromNav: item?.items,
                             selectedItem: data?.title,
-                            contenuArticle:data?.field_contenu_default
+                            contenuArticle: data?.field_contenu_default,
                           },
                         }}
                         as={
@@ -142,10 +142,16 @@ const NavBar = (props) => {
                                   JSON.stringify({
                                     parent: item?.label,
                                     child: data?.title,
-                                    contenuArticle: data?.field_contenu_default!==""?data?.field_contenu_default:data?.title
+                                    contenuArticle:
+                                      data?.field_contenu_default !== ''
+                                        ? data?.field_contenu_default
+                                        : data?.title,
                                   })
                                 )
-                              localStorage.setItem("tid",JSON.stringify(item.tID))
+                              localStorage.setItem(
+                                'tid',
+                                JSON.stringify(item.tID)
+                              )
                             }}
                           >
                             {/*onClick = {() => console.log("data----", item?.items)}>*/}
@@ -238,7 +244,7 @@ const NavBar = (props) => {
                           query: {
                             fromNav: item?.items,
                             selectedItem: data?.title,
-                            contenuArticle:data?.field_contenu_default
+                            contenuArticle: data?.field_contenu_default,
                           },
                         }}
                         onClick={() => {
@@ -265,10 +271,16 @@ const NavBar = (props) => {
                                 JSON.stringify({
                                   parent: item?.label,
                                   child: data?.title,
-                                  contenuArticle: data?.field_contenu_default!==""?data?.field_contenu_default:data?.title
+                                  contenuArticle:
+                                    data?.field_contenu_default !== ''
+                                      ? data?.field_contenu_default
+                                      : data?.title,
                                 })
                               )
-                            localStorage.setItem("tid",JSON.stringify(item.tID))
+                            localStorage.setItem(
+                              'tid',
+                              JSON.stringify(item.tID)
+                            )
                           }}
                         >
                           {data.label}
@@ -375,7 +387,7 @@ const NavBar = (props) => {
           </>
         ) : null}
         <div
-          className={`collapse navbar-collapse flex-grow-0 align-self-center w-auto itemNav`}
+          className={` collapse navbar-collapse flex-grow-0 align-self-center w-auto itemNav`}
           id='navbarNav'
         >
           <ul className='menu-principal navbar-nav align-items-center pr-4 align-self-stretch '>
@@ -437,7 +449,8 @@ const NavBar = (props) => {
             passHref={true}
             as={'/QuestionsReponses'}
           >
-            <a href={'/dkfjhskj'}
+            <a
+              href={'/dkfjhskj'}
               className={` align-items-center d-flex px-4 py-2 ${styles.linkQa}`}
             >
               <Image
