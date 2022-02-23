@@ -142,10 +142,10 @@
     content: none;
 }
 
-/* #navbarNav {
+#navbarNav {
     max-width: 70%;
     overflow-x: clip;
-} */
+}
 
 .NavBar .navbar-nav .dropdown-menu {
     border: 0;
