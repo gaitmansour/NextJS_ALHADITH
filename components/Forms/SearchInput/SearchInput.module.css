@@ -50,10 +50,13 @@ er {
 /* .inputSearch::placeholder{
     text-overflow: ellipsis;
 } */
+.input::placeholder{
+    font-size: 15px;
+}
 .inputSearch::placeholder{
     overflow: hidden;
     text-overflow:ellipsis !important;
-    font-size: 18px;
+    font-size: 15px;
 }
 /* Style for viewports greater than 480px wide. */
 @media (max-width: 835px) {
