@@ -55,7 +55,7 @@ const AllMedia = (props) => {
     autoplay: true,
     slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
     dots: true,
     responsive: [
       {
@@ -183,25 +183,32 @@ const AllMedia = (props) => {
                 <h3
                   className={`${styles.titlePage}`}
                   style={{
-                    width: '50%',
-                    color: '#CEBB97',
+                    width: '30%',
+                    color: '#22CABE',
                     fontSize: 20,
                     fontWeight: 900,
                     float: 'right',
                   }}
                 >
-                  برامج على الشبكات الاجتماعية
+                  الدروس الحديثية
                 </h3>
                 <hr
                   style={{
-                    width: '50%',
+                    width: '70%',
                     float: 'right',
-                    color: '#CEBB97',
-                    border: '6px #CEBB97  solid',
+                    color: '#22CABE',
+                    border: '6px #22CABE  solid',
                   }}
                 />
               </div>
-              <div className={`box-first-video`}>
+              <div className={`${styles.boxFirstVideo} box-first-video`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
+                  <button
+                    type='button'
+                    className='btn  p-0 position-relative'
+                    id='bttn'
+                    onClick={() => handleStart()}
+                  > */}
                 <div
                   className={`${styles.playerWrapper} player-wrapper`}
                   onClick={() => handleStart()}
@@ -210,12 +217,12 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPI.included[leng / 2]?.attributes?.uri?.url
+                          dataAPIDh.included[leng1 / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },
                     ]}
-                    light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
+                    light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
                     controls
                     playing
                     className={`${styles.reactPlayer} react-player`}
@@ -223,17 +230,19 @@ const AllMedia = (props) => {
                     height='95%'
                   />
                 </div>
+                {/* </button>
+                </div> */}
                 <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {dataAPI.data[0].attributes.title}
+                  {dataAPIDh.data[0].attributes.title}
                 </h3>
                 <hr className='line' />
                 <div className={styles.SliderVideoList1}>
                   <Slider {...settings} className='slide my-4'>
-                    {dataAPI?.data.map((item, i) => {
+                    {dataAPIDh?.data.map((item, i) => {
                       return (
                         // <div
                         //   key={i.toString()}
-                        //   className={`${styles.SliderVideoList} SliderVideoList-data1 d-flex flex-wrap`}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
                         // >
                         <div
                           key={i.toString()}
@@ -246,13 +255,13 @@ const AllMedia = (props) => {
                               url={[
                                 {
                                   src: `${base_url}${
-                                    dataAPI?.included[i + leng / 2]?.attributes
-                                      ?.uri?.url
+                                    dataAPIDh?.included[i + leng1 / 2]
+                                      ?.attributes?.uri?.url
                                   }`,
                                   type: 'video/mp4',
                                 },
                               ]}
-                              light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                              light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
                               controls
                               playing
                               className={`${styles.reactPlay} react-player`}
@@ -261,7 +270,7 @@ const AllMedia = (props) => {
                             />
                           </div>
                           <p
-                            className='m-0 py-3 px-4'
+                            className={`${styles.description} m-0 py-3 description px-4`}
                             style={{
                               fontSize: 12,
                               textAlign: 'right',
@@ -276,6 +285,7 @@ const AllMedia = (props) => {
                 </div>
               </div>
             </div>
+
             <div className='col-lg-6 col-md-6 px-4 col-sm-1'>
               <div style={{ height: '80px', marginBottom: '25px' }}>
                 <svg
@@ -381,222 +391,6 @@ const AllMedia = (props) => {
               ) : (
                 <div />
               )}
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-lg-6 col-md-6 col-sm-1 px-4 category1'>
-              <div>
-                <h3
-                  className={`${styles.titlePage}`}
-                  style={{
-                    width: '30%',
-                    color: '#FF794D',
-                    fontSize: 20,
-                    fontWeight: 900,
-                    float: 'right',
-                  }}
-                >
-                  برامج تلفزية
-                </h3>
-                <hr
-                  style={{
-                    width: '70%',
-                    float: 'right',
-                    color: '#FF794D',
-                    border: '6px #FF794D  solid',
-                  }}
-                />
-              </div>
-              <div className={` box-first-video`}>
-                {/* <div className={`${styles.btnPlay} btn-play`}>
-                  <button
-                    type='button'
-                    className='btn  p-0 position-relative'
-                    id='bttn'
-                    onClick={() => handleStart()}
-                  > */}
-                <div
-                  className={`${styles.playerWrapper} player-wrapper`}
-                  onClick={() => handleStart()}
-                >
-                  <ReactPlayer
-                    url={[
-                      {
-                        src: `${base_url}${
-                          dataAPIBt.included[leng2 / 2]?.attributes?.uri?.url
-                        }`,
-                        type: 'video/mp4',
-                      },
-                    ]}
-                    light={`${base_url}/${dataAPIBt?.included[0]?.attributes?.uri?.url}`}
-                    controls
-                    playing
-                    className={`${styles.reactPlayer} react-player`}
-                    width='95%'
-                    height='95%'
-                  />
-                </div>
-                {/* </button>
-                </div> */}
-                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {dataAPIBt.data[0].attributes.title}
-                </h3>
-                <hr className={`${styles.line}`} />
-                <div className={styles.SliderVideoList1}>
-                  <Slider {...settings} className='slide my-4'>
-                    {dataAPIBt?.data.map((item, i) => {
-                      return (
-                        // <div
-                        //   key={i.toString()}
-                        //   className='SliderVideoList-data1 d-flex flex-wrap'
-                        // >
-                        <div
-                          key={i.toString()}
-                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
-                        >
-                          <div
-                            className={`${styles.playerWrapper} player-wrapper`}
-                          >
-                            <ReactPlayer
-                              url={[
-                                {
-                                  src: `${base_url}${
-                                    dataAPIBt?.included[i + leng2 / 2]
-                                      ?.attributes?.uri?.url
-                                  }`,
-                                  type: 'video/mp4',
-                                },
-                              ]}
-                              light={`${base_url}${dataAPIBt?.included[i]?.attributes?.uri?.url}`}
-                              controls
-                              playing
-                              className={`${styles.reactPlay} react-player`}
-                              width='90%'
-                              height='90%'
-                            />
-                          </div>
-                          <p
-                            className='m-0 py-3 px-4'
-                            style={{
-                              fontSize: 12,
-                              textAlign: 'right',
-                            }}
-                          >
-                            {item?.attributes?.title}
-                          </p>
-                        </div>
-                      )
-                    })}
-                  </Slider>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 col-md-6 col-sm-1 px-4 category1'>
-              <div>
-                <h3
-                  className={`${styles.titlePage}`}
-                  style={{
-                    width: '30%',
-                    color: '#FEBB1A',
-                    fontSize: 20,
-                    fontWeight: 900,
-                    float: 'right',
-                  }}
-                >
-                  برامج اذاعية
-                </h3>
-                <hr
-                  style={{
-                    width: '70%',
-                    float: 'right',
-                    color: '#FEBB1A',
-                    border: '6px #FEBB1A  solid',
-                  }}
-                />
-              </div>
-              <div className={`${styles.boxFirstVideo} box-first-video`}>
-                {/* <div className={`${styles.btnPlay} btn-play`}>
-                  <button
-                    type='button'
-                    className='btn  p-0 position-relative'
-                    id='bttn'
-                    onClick={() => handleStart()}
-                  > */}
-                <div
-                  className={`${styles.playerWrapper} player-wrapper`}
-                  onClick={() => handleStart()}
-                >
-                  <ReactPlayer
-                    url={[
-                      {
-                        src: `${base_url}${
-                          dataAPIBi.included[leng3 / 2]?.attributes?.uri?.url
-                        }`,
-                        type: 'video/mp4',
-                      },
-                    ]}
-                    light={`${base_url}/${dataAPIBi?.included[0]?.attributes?.uri?.url}`}
-                    controls
-                    playing
-                    className={`${styles.reactPlayer} react-player`}
-                    width='95%'
-                    height='95%'
-                  />
-                </div>
-                {/* </button>
-                </div> */}
-                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {dataAPIBi.data[0].attributes.title}
-                </h3>
-                <hr className={styles.line} />
-                <div className={styles.SliderVideoList1}>
-                  <Slider {...settings} className='slide my-4'>
-                    {dataAPIBi?.data.map((item, i) => {
-                      return (
-                        // <div
-                        //   key={i.toString()}
-                        //   className='SliderVideoList-data1 d-flex flex-wrap'
-                        // >
-                        <div
-                          key={i.toString()}
-                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
-                        >
-                          <div
-                            className={`${styles.playerWrapper} player-wrapper`}
-                          >
-                            <ReactPlayer
-                              url={[
-                                {
-                                  src: `${base_url}${
-                                    dataAPIBi?.included[i + leng3 / 2]
-                                      ?.attributes?.uri?.url
-                                  }`,
-                                  type: 'video/mp4',
-                                },
-                              ]}
-                              light={`${base_url}${dataAPIBi?.included[i]?.attributes?.uri?.url}`}
-                              controls
-                              playing
-                              className={`${styles.reactPlay} react-player`}
-                              width='90%'
-                              height='90%'
-                            />
-                          </div>
-                          <p
-                            className='m-0 py-3 px-4'
-                            style={{
-                              fontSize: 12,
-                              textAlign: 'right',
-                            }}
-                          >
-                            {item?.attributes?.title}
-                          </p>
-                        </div>
-                      )
-                    })}
-                  </Slider>
-                </div>
-              </div>
             </div>
           </div>
           <div className='row'>
@@ -713,20 +507,129 @@ const AllMedia = (props) => {
                   className={`${styles.titlePage}`}
                   style={{
                     width: '30%',
-                    color: '#22CABE',
+                    color: '#FF794D',
                     fontSize: 20,
                     fontWeight: 900,
                     float: 'right',
                   }}
                 >
-                  الدروس الحديثية
+                  برامج تلفزية
                 </h3>
                 <hr
                   style={{
                     width: '70%',
                     float: 'right',
-                    color: '#22CABE',
-                    border: '6px #22CABE  solid',
+                    color: '#FF794D',
+                    border: '6px #FF794D  solid',
+                  }}
+                />
+              </div>
+              <div className={` box-first-video`}>
+                {/* <div className={`${styles.btnPlay} btn-play`}>
+                  <button
+                    type='button'
+                    className='btn  p-0 position-relative'
+                    id='bttn'
+                    onClick={() => handleStart()}
+                  > */}
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPIBt.included[leng2 / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPIBt?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
+                </div>
+                {/* </button>
+                </div> */}
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
+                  {dataAPIBt.data[0].attributes.title}
+                </h3>
+                <hr className={`${styles.line}`} />
+                <div className={styles.SliderVideoList1}>
+                  <Slider {...settings} className='slide my-4'>
+                    {dataAPIBt?.data.map((item, i) => {
+                      return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className='SliderVideoList-data1 d-flex flex-wrap'
+                        // >
+                        <div
+                          key={i.toString()}
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                        >
+                          <div
+                            className={`${styles.playerWrapper} player-wrapper`}
+                          >
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPIBt?.included[i + leng2 / 2]
+                                      ?.attributes?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPIBt?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
+                          </div>
+                          <p
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
+                        </div>
+                      )
+                    })}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-lg-6 col-md-6 col-sm-1 px-4 category1'>
+              <div>
+                <h3
+                  className={`${styles.titlePage}`}
+                  style={{
+                    width: '30%',
+                    color: '#FEBB1A',
+                    fontSize: 20,
+                    fontWeight: 900,
+                    float: 'right',
+                  }}
+                >
+                  برامج اذاعية
+                </h3>
+                <hr
+                  style={{
+                    width: '70%',
+                    float: 'right',
+                    color: '#FEBB1A',
+                    border: '6px #FEBB1A  solid',
                   }}
                 />
               </div>
@@ -746,12 +649,12 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPIDh.included[leng1 / 2]?.attributes?.uri?.url
+                          dataAPIBi.included[leng3 / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },
                     ]}
-                    light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
+                    light={`${base_url}/${dataAPIBi?.included[0]?.attributes?.uri?.url}`}
                     controls
                     playing
                     className={`${styles.reactPlayer} react-player`}
@@ -762,12 +665,12 @@ const AllMedia = (props) => {
                 {/* </button>
                 </div> */}
                 <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {dataAPIDh.data[0].attributes.title}
+                  {dataAPIBi.data[0].attributes.title}
                 </h3>
-                <hr className='line' />
+                <hr className={styles.line} />
                 <div className={styles.SliderVideoList1}>
                   <Slider {...settings} className='slide my-4'>
-                    {dataAPIDh?.data.map((item, i) => {
+                    {dataAPIBi?.data.map((item, i) => {
                       return (
                         // <div
                         //   key={i.toString()}
@@ -784,13 +687,13 @@ const AllMedia = (props) => {
                               url={[
                                 {
                                   src: `${base_url}${
-                                    dataAPIDh?.included[i + leng1 / 2]
+                                    dataAPIBi?.included[i + leng3 / 2]
                                       ?.attributes?.uri?.url
                                   }`,
                                   type: 'video/mp4',
                                 },
                               ]}
-                              light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
+                              light={`${base_url}${dataAPIBi?.included[i]?.attributes?.uri?.url}`}
                               controls
                               playing
                               className={`${styles.reactPlay} react-player`}
@@ -799,7 +702,105 @@ const AllMedia = (props) => {
                             />
                           </div>
                           <p
-                            className={`${styles.description} m-0 py-3 description px-4`}
+                            className='m-0 py-3 px-4'
+                            style={{
+                              fontSize: 12,
+                              textAlign: 'right',
+                            }}
+                          >
+                            {item?.attributes?.title}
+                          </p>
+                        </div>
+                      )
+                    })}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+            <div className='col-lg-6 col-md-6 col-sm-1 px-4 category1'>
+              <div>
+                <h3
+                  className={`${styles.titlePage}`}
+                  style={{
+                    width: '50%',
+                    color: '#CEBB97',
+                    fontSize: 20,
+                    fontWeight: 900,
+                    float: 'right',
+                  }}
+                >
+                  برامج على الشبكات الاجتماعية
+                </h3>
+                <hr
+                  style={{
+                    width: '50%',
+                    float: 'right',
+                    color: '#CEBB97',
+                    border: '6px #CEBB97  solid',
+                  }}
+                />
+              </div>
+              <div className={`box-first-video`}>
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={[
+                      {
+                        src: `${base_url}${
+                          dataAPI.included[leng / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='95%'
+                    height='95%'
+                  />
+                </div>
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
+                  {dataAPI.data[0].attributes.title}
+                </h3>
+                <hr className='line' />
+                <div className={styles.SliderVideoList1}>
+                  <Slider {...settings} className='slide my-4'>
+                    {dataAPI?.data.map((item, i) => {
+                      return (
+                        // <div
+                        //   key={i.toString()}
+                        //   className={`${styles.SliderVideoList} SliderVideoList-data1 d-flex flex-wrap`}
+                        // >
+                        <div
+                          key={i.toString()}
+                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
+                        >
+                          <div
+                            className={`${styles.playerWrapper} player-wrapper`}
+                          >
+                            <ReactPlayer
+                              url={[
+                                {
+                                  src: `${base_url}${
+                                    dataAPI?.included[i + leng / 2]?.attributes
+                                      ?.uri?.url
+                                  }`,
+                                  type: 'video/mp4',
+                                },
+                              ]}
+                              light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                              controls
+                              playing
+                              className={`${styles.reactPlay} react-player`}
+                              width='90%'
+                              height='90%'
+                            />
+                          </div>
+                          <p
+                            className='m-0 py-3 px-4'
                             style={{
                               fontSize: 12,
                               textAlign: 'right',
