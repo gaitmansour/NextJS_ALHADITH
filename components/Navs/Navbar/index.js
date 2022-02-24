@@ -373,12 +373,12 @@ const NavBar = (props) => {
             <div
               className={`${
                 visible ? 'd-block' : 'd-none'
-              } d-flex align-items-center btn m-0 p-0 searchSticky`}
+              } d-flex align-items-center btn m-0 p-0 ${styles.logoSticky}`}
             >
               <Link className='my-2' href='/'>
                 <Image
                   className='logoNav'
-                  src={Logos.logo_web}
+                  src={Logos.logo_portail_hadith}
                   alt='logo-Al-hadith-Mohammed-VI'
                   title='logo Al hadith Mohammed VI'
                 />

@@ -186,6 +186,9 @@
     text-align: right;
     border-bottom: 1px solid rgba(175, 172, 172, 0.561);
 }
+.logoSticky img{
+    width: 8vw !important;
+}
 .listMenu li:hover{
     background-color: rgba(219, 224, 221, 0.561);
 }
