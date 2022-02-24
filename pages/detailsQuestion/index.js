@@ -8,7 +8,7 @@ import Loading from '../../components/_UI/Loading'
 import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
 import styles from './detailsQuestion.module.css'
-import {FetchPostAPI} from '../../data/API/questions'
+import { FetchPostAPI } from '../../data/API/questions'
 
 const Questions = () => {
   const { state } = useRouter()?.query
@@ -58,25 +58,26 @@ const Questions = () => {
   //   )
   // }
   return (
-      <TemplateArticle ListBreadcrumb={data} titlePage='سؤال و جواب'>
-        <Body
-            className={`${styles.TemplateArticleBody} ${styles.QuAnswer} Media d-flex p-4`}
-        >
-          <div className={`${styles.quesList} px-4 flex-fill`}>
-            {itemReponse ? ( <div>
+    <TemplateArticle ListBreadcrumb={data} titlePage='سؤال و جواب'>
+      <Body
+        className={`${styles.TemplateArticleBody} ${styles.QuAnswer} Media d-flex p-4`}
+      >
+        <div className={`${styles.quesList} px-4 flex-fill`}>
+          {itemReponse ? (
+            <div>
               <h3>السؤال</h3>
-              <div className={`${styles.card} card w-100 my-5`}>
+              <div className={`${styles.card} card w-100 mb-5 mt-3`}>
                 <div
                   className={`${styles.CardQuestion} card-body Card-question`}
                 >
                   <h5 className='col-9 d-flex card-subtitle'>{itemTitle}</h5>
-                  <p className='p card-text'>{itemQuestion}</p>
+                  <p className='p mt-3 card-text'>{itemQuestion}</p>
                 </div>
               </div>
               <h3>الإجابة</h3>
               <div
-                  className={` ${styles.cardAnswer} card Card-answer1 w-100 my-5`}
-                  style={styles.CardAnswer1}
+                className={` ${styles.cardAnswer} card Card-answer1 w-100 mb-5 mt-3`}
+                style={styles.CardAnswer1}
               >
                 <div className='card-body '>
                   <p className='p card-text text-justify '>{itemReponse}</p>
@@ -86,12 +87,12 @@ const Questions = () => {
           ) : (
             <div>
               <h3 className={'h3'}>السؤال</h3>
-              <div className='card w-100 my-5'>
+              <div className='card w-100 mb-5 mt-3'>
                 <div
                   className={`${styles.CardQuestion} card-body Card-question `}
                 >
                   <h5 className='col-9 d-flex card-subtitle'>{itemTitle}</h5>
-                  <p className='p card-text'>{itemQuestion}</p>
+                  <p className='p mt-3 card-text'>{itemQuestion}</p>
                 </div>
               </div>
               <div
@@ -108,30 +109,30 @@ const Questions = () => {
           <p className={`${styles.p} ${styles.tiitle}`}>مواد ذات صلة</p>
           <div className={styles.SimpleList}>
             {dataQuestion?.hits?.hits?.map((item, i) => {
-                return (
-                  <Link
-                    key={i}
-                    exact
-                    className='item d-flex align-items-center py-3 px-1'
-                    passHref={true}
-                    href={{
-                      pathname: '/questions',
-                      query: {
-                        itemTitle: item?._source?.sujetQuestion,
-                        itemQuestion: item?._source?.descriptionQuestion,
-                        itemReponse: item?._source?.descriptionReponse,
-                      },
-                    }}
-                    as={'/detailsQuestion'}
-                    onClick={() => {
-                      if (typeof window != 'undefined') {
-                        window.location.reload()
-                      }
-                    }}
+              return (
+                <Link
+                  key={i}
+                  exact
+                  className='item d-flex align-items-center py-3 px-1'
+                  passHref={true}
+                  href={{
+                    pathname: '/questions',
+                    query: {
+                      itemTitle: item?._source?.sujetQuestion,
+                      itemQuestion: item?._source?.descriptionQuestion,
+                      itemReponse: item?._source?.descriptionReponse,
+                    },
+                  }}
+                  as={'/detailsQuestion'}
+                  onClick={() => {
+                    if (typeof window != 'undefined') {
+                      window.location.reload()
+                    }
+                  }}
+                >
+                  <a
+                    className={`${styles.item} d-flex align-items-center py-3 px-1 text-decoration-none`}
                   >
-                    <a
-                        className={`${styles.item} d-flex align-items-center py-3 px-1 text-decoration-none`}
-                    >
                     {item?._source?.sujetQuestion}
                   </a>
                 </Link>
