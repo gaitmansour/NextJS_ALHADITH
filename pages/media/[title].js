@@ -23,6 +23,7 @@ import ScrollButton from '../../components/ScrollButton'
 import Body from '../../components/Body'
 import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import SimpleListMedia from '../../components/_UI/SimpleListMedia'
+import SectionTitle from '../../components/_UI/SectionTitle'
 
 function Media(props) {
   //const {state} = useLocation();
@@ -271,34 +272,6 @@ function Media(props) {
                   })}
                 </Slider>
               </div>
-              <div
-                className='modal fade'
-                id='SliderVideoListModal'
-                tabIndex='-1'
-                aria-hidden='true'
-              >
-                <div className='modal-dialog modal-lg modal-dialog-centered'>
-                  <div className='modal-content'>
-                    <div className='modal-header'>
-                      <button
-                        type='button'
-                        className='btn-close'
-                        data-bs-dismiss='modal'
-                        aria-label='Close'
-                      ></button>
-                    </div>
-                    <div className='modal-body p-0'>
-                      <iframe
-                        src='https://www.youtube.com/'
-                        title='YouTube video player'
-                        frameBorder='0'
-                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         ) : (
@@ -312,7 +285,13 @@ function Media(props) {
           title === 'الدروس التفاعلية' ||
           title === 'الدروس التمهيدية' ||
           title === 'الدروس البيانية' ? (
-            <SimpleListMedia data={sideDataDoroussHaditha} />
+            <>
+              <SectionTitle
+                className={`${styles.titleSection} mb-3 text-end`}
+                title={'الدروس الحديثية'}
+              />
+              <SimpleListMedia data={sideDataDoroussHaditha} />
+            </>
           ) : null}
           {<SimpleListMedia data={sideData11} />}
         </div>

@@ -141,7 +141,7 @@ const SearchInput = (props) => {
         <>
           <input
             value={props.input}
-            className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch}`}
+            className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch} `}
             placeholder={'البحث في منصة الحديث النبوي الشريف'}
             //color={'red'}
             style={{ color: 'red' }}
