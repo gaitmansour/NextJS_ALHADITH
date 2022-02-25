@@ -320,7 +320,7 @@ const SearchPage = (props) => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
       if (event.keyCode === 13) {
-        handleSearch(input)
+        handleClickSearch()
       }
     }
     if (elementRef && elementRef?.current) {
@@ -337,6 +337,7 @@ const SearchPage = (props) => {
     }
   }, [
     input,
+    EvaluationSource,
     ChoiceTopic,
     ChoiceSource,
     ChoiceNarrator,

@@ -121,6 +121,7 @@ const SearchSection = (props) => {
       }
     })
   }
+  console.log('mawdoaa', ChoiceCategory)
 
   //const history = useHistory()
   let history = useRouter()
@@ -186,6 +187,7 @@ const SearchSection = (props) => {
     }
   }, [
     input,
+    EvaluationSource,
     ChoiceTopic,
     ChoiceSource,
     ChoiceNarrator,
