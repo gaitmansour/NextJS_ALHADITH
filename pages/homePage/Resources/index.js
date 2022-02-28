@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Link from 'next/link'
 import _ from 'lodash'
-import { getResourcesData, base_url } from '../../../endpoints'
+import {getResourcesData, base_url, getMenuByName} from '../../../endpoints'
 import FetchAPI from '../../../API'
 import Loading from '../../../components/_UI/Loading'
 import Cards from '../../../components/_UI/Cards'
@@ -86,7 +86,30 @@ const Resources = () => {
   const [dataAPI, setDataAPI] = useState({})
   const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
   const url = getResourcesData(getLanguage)
-
+  const getDataMenu = async (x) => {
+    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    FetchAPI(getMenuByName(x)).then((data) => {
+      if (data.success) {
+        console.log('dataSuccess')
+        console.log(data?.data[0])
+        localStorage.setItem(
+            'categorieTitle',
+            JSON.stringify({
+              tidChild:data?.data[0]?.tid,
+              parent: data?.data[0]?.parent_target_id_1,
+              child: data?.data[0]?.name_1,
+              contenuArticle: data?.data[0]?.field_contenu_default !== ''
+                  ? data?.data[0]?.field_contenu_default
+                  : data?.data[0]?.name_1,
+            })
+        )
+        localStorage.setItem(
+            'tid',
+            JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
@@ -131,6 +154,7 @@ const Resources = () => {
                       fromNav: {},
                       selectedItem: title,
                       from: 'ressources',
+                      contenuArticle:""
                     })
                   )
                 })
@@ -149,7 +173,7 @@ const Resources = () => {
                         field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
                           ? '/Almoshaf'
                           : field_lien[0]?.uri.slice(9),
-                      query: { from: 'ressources', selectedItem: title },
+                      query: { from: 'ressources', selectedItem: title,contenuArticle:"" },
                     }}
                     as={
                       field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
@@ -157,7 +181,17 @@ const Resources = () => {
                         : field_lien[0]?.uri.slice(9)
                     }
                   >
-                    <a className='text-decoration-none'>
+                    <a className='text-decoration-none' onClick={()=>{
+                      getDataMenu(title)
+                      /*localStorage.setItem(
+                          'categorieTitle',
+                          JSON.stringify({
+                            parent: 'موارد',
+                            child: title,
+                            contenuArticle: title
+                          })
+                      )*/
+                    }}>
                       <div className={`${styles.boxImg} m-auto`}>
                         <Image
                           loader={myLoader}
