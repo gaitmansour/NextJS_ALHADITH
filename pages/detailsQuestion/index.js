@@ -15,8 +15,11 @@ const Questions = () => {
   const itemQuestion = useRouter()?.query?.itemQuestion
   const itemReponse = useRouter()?.query?.itemReponse
   const itemTitle = useRouter()?.query?.itemTitle
+  const item_id = useRouter()?.query?.itemId
   const [dataQuestion, setDataQuestion] = useState([])
   const urlSearchQuestion = searchQuestion()
+
+  console.log('id', item_id)
 
   const handleSearchQuestion = async () => {
     const data = {
@@ -109,7 +112,8 @@ const Questions = () => {
           <p className={`${styles.p} ${styles.tiitle}`}>مواد ذات صلة</p>
           <div className={styles.SimpleList}>
             {dataQuestion?.hits?.hits?.map((item, i) => {
-              return (
+              console.log('id_item____', item?._id)
+              return item_id !== item?._id ? (
                 <Link
                   key={i}
                   exact
@@ -136,7 +140,7 @@ const Questions = () => {
                     {item?._source?.sujetQuestion}
                   </a>
                 </Link>
-              )
+              ) : null
             })}
           </div>
         </div>
