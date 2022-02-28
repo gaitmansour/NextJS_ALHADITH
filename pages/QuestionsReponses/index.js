@@ -345,7 +345,7 @@ const ListQuestions = (props) => {
               alignItems: 'center',
             }}
             onClick={() => handleShowHide()}
-            className={`${styles.btnquestion} btnquestion`}
+            className={`${styles.btnquestion} btnquestion mb-3`}
           >
             {!showForum ? (
               <div
@@ -365,7 +365,7 @@ const ListQuestions = (props) => {
                 />
               </div>
             ) : (
-              <p className='fw-bold'>إغلاق</p>
+              <p className={`fw-bold pt-2 ${styles.question}`}>إغلاق</p>
             )}
           </button>
           {showForum ? (

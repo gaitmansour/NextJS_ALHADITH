@@ -30,7 +30,7 @@
     display: flex;
     justify-content: right;
 }
-.paragraph .question{
+ .question{
     font-size: 20px !important;
 }
 .questionDesc{
