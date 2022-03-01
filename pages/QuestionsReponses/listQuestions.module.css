@@ -33,6 +33,13 @@
  .question{
     font-size: 20px !important;
 }
+.descQuestion{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  width: 60%;
+}
 .questionDesc{
     color: #000;
 }
@@ -58,6 +65,7 @@
 .dateParagraph {
     text-align: left;
     font-family: 'Almarai', sans-serif !important;
+    white-space: nowrap;
 }
 .pagination {
     padding:10px

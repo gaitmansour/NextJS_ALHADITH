@@ -207,6 +207,17 @@ const SearchSection = (props) => {
     getDataCategory()
   }, [])
 
+  console.log(
+    'data search',
+    input,
+    EvaluationSource,
+    ChoiceTopic,
+    ChoiceSource,
+    ChoiceNarrator,
+    ChoiceDegree,
+    ChoiceCategory
+  )
+
   return (
     <div
       ref={elementRef}

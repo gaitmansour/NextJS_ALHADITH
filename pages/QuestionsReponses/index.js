@@ -317,9 +317,14 @@ const ListQuestions = (props) => {
                 {'تاريخ الاجابة: ' +
                   Moment(item?._source?.dateHeureReponse).format('DD-MM-YYYY')}
               </p>
-              <span className='text-success text-decoration-underline'>
-                لمعرفة الإجابة
-              </span>
+              <div>
+                <p className={`${styles.descQuestion}`}>
+                  {item?._source?.descriptionReponse}
+                </p>
+                <span className='text-success text-decoration-underline'>
+                  لمعرفة الإجابة
+                </span>
+              </div>
             </a>
           </Link>
         )}
