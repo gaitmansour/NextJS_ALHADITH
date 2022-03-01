@@ -4,7 +4,7 @@ import {Backgrounds} from '../../../assets'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import _ from 'lodash'
-import {getCarousel, base_url, getSlider, getMenuByName} from '../../../endpoints'
+import {getCarousel, base_url, getSlider, getMenuByName, getArticleById} from '../../../endpoints'
 import FetchAPI from '../../../API'
 import {Carousel} from 'react-bootstrap'
 import Loading from '../../../components/_UI/Loading'
@@ -112,29 +112,43 @@ const CarouselHome = (props) => {
             </div>
         )
     }
-    const getDataMenu = async (x) => {
-        console.log('xxxxxxxxxxxxxxxxxxxxxx',x)
-         FetchAPI(getMenuByName(x)).then((data) => {
+
+    const getData = async (x) => {
+        return FetchAPI(getArticleById(x)).then((data) => {
             if (data.success) {
-                console.log('dataSuccess')
-                console.log(data?.data[0])
-                localStorage.setItem(
-                    'categorieTitle',
-                    JSON.stringify({
-                        tidChild:data?.data[0]?.tid,
-                        parent: data?.data[0]?.parent_target_id_1,
-                        child: data?.data[0]?.name_1,
-                        contenuArticle:  data?.data[0]?.field_contenu_default !== ''
-                            ? data?.data[0]?.field_contenu_default
-                            : data?.data[0]?.name_1,
-                    })
-                )
-                localStorage.setItem(
-                    'tid',
-                    JSON.stringify(data?.data[0]?.parent_target_id)
-                )
+                console.log("++++++++++++++++++++++ included")
+
+                let array = data?.data?.included.filter((item) => item.type === "taxonomy_term--alahadyt")
+                console.log(array[0]?.attributes?.name)
+                return array[0]?.attributes?.name
             }
         })
+    }
+    const getDataMenu = async (x) => {
+        getData(x).then((r)=>{
+            FetchAPI(getMenuByName(r)).then((data) => {
+                if (data.success) {
+                    console.log('dataSuccess')
+                    console.log(data?.data[0])
+                    localStorage.setItem(
+                        'categorieTitle',
+                        JSON.stringify({
+                            tidChild: data?.data[0]?.tid,
+                            parent: data?.data[0]?.parent_target_id_1,
+                            child: data?.data[0]?.name_1,
+                            contenuArticle: data?.data[0]?.field_contenu_default !== ''
+                                ? data?.data[0]?.field_contenu_default
+                                : x,
+                        })
+                    )
+                    localStorage.setItem(
+                        'tid',
+                        JSON.stringify(data?.data[0]?.parent_target_id)
+                    )
+                }
+            })
+        })
+
     }
     const myLoader = ({src, width, quality}) => {
         return `${base_url}/${src}`

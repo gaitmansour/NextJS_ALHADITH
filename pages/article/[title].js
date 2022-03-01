@@ -106,12 +106,16 @@ export default function ArticlePage(props) {
 
     useEffect(() => {
         getDataMenu(title).then((r) => {
-            console.log('dataValue',dataValue.child)
-            console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
-            getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+            console.log('useEffect',title)
+            if(r) {
+                getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+            }else{
+                getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
+            }
             //handleSideData(router)
         })
-       // getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
+
+        //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
 
         getData()
 
