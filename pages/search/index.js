@@ -187,7 +187,7 @@ const SearchPage = (props) => {
         : '',
       idSource:
         src?.label != ''
-          ? src.value
+          ? src?.value
           : ChoiceSource
           ? JSON.stringify(ChoiceSource.value)
           : '',
