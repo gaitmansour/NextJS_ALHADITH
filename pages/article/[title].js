@@ -62,7 +62,7 @@ export default function ArticlePage(props) {
         FetchAPI(urlSlider).then((data) => {
             if (data.success) {
                 setdataSlider(data?.data)
-                console.log('data?.data =>', data?.data)
+                console.log('data?.data =>',name, tid, parent_target)
             }
         })
     }
@@ -105,11 +105,18 @@ export default function ArticlePage(props) {
     let route = useRouter()
 
     useEffect(() => {
-        getDataMenu(dataValue.child).then((r) => {
-            console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
-            getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+        getDataMenu(title).then((r) => {
+            console.log('useEffect',title)
+            if(r) {
+                getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+            }else{
+                getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
+            }
             //handleSideData(router)
         })
+
+        //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
+
         getData()
 
     }, [route])
@@ -130,7 +137,6 @@ export default function ArticlePage(props) {
     useEffect(() => {
 
         getItemsMenu(TID)
-
     }, [TID])
 
     const data = [

@@ -32,7 +32,7 @@ export const getVideo = (title) =>
 // export const getArticleById = title =>
 //   `${api_url}/article?fields[node--article]=title,body&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${title}&include=field_tags.vid`;
 export const getArticleById = (title) =>
-  `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image`
+  `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image,field_alqsm.vid`
 export const getOurPartners = (langcode, value = 'شركاؤنا') =>
   `${api_url}/section?include=field_icone&fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}`
 export const getSideArticle = (name, tid, parent_target) =>
