@@ -154,11 +154,11 @@ const SearchSection = (props) => {
             search: '',
             query: {
               from: 'section',
-              topic: ChoiceCategory.label,
-              content: ChoiceDegree.label,
-              source: ChoiceSource.label,
+              topic: ChoiceCategory?.label,
+              content: ChoiceDegree?.label,
+              source: ChoiceSource?.label,
               sourceHokm: EvaluationSource,
-              narrator: ChoiceNarrator.label,
+              narrator: ChoiceNarrator?.label,
               word: input,
             },
           },
@@ -206,6 +206,17 @@ const SearchSection = (props) => {
     getDataTopic()
     getDataCategory()
   }, [])
+
+  console.log(
+    'data search',
+    input,
+    EvaluationSource,
+    ChoiceTopic,
+    ChoiceSource,
+    ChoiceNarrator,
+    ChoiceDegree,
+    ChoiceCategory
+  )
 
   return (
     <div

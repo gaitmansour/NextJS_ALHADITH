@@ -168,21 +168,29 @@ const SearchPage = (props) => {
     })
   }
   console.log('masderlhokem', EvaluationSource)
-  const handleSearch = async (word, topic, degree, src, nrs) => {
+  const handleSearch = async (word, topic, evSrc, degree, src, nrs) => {
+    console.log('evalua_source', evSrc)
+    console.log('choice_source', ChoiceSource)
+    console.log('id_source', src)
     const data = {
       content: word,
-      evaluationSource: hokm ? hokm : EvaluationSource ? EvaluationSource : '',
+      evaluationSource: evSrc
+        ? evSrc
+        : EvaluationSource
+        ? EvaluationSource
+        : '',
       idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
       idNarrator: nrs
         ? nrs.value
         : ChoiceNarrator
         ? JSON.stringify(ChoiceNarrator.value)
         : '',
-      idSource: src
-        ? src.value
-        : ChoiceSource
-        ? JSON.stringify(ChoiceSource.value)
-        : '',
+      idSource:
+        src?.label != ''
+          ? src?.value
+          : ChoiceSource
+          ? JSON.stringify(ChoiceSource.value)
+          : '',
       idTopic: '',
       idCategorie: topic
         ? JSON.stringify(topic.value)
@@ -196,6 +204,7 @@ const SearchPage = (props) => {
     }
     console.log('data---------------------------')
     console.log(data)
+
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
         setdataSearch(data?.data)
@@ -251,10 +260,13 @@ const SearchPage = (props) => {
       handleSearch(
         word,
         ArrayCategory[0],
+        hokm,
         ArrayDegree[0],
         ArraySource[0],
         ArrayNars[0]
       )
+      console.log('arry_so =>>', ArraySource[0])
+      console.log('source =>', source)
     }
   }
 

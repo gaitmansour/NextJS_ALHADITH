@@ -317,9 +317,14 @@ const ListQuestions = (props) => {
                 {'تاريخ الاجابة: ' +
                   Moment(item?._source?.dateHeureReponse).format('DD-MM-YYYY')}
               </p>
-              <span className='text-success text-decoration-underline'>
-                لمعرفة الإجابة
-              </span>
+              <div>
+                <p className={`${styles.descQuestion}`}>
+                  {item?._source?.descriptionReponse}
+                </p>
+                <span className='text-success text-decoration-underline'>
+                  لمعرفة الإجابة
+                </span>
+              </div>
             </a>
           </Link>
         )}
@@ -345,7 +350,7 @@ const ListQuestions = (props) => {
               alignItems: 'center',
             }}
             onClick={() => handleShowHide()}
-            className={`${styles.btnquestion} btnquestion`}
+            className={`${styles.btnquestion} btnquestion mb-3`}
           >
             {!showForum ? (
               <div
@@ -365,7 +370,7 @@ const ListQuestions = (props) => {
                 />
               </div>
             ) : (
-              <p className='fw-bold'>إغلاق</p>
+              <p className={`fw-bold pt-2 ${styles.question}`}>إغلاق</p>
             )}
           </button>
           {showForum ? (
