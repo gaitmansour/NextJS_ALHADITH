@@ -4,7 +4,7 @@ import {Backgrounds} from '../../../assets'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import _ from 'lodash'
-import {getCarousel, base_url, getSlider, getMenuByName, getArticleById} from '../../../endpoints'
+import {getCarousel, base_url, getSlider, getMenuByName, getArticleById, getArticleByIdName} from '../../../endpoints'
 import FetchAPI from '../../../API'
 import {Carousel} from 'react-bootstrap'
 import Loading from '../../../components/_UI/Loading'
@@ -114,7 +114,7 @@ const CarouselHome = (props) => {
     }
 
     const getData = async (x) => {
-        return FetchAPI(getArticleById(x)).then((data) => {
+        return FetchAPI(getArticleByIdName(x)).then((data) => {
             if (data.success) {
                 console.log("++++++++++++++++++++++ included")
 
