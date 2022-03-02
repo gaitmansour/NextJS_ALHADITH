@@ -12,16 +12,6 @@ const PageTitle = (props) => {
       }}
     >
       <div>
-        {/* <div
-          style={{
-            width: 8,
-            right: 16,
-            height: 54,
-            borderRadius: 6,
-            position: 'absolute',
-            backgroundColor: '#FBBF31',
-          }}
-        /> */}
         <h1
           className={`${styles.title} title m-0`}
           style={{
