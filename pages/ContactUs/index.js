@@ -63,7 +63,7 @@ const ContactUs = () => {
               ></textarea>
             </div>
             <button type='submit' className='btn btn-success mt-4'>
-              موافق
+              {'إرسال'}
             </button>
           </form>
         </>
