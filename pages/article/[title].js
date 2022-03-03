@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
 import {
-    base_url,
-    getArticleById,
-    getMenuByName,
-    getSideArticle,
-    getSideItems,
-    getTopic,
+  base_url,
+  getArticleById,
+  getMenuByName,
+  getSideArticle,
+  getSideItems,
+  getTopic,
 } from '../../endpoints'
 import FetchAPI from '../../API'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import Moment from 'moment'
 import styles from './article.module.css'
 import Loading from '../../components/_UI/Loading'
@@ -23,19 +23,22 @@ import ListAhadith from '../../components/_UI/ListAhadith'
 import loadNamespaces from 'next-translate/loadNamespaces'
 import Image from 'next/image'
 import Link from 'next/link'
-import {Icons} from '../../assets'
+import { Icons } from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
 
 export default function ArticlePage(props) {
-    let params = useRouter()?.query
-    const title = useRouter()?.query?.title
-    let dataValue =
-        typeof window !== 'undefined' &&
-        JSON.parse(localStorage.getItem('categorieTitle'))
-    let contenuArticle = params?.contenuArticle !== "" || dataValue.contenuArticle !== "" ? params?.contenuArticle || dataValue.contenuArticle : title
-    const myLoader = ({src, width, quality}) => {
-        return `${base_url}/${src}`
-    }
+  let params = useRouter()?.query
+  const title = useRouter()?.query?.title
+  let dataValue =
+    typeof window !== 'undefined' &&
+    JSON.parse(localStorage.getItem('categorieTitle'))
+  let contenuArticle =
+    params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
+      ? params?.contenuArticle || dataValue.contenuArticle
+      : title
+  const myLoader = ({ src, width, quality }) => {
+    return `${base_url}/${src}`
+  }
 
     const [dataAPI, setDataAPI] = useState({})
     const [dataTags, setDataTags] = useState([])
@@ -76,33 +79,33 @@ export default function ArticlePage(props) {
         })
     }
 
-    const getItemsMenu = async (x) => {
-        return FetchAPI(getSideItems(x)).then((data) => {
-            if (data.success) {
-                console.log("data------------------------items")
-                console.log(data?.data)
-                const items = data?.data
-                    ?.sort((a, b) => {
-                        return b.weight - a.weight
-                    })
-                    .map((item, index) => {
-                        return {
-                            label: item.name,
-                            title: item.name,
-                            tID: item.tid,
-                            path: `article/${item.name}`,
-                            parentLabel: item.parent_target_id_1,
-                            parentID: item.parent_target_id,
-                            field_contenu_default: item.field_contenu_default
-                        }
-                    })
-                setItems(items)
-                return items
+  const getItemsMenu = async (x) => {
+    return FetchAPI(getSideItems(x)).then((data) => {
+      if (data.success) {
+        console.log('data------------------------items')
+        console.log(data?.data)
+        const items = data?.data
+          ?.sort((a, b) => {
+            return b.weight - a.weight
+          })
+          .map((item, index) => {
+            return {
+              label: item.name,
+              title: item.name,
+              tID: item.tid,
+              path: `article/${item.name}`,
+              parentLabel: item.parent_target_id_1,
+              parentID: item.parent_target_id,
+              field_contenu_default: item.field_contenu_default,
             }
-        })
-    }
-    let router = useRouter().query
-    let route = useRouter()
+          })
+        setItems(items)
+        return items
+      }
+    })
+  }
+  let router = useRouter().query
+  let route = useRouter()
 
     useEffect(() => {
         getDataMenu(title).then((r) => {
@@ -121,155 +124,158 @@ export default function ArticlePage(props) {
 
     }, [route])
 
+  useEffect(() => {
+    FetchAPI(`${urlAhadith}/${CodeTopic}`).then((data) => {
+      if (data.success) {
+        setDataAhadith(data?.data)
+      }
+    })
+  }, [])
 
-    useEffect(() => {
-        FetchAPI(`${urlAhadith}/${CodeTopic}`).then((data) => {
-            if (data.success) {
-                setDataAhadith(data?.data)
-            }
-        })
-    }, [])
+  let TID =
+    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
+  console.log('TID:--------------------', TID)
+  useEffect(() => {
+    getItemsMenu(TID)
+  }, [TID])
 
-    let TID =
-        typeof window !== 'undefined' &&
-        JSON.parse(localStorage.getItem("tid"))
-    console.log('TID:--------------------', TID)
-    useEffect(() => {
+  const data = [
+    {
+      title: 'الرئيسية',
+      path: '',
+    },
+    {
+      title: dataValue.parent,
+      path: '',
+    },
+    {
+      title: dataValue.child,
+      path: '#',
+    },
+  ]
 
-        getItemsMenu(TID)
-    }, [TID])
-
-    const data = [
-        {
-            title: 'الرئيسية',
-            path: '',
-        },
-        {
-            title: dataValue.parent,
-            path: '',
-        },
-        {
-            title: dataValue.child,
-            path: '#',
-        },
-    ]
-
-    console.log('data-----------', dataValue)
-    if (_.isEmpty(dataAPI)) {
-        return (
-            <div className='d-flex align-items-center justify-content-center py-5'>
-                <Loading/>
-            </div>
-        )
-    }
-    // if (dataAPI?.data[0]?.attributes?.body?.processed.includes("src=")) {
-    //     var str = dataAPI?.data[0]?.attributes?.body?.processed.substr(dataAPI?.data[0]?.attributes?.body?.processed.lastIndexOf("src=")).split(' ')[0].slice(5)
-    // }
-
-    let contentMeta = dataAPI?.data[0]?.attributes?.body?.summary
+  console.log('data-----------', dataValue)
+  if (_.isEmpty(dataAPI)) {
     return (
-        <TemplateArticle
-            {...props}
-            ListBreadcrumb={data}
-            titlePage={contenuArticle}
-            createdArticle={!!dataAPI?.data[0]?.attributes?.created}
-            dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format(
-                'DD-MM-YYYY'
-            )}
-        >
-            <Body
-                className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
-            >
-                <ScrollButton/>
-                <div className={`${styles.articleContent} flex-fill`}>
-                    <PageSummary
-                        className={`${styles.summ} summ my-3`}
-                        summary={dataAPI?.data[0]?.attributes?.body?.summary}
-                    />
-                    {/* <PageTitleSecond className="page-title-second py-3" title="مبادرة ملكية لتعميم الحديث النبوي الشريف الصحيح على نطاق واسع" /> */}
-                    {dataAPI?.included &&
-                        dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
-                            ?.url && (
-                            <div className={`${styles.sectionImage}`}>
-                                <Image
-                                    src={
-                                        dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
-                                            ?.uri?.url
-                                    }
-                                    className='m-auto w-100 my-4'
-                                    objectFit='cover'
-                                    width={850}
-                                    height={500}
-                                    loader={myLoader}
-                                    alt={
-                                        dataAPI?.data[0]?.relationships?.field_image?.data?.meta
-                                            ?.alt
-                                    }
-                                />
-                                <span className='my-3'>
+      <div className='d-flex align-items-center justify-content-center py-5'>
+        <Loading />
+      </div>
+    )
+  }
+  // if (dataAPI?.data[0]?.attributes?.body?.processed.includes("src=")) {
+  //     var str = dataAPI?.data[0]?.attributes?.body?.processed.substr(dataAPI?.data[0]?.attributes?.body?.processed.lastIndexOf("src=")).split(' ')[0].slice(5)
+  // }
+
+  let contentMeta = dataAPI?.data[0]?.attributes?.body?.summary
+  return (
+    <TemplateArticle
+      {...props}
+      ListBreadcrumb={data}
+      titlePage={contenuArticle}
+      createdArticle={!!dataAPI?.data[0]?.attributes?.created}
+      dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format(
+        'DD-MM-YYYY'
+      )}
+    >
+      <Body
+        className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
+      >
+        <ScrollButton />
+        <div className={`${styles.articleContent} flex-fill`}>
+          <PageSummary
+            className={`${styles.summ} summ my-3`}
+            summary={dataAPI?.data[0]?.attributes?.body?.summary}
+          />
+          {/* <PageTitleSecond className="page-title-second py-3" title="مبادرة ملكية لتعميم الحديث النبوي الشريف الصحيح على نطاق واسع" /> */}
+          {dataAPI?.included &&
+            dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
+              ?.url && (
+              <div className={`${styles.sectionImage}`}>
+                <Image
+                  src={
+                    dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
+                      ?.uri?.url
+                  }
+                  className='m-auto w-100 my-4'
+                  objectFit='cover'
+                  width={850}
+                  height={500}
+                  loader={myLoader}
+                  alt={
+                    dataAPI?.data[0]?.relationships?.field_image?.data?.meta
+                      ?.alt
+                  }
+                />
+                <span className='my-3'>
                   {
-                      dataAPI?.data[0]?.relationships?.field_image?.data?.meta
-                          ?.alt
+                    dataAPI?.data[0]?.relationships?.field_image?.data?.meta
+                      ?.alt
                   }
                 </span>
-                            </div>
-                        )}
-                    <div
-                        className={styles.desc}
-                        dangerouslySetInnerHTML={{
-                            __html: dataAPI?.data[0]?.attributes?.body?.value,
-                        }}
-                    />
-                    <div className={`${styles.articleTags} d-flex `}>
-                        {dataTags &&
-                            dataTags?.map((tag, index) => {
-                                return (
-                                    <Link
-                                        passHref
-                                        key={index.toString()}
-                                        exact
-                                        activeClassName='nav-bar-active'
-                                        href={{
-                                            pathname: `/articlesByTag/${tag?.attributes?.drupal_internal__tid}`,
-                                            search: '',
-                                            hash: '',
-                                            query: {title: tag?.attributes?.drupal_internal__tid},
-                                        }}
-                                        as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
-                                    >
-                                        <a style={{textDecoration: 'none'}} onClick={() => {
-                                            localStorage.setItem('tagTitle', JSON.stringify(tag?.attributes?.drupal_internal__tid))
-                                        }}>
-                                            <Badgs
-                                                className={`${styles.badgTag}`}
-                                                key={index}
-                                                tags={tag?.attributes?.name}
-                                            />
-                                        </a>
-                                    </Link>
-                                )
-                            })}
-                    </div>
-                </div>
-                {items[0]?.path === 'article/تعریف' ? (
-                    <div className={styles.slider} style={{width: '30%'}}>
-                        <ListAhadith data={dataAhadith}/>
-                        <SliderList className='pt-5' data={dataSlider} loader={myLoader}/>
-                    </div>
-                ) : (
-                    <div
-                        className={` ${styles.slider} side-bar px-3`}
-                        style={{width: '30%'}}
+              </div>
+            )}
+          <div
+            className={styles.desc}
+            dangerouslySetInnerHTML={{
+              __html: dataAPI?.data[0]?.attributes?.body?.value,
+            }}
+          />
+          <div className={`${styles.articleTags} d-flex `}>
+            {dataTags &&
+              dataTags?.map((tag, index) => {
+                return (
+                  <Link
+                    passHref
+                    key={index.toString()}
+                    exact
+                    activeClassName='nav-bar-active'
+                    href={{
+                      pathname: `/articlesByTag/${tag?.attributes?.drupal_internal__tid}`,
+                      search: '',
+                      hash: '',
+                      query: { title: tag?.attributes?.drupal_internal__tid },
+                    }}
+                    as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
+                  >
+                    <a
+                      style={{ textDecoration: 'none' }}
+                      onClick={() => {
+                        localStorage.setItem(
+                          'tagTitle',
+                          JSON.stringify(tag?.attributes?.drupal_internal__tid)
+                        )
+                      }}
                     >
-                        {!items ? (
-                            <SimpleList data={dataSide}/>
-                        ) : (
-                            <SimpleList data={items}/>
-                        )}
-                        <SliderList className='pt-5' data={dataSlider} loader={myLoader}/>
-                    </div>
-                )}
-            </Body>
-        </TemplateArticle>
-    )
+                      <Badgs
+                        className={`${styles.badgTag}`}
+                        key={index}
+                        tags={tag?.attributes?.name}
+                      />
+                    </a>
+                  </Link>
+                )
+              })}
+          </div>
+        </div>
+        {items[0]?.path === 'article/تعریف' ? (
+          <div className={styles.slider} style={{ width: '30%' }}>
+            <ListAhadith data={dataAhadith} />
+            <SliderList className='pt-5' data={dataSlider} loader={myLoader} />
+          </div>
+        ) : (
+          <div
+            className={` ${styles.slider} side-bar px-3`}
+            style={{ width: '30%' }}
+          >
+            {!items ? (
+              <SimpleList data={dataSide} />
+            ) : (
+              <SimpleList data={items} />
+            )}
+            <SliderList className='pt-5' data={dataSlider} loader={myLoader} />
+          </div>
+        )}
+      </Body>
+    </TemplateArticle>
+  )
 }

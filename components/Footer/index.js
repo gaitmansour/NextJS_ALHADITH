@@ -122,12 +122,19 @@ const Footer = () => {
                 >
                   {'البريد الالكتروني'}
                 </p>
-                <p
+                {/* <p
                   className={`${styles.FooterLink}FooterLink email`}
                   style={{ color: '#fff' }}
                 >
                   {'contact@hadithm6.ma'}
-                </p>
+                </p> */}
+                <a
+                  className={`${styles.FooterLink}FooterLink email`}
+                  style={{ color: '#fff' }}
+                  href='mailto:contact@hadithm6.ma'
+                >
+                  {'contact@hadithm6.ma'}
+                </a>
               </ul>
             </div>
             <div

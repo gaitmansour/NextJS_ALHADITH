@@ -1,13 +1,15 @@
 import React from 'react'
-import styles from './PageSummary.module.css';
+import styles from './PageSummary.module.css'
 
 const PageSummary = (props) => {
-    const className = props?.className ? props.className : ""
-    return (
-        <div className={`${styles.SummaryPage} SummaryPage px-2 ${className}`}>
-            <summary className={`${styles.summary} summary m-0`}>{props?.summary || ""}</summary>
-        </div>
-    )
+  const className = props?.className ? props.className : ''
+  return (
+    <div className={`${styles.SummaryPage} SummaryPage ${className}`}>
+      <summary className={`${styles.summary} summary m-0`}>
+        {props?.summary || ''}
+      </summary>
+    </div>
+  )
 }
 
 export default PageSummary
