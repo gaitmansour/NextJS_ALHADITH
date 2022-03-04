@@ -319,7 +319,7 @@ const ListQuestions = (props) => {
               </p>
               <div>
                 <p className={`${styles.descQuestion}`}>
-                  {item?._source?.descriptionReponse}
+                  {item?._source?.descriptionReponse?.substring(0, 100)}
                 </p>
                 <span className='text-success text-decoration-underline'>
                   لمعرفة الإجابة
