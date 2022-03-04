@@ -59,7 +59,7 @@ const ListQuestions = (props) => {
   const handleClose = () => setShow(false)
   const handleCloseModalQuestions = () => {
     setShowModalQuestion(false)
-    setMail('')
+    // setMail('')
   }
   const handleShow = () => setShow(true)
   const handleShowModalQuestions = () => setShowModalQuestion(true)
@@ -513,7 +513,7 @@ const ListQuestions = (props) => {
                       </button>
                     </div>
 
-                    {output && output?.hits?.hits?.length > 0 ? (
+                    {output && output?.hits?.hits?.length > 0 && (
                       <div className='card w-100 mb-3'>
                         <div
                           className={`${styles.CardQuestion} card-body Card-question`}
@@ -577,16 +577,6 @@ const ListQuestions = (props) => {
                           </div>
                         </div>
                       </div>
-                    ) : (
-                      <div className='d-flex align-items-center justify-content-center'>
-                        <div className='NotFound404 d-flex flex-column align-items-center justify-content-center mt-lg-11'>
-                          <br />
-                          <h4>{'لا توجد نتائج توافق معايير البحث'}</h4>
-                          <p className='fw-100 link-primary'>
-                            {'يرجي طرح سؤالك أو محاولة البحث في الموقع'}
-                          </p>
-                        </div>
-                      </div>
                     )}
                     <div className='mb-3'>
                       <label
@@ -625,10 +615,10 @@ const ListQuestions = (props) => {
                       )}
                     </div>
                     <ReCAPTCHA
-                      sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
-                      secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
-                      /*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                                                                                        secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
+                      // sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
+                      // secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
+                      sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+                      secretkey='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
                       className='captcha'
                       onChange={onChange}
                     />

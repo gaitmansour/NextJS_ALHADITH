@@ -219,9 +219,9 @@ const Resources = () => {
                             : 'flex-row'
                         } button`}
                       >
-                        <i className='fas fa-long-arrow-alt-left text-white' />
+                        <i className='fas fa-long-arrow-alt-left text-white mx-2' />
                         <p
-                          className='m-0'
+                          className='m-0 mx-2'
                           style={{
                             textAlign: 'justify !important',
                             textJustify: 'inter-word !important',
