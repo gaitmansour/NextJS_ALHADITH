@@ -39,8 +39,7 @@ const NavBar = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const isReSizeDropdown = document.getElementsByClassName("reSizeDropdown");
-  const isItemDropdown = document.getElementsByClassName("item-dropdown");
+  const isItemDropdown = document?.getElementsByClassName("item-dropdown");
   const resizeHeightIsScrollable = `${visible ? "height-100" : "height-68"}`;
 
   const scroll = () => ref && ref.current && ref.current.scrollIntoView({ behavior: "smooth" });
@@ -350,7 +349,7 @@ const NavBar = (props) => {
             </div>
           </>
         )}
-        <div className={`collapse navbar-collapse flex-grow-0 align-self-stretch w-auto itemNav ${resizeHeightIsScrollable}`} id="navbarNav">
+        <div className={`collapse navbar-collapse flex-grow-0 align-self-stretch w-auto ${resizeHeightIsScrollable}`} id="navbarNav">
           <ul className={`menu-principal navbar-nav align-items-center pr-4 align-self-stretch ${isDropdownShown ? "reSizeDropdown" : ""}`}>{renderLinksMenu()}</ul>
         </div>
         <div className={`bg-white global-menu position-absolute px-4 ${showMenu ? "global-menu-show" : "global-menu-hide"} overflow-hidden`}>
