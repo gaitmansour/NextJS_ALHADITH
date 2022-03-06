@@ -108,20 +108,21 @@
 
 #navbarNav::after {
     left: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
 }
 
-#navbarNav::before {
+/* #navbarNav::before {
     right: 0;
-}
+    z-index: 9;
+    background: linear-gradient(-90deg, rgba(18, 18, 18,1) 0%, rgba(18, 18, 18,0) 100%);
+} */
 
 #navbarNav::after, #navbarNav::before {
     content: "";
-    width: 80px;
+    width: 100px;
     height: 100%;
     top: 0;
     position: absolute;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
 }
 
 

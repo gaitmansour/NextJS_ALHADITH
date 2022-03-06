@@ -17,6 +17,8 @@ import SearchInput from "../../Forms/SearchInput";
 import CustomModal from "../../_UI/Modal";
 import { useRouter } from "next/router";
 
+let isItemDropdown = null;
+
 const NavBar = (props) => {
   const ref = useRef();
   const divref = useRef();
@@ -39,7 +41,10 @@ const NavBar = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const isItemDropdown = document?.getElementsByClassName("item-dropdown");
+  if (typeof window !== "undefined") {
+    isItemDropdown = document?.getElementsByClassName("item-dropdown");
+  }
+
   const resizeHeightIsScrollable = `${visible ? "height-100" : "height-68"}`;
 
   const scroll = () => ref && ref.current && ref.current.scrollIntoView({ behavior: "smooth" });
