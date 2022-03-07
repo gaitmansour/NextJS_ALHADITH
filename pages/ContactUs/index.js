@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Body from '../../components/Body'
 import TemplateArticle from '../../components/TemplateArticle'
 import styles from './ContactUs.module.css'
+import CustomModal from '../../components/_UI/Modal'
 
 const ContactUs = () => {
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = (e) => {
+    e.preventDefault()
+    setShow(true)
+  }
   const data = [
     {
       title: 'الرئيسية',
@@ -19,6 +26,7 @@ const ContactUs = () => {
       <Body className='TemplateArticleBody Media d-flex p-4'>
         <>
           <form
+            onSubmit={handleShow}
             className={`${styles.formBody} col col-12 col-lg-6 col-md-6 col-sm-1`}
           >
             <div className='form-group'>
@@ -67,6 +75,15 @@ const ContactUs = () => {
             </button>
           </form>
         </>
+        <CustomModal
+          title={'إشعار'}
+          body={
+            'لقد تم إرسال سؤالك بنجاح، ستتوصلون بإشعار على بريدكم الإلكتروني حين توفر الإجابة'
+          }
+          show={show}
+          onHide={handleClose}
+          onClick={handleClose}
+        />
       </Body>
     </TemplateArticle>
   )
