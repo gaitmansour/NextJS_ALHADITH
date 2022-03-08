@@ -245,11 +245,11 @@ const ListQuestions = (props) => {
     return (
       <div key={i} className={` container-flex ${styles.bg1} bg1`}>
         <div className={'p-2 row justify-content-between align-items-center'}>
-          <h5 className='px-4 col col-12 col-lg-9 col-md-9 col-sm-1 d-flex card-subtitle'>
+          <h5 className='px-4 col col-12 col-lg-9 col-md-6 col-sm-1 d-flex card-subtitle'>
             {item?._source?.sujetQuestion}
           </h5>
           <p
-            className={`${styles.dateParagraph} dateParagraph col col-12 col-lg-3 col-md-3 col-sm-1 align-self-center pt-3`}
+            className={`${styles.dateParagraph} dateParagraph col col-12 col-lg-3 col-md-6 col-sm-1 align-self-center pt-3`}
           >
             {'تاريخ السؤال: ' +
               Moment(item?._source?.dateHeureQuestion).format('DD-MM-YYYY')}

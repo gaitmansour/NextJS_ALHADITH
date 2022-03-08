@@ -67,7 +67,7 @@
 .dateParagraph {
     text-align: left;
     font-family: 'Almarai', sans-serif !important;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 .pagination {
     padding:10px
@@ -120,6 +120,11 @@
 @media (max-width: 685px) {
     .btnquestion {
         width: 40vw;
+    }
+}
+@media (max-width: 890px) {
+    .btnquestion {
+        width: 30vw;
     }
 }
 
