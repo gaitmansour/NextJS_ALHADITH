@@ -12,8 +12,14 @@ const DownloadApk = () => {
           <h4 className={`${styles.titleSec} `}>
             {'تحميل التطبيق الخاص بمنصة محمد السادس للحديث النبوي الشريف'}
           </h4>
-          <Image src={Icons.icon_googlPlay} alt='' className={styles.dwdApk} />
-          <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
+          <div className={`${styles.iconGroup}`}>
+            <Image
+              src={Icons.icon_googlPlay}
+              alt=''
+              className={styles.dwdApk}
+            />
+            <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
+          </div>
         </div>
       </div>
     </div>

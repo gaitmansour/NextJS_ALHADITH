@@ -106,11 +106,18 @@
     }
 }
 
-@media screen and (min-width: 540px) and (max-width: 900px)  {
+@media screen and (min-width: 540px) and (max-width: 890px)  {
     .download .titleSec{
-        /* width: 100% !important; */
-        
+        margin-right: -100px;  
     }
+    
     .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
     }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
+    }
+   
 }
