@@ -36,7 +36,7 @@ export const getVideo = (title) =>
 export const getArticleById = (title) =>
   `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image`
 export const getArticleByIdName = (title) =>
-    `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image,field_alqsm.vid`
+  `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image,field_alqsm.vid`
 
 export const getOurPartners = (langcode, value = 'شركاؤنا') =>
   `${api_url}/section?include=field_icone&fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}`
@@ -68,7 +68,8 @@ export const newsletter = () => `${api_newsletter}`
 export const getLive = () => `${base_url}/live`
 export const getCarousel = () =>
   `${api_url}/article?fields[node--article]=title,body&include=field_image&filter[field_est_slider]=1`
-export const getSlider = () => `${base_url}/en/slider`
+export const getSlider = () =>
+  `${base_url}/en/slider?include=field_ordre_slider`
 export const getNewSections = () => `${base_url}/section-accueil`
 export const getDataNewSections = (NewSection) =>
   `${api_url}/section_accueil?include=field_icone_accueil&fields[node--section_accueil]=title,body,field_lien_accueil,field_code_couleur_accueil&filter[alqsm][condition][path]=field_alqsm_accueil.name&filter[alqsm][condition][value]=${NewSection}`
