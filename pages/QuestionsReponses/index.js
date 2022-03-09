@@ -321,7 +321,7 @@ const ListQuestions = (props) => {
                 <p className={`${styles.descQuestion}`}>
                   {`${item?._source?.descriptionReponse
                     ?.split(' ')
-                    .slice(0, 10)
+                    .slice(0, 45)
                     .join(' ')} ...`}
                 </p>
                 <span className='text-success text-decoration-underline'>
