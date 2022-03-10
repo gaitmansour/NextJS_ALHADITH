@@ -167,10 +167,11 @@ const SearchPage = (props) => {
       }
     })
   }
-  console.log('masderlhokem', EvaluationSource)
-  const handleSearch = async (word, topic, evSrc, degree, src, nrs) => {
+  console.log('ChoiceCategory', ChoiceCategory)
+  const handleSearch = async (word, topic, evSrc, src, degree, nrs) => {
     console.log('evalua_source', evSrc)
     console.log('choice_source', ChoiceSource)
+    console.log('EvaluationSource', EvaluationSource)
     console.log('id_source', src)
     const data = {
       content: word,
@@ -185,12 +186,7 @@ const SearchPage = (props) => {
         : ChoiceNarrator
         ? JSON.stringify(ChoiceNarrator.value)
         : '',
-      idSource:
-        src?.label != ''
-          ? src?.value
-          : ChoiceSource
-          ? JSON.stringify(ChoiceSource.value)
-          : '',
+      idSource: src ? src : ChoiceSource ? ChoiceSource.value : '',
       idTopic: '',
       idCategorie: topic
         ? JSON.stringify(topic.value)
@@ -203,7 +199,9 @@ const SearchPage = (props) => {
       tags: '',
     }
     console.log('data---------------------------')
-    console.log(data)
+    console.log(
+      src?.label != '' ? src?.value : ChoiceSource ? ChoiceSource.value : ''
+    )
 
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
@@ -228,7 +226,7 @@ const SearchPage = (props) => {
         r && r.length > 0 && r?.filter((item) => item.label === content)
       setChoiceCategory(ArrayCategory[0])
       setChoiceDegree(ArrayDegree[0])
-      await handleSearch(word, ArrayCategory[0], ArrayDegree[0])
+      await handleSearch(word, ArrayCategory[0], '', '', ArrayDegree[0], '')
       setShowForm(false)
     }
     if (from === 'topBar') {
@@ -261,11 +259,11 @@ const SearchPage = (props) => {
         word,
         ArrayCategory[0],
         hokm,
+        ArraySource[0]?.label != '' ? ArraySource[0]?.value : '',
         ArrayDegree[0],
-        ArraySource[0],
         ArrayNars[0]
       )
-      console.log('arry_so =>>', ArraySource[0])
+      console.log('arry_so =>>', ArrayCategory[0])
       console.log('source =>', source)
     }
   }
