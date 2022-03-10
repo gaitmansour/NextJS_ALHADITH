@@ -8,7 +8,7 @@ build_image:
   only:
     - master
   tags:
-    - r2
+    - r0
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE:staging -f .docker/Dockerfile .
@@ -20,7 +20,7 @@ deploy_image:
     name: registry.devops.os/ci-tools/kubectl:1.22
     entrypoint: [""]
   tags:
-    - r2
+    - r0
   only:
     - master
   script:
