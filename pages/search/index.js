@@ -226,7 +226,14 @@ const SearchPage = (props) => {
         r && r.length > 0 && r?.filter((item) => item.label === content)
       setChoiceCategory(ArrayCategory[0])
       setChoiceDegree(ArrayDegree[0])
-      await handleSearch(word, ArrayCategory[0], '', '', ArrayDegree[0], '')
+      await handleSearch(
+        word,
+        ArrayCategory[0],
+        undefined,
+        undefined,
+        ArrayDegree[0],
+        undefined
+      )
       setShowForm(false)
     }
     if (from === 'topBar') {
