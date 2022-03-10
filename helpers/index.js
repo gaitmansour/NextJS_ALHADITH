@@ -10,7 +10,10 @@ export function handleMenu(Menu) {
       let items = groupedMenu[item.tid]
         ? groupedMenu &&
           groupedMenu[item.tid].map((subItem, j) => {
-            if (subItem.parent_target_id_1 === 'التلفزة الرقمية') {
+            if (
+              subItem.parent_target_id_1 === 'التلفزة الرقمية' ||
+              subItem.parent_target_id_1 === 'البرامج الاعلامية'
+            ) {
               let _subItem = {
                 path: `media/${subItem.name_1}`,
                 //as:`media/${subItem.name_1}`,

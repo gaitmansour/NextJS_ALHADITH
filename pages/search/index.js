@@ -521,7 +521,7 @@ const SearchPage = (props) => {
                   style={{ color: 'black' }}
                 >
                   <p className='fw-100 link-primary'>
-                    {'يرجي طرح سؤالك أو محاولة البحث في الموقع'}
+                    {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
                   </p>
                 </Link>
               </div>

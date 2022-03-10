@@ -7,7 +7,7 @@ import styles from './DoroussHaditha.module.css'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 
 const DoroussHaditha = () => {
-  const [key, setKey] = useState('البيانية')
+  const [key, setKey] = useState('التمهيدية')
 
   return (
     <div className='mt-5'>
