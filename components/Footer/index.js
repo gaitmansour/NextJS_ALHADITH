@@ -110,8 +110,13 @@ const Footer = () => {
                 >
                   {'الهاتف'}
                 </p>
-                <p className={styles.FooterLink}>
-                  <Link href='/'>{'111 522 522 212+'}</Link>
+                <p
+                  className={styles.FooterLink}
+                  style={{
+                    color: '#FFF',
+                  }}
+                >
+                  {'111 522 522 212+'}
                 </p>
                 <p
                   className={`${styles.FooterLink}`}

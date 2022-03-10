@@ -59,6 +59,15 @@ er {
     font-size: 15px;
 }
 /* Style for viewports greater than 480px wide. */
+@media screen and (min-width: 1610px) and (max-width: 1922px) {
+    .iconKeyboard{
+        margin-left: -25px !important;
+    }
+    .input{
+        width: 100% !important;
+        margin-left: -15 !important;
+    }
+}
 @media (max-width: 835px) {
     .boxSearch input{
         box-shadow: none !important;

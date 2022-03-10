@@ -32,7 +32,7 @@ const DoroussTab = ({ title }) => {
     dots: true,
     infinite: dataAPI?.included?.length > 3,
     autoplay: true,
-    slidesToShow: dataAPI?.included?.length > 4 ? 4 : dataAPI?.included?.length,
+    slidesToShow: dataAPI?.included?.length > 3 ? 3 : dataAPI?.included?.length,
     slidesToScroll: 2,
     arrows: false,
     responsive: [

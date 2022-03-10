@@ -101,7 +101,7 @@ const SearchInput = (props) => {
           className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch}`}
           placeholder={'البحث'}
           //color={'red'}
-          style={{ color: 'red' }}
+          style={{ color: '#000' }}
           color={'red'}
           onChange={props.onChange}
         />
@@ -129,7 +129,7 @@ const SearchInput = (props) => {
             enabled
           />
           <i
-            className='far fa-keyboard mx-3 fa-1x'
+            className={`${styles.iconKeyboard} far fa-keyboard mx-2 fa-1x`}
             style={props.styleIcon}
             onClick={() => {
               setClick(!Click)
@@ -144,7 +144,7 @@ const SearchInput = (props) => {
             className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch} `}
             placeholder={'البحث في منصة الحديث النبوي الشريف'}
             //color={'red'}
-            style={{ color: 'red' }}
+            style={{ color: '#000' }}
             color={'red'}
             onChange={props.onChange}
           />

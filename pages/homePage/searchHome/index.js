@@ -157,7 +157,7 @@ const SearchSection = (props) => {
               topic: ChoiceCategory?.label,
               content: ChoiceDegree?.label,
               source: ChoiceSource?.label,
-              sourceHokm: EvaluationSource,
+              sourceHokm: EvaluationSource.label,
               narrator: ChoiceNarrator?.label,
               word: input,
             },
@@ -192,7 +192,6 @@ const SearchSection = (props) => {
     ChoiceSource,
     ChoiceNarrator,
     ChoiceDegree,
-    ChoiceCategory,
   ])
 
   function handleClickSearch() {
@@ -208,14 +207,18 @@ const SearchSection = (props) => {
   }, [])
 
   console.log(
-    'data search',
-    input,
-    EvaluationSource,
-    ChoiceTopic,
-    ChoiceSource,
-    ChoiceNarrator,
-    ChoiceDegree,
-    ChoiceCategory
+    // 'data search',
+    // input,
+    // 'massder_7okem',
+    // EvaluationSource,
+    // 'mawdoaa',
+    // ChoiceTopic,
+    'masder',
+    ChoiceSource.label
+    // 'rawi',
+    // ChoiceNarrator,
+    // 'hokem',
+    // ChoiceDegree
   )
 
   return (
