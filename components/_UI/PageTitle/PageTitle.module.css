@@ -36,12 +36,12 @@
     left: 0;
 }
 
-@media screen and (max-width: 541px) {
+@media (max-width: 541px) {
     .PageTitle{
-        width:100vw !important;
+        width:100vw ;
     }
     .PageTitle .title{
-        width: 60vw !important;
+        width: 60vw ;
     }
     .PageTitle .dateCreat p{
         width: 40vw !important;
@@ -51,12 +51,13 @@
      .title{
         width: 100vw !important;
     }
-}
-@media screen and (max-width: 361px) {
     .PageTitle{
-        width:100vw !important;
+        /* width:100vw !important; */
         display: block !important;
     }
+}
+@media screen and (max-width: 361px) {
+    
     .PageTitle .title{
         width: 100vw !important;
     }

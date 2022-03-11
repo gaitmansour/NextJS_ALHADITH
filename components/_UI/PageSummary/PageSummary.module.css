@@ -30,7 +30,7 @@
     }
     *[dir='ltr'] .SummaryPage .summary {
         padding-left: 0em;
-        width: 100% !important;
+        width: 92vw !important;
     }
 }
 @media screen and (max-width : 360px){

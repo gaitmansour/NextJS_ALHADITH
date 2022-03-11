@@ -151,4 +151,8 @@
     .Footer{
         margin-top: 55px !important;
     }
+    .gridsection{
+        margin-bottom: 0px !important;
+        margin-top: 15px !important;
+    }
 }

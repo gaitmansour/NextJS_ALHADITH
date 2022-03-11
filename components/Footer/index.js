@@ -75,7 +75,9 @@ const Footer = () => {
             >
               <Brand className={` ${styles.brand} brand`} />
             </div>
-            <div className='col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3'>
+            <div
+              className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
+            >
               <h5 className='text-white pb-3'>{'روابط مهمة'}</h5>
               <ul className='p-0'>
                 <p className={`${styles.FooterLink}`}>
@@ -108,7 +110,9 @@ const Footer = () => {
                 </p>
               </ul>
             </div>
-            <div className='col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3'>
+            <div
+              className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
+            >
               <h5 className='text-white pb-3'>{'تواصلوا معنا عبر'}</h5>
               <ul className='p-0'>
                 <p
@@ -153,7 +157,7 @@ const Footer = () => {
               </ul>
             </div>
             <div
-              className={`${styles.newsletter}col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
+              className={`${styles.newsletter} ${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
             >
               <h5 className='text-white pb-3'>
                 {'التسجيل في النشرة البريدية'}

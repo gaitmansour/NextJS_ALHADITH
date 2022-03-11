@@ -325,7 +325,7 @@ const ListQuestions = (props) => {
                     .join(' ')} ...`}
                 </p>
                 <span className='text-success text-decoration-underline'>
-                  لمعرفة الإجابة
+                  لمعرفة المزيد
                 </span>
               </div>
             </a>
