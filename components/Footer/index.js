@@ -81,6 +81,16 @@ const Footer = () => {
                 <p className={`${styles.FooterLink}`}>
                   <Link href={`/روابط`}>{'روابط'}</Link>
                 </p>
+                {/* <p className={`${styles.FooterLink}`}>
+                  <Link
+                    exact
+                    activeClassName='active'
+                    href={`/Media_`}
+                    as={`/روابط`}
+                  >
+                    {'روابط'}
+                  </Link>
+                </p> */}
                 <p className={`${styles.FooterLink}`}>
                   <Link
                     exact
