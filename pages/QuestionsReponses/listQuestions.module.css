@@ -113,6 +113,28 @@
     left: 12%;
 }
 
+.btnFacebook {
+    width: 65px;
+    height:45px;
+    border-radius: 4px;
+    background: #3b5998;
+    color:white;
+    border:0px transparent;
+    text-align: center;
+    margin-right:5px;
+    display: inline-block;
+}
+.btnForm{
+    width: 20%;
+    height:45px;
+    border-radius: 4px;
+    color:white;
+    border:0px transparent;
+    text-align: center;
+    margin-right:5px;
+    display: inline-block;
+}
+
 /* .btnquestion p {
     display: inline-block;
     padding-top: 4%;
@@ -199,17 +221,26 @@
         width: 100% !important;
     }
     .cardListAnswer{
-        width: 100% !important;
+        width: 90vw !important;
+    }
+    .CardQuestion{
+        width: 85vw !important;
+    }
+    .SimpleList{
+        width: 85vw !important;
+    }
+    .btnLogin{
+        display: block !important;
+    }
+    .btnIcon{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 80vw !important;
+    }
+    .btnForm{
+        width: 85% !important;
+        /* margin-top: 8px !important; */
     }
 }
-.btnFacebook {
-    width: 65px;
-    height:45px;
-    border-radius: 4px;
-    background: #3b5998;
-    color:white;
-    border:0px transparent;
-    text-align: center;
-    margin-right:5px;
-    display: inline-block;
-}
+

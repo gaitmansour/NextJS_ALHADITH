@@ -325,7 +325,7 @@ const ListQuestions = (props) => {
                     .join(' ')} ...`}
                 </p>
                 <span className='text-success text-decoration-underline'>
-                  لمعرفة الإجابة
+                  لمعرفة المزيد
                 </span>
               </div>
             </a>
@@ -381,34 +381,38 @@ const ListQuestions = (props) => {
               <div className={`${styles.SimpleList} SimpleList`}>
                 {logged == false ? (
                   <div
-                    className={`${styles.searchInp} mb-3 d-flex  align-items-center searchInp`}
+                    className={` ${styles.btnLogin} mb-3 d-flex  align-items-center searchInp`}
                   >
                     <p className='mx-5 mt-2'>تسجيل الدخول</p>
-                    <GoogleLogin
-                      clientId={clientId}
-                      buttonText=''
-                      onSuccess={onLoginSuccess}
-                      onFailure={onLoginFail}
-                      cookiePolicy={'single_host_origin'}
-                      className='googleLogin'
-                    />
-                    <FacebookLogin
-                      appId='451461503355998'
-                      autoLoad={false}
-                      fields='name,email'
-                      callback={responseFacebook}
-                      icon='fa-facebook'
-                      textButton=''
-                      cssClass={styles.btnFacebook}
-                    />
-                    <button
-                      type='button'
-                      style={{ backgroundColor: '#29a669', width: '20%' }}
-                      className={`${styles.btnFacebook} btn searchBtn`}
-                      onClick={handleShowModalQuestions}
+                    <div
+                      className={`${styles.btnIcon} d-flex align-content-center justify-content-start w-75`}
                     >
-                      ملء الاستمارة
-                    </button>
+                      <GoogleLogin
+                        clientId={clientId}
+                        buttonText=''
+                        onSuccess={onLoginSuccess}
+                        onFailure={onLoginFail}
+                        cookiePolicy={'single_host_origin'}
+                        className='googleLogin'
+                      />
+                      <FacebookLogin
+                        appId='451461503355998'
+                        autoLoad={false}
+                        fields='name,email'
+                        callback={responseFacebook}
+                        icon='fa-facebook'
+                        textButton=''
+                        cssClass={styles.btnFacebook}
+                      />
+                      <button
+                        type='button'
+                        style={{ backgroundColor: '#29a669', width: '20%' }}
+                        className={`${styles.btnForm} btn searchBtn`}
+                        onClick={handleShowModalQuestions}
+                      >
+                        ملء الاستمارة
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div>
