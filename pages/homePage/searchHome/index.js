@@ -274,17 +274,25 @@ const SearchSection = (props) => {
                 onChange={(v) => setChoiceCategory(v)}
               />
 
-              <Input
+              {/* <Input
                 className='col-md-4'
                 label='مصدر الحكم'
                 placeholder='ابحث بمصدر الحكم'
                 value={EvaluationSource && EvaluationSource}
                 onChange={(v) => setEvaluationSource(v.target.value)}
+              /> */}
+              <CustomSelect
+                className='col-md-4'
+                options={dataNarrator && dataNarrator}
+                label='الراوي'
+                defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
+                placeholder='اكتب اسم الراوي'
+                onChange={(v) => setChoiceNarrator(v)}
               />
             </div>
             <div className={`${styles.alignsec} d-flex alignIte`}>
               <CustomSelect
-                className='col-md-4'
+                className='col-md-6'
                 options={dataSource && dataSource}
                 defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                 label='المصدر'
@@ -293,8 +301,8 @@ const SearchSection = (props) => {
                   setChoiceSource(v)
                 }}
               />
-
-              <CustomSelect
+              <div className='col-md-6'></div>
+              {/* <CustomSelect
                 className='col-md-4'
                 options={dataDegree && dataDegree}
                 label='الحكم'
@@ -310,7 +318,7 @@ const SearchSection = (props) => {
                 defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
                 placeholder='اكتب اسم الراوي'
                 onChange={(v) => setChoiceNarrator(v)}
-              />
+              /> */}
             </div>
           </div>
         </Cards>

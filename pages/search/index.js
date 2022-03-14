@@ -26,6 +26,7 @@ import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
+import * as VscIcons from 'react-icons/vsc'
 
 const SearchPage = (props) => {
   let router = ''
@@ -169,12 +170,13 @@ const SearchPage = (props) => {
   }
   console.log('ChoiceCategory', ChoiceCategory)
   const handleSearch = async (word, topic, evSrc, src, degree, nrs) => {
+    console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
     console.log('evalua_source', evSrc)
     console.log('choice_source', ChoiceSource)
     console.log('EvaluationSource', EvaluationSource)
     console.log('id_source', src)
     const data = {
-      content: word,
+      content: word.replace(/[-_,;.&:!?،؟\s]/g, ''),
       evaluationSource: evSrc
         ? evSrc
         : EvaluationSource
@@ -333,6 +335,43 @@ const SearchPage = (props) => {
     }
   }
 
+  const handleEpingleIcon = () => {
+    if (
+      !input &&
+      !ChoiceTopic &&
+      !EvaluationSource &&
+      !ChoiceSource &&
+      !ChoiceNarrator &&
+      !ChoiceDegree &&
+      !ChoiceCategory
+    ) {
+      return (
+        <div
+          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+          style={{
+            backgroundColor: '#78cca2',
+            height: '45px',
+            width: '6%',
+          }}
+        >
+          <VscIcons.VscPinned color='#fff' size={24} />
+        </div>
+      )
+    } else {
+      return (
+        <div
+          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+          style={{
+            backgroundColor: '#157646',
+            height: '45px',
+            width: '6%',
+          }}
+        >
+          <VscIcons.VscPinnedDirty color='#fff' size={24} />
+        </div>
+      )
+    }
+  }
   useEffect(() => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
@@ -425,7 +464,45 @@ const SearchPage = (props) => {
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
-
+            {/* <div
+              className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+              style={{
+                backgroundColor: '#157646',
+                height: '45px',
+                width: '6%',
+              }}
+            >
+              <VscIcons.VscPinnedDirty color='#fff' size={24} />
+            </div> */}
+            {!input &&
+            !ChoiceTopic &&
+            !EvaluationSource &&
+            !ChoiceSource &&
+            !ChoiceNarrator &&
+            !ChoiceDegree &&
+            !ChoiceCategory ? (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#a0d7bc',
+                  height: '45px',
+                  width: '46px',
+                }}
+              >
+                <VscIcons.VscPinned color='#fff' size={24} />
+              </div>
+            ) : (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#157646',
+                  height: '45px',
+                  width: '46px',
+                }}
+              >
+                <VscIcons.VscPinnedDirty color='#fff' size={24} />
+              </div>
+            )}
             <div
               className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
               onClick={() => handleClickSearch()}
@@ -450,17 +527,25 @@ const SearchPage = (props) => {
                     onChange={(v) => setChoiceCategory(v)}
                   />
 
-                  <Input
+                  {/* <Input
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
                     value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
+                  /> */}
+                  <CustomSelect
+                    className='col-md-4'
+                    options={dataNarrator && dataNarrator}
+                    label='الراوي'
+                    defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
+                    placeholder='اكتب اسم الراوي'
+                    onChange={(v) => setChoiceNarrator(v)}
                   />
                 </div>
                 <div className={`d-flex alignIte ${styles.alignIte}`}>
                   <CustomSelect
-                    className='col-md-4'
+                    className='col-md-6'
                     options={dataSource && dataSource}
                     defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                     label='المصدر'
@@ -469,7 +554,8 @@ const SearchPage = (props) => {
                       setChoiceSource(v)
                     }}
                   />
-                  <CustomSelect
+                  <div className='col-md-6'></div>
+                  {/* <CustomSelect
                     className='col-md-4'
                     options={dataDegree && dataDegree}
                     label='الحكم'
@@ -484,7 +570,7 @@ const SearchPage = (props) => {
                     defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
                     placeholder='اكتب اسم الراوي'
                     onChange={(v) => setChoiceNarrator(v)}
-                  />
+                  /> */}
                 </div>
               </div>
             </Cards>
@@ -525,9 +611,11 @@ const SearchPage = (props) => {
                   as={'/QuestionsReponses'}
                   style={{ color: 'black' }}
                 >
-                  <p className='fw-100 link-primary'>
-                    {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
-                  </p>
+                  <a className='pe-auto text-decoration-none'>
+                    <p className='fw-100 link-primary '>
+                      {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
+                    </p>
+                  </a>
                 </Link>
               </div>
             </div>

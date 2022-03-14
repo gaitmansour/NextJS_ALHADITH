@@ -9,8 +9,6 @@
     font-size: 2rem;
     padding: 0;
 }
-
-
 .SearchPage .box-search {
     border: none;
     box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
@@ -35,6 +33,11 @@
     background-color: #157646;
     border-radius: 8px;
     margin-left: 1em !important;
+}
+.boxIconEpingle{
+    background-color: #157646;
+    border-radius: 8px;
+    margin-right: 1em !important;
 }
 
 .SearchPage .searchElement .boxIconSetting .icon-setting {
@@ -139,6 +142,9 @@
     .boxIconSetting{
         margin-bottom: 1.5% !important;
     }
+    .boxIconEpingle{
+        margin-bottom: 1.5% !important;
+    }
 }
 
 @media (max-width: 375px) {
@@ -157,5 +163,7 @@
     .boxIconSetting{
         margin-bottom: 2% !important;
     }
-    
+    .boxIconEpingle{
+        margin-bottom: 2% !important;
+    }
 }

@@ -7,3 +7,7 @@
 .custom-input .form-label {
   color: #656D7A;
 }
+.borderInput{
+  border: 1px solid #FEB400;
+  border-radius: 0.25rem;
+}
