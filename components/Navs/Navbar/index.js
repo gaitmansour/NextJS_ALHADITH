@@ -397,7 +397,9 @@ const NavBar = (props) => {
             visible ? styles.menuBlog : styles.menuAl
           } btn rounded-0 p-0 border-0 align-self-stretch d-flex align-items-center justify-content-center menu-btn bg-gradient-green`}
           style={props?.styleBtnBars}
-          onClick={() => setShowMenu(!showMenu)}
+          onClick={() => {
+            setShowMenu(!showMenu)
+          }}
         >
           <div className='bg-light rounded-pill icon-box d-flex align-items-center justify-content-center'>
             <i className='fas fa-bars text-dark' />

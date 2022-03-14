@@ -92,22 +92,23 @@ const TopBar = (props) => {
       style={{}}
       ref={elementRef}
     >
-      <div className='container-fluid my-2'>
-        <Brand />
-        <SearchInput
-          className={`${styles.search} text-white `}
-          styleIcon={{ color: '#fff' }}
-          styleDiv={{ position: 'absolute', right: '65%' }}
-          {...props}
-          inputClassName={'text-white'}
-          onChange={(v) => handleInput(v)}
-          clickSearch={() => handleClickSearch()}
-          input={input}
-          placeholder='البحث في منصة الحديث النبوي الشريف'
-        />
-
+      <div className={`${styles.sectionHeader} container-fluid my-2`}>
+        <>
+          <Brand />
+          <SearchInput
+            className={`${styles.search} text-white `}
+            styleIcon={{ color: '#fff' }}
+            styleDiv={{ position: 'absolute', right: '65%' }}
+            {...props}
+            inputClassName={'text-white'}
+            onChange={(v) => handleInput(v)}
+            clickSearch={() => handleClickSearch()}
+            input={input}
+            placeholder='البحث في منصة الحديث النبوي الشريف'
+          />
+        </>
         <div
-          className={`collapse ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
+          className={` ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
           id='navbarTop'
         >
           <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
