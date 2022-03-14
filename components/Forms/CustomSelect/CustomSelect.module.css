@@ -4,3 +4,8 @@
 .label {
   color: #aab8b9
 }
+
+.borderInputSelect{
+  border: 1px solid #129D59;
+  border-radius: 0.25rem;
+}
