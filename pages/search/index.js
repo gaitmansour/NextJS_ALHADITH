@@ -526,9 +526,11 @@ const SearchPage = (props) => {
                   as={'/QuestionsReponses'}
                   style={{ color: 'black' }}
                 >
-                  <p className='fw-100 link-primary'>
-                    {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
-                  </p>
+                  <a className='pe-auto text-decoration-none'>
+                    <p className='fw-100 link-primary '>
+                      {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
+                    </p>
+                  </a>
                 </Link>
               </div>
             </div>
