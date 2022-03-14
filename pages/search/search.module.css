@@ -142,6 +142,9 @@
     .boxIconSetting{
         margin-bottom: 1.5% !important;
     }
+    .boxIconEpingle{
+        margin-bottom: 1.5% !important;
+    }
 }
 
 @media (max-width: 375px) {
@@ -160,5 +163,7 @@
     .boxIconSetting{
         margin-bottom: 2% !important;
     }
-    
+    .boxIconEpingle{
+        margin-bottom: 2% !important;
+    }
 }
