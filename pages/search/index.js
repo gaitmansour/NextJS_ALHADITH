@@ -26,6 +26,7 @@ import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
+import * as VscIcons from 'react-icons/vsc'
 
 const SearchPage = (props) => {
   let router = ''
@@ -334,6 +335,43 @@ const SearchPage = (props) => {
     }
   }
 
+  const handleEpingleIcon = () => {
+    if (
+      !input &&
+      !ChoiceTopic &&
+      !EvaluationSource &&
+      !ChoiceSource &&
+      !ChoiceNarrator &&
+      !ChoiceDegree &&
+      !ChoiceCategory
+    ) {
+      return (
+        <div
+          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+          style={{
+            backgroundColor: '#78cca2',
+            height: '45px',
+            width: '6%',
+          }}
+        >
+          <VscIcons.VscPinned color='#fff' size={24} />
+        </div>
+      )
+    } else {
+      return (
+        <div
+          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+          style={{
+            backgroundColor: '#157646',
+            height: '45px',
+            width: '6%',
+          }}
+        >
+          <VscIcons.VscPinnedDirty color='#fff' size={24} />
+        </div>
+      )
+    }
+  }
   useEffect(() => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
@@ -426,7 +464,45 @@ const SearchPage = (props) => {
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
-
+            {/* <div
+              className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+              style={{
+                backgroundColor: '#157646',
+                height: '45px',
+                width: '6%',
+              }}
+            >
+              <VscIcons.VscPinnedDirty color='#fff' size={24} />
+            </div> */}
+            {!input &&
+            !ChoiceTopic &&
+            !EvaluationSource &&
+            !ChoiceSource &&
+            !ChoiceNarrator &&
+            !ChoiceDegree &&
+            !ChoiceCategory ? (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#a0d7bc',
+                  height: '45px',
+                  width: '6%',
+                }}
+              >
+                <VscIcons.VscPinned color='#fff' size={24} />
+              </div>
+            ) : (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#157646',
+                  height: '45px',
+                  width: '6%',
+                }}
+              >
+                <VscIcons.VscPinnedDirty color='#fff' size={24} />
+              </div>
+            )}
             <div
               className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
               onClick={() => handleClickSearch()}

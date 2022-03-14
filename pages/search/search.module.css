@@ -34,6 +34,11 @@
     border-radius: 8px;
     margin-left: 1em !important;
 }
+.boxIconEpingle{
+    background-color: #157646;
+    border-radius: 8px;
+    margin-right: 1em !important;
+}
 
 .SearchPage .searchElement .boxIconSetting .icon-setting {
     width: 42px;
