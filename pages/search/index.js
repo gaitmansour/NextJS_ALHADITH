@@ -169,12 +169,13 @@ const SearchPage = (props) => {
   }
   console.log('ChoiceCategory', ChoiceCategory)
   const handleSearch = async (word, topic, evSrc, src, degree, nrs) => {
+    console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
     console.log('evalua_source', evSrc)
     console.log('choice_source', ChoiceSource)
     console.log('EvaluationSource', EvaluationSource)
     console.log('id_source', src)
     const data = {
-      content: word,
+      content: word.replace(/[-_,;.&:!?،؟\s]/g, ''),
       evaluationSource: evSrc
         ? evSrc
         : EvaluationSource
