@@ -24,15 +24,15 @@ const DoroussTab = ({ title }) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
-      console.log('dataaaa ===>', dataAPI)
+      console.log('dataaaa D.H ===>', dataAPI)
     })
   }, [])
 
   const settings = {
     dots: true,
-    infinite: dataAPI?.included?.length > 3,
+    infinite: dataAPI?.data?.length > 2,
     autoplay: true,
-    slidesToShow: dataAPI?.included?.length > 3 ? 3 : dataAPI?.included?.length,
+    slidesToShow: dataAPI?.data?.length > 3 ? 3 : dataAPI?.data?.length,
     slidesToScroll: 2,
     arrows: false,
     responsive: [
@@ -68,7 +68,9 @@ const DoroussTab = ({ title }) => {
       },
     ],
   }
-
+  const myLoader = ({ src, width, quality }) => {
+    return `${base_url}/${src}`
+  }
   const renderData = () => {
     try {
       if (_.isEmpty(dataAPI)) {
@@ -86,11 +88,19 @@ const DoroussTab = ({ title }) => {
             return (
               <div
                 key={i.toString()}
-                className={`${styles.itemCard} mt-4 mb-2 `}
+                className={`${styles.itemCard} mt-4 mb-2`}
               >
-                <div className={`${styles.playerWrapper} player-wrapper`}>
+                {/* <div className={`${styles.playerWrapper} player-wrapper `}>
                   <ReactPlayer
                     url={[
+                      {
+                        src: `${base_url}${
+                          dataAPI?.included[i + leng / 2]?.attributes?.uri?.url
+                        }`,
+                        type: 'video/mp4',
+                      },
+                    ]}
+                    key={[
                       {
                         src: `${base_url}${
                           dataAPI?.included[i + leng / 2]?.attributes?.uri?.url
@@ -105,10 +115,35 @@ const DoroussTab = ({ title }) => {
                     width='90%'
                     height='90%'
                   />
-                </div>
-                <p className='text-center fw-bold description'>
-                  {item?.attributes?.title}
-                </p>
+                </div> */}
+                <Link
+                  href={{
+                    pathname: `/media/${title}`,
+                    search: '',
+                    hash: '',
+                    query: {
+                      _id: item?.id,
+                      video:
+                        dataAPI?.included[i + leng / 2]?.attributes?.uri?.url,
+                    },
+                  }}
+                  as={`/media/${title}`}
+                >
+                  <a className='text-decoration-none'>
+                    <Image
+                      src={dataAPI?.included[i]?.attributes?.uri?.url}
+                      className='m-auto w-100 my-4'
+                      objectFit='cover'
+                      width={850}
+                      height={500}
+                      loader={myLoader}
+                      alt={title}
+                    />
+                    <p className='text-center fw-bold description text-black'>
+                      {item?.attributes?.title}
+                    </p>
+                  </a>
+                </Link>
               </div>
             )
           })
@@ -134,18 +169,22 @@ const DoroussTab = ({ title }) => {
 
   return (
     <>
-      <div className={`${styles.Alhadiths}  overflow-hidden position-relative`}>
-        <div className='bg-blue-100 '>
-          <div
-            className='bg-arabic-design h-100 w-100'
-            style={{
-              backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
-              opacity: 0.7,
-            }}
-          />
-          <Slider {...settings} className='slide mb-4'>
-            {renderData()}
-          </Slider>
+      <div
+        className={`${styles.Alhadiths}  overflow-hidden position-relative `}
+      >
+        <div className='bg-blue-100'>
+          <div className='container'>
+            <div
+              className='bg-arabic-design h-100 w-100'
+              style={{
+                backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
+                opacity: 0.7,
+              }}
+            />
+            <Slider {...settings} className='slide mb-4'>
+              {renderData()}
+            </Slider>
+          </div>
         </div>
       </div>
     </>
