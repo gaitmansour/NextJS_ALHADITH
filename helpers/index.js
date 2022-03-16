@@ -40,7 +40,7 @@ export function handleMenu(Menu) {
             } else if (subItem.name_1 === 'تواصل معنا') {
               let _subItem = {
                 path: 'ContactUs',
-                as: 'المصحف المحمدي',
+                as: 'المصحف معنا',
                 label: subItem.name_1,
                 tID: subItem.tid,
                 title: subItem.name_1,

@@ -93,16 +93,17 @@ const NavBar = (props) => {
      * Alert if clicked on outside of element
      */
     function handleClickOutside(event) {
-      if (divref.current && !divref.current.contains(event.target)) {
+      if (divref?.current && !divref?.current?.contains(event.target)) {
         setShowMenu(false)
       }
+      console.log('divref.current', !divref?.current?.contains(event.target))
     }
 
     // Bind the event listener
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside, false)
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside, false)
     }
   }, [divref])
 
@@ -388,7 +389,7 @@ const NavBar = (props) => {
   function handleClickSearch() {
     goToSearchPage()
   }
-
+  console.log('showMenu', showMenu)
   return (
     <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
       <div className='container-fluid p-0'>

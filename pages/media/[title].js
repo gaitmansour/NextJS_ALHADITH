@@ -27,6 +27,8 @@ import SectionTitle from '../../components/_UI/SectionTitle'
 
 function Media(props) {
   //const {state} = useLocation();
+  const _id = useRouter()?.query?._id
+  console.log('_id', _id)
   const title = useRouter().query.title
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState({})
