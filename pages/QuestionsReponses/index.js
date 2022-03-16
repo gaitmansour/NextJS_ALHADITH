@@ -322,16 +322,16 @@ const ListQuestions = (props) => {
                   {item?._source?.descriptionReponse >
                   item?._source?.descriptionReponse
                     ?.split(' ')
-                    .slice(0, 40)
+                    .slice(0, 28)
                     .join(' ')
                     ? item?._source?.descriptionReponse
                         ?.split(' ')
-                        .slice(0, 40)
+                        .slice(0, 28)
                         .join(' ')
                         .concat('...')
                     : item?._source?.descriptionReponse
                         ?.split(' ')
-                        .slice(0, 40)
+                        .slice(0, 28)
                         .join(' ')}
                 </p>
                 <span className='text-success text-decoration-underline'>
