@@ -220,6 +220,7 @@ const CarouselHome = (props) => {
               )
             })
           })
+          console.log('itemCarousel apres', item)
           return (
             <Carousel.Item
               key={index.toString()}
