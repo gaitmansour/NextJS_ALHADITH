@@ -130,6 +130,11 @@
   margin-right: 15%;
   color: #fff !important;
 } */
+@media only screen and (min-width: 500px) and (max-width: 900px){
+  .titleSection{
+    margin-right: -100px !important;
+  }
+}
 @media only screen and (min-width: 480px) and (max-width: 1024px) {
   .imgContainer01{
     height: 9vh !important;

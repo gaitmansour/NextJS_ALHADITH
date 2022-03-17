@@ -319,10 +319,20 @@ const ListQuestions = (props) => {
               </p>
               <div>
                 <p className={`${styles.descQuestion}`}>
-                  {`${item?._source?.descriptionReponse
+                  {item?._source?.descriptionReponse >
+                  item?._source?.descriptionReponse
                     ?.split(' ')
-                    .slice(0, 45)
-                    .join(' ')} ...`}
+                    .slice(0, 28)
+                    .join(' ')
+                    ? item?._source?.descriptionReponse
+                        ?.split(' ')
+                        .slice(0, 28)
+                        .join(' ')
+                        .concat('...')
+                    : item?._source?.descriptionReponse
+                        ?.split(' ')
+                        .slice(0, 28)
+                        .join(' ')}
                 </p>
                 <span className='text-success text-decoration-underline'>
                   لمعرفة المزيد
@@ -622,10 +632,10 @@ const ListQuestions = (props) => {
                       )}
                     </div>
                     <ReCAPTCHA
-                      // sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
-                      // secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
-                      sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-                      secretkey='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+                      sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
+                      secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
+                      // sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+                      // secretkey='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
                       className='captcha'
                       onChange={onChange}
                     />
@@ -947,7 +957,8 @@ const ListQuestions = (props) => {
               sitekey='6LcHYVAdAAAAAHN3UW-4hBh04fWXbxTcERACA0Ts'
               secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
               /*sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                            secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
+                secretkey="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"*/
+
               className='captcha'
               onChange={onChange}
             />

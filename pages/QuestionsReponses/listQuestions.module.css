@@ -37,7 +37,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   color: #000;
   width: 90%;
   max-height: 50px;
