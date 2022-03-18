@@ -23,10 +23,42 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 const CarouselHome = (props) => {
+  const [dataAPI, setDataAPI] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [newData, setNewData] = useState([])
+  const { t, i18n } = useTranslation('home')
+  const isRTL = i18n?.language === 'ar'
+  const getLanguage = isRTL ? 'ar' : 'fr'
+  const more = 'اقرأ المزيد'
+  const url = getCarousel()
+  const urlSlider = getSlider()
+
+  const getDataSliderHome = () => {
+    setIsLoading(true)
+    try {
+      FetchAPI(urlSlider).then((data) => {
+        // console.log("data CarouselHome ==> ", data)
+        if (data.success) {
+          setDataAPI(data?.data)
+          setIsLoading(false)
+        }
+      })
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
+  }
+  useEffect(() => {
+    getDataSliderHome()
+  }, [])
+  useEffect(() => {
+    setNewData(_.sortBy(dataAPI, 'field_ordre_slider'))
+  }, [isLoading, dataAPI])
+
   let settings = {
     dotsClass: 'vertical-dots',
     dots: true,
-    infinite: true,
+    infinite: newData.length > 3,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -92,38 +124,6 @@ const CarouselHome = (props) => {
       },
     ],
   }
-
-  const [dataAPI, setDataAPI] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [newData, setNewData] = useState([])
-  const { t, i18n } = useTranslation('home')
-  const isRTL = i18n?.language === 'ar'
-  const getLanguage = isRTL ? 'ar' : 'fr'
-  const more = 'اقرأ المزيد'
-  const url = getCarousel()
-  const urlSlider = getSlider()
-
-  const getDataSliderHome = () => {
-    setIsLoading(true)
-    try {
-      FetchAPI(urlSlider).then((data) => {
-        // console.log("data CarouselHome ==> ", data)
-        if (data.success) {
-          setDataAPI(data?.data)
-          setIsLoading(false)
-        }
-      })
-    } catch (error) {
-      console.log(error)
-      setIsLoading(false)
-    }
-  }
-  useEffect(() => {
-    getDataSliderHome()
-  }, [])
-  useEffect(() => {
-    setNewData(_.sortBy(dataAPI, 'field_ordre_slider'))
-  }, [isLoading, dataAPI])
 
   if (_.isEmpty(dataAPI)) {
     return (

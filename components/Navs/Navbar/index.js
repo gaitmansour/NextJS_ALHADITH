@@ -449,7 +449,7 @@ const NavBar = (props) => {
             className='row'
             // onMouseLeave={()=>setShowMenu(!showMenu)}
             //onBlur={()=>setShowMenu(!showMenu)}
-            ref={divref}
+            // ref={divref}
           >
             {renderGlobalMenu()}
           </div>

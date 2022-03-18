@@ -1,117 +1,93 @@
 import React, { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
-import photo from './photo.png'
-import _ from 'lodash'
-import $ from 'jquery'
 import styles from './media.module.css'
-import {
-  base_url,
-  getArticleById,
-  getMenuByName,
-  getSideArticle,
-  getVideo,
-} from '../../endpoints'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import Slider from 'react-slick'
-import FetchAPI from '../../API'
-import ReactPlayer from 'react-player'
-import { useRouter } from 'next/router'
-import Loading from '../../components/_UI/Loading'
 import TemplateArticle from '../../components/TemplateArticle'
 import ScrollButton from '../../components/ScrollButton'
 import Body from '../../components/Body'
+import Loading from '../../components/_UI/Loading'
+import _ from 'lodash'
 import PageTitleSecond from '../../components/_UI/PageTitleSecond'
-import SimpleListMedia from '../../components/_UI/SimpleListMedia'
-import SectionTitle from '../../components/_UI/SectionTitle'
+import {
+  base_url,
+  getMenuByName,
+  getSideItems,
+  getVideo,
+} from '../../endpoints'
+import FetchAPI from '../../API'
+import ReactPlayer from 'react-player'
+import ReactPaginate from 'react-paginate'
+import { useRouter } from 'next/router'
+import TabMedia from './TabMedia'
 
-function Media(props) {
-  //const {state} = useLocation();
-  const _id = useRouter()?.query?._id
-  console.log('_id', _id)
+const Media_ = ({ props }) => {
+  const video = useRouter()?.query?.video
+  const titleVideo = useRouter()?.query?.titleVideo
+  const light = useRouter()?.query?.light
+  console.log('titleVideo', titleVideo)
+  console.log('light', light)
   const title = useRouter().query.title
-  const [start, setStart] = useState(false)
-  const [dataAPI, setDataAPI] = useState({})
-  const [dataMenu, setdataMenu] = useState({})
-  const [dataSlider, setdataSlider] = useState({})
-  const [dataSide, setDataSide] = useState({})
-
-  const { t } = useTranslation()
-
-  const url = getVideo(title)
   const urlMenu = getMenuByName(title)
-  const settings = {
-    infinite: dataAPI?.included?.length > 3,
-    autoplay: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 360,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  }
-
+  //   const title = 'الدروس الحديثية'
+  const [start, setStart] = useState(false)
+  const [dataAPI, setDataAPI] = useState([])
+  const [currentItems, setCurrentItems] = useState(null)
+  const [pageCount, setPageCount] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(4)
+  const [itemOffset, setItemOffset] = useState(0)
+  const [dataItems, setDataItems] = useState([])
+  const url = getVideo(title)
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
+      console.log('media_data', data?.data)
       console.log('media', dataAPI)
     })
   }
-
-  const getDataSlider = async (name, tid, parent_target) => {
-    const urlSlider = getSideArticle(name, tid, parent_target)
-    FetchAPI(urlSlider).then((data) => {
+  //
+  //
+  const getItemsMenu = async (tid) => {
+    return FetchAPI(getSideItems(tid)).then((data) => {
       if (data.success) {
-        setdataSlider(data?.data)
+        console.log('data------------------------items')
+        console.log(data?.data)
       }
     })
-  }
-  const getDataMenu = async () => {
-    FetchAPI(urlMenu).then((data) => {
-      if (data.success) {
-        setdataMenu(data?.data[0])
-        getDataSlider(
-          data?.data[0]?.name_1,
-          data?.data[0]?.tid,
-          data?.data[0]?.parent_target_id_1
-        )
-      }
-    })
-  }
-
-  const handleSideData = (location) => {
-    const data = location?.state?.fromNav
-    setDataSide(data)
   }
   useEffect(() => {
     if (title) {
-      getDataMenu()
       getData()
-      handleSideData(props.location)
     }
-  }, [title, props.location])
+    getItemsMenu(50)
+    getItemsMenu(51)
+  }, [title])
+  //
+  // pagination
+  //
+  useEffect(() => {
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage
+    console.log(`Loading items fromm ${itemOffset} to ${endOffset}`)
+    setCurrentItems(dataAPI?.data?.slice(itemOffset, endOffset))
+    setPageCount(Math.ceil(dataAPI?.data?.length / itemsPerPage))
+  }, [itemOffset, itemsPerPage, dataAPI])
 
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % dataAPI?.data?.length
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    )
+    setItemOffset(newOffset)
+  }
+
+  //
+  //palyer video
+  //
+  const [selectVideo, setsSelectVideo] = useState('')
+
+  //
+  //data
+  //
   const data = [
     {
       title: 'الرئيسية',
@@ -122,59 +98,61 @@ function Media(props) {
       path: '',
     },
     {
-      title: title,
-      path: 'article/' + title,
+      title: 'الدروس الحديثية',
+      path: 'article/' + 'الدروس الحديثية',
     },
   ]
-
   const sideData11 = [
     {
       title: 'الدروس الحديثية',
       path: '/media/برامج تلفزية',
       parentLabel: 'التلفزة الرقمية',
+      items: [
+        {
+          title: 'الدروس التمهيدية',
+          path: '/media/الدروس التمهيدية',
+          parentLabel: 'الدروس الحديثية',
+          items: [],
+        },
+        {
+          title: 'الدروس البيانية',
+          path: '/media/الدروس البيانية',
+          parentLabel: 'الدروس الحديثية',
+          items: [],
+        },
+        {
+          title: 'الدروس التفاعلية',
+          path: 'media/الدروس التفاعلية',
+          parentLabel: 'الدروس الحديثية',
+          items: [],
+        },
+      ],
     },
     {
       title: 'الدروس الحسنية',
       path: '/media/الدروس الحسنية',
       parentLabel: 'التلفزة الرقمية',
+      items: [],
     },
     {
       title: 'برامج اذاعية',
       path: 'media/برامج اذاعية',
       parentLabel: 'التلفزة الرقمية',
+      items: [],
     },
     {
       title: 'برامج تلفزية',
       path: '/media/برامج تلفزية',
       parentLabel: 'التلفزة الرقمية',
+      items: [],
     },
     {
       title: 'برامج على الشبكات الاجتماعية',
       path: '/media/برامج على الشبكات الاجتماعية',
       parentLabel: 'التلفزة الرقمية',
+      items: [],
     },
   ]
-  const sideDataDoroussHaditha = [
-    {
-      title: 'الدروس التمهيدية',
-      path: '/media/الدروس التمهيدية',
-      parentLabel: 'الدروس الحديثية',
-    },
-    {
-      title: 'الدروس البيانية',
-      path: '/media/الدروس البيانية',
-      parentLabel: 'الدروس الحديثية',
-    },
-    {
-      title: 'الدروس التفاعلية',
-      path: 'media/الدروس التفاعلية',
-      parentLabel: 'الدروس الحديثية',
-    },
-  ]
-
-  function handleStart() {
-    setStart(true)
-  }
 
   console.log('show start------', start)
   if (_.isEmpty(dataAPI)) {
@@ -184,150 +162,158 @@ function Media(props) {
       </div>
     )
   }
+
   var leng = dataAPI?.included?.length
 
+  // console.log('data item media ', dataAPI?.data)
+  // let vedioTop = [dataAPI?.included?.map((item) => item?.attributes?.uri?.url)]
+  // let filterVedio = vedioTop[0].filter((x) => x == video)
+
+  // console.log('vedioQuery', video)
+  // console.log('vedioTop', filterVedio[0])
+  // console.log('vedioTop', vedioTop)
   return (
-    <TemplateArticle {...props} ListBreadcrumb={data} titlePage={title}>
+    <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
+      <TabMedia titlepage={title} dataTab={sideData11} />
       <ScrollButton />
-      <Body
-        className={` ${styles.TemplateArticleBody} ${styles.Media} d-flex p-4`}
-      >
+      <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
+        <div className={`${styles.sectionTop} `}>
+          {/* <label className={styles.blocSearch} htmlFor='search'>
+              <span className='mx-2 fw-bold text-success'>{'البحث'} :</span>
+              <div className={styles.searchInput}>
+                <input id='search' type='text' onChange={handleSearch} />
+                <i className='fas fa-search p-3' style={{ color: '#157646' }} />
+              </div>
+            </label> */}
+          {/* <div className={styles.blocFilter}>
+            <select className='px-2'>
+              <option selected>{'التلفزة الرقمية'}</option>
+              {sideData11?.map((item, index) => {
+                return <option value='1'>{item.title}</option>
+              })}
+            </select>
+            <i className='fas fa-filter' style={{ color: '#157646' }} />
+          </div> */}
+        </div>
         {dataAPI?.data?.length > 0 ? (
-          <div
-            className={`${styles.playerVideo} pl-4`}
-            style={{ width: '70%' }}
-          >
-            <div className={`${styles.boxFirstVideo} box-first-video`}>
-              {/* <div className='btn-play'>
-                <button
-                  type='button'
-                  className='btn  p-0 position-relative'
-                  id='bttn'
-                  onClick={() => handleStart()}
-                > */}
-              <div
-                className={`${styles.playerWrapper} player-wrapper`}
-                onClick={() => handleStart()}
-              >
-                <ReactPlayer
-                  url={[
-                    {
-                      src: `${base_url}${
-                        dataAPI?.included[leng / 2]?.attributes?.uri?.url
-                      }`,
-                      type: 'video/mp4',
-                    },
-                  ]}
-                  light={`${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`}
-                  controls
-                  playing
-                  className={`${styles.reactPlayer} react-player`}
-                  width='90%'
-                  height='90%'
+          <>
+            <div
+              className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2`}
+            >
+              <div className={`${styles.videoTop} w-50 mb-5`}>
+                <div
+                  className={`${styles.playerWrapper} player-wrapper`}
+                  // onClick={() => handleStart()}
+                >
+                  <ReactPlayer
+                    url={
+                      video
+                        ? [
+                            {
+                              src: `${base_url}${video}`,
+                              type: 'video/mp4',
+                            },
+                          ]
+                        : [
+                            {
+                              src: `${base_url}${
+                                dataAPI?.included[leng / 2]?.attributes?.uri
+                                  ?.url
+                              }`,
+                              type: 'video/mp4',
+                            },
+                          ]
+                    }
+                    light={
+                      light
+                        ? `${base_url}/${light}`
+                        : `${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`
+                    }
+                    controls
+                    playing
+                    className={`${styles.reactPlayer} react-player`}
+                    width='90%'
+                    height='90%'
+                  />
+                </div>
+                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
+                  {titleVideo ? titleVideo : dataAPI.data[0].attributes.title}
+                </h3>
+              </div>
+            </div>
+            <div className='row '>
+              {currentItems?.map((item, i) => {
+                return (
+                  <div
+                    key={i.toString()}
+                    className={`${styles.groupCard} col col-12 col-lg-3 col-md-4 col-sm-1`}
+                  >
+                    <div className={`${styles.cardVideo} p-3 shadow-card mx-1`}>
+                      <div
+                        onClick={() => setsSelectVideo(i)}
+                        className={`${styles.playerWrapper} player-wrapper`}
+                      >
+                        <ReactPlayer
+                          url={[
+                            {
+                              src: `${base_url}${
+                                dataAPI?.included[i + leng / 2]?.attributes?.uri
+                                  ?.url
+                              }`,
+                              type: 'video/mp4',
+                            },
+                          ]}
+                          key={`${base_url}${
+                            dataAPI?.included[i + leng / 2]?.attributes?.uri
+                              ?.url
+                          }`}
+                          playsinline={true}
+                          playing={selectVideo === i ? true : false}
+                          light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                          controls
+                          className={`${styles.reactPlay} react-player`}
+                          width='100%'
+                          height='100%'
+                        />
+                      </div>
+                      <div className='mt-4'>
+                        <span>{item?.attributes?.title}</span>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+            {dataAPI?.data?.length > 0 && (
+              <div className='d-flex justify-content-center align-items-center'>
+                <ReactPaginate
+                  previousLabel={
+                    <i
+                      id='pagination'
+                      className='fa fa-chevron-right text-success'
+                    />
+                  }
+                  nextLabel={
+                    <i
+                      id='pagination'
+                      className='fa fa-chevron-left text-success'
+                    />
+                  }
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  activeClassName={styles.activebtn}
+                  containerClassName={`pagination justify-content-evenly align-content-around w-25 py-2 my-5 ${styles.paginationButtons}`}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  onPageChange={handlePageClick}
                 />
               </div>
-              {/* </button>
-              </div> */}
-              <PageTitleSecond
-                className='title-video px-0 mt-5'
-                title={dataAPI?.data[0]?.attributes?.title}
-              />
-            </div>
-            <div>
-              {/* <SliderVideoList data={VideosList} className="pt-5" /> */}
-              <div className={`${styles.SliderVideoList} `}>
-                <Slider {...settings} className='slide my-4'>
-                  {dataAPI?.data?.map((item, i) => {
-                    console.log('-item----', item)
-
-                    return (
-                      <div
-                        key={i.toString()}
-                        className={`${styles.itemCard} mt-4 mb-2`}
-                      >
-                        <div
-                          className={`${styles.playerWrapper} player-wrapper`}
-                        >
-                          <ReactPlayer
-                            url={[
-                              {
-                                src: `${base_url}${
-                                  dataAPI?.included[i + leng / 2]?.attributes
-                                    ?.uri?.url
-                                }`,
-                                type: 'video/mp4',
-                              },
-                            ]}
-                            light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
-                            controls
-                            playing
-                            className={`${styles.reactPlay} react-player`}
-                            width='90%'
-                            height='90%'
-                          />
-                        </div>
-                        <p className='m-0 py-3 description text-center'>
-                          {item?.attributes?.title}
-                        </p>
-                      </div>
-                    )
-                  })}
-                </Slider>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className='flex-fill' style={{ width: '67%' }}></div>
-        )}
-        <div
-          className={`${styles.sideBar} px-3 side-bar`}
-          style={{ width: '30%' }}
-        >
-          {title === 'الدروس الحديثية' ||
-          title === 'الدروس التفاعلية' ||
-          title === 'الدروس التمهيدية' ||
-          title === 'الدروس البيانية' ? (
-            <>
-              <SectionTitle
-                className={`${styles.titleSection} mb-3 text-end`}
-                title={'الدروس الحديثية'}
-              />
-              <SimpleListMedia data={sideDataDoroussHaditha} />
-            </>
-          ) : null}
-          {<SimpleListMedia data={sideData11} />}
-        </div>
+            )}
+          </>
+        ) : null}
       </Body>
-      <div
-        className='modal fade'
-        id='modalVideo1'
-        tabIndex='-1'
-        aria-hidden='true'
-      >
-        <div className='modal-dialog modal-lg modal-dialog-centered'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <button
-                type='button'
-                className='btn-close'
-                id='close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
-            </div>
-            <div className='modal-body p-0'>
-              <iframe
-                src=''
-                title='YouTube video player'
-                frameBorder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
     </TemplateArticle>
   )
 }
-export default Media
+
+export default Media_

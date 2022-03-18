@@ -12,7 +12,9 @@
   /* CSS */
   
 }
-
+.react-player__shadow{
+  display: none !important;
+}
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px

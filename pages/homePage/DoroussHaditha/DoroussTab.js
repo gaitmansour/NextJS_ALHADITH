@@ -122,9 +122,10 @@ const DoroussTab = ({ title }) => {
                     search: '',
                     hash: '',
                     query: {
-                      _id: item?.id,
                       video:
                         dataAPI?.included[i + leng / 2]?.attributes?.uri?.url,
+                      light: dataAPI?.included[i]?.attributes?.uri?.url,
+                      titleVideo: item?.attributes?.title,
                     },
                   }}
                   as={`/media/${title}`}
