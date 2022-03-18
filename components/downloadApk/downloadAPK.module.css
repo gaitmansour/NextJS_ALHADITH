@@ -27,15 +27,27 @@
     margin-top: 5% !important;
     margin-right: 5% !important;
 }
-@media screen and (min-width : 900px) and (max-width : 1200px){
+@media screen and (min-width : 895px) and (max-width : 1200px){
     .download{
         margin-right: 350px; 
-        margin-top: -300px ;
+        margin-top: -380px ;
      }
      
      .download img{
          margin-top: 11px !important;
      }
+     .download .titleSec{
+        margin-right: -100px;  
+    }
+    
+    .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
+    }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
+    }
 }
 @media screen and (min-width : 1200px) and (max-width: 1280px){
     .downloadApk {
@@ -120,4 +132,19 @@
         margin-right: -100px;
     }
    
+}
+
+@media screen and (min-width: 480px) and (max-width: 540px)  {
+    .download .titleSec{
+        margin-right: -100px;  
+    }
+    
+    .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
+    }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
+    }
 }
