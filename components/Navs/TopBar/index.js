@@ -119,7 +119,7 @@ const TopBar = (props) => {
                 exact
                 activeClassName='active'
                 href={`/choroutMinassa`}
-                as={'/شرط المنصة'}
+                as={'/شرط-المنصة'}
               >
                 {'شرط المنصة'}
               </Link>

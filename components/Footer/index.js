@@ -94,7 +94,7 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/conditionUser`} as={'/اتفاقية استخدام الموقع'}>
+                  <Link href={`/conditionUser`} as={'/اتفاقية-استخدام-الموقع'}>
                     {'اتفاقية استخدام الموقع'}
                   </Link>
                 </p>

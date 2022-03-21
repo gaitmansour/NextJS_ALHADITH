@@ -62,7 +62,7 @@ const SliderList = (props) => {
                 <Link
                   passHref
                   href={{
-                    pathname: pathN,
+                    pathname: pathN?.split(' ').join('-'),
                     query: { contenuArticle: rmSpaces },
                   }}
                   key={index.toString()}
