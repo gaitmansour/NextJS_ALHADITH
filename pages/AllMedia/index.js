@@ -158,11 +158,11 @@ const AllMedia = (props) => {
     )
   }
 
-  var leng = dataAPI?.included.length
-  var leng1 = dataAPIDh?.included.length
-  var leng2 = dataAPIBt?.included.length
-  var leng3 = dataAPIBi?.included.length
-  var leng4 = dataAPIKi?.included.length
+  var leng = dataAPI?.included?.length
+  var leng1 = dataAPIDh?.included?.length
+  var leng2 = dataAPIBt?.included?.length
+  var leng3 = dataAPIBi?.included?.length
+  var leng4 = dataAPIKi?.included?.length
 
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
@@ -201,89 +201,95 @@ const AllMedia = (props) => {
                   }}
                 />
               </div>
-              <div className={`${styles.boxFirstVideo} box-first-video`}>
-                {/* <div className={`${styles.btnPlay} btn-play`}>
+              {dataAPIDh?.included && (
+                <div className={`${styles.boxFirstVideo} box-first-video`}>
+                  {/* <div className={`${styles.btnPlay} btn-play`}>
                   <button
                     type='button'
                     className='btn  p-0 position-relative'
                     id='bttn'
                     onClick={() => handleStart()}
                   > */}
-                <div
-                  className={`${styles.playerWrapper} player-wrapper`}
-                  onClick={() => handleStart()}
-                >
-                  <ReactPlayer
-                    url={[
-                      {
-                        src: `${base_url}${
-                          dataAPIDh.included[leng1 / 2]?.attributes?.uri?.url
-                        }`,
-                        type: 'video/mp4',
-                      },
-                    ]}
-                    light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
-                    controls
-                    playing
-                    className={`${styles.reactPlayer} react-player`}
-                    width='95%'
-                    height='95%'
-                  />
-                </div>
-                {/* </button>
+
+                  <div
+                    className={`${styles.playerWrapper} player-wrapper`}
+                    onClick={() => handleStart()}
+                  >
+                    <ReactPlayer
+                      url={[
+                        {
+                          src: `${base_url}${
+                            dataAPIDh?.included[leng1 / 2]?.attributes?.uri?.url
+                          }`,
+                          type: 'video/mp4',
+                        },
+                      ]}
+                      light={`${base_url}/${dataAPIDh?.included[0]?.attributes?.uri?.url}`}
+                      controls
+                      playing
+                      className={`${styles.reactPlayer} react-player`}
+                      width='95%'
+                      height='95%'
+                    />
+                  </div>
+                  {/* </button>
                 </div> */}
-                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {dataAPIDh.data[0].attributes.title}
-                </h3>
-                <hr className='line' />
-                <div className={styles.SliderVideoList1}>
-                  <Slider {...settings} className='slide my-4'>
-                    {dataAPIDh?.data.map((item, i) => {
-                      return (
-                        // <div
-                        //   key={i.toString()}
-                        //   className='SliderVideoList-data1 d-flex flex-wrap'
-                        // >
-                        <div
-                          key={i.toString()}
-                          className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
-                        >
+                  <h3
+                    className={`${styles.titleVideo}`}
+                    style={{ fontSize: 18 }}
+                  >
+                    {dataAPIDh.data[0].attributes.title}
+                  </h3>
+                  <hr className='line' />
+                  <div className={styles.SliderVideoList1}>
+                    <Slider {...settings} className='slide my-4'>
+                      {dataAPIDh?.data.map((item, i) => {
+                        return (
+                          // <div
+                          //   key={i.toString()}
+                          //   className='SliderVideoList-data1 d-flex flex-wrap'
+                          // >
                           <div
-                            className={`${styles.playerWrapper} player-wrapper`}
+                            key={i.toString()}
+                            className={`${styles.itemCardContent} item-card-content position-relative d-flex flex-column mt-4 mb-2`}
                           >
-                            <ReactPlayer
-                              url={[
-                                {
-                                  src: `${base_url}${
-                                    dataAPIDh?.included[i + leng1 / 2]
-                                      ?.attributes?.uri?.url
-                                  }`,
-                                  type: 'video/mp4',
-                                },
-                              ]}
-                              light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
-                              controls
-                              playing
-                              className={`${styles.reactPlay} react-player`}
-                              width='90%'
-                              height='90%'
-                            />
+                            <div
+                              className={`${styles.playerWrapper} player-wrapper`}
+                            >
+                              <ReactPlayer
+                                url={[
+                                  {
+                                    src: `${base_url}${
+                                      dataAPIDh?.included[i + leng1 / 2]
+                                        ?.attributes?.uri?.url
+                                    }`,
+                                    type: 'video/mp4',
+                                  },
+                                ]}
+                                light={`${base_url}${dataAPIDh?.included[i]?.attributes?.uri?.url}`}
+                                controls
+                                playing
+                                className={`${styles.reactPlay} react-player`}
+                                width='90%'
+                                height='90%'
+                              />
+                            </div>
+                            <p
+                              className={`${styles.description} m-0 py-3 description px-4`}
+                              style={{
+                                fontSize: 12,
+                                textAlign: 'right',
+                              }}
+                            >
+                              {item?.attributes?.title}
+                            </p>
                           </div>
-                          <p
-                            className={`${styles.description} m-0 py-3 description px-4`}
-                            style={{
-                              fontSize: 12,
-                              textAlign: 'right',
-                            }}
-                          >
-                            {item?.attributes?.title}
-                          </p>
-                        </div>
-                      )
-                    })}
-                  </Slider>
+                        )
+                      })}
+                    </Slider>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <div className='col-lg-6 col-md-6 px-4 col-sm-1'>
@@ -433,7 +439,7 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPIKi.included[leng4 / 2]?.attributes?.uri?.url
+                          dataAPIKi?.included[leng4 / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },
@@ -540,7 +546,7 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPIBt.included[leng2 / 2]?.attributes?.uri?.url
+                          dataAPIBt?.included[leng2 / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },
@@ -649,7 +655,7 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPIBi.included[leng3 / 2]?.attributes?.uri?.url
+                          dataAPIBi?.included[leng3 / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },
@@ -749,7 +755,7 @@ const AllMedia = (props) => {
                     url={[
                       {
                         src: `${base_url}${
-                          dataAPI.included[leng / 2]?.attributes?.uri?.url
+                          dataAPI?.included[leng / 2]?.attributes?.uri?.url
                         }`,
                         type: 'video/mp4',
                       },

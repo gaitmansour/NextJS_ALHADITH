@@ -176,7 +176,7 @@ const Footer = () => {
                     className={`${styles.send} btn btn-lg  send`}
                     type='button'
                     style={{
-                      backgroundColor: '#129D59',
+                      backgroundColor: '#FBBF31',
                       boxShadow: 10,
                       borderRadius: 30,
                       color: '#fff',

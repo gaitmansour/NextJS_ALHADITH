@@ -349,7 +349,7 @@ const SearchPage = (props) => {
         <div
           className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
           style={{
-            backgroundColor: '#78cca2',
+            backgroundColor: '#fde5ac',
             height: '45px',
             width: '6%',
           }}
@@ -362,7 +362,7 @@ const SearchPage = (props) => {
         <div
           className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
           style={{
-            backgroundColor: '#157646',
+            backgroundColor: '#FBBF31',
             height: '45px',
             width: '6%',
           }}
@@ -484,7 +484,7 @@ const SearchPage = (props) => {
               <div
                 className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
                 style={{
-                  backgroundColor: '#a0d7bc',
+                  backgroundColor: '#fde5ac',
                   height: '45px',
                   width: '46px',
                 }}
@@ -495,7 +495,7 @@ const SearchPage = (props) => {
               <div
                 className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
                 style={{
-                  backgroundColor: '#157646',
+                  backgroundColor: '#FBBF31',
                   height: '45px',
                   width: '46px',
                 }}

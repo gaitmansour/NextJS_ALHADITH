@@ -70,7 +70,10 @@ const ItemList = (props) => {
               </span>
               : <span className={styles.resultat}>{props.narrator}</span>
             </p>
-            <div className={styles.devider} />
+          </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
             <p className='d-flex text-success m-0 mb-2'>
               <span className={`text-success ${styles.output}`}>
                 مصدر الحكم
@@ -85,7 +88,10 @@ const ItemList = (props) => {
               <span className={`text-success ${styles.output}`}>الموضوع</span>:{' '}
               <span className={styles.resultat}>{props.category}</span>
             </p>
-            <div className={styles.devider} />
+          </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
             <p className='d-flex m-0 mb-2'>
               <span className={styles.output} style={{ color: '#b17d00' }}>
                 المصدر
