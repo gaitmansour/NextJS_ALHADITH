@@ -99,8 +99,8 @@ const Media_ = ({ props }) => {
       path: '',
     },
     {
-      title: 'الدروس الحديثية',
-      path: 'article/' + 'الدروس الحديثية',
+      title: title,
+      path: 'article/' + title?.split(' ').join('-'),
     },
   ]
   const sideData11 = [
