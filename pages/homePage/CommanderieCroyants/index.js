@@ -72,42 +72,42 @@ const CommanderieCroyants = () => {
           {dataAPI?.data?.map((item, i) => {
             const { title, body, field_code_couleur, field_lien } =
               item?.attributes
-            console.log(dataAPI?.data)
-            $(document).ready(function () {
-              $('.linksCroyants').contextmenu(function (event) {
-                localStorage.setItem(
-                  'routeState',
-                  JSON.stringify({
-                    fromNav: {},
-                    selectedItem: title,
-                    title: title,
-                    from: 'Croyants',
-                    contenuArticle: '',
-                  })
-                )
-              })
-            })
+            console.log('commanderieCroyants', dataAPI?.data)
+            // $(document).ready(function () {
+            //   $('.linksCroyants').contextmenu(function (event) {
+            //     localStorage.setItem(
+            //       'routeState',
+            //       JSON.stringify({
+            //         fromNav: {},
+            //         selectedItem: title,
+            //         title: title,
+            //         from: 'Croyants',
+            //         contenuArticle: '',
+            //       })
+            //     )
+            //   })
+            // })
 
-            $(document).ready(function () {
-              $('.linksCroyants').bind('click', function (e) {
-                //console.log("hello ctrl")
-                localStorage.setItem(
-                  'routeState',
-                  JSON.stringify({
-                    pathname: field_lien[0]?.uri.slice(9),
-                    search: '',
-                    hash: '',
-                    query: {
-                      fromNav: {},
-                      title: title,
-                      selectedItem: title,
-                      from: 'Croyants',
-                      contenuArticle: '',
-                    },
-                  })
-                )
-              })
-            })
+            // $(document).ready(function () {
+            //   $('.linksCroyants').bind('click', function (e) {
+            //     //console.log("hello ctrl")
+            //     localStorage.setItem(
+            //       'routeState',
+            //       JSON.stringify({
+            //         pathname: `/article/${title?.split(' ').join('-')}`,
+            //         search: '',
+            //         hash: '',
+            //         query: {
+            //           fromNav: {},
+            //           title: title,
+            //           selectedItem: title,
+            //           from: 'Croyants',
+            //           contenuArticle: '',
+            //         },
+            //       })
+            //     )
+            //   })
+            // })
             const toShow = body?.processed?.substring(0, 50) + '...'
 
             return (
@@ -139,10 +139,7 @@ const CommanderieCroyants = () => {
                   <Link
                     role='button'
                     href={{
-                      pathname: field_lien[0]?.uri
-                        .slice(9)
-                        ?.split(' ')
-                        .join('-'),
+                      pathname: `/article/${title?.split(' ').join('-')}`,
                       search: '',
                       hash: '',
                       query: {
@@ -153,7 +150,7 @@ const CommanderieCroyants = () => {
                         contenuArticle: '',
                       },
                     }}
-                    as={field_lien[0]?.uri.slice(9)?.split(' ').join('-')}
+                    as={`/article/${title?.split(' ').join('-')}`}
                   >
                     <a
                       className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}

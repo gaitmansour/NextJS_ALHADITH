@@ -93,7 +93,11 @@ const NavBar = (props) => {
      * Alert if clicked on outside of element
      */
     function handleClickOutside(event) {
-      if (divref?.current && !divref?.current?.contains(event.target)) {
+      if (
+        showMenu &&
+        divref?.current &&
+        !divref?.current?.contains(event.target)
+      ) {
         setShowMenu(false)
       }
       console.log('divref.current', !divref?.current?.contains(event.target))
@@ -446,11 +450,12 @@ const NavBar = (props) => {
             className='fas fa-times-circle text-white icon-close'
             onClick={() => setShowMenu(!showMenu)}
           />
+
           <div
             className='row'
             // onMouseLeave={()=>setShowMenu(!showMenu)}
             //onBlur={()=>setShowMenu(!showMenu)}
-            // ref={divref}
+            ref={divref}
           >
             {renderGlobalMenu()}
           </div>

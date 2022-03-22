@@ -147,19 +147,19 @@ const Resources = () => {
               const { title, body, field_icone, field_lien } = item?.attributes
               console.log('title-----------------------', title)
               const toShow = body?.processed?.substring(0, 80) + '.....'
-              $(document).ready(function () {
-                $('.links').contextmenu(function (event) {
-                  localStorage.setItem(
-                    'routeState',
-                    JSON.stringify({
-                      fromNav: {},
-                      selectedItem: title,
-                      from: 'ressources',
-                      contenuArticle: '',
-                    })
-                  )
-                })
-              })
+              // $(document).ready(function () {
+              //   $('.links').contextmenu(function (event) {
+              //     localStorage.setItem(
+              //       'routeState',
+              //       JSON.stringify({
+              //         fromNav: {},
+              //         selectedItem: title,
+              //         from: 'ressources',
+              //         contenuArticle: '',
+              //       })
+              //     )
+              //   })
+              // })
               return (
                 <Cards
                   id={'cards'}
@@ -171,9 +171,9 @@ const Resources = () => {
                     role='button'
                     href={{
                       pathname:
-                        field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
+                        title === 'المصحف المحمدي'
                           ? '/Almoshaf'
-                          : field_lien[0]?.uri.slice(9)?.split(' ').join('-'),
+                          : `/article/${title?.split(' ').join('-')}`,
                       query: {
                         from: 'ressources',
                         selectedItem: title,
@@ -181,9 +181,9 @@ const Resources = () => {
                       },
                     }}
                     as={
-                      field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
+                      title === 'المصحف المحمدي'
                         ? '/المصحف-المحمدي'
-                        : field_lien[0]?.uri.slice(9)?.split(' ').join('-')
+                        : `/article/${title?.split(' ').join('-')}`
                     }
                   >
                     <a

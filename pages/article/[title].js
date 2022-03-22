@@ -29,6 +29,9 @@ import ScrollButton from '../../components/ScrollButton'
 export default function ArticlePage(props) {
   let params = useRouter()?.query
   const title = useRouter()?.query?.title
+
+  console.log('useRouter title ==>', params)
+
   let dataValue =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
