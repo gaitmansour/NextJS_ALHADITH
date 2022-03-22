@@ -50,6 +50,7 @@ const SliderList = (props) => {
           />
           <Slider {...settings} className='slide my-4'>
             {data?.map((item, index) => {
+              console.log('____item slider', item)
               var stripedTitle = item.title.replace(/<[^>]+>/g, '')
 
               var rmSpaces = stripedTitle.trim()
