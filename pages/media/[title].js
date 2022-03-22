@@ -24,7 +24,8 @@ const Media_ = ({ props }) => {
   const light = useRouter()?.query?.light
   console.log('titleVideo', titleVideo)
   console.log('light', light)
-  const title = useRouter().query.title
+  const title = useRouter()?.query?.title?.split('-').join(' ')
+  console.log('titre query', useRouter())
   const urlMenu = getMenuByName(title)
   //   const title = 'الدروس الحديثية'
   const [start, setStart] = useState(false)

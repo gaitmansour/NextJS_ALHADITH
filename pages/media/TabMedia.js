@@ -67,7 +67,10 @@ const TabMedia = (props) => {
                       }}
                     >
                       <div>
-                        <Link href={item?.title} as={item?.title}>
+                        <Link
+                          href={item?.title.split(' ').join('-')}
+                          as={item?.title.split(' ').join('-')}
+                        >
                           <a className='text-decoration-none text-black'>
                             {item?.title}
                           </a>
@@ -90,7 +93,10 @@ const TabMedia = (props) => {
                                 //   onClick={() => setShowDropdown(false)}
                                 className={`${styles.dropdown_content} mt-2`}
                               >
-                                <Link href={data?.title} as={data?.title}>
+                                <Link
+                                  href={data?.title.split(' ').join('-')}
+                                  as={data?.title.split(' ').join('-')}
+                                >
                                   <a className='text-decoration-none text-black fw-normal'>
                                     {data.title}
                                   </a>

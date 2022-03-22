@@ -122,6 +122,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
+        console.log('data?.path =>', item?.items[0]?.path?.split(' ').join('-'))
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -166,7 +167,7 @@ const NavBar = (props) => {
                         exact
                         activeClassName={styles.navBarActive}
                         href={{
-                          pathname: `/${data?.path}`,
+                          pathname: `/${data?.path?.split(' ').join('-')}`,
                           query: {
                             fromNav: item?.items,
                             selectedItem: data?.title,
@@ -175,8 +176,8 @@ const NavBar = (props) => {
                         }}
                         as={
                           data?.path === '/Almoshaf'
-                            ? `/${data?.as}`
-                            : `/${data?.path}`
+                            ? `/${data?.as?.split(' ').join('-')}`
+                            : `/${data?.path?.split(' ').join('-')}`
                         }
                       >
                         <a
@@ -280,9 +281,9 @@ const NavBar = (props) => {
                         key={i.toString()}
                         exact
                         activeClassName='nav-bar-active'
-                        as={`/${data?.path}`}
+                        as={`/${data?.path.split(' ').join('-')}`}
                         href={{
-                          pathname: `/${data?.path}`,
+                          pathname: `/${data?.path.split(' ').join('-')}`,
                           search: '',
                           hash: '',
                           query: {

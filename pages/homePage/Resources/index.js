@@ -173,7 +173,7 @@ const Resources = () => {
                       pathname:
                         field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
                           ? '/Almoshaf'
-                          : field_lien[0]?.uri.slice(9),
+                          : field_lien[0]?.uri.slice(9)?.split(' ').join('-'),
                       query: {
                         from: 'ressources',
                         selectedItem: title,
@@ -182,8 +182,8 @@ const Resources = () => {
                     }}
                     as={
                       field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
-                        ? '/المصحف المحمدي'
-                        : field_lien[0]?.uri.slice(9)
+                        ? '/المصحف-المحمدي'
+                        : field_lien[0]?.uri.slice(9)?.split(' ').join('-')
                     }
                   >
                     <a

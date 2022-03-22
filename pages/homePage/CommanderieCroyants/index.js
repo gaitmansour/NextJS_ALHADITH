@@ -139,7 +139,10 @@ const CommanderieCroyants = () => {
                   <Link
                     role='button'
                     href={{
-                      pathname: field_lien[0]?.uri.slice(9),
+                      pathname: field_lien[0]?.uri
+                        .slice(9)
+                        ?.split(' ')
+                        .join('-'),
                       search: '',
                       hash: '',
                       query: {
@@ -150,7 +153,7 @@ const CommanderieCroyants = () => {
                         contenuArticle: '',
                       },
                     }}
-                    as={field_lien[0]?.uri.slice(9)}
+                    as={field_lien[0]?.uri.slice(9)?.split(' ').join('-')}
                   >
                     <a
                       className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}

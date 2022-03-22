@@ -35,49 +35,49 @@ export default function ArticlePage(props) {
   let contenuArticle =
     params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
       ? params?.contenuArticle || dataValue.contenuArticle
-      : title
+      : title?.split('-').join(' ')
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
   }
 
-    const [dataAPI, setDataAPI] = useState({})
-    const [dataTags, setDataTags] = useState([])
-    const [dataMenu, setdataMenu] = useState({})
-    const [dataSlider, setdataSlider] = useState([])
-    const [dataSide, setDataSide] = useState({})
-    const [parentTitle, setparentTitle] = useState()
-    const [parent, setParent] = useState()
-    const [items, setItems] = useState({})
-    const [dataAhadith, setDataAhadith] = useState([])
-    const urlAhadith = getTopic()
-    const CodeTopic = 28
-    const url = getArticleById(contenuArticle)
-    const getData = async () => {
-        FetchAPI(url).then((data) => {
-            if (data.success) {
-                setDataAPI(data?.data)
-                setDataTags(data?.data?.included)
-            }
-        })
-    }
-    const getDataSlider = async (name, tid, parent_target) => {
-        const urlSlider = getSideArticle(name, tid, parent_target)
-        FetchAPI(urlSlider).then((data) => {
-            if (data.success) {
-                setdataSlider(data?.data)
-                console.log('data?.data =>',name, tid, parent_target)
-            }
-        })
-    }
-    const getDataMenu = async (x) => {
-        return FetchAPI(getMenuByName(x)).then((data) => {
-            if (data.success) {
-                setdataMenu(data?.data[0])
-                setParent(data?.data[0]?.name_1)
-                return data?.data[0]
-            }
-        })
-    }
+  const [dataAPI, setDataAPI] = useState({})
+  const [dataTags, setDataTags] = useState([])
+  const [dataMenu, setdataMenu] = useState({})
+  const [dataSlider, setdataSlider] = useState([])
+  const [dataSide, setDataSide] = useState({})
+  const [parentTitle, setparentTitle] = useState()
+  const [parent, setParent] = useState()
+  const [items, setItems] = useState({})
+  const [dataAhadith, setDataAhadith] = useState([])
+  const urlAhadith = getTopic()
+  const CodeTopic = 28
+  const url = getArticleById(contenuArticle)
+  const getData = async () => {
+    FetchAPI(url).then((data) => {
+      if (data.success) {
+        setDataAPI(data?.data)
+        setDataTags(data?.data?.included)
+      }
+    })
+  }
+  const getDataSlider = async (name, tid, parent_target) => {
+    const urlSlider = getSideArticle(name, tid, parent_target)
+    FetchAPI(urlSlider).then((data) => {
+      if (data.success) {
+        setdataSlider(data?.data)
+        console.log('data?.data ==>', name, 'tid', tid, parent_target)
+      }
+    })
+  }
+  const getDataMenu = async (x) => {
+    return FetchAPI(getMenuByName(x)).then((data) => {
+      if (data.success) {
+        setdataMenu(data?.data[0])
+        setParent(data?.data[0]?.name_1)
+        return data?.data[0]
+      }
+    })
+  }
 
   const getItemsMenu = async (x) => {
     return FetchAPI(getSideItems(x)).then((data) => {
@@ -107,22 +107,21 @@ export default function ArticlePage(props) {
   let router = useRouter().query
   let route = useRouter()
 
-    useEffect(() => {
-        getDataMenu(title).then((r) => {
-            console.log('useEffect',title)
-            if(r) {
-                getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
-            }else{
-                getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
-            }
-            //handleSideData(router)
-        })
+  useEffect(() => {
+    getDataMenu(title?.split('-').join(' ')).then((r) => {
+      console.log('useEffect', title)
+      if (r) {
+        getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
+      } else {
+        getDataSlider(dataValue.child, dataValue.tidChild, dataValue.parent)
+      }
+      //handleSideData(router)
+    })
 
-        //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
+    //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
 
-        getData()
-
-    }, [route])
+    getData()
+  }, [route])
 
   useEffect(() => {
     FetchAPI(`${urlAhadith}/${CodeTopic}`).then((data) => {
