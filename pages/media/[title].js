@@ -18,7 +18,7 @@ import ReactPaginate from 'react-paginate'
 import { useRouter } from 'next/router'
 import TabMedia from './TabMedia'
 
-const Media_ = ({ props }) => {
+const media = ({ props }) => {
   const video = useRouter()?.query?.video
   const titleVideo = useRouter()?.query?.titleVideo
   const light = useRouter()?.query?.light
@@ -32,9 +32,10 @@ const Media_ = ({ props }) => {
   const [dataAPI, setDataAPI] = useState([])
   const [currentItems, setCurrentItems] = useState(null)
   const [pageCount, setPageCount] = useState(0)
-  const [itemsPerPage, setItemsPerPage] = useState(4)
+  const [itemsPerPage, setItemsPerPage] = useState(12)
   const [itemOffset, setItemOffset] = useState(0)
   const [dataItems, setDataItems] = useState([])
+
   const url = getVideo(title)
   const getData = async () => {
     FetchAPI(url).then((data) => {
@@ -176,8 +177,8 @@ const Media_ = ({ props }) => {
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={sideData11} />
-      <ScrollButton />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
+        <ScrollButton />
         <div className={`${styles.sectionTop} `}>
           {/* <label className={styles.blocSearch} htmlFor='search'>
               <span className='mx-2 fw-bold text-success'>{'البحث'} :</span>
@@ -247,7 +248,7 @@ const Media_ = ({ props }) => {
                 return (
                   <div
                     key={i.toString()}
-                    className={`${styles.groupCard} col col-12 col-lg-3 col-md-4 col-sm-1`}
+                    className={`${styles.groupCard} col col-12 col-lg-3 col-md-4 col-sm-1 my-5`}
                   >
                     <div className={`${styles.cardVideo} p-3 shadow-card mx-1`}>
                       <div
@@ -317,4 +318,4 @@ const Media_ = ({ props }) => {
   )
 }
 
-export default Media_
+export default media

@@ -118,7 +118,7 @@ const DoroussTab = ({ title }) => {
                 </div> */}
                 <Link
                   href={{
-                    pathname: `/media/${title}`,
+                    pathname: `/media/${title.split(' ').join('-')}`,
                     search: '',
                     hash: '',
                     query: {
@@ -128,7 +128,7 @@ const DoroussTab = ({ title }) => {
                       titleVideo: item?.attributes?.title,
                     },
                   }}
-                  as={`/media/${title}`}
+                  as={`/media/${title.split(' ').join('-')}`}
                 >
                   <a className='text-decoration-none'>
                     <Image
