@@ -75,9 +75,9 @@
 .navTabs2 {
     border-bottom: 8px solid #ff7e4c !important;
 }
-.itemCard{
-  /* width: 50% !important; */
-}
+/* .itemCard{
+  width: 50% !important;
+} */
 .playerWrapper{
   position: relative;
   padding-top: 56.25%;
@@ -92,6 +92,10 @@
   position: absolute;
   top: 0%;
   left: 10;
+}
+
+.titleVideo{
+  font-size: 15px;
 }
 
 /* .slick-slide{
@@ -133,5 +137,8 @@
   .navTabs2 .nav-link{
       width: 26vw !important;
       padding: 3% !important;
+  }
+  .titleVideo{
+    font-size: 12px;
   }
   }

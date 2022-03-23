@@ -7,6 +7,16 @@
     border-top: solid 7px #FEB400;
     border-radius: 7px;
 }
+.inputSubject{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    height: 4%;
+    padding: 1% 3%;
+}
+.inputSubject:focus{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+}
 .summ {
     margin-bottom: 4%;
 }

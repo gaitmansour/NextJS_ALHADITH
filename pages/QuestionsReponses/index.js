@@ -56,6 +56,7 @@ const ListQuestions = (props) => {
   const [enableButton, setEnableButton] = useState(true)
   const [sendFailed, setsendFailed] = useState(false)
   const [showModalQuestions, setShowModalQuestion] = useState(false)
+  const [InputShow, setInputShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleCloseModalQuestions = () => {
     setShowModalQuestion(false)
@@ -112,13 +113,15 @@ const ListQuestions = (props) => {
       })
     }
   }
+
   const handleSearchQuestion = async () => {
-    setSubject(subjectInput.current.value)
+    // setSubject(subjectInput.current.value)
     const data = {
       query: Subject,
       size: 10,
       start: 0,
     }
+
     FetchPostAPI(urlSearchQuestion, data).then((data) => {
       if (Subject !== '' && data.success) {
         localStorage.setItem('outputData', JSON.stringify(data?.data))
@@ -187,6 +190,7 @@ const ListQuestions = (props) => {
     var session = sessionStorage.getItem('UserInfos')
     var outputData = localStorage.getItem('outputData')
     var subjectWord = localStorage.getItem('Subject')
+    console.log('subjectWord', subjectWord)
     if (session && outputData && subjectWord) {
       setLogged(true)
       setShowForum(true)
@@ -204,7 +208,7 @@ const ListQuestions = (props) => {
     } else {
       setEnableButton(true)
     }
-  }, [StartPage, pageNumber, enableButton, question, Subject])
+  }, [StartPage, pageNumber, enableButton, question])
 
   const questionPerPage = 5
   const pagesVisited = pageNumber * questionPerPage
@@ -347,6 +351,34 @@ const ListQuestions = (props) => {
     )
   })
 
+  // check size window
+  useEffect(() => {
+    checkSizeWindow()
+    if (typeof window !== undefined) {
+      window.addEventListener('resize', checkSizeWindow)
+      // Remove event listener on cleanup
+      return () => {
+        if (typeof window !== undefined) {
+          window.removeEventListener('resize', checkSizeWindow)
+        }
+      }
+    }
+  }, [])
+
+  const checkSizeWindow = () => {
+    if (typeof window !== undefined && window.innerWidth <= 850) {
+      setInputShow(true)
+    } else {
+      setInputShow(false)
+    }
+    //var x = document.getElementById("inputdiv");
+  }
+  const CustomMapping = [
+    ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض'],
+    ['ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'],
+    ['؟', '!', '-', '،', '.', 'ء', 'ؤ', 'ى', 'ة', 'أ', 'إ', 'ٱ', 'آ', 'ئ'],
+  ]
+  console.log('setSubject', Subject)
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='أسئلة'>
       <Body
@@ -429,91 +461,73 @@ const ListQuestions = (props) => {
                     <div
                       className={`${styles.searchInp} mb-3 d-flex justify-content-between align-items-center searchInp`}
                     >
-                      <div style={{ width: '90%' }}>
-                        <label
-                          htmlFor='formGroupExampleInput'
-                          className='form-label'
+                      {InputShow ? (
+                        <div
+                          className='d-flex flex-column'
+                          style={{ width: '90%' }}
                         >
-                          الموضوع
-                        </label>
-                        <div style={{ flexDirection: 'row' }}>
-                          <KeyboardedInput
+                          <label
+                            htmlFor='formGroupExampleInput'
+                            className='form-label'
+                          >
+                            الموضوع
+                          </label>
+                          <input
+                            className={styles.inputSubject}
+                            ref={Myinputsubject}
+                            type='text'
                             value={Subject}
-                            onChange={(value) => {
-                              setSubject(value)
+                            onChange={(e) => {
+                              setSubject(e.target.value)
                               if (
                                 question !== '' ||
                                 checked == false ||
-                                value !== ''
+                                e !== ''
                               ) {
                                 setEnableButton(true)
                               }
                             }}
                             onFocus={() => localStorage.removeItem('Subject')}
-                            ref={Myinputsubject}
-                            opacity={0.8}
-                            inputClassName={'inputName'}
-                            id={'inputNAle'}
-                            // showSpacebar={false}
-                            isFirstLetterUppercase={false}
-                            defaultKeyboard={[
-                              [
-                                'ا',
-                                'ب',
-                                'ت',
-                                'ث',
-                                'ج',
-                                'ح',
-                                'خ',
-                                'د',
-                                'ذ',
-                                'ر',
-                                'ز',
-                                'س',
-                                'ش',
-                                'ص',
-                                'ض',
-                              ],
-                              [
-                                'ط',
-                                'ظ',
-                                'ع',
-                                'غ',
-                                'ف',
-                                'ق',
-                                'ك',
-                                'ل',
-                                'م',
-                                'ن',
-                                'ه',
-                                'و',
-                                'ي',
-                              ],
-                              [
-                                '؟',
-                                '!',
-                                '-',
-                                '،',
-                                '.',
-                                'ء',
-                                'ؤ',
-                                'ى',
-                                'ة',
-                                'أ',
-                                'إ',
-                                'ٱ',
-                                'آ',
-                                'ئ',
-                              ],
-                            ]}
-                            placeholder='المرجو كتابة الموضوع هنا'
-                            keyboardClassName={`testme  p-2`}
-                            containerClassName={`conatiner `}
-                            required
-                            enabled
                           />
                         </div>
-                      </div>
+                      ) : (
+                        <div style={{ width: '90%' }}>
+                          <label
+                            htmlFor='formGroupExampleInput'
+                            className='form-label'
+                          >
+                            الموضوع
+                          </label>
+                          <div style={{ flexDirection: 'row' }}>
+                            <KeyboardedInput
+                              value={Subject}
+                              onChange={(value) => {
+                                setSubject(value)
+                                if (
+                                  question !== '' ||
+                                  checked == false ||
+                                  value !== ''
+                                ) {
+                                  setEnableButton(true)
+                                }
+                              }}
+                              onFocus={() => localStorage.removeItem('Subject')}
+                              ref={Myinputsubject}
+                              opacity={0.8}
+                              inputClassName={'inputName'}
+                              id={'inputNAle'}
+                              // showSpacebar={false}
+                              isFirstLetterUppercase={false}
+                              defaultKeyboard={CustomMapping}
+                              placeholder='المرجو كتابة الموضوع هنا'
+                              keyboardClassName={`testme  p-2`}
+                              containerClassName={`conatiner `}
+                              required
+                              enabled
+                            />
+                          </div>
+                        </div>
+                      )}
                       <button
                         type='button'
                         style={{
@@ -524,7 +538,7 @@ const ListQuestions = (props) => {
                           marginTop: '28px',
                         }}
                         className={`${styles.searchBtn} btn searchBtn`}
-                        onClick={handleSearchQuestion}
+                        onClick={() => handleSearchQuestion()}
                       >
                         بحث
                       </button>

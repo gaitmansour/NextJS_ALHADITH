@@ -190,9 +190,9 @@
   
 }
 @media (max-width: 425px) {
-  .CarouselHome{
+  /* .CarouselHome{
     margin-bottom: 10%;
-  }
+  } */
   .logo {
     width: 100px;
   }

@@ -12,7 +12,7 @@ export function handleMenu(Menu) {
           groupedMenu[item.tid].map((subItem, j) => {
             if (
               subItem.parent_target_id_1 === 'التلفزة الرقمية' ||
-              subItem.parent_target_id_1 === 'البرامج الاعلامية'
+              subItem.parent_target_id_1 === 'البرامج الإعلامية'
             ) {
               let _subItem = {
                 path: `media/${subItem.name_1}`,
@@ -40,7 +40,7 @@ export function handleMenu(Menu) {
             } else if (subItem.name_1 === 'تواصل معنا') {
               let _subItem = {
                 path: 'ContactUs',
-                as: 'المصحف معنا',
+                as: 'تواصل معنا',
                 label: subItem.name_1,
                 tID: subItem.tid,
                 title: subItem.name_1,
