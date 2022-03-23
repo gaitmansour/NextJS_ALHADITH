@@ -140,7 +140,9 @@ const DoroussTab = ({ title }) => {
                       loader={myLoader}
                       alt={title}
                     />
-                    <p className='text-center fw-bold description text-black'>
+                    <p
+                      className={`${styles.titleVideo} text-center fw-bold description text-black`}
+                    >
                       {item?.attributes?.title}
                     </p>
                   </a>

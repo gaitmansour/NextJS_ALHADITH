@@ -32,7 +32,7 @@
     height: 10px;
     cursor: pointer;
     z-index: 9999;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .vertical-dots li button {
@@ -95,6 +95,7 @@
         right: 20px !important;
         list-style: none;
         display: flex !important;
+        flex-direction: row;
         position: absolute;
         top: 92% !important;
         margin-right: 40%;
