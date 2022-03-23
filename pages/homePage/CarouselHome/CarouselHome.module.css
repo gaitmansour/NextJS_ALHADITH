@@ -212,7 +212,7 @@
     } */
     .CarouselHome{
         height: auto !important;
-        margin-bottom: 15% !important;
+        /* margin-bottom: 15% !important; */
     }
 
     .CarouselHome img{
@@ -250,7 +250,7 @@
 @media (max-width: 480px) {
     .CarouselHome {
         height: auto !important;
-        margin-bottom: 15% !important;
+        /* margin-bottom: 15% !important; */
     }
     .ImgSlide img{
         height: 44vh !important;
