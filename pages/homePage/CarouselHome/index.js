@@ -197,7 +197,11 @@ const CarouselHome = (props) => {
       <Slider {...settings} className={`w-100 slide`}>
         {newData?.map((item, index) => {
           console.log('itemCarousel', item)
-          const toShow = item?.body_1?.substring(0, 251)
+          const toShow = item?.body_1
+            ?.split(' ')
+            .slice(0, 20)
+            .join(' ')
+            .concat('...')
           if (item.field_image.includes('src=')) {
             var str = item.field_image
               .substr(item.field_image.lastIndexOf('src='))
@@ -244,7 +248,6 @@ const CarouselHome = (props) => {
                   marginLeft: 150,
                 }}
               >
-                <p>{toShow}</p>
                 <Link
                   href={{
                     pathname: '/article/' + item?.title,
@@ -256,17 +259,20 @@ const CarouselHome = (props) => {
                   }}
                   as={'/article/' + item?.title}
                 >
-                  <a
-                    role={'button'}
-                    className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
-                    onClick={() => {
-                      getDataMenu(item?.title)
-                    }}
-                  >
-                    <h6 className='m-0 px-4'>{more}</h6>
-                    <i
-                      className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
-                    />
+                  <a className='text-decoration-none text-black'>
+                    <p>{toShow}</p>
+                    <a
+                      role={'button'}
+                      className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
+                      onClick={() => {
+                        getDataMenu(item?.title)
+                      }}
+                    >
+                      <h6 className='m-0 px-4'>{more}</h6>
+                      <i
+                        className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
+                      />
+                    </a>
                   </a>
                 </Link>
               </div>

@@ -8,3 +8,13 @@
         width: 38vw !important;
     } 
 }
+@media screen and (max-width: 400px){
+    .logo img{
+        width: 36vw !important;
+    } 
+}
+@media screen and (max-width: 320px){
+    .logo img{
+        width: 30vw !important;
+    } 
+}

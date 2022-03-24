@@ -92,30 +92,17 @@
     display: flex !important;
     flex-direction: row !important;
   }
-  /* .TopBar .navItem,
-  .TopBar .navbar-nav .callToAction {
-    margin-top: 1em;
-  } */
-  /* .navbarCollapse ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 95vw;
-    padding: 0px !important;
-  } */
+  
   .navbarCollapse ul li{
     margin: 0px !important;
   }
-  /* .callToAction{
-    padding: 0 0.6em;
-    margin: 0px !important;
-  } */
+  .navItem{
+    font-size: 13px;
+  }
   .TopBar .dropdown .nav-link {
     padding: 0;
   }
-  /* .TopBar .navbarCollapse {
-    padding-bottom: 1em;
-  } */
+  
   .TopBar .navbar-nav {
     padding: 0;
   }
@@ -126,8 +113,7 @@
 
 @media (max-width: 1024px) {
   .TopBar .search{
-    /* width: 30%;
-    min-width: 30%; */
+ 
     margin-left: 4%;
     margin-right: 8%;
   }
