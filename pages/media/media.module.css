@@ -160,13 +160,13 @@
   color: #157646;
 }
 .menu__item a::active{
-  border-bottom:2px solid #157646;
+  border-bottom:3px solid #157646;
 }
 .menu__item a:focus{
-  border-bottom:2px solid #157646;
+  border-bottom:3px solid #157646;
 }
 .active{
-  border-bottom:2px solid #157646;
+  border-bottom:3px solid #157646;
 }
 
 .menu__item:hover{
