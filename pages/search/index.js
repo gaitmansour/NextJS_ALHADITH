@@ -278,6 +278,7 @@ const SearchPage = (props) => {
   }
 
   const displayData = dataSearch?.hits?.hits?.map((item, index) => {
+    console.log('item search--------------',item?.highlight?.content[0])
     return (
       <ItemList
         key={index}
@@ -287,8 +288,8 @@ const SearchPage = (props) => {
         highlight={!!item.highlight}
         text={
           item?.highlight
-            ? item?.highlight['content.multi_words'].join(' ')
-            : item?._source?.content
+            ? item?.highlight?.content[0]
+            :item?._source?.content
         }
         narrator={item?._source?.narrator?.label}
         source={item?._source?.source?.label}
