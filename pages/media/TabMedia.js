@@ -6,7 +6,7 @@ import { IoIosArrowBack } from 'react-icons/io'
 
 const TabMedia = (props) => {
   const router = useRouter()
-  console.log('rouer', router.pathname)
+  console.log('rouer', router)
   const [showDropdown, setShowDropdown] = useState(false)
   const [style, setStyle] = useState({ display: 'none' })
   const [styleNav, setStyleNav] = useState(true)
@@ -56,7 +56,10 @@ const TabMedia = (props) => {
                     <li
                       key={index}
                       className={`${styles.menu__item} ${
-                        props.titlepage == item?.title ? 'active' : ''
+                        props.titlepage == item?.title ||
+                        router.query.title.split('-').join(' ') == item?.title
+                          ? 'active'
+                          : ''
                       } mx-1`}
                       onMouseOver={(e) => {
                         item?.items?.length > 0 &&

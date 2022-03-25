@@ -462,7 +462,7 @@ const NavBar = (props) => {
           <Contact title='الشبكات الاجتماعية' className='social-media' />
         </div>
 
-        <div className={`${visible ? 'd-block' : 'd-none'}`}>
+        <div>
           {InputShow ? (
             <div className={styles.responsiveSearch} style={{ width: '60vw' }}>
               <SearchInput
@@ -478,7 +478,10 @@ const NavBar = (props) => {
               />
             </div>
           ) : (
-            <Link href={'/search'}>
+            <Link
+              className={`${visible ? 'd-block' : 'd-none'}`}
+              href={'/search'}
+            >
               <a
                 onClick={props.onClickSettings}
                 className={` d-flex align-items-center btn m-0 p-0 searchSticky`}
@@ -492,10 +495,8 @@ const NavBar = (props) => {
           )}
         </div>
         <div
-          className={`${visible ? styles.quesAnserImg : styles.quesAnser} 
-           btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${
-             styles.secQa
-           }`}
+          className={`${styles.quesAnserImg} 
+           btn rounded-0 p-0 border-0 bg-warning btn-faq align-self-stretch justify-content-center d-flex ${styles.secQa}`}
         >
           <Link
             exact

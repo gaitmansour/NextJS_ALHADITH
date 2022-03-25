@@ -166,43 +166,17 @@ const media = ({ props }) => {
   }
 
   var leng = dataAPI?.included?.length
-
-  // console.log('data item media ', dataAPI?.data)
-  // let vedioTop = [dataAPI?.included?.map((item) => item?.attributes?.uri?.url)]
-  // let filterVedio = vedioTop[0].filter((x) => x == video)
-
-  // console.log('vedioQuery', video)
-  // console.log('vedioTop', filterVedio[0])
-  // console.log('vedioTop', vedioTop)
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={sideData11} />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
         <ScrollButton />
-        <div className={`${styles.sectionTop} `}>
-          {/* <label className={styles.blocSearch} htmlFor='search'>
-              <span className='mx-2 fw-bold text-success'>{'البحث'} :</span>
-              <div className={styles.searchInput}>
-                <input id='search' type='text' onChange={handleSearch} />
-                <i className='fas fa-search p-3' style={{ color: '#157646' }} />
-              </div>
-            </label> */}
-          {/* <div className={styles.blocFilter}>
-            <select className='px-2'>
-              <option selected>{'التلفزة الرقمية'}</option>
-              {sideData11?.map((item, index) => {
-                return <option value='1'>{item.title}</option>
-              })}
-            </select>
-            <i className='fas fa-filter' style={{ color: '#157646' }} />
-          </div> */}
-        </div>
         {dataAPI?.data?.length > 0 ? (
           <>
             <div
-              className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2`}
+              className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
             >
-              <div className={`${styles.videoTop} w-50 mb-5`}>
+              <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
                 <div
                   className={`${styles.playerWrapper} player-wrapper`}
                   // onClick={() => handleStart()}

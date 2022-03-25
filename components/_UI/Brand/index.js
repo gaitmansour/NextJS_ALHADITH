@@ -11,11 +11,12 @@ const Brand = (props) => {
       <Link href='/' passHref={true}>
         <Image
           src={Logos.logo_web}
+          objectFit='cover'
           width={230}
           height={120}
           // width={16}
           // height={9}
-          quality={65}
+          quality={95}
           alt='logo-Al-hadith-Mohammed-VI'
         />
       </Link>

@@ -23,6 +23,7 @@ const TopBar = (props) => {
   const { t, i18n } = useTranslation()
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
+  const [elementShow, setElementShow] = useState(true)
   const isRTL = i18n?.language === 'ar'
   const title = 'التواصل'
   const handleClose = () => setShow(false)
@@ -86,6 +87,28 @@ const TopBar = (props) => {
     goToSearchPage()
   }
 
+  useEffect(() => {
+    checkSizeWindow()
+    if (typeof window !== undefined) {
+      window.addEventListener('resize', checkSizeWindow)
+      // Remove event listener on cleanup
+      return () => {
+        if (typeof window !== undefined) {
+          window.removeEventListener('resize', checkSizeWindow)
+        }
+      }
+    }
+  }, [])
+
+  const checkSizeWindow = () => {
+    if (typeof window !== undefined && window.innerWidth <= 480) {
+      setElementShow(false)
+    } else {
+      setElementShow(true)
+    }
+    //var x = document.getElementById("inputdiv");
+  }
+
   return (
     <div
       className={`${styles.TopBar} ${styles.bgGradientGreen} navbar navbar-expand-lg navbar-light px-2`}
@@ -93,8 +116,8 @@ const TopBar = (props) => {
       ref={elementRef}
     >
       <div className={`${styles.sectionHeader} container-fluid my-2`}>
-        <>
-          <Brand />
+        <Brand />
+        {elementShow ? (
           <SearchInput
             className={`${styles.search} text-white `}
             styleIcon={{ color: '#fff' }}
@@ -106,9 +129,22 @@ const TopBar = (props) => {
             input={input}
             placeholder='البحث في منصة الحديث النبوي الشريف'
           />
-        </>
+        ) : (
+          <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
+            <li
+              className={`${styles.navItem} d-flex align-items-center nav-item`}
+            >
+              <Lottie options={defaultOptions} height={55} width={55} />
+              <div style={{ marginLeft: 20 }}>
+                <Link exact activeClassName='active' href={`/AllMedia`}>
+                  {'البث المباشر'}
+                </Link>
+              </div>
+            </li>
+          </ul>
+        )}
         <div
-          className={` ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
+          className={`collapse  ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
           id='navbarTop'
         >
           <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
