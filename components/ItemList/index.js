@@ -34,8 +34,8 @@ const ItemList = (props) => {
           : props.degree === 'ضعيف'
           ? styles.bckg2
           : props.degree === 'موضوع'
-          ? styles.bckg3
-          : 'bckgCard'
+          ? 'bckgCard'
+          : ''
       }`}
     >
       <div className={styles.content}>
