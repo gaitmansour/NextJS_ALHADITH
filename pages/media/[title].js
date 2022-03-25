@@ -11,12 +11,15 @@ import {
   getMenuByName,
   getSideItems,
   getVideo,
+  getVideoMedia,
 } from '../../endpoints'
 import FetchAPI from '../../API'
 import ReactPlayer from 'react-player'
 import ReactPaginate from 'react-paginate'
 import { useRouter } from 'next/router'
 import TabMedia from './TabMedia'
+import Image from 'next/image'
+import { Icons } from '../../assets'
 
 const media = ({ props }) => {
   const video = useRouter()?.query?.video
@@ -36,15 +39,15 @@ const media = ({ props }) => {
   const [itemOffset, setItemOffset] = useState(0)
   const [dataItems, setDataItems] = useState([])
 
-  const url = getVideo(title)
+  const url = getVideoMedia(title)
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
       console.log('media_data', data?.data)
-      console.log('media', dataAPI)
     })
+    console.log('media inside function', dataAPI)
   }
   //
   //
@@ -57,30 +60,14 @@ const media = ({ props }) => {
     })
   }
   useEffect(() => {
-    if (title) {
-      getData()
-    }
+    getData()
+
     getItemsMenu(50)
     getItemsMenu(51)
   }, [title])
   //
   // pagination
   //
-  useEffect(() => {
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage
-    console.log(`Loading items fromm ${itemOffset} to ${endOffset}`)
-    setCurrentItems(dataAPI?.data?.slice(itemOffset, endOffset))
-    setPageCount(Math.ceil(dataAPI?.data?.length / itemsPerPage))
-  }, [itemOffset, itemsPerPage, dataAPI])
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % dataAPI?.data?.length
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    )
-    setItemOffset(newOffset)
-  }
 
   //
   //palyer video
@@ -156,22 +143,42 @@ const media = ({ props }) => {
     },
   ]
 
-  console.log('show start------', start)
-  if (_.isEmpty(dataAPI)) {
-    return (
-      <div className='d-flex align-items-center justify-content-center py-5'>
-        <Loading />
-      </div>
-    )
-  }
+  useEffect(() => {
+    // Fetch items from another resources.
+    const endOffset = itemOffset + itemsPerPage
+    // console.log(`Loading items fromm ${itemOffset} to ${endOffset}`)
+    // console.log('dataAPI', dataAPI)
 
-  var leng = dataAPI?.included?.length
+    setCurrentItems(dataAPI?.slice(itemOffset, endOffset))
+    setPageCount(Math.ceil(dataAPI?.length / itemsPerPage))
+
+    // console.log('currentItems', currentItems)
+    // console.log('pageCount', pageCount)
+  }, [itemOffset, itemsPerPage, dataAPI, title])
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % dataAPI?.length
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    )
+    setItemOffset(newOffset)
+  }
+  console.log('show start------', start)
+  // if (_.isEmpty(currentItems)) {
+  //   return (
+  //     <div className='d-flex align-items-center justify-content-center py-5'>
+  //       <Loading />
+  //     </div>
+  //   )
+  // }
+
+  // var leng = dataAPI?.included?.length
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={sideData11} />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
         <ScrollButton />
-        {dataAPI?.data?.length > 0 ? (
+        {dataAPI?.length > 0 ? (
           <>
             <div
               className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
@@ -192,10 +199,7 @@ const media = ({ props }) => {
                           ]
                         : [
                             {
-                              src: `${base_url}${
-                                dataAPI?.included[leng / 2]?.attributes?.uri
-                                  ?.url
-                              }`,
+                              src: `${base_url}${dataAPI[0]?.field_upload_video}`,
                               type: 'video/mp4',
                             },
                           ]
@@ -203,7 +207,7 @@ const media = ({ props }) => {
                     light={
                       light
                         ? `${base_url}/${light}`
-                        : `${base_url}/${dataAPI?.included[0]?.attributes?.uri?.url}`
+                        : `${base_url}/${dataAPI[0]?.field_thumbnail_video}`
                     }
                     controls
                     playing
@@ -213,7 +217,7 @@ const media = ({ props }) => {
                   />
                 </div>
                 <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {titleVideo ? titleVideo : dataAPI.data[0].attributes.title}
+                  {titleVideo ? titleVideo : dataAPI[0]?.title}
                 </h3>
               </div>
             </div>
@@ -232,20 +236,14 @@ const media = ({ props }) => {
                         <ReactPlayer
                           url={[
                             {
-                              src: `${base_url}${
-                                dataAPI?.included[i + leng / 2]?.attributes?.uri
-                                  ?.url
-                              }`,
+                              src: `${base_url}${item?.field_upload_video}`,
                               type: 'video/mp4',
                             },
                           ]}
-                          key={`${base_url}${
-                            dataAPI?.included[i + leng / 2]?.attributes?.uri
-                              ?.url
-                          }`}
+                          key={`${base_url}${item?.field_upload_video}`}
                           playsinline={true}
                           playing={selectVideo === i ? true : false}
-                          light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
+                          light={`${base_url}${item?.field_thumbnail_video}`}
                           controls
                           className={`${styles.reactPlay} react-player`}
                           width='100%'
@@ -253,14 +251,14 @@ const media = ({ props }) => {
                         />
                       </div>
                       <div className='mt-4'>
-                        <span>{item?.attributes?.title}</span>
+                        <span>{item?.title}</span>
                       </div>
                     </div>
                   </div>
                 )
               })}
             </div>
-            {dataAPI?.data?.length > 0 && (
+            {dataAPI?.length > 0 && (
               <div className='d-flex justify-content-center align-items-center'>
                 <ReactPaginate
                   previousLabel={
@@ -282,11 +280,23 @@ const media = ({ props }) => {
                   pageRangeDisplayed={5}
                   pageCount={pageCount}
                   onPageChange={handlePageClick}
+                  forcePage={itemOffset}
                 />
               </div>
             )}
           </>
-        ) : null}
+        ) : (
+          <div className='d-flex flex-column justify-content-center align-items-center'>
+            <Image
+              src={Icons.icon_video}
+              alt=''
+              className={'ImageSlider my-4'}
+              width='100%'
+              height='100%'
+            />
+            <h4 className='mt-3 mb-4'>{'لا توجد نتائج'}</h4>
+          </div>
+        )}
       </Body>
     </TemplateArticle>
   )

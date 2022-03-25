@@ -180,7 +180,7 @@
 .titleVideo{
   font-weight: bold;
   text-decoration: underline #129D59 2px;
-  text-align: center;
+  margin-right: 15%;
 }
 
 @media screen and (max-width : 600px){

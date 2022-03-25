@@ -222,39 +222,45 @@ export default function ArticlePage(props) {
               __html: dataAPI?.data[0]?.attributes?.body?.value,
             }}
           />
-          <div className={`${styles.articleTags} d-flex `}>
+          <div className={`${styles.articleTags} row`}>
             {dataTags &&
               dataTags?.map((tag, index) => {
                 return (
-                  <Link
-                    passHref
-                    key={index.toString()}
-                    exact
-                    activeClassName='nav-bar-active'
-                    href={{
-                      pathname: `/articlesByTag/${tag?.attributes?.drupal_internal__tid}`,
-                      search: '',
-                      hash: '',
-                      query: { title: tag?.attributes?.drupal_internal__tid },
-                    }}
-                    as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
-                  >
-                    <a
-                      style={{ textDecoration: 'none' }}
-                      onClick={() => {
-                        localStorage.setItem(
-                          'tagTitle',
-                          JSON.stringify(tag?.attributes?.drupal_internal__tid)
-                        )
+                  <div className='col col-12 col-lg-3 col-md-4 col-sm-6 my-1'>
+                    <Link
+                      passHref
+                      key={index.toString()}
+                      exact
+                      activeClassName='nav-bar-active'
+                      href={{
+                        pathname: `/articlesByTag/${tag?.attributes?.drupal_internal__tid}`,
+                        search: '',
+                        hash: '',
+                        query: { title: tag?.attributes?.drupal_internal__tid },
                       }}
+                      as={`/articlesByTag/${tag?.attributes?.drupal_internal__tid}`}
                     >
-                      <Badgs
-                        className={`${styles.badgTag}`}
-                        key={index}
-                        tags={tag?.attributes?.name}
-                      />
-                    </a>
-                  </Link>
+                      <a
+                        style={{ textDecoration: 'none' }}
+                        onClick={() => {
+                          localStorage.setItem(
+                            'tagTitle',
+                            JSON.stringify(
+                              tag?.attributes?.drupal_internal__tid
+                            )
+                          )
+                        }}
+                      >
+                        <div className=''>
+                          <Badgs
+                            className={`${styles.badgTag} `}
+                            key={index}
+                            tags={tag?.attributes?.name}
+                          />
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
                 )
               })}
           </div>
