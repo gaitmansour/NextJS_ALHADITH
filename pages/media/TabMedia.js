@@ -56,8 +56,9 @@ const TabMedia = (props) => {
                     <li
                       key={index}
                       className={`${styles.menu__item} ${
-                        props.titlepage == item?.title ||
-                        router.query.title.split('-').join(' ') == item?.title
+                        props?.titlepage == item?.title ||
+                        router?.query?.title?.split('-').join(' ') ==
+                          item?.title
                           ? 'active'
                           : ''
                       } mx-1`}

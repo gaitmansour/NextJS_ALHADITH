@@ -28,6 +28,8 @@ export const AllVideo = () =>
   `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video`
 export const getArticlesByTag = (value) =>
   `${base_url}/meta-tags?field_tags_target_id=${value}`
+export const getVideoMedia = (title) =>
+  `${base_url}/videos?field_categorie_video_name=${title}`
 export const getVideo = (title) =>
   `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=${title}`
 // export const getArticleById = (title) => `${api_url}/article?include=field_image&fields[node--article]=title,body,created,field_image&filter[title]=${title}`

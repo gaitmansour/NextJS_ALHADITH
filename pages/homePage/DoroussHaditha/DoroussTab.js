@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 import _ from 'lodash'
 import Loading from '../../../components/_UI/Loading'
 import styles from './DoroussHaditha.module.css'
-import { base_url, getVideoDorouss } from '../../../endpoints'
+import { base_url, getVideoDorouss, getVideoMedia } from '../../../endpoints'
 import FetchAPI from '../../../API'
 import $ from 'jquery'
 import ReactPlayer from 'react-player'
@@ -15,24 +15,32 @@ import { Icons } from '../../../assets'
 import Image from 'next/image'
 
 const DoroussTab = ({ title }) => {
-  const url = getVideoDorouss(title)
+  const url = getVideoMedia(title)
   const [dataAPI, setDataAPI] = useState([])
+  const [isLoding, setIsLoding] = useState(false)
   const [start, setStart] = useState(false)
 
   useEffect(() => {
-    FetchAPI(url).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-      console.log('dataaaa D.H ===>', dataAPI)
-    })
+    try {
+      setIsLoding(true)
+      FetchAPI(url).then((data) => {
+        if (data.success) {
+          setDataAPI(data?.data)
+          setIsLoding(false)
+          console.log('dataaaa D.H ===>', data?.data)
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }, [])
+  console.log('dataApi outside function', dataAPI)
 
   const settings = {
     dots: true,
-    infinite: dataAPI?.data?.length > 2,
+    infinite: dataAPI?.length > 2,
     autoplay: true,
-    slidesToShow: dataAPI?.data?.length > 3 ? 3 : dataAPI?.data?.length,
+    slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
     slidesToScroll: 2,
     arrows: false,
     responsive: [
@@ -73,16 +81,15 @@ const DoroussTab = ({ title }) => {
   }
   const renderData = () => {
     try {
-      if (_.isEmpty(dataAPI)) {
+      if (isLoding) {
         return (
           <div className='d-flex align-items-center justify-content-center py-5'>
             <Loading />
           </div>
         )
       } else {
-        if (dataAPI?.data?.length > 0) {
-          return dataAPI?.data?.map((item, i) => {
-            var leng = dataAPI.included.length
+        if (dataAPI?.length > 0) {
+          return dataAPI?.map((item, i) => {
             console.log('-item----', item)
 
             return (
@@ -90,60 +97,35 @@ const DoroussTab = ({ title }) => {
                 key={i.toString()}
                 className={`${styles.itemCard} mt-4 mb-2`}
               >
-                {/* <div className={`${styles.playerWrapper} player-wrapper `}>
-                  <ReactPlayer
-                    url={[
-                      {
-                        src: `${base_url}${
-                          dataAPI?.included[i + leng / 2]?.attributes?.uri?.url
-                        }`,
-                        type: 'video/mp4',
-                      },
-                    ]}
-                    key={[
-                      {
-                        src: `${base_url}${
-                          dataAPI?.included[i + leng / 2]?.attributes?.uri?.url
-                        }`,
-                        type: 'video/mp4',
-                      },
-                    ]}
-                    light={`${base_url}${dataAPI?.included[i]?.attributes?.uri?.url}`}
-                    controls
-                    playing
-                    className={`${styles.reactPlay} react-player`}
-                    width='90%'
-                    height='90%'
-                  />
-                </div> */}
                 <Link
                   href={{
                     pathname: `/media/${title.split(' ').join('-')}`,
                     search: '',
                     hash: '',
                     query: {
-                      video:
-                        dataAPI?.included[i + leng / 2]?.attributes?.uri?.url,
-                      light: dataAPI?.included[i]?.attributes?.uri?.url,
-                      titleVideo: item?.attributes?.title,
+                      video: item?.field_upload_video,
+                      light: item?.field_thumbnail_video,
+                      titleVideo: item?.title,
                     },
                   }}
                   as={`/media/${title.split(' ').join('-')}`}
                 >
                   <a className='text-decoration-none'>
                     <Image
-                      src={dataAPI?.included[i]?.attributes?.uri?.url}
-                      className='m-auto w-100 my-4'
+                      src={item?.field_thumbnail_video}
+                      className=''
                       objectFit='cover'
-                      width={850}
-                      height={500}
+                      width={10}
+                      height={6}
+                      layout='responsive'
+                      quality={65}
                       loader={myLoader}
                       alt={title}
                     />
                     <p
-                      className={`${styles.titleVideo} text-center fw-bold description text-black`}
+                      className={`${styles.titleVideo} my-3 text-center fw-bold description text-black`}
                     >
-                      {item?.attributes?.title}
+                      {item?.title}
                     </p>
                   </a>
                 </Link>
