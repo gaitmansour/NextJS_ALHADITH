@@ -75,7 +75,20 @@ const ArticlesByTag = (props) => {
                       }}
                       as={`/article/${data.title.split(' ').join('-')}`}
                     >
-                      <a className='text-decoration-none'>
+                      <a
+                        className='text-decoration-none'
+                        role='button'
+                        onClick={() => {
+                          localStorage.setItem(
+                            'categorieTitle',
+                            JSON.stringify({
+                              parent: dataValue.parent,
+                              child: data?.title,
+                              contenuArticle: data?.title,
+                            })
+                          )
+                        }}
+                      >
                         {data.field_image ? (
                           <Image
                             className='card-img-top p-2 pt-3'
