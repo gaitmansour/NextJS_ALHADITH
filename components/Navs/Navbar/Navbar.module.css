@@ -444,6 +444,9 @@
     .logo {
         width: 100px;
     }
+    .linkQa img{
+        zoom: 0.8 !important;
+    }
 }
 
 @media (max-width: 767px) {
