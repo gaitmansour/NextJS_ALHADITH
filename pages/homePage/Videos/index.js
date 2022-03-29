@@ -111,7 +111,7 @@ const Videos = () => {
           <div className={`${styles.sec} sec w-100 h-100`}>
             <div className={`${styles.secTop} d-flex  secTop`}>
               <div className={`${styles.divA} divA position-relative`}>
-                <Link href={'/media/الدروس الحسنية'} as='/media/الدروس الحسنية'>
+                <Link href={'/media/الدروس-الحسنية'} as='/media/الدروس-الحسنية'>
                   <a>
                     <Image
                       src={Icons.icon_dorouss_hassania}
@@ -124,8 +124,8 @@ const Videos = () => {
               </div>
               <div className={`${styles.divB} divB`}>
                 <Link
-                  href={'/media/الدروس الحديثية'}
-                  as='/media/الدروس الحديثية'
+                  href={'/media/الدروس-التمهيدية'}
+                  as='/media/الدروس-التمهيدية'
                 >
                   <a>
                     <Image
@@ -144,7 +144,7 @@ const Videos = () => {
             </div>
             <div className={`${styles.secBottom} d-flex  secBottom`}>
               <div className={`${styles.div1} div1 position-relative`}>
-                <Link href={'/media/برامج تلفزية'} as='/media/برامج تلفزية'>
+                <Link href={'/media/برامج-تلفزية'} as='/media/برامج-تلفزية'>
                   <a>
                     <Image
                       src={Icons.icon_tv}
@@ -157,7 +157,7 @@ const Videos = () => {
                 </Link>
               </div>
               <div className={`${styles.div2} div2 position-relative`}>
-                <Link href={'/media/برامج اذاعية'} as='/media/برامج اذاعية'>
+                <Link href={'/media/برامج-اذاعية'} as='/media/برامج-اذاعية'>
                   <a>
                     <Image
                       src={Icons.icon_media}
@@ -174,8 +174,8 @@ const Videos = () => {
               </div>
               <div className={`${styles.div3} div3 position-relative`}>
                 <Link
-                  href={'/media/برامج على الشبكات الاجتماعية'}
-                  as='/media/برامج على الشبكات الاجتماعية'
+                  href={'/media/برامج-على-الشبكات-الاجتماعية'}
+                  as='/media/برامج-على-الشبكات-الاجتماعية'
                 >
                   <a>
                     <Image

@@ -250,14 +250,14 @@ const CarouselHome = (props) => {
               >
                 <Link
                   href={{
-                    pathname: '/article/' + item?.title,
+                    pathname: '/article/' + item?.title?.split(' ').join('-'),
                     query: {
                       from: 'CarouselHome',
                       selectedItem: item?.term_node_tid,
                       contenuArticle: '',
                     },
                   }}
-                  as={'/article/' + item?.title}
+                  as={'/article/' + item?.title?.split(' ').join('-')}
                 >
                   <a className='text-decoration-none text-black'>
                     <p>{toShow}</p>
