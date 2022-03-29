@@ -33,6 +33,8 @@ const media = ({ props }) => {
   //   const title = 'الدروس الحديثية'
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
+  const [dataTab, setDataTab] = useState([])
+  const [dataChildrenTab, setDataChildrenTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
@@ -45,25 +47,33 @@ const media = ({ props }) => {
     })
     console.log('media inside function', dataAPI)
   }
+
+  useEffect(() => {
+    if (title) {
+      getData()
+    }
+  }, [title])
+
   //
   //
   const getItemsMenu = async (tid) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
       if (data.success) {
-        console.log('data------------------------items')
-        console.log(data?.data)
+        if (tid == 50) {
+          setDataTab(data?.data)
+        }
+        if (tid == 51) {
+          setDataChildrenTab(data?.data)
+        }
       }
     })
   }
+  console.log('dataTab', dataTab)
+  console.log('dataChildrenTab', dataChildrenTab)
   useEffect(() => {
-    if (title) {
-      getData()
-    }
-
     getItemsMenu(50)
     getItemsMenu(51)
-  }, [title])
-
+  }, [])
   //
   //palyer video
   //
@@ -137,23 +147,6 @@ const media = ({ props }) => {
       items: [],
     },
   ]
-
-  // useEffect(() => {
-  //   // Fetch items from another resources.
-  //   const endOffset = itemOffset + itemsPerPage
-
-  //   setCurrentItems(dataAPI?.slice(itemOffset, endOffset))
-  //   setPageCount(Math.ceil(dataAPI?.length / itemsPerPage))
-
-  // }, [itemOffset, itemsPerPage, dataAPI])
-
-  // const handlePageClick = (event) => {
-  //   const newOffset = (event.selected * itemsPerPage) % dataAPI?.length
-  //   console.log(
-  //     `User requested page number ${event.selected}, which is offset ${newOffset}`
-  //   )
-  //   setItemOffset(newOffset)
-  // }
 
   const handlePageClick = (e) => {
     setCurrentPage(e.selected)
