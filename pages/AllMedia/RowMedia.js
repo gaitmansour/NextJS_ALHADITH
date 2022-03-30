@@ -14,7 +14,7 @@ const RowMedia = (props) => {
   const urlAllVideo = getVideoByParent(_id)
   const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
   const getData = async () => {
-    FetchAPI(endpointVideo).then((data) => {
+    FetchAPI(urlAllVideo).then((data) => {
       if (data.success) {
         setDataMedia(data?.data)
       }
@@ -46,10 +46,11 @@ const RowMedia = (props) => {
     dots: true,
     responsive: [
       {
-        breakpoint: 500,
+        breakpoint: 900,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          infinite: dataMedia?.length > 3,
+          slidesToShow: 3,
+          slidesToScroll: dataMedia?.length > 3 ? 3 : dataMedia?.length,
         },
       },
       {
@@ -83,7 +84,7 @@ const RowMedia = (props) => {
           </div>
           <div className='my-5'>
             <div className='d-flex align-items-center justify-content-center'>
-              <div className='w-50'>
+              <div className={`${styles.secVideo} `}>
                 <div className={`${styles.playerWrapper} player-wrapper`}>
                   <ReactPlayer
                     url={[
@@ -95,15 +96,29 @@ const RowMedia = (props) => {
                     light={`${base_url}/${dataMedia[0]?.field_thumbnail_video}`}
                     controls
                     playing
+                    playIcon={
+                      title === 'برامج اذاعية' ? (
+                        <i
+                          className='bi bi-volume-up fa-5x'
+                          style={{ color: '#ffd24a' }}
+                        ></i>
+                      ) : (
+                        <button className='d-none'></button>
+                      )
+                    }
                     className={`${styles.reactPlayer} react-player`}
                     width='100%'
                     height='100%'
                   />
                 </div>
-                <h4 className='my-3'>{dataMedia[0]?.title}</h4>
+                <h4 className={`${styles.titleVideo} my-3`}>
+                  {dataMedia[0]?.title}
+                </h4>
+                <hr />
+                <p>{dataMedia[0]?.field_description_video}</p>
               </div>
             </div>
-            <div className='mt-4'>
+            <div className='mt-4 p-2'>
               <Slider {...settings}>
                 {dataMedia?.map((item, index) => {
                   return (
@@ -119,14 +134,29 @@ const RowMedia = (props) => {
                           light={`${base_url}${item?.field_thumbnail_video}`}
                           controls
                           playing
+                          playIcon={
+                            title === 'برامج اذاعية' ? (
+                              <i
+                                className='bi bi-volume-up fa-2x'
+                                style={{
+                                  color: '#ffd24a',
+                                }}
+                              ></i>
+                            ) : (
+                              <button className='d-none'></button>
+                            )
+                          }
                           className={`${styles.reactPlay} react-player`}
                           width='100%'
                           height='100%'
                         />
                       </div>
-                      <h4 className={`${styles.description} h6 my-3`}>
+                      <h5 className={`${styles.description} h6 my-3`}>
                         {item?.title}
-                      </h4>
+                      </h5>
+                      <p className={styles.descVideo}>
+                        {item?.field_description_video}
+                      </p>
                     </div>
                   )
                 })}
