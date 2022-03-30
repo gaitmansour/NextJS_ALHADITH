@@ -457,14 +457,14 @@ const ListQuestions = (props) => {
                     </div>
                   </div>
                 ) : (
-                  <div>
+                  <div className={styles.sectionQuestion}>
                     <div
                       className={`${styles.searchInp} mb-3 d-flex justify-content-between align-items-center searchInp`}
                     >
                       {InputShow ? (
                         <div
                           className='d-flex flex-column'
-                          style={{ width: '90%' }}
+                          style={{ width: '85%' }}
                         >
                           <label
                             htmlFor='formGroupExampleInput'
@@ -650,7 +650,7 @@ const ListQuestions = (props) => {
                       secretkey='6LcHYVAdAAAAABdIdYVNQ1puIV6V81axykMvjo5sa'
                       // sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
                       // secretkey='6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
-                      className='captcha'
+                      className={`${styles.reCaptcha} captcha`}
                       onChange={onChange}
                     />
                     <button

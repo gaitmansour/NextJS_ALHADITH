@@ -33,12 +33,10 @@ const media = ({ props }) => {
   //   const title = 'الدروس الحديثية'
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
-  const [currentItems, setCurrentItems] = useState(null)
-  const [pageCount, setPageCount] = useState(0)
-  const [itemsPerPage, setItemsPerPage] = useState(12)
-  const [itemOffset, setItemOffset] = useState(0)
-  const [dataItems, setDataItems] = useState([])
-
+  const [dataTab, setDataTab] = useState([])
+  const [dataChildrenTab, setDataChildrenTab] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const PER_PAGE = 12
   const url = getVideoMedia(title)
   const getData = async () => {
     FetchAPI(url).then((data) => {
@@ -49,26 +47,33 @@ const media = ({ props }) => {
     })
     console.log('media inside function', dataAPI)
   }
+
+  useEffect(() => {
+    if (title) {
+      getData()
+    }
+  }, [title])
+
   //
   //
   const getItemsMenu = async (tid) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
       if (data.success) {
-        console.log('data------------------------items')
-        console.log(data?.data)
+        if (tid == 50) {
+          setDataTab(data?.data)
+        }
+        if (tid == 51) {
+          setDataChildrenTab(data?.data)
+        }
       }
     })
   }
+  console.log('dataTab', dataTab)
+  console.log('dataChildrenTab', dataChildrenTab)
   useEffect(() => {
-    getData()
-
     getItemsMenu(50)
     getItemsMenu(51)
-  }, [title])
-  //
-  // pagination
-  //
-
+  }, [])
   //
   //palyer video
   //
@@ -143,26 +148,19 @@ const media = ({ props }) => {
     },
   ]
 
-  useEffect(() => {
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage
-    // console.log(`Loading items fromm ${itemOffset} to ${endOffset}`)
-    // console.log('dataAPI', dataAPI)
-
-    setCurrentItems(dataAPI?.slice(itemOffset, endOffset))
-    setPageCount(Math.ceil(dataAPI?.length / itemsPerPage))
-
-    // console.log('currentItems', currentItems)
-    // console.log('pageCount', pageCount)
-  }, [itemOffset, itemsPerPage, dataAPI, title])
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % dataAPI?.length
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    )
-    setItemOffset(newOffset)
+  const handlePageClick = (e) => {
+    setCurrentPage(e.selected)
   }
+
+  const offset = currentPage * PER_PAGE
+
+  const pageCount = Math.ceil(dataAPI.length / PER_PAGE)
+
+  useEffect(() => {
+    // setCurrentPage(0)
+    handlePageClick({ selected: 0 })
+  }, [title])
+
   console.log('show start------', start)
   // if (_.isEmpty(currentItems)) {
   //   return (
@@ -222,7 +220,7 @@ const media = ({ props }) => {
               </div>
             </div>
             <div className='row '>
-              {currentItems?.map((item, i) => {
+              {dataAPI?.slice(offset, offset + PER_PAGE).map((item, i) => {
                 return (
                   <div
                     key={i.toString()}
@@ -274,13 +272,13 @@ const media = ({ props }) => {
                     />
                   }
                   breakLabel={'...'}
-                  breakClassName={'break-me'}
+                  // breakClassName={'break-me'}
                   activeClassName={styles.activebtn}
                   containerClassName={`pagination justify-content-evenly align-content-around w-25 py-2 my-5 ${styles.paginationButtons}`}
-                  pageRangeDisplayed={5}
+                  // pageRangeDisplayed={5}
                   pageCount={pageCount}
                   onPageChange={handlePageClick}
-                  forcePage={itemOffset}
+                  forcePage={currentPage}
                 />
               </div>
             )}

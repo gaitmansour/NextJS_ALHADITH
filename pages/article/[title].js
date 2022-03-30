@@ -222,11 +222,11 @@ export default function ArticlePage(props) {
               __html: dataAPI?.data[0]?.attributes?.body?.value,
             }}
           />
-          <div className={`${styles.articleTags} row`}>
+          <div className={`${styles.articleTags}`}>
             {dataTags &&
               dataTags?.map((tag, index) => {
                 return (
-                  <div className='col col-12 col-lg-3 col-md-4 col-sm-6 my-1'>
+                  <div className={styles.sectionTags}>
                     <Link
                       passHref
                       key={index.toString()}
@@ -251,13 +251,11 @@ export default function ArticlePage(props) {
                           )
                         }}
                       >
-                        <div className=''>
-                          <Badgs
-                            className={`${styles.badgTag} `}
-                            key={index}
-                            tags={tag?.attributes?.name}
-                          />
-                        </div>
+                        <Badgs
+                          className={`${styles.badgTag} `}
+                          key={index}
+                          tags={tag?.attributes?.name}
+                        />
                       </a>
                     </Link>
                   </div>

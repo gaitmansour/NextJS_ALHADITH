@@ -107,6 +107,19 @@ table td p a{
     text-decoration: underline !important;
 }*/
 
+.articleTags{
+    display: grid !important;
+    grid-gap: 0.4rem !important;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 0.4fr)) !important;
+}
+.sectionTags{
+    text-align: center;
+    margin: 0%;
+}
+.badgTag{
+    margin: 0% ;
+}
+
 @media (max-width: 480px)  {
     .TemplateArticleBody .desc{
         width:100vw !important;
