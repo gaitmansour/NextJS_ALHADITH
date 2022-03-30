@@ -76,7 +76,7 @@ const LiveSection = () => {
         (item) =>
           curD < Moment(item.field_date_fin, 'YYYY-MM-DDTHH:mm:ss').format()
       )?.length > 0 ? (
-        <div className='row'>
+        <div className={`${styles.secLive} row`}>
           {currentLive.length > 0 ? (
             <div className='col col-12 col-lg-9 col-md-8 col-sm-1 my-2'>
               <div className={`${styles.playerWrapper} player-wrapper`}>

@@ -124,8 +124,8 @@ const Videos = () => {
               </div>
               <div className={`${styles.divB} divB`}>
                 <Link
-                  href={'/media/الدروس-التمهيدية'}
-                  as='/media/الدروس-التمهيدية'
+                  href={'/media/الدروس-الحديثية'}
+                  as='/media/الدروس-الحديثية'
                 >
                   <a>
                     <Image

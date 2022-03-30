@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import styles from './media.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
 import ScrollButton from '../../components/ScrollButton'
@@ -12,6 +12,8 @@ import {
   getSideItems,
   getVideo,
   getVideoMedia,
+  getMenu,
+  getVideoByParent,
 } from '../../endpoints'
 import FetchAPI from '../../API'
 import ReactPlayer from 'react-player'
@@ -33,19 +35,22 @@ const media = ({ props }) => {
   //   const title = 'الدروس الحديثية'
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
-  const [dataTab, setDataTab] = useState([])
-  const [dataChildrenTab, setDataChildrenTab] = useState([])
+  const [dataMenu, setDataMenu] = useState([])
+  const [newData, setNewData] = useState([])
+  // const [dataTab, setDataTab] = useState([])
+  // const [dataChildrenTab, setDataChildrenTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
+  const urlAllVideo = getVideoByParent(51)
+  const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
   const getData = async () => {
-    FetchAPI(url).then((data) => {
+    FetchAPI(endpointVideo).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
       console.log('media_data', data?.data)
     })
-    console.log('media inside function', dataAPI)
   }
 
   useEffect(() => {
@@ -55,25 +60,27 @@ const media = ({ props }) => {
   }, [title])
 
   //
-  //
-  const getItemsMenu = async (tid) => {
-    return FetchAPI(getSideItems(tid)).then((data) => {
-      if (data.success) {
-        if (tid == 50) {
-          setDataTab(data?.data)
-        }
-        if (tid == 51) {
-          setDataChildrenTab(data?.data)
-        }
-      }
-    })
-  }
-  console.log('dataTab', dataTab)
-  console.log('dataChildrenTab', dataChildrenTab)
-  useEffect(() => {
-    getItemsMenu(50)
-    getItemsMenu(51)
-  }, [])
+  // const getItemsMenu = async (tid) => {
+  //   return FetchAPI(getSideItems(tid)).then((data) => {
+  //     if (data.success) {
+  //       if (tid == 50) {
+  //         setDataTab(data?.data)
+  //       }
+  //       if (tid == 51) {
+  //         setDataChildrenTab(data?.data)
+  //       }
+  //     }
+  //   })
+  // }
+  // console.log('dataTab', dataTab)
+  // console.log('dataChildrenTab', dataChildrenTab)
+  // useEffect(() => {
+  //   getItemsMenu(50)
+  //   getItemsMenu(51)
+  // }, [])
+
+  // get menu
+
   //
   //palyer video
   //
