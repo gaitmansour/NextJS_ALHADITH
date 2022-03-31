@@ -124,18 +124,6 @@ const CommanderieCroyants = () => {
                     backgroundColor: 'white',
                   }}
                 >
-                  <h5
-                    className={`${styles.title}  mt-3`}
-                    style={{ color: `#${field_code_couleur}` }}
-                  >
-                    {title}
-                  </h5>
-                  {
-                    <div
-                      className={`${styles.description} pt-3 pb-2`}
-                      dangerouslySetInnerHTML={{ __html: body?.processed }}
-                    />
-                  }
                   <Link
                     role='button'
                     href={{
@@ -153,23 +141,42 @@ const CommanderieCroyants = () => {
                     as={`/article/${title?.split(' ').join('-')}`}
                   >
                     <a
-                      className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
-                      style={{ background: `#${field_code_couleur}` }}
+                      className='text-decoration-none text-black'
+                      role='button'
                       onClick={() => getDataMenu(title)}
                     >
-                      <i
-                        className='fas fa-long-arrow-alt-left text-white'
-                        style={{
-                          marginRight: '1em',
-                          transform: 'rotate(0deg )',
-                        }}
-                      />
-                      <p
-                        className='m-0'
-                        style={{ textAlign: 'justify !important' }}
+                      <h5
+                        className={`${styles.title}  mt-3`}
+                        style={{ color: `#${field_code_couleur}` }}
                       >
-                        {'لمعرفة المزيد'}
-                      </p>
+                        {title}
+                      </h5>
+                      {
+                        <div
+                          className={`${styles.description} pt-3 pb-2`}
+                          dangerouslySetInnerHTML={{ __html: body?.processed }}
+                        />
+                      }
+
+                      <a
+                        className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
+                        style={{ background: `#${field_code_couleur}` }}
+                        onClick={() => getDataMenu(title)}
+                      >
+                        <i
+                          className='fas fa-long-arrow-alt-left text-white'
+                          style={{
+                            marginRight: '1em',
+                            transform: 'rotate(0deg )',
+                          }}
+                        />
+                        <p
+                          className='m-0'
+                          style={{ textAlign: 'justify !important' }}
+                        >
+                          {'لمعرفة المزيد'}
+                        </p>
+                      </a>
                     </a>
                   </Link>
                 </Cards>
