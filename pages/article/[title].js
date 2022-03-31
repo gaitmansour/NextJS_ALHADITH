@@ -28,17 +28,24 @@ import ScrollButton from '../../components/ScrollButton'
 
 export default function ArticlePage(props) {
   let params = useRouter()?.query
-  const title = useRouter()?.query?.title
+  const title = useRouter()?.query?.title?.split('-').join(' ')
 
-  console.log('useRouter title ==>', params)
+  console.log('useRouter title ===>', params)
 
   let dataValue =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
+  console.log('dataValue', dataValue)
   let contenuArticle =
-    params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
+    params?.from == 'CarouselHome' || params?.from == 'ressources'
       ? params?.contenuArticle || dataValue.contenuArticle
-      : title?.split('-').join(' ')
+      : params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
+      ? params?.contenuArticle || dataValue.contenuArticle
+      : title
+
+  // params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
+  //   ? params?.contenuArticle || dataValue.contenuArticle
+  //   : title
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
   }
@@ -54,15 +61,22 @@ export default function ArticlePage(props) {
   const [dataAhadith, setDataAhadith] = useState([])
   const urlAhadith = getTopic()
   const CodeTopic = 28
+
+  console.log('contenuArticle ==>', contenuArticle)
   const url = getArticleById(contenuArticle)
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
         setDataTags(data?.data?.included)
+        console.log('data?.data articles => ', data?.data)
       }
     })
   }
+  useEffect(() => {
+    getData()
+  }, [contenuArticle])
+
   const getDataSlider = async (name, tid, parent_target) => {
     const urlSlider = getSideArticle(name, tid, parent_target)
     FetchAPI(urlSlider).then((data) => {
@@ -122,8 +136,6 @@ export default function ArticlePage(props) {
     })
 
     //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
-
-    getData()
   }, [route])
 
   useEffect(() => {

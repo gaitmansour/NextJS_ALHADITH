@@ -211,19 +211,19 @@ const CarouselHome = (props) => {
             var element2 = str.slice(0, -1)
             console.log('element2', element2)
           }
-          $(document).ready(function () {
-            $('.linksCarousel').contextmenu(function (event) {
-              localStorage.setItem(
-                'routeState',
-                JSON.stringify({
-                  fromNav: {},
-                  selectedItem: item?.term_node_tid,
-                  from: 'CarouselHome',
-                  contenuArticle: '',
-                })
-              )
-            })
-          })
+          // $(document).ready(function () {
+          //   $('.linksCarousel').contextmenu(function (event) {
+          //     localStorage.setItem(
+          //       'routeState',
+          //       JSON.stringify({
+          //         fromNav: {},
+          //         selectedItem: item?.term_node_tid,
+          //         from: 'CarouselHome',
+          //         contenuArticle: '',
+          //       })
+          //     )
+          //   })
+          // })
           console.log('itemCarousel apres', item)
           return (
             <Carousel.Item
