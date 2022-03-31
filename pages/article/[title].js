@@ -37,7 +37,9 @@ export default function ArticlePage(props) {
     JSON.parse(localStorage.getItem('categorieTitle'))
   console.log('dataValue', dataValue)
   let contenuArticle =
-    params?.from == 'CarouselHome' || params?.from == 'ressources'
+    params?.from == 'CarouselHome' ||
+    params?.from == 'ressources' ||
+    params?.from == 'Croyants'
       ? params?.contenuArticle || dataValue.contenuArticle
       : params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
       ? params?.contenuArticle || dataValue.contenuArticle
