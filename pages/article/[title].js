@@ -40,7 +40,7 @@ export default function ArticlePage(props) {
     params?.from == 'CarouselHome' ||
     params?.from == 'ressources' ||
     params?.from == 'Croyants'
-      ? params?.contenuArticle || dataValue.contenuArticle
+      ? title
       : params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
       ? params?.contenuArticle || dataValue.contenuArticle
       : title
