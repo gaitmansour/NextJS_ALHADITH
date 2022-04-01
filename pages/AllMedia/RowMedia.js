@@ -10,9 +10,9 @@ import ReactPlayer from 'react-player'
 const RowMedia = (props) => {
   const [dataMedia, setDataMedia] = useState([])
   const { title, _id } = props
-  const url = getVideoMedia(title)
+  // const url = getVideoMedia(title)
   const urlAllVideo = getVideoByParent(_id)
-  const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
+
   const getData = async () => {
     FetchAPI(urlAllVideo).then((data) => {
       if (data.success) {
