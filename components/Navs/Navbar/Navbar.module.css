@@ -3,7 +3,7 @@
     overflow-x: auto; /* [2] */
     -webkit-overflow-scrolling: touch; /* [3] */
     -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ }
-  
+
   /* [5] */
   .scrollNav::-webkit-scrollbar {
     display: none; }

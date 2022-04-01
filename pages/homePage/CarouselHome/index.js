@@ -16,10 +16,19 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 const CarouselHome = (props) => {
+
+
+  const [dataAPI, setDataAPI] = useState([])
+  const { t, i18n } = useTranslation('home')
+  const isRTL = i18n?.language === 'ar'
+  const getLanguage = isRTL ? 'ar' : 'fr'
+  const more = 'اقرأ المزيد'
+  const url = getCarousel()
+  const urlSlider = getSlider()
   let settings = {
     dotsClass: 'vertical-dots',
     dots: true,
-    infinite: true,
+    infinite: dataAPI.length > 3,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -85,15 +94,6 @@ const CarouselHome = (props) => {
       },
     ],
   }
-
-  const [dataAPI, setDataAPI] = useState([])
-  const { t, i18n } = useTranslation('home')
-  const isRTL = i18n?.language === 'ar'
-  const getLanguage = isRTL ? 'ar' : 'fr'
-  const more = 'اقرأ المزيد'
-  const url = getCarousel()
-  const urlSlider = getSlider()
-
   const getDataSliderHome = () => {
     FetchAPI(urlSlider).then((data) => {
       // console.log("data CarouselHome ==> ", data)
@@ -128,6 +128,7 @@ const CarouselHome = (props) => {
       </div>
       <Slider {...settings} className={`w-100 slide`}>
         {dataAPI?.map((item, index) => {
+          console.log('data slider----------',item)
           const toShow = item?.body_1?.substring(0, 251)
           if (item.field_image.includes('src=')) {
             var str = item.field_image
@@ -144,13 +145,15 @@ const CarouselHome = (props) => {
                   fromNav: {},
                   selectedItem: item?.term_node_tid,
                   from: 'CarouselHome',
+                  contenuArticle:""
                 })
               )
             })
           })
+
           return (
             <Carousel.Item
-              key={index.toString()}
+              key={index}
               className={`${styles.ImgSlide} w-100 `}
             >
               <Image
@@ -178,6 +181,7 @@ const CarouselHome = (props) => {
                     query: {
                       from: 'CarouselHome',
                       selectedItem: item?.term_node_tid,
+                      contenuArticle:""
                     },
                   }}
                   as={'/article/' + item?.title}
@@ -185,6 +189,16 @@ const CarouselHome = (props) => {
                   <a
                     role={'button'}
                     className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
+                  onClick={()=>{
+                    localStorage.setItem(
+                        'categorieTitle',
+                        JSON.stringify({
+                          parent: 'عناية أمير المؤمنين',
+                          child: item?.title,
+                          contenuArticle: item?.title
+                        })
+                    )
+                  }}
                   >
                     <h6 className='m-0 px-4'>{more}</h6>
                     <i

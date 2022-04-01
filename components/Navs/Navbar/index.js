@@ -15,13 +15,16 @@ import $ from 'jquery'
 import SearchInput from '../../Forms/SearchInput'
 import CustomModal from '../../_UI/Modal'
 import { useRouter } from 'next/router'
+import {getAllCommanderie} from "../../../lib/home/commanderieCroyants";
+import {getMenuList} from "../../../lib/menu";
 
 const NavBar = (props) => {
+  //console.log('-------------------------props', props.MenuGlobal)
   const { t, lang } = useTranslation()
   let router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
   const [Menu, setMenu] = useState([])
-  const [MenuGlobal, setMenuGlobal] = useState([])
+  //const [MenuGlobal, setMenuGlobal] = useState([])
   const [MenuLinks, setMenuLinks] = useState([])
   const [shownavLink, setShownavlink] = useState(false)
   const [showLogo, setShowLogo] = useState(false)
@@ -46,14 +49,14 @@ const NavBar = (props) => {
     }
   }
 
-  const getMenuList = () => {
+  /*const getMenuList = () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         const Menu = handleMenu(data?.data)
         setMenuGlobal(Menu)
       }
     })
-  }
+  }*/
 
   const handleLinks = () => {
     getMenuLink().then((r) => setMenuLinks(r))
@@ -61,7 +64,7 @@ const NavBar = (props) => {
 
   useEffect(() => {
     handleLinks()
-    getMenuList()
+    /*getMenuList()*/
   }, [])
 
   const ref = useRef()
@@ -72,7 +75,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-        console.log('---------------------------------',item)
+       // console.log('---------------------------------',item)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -186,20 +189,12 @@ const NavBar = (props) => {
 
   const clicked = (e) => {
     e.preventDefault()
-    // console.log("left < click")
-    // var element = document.querySelector("#navbarNav > ul")
-    // console.log(element)
-    // element.scrollTop -= 10;
-    // // element.scroll({
-    // //     right: 100,
-    // //     behavior: 'smooth'
-    // // });
   }
 
   const renderGlobalMenu = () => {
     const menuLinks =
-      MenuGlobal &&
-      MenuGlobal?.map((item, index) => {
+        props.MenuGlobal &&
+        props.MenuGlobal?.map((item, index) => {
         if (item?.label !== 'الرئيسية') {
           return (
             <div
@@ -242,16 +237,6 @@ const NavBar = (props) => {
                           },
                         }}
                         onClick={() => {
-                          // console.log('---------------------------')
-                          // console.log({
-                          //   pathname: `/${data?.path}`,
-                          //   search: '',
-                          //   hash: '',
-                          //   state: {
-                          //     fromNav: item?.items,
-                          //     selectedItem: data?.title,
-                          //   },
-                          // })
                           setShowMenu(!showMenu)
                         }}
                       >
@@ -460,5 +445,15 @@ const NavBar = (props) => {
     </div>
   )
 }
+export const getServerSideProps = async () => {
+  const MenuGlobal = await getMenuList()
+  console.log('xx---------------------',MenuGlobal)
 
+  return {
+    props: JSON.parse(JSON.stringify({MenuGlobal}))
+
+  }
+}
 export default NavBar
+
+

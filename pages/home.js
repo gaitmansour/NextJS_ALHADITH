@@ -19,6 +19,7 @@ import ScrollButton from '../components/ScrollButton'
 import DoroussHaditha from './homePage/DoroussHaditha'
 
 const HomeScreen = (props) => {
+  //console.log('props*************************',props)
   const [sections, setSections] = useState([])
   const [dataSection, setdataSection] = useState([])
   const url = getNewSections()
@@ -56,15 +57,15 @@ const HomeScreen = (props) => {
   return (
     <Layout>
       <TopBar />
-      <NavBar />
+      <NavBar {...props} />
       <Body>
         <ScrollButton />
         <CarouselHome />
         <SearchSection />
-        <CommanderieCroyants />
+        <CommanderieCroyants {...props}/>
         <DoroussHaditha />
         <Resources />
-        <Alahadiths />
+        <Alahadiths {...props}/>
         <Videos />
         {sections &&
           sections.length > 0 &&

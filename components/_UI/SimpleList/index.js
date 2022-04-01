@@ -13,7 +13,7 @@ const SimpleList = (props) => {
                     props.data?.length > 0 &&
                     props.data.map((item, i) => {
 
-                        console.log('this data to show ------>', item)
+                        //console.log('this data to show ------>', item)
                         if (item?.title == 'المصحف المحمدي') {
                             var path1 = {path: '/Almoshaf', as: '/المصحف المحمدي'}
                         } else if (item?.parentLabel == 'التلفزة الرقمية') {

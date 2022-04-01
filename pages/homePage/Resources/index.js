@@ -131,6 +131,7 @@ const Resources = () => {
                       fromNav: {},
                       selectedItem: title,
                       from: 'ressources',
+                      contenuArticle:""
                     })
                   )
                 })
@@ -149,7 +150,7 @@ const Resources = () => {
                         field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
                           ? '/Almoshaf'
                           : field_lien[0]?.uri.slice(9),
-                      query: { from: 'ressources', selectedItem: title },
+                      query: { from: 'ressources', selectedItem: title ,contenuArticle:""},
                     }}
                     as={
                       field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
@@ -157,7 +158,16 @@ const Resources = () => {
                         : field_lien[0]?.uri.slice(9)
                     }
                   >
-                    <a className='text-decoration-none'>
+                    <a className='text-decoration-none' onClick={()=>{
+                      localStorage.setItem(
+                          'categorieTitle',
+                          JSON.stringify({
+                            parent: 'موارد',
+                            child: title,
+                            contenuArticle: title
+                          })
+                      )
+                    }}>
                       <div className={`${styles.boxImg} m-auto`}>
                         <Image
                           loader={myLoader}

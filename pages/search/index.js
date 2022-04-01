@@ -208,10 +208,10 @@ const SearchPage = (props) => {
   const handleTopicFrom = async (res, r, router, narList, sourceList) => {
     const word = router?.word
     const from = router?.from
-    console.log(
+    /*console.log(
       'from-----------------------------------------------------------------',
       from
-    )
+    )*/
     if (from === 'home') {
       const ArrayCategory =
         res && res.length > 0 && res?.filter((item) => item.label === topic)

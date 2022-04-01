@@ -9,30 +9,15 @@ import Cards from '../../../components/_UI/Cards'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
+import {getAllCommanderie} from "../../../lib/home/commanderieCroyants";
 
-const CommanderieCroyants = () => {
+const CommanderieCroyants = (props) => {
   const { t, i18n } = useTranslation('CommanderieCroyants')
-  const [dataAPI, setDataAPI] = useState({})
-  const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
-  const url = getCommanderieCroyantsData('ar', 'عناية أمير المؤمنين')
 
-  const getData = async () => {
-    // console.log("fi khitab data  ==> ", data)
-    FetchAPI(url).then((data) => {
-      console.log('fi khitab data  ==> ', data)
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
 
   const renderContent = () => {
     try {
-      if (_.isEmpty(dataAPI)) {
+      if (_.isEmpty(props.dataAPI)) {
         return (
           <div className='d-flex align-items-center justify-content-center py-5'>
             <Loading />
@@ -41,10 +26,9 @@ const CommanderieCroyants = () => {
       }
       return (
         <div className='row my-4'>
-          {dataAPI?.data?.map((item, i) => {
+          {props.dataAPI && props.dataAPI?.data?.map((item, i) => {
             const { title, body, field_code_couleur, field_lien } =
               item?.attributes
-            console.log(dataAPI?.data)
             $(document).ready(function () {
               $('.linksCroyants').contextmenu(function (event) {
                 localStorage.setItem(
@@ -117,6 +101,7 @@ const CommanderieCroyants = () => {
                         title: title,
                         selectedItem: title,
                         from: 'Croyants',
+                        contenuArticle:""
                       },
                     }}
                     as={field_lien[0]?.uri.slice(9)}
@@ -124,6 +109,14 @@ const CommanderieCroyants = () => {
                     <a
                       className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
                       style={{ background: `#${field_code_couleur}` }}
+                      onClick={()=>localStorage.setItem(
+                          'categorieTitle',
+                          JSON.stringify({
+                            parent: 'عناية أمير المؤمنين',
+                            child: title,
+                            contenuArticle: title
+                          })
+                      )}
                     >
                       <i
                         className='fas fa-long-arrow-alt-left text-white'
@@ -159,4 +152,11 @@ const CommanderieCroyants = () => {
   )
 }
 
+export const getServerSideProps = async () => {
+  const dataAPI = await getAllCommanderie()
+  return {
+    props: JSON.parse(JSON.stringify({dataAPI}))
+
+  }
+}
 export default CommanderieCroyants

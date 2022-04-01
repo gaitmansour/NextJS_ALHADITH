@@ -13,7 +13,7 @@ const TemplateArticle = (props) => {
   return (
     <Layout className={`${styles.TemplateArticle}TemplateArticle`}>
       <TopBar {...props} />
-      <NavBar />
+      <NavBar {...props}/>
       <div className={styles.bodyTemplate}>
         <div
           className={`${styles.templateHeader} template-header position-relative pb-2`}

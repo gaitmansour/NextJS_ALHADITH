@@ -25,8 +25,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {Icons} from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
+import {getAllCommanderie} from "../../lib/home/commanderieCroyants";
+import {getData} from "../../lib/article";
+import {getMenuList} from "../../lib/menu";
 
-export default function ArticlePage(props) {
+export default function ArticlePage(props, {dataAPI}) {
     let params = useRouter()?.query
     const title = useRouter()?.query?.title
     let dataValue =
@@ -37,7 +40,8 @@ export default function ArticlePage(props) {
         return `${base_url}/${src}`
     }
 
-    const [dataAPI, setDataAPI] = useState({})
+
+    //const [dataAPI, setDataAPI] = useState({})
     const [dataTags, setDataTags] = useState([])
     const [dataMenu, setdataMenu] = useState({})
     const [dataSlider, setdataSlider] = useState([])
@@ -49,20 +53,20 @@ export default function ArticlePage(props) {
     const urlAhadith = getTopic()
     const CodeTopic = 28
     const url = getArticleById(contenuArticle)
-    const getData = async () => {
-        FetchAPI(url).then((data) => {
-            if (data.success) {
-                setDataAPI(data?.data)
-                setDataTags(data?.data?.included)
-            }
-        })
-    }
+    /* const getData = async () => {
+         FetchAPI(url).then((data) => {
+             if (data.success) {
+                 setDataAPI(data?.data)
+                 setDataTags(data?.data?.included)
+             }
+         })
+     }*/
     const getDataSlider = async (name, tid, parent_target) => {
         const urlSlider = getSideArticle(name, tid, parent_target)
         FetchAPI(urlSlider).then((data) => {
             if (data.success) {
                 setdataSlider(data?.data)
-                console.log('data?.data =>', data?.data)
+                //console.log('data?.data =>', data?.data)
             }
         })
     }
@@ -79,8 +83,8 @@ export default function ArticlePage(props) {
     const getItemsMenu = async (x) => {
         return FetchAPI(getSideItems(x)).then((data) => {
             if (data.success) {
-                console.log("data------------------------items")
-                console.log(data?.data)
+                //console.log("data------------------------items")
+                //console.log(data?.data)
                 const items = data?.data
                     ?.sort((a, b) => {
                         return b.weight - a.weight
@@ -106,11 +110,10 @@ export default function ArticlePage(props) {
 
     useEffect(() => {
         getDataMenu(dataValue.child).then((r) => {
-            console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
+            // console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', r)
             getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
             //handleSideData(router)
         })
-        getData()
 
     }, [route])
 
@@ -126,7 +129,7 @@ export default function ArticlePage(props) {
     let TID =
         typeof window !== 'undefined' &&
         JSON.parse(localStorage.getItem("tid"))
-    console.log('TID:--------------------', TID)
+    //console.log('TID:--------------------', TID)
     useEffect(() => {
 
         getItemsMenu(TID)
@@ -147,9 +150,13 @@ export default function ArticlePage(props) {
             path: '#',
         },
     ]
-
-    console.log('data-----------', dataValue)
-    if (_.isEmpty(dataAPI)) {
+    useEffect(() => {
+        if (route && !route.query) {
+            return null;
+        }
+    }, [route]);
+    // console.log('data-----------', dataValue)
+    if (_.isEmpty(props.dataAPI)) {
         return (
             <div className='d-flex align-items-center justify-content-center py-5'>
                 <Loading/>
@@ -160,16 +167,16 @@ export default function ArticlePage(props) {
     //     var str = dataAPI?.data[0]?.attributes?.body?.processed.substr(dataAPI?.data[0]?.attributes?.body?.processed.lastIndexOf("src=")).split(' ')[0].slice(5)
     // }
 
-    let contentMeta = dataAPI?.data[0]?.attributes?.body?.summary
+    let contentMeta = props.dataAPI?.data[0]?.attributes?.body?.summary
     return (
         <TemplateArticle
-            {...props}
             ListBreadcrumb={data}
             titlePage={contenuArticle}
-            createdArticle={!!dataAPI?.data[0]?.attributes?.created}
-            dateArticlePage={Moment(dataAPI?.data[0]?.attributes?.created).format(
+            createdArticle={!!props.dataAPI?.data[0]?.attributes?.created}
+            dateArticlePage={Moment(props.dataAPI?.data[0]?.attributes?.created).format(
                 'DD-MM-YYYY'
             )}
+            {...props}
         >
             <Body
                 className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
@@ -178,16 +185,16 @@ export default function ArticlePage(props) {
                 <div className={`${styles.articleContent} flex-fill`}>
                     <PageSummary
                         className={`${styles.summ} summ my-3`}
-                        summary={dataAPI?.data[0]?.attributes?.body?.summary}
+                        summary={props.dataAPI?.data[0]?.attributes?.body?.summary}
                     />
                     {/* <PageTitleSecond className="page-title-second py-3" title="مبادرة ملكية لتعميم الحديث النبوي الشريف الصحيح على نطاق واسع" /> */}
-                    {dataAPI?.included &&
-                        dataAPI?.included[dataAPI?.included?.length - 1]?.attributes?.uri
+                    {props.dataAPI?.included &&
+                        props.dataAPI?.included[props.dataAPI?.included?.length - 1]?.attributes?.uri
                             ?.url && (
                             <div className={`${styles.sectionImage}`}>
                                 <Image
                                     src={
-                                        dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
+                                        props.dataAPI?.included[props.dataAPI?.included?.length - 1]?.attributes
                                             ?.uri?.url
                                     }
                                     className='m-auto w-100 my-4'
@@ -196,13 +203,13 @@ export default function ArticlePage(props) {
                                     height={500}
                                     loader={myLoader}
                                     alt={
-                                        dataAPI?.data[0]?.relationships?.field_image?.data?.meta
+                                        props.dataAPI?.data[0]?.relationships?.field_image?.data?.meta
                                             ?.alt
                                     }
                                 />
                                 <span className='my-3'>
                   {
-                      dataAPI?.data[0]?.relationships?.field_image?.data?.meta
+                      props.dataAPI?.data[0]?.relationships?.field_image?.data?.meta
                           ?.alt
                   }
                 </span>
@@ -211,12 +218,12 @@ export default function ArticlePage(props) {
                     <div
                         className={styles.desc}
                         dangerouslySetInnerHTML={{
-                            __html: dataAPI?.data[0]?.attributes?.body?.value,
+                            __html: props.dataAPI?.data[0]?.attributes?.body?.value,
                         }}
                     />
                     <div className={`${styles.articleTags} d-flex `}>
-                        {dataTags &&
-                            dataTags?.map((tag, index) => {
+                        {props.dataTags &&
+                            props.dataTags.map((tag, index) => {
                                 return (
                                     <Link
                                         passHref
@@ -266,4 +273,18 @@ export default function ArticlePage(props) {
             </Body>
         </TemplateArticle>
     )
+}
+
+export const getServerSideProps = async ({query, params}) => {
+
+    let contenuArticle = query?.contenuArticle !== "" ? query?.contenuArticle : params?.title
+    const data = await getData(contenuArticle)
+    const MenuGlobal = await getMenuList()
+    console.log('contenuArticle', params?.title)
+    const dataAPI = data.DataAPI
+    const dataTags = data.DataTags
+
+    return {
+        props: JSON.parse(JSON.stringify({MenuGlobal: MenuGlobal, dataAPI: dataAPI, dataTags: dataTags}))
+    }
 }
