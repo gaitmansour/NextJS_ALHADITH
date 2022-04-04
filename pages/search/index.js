@@ -170,11 +170,11 @@ const SearchPage = (props) => {
   }
   console.log('ChoiceCategory', ChoiceCategory)
   const handleSearch = async (word, topic, evSrc, src, degree, nrs) => {
-    console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
-    console.log('evalua_source', evSrc)
-    console.log('choice_source', ChoiceSource)
-    console.log('EvaluationSource', EvaluationSource)
-    console.log('id_source', src)
+    // console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
+    // console.log('evalua_source', evSrc)
+    // console.log('choice_source', ChoiceSource)
+    // console.log('EvaluationSource', EvaluationSource)
+    // console.log('id_source', src)
     const data = {
       content: word.replace(/[-_,;.&:!?،؟\s]/g, ''),
       evaluationSource: evSrc
@@ -433,7 +433,7 @@ const SearchPage = (props) => {
     if (typeof window != 'undefined') {
       window.scrollTo({
         behavior: 'smooth',
-        top: resultsRef.current.offsetTop,
+        top: resultsRef?.current?.offsetTop,
       })
     }
     route.isReady &&
@@ -443,12 +443,12 @@ const SearchPage = (props) => {
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
+        ref={resultsRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
         <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
-            ref={resultsRef}
             className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}
           >
             <SearchInput
