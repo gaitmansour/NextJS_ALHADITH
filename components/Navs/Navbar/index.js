@@ -294,6 +294,7 @@ const NavBar = (props) => {
                             fromNav: item?.items,
                             selectedItem: data?.title,
                             contenuArticle: data?.field_contenu_default,
+                            _id: data?.tID,
                           },
                         }}
                         onClick={() => {
@@ -464,7 +465,7 @@ const NavBar = (props) => {
 
         <div>
           {InputShow ? (
-            <div className={styles.responsiveSearch} style={{ width: '60vw' }}>
+            <div className={styles.responsiveSearch} style={{ width: '62vw' }}>
               <SearchInput
                 styleIcon={{ color: '#157646', width: 20 }}
                 styleFilter={{ backgroundColor: '#157646', width: 50 }}
@@ -474,7 +475,7 @@ const NavBar = (props) => {
                 onChange={(v) => handleInput(v)}
                 clickSearch={() => handleClickSearch()}
                 placeholder='البحث في منصة الحديث النبوي الشريف'
-                className={`${styles.searchSection} text-black bg-white mx-0 shadow-card`}
+                className={` text-black bg-white mx-0 shadow-card`}
               />
             </div>
           ) : (

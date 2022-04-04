@@ -89,13 +89,13 @@ er {
 
     .boxSearch {
         margin: 0;
-        padding: 0 17px;
+        padding: 0px;
         margin-bottom: 0.5rem !important;
     }
     .boxSearch input{
         box-shadow: none !important;
         background: none !important;
-        width: 80% !important;
+        width: 95% !important;
     }
     .inputSearch::placeholder{
         font-size: 13px;

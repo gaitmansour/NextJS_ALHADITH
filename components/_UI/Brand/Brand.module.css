@@ -5,16 +5,16 @@
 
 @media screen and (max-width: 520px){
     .logo img{
-        width: 38vw !important;
+        width: 46vw !important;
     } 
 }
 @media screen and (max-width: 400px){
     .logo img{
-        width: 36vw !important;
+        width: 46vw !important;
     } 
 }
 @media screen and (max-width: 320px){
     .logo img{
-        width: 30vw !important;
+        width: 40vw !important;
     } 
 }

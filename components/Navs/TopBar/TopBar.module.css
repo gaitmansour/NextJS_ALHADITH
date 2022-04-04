@@ -89,8 +89,13 @@
 @media (max-width: 480px) {
   
   .sectionHeader{
-    display: flex !important;
-    flex-direction: row !important;
+    display: block !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .SecBrand{
+    display: flex;
+    justify-content: center;
   }
   
   .navbarCollapse ul li{
