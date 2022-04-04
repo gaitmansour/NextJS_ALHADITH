@@ -4,7 +4,7 @@ import Link from 'next/link'
 //import KeyboardedInput from "react-touch-screen-keyboard";
 import { useRouter } from 'next/router'
 import KeyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
-import keyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
+// import keyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
 
 const SearchInput = (props) => {
   // console.log(props.history)
@@ -30,6 +30,16 @@ const SearchInput = (props) => {
             })*/
     // console.log('input=================', input)
   }
+  const Router = useRouter()
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', () => {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    })
+  }, [])
 
   useEffect(() => {
     checkSizeWindow()
@@ -98,7 +108,7 @@ const SearchInput = (props) => {
       {InputShow ? (
         <input
           value={props.input}
-          className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch}`}
+          className={`flex-fill mx-1 ${props.className} ${styles.inputSearch}`}
           placeholder={'البحث'}
           //color={'red'}
           style={{ color: '#000' }}

@@ -116,8 +116,8 @@ const TopBar = (props) => {
       ref={elementRef}
     >
       <div className={`${styles.sectionHeader} container-fluid my-2`}>
-        <Brand />
-        {elementShow ? (
+        <Brand className={styles.SecBrand} />
+        {elementShow && (
           <SearchInput
             className={`${styles.search} text-white `}
             styleIcon={{ color: '#fff' }}
@@ -129,20 +129,8 @@ const TopBar = (props) => {
             input={input}
             placeholder='البحث في منصة الحديث النبوي الشريف'
           />
-        ) : (
-          <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
-            <li
-              className={`${styles.navItem} d-flex align-items-center nav-item`}
-            >
-              <Lottie options={defaultOptions} height={55} width={55} />
-              <div style={{ marginLeft: 20 }}>
-                <Link exact activeClassName='active' href={`/AllMedia`}>
-                  {'البث المباشر'}
-                </Link>
-              </div>
-            </li>
-          </ul>
         )}
+
         <div
           className={`collapse  ${styles.navbarCollapse} navbar-collapse flex-grow-0`}
           id='navbarTop'

@@ -64,29 +64,9 @@ const ItemList = (props) => {
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex m-0 mb-2'>
-              <span className={styles.output} style={{ color: '#b17d00' }}>
-                الراوي
-              </span>
-              : <span className={styles.resultat}>{props.narrator}</span>
-            </p>
-          </div>
-          <div
-            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
-          >
             <p className='d-flex text-success m-0 mb-2'>
-              <span className={`text-success ${styles.output}`}>
-                مصدر الحكم
-              </span>
-              :<span className={styles.resultat}>{props.sourceGlobal}</span>
-            </p>
-          </div>
-          <div
-            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
-          >
-            <p className='d-flex text-success m-0 mb-2'>
-              <span className={`text-success ${styles.output}`}>الموضوع</span>:{' '}
-              <span className={styles.resultat}>{props.category}</span>
+              <span className={`text-success ${styles.output}`}>الراوي</span>:{' '}
+              <span className={styles.resultat}>{props.narrator}</span>
             </p>
           </div>
           <div
@@ -105,6 +85,27 @@ const ItemList = (props) => {
               <span className="resultat">{props.topic}</span>
             </p> */}
           </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex text-success m-0 mb-2'>
+              <span className={`text-success ${styles.output}`}>
+                مصدر الحكم
+              </span>
+              :<span className={styles.resultat}>{props.sourceGlobal}</span>
+            </p>
+          </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex m-0 mb-2'>
+              <span className={styles.output} style={{ color: '#b17d00' }}>
+                الموضوع
+              </span>
+              : <span className={styles.resultat}>{props.category}</span>
+            </p>
+          </div>
+
           {props.comments && (
             <div
               className={`d-flex align-items-center alignItem ${styles.alignItem}`}
@@ -122,9 +123,9 @@ const ItemList = (props) => {
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex text-warning m-0 mb-2'>
+            <p className='d-flex m-0 mb-2'>
               {' '}
-              <span className={styles.output} style={{ color: '#b17d00' }}>
+              <span className={`text-success ${styles.output}`}>
                 {' '}
                 رقم الحديث{' '}
               </span>
