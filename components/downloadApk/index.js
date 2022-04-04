@@ -18,7 +18,7 @@ const DownloadApk = () => {
               alt=''
               className={styles.dwdApk}
             />
-            <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />
+           {/* <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />*/}
           </div>
         </div>
       </div>
