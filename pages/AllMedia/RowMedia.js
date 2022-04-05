@@ -11,10 +11,16 @@ const RowMedia = (props) => {
   const [dataMedia, setDataMedia] = useState([])
   const { title, _id } = props
   // const url = getVideoMedia(title)
+  const urlgetData =
+    title == 'الدروس التمهيدية' ||
+    title == 'الدروس البيانية' ||
+    title == 'الدروس التفاعلية'
+      ? getVideoByParent(null, _id)
+      : getVideoByParent(_id, _id)
   const urlAllVideo = getVideoByParent(_id)
 
   const getData = async () => {
-    FetchAPI(urlAllVideo).then((data) => {
+    FetchAPI(urlgetData).then((data) => {
       if (data.success) {
         setDataMedia(data?.data)
       }
@@ -24,10 +30,13 @@ const RowMedia = (props) => {
   }
   useEffect(() => {
     getData()
-  }, [])
+  }, [_id])
 
   let myStyle =
-    title === 'الدروس الحديثية'
+    title === 'الدروس الحديثية' ||
+    title == 'الدروس التمهيدية' ||
+    title == 'الدروس البيانية' ||
+    title == 'الدروس التفاعلية'
       ? { color: '#22CABE' }
       : title === 'الدروس الحسنية'
       ? { color: '#1F7800' }
@@ -99,7 +108,7 @@ const RowMedia = (props) => {
                     playIcon={
                       title === 'برامج اذاعية' ? (
                         <i
-                          className='bi bi-volume-up fa-5x'
+                          className='bi bi-volume-up fa-4x bg-white rounded-circle px-3'
                           style={{ color: '#ffd24a' }}
                         ></i>
                       ) : (
@@ -137,7 +146,7 @@ const RowMedia = (props) => {
                           playIcon={
                             title === 'برامج اذاعية' ? (
                               <i
-                                className='bi bi-volume-up fa-2x'
+                                className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
                                 style={{
                                   color: '#ffd24a',
                                 }}
