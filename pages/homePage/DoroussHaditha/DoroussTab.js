@@ -14,7 +14,7 @@ import ReactPlayer from 'react-player'
 import { Icons } from '../../../assets'
 import Image from 'next/image'
 
-const DoroussTab = ({ title }) => {
+const DoroussTab = ({ title, tid }) => {
   const url = getVideoMedia(title)
   const [dataAPI, setDataAPI] = useState([])
   const [isLoding, setIsLoding] = useState(false)
@@ -95,7 +95,12 @@ const DoroussTab = ({ title }) => {
             return (
               <div
                 key={i.toString()}
-                className={`${styles.itemCard} mt-4 mb-2`}
+                className={`${dataAPI?.length <= 2 ? styles.newWidth : ''} ${
+                  styles.itemCard
+                } mt-4 mb-2`}
+                onClick={() => {
+                  localStorage.setItem('tid', JSON.stringify(tid))
+                }}
               >
                 <Link
                   href={{

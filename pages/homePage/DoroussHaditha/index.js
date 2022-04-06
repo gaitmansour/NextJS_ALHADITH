@@ -34,7 +34,7 @@ const DoroussHaditha = () => {
       >
         {data.map((t, key) => (
           <Tab key={key} {...t}>
-            <DoroussTab title={t.title} />
+            <DoroussTab tid={t.tid} title={t.title} />
           </Tab>
         ))}
       </Tabs>
