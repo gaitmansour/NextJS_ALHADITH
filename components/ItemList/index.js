@@ -40,9 +40,9 @@ const ItemList = (props) => {
     >
       <div className={styles.content}>
         {props.highlight ? (
-          <p className='m-0' dangerouslySetInnerHTML={{ __html: props.text }} />
+          <p className='m-0 content-hadith' dangerouslySetInnerHTML={{ __html: props.text }} />
         ) : (
-          <p className='m-0'>{props.text}</p>
+          <p className='m-0 content-hadith'>{props.text}</p>
         )}
         <div className={`${styles.metaData} meta-data mt-3`}>
           <div
