@@ -140,7 +140,11 @@
         width: 10%;
     }
     .boxIconSetting{
-        margin-bottom: 1.5% !important;
+        margin-bottom: 1.5% !important;  
+        padding: 1% !important;  
+    }
+    .boxIconSetting p , .boxIconSetting i {
+        zoom: 0.8;
     }
     .boxIconEpingle{
         margin-bottom: 1.5% !important;

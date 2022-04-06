@@ -22,30 +22,48 @@ import { useRouter } from 'next/router'
 import TabMedia from './TabMedia'
 import Image from 'next/image'
 import { Icons } from '../../assets'
+import { handleMenu } from '../../helpers'
 
 const media = ({ props }) => {
   const video = useRouter()?.query?.video
   const titleVideo = useRouter()?.query?.titleVideo
   const light = useRouter()?.query?.light
-  console.log('titleVideo', titleVideo)
-  console.log('light', light)
+  // const _id = useRouter()?.query?._id
+
+  let _id =
+    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
+  console.log('dataValue tid =>', _id)
+
   const title = useRouter()?.query?.title?.split('-').join(' ')
-  console.log('titre query', useRouter())
-  const urlMenu = getMenuByName(title)
-  //   const title = 'الدروس الحديثية'
+  console.log('_id query', useRouter().query)
+  const urlMenu = getMenu()
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
-  const [dataMenu, setDataMenu] = useState([])
-  const [newData, setNewData] = useState([])
-  // const [dataTab, setDataTab] = useState([])
-  // const [dataChildrenTab, setDataChildrenTab] = useState([])
+  const [dataTab, setDataTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
-  const urlAllVideo = getVideoByParent(51)
-  const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
+  const urlAllVideo =
+    title == 'الدروس التمهيدية' ||
+    title == 'الدروس البيانية' ||
+    title == 'الدروس التفاعلية'
+      ? getVideoByParent(null, _id)
+      : getVideoByParent(_id, _id)
+  // const urlAllVideo = getVideoByParent(51)
+  // const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
+  const [param_id, setParam_id] = useState('')
+  const router = useRouter()
+
+  useEffect(() => {
+    if (router.isReady) {
+      console.log('router.query =>', router)
+      // setParam_id(router?.query?._id)
+    }
+  }, [router.isReady])
+  // console.log('param_id =>', param_id)
+
   const getData = async () => {
-    FetchAPI(endpointVideo).then((data) => {
+    FetchAPI(urlAllVideo).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
@@ -60,24 +78,19 @@ const media = ({ props }) => {
   }, [title])
 
   //
-  // const getItemsMenu = async (tid) => {
-  //   return FetchAPI(getSideItems(tid)).then((data) => {
-  //     if (data.success) {
-  //       if (tid == 50) {
-  //         setDataTab(data?.data)
-  //       }
-  //       if (tid == 51) {
-  //         setDataChildrenTab(data?.data)
-  //       }
-  //     }
-  //   })
-  // }
-  // console.log('dataTab', dataTab)
-  // console.log('dataChildrenTab', dataChildrenTab)
-  // useEffect(() => {
-  //   getItemsMenu(50)
-  //   getItemsMenu(51)
-  // }, [])
+  const getItemsMenu = async (tid) => {
+    return FetchAPI(getSideItems(tid)).then((data) => {
+      if (data.success) {
+        if (tid == 50) {
+          setDataTab(data?.data)
+        }
+      }
+    })
+  }
+  console.log('dataTab', dataTab)
+  useEffect(() => {
+    getItemsMenu(50)
+  }, [])
 
   // get menu
 
@@ -162,7 +175,6 @@ const media = ({ props }) => {
   const offset = currentPage * PER_PAGE
 
   const pageCount = Math.ceil(dataAPI.length / PER_PAGE)
-
   useEffect(() => {
     // setCurrentPage(0)
     handlePageClick({ selected: 0 })
@@ -180,7 +192,7 @@ const media = ({ props }) => {
   // var leng = dataAPI?.included?.length
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
-      <TabMedia titlepage={title} dataTab={sideData11} />
+      <TabMedia titlepage={title} dataTab={dataTab} />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
         <ScrollButton />
         {dataAPI?.length > 0 ? (
@@ -224,6 +236,8 @@ const media = ({ props }) => {
                 <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
                   {titleVideo ? titleVideo : dataAPI[0]?.title}
                 </h3>
+                <hr />
+                <p>{dataAPI[0]?.field_description_video}</p>
               </div>
             </div>
             <div className='row '>
@@ -255,9 +269,15 @@ const media = ({ props }) => {
                           height='100%'
                         />
                       </div>
-                      <div className='mt-4'>
-                        <span>{item?.title}</span>
-                      </div>
+                      <h5 className='mt-4'>{item?.title}</h5>
+                      {item?.field_description_video && (
+                        <>
+                          <hr />
+                          <p className={styles.descVideo}>
+                            {item?.field_description_video}
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
                 )

@@ -286,9 +286,7 @@ const SearchPage = (props) => {
         content={item?._source?.content}
         highlight={!!item.highlight}
         text={
-          item?.highlight
-            ? item?.highlight?.content[0]
-            :item?._source?.content
+          item?.highlight ? item?.highlight?.content[0] : item?._source?.content
         }
         narrator={item?._source?.narrator?.label}
         source={item?._source?.source?.label}
@@ -464,16 +462,6 @@ const SearchPage = (props) => {
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
-            {/* <div
-              className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
-              style={{
-                backgroundColor: '#157646',
-                height: '45px',
-                width: '6%',
-              }}
-            >
-              <VscIcons.VscPinnedDirty color='#fff' size={24} />
-            </div> */}
             {!input &&
             !ChoiceTopic &&
             !EvaluationSource &&
@@ -504,14 +492,15 @@ const SearchPage = (props) => {
               </div>
             )}
             <div
-              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
+              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  px-2 py-1`}
               onClick={() => handleClickSearch()}
               style={{
                 backgroundColor: '#157646',
                 height: '46px',
               }}
             >
-              <i className='fas fa-search p-3' style={{ color: '#fff' }} />
+              <i className='fas fa-search ' style={{ color: '#fff' }} />
+              <p className='text-white fw-bold my-2 mx-2'>{'بحث'}</p>
             </div>
           </div>
           {showForm && (

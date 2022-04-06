@@ -97,6 +97,9 @@
 .titleVideo{
   font-size: 15px;
 }
+.newWidth{
+  width: 33% !important;
+}
 
 /* .slick-slide{
   width: 40% !important;

@@ -247,13 +247,12 @@ const SearchSection = (props) => {
         />
 
         <div
-          className='box-icon-setting d-flex align-items-center align-self-center btn mx-2 mb-2 p-0'
+          className='box-icon-setting d-flex align-items-center justify-content-center btn mx-2 mb-2 px-2 py-1'
           onClick={() => handleClickSearch()}
+          style={{ backgroundColor: '#157646', borderRadius: 8 }}
         >
-          <i
-            className='fas fa-search p-3 text-light'
-            style={{ backgroundColor: '#157646', borderRadius: 8 }}
-          />
+          <i className='fas fa-search text-light' />
+          <p className='text-white fw-bold my-2 mx-2'>{'بحث'}</p>
         </div>
       </div>
       {showForm && (
