@@ -468,8 +468,15 @@ const NavBar = (props) => {
             <div className={styles.responsiveSearch} style={{ width: '62vw' }}>
               <SearchInput
                 styleIcon={{ color: '#157646', width: 20 }}
-                styleFilter={{ backgroundColor: '#157646', width: 50 }}
-                styleSerachIcon={{ backgroundColor: '#157646' }}
+                styleFilter={{
+                  backgroundColor: '#157646',
+                  width: 50,
+                  marginLeft: '-13px',
+                }}
+                styleSerachIcon={{
+                  backgroundColor: '#157646',
+                  marginRight: '-12px',
+                }}
                 {...props}
                 input={input}
                 onChange={(v) => handleInput(v)}
