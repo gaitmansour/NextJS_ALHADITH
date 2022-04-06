@@ -101,6 +101,7 @@ const DoroussTab = ({ title, tid }) => {
                 onClick={() => {
                   localStorage.setItem('tid', JSON.stringify(tid))
                 }}
+                dir='rtl'
               >
                 <Link
                   href={{
