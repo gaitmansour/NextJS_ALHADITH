@@ -251,8 +251,8 @@ const SearchSection = (props) => {
           onClick={() => handleClickSearch()}
           style={{ backgroundColor: '#157646', borderRadius: 8 }}
         >
-          <i className='fas fa-search text-light' />
-          <p className='text-white fw-bold my-2 mx-2'>{'بحث'}</p>
+          {/* <i className='fas fa-search text-light' /> */}
+          <p className='text-white fw-bold my-2 mx-2'>{'ابحث'}</p>
         </div>
       </div>
       {showForm && (
