@@ -16,9 +16,9 @@ const ItemList = (props) => {
   const className = props?.className ? props.className : ''
   const params = `${props.content}\n# الحكم : ${props.degree} \n # الراوي : ${
     props.narrator
-  } \n# مصدر الحكم : ${
+  } \n# المصدر : ${props.source} \n# مصدر الحكم : ${
     props.sourceGlobal ? props.sourceGlobal : ''
-  } \n# الموضوع : ${props.category} \n# المصدر : ${props.source} \n 
+  } \n# الموضوع : ${props.category}  \n 
   منصة محمد السادس للحديث النبوي الشريف `
 
   const toShow = params.substring(0, 251) + ' ...'
