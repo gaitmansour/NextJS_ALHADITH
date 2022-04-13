@@ -422,7 +422,7 @@ const NavBar = (props) => {
               <Link className='my-2' href='/'>
                 <Image
                   className='logoNav'
-                  src={Logos.logo_web}
+                  src={Logos.logo_hadith_m6}
                   alt='logo-Al-hadith-Mohammed-VI'
                   title='logo Al hadith Mohammed VI'
                 />
