@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import LiveSection from './LiveSection'
 import styles from './AllMedia.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
@@ -13,7 +13,8 @@ const AllMedia = (props) => {
   const [categoryMedia, setCategoryMedia] = useState([])
   const [sousCategorie, setSousCategorie] = useState([])
   const [allDataMedia, setAllDataMedia] = useState([])
-  const router = useRouter
+  const router = useRouter()?.query?.title
+  console.log('router=>', router)
 
   const getItemsMenu = async (tid) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
@@ -29,18 +30,20 @@ const AllMedia = (props) => {
     })
   }
 
-  useEffect(() => {
-    getItemsMenu(50)
+  useLayoutEffect(() => {
     getItemsMenu(51)
+    getItemsMenu(50)
   }, [router])
 
   console.log('data------------------------items', categoryMedia)
   console.log('sousCategorie', sousCategorie)
 
   useEffect(() => {
-    const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
-    setAllDataMedia(merge(categoryMedia, sousCategorie, 1))
-  }, [categoryMedia, sousCategorie])
+    if (categoryMedia && sousCategorie) {
+      const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
+      setAllDataMedia(merge(categoryMedia, sousCategorie, 1))
+    }
+  }, [categoryMedia, sousCategorie, router])
 
   console.log('merge data =>', allDataMedia)
   return (
@@ -48,7 +51,9 @@ const AllMedia = (props) => {
       <Body>
         <ScrollButton />
         <LiveSection />
-        {allDataMedia &&
+        {categoryMedia &&
+          sousCategorie &&
+          allDataMedia &&
           allDataMedia?.map((item, index) => {
             return <RowMedia key={item.tid} title={item.name} _id={item.tid} />
           })}

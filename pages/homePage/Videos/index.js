@@ -65,7 +65,10 @@ const Videos = () => {
     <div className={`${styles.container} container Videos px-lg-5 py-5 mx-7`}>
       <Link
         passHref={true}
-        href={'../AllMedia'}
+        href={{
+          pathname: '/AllMedia',
+          query: { title: 'التلفزة الرقمية' },
+        }}
         as='/AllMedia'
         style={{ textDecoration: 'none' }}
       >

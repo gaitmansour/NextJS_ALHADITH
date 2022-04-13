@@ -76,6 +76,12 @@ display: list-item;
     line-height: 1.6;
     margin-bottom: 15px;
 }
+.desc h6{
+    font-family: 'AALMAGHRIBI', sans-serif !important;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
 .desc figure {
     text-align: center;
     /* padding: 5px; */

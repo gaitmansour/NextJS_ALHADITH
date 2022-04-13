@@ -499,8 +499,8 @@ const SearchPage = (props) => {
                 height: '46px',
               }}
             >
-              <i className='fas fa-search ' style={{ color: '#fff' }} />
-              <p className='text-white fw-bold my-2 mx-2'>{'بحث'}</p>
+              {/* <i className='fas fa-search ' style={{ color: '#fff' }} /> */}
+              <p className='text-white fw-bold my-2 mx-2'>{'ابحث'}</p>
             </div>
           </div>
           {showForm && (
