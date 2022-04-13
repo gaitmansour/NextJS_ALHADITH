@@ -83,6 +83,7 @@ const SearchPage = (props) => {
   const searchSpacific = dataSearch?.hits?.total?.value
   const searchNotSpacific = 336
   let resultsRef = useRef()
+  let BodyRef = useRef()
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const urlDegree = getDegree()
@@ -303,6 +304,7 @@ const SearchPage = (props) => {
   const changePage = (v) => {
     setPageNum(v.selected)
     setStartPage(10 * v.selected)
+    resultsRef.current.scrollIntoView()
   }
 
   function handleInput(v) {
@@ -428,12 +430,12 @@ const SearchPage = (props) => {
     ) {
       handleSearch(input)
     }
-    if (typeof window != 'undefined') {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: resultsRef?.current?.offsetTop,
-      })
-    }
+    // if (typeof window != 'undefined') {
+    //       window.scrollTo({
+    //         behavior: 'smooth',
+    //         top: resultsRef?.current?.offsetTop,
+    //       })
+    //     }
     route.isReady &&
       console.log('route----------------------------------', route)
   }, [pageNum, StartPage, route])
@@ -441,12 +443,13 @@ const SearchPage = (props) => {
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
-        ref={resultsRef}
+        ref={BodyRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
         <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
+            ref={resultsRef}
             className={`${styles.searchElement} search-element d-flex flex-row align-items-center justify-content-between mt-4`}
           >
             <SearchInput

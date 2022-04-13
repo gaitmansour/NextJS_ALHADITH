@@ -10,7 +10,7 @@ const Brand = (props) => {
     <div className={`my-0 ${className} ${styles.logo}`}>
       <Link href='/' passHref={true}>
         <Image
-          src={Logos.logo_web}
+          src={Logos.logo_hadith_m6}
           objectFit='cover'
           width={230}
           height={120}
