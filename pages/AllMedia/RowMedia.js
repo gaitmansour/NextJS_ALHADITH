@@ -53,6 +53,7 @@ const RowMedia = (props) => {
     slidesToScroll: dataMedia?.length > 4 ? 4 : dataMedia?.length,
     arrows: true,
     dots: true,
+    speed: 4000,
     responsive: [
       {
         breakpoint: 900,
@@ -81,6 +82,12 @@ const RowMedia = (props) => {
     ],
   }
 
+  const loadURLVideo = (item) => {
+    return !_.isEmpty(item?.field_upload_video)
+      ? [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
+      : item?.field_lien_video
+  }
+
   return (
     <>
       {dataMedia.length > 0 && (
@@ -97,10 +104,14 @@ const RowMedia = (props) => {
                 <div className={`${styles.playerWrapper} player-wrapper`}>
                   <ReactPlayer
                     url={[
-                      {
-                        src: `${base_url}${dataMedia[0]?.field_upload_video}`,
-                        type: 'video/mp4',
-                      },
+                      dataMedia[0]?.field_upload_video
+                        ? [
+                            {
+                              src: `${base_url}${dataMedia[0]?.field_upload_video}`,
+                              type: 'video/mp4',
+                            },
+                          ]
+                        : dataMedia[0]?.field_lien_video,
                     ]}
                     light={`${base_url}/${dataMedia[0]?.field_thumbnail_video}`}
                     controls
@@ -134,12 +145,7 @@ const RowMedia = (props) => {
                     <div key={index} className={`mt-5`}>
                       <div className={`${styles.playerWrapper} player-wrapper`}>
                         <ReactPlayer
-                          url={[
-                            {
-                              src: `${base_url}${item?.field_upload_video}`,
-                              type: 'video/mp4',
-                            },
-                          ]}
+                          url={loadURLVideo(item)}
                           light={`${base_url}${item?.field_thumbnail_video}`}
                           controls
                           playing

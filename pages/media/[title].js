@@ -92,9 +92,6 @@ const media = ({ props }) => {
     getItemsMenu(50)
   }, [])
 
-  // get menu
-
-  //
   //palyer video
   //
   const [selectVideo, setsSelectVideo] = useState('')
@@ -114,57 +111,6 @@ const media = ({ props }) => {
     {
       title: title,
       path: 'article/' + title?.split(' ').join('-'),
-    },
-  ]
-  const sideData11 = [
-    {
-      title: 'الدروس الحديثية',
-      path: '/media/برامج تلفزية',
-      parentLabel: 'التلفزة الرقمية',
-      items: [
-        {
-          title: 'الدروس التمهيدية',
-          path: '/media/الدروس التمهيدية',
-          parentLabel: 'الدروس الحديثية',
-          items: [],
-        },
-        {
-          title: 'الدروس البيانية',
-          path: '/media/الدروس البيانية',
-          parentLabel: 'الدروس الحديثية',
-          items: [],
-        },
-        {
-          title: 'الدروس التفاعلية',
-          path: 'media/الدروس التفاعلية',
-          parentLabel: 'الدروس الحديثية',
-          items: [],
-        },
-      ],
-    },
-    {
-      title: 'الدروس الحسنية',
-      path: '/media/الدروس الحسنية',
-      parentLabel: 'التلفزة الرقمية',
-      items: [],
-    },
-    {
-      title: 'برامج اذاعية',
-      path: 'media/برامج اذاعية',
-      parentLabel: 'التلفزة الرقمية',
-      items: [],
-    },
-    {
-      title: 'برامج تلفزية',
-      path: '/media/برامج تلفزية',
-      parentLabel: 'التلفزة الرقمية',
-      items: [],
-    },
-    {
-      title: 'برامج على الشبكات الاجتماعية',
-      path: '/media/برامج على الشبكات الاجتماعية',
-      parentLabel: 'التلفزة الرقمية',
-      items: [],
     },
   ]
 
@@ -188,14 +134,11 @@ const media = ({ props }) => {
   //     </div>
   //   )
   // }
-const loadURLVideo = (item) => {
- return ( !_.isEmpty(item?.field_upload_video) ?
-      [{src: `${base_url}${item?.field_upload_video}`,
-        type: 'video/mp4',
-      }]
+  const loadURLVideo = (item) => {
+    return !_.isEmpty(item?.field_upload_video)
+      ? [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
       : item?.field_lien_video
- )
-}
+  }
   // var leng = dataAPI?.included?.length
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
@@ -221,12 +164,14 @@ const loadURLVideo = (item) => {
                               type: 'video/mp4',
                             },
                           ]
-                        : [
+                        : dataAPI[0]?.field_upload_video
+                        ? [
                             {
                               src: `${base_url}${dataAPI[0]?.field_upload_video}`,
                               type: 'video/mp4',
                             },
                           ]
+                        : dataAPI[0]?.field_lien_video
                     }
                     light={
                       light
