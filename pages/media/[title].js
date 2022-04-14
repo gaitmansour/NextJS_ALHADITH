@@ -188,7 +188,14 @@ const media = ({ props }) => {
   //     </div>
   //   )
   // }
-
+const loadURLVideo = (item) => {
+ return ( !_.isEmpty(item?.field_upload_video) ?
+      [{src: `${base_url}${item?.field_upload_video}`,
+        type: 'video/mp4',
+      }]
+      : item?.field_lien_video
+ )
+}
   // var leng = dataAPI?.included?.length
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
@@ -253,13 +260,8 @@ const media = ({ props }) => {
                         className={`${styles.playerWrapper} player-wrapper`}
                       >
                         <ReactPlayer
-                          url={[
-                            {
-                              src: `${base_url}${item?.field_upload_video}`,
-                              type: 'video/mp4',
-                            },
-                          ]}
-                          key={`${base_url}${item?.field_upload_video}`}
+                          url={loadURLVideo(item)}
+                          key={item?.field_upload_video}
                           playsinline={true}
                           playing={selectVideo === i ? true : false}
                           light={`${base_url}${item?.field_thumbnail_video}`}
