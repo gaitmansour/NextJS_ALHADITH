@@ -21,6 +21,7 @@ const Resources = () => {
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    speed: 4000,
     arrows: false,
     responsive: [
       {
