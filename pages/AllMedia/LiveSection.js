@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { BsBroadcast } from 'react-icons/bs'
 import ReactPlayer from 'react-player'
 import { base_url, getLive } from '../../endpoints'
@@ -55,6 +55,7 @@ const LiveSection = () => {
   //// data current
   var myCurrentDate = new Date()
   var curD = Moment(myCurrentDate).format('YYYY-MM-DDTHH:mm:ss')
+  var curH = Moment(myCurrentDate).format('HH:mm:ss')
   // console.log('current Date ', curD)
 
   ///// filter live by date
@@ -64,6 +65,21 @@ const LiveSection = () => {
       (curD >= Moment(item.field_date_debut, 'YYYY-MM-DDTHH:mm:ss').format() &&
         curD <= Moment(item.field_date_fin, 'YYYY-MM-DDTHH:mm:ss').format())
   )
+
+  const [isReady, setIsReady] = useState(false)
+  const playerRef = useRef()
+
+  // const onReady = useCallback(() => {
+  //   if (!isReady) {
+  //     const timeToStart =
+  //       Moment(currentLive[0]?.field_date_debut, 'YYYY-MM-DDTHH:mm:ss').format(
+  //         'HH:mm:ss'
+  //       ) - curH
+  //     console.log('timeToStart=>', timeToStart)
+  //     playerRef.current.seekTo(timeToStart, 'seconds')
+  //     setIsReady(true)
+  //   }
+  // }, [isReady])
 
   console.log('CurrentLive =>', currentLive)
   return (
@@ -81,6 +97,7 @@ const LiveSection = () => {
             <div className='col col-12 col-lg-9 col-md-8 col-sm-1 my-2'>
               <div className={`${styles.playerWrapper} player-wrapper`}>
                 <ReactPlayer
+                  // ref={playerRef}
                   url={currentLive[0]?.field_lien_live}
                   // light={`${base_url}/${dataLive[2]?.field_thumbnail_live}`}
                   controls
@@ -88,6 +105,7 @@ const LiveSection = () => {
                   className={`${styles.reactPlayer} react-player`}
                   width='95%'
                   height='95%'
+                  // onReady={onReady}
                 />
               </div>
               <h3 className='text-success fw-bold '>{currentLive[0]?.title}</h3>

@@ -43,6 +43,7 @@ const DoroussTab = ({ title, tid }) => {
     slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
     slidesToScroll: 2,
     arrows: false,
+    speed: 4000,
     responsive: [
       {
         breakpoint: 1024,
