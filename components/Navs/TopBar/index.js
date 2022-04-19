@@ -24,6 +24,7 @@ const TopBar = (props) => {
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
   const [elementShow, setElementShow] = useState(true)
+  const [message, setMessage] = useState('')
   const isRTL = i18n?.language === 'ar'
   const title = 'التواصل'
   const handleClose = () => setShow(false)
@@ -41,6 +42,13 @@ const TopBar = (props) => {
 
   const goToSearchPage = () => {
     if (!input) {
+      setMessage('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (input && input.length <= 3) {
+      setMessage('يرجى كتابة كلمة تتكون من ثلاتة حروف فما فوق')
+      handleShow()
+    } else if (input && input.length >= 100) {
+      setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
       localStorage.removeItem('searchData')
@@ -169,7 +177,7 @@ const TopBar = (props) => {
 
       <CustomModal
         title={'تنبيه'}
-        body={'يرجى ملء كلمة البحث '}
+        body={message}
         show={show}
         onHide={handleClose}
         onClick={handleClose}
