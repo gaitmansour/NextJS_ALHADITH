@@ -81,7 +81,7 @@ const Footer = () => {
               <h5 className='text-white pb-3'>{'روابط مهمة'}</h5>
               <ul className='p-0'>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/روابط`}>{'روابط'}</Link>
+                  <Link href={`/روابط`} as={`/روابط`}>{'روابط'}</Link>
                 </p>
 
                 <p className={`${styles.FooterLink}`}>
@@ -89,18 +89,18 @@ const Footer = () => {
                     exact
                     activeClassName='active'
                     href={`/ContactUs`}
-                    as={`/التواصل`}
+                    as={`/ContactUs`}
                   >
                     {'التواصل'}
                   </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/choroutMinassa`} as={'/شرط-المنصة'}>
+                  <Link href={`/choroutMinassa`} as={'/choroutMinassa'}>
                     {'شرط المنصة'}
                   </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/conditionUser`} as={'/اتفاقية-استخدام-الموقع'}>
+                  <Link href={`/conditionUser`} as={'/conditionUser'}>
                     {'اتفاقية استخدام الموقع'}
                   </Link>
                 </p>
