@@ -470,19 +470,24 @@ const NavBar = (props) => {
                 styleIcon={{ color: '#157646', width: 20 }}
                 styleFilter={{
                   backgroundColor: '#157646',
-                  width: 50,
                   marginLeft: '-13px',
+                  padding: ' 0%',
+                  width: 15,
+                  margin: '0%',
                 }}
                 styleSerachIcon={{
                   backgroundColor: '#157646',
                   marginRight: '-12px',
+                  padding: ' 0%',
+                  width: 15,
+                  margin: '0%',
                 }}
                 {...props}
                 input={input}
                 onChange={(v) => handleInput(v)}
                 clickSearch={() => handleClickSearch()}
                 placeholder='البحث في منصة الحديث النبوي الشريف'
-                className={` text-black bg-white mx-0 shadow-card`}
+                className={` text-black bg-white mx-0 shadow-card ${styles.inputSearchResp}`}
               />
             </div>
           ) : (
