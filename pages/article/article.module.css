@@ -38,6 +38,19 @@
 list-style: number !important;
 display: list-item;
 }
+/* .desc ol > li > h2 {
+list-style: number !important;
+display: list-item;
+} */
+/* .desc ol > li > h2{
+    color: #129D59 !important;
+    list-style: none !important;
+} */
+
+/* .desc li::marker  {
+    color: orange;
+} */
+
 
 .desc p{
     font-family: 'Almarai', sans-serif !important;

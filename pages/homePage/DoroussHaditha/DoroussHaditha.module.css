@@ -105,9 +105,9 @@
   width: 40% !important;
 } */
 
-  .Alhadiths .slick-slider .slick-dots {
+  /* .Alhadiths .slick-slider .slick-dots {
     justify-content: center;
-  }
+  } */
   @media (max-width: 770px) {
     .navTabs .nav-link{
       padding: 4%  !important;

@@ -194,6 +194,7 @@ const media = ({ props }) => {
             </div>
             <div className='row '>
               {dataAPI?.slice(offset, offset + PER_PAGE).map((item, i) => {
+                // console.log('itemmmmmm=>', item)
                 return (
                   <div
                     key={i.toString()}
