@@ -20,6 +20,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: white;
+    padding: 1rem;
 }
 
 .boxSearch .iconSearch {
@@ -79,7 +80,7 @@ er {
     .boxSearch input{
         box-shadow: none !important;
         background: none !important;
-        width: 80% !important;
+        width: 90% !important;
     }
 }
 @media (max-width: 480px) {
@@ -99,6 +100,9 @@ er {
     }
     .inputSearch::placeholder{
         font-size: 13px;
+    }
+    .boxSearch .iconSearch{
+        zoom: 0.8;
     }
 }
 

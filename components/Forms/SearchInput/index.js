@@ -84,22 +84,16 @@ const SearchInput = (props) => {
       className={`${styles.boxSearch} box-search d-flex align-items-center justify-content-between flex-fill ${className}`}
     >
       {props?.clickSearch ? (
-        <div
-          className='d-flex align-items-center align-self-center btn m-0 p-0'
-          onClick={props?.clickSearch}
-        >
+        <div className=' btn m-0 p-0' onClick={props?.clickSearch}>
           <div
-            className={`${styles.iconSearch} icon-search p-3`}
+            className={`${styles.iconSearch} icon-search`}
             style={props.styleSerachIcon}
           />
         </div>
       ) : (
-        <div
-          className='d-flex align-items-center align-self-center btn m-0 p-0'
-          onClick={goToSearchPage}
-        >
+        <div className=' btn m-0 p-0' onClick={goToSearchPage}>
           <div
-            className={`${styles.iconSearch} icon-search p-3`}
+            className={`${styles.iconSearch} icon-search`}
             style={props.styleSerachIcon}
           />
         </div>

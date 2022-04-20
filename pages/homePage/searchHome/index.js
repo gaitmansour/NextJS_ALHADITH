@@ -147,7 +147,7 @@ const SearchSection = (props) => {
     ) {
       setMessage('يرجى ملء كلمة البحث ')
       handleShow()
-    } else if (input && input.length <= 3) {
+    } else if (input && input.length <= 2) {
       setMessage('يرجى كتابة كلمة تتكون من ثلاتة حروف فما فوق')
       handleShow()
     } else if (input && input.length >= 100) {
