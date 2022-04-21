@@ -119,7 +119,7 @@
 
 #navbarNav::after, #navbarNav::before {
     content: "";
-    width: 100px;
+    width: 60px;
     height: 100%;
     top: 0;
     position: absolute;

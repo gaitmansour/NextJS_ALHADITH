@@ -40,6 +40,7 @@ const SearchSection = (props) => {
   const [EvaluationSource, setEvaluationSource] = useState('')
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
+  const [message, setMessage] = useState('')
   const { t } = useTranslation()
   let resultsRef = useRef()
   const handleClose = () => setShow(false)
@@ -144,6 +145,13 @@ const SearchSection = (props) => {
       !ChoiceDegree &&
       !ChoiceCategory
     ) {
+      setMessage('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (input && input.length <= 2) {
+      setMessage('يرجى كتابة كلمة تتكون من ثلاتة حروف فما فوق')
+      handleShow()
+    } else if (input && input.length >= 100) {
+      setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
       // console.log("go to")
@@ -329,7 +337,7 @@ const SearchSection = (props) => {
       </div>
       <CustomModal
         title={'تنبيه'}
-        body={'يرجى ملء كلمة البحث '}
+        body={message}
         show={show}
         onHide={handleClose}
         onClick={handleClose}

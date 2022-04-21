@@ -432,6 +432,16 @@
     .search{
         color: #000 !important;
     }
+    .iconSearchInput{
+        background-color: '#157646';
+        margin-right: -12px !important;
+        padding: 0% !important;
+        width: 15px !important;
+        margin: 0% !important;
+    }
+    .responsiveSearch input {
+        width: 270% !important;
+    }
 }
 
 @media (max-width: 320px) {
@@ -469,6 +479,7 @@
     .NavBar a {
         padding: 0 !important;
     }
+    
 }
 @media screen and (max-width: 450px){
     .quesAnserImg{

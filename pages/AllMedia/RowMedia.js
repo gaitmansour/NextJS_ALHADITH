@@ -47,9 +47,9 @@ const RowMedia = (props) => {
       : { color: '#CEBB97' }
 
   const settings = {
-    infinite: dataMedia?.length > 4,
+    infinite: false,
     autoplay: true,
-    slidesToShow: 4,
+    slidesToShow: dataMedia?.length > 4 ? 4 : dataMedia?.length,
     slidesToScroll: dataMedia?.length > 4 ? 4 : dataMedia?.length,
     arrows: true,
     dots: true,
@@ -58,9 +58,8 @@ const RowMedia = (props) => {
       {
         breakpoint: 900,
         settings: {
-          infinite: dataMedia?.length > 3,
           slidesToShow: 3,
-          slidesToScroll: dataMedia?.length > 3 ? 3 : dataMedia?.length,
+          slidesToScroll: 3,
         },
       },
       {
@@ -139,10 +138,10 @@ const RowMedia = (props) => {
               </div>
             </div>
             <div className='mt-4 p-2'>
-              <Slider {...settings}>
+              <Slider {...settings} dir='rtl'>
                 {dataMedia?.map((item, index) => {
                   return (
-                    <div key={index} className={`mt-5`}>
+                    <div key={index.toString()} className={`mt-5`} dir='rtl'>
                       <div className={`${styles.playerWrapper} player-wrapper`}>
                         <ReactPlayer
                           url={loadURLVideo(item)}

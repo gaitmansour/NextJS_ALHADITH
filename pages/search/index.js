@@ -66,6 +66,7 @@ const SearchPage = (props) => {
   const [pagePagination, setPagePagination] = useState(1)
   const [StartPage, setStartPage] = useState(0)
   const [success, setSuccess] = useState(false)
+  const [message, setMessage] = useState('')
   const dataPerPage = dataSearch?.hits?.hits?.length
   const pagevisited = pageNum * dataPerPage
   const [show, setShow] = useState(false)
@@ -325,6 +326,13 @@ const SearchPage = (props) => {
       !ChoiceDegree &&
       !ChoiceCategory
     ) {
+      setMessage('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (input && input.length <= 2) {
+      setMessage('يرجى كتابة كلمة تتكون من ثلاتة حروف فما فوق')
+      handleShow()
+    } else if (input && input.length >= 100) {
+      setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
       setShowForm(false)
@@ -335,43 +343,43 @@ const SearchPage = (props) => {
     }
   }
 
-  const handleEpingleIcon = () => {
-    if (
-      !input &&
-      !ChoiceTopic &&
-      !EvaluationSource &&
-      !ChoiceSource &&
-      !ChoiceNarrator &&
-      !ChoiceDegree &&
-      !ChoiceCategory
-    ) {
-      return (
-        <div
-          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
-          style={{
-            backgroundColor: '#fde5ac',
-            height: '45px',
-            width: '6%',
-          }}
-        >
-          <VscIcons.VscPinned color='#fff' size={24} />
-        </div>
-      )
-    } else {
-      return (
-        <div
-          className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
-          style={{
-            backgroundColor: '#FBBF31',
-            height: '45px',
-            width: '6%',
-          }}
-        >
-          <VscIcons.VscPinnedDirty color='#fff' size={24} />
-        </div>
-      )
-    }
-  }
+  // const handleEpingleIcon = () => {
+  //   if (
+  //     !input &&
+  //     !ChoiceTopic &&
+  //     !EvaluationSource &&
+  //     !ChoiceSource &&
+  //     !ChoiceNarrator &&
+  //     !ChoiceDegree &&
+  //     !ChoiceCategory
+  //   ) {
+  //     return (
+  //       <div
+  //         className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+  //         style={{
+  //           backgroundColor: '#fde5ac',
+  //           height: '45px',
+  //           width: '6%',
+  //         }}
+  //       >
+  //         <VscIcons.VscPinned color='#fff' size={24} />
+  //       </div>
+  //     )
+  //   } else {
+  //     return (
+  //       <div
+  //         className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+  //         style={{
+  //           backgroundColor: '#FBBF31',
+  //           height: '45px',
+  //           width: '6%',
+  //         }}
+  //       >
+  //         <VscIcons.VscPinnedDirty color='#fff' size={24} />
+  //       </div>
+  //     )
+  //   }
+  // }
   useEffect(() => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
@@ -616,7 +624,7 @@ const SearchPage = (props) => {
         <div className='side-bar' />
         <CustomModal
           title={'تنبيه'}
-          body={'يرجى ملء كلمة البحث '}
+          body={message}
           show={show}
           onHide={handleClose}
           onClick={handleClose}

@@ -13,7 +13,8 @@ const AllMedia = (props) => {
   const [categoryMedia, setCategoryMedia] = useState([])
   const [sousCategorie, setSousCategorie] = useState([])
   const [allDataMedia, setAllDataMedia] = useState([])
-  const router = useRouter()?.query?.title
+  const router = useRouter()
+  const titleRouter = useRouter()?.query?.title
   console.log('router=>', router)
 
   const getItemsMenu = async (tid) => {
@@ -31,9 +32,11 @@ const AllMedia = (props) => {
   }
 
   useLayoutEffect(() => {
-    getItemsMenu(51)
-    getItemsMenu(50)
-  }, [router])
+    if (router.isReady) {
+      getItemsMenu(51)
+      getItemsMenu(50)
+    }
+  }, [titleRouter, router.isReady])
 
   console.log('data------------------------items', categoryMedia)
   console.log('sousCategorie', sousCategorie)
@@ -43,7 +46,7 @@ const AllMedia = (props) => {
       const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
       setAllDataMedia(merge(categoryMedia, sousCategorie, 1))
     }
-  }, [categoryMedia, sousCategorie, router])
+  }, [categoryMedia, sousCategorie, titleRouter])
 
   console.log('merge data =>', allDataMedia)
   return (
