@@ -256,7 +256,7 @@ const NavBar = (props) => {
       MenuGlobal &&
       MenuGlobal?.map((item, index) => {
         if (item?.label !== 'الرئيسية') {
-          return (
+          return item?.label === 'روابط مهمة' ? null : (
             <div
               className='col-md-2 nav-item flex-column pt-4'
               key={index.toString()}
@@ -456,7 +456,7 @@ const NavBar = (props) => {
             className='row'
             // onMouseLeave={()=>setShowMenu(!showMenu)}
             //onBlur={()=>setShowMenu(!showMenu)}
-            ref={divref}
+            // ref={divref}
           >
             {renderGlobalMenu()}
           </div>
