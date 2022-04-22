@@ -180,6 +180,18 @@ const media = ({ props }) => {
                     }
                     controls
                     playing
+                    playIcon={
+                      title === 'برامج اذاعية' ? (
+                        <i
+                          className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
+                          style={{
+                            color: '#ffd24a',
+                          }}
+                        ></i>
+                      ) : (
+                        <button className='d-none'></button>
+                      )
+                    }
                     className={`${styles.reactPlayer} react-player`}
                     width='90%'
                     height='90%'
@@ -210,6 +222,18 @@ const media = ({ props }) => {
                           key={item?.field_upload_video}
                           playsinline={true}
                           playing={selectVideo === i ? true : false}
+                          playIcon={
+                            title === 'برامج اذاعية' ? (
+                              <i
+                                className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
+                                style={{
+                                  color: '#ffd24a',
+                                }}
+                              ></i>
+                            ) : (
+                              <button className='d-none'></button>
+                            )
+                          }
                           light={`${base_url}${item?.field_thumbnail_video}`}
                           controls
                           className={`${styles.reactPlay} react-player`}

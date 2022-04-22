@@ -6,9 +6,12 @@ import Slider from 'react-slick'
 import FetchAPI from '../../API'
 import { base_url, getVideoMedia, getVideoByParent } from '../../endpoints'
 import ReactPlayer from 'react-player'
+import Image from 'next/image'
 
 const RowMedia = (props) => {
   const [dataMedia, setDataMedia] = useState([])
+  const [mediaSelected, setMediaSelected] = useState(null)
+  const [selectVideo, setSelectVideo] = useState('')
   const { title, _id } = props
   // const url = getVideoMedia(title)
   const urlgetData =
@@ -87,6 +90,12 @@ const RowMedia = (props) => {
       : item?.field_lien_video
   }
 
+  const myLoader = ({ src, width, quality }) => {
+    return `${base_url}/${src}`
+  }
+
+  console.log('mediaSelected=>', mediaSelected)
+
   return (
     <>
       {dataMedia.length > 0 && (
@@ -99,55 +108,116 @@ const RowMedia = (props) => {
           </div>
           <div className='my-5'>
             <div className='d-flex align-items-center justify-content-center'>
-              <div className={`${styles.secVideo} `}>
-                <div className={`${styles.playerWrapper} player-wrapper`}>
-                  <ReactPlayer
-                    url={[
-                      dataMedia[0]?.field_upload_video
-                        ? [
-                            {
+              {mediaSelected ? (
+                <div className={`${styles.secVideo} `}>
+                  <div className={`${styles.playerWrapper} player-wrapper`}>
+                    <ReactPlayer
+                      url={[
+                        mediaSelected?.field_upload_video
+                          ? {
+                              src: `${base_url}${mediaSelected?.field_upload_video}`,
+                              type: 'video/mp4',
+                            }
+                          : mediaSelected?.field_lien_video,
+                      ]}
+                      // light={`${base_url}/${mediaSelected?.field_thumbnail_video}`}
+                      controls
+                      playing={true}
+                      playIcon={
+                        title === 'برامج اذاعية' ? (
+                          <i
+                            className='bi bi-volume-up fa-4x bg-white rounded-circle px-3'
+                            style={{ color: '#ffd24a' }}
+                          ></i>
+                        ) : (
+                          <button className='d-none'></button>
+                        )
+                      }
+                      className={`${styles.reactPlayer} react-player`}
+                      width='100%'
+                      height='100%'
+                    />
+                  </div>
+                  <h4 className={`${styles.titleVideo} my-3`}>
+                    {mediaSelected?.title}
+                  </h4>
+                  <hr />
+                  <p>{mediaSelected?.field_description_video}</p>
+                </div>
+              ) : (
+                <div className={`${styles.secVideo} `}>
+                  <div className={`${styles.playerWrapper} player-wrapper`}>
+                    <ReactPlayer
+                      url={[
+                        dataMedia[0]?.field_upload_video
+                          ? {
                               src: `${base_url}${dataMedia[0]?.field_upload_video}`,
                               type: 'video/mp4',
-                            },
-                          ]
-                        : dataMedia[0]?.field_lien_video,
-                    ]}
-                    light={`${base_url}/${dataMedia[0]?.field_thumbnail_video}`}
-                    controls
-                    playing
-                    playIcon={
-                      title === 'برامج اذاعية' ? (
-                        <i
-                          className='bi bi-volume-up fa-4x bg-white rounded-circle px-3'
-                          style={{ color: '#ffd24a' }}
-                        ></i>
-                      ) : (
-                        <button className='d-none'></button>
-                      )
-                    }
-                    className={`${styles.reactPlayer} react-player`}
-                    width='100%'
-                    height='100%'
-                  />
+                            }
+                          : dataMedia[0]?.field_lien_video,
+                      ]}
+                      light={`${base_url}/${dataMedia[0]?.field_thumbnail_video}`}
+                      controls
+                      playing
+                      playIcon={
+                        title === 'برامج اذاعية' ? (
+                          <i
+                            className='bi bi-volume-up fa-4x bg-white rounded-circle px-3'
+                            style={{ color: '#ffd24a' }}
+                          ></i>
+                        ) : (
+                          <button className='d-none'></button>
+                        )
+                      }
+                      className={`${styles.reactPlayer} react-player`}
+                      width='100%'
+                      height='100%'
+                    />
+                  </div>
+                  <h4 className={`${styles.titleVideo} my-3`}>
+                    {dataMedia[0]?.title}
+                  </h4>
+                  <hr />
+                  <p>{dataMedia[0]?.field_description_video}</p>
                 </div>
-                <h4 className={`${styles.titleVideo} my-3`}>
-                  {dataMedia[0]?.title}
-                </h4>
-                <hr />
-                <p>{dataMedia[0]?.field_description_video}</p>
-              </div>
+              )}
             </div>
             <div className='mt-4 p-2'>
               <Slider {...settings} dir='rtl'>
                 {dataMedia?.map((item, index) => {
                   return (
                     <div key={index.toString()} className={`mt-5`} dir='rtl'>
-                      <div className={`${styles.playerWrapper} player-wrapper`}>
-                        <ReactPlayer
+                      <div
+                        onClick={() => {
+                          setSelectVideo(index), setMediaSelected(item)
+                        }}
+                        className={`${styles.playerWrapper} player-wrapper`}
+                      >
+                        <Image
+                          src={item?.field_thumbnail_video}
+                          className=''
+                          objectFit='cover'
+                          width={10}
+                          height={6}
+                          layout='responsive'
+                          quality={65}
+                          loader={myLoader}
+                          alt={item?.title}
+                        />
+                        {/* <ReactPlayer
                           url={loadURLVideo(item)}
                           light={`${base_url}${item?.field_thumbnail_video}`}
+                          // onClickPreview={() => {
+                          //   setMediaSelected(item)
+                          // }}
                           controls
-                          playing
+                          playing={
+                            selectVideo === index
+                              ? true
+                              : mediaSelected != null
+                              ? false
+                              : false
+                          }
                           playIcon={
                             title === 'برامج اذاعية' ? (
                               <i
@@ -163,7 +233,7 @@ const RowMedia = (props) => {
                           className={`${styles.reactPlay} react-player`}
                           width='100%'
                           height='100%'
-                        />
+                        /> */}
                       </div>
                       <h5 className={`${styles.description} h6 my-3`}>
                         {item?.title}
