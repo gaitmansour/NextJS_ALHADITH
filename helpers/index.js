@@ -49,6 +49,18 @@ export function handleMenu(Menu) {
                 items: [],
               }
               return _subItem
+            } else if (subItem.name_1 === 'التواصل') {
+              let _subItem = {
+                path: 'ContactUs',
+                as: 'تواصل معنا',
+                label: subItem.name_1,
+                tID: subItem.tid,
+                title: subItem.name_1,
+                parentLabel: item.name_1,
+                parentID: item.tid,
+                items: [],
+              }
+              return _subItem
             } else {
               let _subItem = {
                 path: `article/${subItem.name_1}`,

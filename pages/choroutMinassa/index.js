@@ -19,7 +19,7 @@ const ChoroutMinassa = (props) => {
       path: '/شرط المنصة',
     },
   ]
-  const url = getArticleById('منصة الحديث النبوي')
+  const url = getArticleById('شرط المنصة')
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {

@@ -2,15 +2,17 @@ import Contact from '../Contact/index'
 import Brand from '../_UI/Brand'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
-import { getMenuLink } from '../../helpers'
 import { useEffect, useState } from 'react'
 import FetchAPIData from '../../data/API_Newsletter'
-import { newsletter } from '../../endpoints'
+import { getMenu, newsletter } from '../../endpoints'
 import CustomModal from '../_UI/Modal'
 import styles from './Footer.module.css'
+import { getMenuLink, handleMenu } from '../../helpers'
+import FetchAPI from '../../API'
 
 const Footer = () => {
   const [MenuLinks, setMenuLinks] = useState([])
+  const [MenuGlobal, setMenuGlobal] = useState([])
   const [inputEmail, setInputEmail] = useState('')
   const [contentMessage, setContentMessage] = useState('')
   const [show, setShow] = useState(false)
@@ -20,13 +22,14 @@ const Footer = () => {
   const handleShow = () => setShow(true)
   const urlSubscribe = newsletter()
   const { t } = useTranslation()
+  const url = getMenu()
 
-  const handleLinks = () => {
-    getMenuLink().then((r) => {
-      setMenuLinks(r)
-      // console.log('rrrr-------------------------',r)
-    })
-  }
+  // const handleLinks = () => {
+  //   getMenuLink().then((r) => {
+  //     setMenuLinks(r)
+  //     // console.log('rrrr-------------------------',r)
+  //   })
+  // }
 
   const subscribed = async () => {
     const data = {
@@ -58,8 +61,89 @@ const Footer = () => {
   }
 
   useEffect(() => {
-    handleLinks()
+    // handleLinks()
+    getMenuList()
   }, [])
+
+  const getMenuList = () => {
+    FetchAPI(url).then((data) => {
+      if (data.success) {
+        const Menu = handleMenu(data?.data)
+        setMenuGlobal(Menu)
+      }
+    })
+  }
+  console.log('MenuGlobal =>', MenuGlobal)
+
+  const renderItemMenu = () => {
+    const menuLinks =
+      MenuGlobal &&
+      MenuGlobal?.map((item, index) => {
+        if (item?.label !== 'الرئيسية') {
+          return item?.label === 'روابط مهمة' ? (
+            <>
+              {item?.items?.length > 0 && (
+                <ul
+                  className={`${styles.FooterLink}  m-0 p-0 d-flex flex-column align-items-start`}
+                >
+                  {item?.items?.map((data, i) => {
+                    return (
+                      <Link
+                        passHref={true}
+                        key={i.toString()}
+                        exact
+                        activeClassName=''
+                        as={`/${data?.path.split(' ').join('-')}`}
+                        href={{
+                          pathname: `/${data?.path.split(' ').join('-')}`,
+                          search: '',
+                          hash: '',
+                          query: {
+                            fromNav: item?.items,
+                            selectedItem: data?.title,
+                            contenuArticle: data?.field_contenu_default,
+                            _id: data?.tID,
+                          },
+                        }}
+                        // onClick={() => {
+                        //   setShowMenu(!showMenu)
+                        // }}
+                      >
+                        <li
+                          key={i}
+                          className={` mx-0 px-0 text-white`}
+                          onClick={() => {
+                            // setShowMenu(!showMenu),
+                            localStorage.setItem(
+                              'categorieTitle',
+                              JSON.stringify({
+                                parent: item?.label,
+                                child: data?.title,
+                                contenuArticle:
+                                  data?.field_contenu_default !== ''
+                                    ? data?.field_contenu_default
+                                    : data?.title,
+                              })
+                            )
+                            localStorage.setItem(
+                              'tid',
+                              JSON.stringify(data.tID)
+                            )
+                          }}
+                        >
+                          {data.label}
+                        </li>
+                      </Link>
+                    )
+                  })}
+                </ul>
+              )}
+            </>
+          ) : null
+        }
+      })
+    return menuLinks
+  }
 
   return (
     <div className={`${styles.Footer} Footer bg-app overflow-hidden`}>
@@ -79,8 +163,9 @@ const Footer = () => {
               className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
             >
               <h5 className='text-white pb-3'>{'روابط مهمة'}</h5>
-              <ul className='p-0'>
-                <p className={`${styles.FooterLink}`}>
+              <div className='p-0'>
+                {renderItemMenu()}
+                {/* <p className={`${styles.FooterLink}`}>
                   <Link href={`/روابط`}>{'روابط'}</Link>
                 </p>
 
@@ -103,8 +188,8 @@ const Footer = () => {
                   <Link href={`/conditionUser`} as={'/اتفاقية-استخدام-الموقع'}>
                     {'اتفاقية استخدام الموقع'}
                   </Link>
-                </p>
-              </ul>
+                </p> */}
+              </div>
             </div>
             <div
               className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
