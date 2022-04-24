@@ -150,8 +150,12 @@ const TopBar = (props) => {
               <Link
                 exact
                 activeClassName='active'
-                href={`/choroutMinassa`}
-                as={'/choroutMinassa'}
+                as={`/article/شرط-المنصة`}
+                href={{
+                  pathname: `/article/شرط-المنصة`,
+                  search: '',
+                  hash: '',
+                }}
               >
                 {'شرط المنصة'}
               </Link>

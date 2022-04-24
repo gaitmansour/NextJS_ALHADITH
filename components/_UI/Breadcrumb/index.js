@@ -8,10 +8,11 @@ const Breadcrumb = (props) => {
     try {
       if (props?.data) {
         const lastItem = _.last(props.data)
+
         const renderData = props?.data?.map((item, index) => {
           console.log('breadcrumb______________', item)
           const isLenght = props?.data.length !== index + 1
-          //   console.log('title', item)
+          console.log('title is isLenght', isLenght)
           if (item !== lastItem) {
             return (
               <Link

@@ -27,13 +27,16 @@
     text-align: center;
 }
 
-.footer .FooterLink {
+ .FooterLink {
     margin-bottom: .5em !important;
 }
 
-.footer .FooterLink a {
+ .FooterLink li {
     color: white;
     text-decoration: none;
+    list-style: none !important;
+    margin-bottom: .5em !important;
+    cursor: pointer;
 }
 
 .copyright {
@@ -43,7 +46,7 @@
 
 .NavLink1 {
     text-decoration: none;
-    color: white;
+    color: white !important;
     margin-top: 6%;
     margin-bottom: 3%;
 }

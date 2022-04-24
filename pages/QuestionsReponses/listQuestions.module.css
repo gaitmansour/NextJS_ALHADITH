@@ -29,6 +29,9 @@
 .sideBar1{
     width: 75%;
 }
+.readMore{
+    text-underline-offset: 3px;
+}
 /* #pagination {
     color: #157BFF;
     margin: 5px;
