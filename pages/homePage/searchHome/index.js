@@ -331,7 +331,16 @@ const SearchSection = (props) => {
         </Cards>
       )}
       <div className='d-flex justify-content-center'>
-        <Link exact activeClassName='active' href={`/شروط البحث`}>
+        <Link
+          exact
+          activeClassName='active'
+          as={`/article/شرط-المنصة`}
+          href={{
+            pathname: `/article/شرط-المنصة`,
+            search: '',
+            hash: '',
+          }}
+        >
           <button className={`${styles.buttonSearch} `}>{`شروط البحث`}</button>
         </Link>
       </div>
