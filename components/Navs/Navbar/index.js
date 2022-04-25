@@ -37,6 +37,7 @@ const NavBar = (props) => {
   const [show, setShow] = useState(false)
   const [isDropdownShown, setIsDropdownShown] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [slectElement, setSlectElement] = useState(null)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -126,7 +127,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-        console.log('data?.path =>', item?.items[0]?.path?.split(' ').join('-'))
+        console.log('data?.path =>', item.tID)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -134,9 +135,10 @@ const NavBar = (props) => {
               href=''
               ref={ref}
               onClick={(e) => {
-                e.preventDefault()
+                e.preventDefault(item?.label)
                 onClick(e)
                 setIsDropdownShown(true)
+                setSlectElement(item.tID)
               }}
             >
               {item?.label}
@@ -155,7 +157,7 @@ const NavBar = (props) => {
             ref
           ) => {
             const lengthListItems = item?.items?.length
-            if (lengthListItems > 0) {
+            if (lengthListItems > 0 && slectElement == item.tID) {
               return (
                 <ul
                   ref={ref}
