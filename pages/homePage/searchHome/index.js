@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import {
   getCategory,
   getDegree,
+  getMenuByName,
   getNarrator,
   getSource,
   getTopic,
@@ -51,6 +52,31 @@ const SearchSection = (props) => {
   const urlNarrator = getNarrator()
   const urlCategory = getCategory()
   let elementRef = useRef()
+
+  const getDataMenu = async (x) => {
+    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    FetchAPI(getMenuByName(x)).then((data) => {
+      console.log('dataSuccess ==>', data)
+      if (data.success) {
+        localStorage.setItem(
+          'categorieTitle',
+          JSON.stringify({
+            tidChild: data?.data[0]?.tid,
+            parent: data?.data[0]?.parent_target_id_1,
+            child: data?.data[0]?.name_1,
+            contenuArticle:
+              data?.data[0]?.field_contenu_default !== ''
+                ? data?.data[0]?.field_contenu_default
+                : data?.data[0]?.name_1,
+          })
+        )
+        localStorage.setItem(
+          'tid',
+          JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -341,7 +367,12 @@ const SearchSection = (props) => {
             hash: '',
           }}
         >
-          <button className={`${styles.buttonSearch} `}>{`شروط البحث`}</button>
+          <button
+            onClick={() => {
+              getDataMenu('شرط المنصة')
+            }}
+            className={`${styles.buttonSearch} `}
+          >{`شروط البحث`}</button>
         </Link>
       </div>
       <CustomModal

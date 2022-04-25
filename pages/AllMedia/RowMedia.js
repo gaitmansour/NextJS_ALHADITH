@@ -182,16 +182,22 @@ const RowMedia = (props) => {
                 </div>
               )}
             </div>
-            <div className='mt-4 p-2'>
+            <div className=' px-2'>
               <Slider {...settings} dir='rtl'>
                 {dataMedia?.map((item, index) => {
                   return (
-                    <div key={index.toString()} className={`mt-5`} dir='rtl'>
+                    <div
+                      key={index.toString()}
+                      className={`${
+                        dataMedia?.length <= 2 ? styles.newWidth : ''
+                      }`}
+                      dir='rtl'
+                    >
                       <div
                         onClick={() => {
                           setSelectVideo(index), setMediaSelected(item)
                         }}
-                        className={`${styles.playerWrapper} player-wrapper`}
+                        className={``}
                       >
                         <Image
                           src={item?.field_thumbnail_video}
