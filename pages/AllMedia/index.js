@@ -14,6 +14,7 @@ const AllMedia = (props) => {
   const [sousCategorie, setSousCategorie] = useState([])
   const [allDataMedia, setAllDataMedia] = useState([])
   const [NewAllMedia, setNewAllMedia] = useState([])
+  const [NewCategoryMedia, setNewCategoryMedia] = useState([])
   const router = useRouter()
   const titleRouter = useRouter()?.query?.title
   console.log('router=>', router)
@@ -22,8 +23,17 @@ const AllMedia = (props) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
       if (data.success) {
         if (tid == 50) {
-          console.log(data?.data)
-          setCategoryMedia(data?.data)
+          // console.log(data?.data)
+          // setCategoryMedia(data?.data)
+          function move(from, to, arr) {
+            const newArr = [...arr]
+
+            const item = newArr.splice(from, 1)[0]
+            newArr.splice(to, 0, item)
+
+            return newArr
+          }
+          setCategoryMedia(move(1, 0, data?.data))
         }
         if (tid == 51) {
           setSousCategorie(data?.data)
@@ -39,31 +49,31 @@ const AllMedia = (props) => {
     }
   }, [titleRouter, router.isReady])
 
-  console.log('data------------------------items', categoryMedia)
+  // useEffect(() => {
+  //   function move(from, to, arr) {
+  //     const newArr = [...arr]
+
+  //     const item = newArr.splice(from, 1)[0]
+  //     newArr.splice(to, 0, item)
+
+  //     return newArr
+  //   }
+  //   if (router.isReady) {
+  //     setNewAllMedia(move(1, 0, categoryMedia))
+  //   }
+  // }, [categoryMedia, titleRouter, router.isReady])
+
+  console.log('data------------------------categoryMedia', categoryMedia)
   console.log('sousCategorie', sousCategorie)
 
   useEffect(() => {
     if (categoryMedia && sousCategorie) {
       const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
-      setAllDataMedia(merge(categoryMedia, sousCategorie, 1))
+      setAllDataMedia(merge(categoryMedia, sousCategorie, 2))
     }
   }, [categoryMedia, sousCategorie, titleRouter, router.isReady])
-  useEffect(() => {
-    function move(from, to, arr) {
-      const newArr = [...arr]
 
-      const item = newArr.splice(from, 1)[0]
-      newArr.splice(to, 0, item)
-
-      return newArr
-    }
-    const NewMedia = move(4, 0, allDataMedia)
-    if (router.isReady) {
-      setNewAllMedia(move(4, 0, allDataMedia))
-    }
-  }, [allDataMedia, titleRouter, router.isReady])
-
-  console.log('NewAllMedia=>', NewAllMedia)
+  console.log('NewAllMedia=>', allDataMedia)
   // console.log('merge data =>', allDataMedia)
   return (
     <TemplateArticle {...props} titlePage='التلفزة الرقمية'>
@@ -72,8 +82,8 @@ const AllMedia = (props) => {
         <LiveSection />
         {categoryMedia &&
           sousCategorie &&
-          NewAllMedia &&
-          NewAllMedia?.map((item, index) => {
+          allDataMedia &&
+          allDataMedia?.map((item, index) => {
             return (
               <RowMedia key={item?.tid} title={item?.name} _id={item?.tid} />
             )

@@ -49,6 +49,9 @@
   .secVideo{
     width: 60%;
   }
+  .newWidth{
+    width: 30% !important;
+  }
   @media (max-width : 480px) {
     .secVideo{
       width: 92% !important;
