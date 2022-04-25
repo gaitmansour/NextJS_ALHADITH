@@ -8,6 +8,8 @@ import { useRouter } from 'next/router'
 import CustomModal from '../../_UI/Modal'
 import Lottie from 'react-lottie'
 import animationData from '../../lotties/live2.json'
+import { getMenuByName } from '../../../endpoints'
+import FetchAPI from '../../../API'
 
 const TopBar = (props) => {
   // console.log(props)
@@ -31,6 +33,31 @@ const TopBar = (props) => {
   const handleShow = () => setShow(true)
   const history = []
   const elementRef = useRef()
+
+  const getDataMenu = async (x) => {
+    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    FetchAPI(getMenuByName(x)).then((data) => {
+      console.log('dataSuccess ==>', data)
+      if (data.success) {
+        localStorage.setItem(
+          'categorieTitle',
+          JSON.stringify({
+            tidChild: data?.data[0]?.tid,
+            parent: data?.data[0]?.parent_target_id_1,
+            child: data?.data[0]?.name_1,
+            contenuArticle:
+              data?.data[0]?.field_contenu_default !== ''
+                ? data?.data[0]?.field_contenu_default
+                : data?.data[0]?.name_1,
+          })
+        )
+        localStorage.setItem(
+          'tid',
+          JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
 
   function handleInput(v) {
     if (typeof v == 'string') {
@@ -157,7 +184,13 @@ const TopBar = (props) => {
                   hash: '',
                 }}
               >
-                {'شرط المنصة'}
+                <a
+                  onClick={() => {
+                    getDataMenu('شرط المنصة')
+                  }}
+                >
+                  {'شرط المنصة'}
+                </a>
               </Link>
             </li>
             {/* <li
