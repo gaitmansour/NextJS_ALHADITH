@@ -591,19 +591,87 @@ const ListQuestions = (props) => {
                                   >
                                     <a
                                       id={'linkA'}
-                                      className=' item d-flex align-items-center py-3 px-1 text-decoration-none text-black'
+                                      className={`${styles.questionDesc} item d-flex align-items-center  px-1`}
+                                      style={{
+                                        textDecoration: 'none',
+                                        paddingBottom: 20,
+                                      }}
                                     >
                                       <Image
+                                        alt={'icon'}
                                         src={Iicon}
-                                        alt={'iconn'}
-                                        //style={{marginHorizontal: 10}}
-                                        className='px-0'
+                                        width='40%'
+                                        height='40%'
+                                        style={{ marginHorizontal: 20 }}
+                                        className='mx-0 ml-5 mr-4'
                                       />
-                                      <p className='flex-fill mx-2 my-2 justify-content-center'>
+                                      <p
+                                        className={`${styles.descriptionP} flex-fill m-2`}
+                                        style={{ width: '100%' }}
+                                      >
                                         {item?._source?.descriptionQuestion}
                                       </p>
                                     </a>
                                   </Link>
+                                  {item?._source?.descriptionReponse && (
+                                    <Link
+                                      passHref={true}
+                                      exact
+                                      href={{
+                                        pathname: '/detailsQuestion',
+                                        search: '',
+                                        hash: '',
+                                        query: {
+                                          itemTitle:
+                                            item?._source?.sujetQuestion,
+                                          itemQuestion:
+                                            item?._source?.descriptionQuestion,
+                                          itemReponse:
+                                            item?._source?.descriptionReponse,
+                                          itemId: item?._id,
+                                        },
+                                      }}
+                                      as={'/detailsQuestion'}
+                                    >
+                                      <a style={{ textDecoration: 'none' }}>
+                                        <p
+                                          className={`${styles.dateParagraph} dateParagraph text-black`}
+                                          style={{ marginLeft: 10 }}
+                                        >
+                                          {'تاريخ الاجابة: ' +
+                                            Moment(
+                                              item?._source?.dateHeureReponse
+                                            ).format('DD-MM-YYYY')}
+                                        </p>
+                                        <div>
+                                          <p
+                                            className={`${styles.descQuestion}`}
+                                          >
+                                            {item?._source?.descriptionReponse >
+                                            item?._source?.descriptionReponse
+                                              ?.split(' ')
+                                              .slice(0, 28)
+                                              .join(' ')
+                                              ? item?._source?.descriptionReponse
+                                                  ?.split(' ')
+                                                  .slice(0, 28)
+                                                  .join(' ')
+                                                  .concat('...')
+                                              : item?._source?.descriptionReponse
+                                                  ?.split(' ')
+                                                  .slice(0, 28)
+                                                  .join(' ')}
+                                          </p>
+                                          <span
+                                            className={`${styles.readMore} text-success text-decoration-underline`}
+                                          >
+                                            لمعرفة المزيد
+                                          </span>
+                                        </div>
+                                      </a>
+                                    </Link>
+                                  )}
+                                  <hr />
                                 </div>
                               )
                             })}
