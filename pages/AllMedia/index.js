@@ -42,8 +42,8 @@ const AllMedia = (props) => {
     })
   }
 
-  useLayoutEffect(() => {
-    if (router.isReady) {
+  useEffect(() => {
+    if (titleRouter === 'التلفزة الرقمية' || router.isReady) {
       getItemsMenu(51)
       getItemsMenu(50)
     }
@@ -67,7 +67,7 @@ const AllMedia = (props) => {
   console.log('sousCategorie', sousCategorie)
 
   useEffect(() => {
-    if (categoryMedia && sousCategorie) {
+    if (router.isReady && categoryMedia && sousCategorie) {
       const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
       setAllDataMedia(merge(categoryMedia, sousCategorie, 2))
     }
