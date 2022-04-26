@@ -545,7 +545,7 @@ const SearchPage = (props) => {
                 </div>
                 <div className={`d-flex alignIte ${styles.alignIte}`}>
                   <CustomSelect
-                    className='col-md-6'
+                    className='col-md-4'
                     options={dataSource && dataSource}
                     defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                     label='المصدر'
@@ -554,8 +554,8 @@ const SearchPage = (props) => {
                       setChoiceSource(v)
                     }}
                   />
-                  <div className='col-md-6'></div>
-                  {/* <CustomSelect
+                  {/* <div className='col-md-6'></div> */}
+                  <CustomSelect
                     className='col-md-4'
                     options={dataDegree && dataDegree}
                     label='الحكم'
@@ -563,15 +563,25 @@ const SearchPage = (props) => {
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  <CustomSelect
+                  <Input
+                    className='col-md-4'
+                    label='مصدر الحكم'
+                    placeholder='ابحث بمصدر الحكم'
+                    value={EvaluationSource}
+                    onChange={(v) => setEvaluationSource(v.target.value)}
+                  />
+                </div>
+                {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
+                 <CustomSelect
                     className='col-md-4'
                     options={dataNarrator && dataNarrator}
                     label='الراوي'
                     defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
                     placeholder='اكتب اسم الراوي'
                     onChange={(v) => setChoiceNarrator(v)}
-                  /> */}
-                </div>
+                  />
+                  <div className='col-md-6'></div>
+                </div> */}
               </div>
             </Cards>
           )}

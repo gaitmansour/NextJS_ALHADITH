@@ -325,7 +325,7 @@ const SearchSection = (props) => {
             </div>
             <div className={`${styles.alignsec} d-flex alignIte`}>
               <CustomSelect
-                className='col-md-6'
+                className='col-md-4'
                 options={dataSource && dataSource}
                 defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                 label='المصدر'
@@ -334,8 +334,8 @@ const SearchSection = (props) => {
                   setChoiceSource(v)
                 }}
               />
-              <div className='col-md-6'></div>
-              {/* <CustomSelect
+              {/* <div className='col-md-6'></div> */}
+              <CustomSelect
                 className='col-md-4'
                 options={dataDegree && dataDegree}
                 label='الحكم'
@@ -343,8 +343,15 @@ const SearchSection = (props) => {
                 placeholder='اكتب الحكم'
                 onChange={(v) => setChoiceDegree(v)}
               />
+              <Input
+                className='col-md-4'
+                label='مصدر الحكم'
+                placeholder='ابحث بمصدر الحكم'
+                value={EvaluationSource && EvaluationSource}
+                onChange={(v) => setEvaluationSource(v.target.value)}
+              />
 
-              <CustomSelect
+              {/* <CustomSelect
                 className='col-md-4'
                 options={dataNarrator && dataNarrator}
                 label='الراوي'
