@@ -95,13 +95,19 @@ const NavBar = (props) => {
      */
     function handleClickOutside(event) {
       if (
-        showMenu &&
+        // showMenu &&
         divref?.current &&
-        !divref?.current?.contains(event.target)
+        divref?.current?.contains(event.target)
       ) {
-        setShowMenu(false)
+        // setShowMenu(false)
+        console.log('Clicked Inside', !divref?.current?.contains(event.target))
+      } else {
+        setShowMenu(showMenu === true && false)
+        console.log(
+          'Clicked Outside ',
+          !divref?.current?.contains(event.target)
+        )
       }
-      console.log('divref.current', !divref?.current?.contains(event.target))
     }
 
     // Bind the event listener
@@ -111,6 +117,28 @@ const NavBar = (props) => {
       document.removeEventListener('mousedown', handleClickOutside, false)
     }
   }, [divref])
+  // useEffect(() => {
+  //   /**
+  //    * Alert if clicked on outside of element
+  //    */
+  //   function handleClickOutside(event) {
+  //     if (
+  //       showMenu &&
+  //       divref?.current &&
+  //       !divref?.current?.contains(event.target)
+  //     ) {
+  //       setShowMenu(false)
+  //     }
+  //     console.log('divref.current', !divref?.current?.contains(event.target))
+  //   }
+
+  //   // Bind the event listener
+  //   document.addEventListener('mousedown', handleClickOutside, false)
+  //   return () => {
+  //     // Unbind the event listener on clean up
+  //     document.removeEventListener('mousedown', handleClickOutside, false)
+  //   }
+  // }, [divref])
 
   const onToggleHandler = (isOpen, metadata) => {
     const getEventTargetClass = event?.target?.className
@@ -402,6 +430,7 @@ const NavBar = (props) => {
     <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
       <div className='container-fluid p-0'>
         <div
+          ref={divref}
           className={`${
             visible ? styles.menuBlog : styles.menuAl
           } btn rounded-0 p-0 border-0 align-self-stretch d-flex align-items-center justify-content-center menu-btn bg-gradient-green`}

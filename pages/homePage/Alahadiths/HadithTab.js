@@ -26,8 +26,9 @@ const HadithTab = ({ CodeTopic, Content }) => {
   }, [])
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: dataAPI.length > 7 ? 7 : dataAPI.length,
     slidesToScroll: 4,
     speed: 4000,
@@ -78,7 +79,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
         )
       } else {
         const dataList = dataAPI?.map((item, i) => {
-          //console.log('item--------------------------------', item)
+          // console.log('item--------------------------------', item)
           $(document).ready(function () {
             $(`.${i}`).contextmenu(function (event) {
               localStorage.setItem(
@@ -101,7 +102,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
 
           return (
             <Link
-              key={i.toString()}
+              key={item.id}
               //className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               as={'/search'}
               href={{
@@ -119,6 +120,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
               passHref={true}
             >
               <a
+                dir='rtl'
                 className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
