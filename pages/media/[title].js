@@ -241,7 +241,7 @@ const media = ({ props }) => {
                           height='100%'
                         />
                       </div>
-                      <h5 className='mt-4'>{item?.title}</h5>
+                      <h5 className='mt-4 h6'>{item?.title}</h5>
                       {item?.field_description_video && (
                         <>
                           <hr />
