@@ -62,6 +62,7 @@ const ListQuestions = (props) => {
     setShowModalQuestion(false)
     // setMail('')
   }
+  let resultsRef = useRef()
   const handleShow = () => setShow(true)
   const handleShowModalQuestions = () => setShowModalQuestion(true)
   // const url = AllForums();
@@ -243,6 +244,7 @@ const ListQuestions = (props) => {
   const changePage = (v) => {
     setPAgeNumber(v.selected)
     setStartPage(10 * v.selected)
+    resultsRef.current.scrollIntoView()
   }
   const displayQuestions = DataQuestions.map((item, i) => {
     console.log('TID-----', item)
@@ -743,7 +745,10 @@ const ListQuestions = (props) => {
             </div>
           ) : null}
           {displayQuestions && displayQuestions.length > 0 ? (
-            <div className={`${styles.cardListAnswer} card w-75 px-1`}>
+            <div
+              ref={resultsRef}
+              className={`${styles.cardListAnswer} card w-75 px-1`}
+            >
               <div className={`${styles.CardQuestion} card-body Card-question`}>
                 <div className={`${styles.SimpleList} SimpleList`}>
                   {displayQuestions}
