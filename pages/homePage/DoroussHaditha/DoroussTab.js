@@ -7,7 +7,12 @@ import Slider from 'react-slick'
 import _ from 'lodash'
 import Loading from '../../../components/_UI/Loading'
 import styles from './DoroussHaditha.module.css'
-import { base_url, getVideoDorouss, getVideoMedia } from '../../../endpoints'
+import {
+  base_url,
+  getVideoByParent,
+  getVideoDorouss,
+  getVideoMedia,
+} from '../../../endpoints'
 import FetchAPI from '../../../API'
 import $ from 'jquery'
 import ReactPlayer from 'react-player'
@@ -19,11 +24,12 @@ const DoroussTab = ({ title, tid }) => {
   const [dataAPI, setDataAPI] = useState([])
   const [isLoding, setIsLoding] = useState(false)
   const [start, setStart] = useState(false)
+  const urlgetData = getVideoByParent(null, tid)
 
   useEffect(() => {
     try {
       setIsLoding(true)
-      FetchAPI(url).then((data) => {
+      FetchAPI(urlgetData).then((data) => {
         if (data.success) {
           setDataAPI(data?.data)
           setIsLoding(false)
@@ -33,8 +39,22 @@ const DoroussTab = ({ title, tid }) => {
     } catch (error) {
       console.log(error)
     }
-  }, [])
-  console.log('dataApi outside function', dataAPI)
+  }, [tid])
+
+  // useEffect(() => {
+  //   try {
+  //     setIsLoding(true)
+  //     FetchAPI(url).then((data) => {
+  //       if (data.success) {
+  //         setDataAPI(data?.data)
+  //         setIsLoding(false)
+  //         console.log('dataaaa D.H ===>', data?.data)
+  //       }
+  //     })
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }, [])
 
   const settings = {
     dots: true,
@@ -110,7 +130,9 @@ const DoroussTab = ({ title, tid }) => {
                     search: '',
                     hash: '',
                     query: {
-                      video: item?.field_upload_video,
+                      video: item?.field_upload_video
+                        ? item?.field_upload_video
+                        : item?.field_lien_video,
                       light: item?.field_thumbnail_video,
                       titleVideo: item?.title,
                     },

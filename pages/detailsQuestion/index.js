@@ -49,7 +49,7 @@ const Questions = () => {
     },
     {
       title: 'سؤال و جواب',
-      path: '/detailsQuestion',
+      path: '/QuestionsReponses',
     },
   ]
 

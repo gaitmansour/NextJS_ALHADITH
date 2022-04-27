@@ -4,6 +4,7 @@ import Link from 'next/link'
 import _ from 'lodash'
 
 const Breadcrumb = (props) => {
+  console.log('props?.data => breadcrumb =>', props?.data)
   const renderData = () => {
     try {
       if (props?.data) {
@@ -27,6 +28,28 @@ const Breadcrumb = (props) => {
                     className={`mb-0 ${styles.title}`}
                     style={{
                       color: isLenght ? '#000000' : '#A1A8AE',
+                    }}
+                  >
+                    {item?.title || 'عنوان'}
+                  </p>
+                  {isLenght && <i className='fas fa-chevron-left mx-4' />}
+                </a>
+              </Link>
+            )
+          } else if (item.title === 'سؤال و جواب') {
+            return (
+              <Link
+                passHref={true}
+                href={`/${item?.path}`}
+                as={`/${item?.path}`}
+                key={index.toString()}
+              >
+                <a className='btn d-flex align-items-center p-0'>
+                  {' '}
+                  <p
+                    className={`mb-0 ${styles.title}`}
+                    style={{
+                      color: '#000000',
                     }}
                   >
                     {item?.title || 'عنوان'}

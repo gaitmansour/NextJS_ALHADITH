@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import {
   getCategory,
   getDegree,
+  getMenuByName,
   getNarrator,
   getSource,
   getTopic,
@@ -51,6 +52,31 @@ const SearchSection = (props) => {
   const urlNarrator = getNarrator()
   const urlCategory = getCategory()
   let elementRef = useRef()
+
+  const getDataMenu = async (x) => {
+    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    FetchAPI(getMenuByName(x)).then((data) => {
+      console.log('dataSuccess ==>', data)
+      if (data.success) {
+        localStorage.setItem(
+          'categorieTitle',
+          JSON.stringify({
+            tidChild: data?.data[0]?.tid,
+            parent: data?.data[0]?.parent_target_id_1,
+            child: data?.data[0]?.name_1,
+            contenuArticle:
+              data?.data[0]?.field_contenu_default !== ''
+                ? data?.data[0]?.field_contenu_default
+                : data?.data[0]?.name_1,
+          })
+        )
+        localStorage.setItem(
+          'tid',
+          JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -299,7 +325,7 @@ const SearchSection = (props) => {
             </div>
             <div className={`${styles.alignsec} d-flex alignIte`}>
               <CustomSelect
-                className='col-md-6'
+                className='col-md-4'
                 options={dataSource && dataSource}
                 defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                 label='المصدر'
@@ -308,8 +334,8 @@ const SearchSection = (props) => {
                   setChoiceSource(v)
                 }}
               />
-              <div className='col-md-6'></div>
-              {/* <CustomSelect
+              {/* <div className='col-md-6'></div> */}
+              <CustomSelect
                 className='col-md-4'
                 options={dataDegree && dataDegree}
                 label='الحكم'
@@ -317,8 +343,15 @@ const SearchSection = (props) => {
                 placeholder='اكتب الحكم'
                 onChange={(v) => setChoiceDegree(v)}
               />
+              <Input
+                className='col-md-4'
+                label='مصدر الحكم'
+                placeholder='ابحث بمصدر الحكم'
+                value={EvaluationSource && EvaluationSource}
+                onChange={(v) => setEvaluationSource(v.target.value)}
+              />
 
-              <CustomSelect
+              {/* <CustomSelect
                 className='col-md-4'
                 options={dataNarrator && dataNarrator}
                 label='الراوي'
@@ -341,7 +374,12 @@ const SearchSection = (props) => {
             hash: '',
           }}
         >
-          <button className={`${styles.buttonSearch} `}>{`شروط البحث`}</button>
+          <button
+            onClick={() => {
+              getDataMenu('شرط المنصة')
+            }}
+            className={`${styles.buttonSearch} `}
+          >{`شروط البحث`}</button>
         </Link>
       </div>
       <CustomModal
