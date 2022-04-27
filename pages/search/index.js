@@ -67,6 +67,7 @@ const SearchPage = (props) => {
     const [StartPage, setStartPage] = useState(0)
     const [success, setSuccess] = useState(false)
     const [showDialog, setshowDialog] = useState(false)
+    const [showDialogModal, setshowDialogModal] = useState(false)
     const [message, setMessage] = useState('')
     const dataPerPage = dataSearch?.hits?.hits?.length
     const pagevisited = pageNum * dataPerPage
@@ -293,8 +294,11 @@ const SearchPage = (props) => {
                         //handleShow();
                         setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
                         setshowDialog(false)
+                      setshowDialogModal(true)
                     } else {
                         setshowDialog(true)
+                      setshowDialogModal(false)
+
                     }
                 }}
                 onSubmit={() => {
@@ -302,11 +306,13 @@ const SearchPage = (props) => {
                         //handleShow();
                         setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
                         setshowDialog(false)
+                      setshowDialogModal(true)
                     } else {
                         setshowDialog(true)
+                      setshowDialogModal(false)
                     }
                 }}
-                showDialog={showDialog}
+                showDialog={true}
                 text={
                     item?.highlight ? item?.highlight?.content[0] : item?._source?.content
                 }
@@ -659,13 +665,19 @@ const SearchPage = (props) => {
           onHide={handleClose}
           onClick={handleClose}
         />
-        <CustomModal
+        { showDialogModal&& <CustomModal
             title={'تنبيه'}
             body={message}
-            show={!showDialog}
-            onHide={()=>{setshowDialog(false)}}
-            onClick={()=>{setshowDialog(true)}}
-        />
+            show={showDialogModal}
+            onHide={() => {
+              setshowDialog(false)
+              setshowDialogModal(false)
+            }}
+            onClick={() => {
+              setshowDialog(true)
+              setshowDialogModal(false)
+            }}
+        />}
       </Body>
     </TemplateArticle>
   )
