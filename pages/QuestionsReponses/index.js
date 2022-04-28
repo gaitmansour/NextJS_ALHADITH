@@ -769,9 +769,17 @@ const ListQuestions = (props) => {
           {displayQuestions && displayQuestions.length > 0 && (
             <ReactPaginate
               previousLabel={
-                <i id='pagination' className='fa fa-chevron-right' />
+                <i
+                  id='pagination'
+                  className='fa fa-chevron-right text-success'
+                />
               }
-              nextLabel={<i id='pagination' className='fa fa-chevron-left' />}
+              nextLabel={
+                <i
+                  id='pagination'
+                  className='fa fa-chevron-left text-success'
+                />
+              }
               breakLabel={'...'}
               breakClassName={'break-me'}
               activeClassName={styles.activebtn}
