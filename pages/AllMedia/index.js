@@ -84,7 +84,7 @@ const AllMedia = (props) => {
           sousCategorie &&
           allDataMedia &&
           allDataMedia?.map((item, index) => {
-            return (
+            return item?.name == 'الدروس الحديثية' ? null : (
               <RowMedia key={item?.tid} title={item?.name} _id={item?.tid} />
             )
           })}
