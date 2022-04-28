@@ -50,33 +50,17 @@ const media = ({ props }) => {
     title == 'الدروس التفاعلية'
       ? getVideoByParent(null, _id)
       : getVideoByParent(_id, _id)
-  // const urlAllVideo = getVideoByParent(51)
-  // const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
-  const [param_id, setParam_id] = useState('')
+
   const router = useRouter()
 
   useEffect(() => {
-    if (router.isReady) {
-      console.log('router.query =>', router)
-      // setParam_id(router?.query?._id)
-    }
-  }, [router.isReady])
-  // console.log('param_id =>', param_id)
-
-  const getData = async () => {
     FetchAPI(urlAllVideo).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
       console.log('media_data', data?.data)
     })
-  }
-
-  useEffect(() => {
-    if (title) {
-      getData()
-    }
-  }, [title])
+  }, [title, router.isReady])
 
   //
   const getItemsMenu = async (tid) => {
@@ -95,7 +79,7 @@ const media = ({ props }) => {
 
   //palyer video
   //
-  const [selectVideo, setsSelectVideo] = useState('')
+  const [selectVideo, setSelectVideo] = useState(false)
 
   //
   //data
@@ -144,6 +128,31 @@ const media = ({ props }) => {
       : [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
   }
   // var leng = dataAPI?.included?.length
+
+  // const URLVideo = () => {
+  //   if(video?.includes('youtu'))
+  // }
+
+  console.log(
+    'video play=>',
+    video && video?.includes('youtu')
+      ? video
+      : video && !video?.includes('youtu')
+      ? [
+          {
+            src: `${base_url}${video}`,
+            type: 'video/mp4',
+          },
+        ]
+      : dataAPI[0]?.field_lien_video
+      ? dataAPI[0]?.field_lien_video
+      : [
+          {
+            src: `${base_url}${dataAPI[0]?.field_upload_video}`,
+            type: 'video/mp4',
+          },
+        ]
+  )
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={dataTab} />
@@ -157,6 +166,9 @@ const media = ({ props }) => {
               {mediaSelected ? (
                 <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
                   <div
+                    onClick={() => {
+                      setSelectVideo(true)
+                    }}
                     className={`${styles.playerWrapper} player-wrapper`}
                     // onClick={() => handleStart()}
                   >
@@ -203,14 +215,17 @@ const media = ({ props }) => {
               ) : (
                 <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
                   <div
+                    onClick={() => {
+                      setSelectVideo(true)
+                    }}
                     className={`${styles.playerWrapper} player-wrapper`}
                     // onClick={() => handleStart()}
                   >
                     <ReactPlayer
                       url={
-                        video?.includes('youtu')
+                        video && video?.includes('youtu')
                           ? video
-                          : !video?.includes('youtu')
+                          : video && !video?.includes('youtu')
                           ? [
                               {
                                 src: `${base_url}${video}`,
@@ -232,7 +247,7 @@ const media = ({ props }) => {
                           : `${base_url}/${dataAPI[0]?.field_thumbnail_video}`
                       }
                       controls
-                      playing
+                      playing={false}
                       playIcon={
                         title === 'برامج اذاعية' ? (
                           <i
@@ -272,7 +287,7 @@ const media = ({ props }) => {
                     <div className={`${styles.cardVideo} p-3 shadow-card mx-1`}>
                       <div
                         onClick={() => {
-                          setsSelectVideo(i), setMediaSelected(item)
+                          setMediaSelected(item)
                         }}
                         className={``}
                       >
