@@ -54,6 +54,7 @@ export default function ArticlePage(props) {
     }
 
     const [dataAPI, setDataAPI] = useState({})
+    const [showBlockSlider, setShowBlockSlider] = useState(true)
     const [dataTags, setDataTags] = useState([])
     const [dataMenu, setdataMenu] = useState({})
     const [dataSlider, setdataSlider] = useState([])
@@ -82,13 +83,26 @@ export default function ArticlePage(props) {
 
     const getDataSlider = async (name, tid, parent_target) => {
         const urlSlider = getSideArticle(name, tid, parent_target)
-        FetchAPI(urlSlider).then((data) => {
+         FetchAPI(urlSlider).then((data) => {
             if (data.success) {
-                setdataSlider(data?.data)
-                console.log('data?.data ==>', name, 'tid', tid, parent_target)
+                let dataArray=data?.data
+                let array = [...dataArray]; // make a separate copy of the array
+                let index = array.filter((item) => item.title.replace(/<[^>]+>/g, '') !== dataValue.child)
+                console.log("index")
+                console.log(index.length)
+                if (index.length === 0) {
+                    setShowBlockSlider(false)
+                } else {
+                    setdataSlider(index)
+                    setShowBlockSlider(true)
+                }
+              //  setdataSlider(data?.data)
+
+               // return data?.data
             }
         })
     }
+
     const getDataMenu = async (x) => {
         return FetchAPI(getMenuByName(x)).then((data) => {
             if (data.success) {
@@ -139,7 +153,7 @@ export default function ArticlePage(props) {
         })
 
         //getDataSlider(dataValue.child, dataValue.tidChild,dataValue.parent)
-    }, [route])
+    }, [route, showBlockSlider])
 
     useEffect(() => {
         FetchAPI(`${urlAhadith}/${CodeTopic}`).then((data) => {
@@ -171,6 +185,18 @@ export default function ArticlePage(props) {
         },
     ]
 
+  /*  const removeSelectedItem = (e) => {
+        let array = [...e]; // make a separate copy of the array
+        let index = array.filter((item) => item.title.replace(/<[^>]+>/g, '') !== dataValue.child)
+        console.log("index")
+        console.log(index.length)
+        if (index.length === 0) {
+            setShowBlockSlider(false)
+        } else {
+            setdataSlider(index)
+
+        }
+    }*/
     console.log('data-----------', dataValue)
     if (_.isEmpty(dataAPI)) {
         return (
@@ -295,7 +321,7 @@ export default function ArticlePage(props) {
                         ) : (
                             <SimpleList data={items}/>
                         )}
-                        <SliderList className='pt-5' data={dataSlider} loader={myLoader}/>
+                        {showBlockSlider ? <SliderList className='pt-5' data={dataSlider} loader={myLoader}/> : null}
                     </div>
                 )}
             </Body>
