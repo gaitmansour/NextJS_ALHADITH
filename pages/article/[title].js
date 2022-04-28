@@ -102,7 +102,7 @@ export default function ArticlePage(props) {
     const getItemsMenu = async (x) => {
         return FetchAPI(getSideItems(x)).then((data) => {
             if (data.success) {
-                console.log('data------------------------items')
+                console.log('data----------getSideItems--------------items')
                 console.log(data?.data)
                 const items = data?.data
                     ?.sort((a, b) => {
@@ -243,7 +243,7 @@ export default function ArticlePage(props) {
                         {dataTags &&
                             dataTags?.map((tag, index) => {
                                 return (
-                                    <div className={styles.sectionTags}>
+                                    <div key={index} className={styles.sectionTags}>
                                         <Link
                                             passHref
                                             key={index.toString()}
