@@ -62,6 +62,7 @@ const ListQuestions = (props) => {
     setShowModalQuestion(false)
     // setMail('')
   }
+  let resultsRef = useRef()
   const handleShow = () => setShow(true)
   const handleShowModalQuestions = () => setShowModalQuestion(true)
   // const url = AllForums();
@@ -243,6 +244,7 @@ const ListQuestions = (props) => {
   const changePage = (v) => {
     setPAgeNumber(v.selected)
     setStartPage(10 * v.selected)
+    resultsRef.current.scrollIntoView()
   }
   const displayQuestions = DataQuestions.map((item, i) => {
     console.log('TID-----', item)
@@ -338,11 +340,7 @@ const ListQuestions = (props) => {
                         .slice(0, 28)
                         .join(' ')}
                 </p>
-                <span
-                  className={`${styles.readMore} text-success text-decoration-underline`}
-                >
-                  لمعرفة المزيد
-                </span>
+                <span className={`text-success`}>لمعرفة المزيد</span>
               </div>
             </a>
           </Link>
@@ -662,9 +660,7 @@ const ListQuestions = (props) => {
                                                   .slice(0, 28)
                                                   .join(' ')}
                                           </p>
-                                          <span
-                                            className={`${styles.readMore} text-success text-decoration-underline`}
-                                          >
+                                          <span className={`text-success`}>
                                             لمعرفة المزيد
                                           </span>
                                         </div>
@@ -743,7 +739,10 @@ const ListQuestions = (props) => {
             </div>
           ) : null}
           {displayQuestions && displayQuestions.length > 0 ? (
-            <div className={`${styles.cardListAnswer} card w-75 px-1`}>
+            <div
+              ref={resultsRef}
+              className={`${styles.cardListAnswer} card w-75 px-1`}
+            >
               <div className={`${styles.CardQuestion} card-body Card-question`}>
                 <div className={`${styles.SimpleList} SimpleList`}>
                   {displayQuestions}
@@ -764,9 +763,17 @@ const ListQuestions = (props) => {
           {displayQuestions && displayQuestions.length > 0 && (
             <ReactPaginate
               previousLabel={
-                <i id='pagination' className='fa fa-chevron-right' />
+                <i
+                  id='pagination'
+                  className='fa fa-chevron-right text-success'
+                />
               }
-              nextLabel={<i id='pagination' className='fa fa-chevron-left' />}
+              nextLabel={
+                <i
+                  id='pagination'
+                  className='fa fa-chevron-left text-success'
+                />
+              }
               breakLabel={'...'}
               breakClassName={'break-me'}
               activeClassName={styles.activebtn}

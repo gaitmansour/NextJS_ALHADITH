@@ -41,6 +41,7 @@ const media = ({ props }) => {
   const [dataAPI, setDataAPI] = useState([])
   const [dataTab, setDataTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
+  const [mediaSelected, setMediaSelected] = useState(null)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
   const urlAllVideo =
@@ -49,33 +50,17 @@ const media = ({ props }) => {
     title == 'الدروس التفاعلية'
       ? getVideoByParent(null, _id)
       : getVideoByParent(_id, _id)
-  // const urlAllVideo = getVideoByParent(51)
-  // const endpointVideo = title == 'الدروس الحديثية' ? urlAllVideo : url
-  const [param_id, setParam_id] = useState('')
+
   const router = useRouter()
 
   useEffect(() => {
-    if (router.isReady) {
-      console.log('router.query =>', router)
-      // setParam_id(router?.query?._id)
-    }
-  }, [router.isReady])
-  // console.log('param_id =>', param_id)
-
-  const getData = async () => {
     FetchAPI(urlAllVideo).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
       console.log('media_data', data?.data)
     })
-  }
-
-  useEffect(() => {
-    if (title) {
-      getData()
-    }
-  }, [title])
+  }, [title, router.isReady])
 
   //
   const getItemsMenu = async (tid) => {
@@ -94,7 +79,7 @@ const media = ({ props }) => {
 
   //palyer video
   //
-  const [selectVideo, setsSelectVideo] = useState('')
+  const [selectVideo, setSelectVideo] = useState(false)
 
   //
   //data
@@ -134,12 +119,40 @@ const media = ({ props }) => {
   //     </div>
   //   )
   // }
+  const myLoader = ({ src, width, quality }) => {
+    return `${base_url}/${src}`
+  }
   const loadURLVideo = (item) => {
-    return !_.isEmpty(item?.field_upload_video)
-      ? [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
-      : item?.field_lien_video
+    return !_.isEmpty(item?.field_lien_video)
+      ? item?.field_lien_video
+      : [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
   }
   // var leng = dataAPI?.included?.length
+
+  // const URLVideo = () => {
+  //   if(video?.includes('youtu'))
+  // }
+
+  console.log(
+    'video play=>',
+    video && video?.includes('youtu')
+      ? video
+      : video && !video?.includes('youtu')
+      ? [
+          {
+            src: `${base_url}${video}`,
+            type: 'video/mp4',
+          },
+        ]
+      : dataAPI[0]?.field_lien_video
+      ? dataAPI[0]?.field_lien_video
+      : [
+          {
+            src: `${base_url}${dataAPI[0]?.field_upload_video}`,
+            type: 'video/mp4',
+          },
+        ]
+  )
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={dataTab} />
@@ -150,59 +163,118 @@ const media = ({ props }) => {
             <div
               className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
             >
-              <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
-                <div
-                  className={`${styles.playerWrapper} player-wrapper`}
-                  // onClick={() => handleStart()}
-                >
-                  <ReactPlayer
-                    url={
-                      video
-                        ? [
-                            {
-                              src: `${base_url}${video}`,
-                              type: 'video/mp4',
-                            },
-                          ]
-                        : dataAPI[0]?.field_upload_video
-                        ? [
-                            {
-                              src: `${base_url}${dataAPI[0]?.field_upload_video}`,
-                              type: 'video/mp4',
-                            },
-                          ]
-                        : dataAPI[0]?.field_lien_video
-                    }
-                    light={
-                      light
-                        ? `${base_url}/${light}`
-                        : `${base_url}/${dataAPI[0]?.field_thumbnail_video}`
-                    }
-                    controls
-                    playing
-                    playIcon={
-                      title === 'برامج اذاعية' ? (
-                        <i
-                          className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
-                          style={{
-                            color: '#ffd24a',
-                          }}
-                        ></i>
-                      ) : (
-                        <button className='d-none'></button>
-                      )
-                    }
-                    className={`${styles.reactPlayer} react-player`}
-                    width='90%'
-                    height='90%'
-                  />
+              {mediaSelected ? (
+                <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
+                  <div
+                    onClick={() => {
+                      setSelectVideo(true)
+                    }}
+                    className={`${styles.playerWrapper} player-wrapper`}
+                    // onClick={() => handleStart()}
+                  >
+                    <ReactPlayer
+                      url={
+                        mediaSelected?.field_lien_video
+                          ? mediaSelected?.field_lien_video
+                          : [
+                              {
+                                src: `${base_url}${mediaSelected?.field_upload_video}`,
+                                type: 'video/mp4',
+                              },
+                            ]
+                      }
+                      light={`${base_url}/${mediaSelected?.field_thumbnail_video}`}
+                      controls
+                      playing
+                      playIcon={
+                        title === 'برامج اذاعية' ? (
+                          <i
+                            className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
+                            style={{
+                              color: '#ffd24a',
+                            }}
+                          ></i>
+                        ) : (
+                          <button className='d-none'></button>
+                        )
+                      }
+                      className={`${styles.reactPlayer} react-player`}
+                      width='90%'
+                      height='90%'
+                    />
+                  </div>
+                  <h3
+                    className={`${styles.titleVideo}`}
+                    style={{ fontSize: 18 }}
+                  >
+                    {mediaSelected?.title}
+                  </h3>
+                  <hr />
+                  <p>{mediaSelected?.field_description_video}</p>
                 </div>
-                <h3 className={`${styles.titleVideo}`} style={{ fontSize: 18 }}>
-                  {titleVideo ? titleVideo : dataAPI[0]?.title}
-                </h3>
-                <hr />
-                <p>{dataAPI[0]?.field_description_video}</p>
-              </div>
+              ) : (
+                <div className={`${styles.videoTop} w-50 mb-5 mt-5`}>
+                  <div
+                    onClick={() => {
+                      setSelectVideo(true)
+                    }}
+                    className={`${styles.playerWrapper} player-wrapper`}
+                    // onClick={() => handleStart()}
+                  >
+                    <ReactPlayer
+                      url={
+                        video && video?.includes('youtu')
+                          ? video
+                          : video && !video?.includes('youtu')
+                          ? [
+                              {
+                                src: `${base_url}${video}`,
+                                type: 'video/mp4',
+                              },
+                            ]
+                          : dataAPI[0]?.field_lien_video
+                          ? dataAPI[0]?.field_lien_video
+                          : [
+                              {
+                                src: `${base_url}${dataAPI[0]?.field_upload_video}`,
+                                type: 'video/mp4',
+                              },
+                            ]
+                      }
+                      light={
+                        light
+                          ? `${base_url}/${light}`
+                          : `${base_url}/${dataAPI[0]?.field_thumbnail_video}`
+                      }
+                      controls
+                      playing={false}
+                      playIcon={
+                        title === 'برامج اذاعية' ? (
+                          <i
+                            className='bi bi-volume-up fa-2x bg-white rounded-circle px-2'
+                            style={{
+                              color: '#ffd24a',
+                            }}
+                          ></i>
+                        ) : (
+                          <button className='d-none'></button>
+                        )
+                      }
+                      className={`${styles.reactPlayer} react-player`}
+                      width='90%'
+                      height='90%'
+                    />
+                  </div>
+                  <h3
+                    className={`${styles.titleVideo}`}
+                    style={{ fontSize: 18 }}
+                  >
+                    {titleVideo ? titleVideo : dataAPI[0]?.title}
+                  </h3>
+                  <hr />
+                  <p>{dataAPI[0]?.field_description_video}</p>
+                </div>
+              )}
             </div>
             <div className='row '>
               {dataAPI?.slice(offset, offset + PER_PAGE).map((item, i) => {
@@ -214,10 +286,23 @@ const media = ({ props }) => {
                   >
                     <div className={`${styles.cardVideo} p-3 shadow-card mx-1`}>
                       <div
-                        onClick={() => setsSelectVideo(i)}
-                        className={`${styles.playerWrapper} player-wrapper`}
+                        onClick={() => {
+                          setMediaSelected(item)
+                        }}
+                        className={``}
                       >
-                        <ReactPlayer
+                        <Image
+                          src={item?.field_thumbnail_video}
+                          className=''
+                          objectFit='cover'
+                          width={10}
+                          height={6}
+                          layout='responsive'
+                          quality={65}
+                          loader={myLoader}
+                          alt={item?.title}
+                        />
+                        {/* <ReactPlayer
                           url={loadURLVideo(item)}
                           key={item?.field_upload_video}
                           playsinline={true}
@@ -239,7 +324,7 @@ const media = ({ props }) => {
                           className={`${styles.reactPlay} react-player`}
                           width='100%'
                           height='100%'
-                        />
+                        /> */}
                       </div>
                       <h5 className='mt-4 h6'>{item?.title}</h5>
                       {item?.field_description_video && (

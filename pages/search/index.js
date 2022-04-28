@@ -620,10 +620,16 @@ const SearchPage = (props) => {
               {displayData}
               <ReactPaginate
                 previousLabel={
-                  <i id='paginationn' className={`fa fa-chevron-right`} />
+                  <i
+                    id='paginationn'
+                    className={`fa fa-chevron-right text-success`}
+                  />
                 }
                 nextLabel={
-                  <i id='paginationn' className='fa fa-chevron-left' />
+                  <i
+                    id='paginationn'
+                    className='fa fa-chevron-left text-success'
+                  />
                 }
                 pageCount={pageCount}
                 forcePage={pageNum}

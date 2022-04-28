@@ -328,14 +328,14 @@ const NavBar = (props) => {
                           },
                         }}
                         onClick={() => {
-                          setShowMenu(!showMenu)
+                          setShowMenu(showMenu === true && false)
                         }}
                       >
                         <li
                           key={i}
                           className='btn rounded-0 mx-0 px-0'
                           onClick={() => {
-                            setShowMenu(!showMenu),
+                            setShowMenu(showMenu === true && false),
                               localStorage.setItem(
                                 'categorieTitle',
                                 JSON.stringify({

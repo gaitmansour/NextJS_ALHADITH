@@ -129,7 +129,7 @@ table td p a{
 .articleTags{
     display: grid !important;
     grid-gap: 0.4rem !important;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 0.4fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 0.4fr)) !important;
 }
 .sectionTags{
     text-align: center;

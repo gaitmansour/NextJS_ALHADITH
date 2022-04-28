@@ -113,12 +113,12 @@ const RowMedia = (props) => {
                   <div className={`${styles.playerWrapper} player-wrapper`}>
                     <ReactPlayer
                       url={[
-                        mediaSelected?.field_upload_video
-                          ? {
+                        mediaSelected?.field_lien_video
+                          ? mediaSelected?.field_lien_video
+                          : {
                               src: `${base_url}${mediaSelected?.field_upload_video}`,
                               type: 'video/mp4',
-                            }
-                          : mediaSelected?.field_lien_video,
+                            },
                       ]}
                       // light={`${base_url}/${mediaSelected?.field_thumbnail_video}`}
                       controls
@@ -149,12 +149,12 @@ const RowMedia = (props) => {
                   <div className={`${styles.playerWrapper} player-wrapper`}>
                     <ReactPlayer
                       url={[
-                        dataMedia[0]?.field_upload_video
-                          ? {
+                        dataMedia[0]?.field_lien_video
+                          ? dataMedia[0]?.field_lien_video
+                          : {
                               src: `${base_url}${dataMedia[0]?.field_upload_video}`,
                               type: 'video/mp4',
-                            }
-                          : dataMedia[0]?.field_lien_video,
+                            },
                       ]}
                       light={`${base_url}/${dataMedia[0]?.field_thumbnail_video}`}
                       controls
