@@ -340,11 +340,7 @@ const ListQuestions = (props) => {
                         .slice(0, 28)
                         .join(' ')}
                 </p>
-                <span
-                  className={`${styles.readMore} text-success text-decoration-underline`}
-                >
-                  لمعرفة المزيد
-                </span>
+                <span className={`text-success`}>لمعرفة المزيد</span>
               </div>
             </a>
           </Link>
@@ -664,9 +660,7 @@ const ListQuestions = (props) => {
                                                   .slice(0, 28)
                                                   .join(' ')}
                                           </p>
-                                          <span
-                                            className={`${styles.readMore} text-success text-decoration-underline`}
-                                          >
+                                          <span className={`text-success`}>
                                             لمعرفة المزيد
                                           </span>
                                         </div>
