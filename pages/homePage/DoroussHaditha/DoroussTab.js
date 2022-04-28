@@ -58,7 +58,7 @@ const DoroussTab = ({ title, tid }) => {
 
   const settings = {
     dots: true,
-    infinite: dataAPI?.length > 2,
+    infinite: false,
     autoplay: true,
     slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
     slidesToScroll: 2,
