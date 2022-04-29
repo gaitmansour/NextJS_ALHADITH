@@ -85,7 +85,7 @@ const LiveSection = () => {
   return (
     <div>
       <div className='d-flex align-items-center mb-4 mx-4'>
-        <BsBroadcast color='#ff6b62' size={50} />
+        <BsBroadcast color='#FEB400' size={50} />
         <h2 className='mx-5 mt-2'>{'البث المباشر'}</h2>
       </div>
       {dataLive?.filter(
