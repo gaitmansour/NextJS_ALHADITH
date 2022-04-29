@@ -82,6 +82,14 @@ display: list-item;
     line-height: 1.6;
     margin-bottom: 15px;
 }
+.desc h2 > span {
+    margin-top: 0%;
+    font-size: 24px;
+    font-weight: 700;
+    color: #129D59;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
 .desc h3{
     margin-top: 0%;
     font-size: 20px;
