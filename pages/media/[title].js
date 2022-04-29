@@ -183,7 +183,7 @@ const media = ({ props }) => {
                               },
                             ]
                       }
-                      light={`${base_url}/${mediaSelected?.field_thumbnail_video}`}
+                      // light={`${base_url}/${mediaSelected?.field_thumbnail_video}`}
                       controls
                       playing
                       playIcon={
@@ -284,13 +284,13 @@ const media = ({ props }) => {
                     key={i.toString()}
                     className={`${styles.groupCard} col col-12 col-lg-3 col-md-4 col-sm-1 my-5`}
                   >
-                    <div className={`${styles.cardVideo} p-3 shadow-card mx-1`}>
-                      <div
-                        onClick={() => {
-                          setMediaSelected(item)
-                        }}
-                        className={``}
-                      >
+                    <div
+                      onClick={() => {
+                        setMediaSelected(item)
+                      }}
+                      className={`${styles.cardVideo} p-3 shadow-card mx-1`}
+                    >
+                      <div className={``}>
                         <Image
                           src={item?.field_thumbnail_video}
                           className=''

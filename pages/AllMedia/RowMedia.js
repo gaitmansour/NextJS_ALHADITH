@@ -188,17 +188,15 @@ const RowMedia = (props) => {
                   return (
                     <div
                       key={index.toString()}
-                      className={`${
+                      onClick={() => {
+                        setSelectVideo(index), setMediaSelected(item)
+                      }}
+                      className={`${styles.cardVideo} ${
                         dataMedia?.length <= 2 ? styles.newWidth : ''
                       }`}
                       dir='rtl'
                     >
-                      <div
-                        onClick={() => {
-                          setSelectVideo(index), setMediaSelected(item)
-                        }}
-                        className={``}
-                      >
+                      <div className={``}>
                         <Image
                           src={item?.field_thumbnail_video}
                           className=''

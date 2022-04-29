@@ -52,6 +52,9 @@
   .newWidth{
     width: 30% !important;
   }
+  .cardVideo{
+    cursor: pointer;
+  }
   @media (max-width : 480px) {
     .secVideo{
       width: 92% !important;
