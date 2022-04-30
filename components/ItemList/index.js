@@ -54,11 +54,11 @@ const ItemList = (props) => {
             className={`${styles.ItemList} my-2 w-100 px-0 pb-0 ${className} ${
                 styles.result
             } result ${
-                props.degree === 'صحيح'
+                props.degree?.code === '1'
                     ? styles.bckg1
-                    : props.degree === 'ضعيف'
+                    : props.degree?.code  === '2'
                         ? styles.bckg2
-                        : props.degree === 'موضوع'
+                        : props.degree?.code  === '28'
                             ? 'bckgCard'
                             : ''
             }`}
@@ -82,7 +82,7 @@ const ItemList = (props) => {
               </span>
                             :{' '}
                             <span className={`${styles.resultat} fw-bold`}>
-                {props.degree}
+                {props.degree?.label}
               </span>
                         </p>
                     </div>
