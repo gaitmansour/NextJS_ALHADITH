@@ -174,18 +174,18 @@ const Footer = () => {
                     exact
                     activeClassName='active'
                     href={`/ContactUs`}
-                    as={`/التواصل`}
+                    as={`/ContactUs`}
                   >
                     {'التواصل'}
                   </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/choroutMinassa`} as={'/شرط-المنصة'}>
+                  <Link href={`/choroutMinassa`} as={'/choroutMinassa'}>
                     {'شرط المنصة'}
                   </Link>
                 </p>
                 <p className={`${styles.FooterLink}`}>
-                  <Link href={`/conditionUser`} as={'/اتفاقية-استخدام-الموقع'}>
+                  <Link href={`/conditionUser`} as={'/conditionUser'}>
                     {'اتفاقية استخدام الموقع'}
                   </Link>
                 </p> */}
