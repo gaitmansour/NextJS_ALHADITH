@@ -75,7 +75,7 @@ const media = ({ props }) => {
   console.log('dataTab', dataTab)
   useEffect(() => {
     getItemsMenu(50)
-  }, [])
+  }, [title])
 
   //palyer video
   //
