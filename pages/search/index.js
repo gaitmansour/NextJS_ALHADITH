@@ -318,7 +318,7 @@ const SearchPage = (props) => {
                 }
                 narrator={item?._source?.narrator?.label}
                 source={item?._source?.source?.label}
-                degree={item?._source?.degree?.label}
+                degree={item?._source?.degree}
                 sourceGlobal={item?._source?.evaluationSource}
                 comments={item?._source?.comments}
                 tags={item?._source?.tags}
