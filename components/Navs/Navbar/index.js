@@ -349,7 +349,7 @@ const NavBar = (props) => {
                               )
                             localStorage.setItem(
                               'tid',
-                              JSON.stringify(item.tID)
+                              JSON.stringify(data.tID)
                             )
                           }}
                         >
