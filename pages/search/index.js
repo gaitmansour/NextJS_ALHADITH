@@ -1,20 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {useTranslation} from 'react-i18next'
+import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './search.module.css'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 import ReactPaginate from 'react-paginate'
 import {
-    getCategory,
-    getDegree,
-    getNarrator,
-    getSource,
-    getTopic,
-    Search,
+  getCategory,
+  getDegree,
+  getNarrator,
+  getSource,
+  getTopic,
+  Search,
 } from '../../endpoints'
 import FetchAPI from '../../API'
-import {FetchPostAPI} from '../../data/API_Search/API'
+import { FetchPostAPI } from '../../data/API_Search/API'
 import ItemList from '../../components/ItemList'
 import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
@@ -47,55 +47,56 @@ const SearchPage = (props) => {
   const source = state?.source
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
+  const codeDegreeHadith = state?.codeDegreeHadith
 
-    const [showForm, setShowForm] = useState(true)
-    const [dataDegree, setdataDegree] = useState([])
-    const [ChoiceDegree, setChoiceDegree] = useState('')
-    const [dataSource, setdataSource] = useState([])
-    const [ChoiceSource, setChoiceSource] = useState('')
-    const [dataTopic, setdataTopic] = useState([])
-    const [ChoiceTopic, setChoiceTopic] = useState('')
-    const [dataNarrator, setdataNarrator] = useState([])
-    const [dataCategory, setdataCategory] = useState([])
-    const [ChoiceCategory, setChoiceCategory] = useState('')
-    const [ChoiceNarrator, setChoiceNarrator] = useState('')
-    const [EvaluationSource, setEvaluationSource] = useState('')
-    const [dataSearch, setdataSearch] = useState([])
-    const [input, setInput] = useState('')
-    const [pageNum, setPageNum] = useState(0)
-    const [pagePagination, setPagePagination] = useState(1)
-    const [StartPage, setStartPage] = useState(0)
-    const [success, setSuccess] = useState(false)
-    const [showDialog, setshowDialog] = useState(false)
-    const [showDialogModal, setshowDialogModal] = useState(false)
-    const [message, setMessage] = useState('')
-    const dataPerPage = dataSearch?.hits?.hits?.length
-    const pagevisited = pageNum * dataPerPage
-    const [show, setShow] = useState(false)
-    const {t} = useTranslation()
-    const data = [
-        {
-            title: 'الرئيسية',
-            path: '',
-        },
-        {
-            title: 'البحث',
-            path: '/search',
-        },
-    ]
-    const searchSpacific = dataSearch?.hits?.total?.value
-    const searchNotSpacific = 336
-    let resultsRef = useRef()
-    let BodyRef = useRef()
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
-    const urlDegree = getDegree()
-    const urlSource = getSource()
-    const urlTopic = getTopic()
-    const urlNarrator = getNarrator()
-    const urlCategory = getCategory()
-    const urlSearch = Search()
-    let elementRef = useRef()
+  const [showForm, setShowForm] = useState(true)
+  const [dataDegree, setdataDegree] = useState([])
+  const [ChoiceDegree, setChoiceDegree] = useState('')
+  const [dataSource, setdataSource] = useState([])
+  const [ChoiceSource, setChoiceSource] = useState('')
+  const [dataTopic, setdataTopic] = useState([])
+  const [ChoiceTopic, setChoiceTopic] = useState('')
+  const [dataNarrator, setdataNarrator] = useState([])
+  const [dataCategory, setdataCategory] = useState([])
+  const [ChoiceCategory, setChoiceCategory] = useState('')
+  const [ChoiceNarrator, setChoiceNarrator] = useState('')
+  const [EvaluationSource, setEvaluationSource] = useState('')
+  const [dataSearch, setdataSearch] = useState([])
+  const [input, setInput] = useState('')
+  const [pageNum, setPageNum] = useState(0)
+  const [pagePagination, setPagePagination] = useState(1)
+  const [StartPage, setStartPage] = useState(0)
+  const [success, setSuccess] = useState(false)
+  const [showDialog, setshowDialog] = useState(false)
+  const [showDialogModal, setshowDialogModal] = useState(false)
+  const [message, setMessage] = useState('')
+  const dataPerPage = dataSearch?.hits?.hits?.length
+  const pagevisited = pageNum * dataPerPage
+  const [show, setShow] = useState(false)
+  const { t } = useTranslation()
+  const data = [
+    {
+      title: 'الرئيسية',
+      path: '',
+    },
+    {
+      title: 'البحث',
+      path: '/search',
+    },
+  ]
+  const searchSpacific = dataSearch?.hits?.total?.value
+  const searchNotSpacific = 336
+  let resultsRef = useRef()
+  let BodyRef = useRef()
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const urlDegree = getDegree()
+  const urlSource = getSource()
+  const urlTopic = getTopic()
+  const urlNarrator = getNarrator()
+  const urlCategory = getCategory()
+  const urlSearch = Search()
+  let elementRef = useRef()
 
   const getDataDegree = async () => {
     return FetchAPI(urlDegree).then((data) => {
@@ -173,7 +174,15 @@ const SearchPage = (props) => {
     })
   }
   console.log('ChoiceCategory', ChoiceCategory)
-  const handleSearch = async (word, topic, evSrc, src, degree, nrs) => {
+  const handleSearch = async (
+    word,
+    topic,
+    evSrc,
+    src,
+    degree,
+    nrs,
+    codeDegreeHadith
+  ) => {
     // console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
     // console.log('evalua_source', evSrc)
     // console.log('choice_source', ChoiceSource)
@@ -199,6 +208,7 @@ const SearchPage = (props) => {
         : ChoiceCategory
         ? ChoiceCategory.value
         : '',
+      codeDegree: codeDegreeHadith ? codeDegreeHadith : '',
       numeroHadith: '',
       size: 10,
       start: StartPage < 1 ? 0 : StartPage,
@@ -238,7 +248,8 @@ const SearchPage = (props) => {
         undefined,
         undefined,
         ArrayDegree[0],
-        undefined
+        undefined,
+        codeDegreeHadith
       )
       setShowForm(false)
     }
@@ -281,51 +292,50 @@ const SearchPage = (props) => {
     }
   }
 
-    const displayData = dataSearch?.hits?.hits?.map((item, index) => {
-        return (
-            <ItemList
-                key={index}
-                topic={item?._source?.topic?.label}
-                category={item?._source?.categorie?.label}
-                content={item?._source?.content}
-                highlight={!!item.highlight}
-                onSubmitWTSP={() => {
-                    if (item?._source?.content.length > 5110) {
-                        //handleShow();
-                        setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
-                        setshowDialog(false)
-                      setshowDialogModal(true)
-                    } else {
-                        setshowDialog(true)
-                      setshowDialogModal(false)
-
-                    }
-                }}
-                onSubmit={() => {
-                    if (item?._source?.content.length > 750) {
-                        //handleShow();
-                        setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
-                        setshowDialog(false)
-                      setshowDialogModal(true)
-                    } else {
-                        setshowDialog(true)
-                      setshowDialogModal(false)
-                    }
-                }}
-                showDialog={true}
-                text={
-                    item?.highlight ? item?.highlight?.content[0] : item?._source?.content
-                }
-                narrator={item?._source?.narrator?.label}
-                source={item?._source?.source?.label}
-                degree={item?._source?.degree}
-                sourceGlobal={item?._source?.evaluationSource}
-                comments={item?._source?.comments}
-                tags={item?._source?.tags}
-                numeroHadith={item?._source?.numeroHadith}
-            />
-        )
-    })
+  const displayData = dataSearch?.hits?.hits?.map((item, index) => {
+    return (
+      <ItemList
+        key={index}
+        topic={item?._source?.topic?.label}
+        category={item?._source?.categorie?.label}
+        content={item?._source?.content}
+        highlight={!!item.highlight}
+        onSubmitWTSP={() => {
+          if (item?._source?.content.length > 5110) {
+            //handleShow();
+            setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
+            setshowDialog(false)
+            setshowDialogModal(true)
+          } else {
+            setshowDialog(true)
+            setshowDialogModal(false)
+          }
+        }}
+        onSubmit={() => {
+          if (item?._source?.content.length > 750) {
+            //handleShow();
+            setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
+            setshowDialog(false)
+            setshowDialogModal(true)
+          } else {
+            setshowDialog(true)
+            setshowDialogModal(false)
+          }
+        }}
+        showDialog={true}
+        text={
+          item?.highlight ? item?.highlight?.content[0] : item?._source?.content
+        }
+        narrator={item?._source?.narrator?.label}
+        source={item?._source?.source?.label}
+        degree={item?._source?.degree}
+        sourceGlobal={item?._source?.evaluationSource}
+        comments={item?._source?.comments}
+        tags={item?._source?.tags}
+        numeroHadith={item?._source?.numeroHadith}
+      />
+    )
+  })
 
   const pageCount = Math.ceil(dataSearch?.hits?.total?.value / 10)
   const changePage = (v) => {
@@ -369,43 +379,6 @@ const SearchPage = (props) => {
     }
   }
 
-  // const handleEpingleIcon = () => {
-  //   if (
-  //     !input &&
-  //     !ChoiceTopic &&
-  //     !EvaluationSource &&
-  //     !ChoiceSource &&
-  //     !ChoiceNarrator &&
-  //     !ChoiceDegree &&
-  //     !ChoiceCategory
-  //   ) {
-  //     return (
-  //       <div
-  //         className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
-  //         style={{
-  //           backgroundColor: '#fde5ac',
-  //           height: '45px',
-  //           width: '6%',
-  //         }}
-  //       >
-  //         <VscIcons.VscPinned color='#fff' size={24} />
-  //       </div>
-  //     )
-  //   } else {
-  //     return (
-  //       <div
-  //         className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
-  //         style={{
-  //           backgroundColor: '#FBBF31',
-  //           height: '45px',
-  //           width: '6%',
-  //         }}
-  //       >
-  //         <VscIcons.VscPinnedDirty color='#fff' size={24} />
-  //       </div>
-  //     )
-  //   }
-  // }
   useEffect(() => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
@@ -671,7 +644,8 @@ const SearchPage = (props) => {
           onHide={handleClose}
           onClick={handleClose}
         />
-        { showDialogModal&& <CustomModal
+        {showDialogModal && (
+          <CustomModal
             title={'تنبيه'}
             body={message}
             show={showDialogModal}
@@ -683,7 +657,8 @@ const SearchPage = (props) => {
               setshowDialog(true)
               setshowDialogModal(false)
             }}
-        />}
+          />
+        )}
       </Body>
     </TemplateArticle>
   )

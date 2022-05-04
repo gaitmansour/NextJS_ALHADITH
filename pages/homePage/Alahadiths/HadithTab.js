@@ -91,6 +91,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
                   query: {
                     word: '',
                     topic: item.label,
+                    codeDegreeHadith: item.code,
                     content: Content,
                     codeDegree: CodeTopic,
                     from: 'home',
@@ -112,6 +113,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
                 query: {
                   word: '',
                   topic: item.label,
+                  codeDegreeHadith: item.code,
                   content: Content,
                   codeDegree: CodeTopic,
                   from: 'home',
@@ -124,15 +126,15 @@ const HadithTab = ({ CodeTopic, Content }) => {
                 className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
-                  onClick={() =>
-                    console.log('item--------------------------------', {
-                      word: '',
-                      topic: item,
-                      content: Content,
-                      codeDegree: CodeTopic,
-                      from: 'home',
-                    })
-                  }
+                  // onClick={() =>
+                  //   console.log('item--------------------------------', {
+                  //     word: '',
+                  //     topic: item,
+                  //     content: Content,
+                  //     codeDegree: CodeTopic,
+                  //     from: 'home',
+                  //   })
+                  // }
                   style={{ justifyContent: 'center', alignItems: 'center' }}
                   className={`${
                     Content === 'صحيح'
