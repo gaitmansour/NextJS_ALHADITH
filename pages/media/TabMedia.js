@@ -29,16 +29,16 @@ const TabMedia = (props) => {
       })
     }
   }
-  console.log('data promise ALlll \n', dataChildrenTab && dataChildrenTab)
+  // console.log('data promise ALlll \n', dataChildrenTab && dataChildrenTab)
 
-  console.log(
-    'dataChildrenTab ==>',
-    dataChildrenTab &&
-      dataChildrenTab?.map((item) => {
-        console.log('item=> ', item[Object.keys(item)[0]])
-        return item
-      })
-  )
+  // console.log(
+  //   'dataChildrenTab ==>',
+  //   dataChildrenTab &&
+  //     dataChildrenTab?.map((item) => {
+  //       console.log('item=> ', item[Object.keys(item)[0]])
+  //       return item
+  //     })
+  // )
 
   useEffect(() => {
     getItemsMenu()
@@ -137,7 +137,7 @@ const TabMedia = (props) => {
 
                         {slectElement &&
                           slectElement == item?.tid &&
-                          item[Object.keys(item)[0]].length > 0 && (
+                          item[Object.keys(item)[0]]?.length > 0 && (
                             <ul
                               className={`${styles.dropdown} shadow-card`}
                               style={style}
