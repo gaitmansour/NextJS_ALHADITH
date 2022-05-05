@@ -253,8 +253,8 @@ const SearchPage = (props) => {
         ArrayCategory[0],
         undefined,
         undefined,
-        undefined,
-        codeDegree,
+          ArrayDegree[0],
+          undefined,
         undefined
       )
       setShowForm(false)
