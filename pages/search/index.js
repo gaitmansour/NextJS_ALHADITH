@@ -569,13 +569,13 @@ const SearchPage = (props) => {
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  <Input
+                  {/* <Input
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
                     value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
-                  />
+                  /> */}
                 </div>
                 {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
                  <CustomSelect

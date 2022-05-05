@@ -343,13 +343,13 @@ const SearchSection = (props) => {
                 placeholder='اكتب الحكم'
                 onChange={(v) => setChoiceDegree(v)}
               />
-              <Input
+              {/* <Input
                 className='col-md-4'
                 label='مصدر الحكم'
                 placeholder='ابحث بمصدر الحكم'
                 value={EvaluationSource && EvaluationSource}
                 onChange={(v) => setEvaluationSource(v.target.value)}
-              />
+              /> */}
 
               {/* <CustomSelect
                 className='col-md-4'
