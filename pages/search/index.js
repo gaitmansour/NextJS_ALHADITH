@@ -47,7 +47,7 @@ const SearchPage = (props) => {
   const source = state?.source
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
-  const codeDegreeHadith = state?.codeDegreeHadith
+  const codeDegree = state?.codeDegree
 
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
@@ -102,9 +102,11 @@ const SearchPage = (props) => {
     return FetchAPI(urlDegree).then((data) => {
       if (data.success) {
         const newDegree = data?.data.map((item) => {
+          console.log('data?.data========================>', data?.data)
           return (item = {
             label: item.label,
             value: item.id,
+            code: item.code,
           })
         })
         setdataDegree(newDegree)
@@ -180,8 +182,8 @@ const SearchPage = (props) => {
     evSrc,
     src,
     degree,
-    nrs,
-    codeDegreeHadith
+    codeDegree,
+    nrs
   ) => {
     // console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
     // console.log('evalua_source', evSrc)
@@ -196,6 +198,7 @@ const SearchPage = (props) => {
         ? EvaluationSource
         : '',
       idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
+      codeDegree: codeDegree ? codeDegree : '',
       idNarrator: nrs
         ? nrs.value
         : ChoiceNarrator
@@ -208,7 +211,7 @@ const SearchPage = (props) => {
         : ChoiceCategory
         ? ChoiceCategory.value
         : '',
-      codeDegree: codeDegreeHadith ? codeDegreeHadith : '',
+
       numeroHadith: '',
       size: 10,
       start: StartPage < 1 ? 0 : StartPage,
@@ -240,16 +243,19 @@ const SearchPage = (props) => {
         res && res.length > 0 && res?.filter((item) => item.label === topic)
       const ArrayDegree =
         r && r.length > 0 && r?.filter((item) => item.label === content)
+      // const ArrayDegree =
+      //   r && r.length > 0 && r?.filter((item) => item.code === codeDegree)
       setChoiceCategory(ArrayCategory[0])
       setChoiceDegree(ArrayDegree[0])
+      console.log('ArrayDegree[0] ====>', r)
       await handleSearch(
         word,
         ArrayCategory[0],
         undefined,
         undefined,
-        ArrayDegree[0],
         undefined,
-        codeDegreeHadith
+        codeDegree,
+        undefined
       )
       setShowForm(false)
     }
@@ -424,6 +430,7 @@ const SearchPage = (props) => {
       getDataSource()
       getDataNarrator()
       getDataTopic()
+      getDataDegree()
     }
 
     if (
