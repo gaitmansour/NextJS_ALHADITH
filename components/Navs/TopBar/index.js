@@ -203,7 +203,15 @@ const TopBar = (props) => {
             <Lottie options={defaultOptions} height={55} width={55} />
             <li className={`${styles.navItem} nav-item`}>
               <div style={{ marginLeft: 20 }}>
-                <Link exact activeClassName='active' href={`/AllMedia`}>
+                <Link
+                  exact
+                  activeClassName='active'
+                  href={{
+                    pathname: '/AllMedia',
+                    query: { title: 'التلفزة الرقمية' },
+                  }}
+                  as='/AllMedia'
+                >
                   {'البث المباشر'}
                 </Link>
               </div>

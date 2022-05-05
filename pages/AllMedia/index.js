@@ -84,7 +84,16 @@ const AllMedia = (props) => {
           sousCategorie &&
           allDataMedia &&
           allDataMedia?.map((item, index) => {
-            return item?.name == 'الدروس الحديثية' ? null : (
+            return item?.name == 'الدروس الحديثية' ? null : item?.name ==
+                'الدروس التمهيدية' ||
+              item?.name == 'الدروس البيانية' ||
+              item?.name == 'الدروس التفاعلية' ? (
+              <RowMedia
+                key={item?.tid}
+                title={item?.name.split(' ').join(' الحديثية ')}
+                _id={item?.tid}
+              />
+            ) : (
               <RowMedia key={item?.tid} title={item?.name} _id={item?.tid} />
             )
           })}
