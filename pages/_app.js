@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
         <meta name='theme-color' content='#129D59' />
         <meta
           name='description'
-          content='منصة محمد السادس للحديث النبوي الشريف'
+          content='منصة محمد السادس للحديث الشريف'
         />
         <meta
           name='keywords'
@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel='apple-touch-icon' href='/static/logo192.png' />
         <link rel='manifest' href='/static/manifest.json' />
-        <title>منصة محمد السادس للحديث النبوي الشريف</title>
+        <title>منصة محمد السادس للحديث الشريف</title>
       </Head>
       <SSRProvider>
         <Component {...pageProps} />

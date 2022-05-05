@@ -119,7 +119,7 @@ const SearchInput = (props) => {
             //opacity={0.7}
             onFocus={() => !Myinput.current.focus()}
             onBlur={() => setClick(false)}
-            placeholder={'البحث في منصة الحديث النبوي الشريف'}
+            placeholder={'البحث في منصة الحديث الشريف'}
             //onFocus={props.onChange}
             defaultKeyboard={CustomMapping}
             required
@@ -146,7 +146,7 @@ const SearchInput = (props) => {
           <input
             value={props.input}
             className={`flex-fill mx-1 px-2 ${props.className} ${styles.inputSearch} `}
-            placeholder={'البحث في منصة الحديث النبوي الشريف'}
+            placeholder={'البحث في منصة الحديث الشريف'}
             //color={'red'}
             style={{ color: '#000' }}
             color={'red'}

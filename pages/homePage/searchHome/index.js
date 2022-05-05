@@ -275,7 +275,7 @@ const SearchSection = (props) => {
           onClickSettings={() => setShowForm(!showForm)}
           input={input}
           onChange={(v) => handleInput(v)}
-          placeholder='البحث في منصة محمد السادس للحديث النبوي الشريف'
+          placeholder='البحث في منصة محمد السادس للحديث الشريف'
           className='bg-white mx-0'
           clickSearch={() => handleClickSearch()}
         />

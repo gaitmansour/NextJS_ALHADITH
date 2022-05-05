@@ -475,7 +475,7 @@ const SearchPage = (props) => {
               input={input}
               inputClassName={'h-25'}
               onChange={(v) => handleInput(v)}
-              placeholder='البحث في منصة الحديث النبوي الشريف'
+              placeholder='البحث في منصة الحديث الشريف'
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />

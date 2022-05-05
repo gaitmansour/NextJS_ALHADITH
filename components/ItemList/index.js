@@ -18,7 +18,7 @@ const ItemList = (props) => {
     } \n# المصدر : ${props.source} \n# مصدر الحكم : ${
         props.sourceGlobal ? props.sourceGlobal : ''
     } \n# الموضوع : ${props.category}  \n 
-  منصة محمد السادس للحديث النبوي الشريف `
+  منصة محمد السادس للحديث الشريف `
     const [show, setShow] = useState(false)
     const [message, setMessage] = useState('')
     const [content, setContent] = useState(params)
@@ -44,7 +44,7 @@ const ItemList = (props) => {
     } \n# المصدر : ${props.source} \n# مصدر الحكم : ${
         props.sourceGlobal ? props.sourceGlobal : ''
     } \n# الموضوع : ${props.category}  \n 
-  منصة محمد السادس للحديث النبوي الشريف `
+  منصة محمد السادس للحديث الشريف `
 
     const toShow = params.substring(0, 251) + ' ...'
     // console.log("toShow",toShow)

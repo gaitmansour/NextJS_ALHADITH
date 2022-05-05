@@ -517,7 +517,7 @@ const NavBar = (props) => {
                 input={input}
                 onChange={(v) => handleInput(v)}
                 clickSearch={() => handleClickSearch()}
-                placeholder='البحث في منصة الحديث النبوي الشريف'
+                placeholder='البحث في منصة الحديث الشريف'
                 className={` text-black bg-white mx-0 shadow-card ${styles.inputSearchResp}`}
               />
             </div>

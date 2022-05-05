@@ -10,7 +10,7 @@ const DownloadApk = () => {
       <div className={`container ${styles.downloadApk}`}>
         <div className={`${styles.download} p-4`}>
           <h4 className={`${styles.titleSec} `}>
-            {'تحميل التطبيق الخاص بمنصة محمد السادس للحديث النبوي الشريف'}
+            {'تحميل التطبيق الخاص بمنصة محمد السادس للحديث الشريف'}
           </h4>
           <div className={`${styles.iconGroup}`}>
             <Image
