@@ -104,7 +104,7 @@ const ArticlesByTag = (props) => {
                         ) : (
                           <Image
                             className={`card-img-top  p-2 pt-3`}
-                            src={Logos.logo_web}
+                            src={Logos.logo_hadith_m6}
                             objectFit='cover'
                             width={16}
                             height={9}

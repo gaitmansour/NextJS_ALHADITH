@@ -90,11 +90,11 @@ const SliderList = (props) => {
                       />
                     ) : (
                       <Image
-                        src={Logos.logo_web}
+                        src={Logos.logo_hadith_m6}
                         alt=''
                         objectFit='cover'
                         className={'ImageSlider'}
-                        width={160}
+                        width={170}
                         height='90%'
                       />
                     )}
