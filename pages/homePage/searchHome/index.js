@@ -54,9 +54,7 @@ const SearchSection = (props) => {
   let elementRef = useRef()
 
   const getDataMenu = async (x) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
-      console.log('dataSuccess ==>', data)
       if (data.success) {
         localStorage.setItem(
           'categorieTitle',
@@ -136,7 +134,6 @@ const SearchSection = (props) => {
   const getDataCategory = async () => {
     return await FetchAPI(urlCategory).then((data) => {
       if (data.success) {
-        // console.log('dataNarrator-------------',data?.data)
         const newCategory = data?.data.map((item) => {
           return (item = {
             label: item.label,
@@ -148,7 +145,6 @@ const SearchSection = (props) => {
       }
     })
   }
-  console.log('mawdoaa', ChoiceCategory)
 
   //const history = useHistory()
   let history = useRouter()
@@ -180,7 +176,6 @@ const SearchSection = (props) => {
       setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
-      // console.log("go to")
       router &&
         router.push(
           {
@@ -239,21 +234,6 @@ const SearchSection = (props) => {
     getDataTopic()
     getDataCategory()
   }, [])
-
-  console.log(
-    // 'data search',
-    // input,
-    // 'massder_7okem',
-    // EvaluationSource,
-    // 'mawdoaa',
-    // ChoiceTopic,
-    'masder',
-    ChoiceSource.label
-    // 'rawi',
-    // ChoiceNarrator,
-    // 'hokem',
-    // ChoiceDegree
-  )
 
   return (
     <div

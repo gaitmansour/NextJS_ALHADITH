@@ -32,10 +32,9 @@ const media = ({ props }) => {
 
   let _id =
     typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
-  console.log('dataValue tid =>', _id)
 
   const title = useRouter()?.query?.title?.split('-').join(' ')
-  console.log('_id query', useRouter().query)
+
   const urlMenu = getMenu()
   const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
@@ -58,7 +57,6 @@ const media = ({ props }) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
-      console.log('media_data', data?.data)
     })
   }, [title, router.isReady])
 
@@ -72,7 +70,7 @@ const media = ({ props }) => {
       }
     })
   }
-  console.log('dataTab', dataTab)
+
   useEffect(() => {
     getItemsMenu(50)
   }, [title])
@@ -111,7 +109,6 @@ const media = ({ props }) => {
     handlePageClick({ selected: 0 })
   }, [title])
 
-  console.log('show start------', start)
   // if (_.isEmpty(currentItems)) {
   //   return (
   //     <div className='d-flex align-items-center justify-content-center py-5'>
@@ -133,26 +130,6 @@ const media = ({ props }) => {
   //   if(video?.includes('youtu'))
   // }
 
-  console.log(
-    'video play=>',
-    video && video?.includes('youtu')
-      ? video
-      : video && !video?.includes('youtu')
-      ? [
-          {
-            src: `${base_url}${video}`,
-            type: 'video/mp4',
-          },
-        ]
-      : dataAPI[0]?.field_lien_video
-      ? dataAPI[0]?.field_lien_video
-      : [
-          {
-            src: `${base_url}${dataAPI[0]?.field_upload_video}`,
-            type: 'video/mp4',
-          },
-        ]
-  )
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={dataTab} />
@@ -278,7 +255,6 @@ const media = ({ props }) => {
             </div>
             <div className='row '>
               {dataAPI?.slice(offset, offset + PER_PAGE).map((item, i) => {
-                // console.log('itemmmmmm=>', item)
                 return (
                   <div
                     key={i.toString()}

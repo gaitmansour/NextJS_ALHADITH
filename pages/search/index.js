@@ -39,6 +39,7 @@ const SearchPage = (props) => {
   router = params ? params?.query : varRouter
 
   const state = router
+
   const content = state?.content
   const topic = state?.topic
 
@@ -102,7 +103,7 @@ const SearchPage = (props) => {
     return FetchAPI(urlDegree).then((data) => {
       if (data.success) {
         const newDegree = data?.data.map((item) => {
-          console.log('data?.data========================>', data?.data)
+          // console.log('data?.data========================>', data?.data)
           return (item = {
             label: item.label,
             value: item.id,
@@ -175,7 +176,7 @@ const SearchPage = (props) => {
       }
     })
   }
-  console.log('ChoiceCategory', ChoiceCategory)
+  // console.log('ChoiceCategory', ChoiceCategory)
   const handleSearch = async (
     word,
     topic,
@@ -185,19 +186,14 @@ const SearchPage = (props) => {
     codeDegree,
     nrs
   ) => {
-    // console.log('input word', word.replace(/[-_,;.&:?،؟\s]/g, ''))
-    // console.log('evalua_source', evSrc)
-    // console.log('choice_source', ChoiceSource)
-    // console.log('EvaluationSource', EvaluationSource)
-    // console.log('id_source', src)
     const data = {
-      content: word.replace(/[-_,;.&:!?،؟]/g, ''),
+      content: word?.replace(/[-_,;.&:!?،؟]/g, ''),
       evaluationSource: evSrc
         ? evSrc
         : EvaluationSource
         ? EvaluationSource
         : '',
-      idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
+      idDegree: codeDegree ? '' : ChoiceDegree ? ChoiceDegree.value : '',
       codeDegree: codeDegree ? codeDegree : '',
       idNarrator: nrs
         ? nrs.value
@@ -217,10 +213,6 @@ const SearchPage = (props) => {
       start: StartPage < 1 ? 0 : StartPage,
       tags: '',
     }
-    console.log('data---------------------------')
-    console.log(
-      src?.label != '' ? src?.value : ChoiceSource ? ChoiceSource.value : ''
-    )
 
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
@@ -234,33 +226,28 @@ const SearchPage = (props) => {
   const handleTopicFrom = async (res, r, router, narList, sourceList) => {
     const word = router?.word
     const from = router?.from
-    console.log(
-      'from-----------------------------------------------------------------',
-      from
-    )
+
     if (from === 'home') {
       const ArrayCategory =
         res && res.length > 0 && res?.filter((item) => item.label === topic)
-      const ArrayDegree =
-        r && r.length > 0 && r?.filter((item) => item.label === content)
       // const ArrayDegree =
-      //   r && r.length > 0 && r?.filter((item) => item.code === codeDegree)
+      //   r && r.length > 0 && r?.filter((item) => item.label === content)
+      const ArrayDegree =
+        r && r.length > 0 && r?.filter((item) => item.code === codeDegree)
       setChoiceCategory(ArrayCategory[0])
       setChoiceDegree(ArrayDegree[0])
-      console.log('ArrayDegree[0] ====>', r)
       await handleSearch(
         word,
         ArrayCategory[0],
         undefined,
         undefined,
-          ArrayDegree[0],
-          undefined,
+        undefined,
+        codeDegree,
         undefined
       )
       setShowForm(false)
     }
     if (from === 'topBar') {
-      console.log('wordddddddddddddddddddddd')
       console.log(word)
       setInput(word)
       setShowForm(false)
@@ -293,8 +280,6 @@ const SearchPage = (props) => {
         ArrayDegree[0],
         ArrayNars[0]
       )
-      console.log('arry_so =>>', ArrayCategory[0])
-      console.log('source =>', source)
     }
   }
 
@@ -417,6 +402,8 @@ const SearchPage = (props) => {
   let route = useRouter()
 
   useEffect(() => {
+    const word = router?.word
+    const from = router?.from
     if (StartPage === 0) {
       getDataDegree().then((r) =>
         getDataCategory().then((res) =>
@@ -434,26 +421,42 @@ const SearchPage = (props) => {
     }
 
     if (
-      input ||
-      ChoiceTopic ||
-      EvaluationSource ||
-      ChoiceSource ||
-      ChoiceNarrator ||
-      ChoiceDegree ||
-      ChoiceCategory
+      (input ||
+        ChoiceTopic ||
+        EvaluationSource ||
+        ChoiceSource ||
+        ChoiceNarrator ||
+        ChoiceDegree ||
+        ChoiceCategory) &&
+      from !== 'home'
     ) {
       handleSearch(input)
     }
+
     // if (typeof window != 'undefined') {
     //       window.scrollTo({
     //         behavior: 'smooth',
     //         top: resultsRef?.current?.offsetTop,
     //       })
     //     }
-    route.isReady &&
-      console.log('route----------------------------------', route)
-  }, [pageNum, StartPage, route])
+  }, [pageNum, StartPage])
 
+  useEffect(() => {
+    const word = router?.word
+    const from = router?.from
+    if (from === 'home' && StartPage !== 0) {
+      handleSearch(
+        word,
+        ChoiceCategory,
+        undefined,
+        undefined,
+        undefined,
+        codeDegree,
+        undefined
+      )
+      setShowForm(false)
+    }
+  }, [StartPage, pageNum, topic, codeDegree])
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
@@ -475,7 +478,7 @@ const SearchPage = (props) => {
               input={input}
               inputClassName={'h-25'}
               onChange={(v) => handleInput(v)}
-              placeholder='البحث في منصة الحديث الشريف'
+              placeholder='البحث في منصة الحديث النبوي الشريف'
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
@@ -569,13 +572,13 @@ const SearchPage = (props) => {
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  {/* <Input
+                  <Input
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
                     value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
-                  /> */}
+                  />
                 </div>
                 {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
                  <CustomSelect
