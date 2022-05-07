@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styles from './media.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
 import ScrollButton from '../../components/ScrollButton'
@@ -43,6 +43,7 @@ const media = ({ props }) => {
   const [mediaSelected, setMediaSelected] = useState(null)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
+  const refVideo = useRef()
   const urlAllVideo =
     title == 'الدروس التمهيدية' ||
     title == 'الدروس البيانية' ||
@@ -58,7 +59,7 @@ const media = ({ props }) => {
         setDataAPI(data?.data)
       }
     })
-  }, [title, router.isReady])
+  }, [title, router.isReady, _id])
 
   //
   const getItemsMenu = async (tid) => {
@@ -138,6 +139,7 @@ const media = ({ props }) => {
         {dataAPI?.length > 0 ? (
           <>
             <div
+              ref={refVideo}
               className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
             >
               {mediaSelected ? (
@@ -262,7 +264,8 @@ const media = ({ props }) => {
                   >
                     <div
                       onClick={() => {
-                        setMediaSelected(item)
+                        setMediaSelected(item),
+                          refVideo?.current?.scrollIntoView()
                       }}
                       className={`${styles.cardVideo} p-3 shadow-card mx-1`}
                     >

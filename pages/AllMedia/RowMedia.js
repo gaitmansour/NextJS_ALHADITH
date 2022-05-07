@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './AllMedia.module.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -13,6 +13,7 @@ const RowMedia = (props) => {
   const [mediaSelected, setMediaSelected] = useState(null)
   const [selectVideo, setSelectVideo] = useState('')
   const { title, _id } = props
+  const refVideo = useRef()
   // const url = getVideoMedia(title)
   const urlgetData =
     title == 'الدروس التمهيدية' ||
@@ -109,7 +110,7 @@ const RowMedia = (props) => {
           <div className='my-5'>
             <div className='d-flex align-items-center justify-content-center'>
               {mediaSelected ? (
-                <div className={`${styles.secVideo} `}>
+                <div ref={refVideo} className={`${styles.secVideo} `}>
                   <div className={`${styles.playerWrapper} player-wrapper`}>
                     <ReactPlayer
                       url={[
@@ -189,7 +190,9 @@ const RowMedia = (props) => {
                     <div
                       key={index.toString()}
                       onClick={() => {
-                        setSelectVideo(index), setMediaSelected(item)
+                        setSelectVideo(index),
+                          setMediaSelected(item),
+                          refVideo?.current?.scrollIntoView()
                       }}
                       className={`${styles.cardVideo} ${
                         dataMedia?.length <= 2 ? styles.newWidth : ''
