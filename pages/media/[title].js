@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styles from './media.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
 import ScrollButton from '../../components/ScrollButton'
@@ -23,6 +23,7 @@ import TabMedia from './TabMedia'
 import Image from 'next/image'
 import { Icons } from '../../assets'
 import { handleMenu } from '../../helpers'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const media = ({ props }) => {
   const video = useRouter()?.query?.video
@@ -43,6 +44,7 @@ const media = ({ props }) => {
   const [mediaSelected, setMediaSelected] = useState(null)
   const PER_PAGE = 12
   const url = getVideoMedia(title)
+  const refVideo = useRef()
   const urlAllVideo =
     title == 'الدروس التمهيدية' ||
     title == 'الدروس البيانية' ||
@@ -58,7 +60,7 @@ const media = ({ props }) => {
         setDataAPI(data?.data)
       }
     })
-  }, [title, router.isReady])
+  }, [title, router.isReady, _id])
 
   //
   const getItemsMenu = async (tid) => {
@@ -136,10 +138,11 @@ const media = ({ props }) => {
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         {dataAPI?.length > 0 ? (
           <>
             <div
+              ref={refVideo}
               className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
             >
               {mediaSelected ? (
@@ -264,7 +267,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
                   >
                     <div
                       onClick={() => {
-                        setMediaSelected(item)
+                        setMediaSelected(item),
+                          refVideo?.current?.scrollIntoView()
                       }}
                       className={`${styles.cardVideo} p-3 shadow-card mx-1`}
                     >

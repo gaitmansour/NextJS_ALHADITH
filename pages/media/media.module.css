@@ -265,3 +265,30 @@
     font-size: 16px;
   }
 }
+@media screen and (max-width: 480px) {
+  .paginationButtons {
+    width: 100% !important;
+}
+
+.paginationButtons li {
+    padding:0px 2px !important;
+    margin: 6px !important;
+    height: 5%;
+    width: 10%;
+}
+}
+
+@media (max-width: 375px) {
+  .paginationButtons li {
+      padding:0% 0% 0% 5% !important;
+      margin: 4px !important;
+      height: 5%;
+      width: 15% !important;
+  }
+  .paginationButtons a {
+      padding:0% 0% 0% 10% !important;
+      /* margin:0px 4px !important; */
+      height: 10%;
+      width: 25%;
+  }
+}

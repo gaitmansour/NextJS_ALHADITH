@@ -11,6 +11,7 @@ import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
 import ScrollButton from '../../components/ScrollButton'
 import Image from 'next/image'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const ArticlesByTag = (props) => {
   let TagID =
@@ -53,7 +54,7 @@ const ArticlesByTag = (props) => {
       <Body className='TemplateArticleBody d-flex p-4'>
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <div className='flex-fill my-5'>
           <div className='row tags'>
             {dataAPI &&

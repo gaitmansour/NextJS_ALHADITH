@@ -8,6 +8,7 @@ import { getSideItems } from '../../endpoints'
 import FetchAPI from '../../API'
 import RowMedia from './RowMedia'
 import { useRouter } from 'next/router'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const AllMedia = (props) => {
   const [categoryMedia, setCategoryMedia] = useState([])
@@ -80,7 +81,7 @@ const AllMedia = (props) => {
       <Body>
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <LiveSection />
         {categoryMedia &&
           sousCategorie &&

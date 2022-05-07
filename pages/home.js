@@ -17,6 +17,7 @@ import Theme1 from '../components/Theme1'
 import Theme2 from '../components/Theme2'
 import ScrollButton from '../components/ScrollButton'
 import DoroussHaditha from './homePage/DoroussHaditha'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const HomeScreen = (props) => {
   const [sections, setSections] = useState([])
@@ -30,6 +31,10 @@ const HomeScreen = (props) => {
       }
     })
   }
+
+  // if (isIOS) {
+  //   console.log('i am ios ============>><>')
+  // }
 
   const renderSwitch = (theme, data) => {
     switch (theme) {
@@ -60,7 +65,8 @@ const HomeScreen = (props) => {
       <Body>
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
+
         <CarouselHome />
         <SearchSection />
         <CommanderieCroyants />

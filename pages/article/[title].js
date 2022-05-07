@@ -26,6 +26,7 @@ import Link from 'next/link'
 import { Icons } from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
 import dynamic from 'next/dynamic'
+import { isMobile, isIOS } from 'react-device-detect'
 
 export default function ArticlePage(props) {
   let params = useRouter()?.query
@@ -228,7 +229,7 @@ export default function ArticlePage(props) {
       >
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <div className={`${styles.articleContent} flex-fill`}>
           <PageSummary
             className={`${styles.summ} summ my-3`}
