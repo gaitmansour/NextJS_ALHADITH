@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icons } from '../../assets'
 import styles from './Live.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
@@ -72,6 +72,8 @@ const Live = () => {
       <Body
         className={`${styles.TemplateArticleBody} TemplateArticleBody d-flex p-4`}
       >
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <div
           className={`${styles.liveSection} flex-fill secSearch liveSection`}
           style={{ height: '100%' }}

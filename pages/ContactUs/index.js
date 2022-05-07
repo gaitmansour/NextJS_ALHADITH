@@ -24,6 +24,8 @@ const ContactUs = () => {
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='التواصل'>
       <Body className='TemplateArticleBody Media d-flex p-4'>
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <>
           <form
             onSubmit={handleShow}

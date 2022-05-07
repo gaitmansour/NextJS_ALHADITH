@@ -464,6 +464,8 @@ const SearchPage = (props) => {
         ref={BodyRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div

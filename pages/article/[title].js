@@ -226,6 +226,8 @@ export default function ArticlePage(props) {
         id='templateArticleBody'
         className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
       >
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <ScrollButton />
         <div className={`${styles.articleContent} flex-fill`}>
           <PageSummary

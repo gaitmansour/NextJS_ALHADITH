@@ -65,6 +65,8 @@ const Questions = () => {
       <Body
         className={`${styles.TemplateArticleBody} ${styles.QuAnswer} Media d-flex p-4`}
       >
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <div className={`${styles.quesList} px-4 flex-fill`}>
           {itemReponse ? (
             <div>

@@ -24,6 +24,8 @@ const Almoshaf = (props) => {
     return (
         <TemplateArticle {...props} ListBreadcrumb={data} titlePage={title}>
             <Body className="TemplateArticleBody d-flex p-4" id='bdy'>
+                <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
                     <iframe src="https://coran.7adith.ma:8000/#p=2" className={styles.ifr} title="Iframe Example"/>
             </Body>
         </TemplateArticle>

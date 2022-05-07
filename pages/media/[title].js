@@ -134,6 +134,8 @@ const media = ({ props }) => {
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={dataTab} />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         <ScrollButton />
         {dataAPI?.length > 0 ? (
           <>
