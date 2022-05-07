@@ -193,7 +193,7 @@ const SearchPage = (props) => {
         : EvaluationSource
         ? EvaluationSource
         : '',
-      idDegree: codeDegree ? '' : ChoiceDegree ? ChoiceDegree.value : '',
+      idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
       codeDegree: codeDegree ? codeDegree : '',
       idNarrator: nrs
         ? nrs.value
@@ -278,6 +278,7 @@ const SearchPage = (props) => {
         hokm,
         ArraySource[0]?.label != '' ? ArraySource[0]?.value : '',
         ArrayDegree[0],
+        undefined,
         ArrayNars[0]
       )
     }
@@ -439,7 +440,7 @@ const SearchPage = (props) => {
     //         top: resultsRef?.current?.offsetTop,
     //       })
     //     }
-  }, [pageNum, StartPage])
+  }, [pageNum, StartPage, router])
 
   useEffect(() => {
     const word = router?.word
@@ -572,13 +573,13 @@ const SearchPage = (props) => {
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  <Input
+                  {/* <Input
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
                     value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
-                  />
+                  /> */}
                 </div>
                 {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
                  <CustomSelect
