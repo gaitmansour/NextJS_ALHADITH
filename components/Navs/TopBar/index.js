@@ -71,7 +71,7 @@ const TopBar = (props) => {
     if (!input) {
       setMessage('يرجى ملء كلمة البحث ')
       handleShow()
-    } else if (input && input.length < 2) {
+    } else if (input && input.trim().length < 2) {
       setMessage('يرجى كتابة كلمة تتكون من حرفين فما فوق')
       handleShow()
     } else if (input && input.length >= 100) {

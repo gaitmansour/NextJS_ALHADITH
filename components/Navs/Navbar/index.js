@@ -38,6 +38,7 @@ const NavBar = (props) => {
   const [isDropdownShown, setIsDropdownShown] = useState(false)
   const [visible, setVisible] = useState(false)
   const [slectElement, setSlectElement] = useState(null)
+  const [message, setMessage] = useState('')
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -412,13 +413,25 @@ const NavBar = (props) => {
 
   const goToSearchPage = () => {
     if (input === '') {
+      setMessage('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (input && input.trim().length < 2) {
+      setMessage('يرجى كتابة كلمة تتكون من حرفين فما فوق')
+      handleShow()
+    } else if (input && input.length >= 100) {
+      setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
-      router.push({
-        pathname: '/search',
-        search: '',
-        query: { from: 'topBar', topic: '', content: '', word: input },
-      })
+      localStorage.removeItem('searchData')
+      router.push(
+        {
+          pathname: '/search',
+          search: '',
+          query: { from: 'topBar', topic: '', content: '', word: input },
+        },
+        '/search',
+        { shallow: true }
+      )
     }
   }
 
@@ -565,7 +578,7 @@ const NavBar = (props) => {
       </div>
       <CustomModal
         title={'تنبيه'}
-        body={'يرجى ملء كلمة البحث '}
+        body={message}
         show={show}
         onHide={handleClose}
         onClick={handleClose}
