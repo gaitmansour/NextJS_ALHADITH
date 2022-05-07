@@ -23,6 +23,7 @@ import TabMedia from './TabMedia'
 import Image from 'next/image'
 import { Icons } from '../../assets'
 import { handleMenu } from '../../helpers'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const media = ({ props }) => {
   const video = useRouter()?.query?.video
@@ -135,7 +136,7 @@ const media = ({ props }) => {
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
       <TabMedia titlepage={title} dataTab={dataTab} />
       <Body className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         {dataAPI?.length > 0 ? (
           <>
             <div

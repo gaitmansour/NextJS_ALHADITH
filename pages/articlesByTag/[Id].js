@@ -11,6 +11,7 @@ import TemplateArticle from '../../components/TemplateArticle'
 import Body from '../../components/Body'
 import ScrollButton from '../../components/ScrollButton'
 import Image from 'next/image'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const ArticlesByTag = (props) => {
   let TagID =
@@ -51,7 +52,7 @@ const ArticlesByTag = (props) => {
   return (
     <TemplateArticle {...props} titlePage='مقالات ذات صلة'>
       <Body className='TemplateArticleBody d-flex p-4'>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <div className='flex-fill my-5'>
           <div className='row tags'>
             {dataAPI &&

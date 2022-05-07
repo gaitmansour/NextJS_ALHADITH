@@ -8,6 +8,7 @@ import { getSideItems } from '../../endpoints'
 import FetchAPI from '../../API'
 import RowMedia from './RowMedia'
 import { useRouter } from 'next/router'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const AllMedia = (props) => {
   const [categoryMedia, setCategoryMedia] = useState([])
@@ -78,7 +79,7 @@ const AllMedia = (props) => {
   return (
     <TemplateArticle {...props} titlePage='التلفزة الرقمية'>
       <Body>
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <LiveSection />
         {categoryMedia &&
           sousCategorie &&

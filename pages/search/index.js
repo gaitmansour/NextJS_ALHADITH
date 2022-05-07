@@ -27,6 +27,7 @@ import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
 import * as VscIcons from 'react-icons/vsc'
+import { isMobile, isIOS } from 'react-device-detect'
 
 const SearchPage = (props) => {
   let router = ''
@@ -464,7 +465,7 @@ const SearchPage = (props) => {
         ref={BodyRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}

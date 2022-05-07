@@ -26,6 +26,7 @@ import Link from 'next/link'
 import { Icons } from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
 import dynamic from 'next/dynamic'
+import { isMobile, isIOS } from 'react-device-detect'
 
 export default function ArticlePage(props) {
   let params = useRouter()?.query
@@ -226,7 +227,7 @@ export default function ArticlePage(props) {
         id='templateArticleBody'
         className={`${styles.TemplateArticleBody} ${styles.articls} TemplateArticleBody d-flex p-4`}
       >
-        <ScrollButton />
+        {isIOS ? null : <ScrollButton />}
         <div className={`${styles.articleContent} flex-fill`}>
           <PageSummary
             className={`${styles.summ} summ my-3`}

@@ -40,10 +40,7 @@ function MyApp({ Component, pageProps }) {
         <link rel='icon' href='/static/favicon.ico' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='theme-color' content='#129D59' />
-        <meta
-          name='description'
-          content='منصة محمد السادس للحديث الشريف'
-        />
+        <meta name='description' content='منصة محمد السادس للحديث الشريف' />
         <meta
           name='keywords'
           content='٫ اوقات الصلاة٫ وزارة الأوقاف والشؤون الإسلامية٫ اسلام٫ المغرب'
