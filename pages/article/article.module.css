@@ -124,6 +124,12 @@ display: list-item;
 .sectionImage span {
     font-size: 13px;
 }
+.desc table{
+    border: 2px solid #129D59 !important;
+}
+.desc table tr td{
+    border: 1.5px solid #129D59 !important;
+}
 /*table{
     background-color: transparent !important;
 }
@@ -137,7 +143,7 @@ table td p a{
 .articleTags{
     display: grid !important;
     grid-gap: 0.4rem !important;
-    grid-template-columns: repeat(auto-fill, minmax(135px, 0.4fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(149px, 0.4fr)) !important;
 }
 .sectionTags{
     text-align: center;
