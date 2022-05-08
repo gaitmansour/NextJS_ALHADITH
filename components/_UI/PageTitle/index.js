@@ -22,7 +22,7 @@ const PageTitle = (props) => {
           {props?.title}
         </h1>
       </div>
-      {props.created && (
+      {/*{props.created && (
         <div
           className={`${styles.dateCreat} w-25`}
           style={{ alignItems: 'center', marginTop: 25 }}
@@ -35,7 +35,7 @@ const PageTitle = (props) => {
             {props.dateArticle}
           </p>
         </div>
-      )}
+      )}*/}
     </div>
   )
 }
