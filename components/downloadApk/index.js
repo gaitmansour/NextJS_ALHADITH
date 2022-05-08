@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './downloadAPK.module.css'
 import { Icons } from '../../assets'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const DownloadApk = () => {
   return (
@@ -13,12 +14,17 @@ const DownloadApk = () => {
             {'تحميل التطبيق الخاص بمنصة محمد السادس للحديث الشريف'}
           </h4>
           <div className={`${styles.iconGroup}`}>
-            <Image
-              src={Icons.icon_googlPlay}
-              alt=''
-              className={styles.dwdApk}
-            />
-           {/* <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />*/}
+            <Link href='https://play.google.com/store/apps/details?id=com.hadithApp'>
+              <a target='_blank' rel='noreferrer'>
+                <Image
+                  src={Icons.icon_googlPlay}
+                  alt=''
+                  className={styles.dwdApk}
+                />
+              </a>
+            </Link>
+
+            {/* <Image src={Icons.icon_appStor} alt='' className={styles.dwdApk} />*/}
           </div>
         </div>
       </div>
