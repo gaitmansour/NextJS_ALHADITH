@@ -18,7 +18,7 @@ const AllMedia = (props) => {
   const [NewCategoryMedia, setNewCategoryMedia] = useState([])
   const router = useRouter()
   const titleRouter = useRouter()?.query?.title
-  console.log('router=>', router)
+  //console.log('router=>', router)
 
   const getItemsMenu = async (tid) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
@@ -64,8 +64,8 @@ const AllMedia = (props) => {
   //   }
   // }, [categoryMedia, titleRouter, router.isReady])
 
-  console.log('data------------------------categoryMedia', categoryMedia)
-  console.log('sousCategorie', sousCategorie)
+  //console.log('data------------------------categoryMedia', categoryMedia)
+  //console.log('sousCategorie', sousCategorie)
 
   useEffect(() => {
     if (router.isReady && categoryMedia && sousCategorie) {
@@ -74,7 +74,7 @@ const AllMedia = (props) => {
     }
   }, [categoryMedia, sousCategorie, titleRouter, router.isReady])
 
-  console.log('NewAllMedia=>', allDataMedia)
+  //console.log('NewAllMedia=>', allDataMedia)
   // console.log('merge data =>', allDataMedia)
   return (
     <TemplateArticle {...props} titlePage='التلفزة الرقمية'>

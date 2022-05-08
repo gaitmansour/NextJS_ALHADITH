@@ -249,7 +249,7 @@ const SearchPage = (props) => {
       setShowForm(false)
     }
     if (from === 'topBar') {
-      console.log(word)
+     // console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)

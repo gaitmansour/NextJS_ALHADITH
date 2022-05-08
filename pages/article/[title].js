@@ -32,12 +32,12 @@ export default function ArticlePage(props) {
   let params = useRouter()?.query
   const title = useRouter()?.query?.title?.split('-').join(' ')
 
-  console.log('useRouter title ===>', params)
+  //console.log('useRouter title ===>', params)
 
   let dataValue =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
-  console.log('dataValue', dataValue)
+  //console.log('dataValue', dataValue)
   let contenuArticle =
     params?.from == 'CarouselHome' ||
     params?.from == 'ressources' ||
@@ -67,14 +67,14 @@ export default function ArticlePage(props) {
   const urlAhadith = getTopic()
   const CodeTopic = 28
 
-  console.log('contenuArticle ==>', contenuArticle)
+  //console.log('contenuArticle ==>', contenuArticle)
   const url = getArticleById(contenuArticle)
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
         setDataTags(data?.data?.included)
-        console.log('data?.data articles => ', data?.data)
+        //console.log('data?.data articles => ', data?.data)
       }
     })
   }
@@ -91,8 +91,8 @@ export default function ArticlePage(props) {
         let index = array.filter(
           (item) => item.title.replace(/<[^>]+>/g, '') !== contenuArticle
         )
-        console.log('index')
-        console.log(index.length)
+        //console.log('index')
+        //console.log(index.length)
         if (index.length === 0) {
           setShowBlockSlider(false)
         } else {
@@ -119,8 +119,8 @@ export default function ArticlePage(props) {
   const getItemsMenu = async (x) => {
     return FetchAPI(getSideItems(x)).then((data) => {
       if (data.success) {
-        console.log('data----------getSideItems--------------items')
-        console.log(data?.data)
+       // console.log('data----------getSideItems--------------items')
+       // console.log(data?.data)
         const items = data?.data
           ?.sort((a, b) => {
             return b.weight - a.weight
@@ -146,7 +146,7 @@ export default function ArticlePage(props) {
 
   useEffect(() => {
     getDataMenu(title?.split('-').join(' ')).then((r) => {
-      console.log('useEffect', title)
+     // console.log('useEffect', title)
       if (r) {
         getDataSlider(r?.name_1, r?.tid, r?.parent_target_id_1)
       } else {
@@ -168,7 +168,7 @@ export default function ArticlePage(props) {
 
   let TID =
     typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
-  console.log('TID:--------------------', TID)
+  //console.log('TID:--------------------', TID)
   useEffect(() => {
     getItemsMenu(TID)
   }, [TID])
@@ -200,7 +200,7 @@ export default function ArticlePage(props) {
 
         }
     }*/
-  console.log('data-----------', dataValue)
+  //console.log('data-----------', dataValue)
   if (_.isEmpty(dataAPI)) {
     return (
       <div className='d-flex align-items-center justify-content-center py-5'>

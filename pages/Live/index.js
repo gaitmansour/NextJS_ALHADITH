@@ -65,7 +65,7 @@ const Live = () => {
         curD < Moment(item.field_date_fin, 'YYYY-MM-DDTHH:mm:ssZ').format()
     )
   }
-  console.log('-*----exist', Exist)
+  //console.log('-*----exist', Exist)
   // && ApiData[0].field_date_debut > curD
   return (
     <TemplateArticle ListBreadcrumb={data11} titlePage='البث المباشر'>

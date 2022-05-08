@@ -12,7 +12,7 @@ const SimpleList = (props) => {
         {props.data &&
           props.data?.length > 0 &&
           props.data.map((item, i) => {
-            console.log('this data to show ------>', item)
+            //console.log('this data to show ------>', item)
             if (item?.title == 'المصحف المحمدي') {
               var path1 = { path: '/Almoshaf', as: '/المصحف-المحمدي' }
             } else if (item?.parentLabel == 'التلفزة الرقمية') {
@@ -60,8 +60,8 @@ const SimpleList = (props) => {
                 <a
                   className={`${styles.item} categorieTitle item d-flex align-items-center py-3 px-1`}
                   onClick={() => {
-                    console.log('items--------------------selected')
-                    console.log(item)
+                    //console.log('items--------------------selected')
+                   // console.log(item)
                     localStorage.setItem(
                       'categorieTitle',
                       JSON.stringify({

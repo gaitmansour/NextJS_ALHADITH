@@ -48,9 +48,9 @@ const Videos = () => {
       )
     }
   } catch (error) {
-    console.log(`CATCH Videos ${error}`)
+    //console.log(`CATCH Videos ${error}`)
   }
-  console.log('ApiData----', ApiData)
+  //console.log('ApiData----', ApiData)
 
   var Exist = []
   if (!_.isEmpty(ApiData)) {

@@ -38,9 +38,9 @@ const LiveSection = () => {
           setIsLoding(false)
         }
       })
-      console.log('data Live ==>', dataLive)
+     // console.log('data Live ==>', dataLive)
     } catch (error) {
-      console.log(error)
+     // console.log(error)
     }
   }
   useEffect(() => {
@@ -81,7 +81,7 @@ const LiveSection = () => {
   //   }
   // }, [isReady])
 
-  console.log('CurrentLive =>', currentLive)
+  //console.log('CurrentLive =>', currentLive)
   return (
     <div>
       <div className='d-flex align-items-center mb-4 mx-4'>
@@ -138,14 +138,14 @@ const LiveSection = () => {
                       ).format()
                   )
                   ?.sort((a, b) => {
-                    console.log(
+                    /*console.log(
                       'a.field_date_debut',
                       a.field_date_debut < b.field_date_debut
                         ? -1
                         : a.field_date_debut > b.field_date_debut
                         ? 1
                         : 0
-                    )
+                    )*/
                     return a.field_date_debut < b.field_date_debut
                       ? -1
                       : a.field_date_debut > b.field_date_debut
@@ -153,7 +153,7 @@ const LiveSection = () => {
                       : 0
                   })
                   .map((item, index) => {
-                    console.log('item live =>', item)
+                   // console.log('item live =>', item)
                     return (
                       <div key={index} dir='rtl'>
                         <div

@@ -8,7 +8,7 @@ import FetchAPI from '../../API'
 
 const TabMedia = (props) => {
   const router = useRouter()
-  console.log('rouer', router)
+  //console.log('rouer', router)
   const [showDropdown, setShowDropdown] = useState(false)
   const [dataChildrenTab, setDataChildrenTab] = useState([])
   const [slectElement, setSlectElement] = useState(null)
@@ -66,7 +66,7 @@ const TabMedia = (props) => {
       }
     }
   }, [])
-  console.log('indexTab', slectElement)
+  //console.log('indexTab', slectElement)
   return (
     <div className='mx-2'>
       <div className={styles.container__inner}>

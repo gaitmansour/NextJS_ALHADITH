@@ -12,7 +12,7 @@ export default function Error404(props) {
   const { t, lang } = useTranslation()
   const errorMessage = t`error:404`
 
-  console.log({ lang })
+  //console.log({ lang })
 
   return ( <Layout>
     <TopBar {...props} />

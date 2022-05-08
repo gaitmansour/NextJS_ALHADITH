@@ -101,13 +101,13 @@ const NavBar = (props) => {
         divref?.current?.contains(event.target)
       ) {
         // setShowMenu(false)
-        console.log('Clicked Inside', !divref?.current?.contains(event.target))
+        //console.log('Clicked Inside', !divref?.current?.contains(event.target))
       } else {
         setShowMenu(showMenu === true && false)
-        console.log(
+/*        console.log(
           'Clicked Outside ',
           !divref?.current?.contains(event.target)
-        )
+        )*/
       }
     }
 
@@ -156,7 +156,7 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-        console.log('data?.path =>', item.tID)
+        //console.log('data?.path =>', item.tID)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -442,7 +442,7 @@ const NavBar = (props) => {
   function handleClickSearch() {
     goToSearchPage()
   }
-  console.log('showMenu', showMenu)
+  //console.log('showMenu', showMenu)
   return (
     <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
       <div className='container-fluid p-0'>

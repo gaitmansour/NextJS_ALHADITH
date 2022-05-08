@@ -92,9 +92,9 @@ const ListQuestions = (props) => {
   const SubmitQuestion = async () => {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if (mailformat.test(mail) === false) {
-      console.log('email false')
+     // console.log('email false')
       setMessage('البريد الإلكتروني غير صحيح!')
-      console.log(message)
+      //console.log(message)
     } else {
       const data = {
         sujetQuestion: Subject,
@@ -102,7 +102,7 @@ const ListQuestions = (props) => {
         email: mail,
       }
       setIsLoading(true)
-      console.log('forum_______', data)
+     // console.log('forum_______', data)
       return FetchAPIWthData(urlAddQuestion, data).then((data) => {
         if (data.success) {
           setsendSuccess(true)
@@ -176,12 +176,12 @@ const ListQuestions = (props) => {
     sessionStorage.setItem('UserInfos', JSON.stringify(res.profileObj.email))
   }
   const onLoginFail = (res) => {
-    console.log('resultFail22', res)
+    //console.log('resultFail22', res)
   }
 
   function handleSubmitQuestion() {
     handleCloseModalQuestions()
-    console.log('question------------', question)
+    //console.log('question------------', question)
     if (question !== '' && Subject !== '' && mail !== '') {
       SubmitQuestion()
       setHide(true)
@@ -201,14 +201,14 @@ const ListQuestions = (props) => {
     var session = sessionStorage.getItem('UserInfos')
     var outputData = localStorage.getItem('outputData')
     var subjectWord = localStorage.getItem('Subject')
-    console.log('subjectWord', subjectWord)
+    //console.log('subjectWord', subjectWord)
     if (session && outputData && subjectWord) {
       setLogged(true)
       setShowForum(true)
       var UserInfos = JSON.parse(session)
       var output = JSON.parse(outputData)
-      console.log('output-----------------------------------')
-      console.log(output)
+      //console.log('output-----------------------------------')
+      //console.log(output)
       var subject = JSON.parse(subjectWord)
       setMail(UserInfos)
       setSubject(subject)
@@ -257,7 +257,7 @@ const ListQuestions = (props) => {
     resultsRef.current.scrollIntoView()
   }
   const displayQuestions = DataQuestions.map((item, i) => {
-    console.log('TID-----', item)
+    //console.log('TID-----', item)
     return (
       <div key={i} className={` container-flex ${styles.bg1} bg1`}>
         <div className={'p-2 row justify-content-between align-items-center'}>
@@ -388,7 +388,7 @@ const ListQuestions = (props) => {
     ['ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'],
     ['؟', '!', '-', '،', '.', 'ء', 'ؤ', 'ى', 'ة', 'أ', 'إ', 'ٱ', 'آ', 'ئ'],
   ]
-  console.log('setSubject', Subject)
+  //console.log('setSubject', Subject)
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='أسئلة'>
       <Body

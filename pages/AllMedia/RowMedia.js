@@ -28,9 +28,9 @@ const RowMedia = (props) => {
       if (data.success) {
         setDataMedia(data?.data)
       }
-      console.log('media_data', data?.data)
+     // console.log('media_data', data?.data)
     })
-    console.log('media inside function', dataMedia)
+    //console.log('media inside function', dataMedia)
   }
   useEffect(() => {
     getData()
@@ -95,7 +95,7 @@ const RowMedia = (props) => {
     return `${base_url}/${src}`
   }
 
-  console.log('mediaSelected=>', mediaSelected)
+  //console.log('mediaSelected=>', mediaSelected)
 
   return (
     <>
