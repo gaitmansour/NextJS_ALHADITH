@@ -32,7 +32,7 @@ const media = ({ props }) => {
   // const _id = useRouter()?.query?._id
 
   let _id =
-    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
+    typeof window !== 'undefined' && JSON.parse(localStorage.getItem('_id'))
 
   const title = useRouter()?.query?.title?.split('-').join(' ')
 

@@ -350,6 +350,10 @@ const NavBar = (props) => {
                               )
                             localStorage.setItem(
                               'tid',
+                              JSON.stringify(item.tID)
+                            )
+                            localStorage.setItem(
+                              '_id',
                               JSON.stringify(data.tID)
                             )
                           }}
