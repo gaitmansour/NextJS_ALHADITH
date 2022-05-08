@@ -58,6 +58,7 @@ const ListQuestions = (props) => {
   const [sendFailed, setsendFailed] = useState(false)
   const [showModalQuestions, setShowModalQuestion] = useState(false)
   const [InputShow, setInputShow] = useState(false)
+  const [infos, setInfos] = useState('')
   const handleClose = () => setShow(false)
   const handleCloseModalQuestions = () => {
     setShowModalQuestion(false)
@@ -117,24 +118,32 @@ const ListQuestions = (props) => {
   }
 
   const handleSearchQuestion = async () => {
-    // setSubject(subjectInput.current.value)
-    const data = {
-      query: Subject,
-      size: 10,
-      start: 0,
-    }
-
-    FetchPostAPI(urlSearchQuestion, data).then((data) => {
-      if (Subject !== '' && data.success) {
-        localStorage.setItem('outputData', JSON.stringify(data?.data))
-        localStorage.setItem('Subject', JSON.stringify(Subject))
-        return setOutput(data?.data)
-      } else {
-        setOutput([])
-        localStorage.setItem('outputData', JSON.stringify([]))
-        localStorage.setItem('Subject', JSON.stringify(Subject))
+    if (!Subject) {
+      setInfos('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (Subject && Subject.trim().length < 2) {
+      setInfos('يرجى كتابة كلمة تتكون من حرفين فما فوق')
+      handleShow()
+    } else {
+      // setSubject(subjectInput.current.value)
+      const data = {
+        query: Subject,
+        size: 10,
+        start: 0,
       }
-    })
+
+      FetchPostAPI(urlSearchQuestion, data).then((data) => {
+        if (Subject !== '' && data.success) {
+          localStorage.setItem('outputData', JSON.stringify(data?.data))
+          localStorage.setItem('Subject', JSON.stringify(Subject))
+          return setOutput(data?.data)
+        } else {
+          setOutput([])
+          localStorage.setItem('outputData', JSON.stringify([]))
+          localStorage.setItem('Subject', JSON.stringify(Subject))
+        }
+      })
+    }
   }
 
   const getDataQuestions = async () => {
@@ -387,7 +396,8 @@ const ListQuestions = (props) => {
       >
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        {isIOS ? null : <ScrollButton />}
+        <ScrollButton />
+        {/* {isIOS ? null : <ScrollButton />} */}
         <div className='flex-fill'>
           <button
             type='button'
@@ -548,7 +558,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
                     </div>
 
                     {output && output?.hits?.hits?.length > 0 && (
-                      <div className='card w-100 mb-3'>
+                      <div
+                        className={`${styles.cardListAnswer} card w-75 px-1`}
+                      >
                         <div
                           className={`${styles.CardQuestion} card-body Card-question`}
                         >
@@ -557,11 +569,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
                               return (
                                 <div
                                   key={i}
-                                  className={`${styles.bg1} container-flex bg1`}
+                                  className={` container-flex ${styles.bg1} bg1`}
                                 >
                                   <div
                                     className={
-                                      'row justify-content-between align-items-center'
+                                      'p-2 row justify-content-between align-items-center'
                                     }
                                   >
                                     <h5 className='col col-12 col-lg-9 col-md-9 col-sm-1 d-flex card-subtitle'>
@@ -829,6 +841,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
         <CustomModal
           title={'تنبيه'}
           body={'يرجى ملءإستمارة طرح السؤال '}
+          show={show}
+          onHide={handleClose}
+          onClick={handleClose}
+        />
+        <CustomModal
+          title={'تنبيه'}
+          body={infos}
           show={show}
           onHide={handleClose}
           onClick={handleClose}

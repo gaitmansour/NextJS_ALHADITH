@@ -27,7 +27,7 @@ import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
 import * as VscIcons from 'react-icons/vsc'
-import { isMobile, isIOS } from 'react-device-detect'
+// import { isMobile, isIOS } from 'react-device-detect'
 
 const SearchPage = (props) => {
   let router = ''
@@ -467,7 +467,8 @@ const SearchPage = (props) => {
       >
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
-        {isIOS ? null : <ScrollButton />}
+        {/* {isIOS ? null : <ScrollButton />} */}
+        <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
             ref={resultsRef}

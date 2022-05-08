@@ -211,7 +211,7 @@ const Footer = () => {
                     color: '#FFF',
                   }}
                 >
-                  {'111 522 522 212+'}
+                  {'212-0537766812+'}
                 </p>
                 <p
                   className={`${styles.FooterLink}`}
@@ -289,7 +289,10 @@ const Footer = () => {
           </div>
           <div className={`${styles.copyright} copyright text-center p-3`}>
             <p className={`${styles.copyr} copyr text-white m-0`}>
-              منصة محمد السادس للحديث الشريف- جميع الحقوق محفوظة - 2022 ©{' '}
+              منصة محمد السادس للحديث الشريف- وزارة الأوقاف و الشؤون الإسلامية{' '}
+            </p>
+            <p className={`${styles.copyr} copyr text-white m-0`}>
+              جميع الحقوق محفوظة- 2022 ©
             </p>
           </div>
         </div>

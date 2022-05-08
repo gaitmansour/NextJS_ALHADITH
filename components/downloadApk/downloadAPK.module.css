@@ -27,6 +27,9 @@
     margin-top: 5% !important;
     margin-right: 5% !important;
 }
+.dwdApk{
+    cursor: pointer;
+}
 @media screen and (min-width : 895px) and (max-width : 1200px){
     .download{
         margin-right: 350px; 
