@@ -26,7 +26,7 @@ import Image from 'next/image'
 import FacebookLogin from 'react-facebook-login'
 import KeyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
 import ModalQuestionForm from '../../components/_UI/ModalQuestionForm'
-import { isMobile, isIOS } from 'react-device-detect'
+//import { isMobile, isIOS } from 'react-device-detect'
 
 const ListQuestions = (props) => {
   const title = props?.match?.params?.title
