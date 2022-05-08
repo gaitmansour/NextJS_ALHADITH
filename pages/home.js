@@ -17,7 +17,7 @@ import Theme1 from '../components/Theme1'
 import Theme2 from '../components/Theme2'
 import ScrollButton from '../components/ScrollButton'
 import DoroussHaditha from './homePage/DoroussHaditha'
-import { isMobile, isIOS } from 'react-device-detect'
+// import { isMobile, isIOS } from 'react-device-detect'
 
 const HomeScreen = (props) => {
   const [sections, setSections] = useState([])
@@ -63,10 +63,10 @@ const HomeScreen = (props) => {
       <TopBar />
       <NavBar />
       <Body>
-        {isIOS ? null : <ScrollButton />}
-
+        {/* {isIOS ? null : <ScrollButton />} */}
+        <ScrollButton />
         <CarouselHome />
-        <SearchSection />
+        {<SearchSection />}
         <CommanderieCroyants />
         <DoroussHaditha />
         <Resources />
