@@ -79,7 +79,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
         )
       } else {
         const dataList = dataAPI?.map((item, i) => {
-          console.log('item--------------------------------', item)
+          //console.log('item--------------------------------', item)
           $(document).ready(function () {
             $(`.${i}`).contextmenu(function (event) {
               localStorage.setItem(

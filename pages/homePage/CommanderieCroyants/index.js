@@ -20,11 +20,11 @@ const CommanderieCroyants = () => {
   const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
   const url = getCommanderieCroyantsData('ar', 'عناية أمير المؤمنين')
   const getDataMenu = async (x) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    //console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
       if (data.success) {
-        console.log('dataSuccess')
-        console.log(data?.data[0])
+        //console.log('dataSuccess')
+        //console.log(data?.data[0])
         localStorage.setItem(
           'categorieTitle',
           JSON.stringify({
@@ -47,7 +47,7 @@ const CommanderieCroyants = () => {
   const getData = async () => {
     // console.log("fi khitab data  ==> ", data)
     FetchAPI(url).then((data) => {
-      console.log('fi khitab data  ==> ', data)
+      //console.log('fi khitab data  ==> ', data)
       if (data.success) {
         setDataAPI(data?.data)
       }
@@ -72,7 +72,7 @@ const CommanderieCroyants = () => {
           {dataAPI?.data?.map((item, i) => {
             const { title, body, field_code_couleur, field_lien } =
               item?.attributes
-            console.log('commanderieCroyants', dataAPI?.data)
+           // console.log('commanderieCroyants', dataAPI?.data)
             // $(document).ready(function () {
             //   $('.linksCroyants').contextmenu(function (event) {
             //     localStorage.setItem(

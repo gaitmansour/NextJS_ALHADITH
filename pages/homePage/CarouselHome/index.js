@@ -136,12 +136,12 @@ const CarouselHome = (props) => {
   const getData = async (x) => {
     return FetchAPI(getArticleByIdName(x)).then((data) => {
       if (data.success) {
-        console.log('++++++++++++++++++++++ included')
+       // console.log('++++++++++++++++++++++ included')
 
         let array = data?.data?.included.filter(
           (item) => item.type === 'taxonomy_term--alahadyt'
         )
-        console.log(array[0]?.attributes?.name)
+       // console.log(array[0]?.attributes?.name)
         return array[0]?.attributes?.name
       }
     })
@@ -150,8 +150,8 @@ const CarouselHome = (props) => {
     getData(x).then((r) => {
       FetchAPI(getMenuByName(r)).then((data) => {
         if (data.success) {
-          console.log('dataSuccess')
-          console.log(data?.data[0])
+          //console.log('dataSuccess')
+         // console.log(data?.data[0])
           localStorage.setItem(
             'categorieTitle',
             JSON.stringify({
@@ -175,7 +175,7 @@ const CarouselHome = (props) => {
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
   }
-  console.log('dataAPI avant ===>', dataAPI)
+  //console.log('dataAPI avant ===>', dataAPI)
 
   let sortData = _.sortBy(dataAPI, 'field_ordre_slider')
   let test = sortData?.map((item, index) => {

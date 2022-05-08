@@ -24,7 +24,7 @@ const DoroussHaditha = () => {
     getItemsMenu()
   }, [])
 
-  console.log('categoryMedia ==>', categoryMedia)
+  //console.log('categoryMedia ==>', categoryMedia)
 
   return (
     <div className='mt-5'>

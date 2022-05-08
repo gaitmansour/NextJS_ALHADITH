@@ -19,7 +19,7 @@ const Questions = () => {
   const [dataQuestion, setDataQuestion] = useState([])
   const urlSearchQuestion = searchQuestion()
 
-  console.log('id', item_id)
+  //console.log('id', item_id)
 
   const handleSearchQuestion = async () => {
     const data = {
@@ -28,7 +28,7 @@ const Questions = () => {
       start: 0,
     }
     FetchPostAPI(urlSearchQuestion, data).then((data) => {
-      console.log('questions', data)
+      //console.log('questions', data)
       if (itemTitle !== '' && data.success) {
         return setDataQuestion(data?.data)
       } else {

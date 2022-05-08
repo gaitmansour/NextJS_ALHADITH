@@ -17,11 +17,11 @@ const ArticlesByTag = (props) => {
   let TagID =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('tagTitle'))
-  console.log('TAGID----------------------', TagID)
+  //console.log('TAGID----------------------', TagID)
   let routerQuery = useRouter()
   const Id = TagID
   const [dataAPI, setDataAPI] = useState({})
-  console.log('--------55---', Id)
+  //console.log('--------55---', Id)
   let dataValue =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
@@ -60,7 +60,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
           <div className='row tags'>
             {dataAPI &&
               dataAPI?.map((data, index) => {
-                console.log('articleTag-----------------------', data)
+                //console.log('articleTag-----------------------', data)
                 return (
                   <div
                     key={index}

@@ -33,11 +33,11 @@ const DoroussTab = ({ title, tid }) => {
         if (data.success) {
           setDataAPI(data?.data)
           setIsLoding(false)
-          console.log('dataaaa D.H ===>', data?.data)
+          //console.log('dataaaa D.H ===>', data?.data)
         }
       })
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
   }, [tid])
 
@@ -111,7 +111,7 @@ const DoroussTab = ({ title, tid }) => {
       } else {
         if (dataAPI?.length > 0) {
           return dataAPI?.map((item, i) => {
-            console.log('-item----', item)
+            //console.log('-item----', item)
 
             return (
               <div

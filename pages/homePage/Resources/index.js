@@ -88,11 +88,11 @@ const Resources = () => {
   const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
   const url = getResourcesData(getLanguage)
   const getDataMenu = async (x) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    //console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
       if (data.success) {
-        console.log('dataSuccess')
-        console.log(data?.data[0])
+        //console.log('dataSuccess')
+        //console.log(data?.data[0])
         localStorage.setItem(
           'categorieTitle',
           JSON.stringify({
@@ -146,7 +146,7 @@ const Resources = () => {
           <Slider {...settings} className={`${styles.slide} slide px-2 `}>
             {dataAPI?.data?.map((item, i) => {
               const { title, body, field_icone, field_lien } = item?.attributes
-              console.log('title-----------------------', title)
+              //console.log('title-----------------------', title)
               const toShow = body?.processed?.substring(0, 80) + '.....'
               // $(document).ready(function () {
               //   $('.links').contextmenu(function (event) {

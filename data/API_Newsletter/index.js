@@ -23,7 +23,7 @@ const FetchAPIData = async (url, data) => {
     })
     .catch(function (error) {
       // handle error
-      console.log(error)
+      //console.log(error)
       return {
         data: null,
         success: false,
