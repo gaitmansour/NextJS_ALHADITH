@@ -4,16 +4,16 @@ import Link from 'next/link'
 import _ from 'lodash'
 
 const Breadcrumb = (props) => {
-  console.log('props?.data => breadcrumb =>', props?.data)
+  //console.log('props?.data => breadcrumb =>', props?.data)
   const renderData = () => {
     try {
       if (props?.data) {
         const lastItem = _.last(props.data)
 
         const renderData = props?.data?.map((item, index) => {
-          console.log('breadcrumb______________', item)
+         // console.log('breadcrumb______________', item)
           const isLenght = props?.data.length !== index + 1
-          console.log('title is isLenght', isLenght)
+          //console.log('title is isLenght', isLenght)
           if (item !== lastItem) {
             return (
               <Link

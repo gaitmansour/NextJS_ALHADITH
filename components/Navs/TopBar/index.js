@@ -35,9 +35,9 @@ const TopBar = (props) => {
   const elementRef = useRef()
 
   const getDataMenu = async (x) => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
+    //console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
-      console.log('dataSuccess ==>', data)
+      //console.log('dataSuccess ==>', data)
       if (data.success) {
         localStorage.setItem(
           'categorieTitle',

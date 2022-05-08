@@ -86,7 +86,7 @@ const Theme2 = props => {
 
     useEffect(() => {
         if (props.title) {
-            console.log('props.title', props.title);
+            //console.log('props.title', props.title);
             getNewSectionsData(props.title).then(response => {
                 setDataAPI(response);
             });

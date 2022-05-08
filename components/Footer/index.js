@@ -73,7 +73,7 @@ const Footer = () => {
       }
     })
   }
-  console.log('MenuGlobal =>', MenuGlobal)
+  //console.log('MenuGlobal =>', MenuGlobal)
 
   const renderItemMenu = () => {
     const menuLinks =

@@ -114,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscr
           <p className={`${styles.p} ${styles.tiitle}`}>مواد ذات صلة</p>
           <div className={styles.SimpleList}>
             {dataQuestion?.hits?.hits?.map((item, i) => {
-              console.log('id_item____', item?._id)
+              //console.log('id_item____', item?._id)
               return item_id !== item?._id ? (
                 <Link
                   key={i}

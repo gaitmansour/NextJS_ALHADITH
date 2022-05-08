@@ -181,9 +181,9 @@ const CarouselHome = (props) => {
   let test = sortData?.map((item, index) => {
     return item
   })
-  console.log('carousel =>', test)
+  //console.log('carousel =>', test)
 
-  console.log('dataAPI apres ===>', newData)
+ // console.log('dataAPI apres ===>', newData)
 
   return (
     <div
@@ -196,7 +196,7 @@ const CarouselHome = (props) => {
       </div>
       <Slider {...settings} className={`w-100 slide`}>
         {newData?.map((item, index) => {
-          console.log('itemCarousel', item)
+         // console.log('itemCarousel', item)
           const toShow = item?.body_1
             ?.split(' ')
             .slice(0, 20)
@@ -207,9 +207,9 @@ const CarouselHome = (props) => {
               .substr(item.field_image.lastIndexOf('src='))
               .split(' ')[0]
               .slice(5)
-            console.log('str', str)
+            //console.log('str', str)
             var element2 = str.slice(0, -1)
-            console.log('element2', element2)
+           // console.log('element2', element2)
           }
           // $(document).ready(function () {
           //   $('.linksCarousel').contextmenu(function (event) {
@@ -224,7 +224,7 @@ const CarouselHome = (props) => {
           //     )
           //   })
           // })
-          console.log('itemCarousel apres', item)
+         // console.log('itemCarousel apres', item)
           return (
             <Carousel.Item
               key={index.toString()}
