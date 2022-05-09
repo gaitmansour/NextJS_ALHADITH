@@ -127,7 +127,7 @@ const Footer = () => {
                             )
                             localStorage.setItem(
                               'tid',
-                              JSON.stringify(data.tID)
+                              JSON.stringify(item.tID)
                             )
                           }}
                         >

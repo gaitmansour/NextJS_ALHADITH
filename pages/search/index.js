@@ -194,7 +194,13 @@ const SearchPage = (props) => {
         : EvaluationSource
         ? EvaluationSource
         : '',
-      idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
+      idDegree: codeDegree
+        ? ''
+        : degree
+        ? degree.value
+        : ChoiceDegree
+        ? ChoiceDegree.value
+        : '',
       codeDegree: codeDegree ? codeDegree : '',
       idNarrator: nrs
         ? nrs.value
@@ -249,7 +255,7 @@ const SearchPage = (props) => {
       setShowForm(false)
     }
     if (from === 'topBar') {
-     // console.log(word)
+      // console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)
@@ -465,8 +471,12 @@ const SearchPage = (props) => {
         ref={BodyRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
