@@ -36,18 +36,6 @@ export default function ArticlePage(props) {
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
 
-  let contenuArticle =
-    params?.from == 'CarouselHome' ||
-    params?.from == 'ressources' ||
-    params?.from == 'Croyants'
-      ? title
-      : (params?.contenuArticle !== '' &&
-          params?.contenuArticle !== undefined) ||
-        (dataValue?.contenuArticle !== undefined &&
-          dataValue?.contenuArticle !== '')
-      ? params?.contenuArticle || dataValue?.contenuArticle
-      : title
-
   // params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
   //   ? params?.contenuArticle || dataValue.contenuArticle
   //   : title
@@ -68,6 +56,29 @@ export default function ArticlePage(props) {
   const urlAhadith = getTopic()
   const CodeTopic = 28
 
+  const getDataMenu = async (x) => {
+    return FetchAPI(getMenuByName(x)).then((data) => {
+      if (data.success) {
+        setdataMenu(data?.data[0])
+        setParent(data?.data[0]?.name_1)
+        return data?.data[0]
+      }
+    })
+  }
+
+  let contenuArticle =
+    params?.from == 'CarouselHome' ||
+    params?.from == 'ressources' ||
+    params?.from == 'Croyants'
+      ? title
+      : (params?.contenuArticle !== '' &&
+          params?.contenuArticle !== undefined) ||
+        (dataValue?.contenuArticle !== undefined &&
+          dataValue?.contenuArticle !== '')
+      ? params?.contenuArticle || dataValue?.contenuArticle
+      : dataMenu?.field_contenu_default
+      ? dataMenu?.field_contenu_default
+      : title
   //console.log('contenuArticle ==>', contenuArticle)
   const url = getArticleById(contenuArticle)
   const getData = async () => {
@@ -107,15 +118,7 @@ export default function ArticlePage(props) {
     })
   }
 
-  const getDataMenu = async (x) => {
-    return FetchAPI(getMenuByName(x)).then((data) => {
-      if (data.success) {
-        setdataMenu(data?.data[0])
-        setParent(data?.data[0]?.name_1)
-        return data?.data[0]
-      }
-    })
-  }
+  console.log(dataMenu, '_______________________________')
 
   const getItemsMenu = async (x) => {
     return FetchAPI(getSideItems(x)).then((data) => {
