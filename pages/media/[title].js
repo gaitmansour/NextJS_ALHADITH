@@ -58,7 +58,7 @@ const media = ({ props }) => {
         setDataAPI(data?.data)
       }
     })
-  }, [title, router.isReady])
+  }, [title, router.isReady, _id])
 
   //
   const getItemsMenu = async (tid) => {
