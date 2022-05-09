@@ -120,7 +120,7 @@ const DoroussTab = ({ title, tid }) => {
                   styles.itemCard
                 } mt-4 mb-2`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify(tid))
+                  localStorage.setItem('_id', JSON.stringify(tid))
                 }}
                 dir='rtl'
               >
