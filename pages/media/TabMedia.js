@@ -114,7 +114,7 @@ const TabMedia = (props) => {
                         <div
                           onClick={() => {
                             localStorage.setItem(
-                              'tid',
+                              '_id',
                               JSON.stringify(item?.tid)
                             )
                           }}
@@ -151,7 +151,7 @@ const TabMedia = (props) => {
                                       key={i}
                                       onClick={() => {
                                         localStorage.setItem(
-                                          'tid',
+                                          '_id',
                                           JSON.stringify(data?.tid)
                                         )
                                       }}

@@ -36,14 +36,12 @@ const media = ({ props }) => {
 
   const title = useRouter()?.query?.title?.split('-').join(' ')
 
-  const urlMenu = getMenu()
-  const [start, setStart] = useState(false)
   const [dataAPI, setDataAPI] = useState([])
   const [dataTab, setDataTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [mediaSelected, setMediaSelected] = useState(null)
   const PER_PAGE = 12
-  const url = getVideoMedia(title)
+
   const refVideo = useRef()
   const urlAllVideo =
     title == 'الدروس التمهيدية' ||
@@ -60,7 +58,7 @@ const media = ({ props }) => {
         setDataAPI(data?.data)
       }
     })
-  }, [title, router.isReady, _id])
+  }, [title, router.isReady])
 
   //
   const getItemsMenu = async (tid) => {
@@ -138,8 +136,13 @@ const media = ({ props }) => {
       <Body
         ref={refVideo}
         className={`${styles.TemplateMediaBody} ${styles.Media}  p-3`}
-      ><noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+      >
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <div>

@@ -83,7 +83,7 @@ const Videos = () => {
               <div
                 className={`${styles.divA} divA position-relative`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify('52'))
+                  localStorage.setItem('_id', JSON.stringify('52'))
                 }}
               >
                 <Link href={'/media/الدروس-الحسنية'} as='/media/الدروس-الحسنية'>
@@ -100,7 +100,7 @@ const Videos = () => {
               <div
                 className={`${styles.divB} divB`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify('51'))
+                  localStorage.setItem('_id', JSON.stringify('51'))
                 }}
               >
                 <Link
@@ -126,7 +126,7 @@ const Videos = () => {
               <div
                 className={`${styles.div1} div1 position-relative`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify('53'))
+                  localStorage.setItem('_id', JSON.stringify('53'))
                 }}
               >
                 <Link href={'/media/برامج-تلفزية'} as='/media/برامج-تلفزية'>
@@ -144,7 +144,7 @@ const Videos = () => {
               <div
                 className={`${styles.div2} div2 position-relative`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify('54'))
+                  localStorage.setItem('_id', JSON.stringify('54'))
                 }}
               >
                 <Link href={'/media/برامج-اذاعية'} as='/media/برامج-اذاعية'>
@@ -165,7 +165,7 @@ const Videos = () => {
               <div
                 className={`${styles.div3} div3 position-relative`}
                 onClick={() => {
-                  localStorage.setItem('tid', JSON.stringify('55'))
+                  localStorage.setItem('_id', JSON.stringify('55'))
                 }}
               >
                 <Link
