@@ -51,7 +51,7 @@ const SMLinks = (props) => {
       </a>
       <a
         // href='https://www.tiktok.com/@minasathadithm6?lang=fr'
-        href='https://www.tiktok.com/@haditm6.ma'
+        href='https://www.tiktok.com/@hadithm6.ma'
         alt='tiktok'
         target='_blank'
       >
