@@ -67,14 +67,16 @@ export default function ArticlePage(props) {
   }
 
   let contenuArticle =
-    params?.from == 'CarouselHome' ||
-    params?.from == 'ressources' ||
-    params?.from == 'Croyants'
+    params?.from == 'Croyants' && dataMenu?.field_contenu_default
+      ? dataMenu?.field_contenu_default
+      : params?.from == 'CarouselHome' ||
+        params?.from == 'ressources' ||
+        params?.from == 'Croyants'
       ? title
       : (params?.contenuArticle !== '' &&
           params?.contenuArticle !== undefined) ||
-        (dataValue?.contenuArticle !== undefined &&
-          dataValue?.contenuArticle !== '')
+        (dataValue?.contenuArticle !== '' &&
+          dataValue?.contenuArticle !== undefined)
       ? params?.contenuArticle || dataValue?.contenuArticle
       : dataMenu?.field_contenu_default
       ? dataMenu?.field_contenu_default

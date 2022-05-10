@@ -26,8 +26,8 @@ const SimpleList = (props) => {
               item?.title == 'تواصل معنا'
             ) {
               var path1 = {
-                path: '/ContactUs',
-                as: '/تواصل معنا',
+                path: `/ContactUs`,
+                as: `/article/${item?.title}`,
               }
             } else {
               var path1 = {

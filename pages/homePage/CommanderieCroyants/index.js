@@ -67,6 +67,7 @@ const CommanderieCroyants = () => {
           {dataAPI?.data?.map((item, i) => {
             const { title, body, field_code_couleur, field_lien } =
               item?.attributes
+
             // console.log('commanderieCroyants', dataAPI?.data)
             // $(document).ready(function () {
             //   $('.linksCroyants').contextmenu(function (event) {
@@ -122,7 +123,12 @@ const CommanderieCroyants = () => {
                   <Link
                     role='button'
                     href={{
-                      pathname: `/article/${title?.split(' ').join('-')}`,
+                      pathname: field_lien[0].uri.includes('internal:')
+                        ? field_lien[0].uri
+                            .replace('internal:', '')
+                            .split(' ')
+                            .join('-')
+                        : field_lien[0].uri.split(' ').join('-'),
                       search: '',
                       hash: '',
                       query: {
@@ -133,7 +139,14 @@ const CommanderieCroyants = () => {
                         contenuArticle: '',
                       },
                     }}
-                    as={`/article/${title?.split(' ').join('-')}`}
+                    as={
+                      field_lien[0].uri.includes('internal:')
+                        ? field_lien[0].uri
+                            .replace('internal:', '')
+                            .split(' ')
+                            .join('-')
+                        : field_lien[0].uri.split(' ').join('-')
+                    }
                   >
                     <a
                       className='text-decoration-none text-black'
