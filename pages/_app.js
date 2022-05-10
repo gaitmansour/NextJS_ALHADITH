@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     import('../public/js/bootstrap.bundle.min')
   })
-  //console.log('------------------testttttt')
+
   return (
     <>
       <Head>

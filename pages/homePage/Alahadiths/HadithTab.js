@@ -18,7 +18,6 @@ const HadithTab = ({ CodeTopic, Content }) => {
   // const {dataAPI} = props
   useEffect(() => {
     FetchAPI(`${url}/${CodeTopic}`).then((data) => {
-      //  console.log(`${url}/${CodeTopic}`)
       if (data.success) {
         setDataAPI(data?.data)
       }
@@ -79,7 +78,6 @@ const HadithTab = ({ CodeTopic, Content }) => {
         )
       } else {
         const dataList = dataAPI?.map((item, i) => {
-          //console.log('item--------------------------------', item)
           $(document).ready(function () {
             $(`.${i}`).contextmenu(function (event) {
               localStorage.setItem(
@@ -124,15 +122,6 @@ const HadithTab = ({ CodeTopic, Content }) => {
                 className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
-                  // onClick={() =>
-                  //   console.log('item--------------------------------', {
-                  //     word: '',
-                  //     topic: item,
-                  //     content: Content,
-                  //     codeDegree: CodeTopic,
-                  //     from: 'home',
-                  //   })
-                  // }
                   style={{ justifyContent: 'center', alignItems: 'center' }}
                   className={`${
                     Content === 'صحيح'
@@ -154,9 +143,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
         })
         return dataList
       }
-    } catch (error) {
-      console.log(`CATCH Alhadiths ${error}`)
-    }
+    } catch (error) {}
   }
   return (
     <>

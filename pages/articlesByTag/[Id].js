@@ -17,11 +17,11 @@ const ArticlesByTag = (props) => {
   let TagID =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('tagTitle'))
-  //console.log('TAGID----------------------', TagID)
+
   let routerQuery = useRouter()
   const Id = TagID
   const [dataAPI, setDataAPI] = useState({})
-  //console.log('--------55---', Id)
+
   let dataValue =
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
@@ -52,15 +52,18 @@ const ArticlesByTag = (props) => {
   return (
     <TemplateArticle {...props} titlePage='مقالات ذات صلة'>
       <Body className='TemplateArticleBody d-flex p-4'>
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         <ScrollButton />
         {/* {isIOS ? null : <ScrollButton />} */}
         <div className='flex-fill my-5'>
           <div className='row tags'>
             {dataAPI &&
               dataAPI?.map((data, index) => {
-                //console.log('articleTag-----------------------', data)
                 return (
                   <div
                     key={index}

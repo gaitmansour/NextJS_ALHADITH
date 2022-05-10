@@ -78,7 +78,7 @@ const SliderList = (props) => {
                       console.log('item????????????????????', item)
                     }
                   >
-                    {item?.field_image ? (
+                    {item?.field_image.trim() ? (
                       <Image
                         src={item?.field_image}
                         alt=''

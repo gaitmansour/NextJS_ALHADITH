@@ -38,10 +38,7 @@ const LiveSection = () => {
           setIsLoding(false)
         }
       })
-     // console.log('data Live ==>', dataLive)
-    } catch (error) {
-     // console.log(error)
-    }
+    } catch (error) {}
   }
   useEffect(() => {
     getDataLive()
@@ -56,7 +53,6 @@ const LiveSection = () => {
   var myCurrentDate = new Date()
   var curD = Moment(myCurrentDate).format('YYYY-MM-DDTHH:mm:ss')
   var curH = Moment(myCurrentDate).format('HH:mm:ss')
-  // console.log('current Date ', curD)
 
   ///// filter live by date
   let currentLive = dataLive?.filter(
@@ -75,13 +71,12 @@ const LiveSection = () => {
   //       Moment(currentLive[0]?.field_date_debut, 'YYYY-MM-DDTHH:mm:ss').format(
   //         'HH:mm:ss'
   //       ) - curH
-  //     console.log('timeToStart=>', timeToStart)
+  //
   //     playerRef.current.seekTo(timeToStart, 'seconds')
   //     setIsReady(true)
   //   }
   // }, [isReady])
 
-  //console.log('CurrentLive =>', currentLive)
   return (
     <div>
       <div className='d-flex align-items-center mb-4 mx-4'>
@@ -138,14 +133,6 @@ const LiveSection = () => {
                       ).format()
                   )
                   ?.sort((a, b) => {
-                    /*console.log(
-                      'a.field_date_debut',
-                      a.field_date_debut < b.field_date_debut
-                        ? -1
-                        : a.field_date_debut > b.field_date_debut
-                        ? 1
-                        : 0
-                    )*/
                     return a.field_date_debut < b.field_date_debut
                       ? -1
                       : a.field_date_debut > b.field_date_debut
@@ -153,7 +140,6 @@ const LiveSection = () => {
                       : 0
                   })
                   .map((item, index) => {
-                   // console.log('item live =>', item)
                     return (
                       <div key={index} dir='rtl'>
                         <div

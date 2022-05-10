@@ -18,14 +18,11 @@ const AllMedia = (props) => {
   const [NewCategoryMedia, setNewCategoryMedia] = useState([])
   const router = useRouter()
   const titleRouter = useRouter()?.query?.title
-  //console.log('router=>', router)
 
   const getItemsMenu = async (tid) => {
     return FetchAPI(getSideItems(tid)).then((data) => {
       if (data.success) {
         if (tid == 50) {
-          // console.log(data?.data)
-          // setCategoryMedia(data?.data)
           function move(from, to, arr) {
             const newArr = [...arr]
 
@@ -64,9 +61,6 @@ const AllMedia = (props) => {
   //   }
   // }, [categoryMedia, titleRouter, router.isReady])
 
-  //console.log('data------------------------categoryMedia', categoryMedia)
-  //console.log('sousCategorie', sousCategorie)
-
   useEffect(() => {
     if (router.isReady && categoryMedia && sousCategorie) {
       const merge = (a, b, i = 0) => a.splice(i, 0, ...b) && a
@@ -74,13 +68,15 @@ const AllMedia = (props) => {
     }
   }, [categoryMedia, sousCategorie, titleRouter, router.isReady])
 
-  //console.log('NewAllMedia=>', allDataMedia)
-  // console.log('merge data =>', allDataMedia)
   return (
     <TemplateArticle {...props} titlePage='التلفزة الرقمية'>
       <Body>
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <LiveSection />

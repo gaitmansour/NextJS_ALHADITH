@@ -12,13 +12,22 @@ const SimpleList = (props) => {
         {props.data &&
           props.data?.length > 0 &&
           props.data.map((item, i) => {
-            //console.log('this data to show ------>', item)
+            // console.log('this data to show ------>', item)
+
             if (item?.title == 'المصحف المحمدي') {
               var path1 = { path: '/Almoshaf', as: '/المصحف-المحمدي' }
             } else if (item?.parentLabel == 'التلفزة الرقمية') {
               var path1 = {
                 path: `/media/${item?.title}`,
                 as: `/media/${item?.title}`,
+              }
+            } else if (
+              item?.parentID == 'التواصل' &&
+              item?.title == 'تواصل معنا'
+            ) {
+              var path1 = {
+                path: `/ContactUs`,
+                as: `/article/${item?.title}`,
               }
             } else {
               var path1 = {
@@ -43,7 +52,10 @@ const SimpleList = (props) => {
             return (
               <Link
                 href={{
-                  pathname: path1.path?.split(' ').join('-'),
+                  pathname:
+                    path1.path === 'ContactUs'
+                      ? path1.path
+                      : path1.path?.split(' ').join('-'),
                   query: {
                     fromNav: props.data,
                     selectedItem: item?.title,
@@ -53,7 +65,11 @@ const SimpleList = (props) => {
                         : item?.title,
                   },
                 }}
-                as={path1.as?.split(' ').join('-')}
+                as={
+                  path1.path === 'ContactUs'
+                    ? path1.path
+                    : path1.as?.split(' ').join('-')
+                }
                 key={i.toString()}
                 style={{ borderTop: i === 0 ? '1px solid #D8D8D8' : '' }}
               >
@@ -61,7 +77,7 @@ const SimpleList = (props) => {
                   className={`${styles.item} categorieTitle item d-flex align-items-center py-3 px-1`}
                   onClick={() => {
                     //console.log('items--------------------selected')
-                   // console.log(item)
+                    // console.log(item)
                     localStorage.setItem(
                       'categorieTitle',
                       JSON.stringify({

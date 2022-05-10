@@ -26,7 +26,6 @@ import Image from 'next/image'
 import FacebookLogin from 'react-facebook-login'
 import KeyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
 import ModalQuestionForm from '../../components/_UI/ModalQuestionForm'
-//import { isMobile, isIOS } from 'react-device-detect'
 
 const ListQuestions = (props) => {
   const title = props?.match?.params?.title
@@ -92,9 +91,7 @@ const ListQuestions = (props) => {
   const SubmitQuestion = async () => {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if (mailformat.test(mail) === false) {
-     // console.log('email false')
       setMessage('البريد الإلكتروني غير صحيح!')
-      //console.log(message)
     } else {
       const data = {
         sujetQuestion: Subject,
@@ -102,7 +99,7 @@ const ListQuestions = (props) => {
         email: mail,
       }
       setIsLoading(true)
-     // console.log('forum_______', data)
+
       return FetchAPIWthData(urlAddQuestion, data).then((data) => {
         if (data.success) {
           setsendSuccess(true)
@@ -164,8 +161,7 @@ const ListQuestions = (props) => {
   const responseFacebook = (response) => {
     setLogged(true)
     setMail(response.email)
-    //console.log('response.email ----------------------------- FB')
-    //console.log(response)
+
     sessionStorage.setItem('UserInfos', JSON.stringify(response.email))
   }
 
@@ -175,13 +171,11 @@ const ListQuestions = (props) => {
     setMail(res.profileObj.email)
     sessionStorage.setItem('UserInfos', JSON.stringify(res.profileObj.email))
   }
-  const onLoginFail = (res) => {
-    //console.log('resultFail22', res)
-  }
+  const onLoginFail = (res) => {}
 
   function handleSubmitQuestion() {
     handleCloseModalQuestions()
-    //console.log('question------------', question)
+
     if (question !== '' && Subject !== '' && mail !== '') {
       SubmitQuestion()
       setHide(true)
@@ -201,14 +195,13 @@ const ListQuestions = (props) => {
     var session = sessionStorage.getItem('UserInfos')
     var outputData = localStorage.getItem('outputData')
     var subjectWord = localStorage.getItem('Subject')
-    //console.log('subjectWord', subjectWord)
+
     if (session && outputData && subjectWord) {
       setLogged(true)
       setShowForum(true)
       var UserInfos = JSON.parse(session)
       var output = JSON.parse(outputData)
-      //console.log('output-----------------------------------')
-      //console.log(output)
+
       var subject = JSON.parse(subjectWord)
       setMail(UserInfos)
       setSubject(subject)
@@ -223,14 +216,6 @@ const ListQuestions = (props) => {
 
   const questionPerPage = 5
   const pagesVisited = pageNumber * questionPerPage
-
-  /* const onChangeAll = inputs => {
-             setInputs({...inputs});
-             console.log("Inputs changed", inputs);
-             // setQuestion(inputs)
-         };*/
-
-  //console.log('subject---', Subject)
 
   const data = [
     {
@@ -257,7 +242,6 @@ const ListQuestions = (props) => {
     resultsRef.current.scrollIntoView()
   }
   const displayQuestions = DataQuestions.map((item, i) => {
-    //console.log('TID-----', item)
     return (
       <div key={i} className={` container-flex ${styles.bg1} bg1`}>
         <div className={'p-2 row justify-content-between align-items-center'}>
@@ -388,14 +372,18 @@ const ListQuestions = (props) => {
     ['ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'],
     ['؟', '!', '-', '،', '.', 'ء', 'ؤ', 'ى', 'ة', 'أ', 'إ', 'ٱ', 'آ', 'ئ'],
   ]
-  //console.log('setSubject', Subject)
+
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='أسئلة'>
       <Body
         className={`${styles.TemplateArticleBody} ${styles.questionList} TemplateArticleBody  d-flex p-4`}
       >
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         <ScrollButton />
         {/* {isIOS ? null : <ScrollButton />} */}
         <div className='flex-fill'>

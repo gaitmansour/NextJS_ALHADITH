@@ -12,7 +12,6 @@ import { getMenuByName } from '../../../endpoints'
 import FetchAPI from '../../../API'
 
 const TopBar = (props) => {
-  // console.log(props)
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -35,9 +34,7 @@ const TopBar = (props) => {
   const elementRef = useRef()
 
   const getDataMenu = async (x) => {
-    //console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
-      //console.log('dataSuccess ==>', data)
       if (data.success) {
         localStorage.setItem(
           'categorieTitle',
@@ -88,7 +85,7 @@ const TopBar = (props) => {
         '/search',
         { shallow: true }
       )
-      // console.log("go to")
+
       /*history && history.push({
                 pathname: '../search',
                 search: '',

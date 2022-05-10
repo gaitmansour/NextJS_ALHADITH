@@ -37,14 +37,12 @@ const CarouselHome = (props) => {
     setIsLoading(true)
     try {
       FetchAPI(urlSlider).then((data) => {
-        // console.log("data CarouselHome ==> ", data)
         if (data.success) {
           setDataAPI(data?.data)
           setIsLoading(false)
         }
       })
     } catch (error) {
-      console.log(error)
       setIsLoading(false)
     }
   }
@@ -136,12 +134,10 @@ const CarouselHome = (props) => {
   const getData = async (x) => {
     return FetchAPI(getArticleByIdName(x)).then((data) => {
       if (data.success) {
-       // console.log('++++++++++++++++++++++ included')
-
         let array = data?.data?.included.filter(
           (item) => item.type === 'taxonomy_term--alahadyt'
         )
-       // console.log(array[0]?.attributes?.name)
+
         return array[0]?.attributes?.name
       }
     })
@@ -150,8 +146,6 @@ const CarouselHome = (props) => {
     getData(x).then((r) => {
       FetchAPI(getMenuByName(r)).then((data) => {
         if (data.success) {
-          //console.log('dataSuccess')
-         // console.log(data?.data[0])
           localStorage.setItem(
             'categorieTitle',
             JSON.stringify({
@@ -175,15 +169,11 @@ const CarouselHome = (props) => {
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
   }
-  //console.log('dataAPI avant ===>', dataAPI)
 
   let sortData = _.sortBy(dataAPI, 'field_ordre_slider')
   let test = sortData?.map((item, index) => {
     return item
   })
-  //console.log('carousel =>', test)
-
- // console.log('dataAPI apres ===>', newData)
 
   return (
     <div
@@ -196,7 +186,6 @@ const CarouselHome = (props) => {
       </div>
       <Slider {...settings} className={`w-100 slide`}>
         {newData?.map((item, index) => {
-         // console.log('itemCarousel', item)
           const toShow = item?.body_1
             ?.split(' ')
             .slice(0, 20)
@@ -207,9 +196,7 @@ const CarouselHome = (props) => {
               .substr(item.field_image.lastIndexOf('src='))
               .split(' ')[0]
               .slice(5)
-            //console.log('str', str)
             var element2 = str.slice(0, -1)
-           // console.log('element2', element2)
           }
           // $(document).ready(function () {
           //   $('.linksCarousel').contextmenu(function (event) {
@@ -224,7 +211,6 @@ const CarouselHome = (props) => {
           //     )
           //   })
           // })
-         // console.log('itemCarousel apres', item)
           return (
             <Carousel.Item
               key={index.toString()}

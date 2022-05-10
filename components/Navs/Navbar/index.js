@@ -100,14 +100,8 @@ const NavBar = (props) => {
         divref?.current &&
         divref?.current?.contains(event.target)
       ) {
-        // setShowMenu(false)
-        //console.log('Clicked Inside', !divref?.current?.contains(event.target))
       } else {
         setShowMenu(showMenu === true && false)
-/*        console.log(
-          'Clicked Outside ',
-          !divref?.current?.contains(event.target)
-        )*/
       }
     }
 
@@ -118,28 +112,6 @@ const NavBar = (props) => {
       document.removeEventListener('mousedown', handleClickOutside, false)
     }
   }, [divref])
-  // useEffect(() => {
-  //   /**
-  //    * Alert if clicked on outside of element
-  //    */
-  //   function handleClickOutside(event) {
-  //     if (
-  //       showMenu &&
-  //       divref?.current &&
-  //       !divref?.current?.contains(event.target)
-  //     ) {
-  //       setShowMenu(false)
-  //     }
-  //     console.log('divref.current', !divref?.current?.contains(event.target))
-  //   }
-
-  //   // Bind the event listener
-  //   document.addEventListener('mousedown', handleClickOutside, false)
-  //   return () => {
-  //     // Unbind the event listener on clean up
-  //     document.removeEventListener('mousedown', handleClickOutside, false)
-  //   }
-  // }, [divref])
 
   const onToggleHandler = (isOpen, metadata) => {
     const getEventTargetClass = event?.target?.className
@@ -156,7 +128,6 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-        //console.log('data?.path =>', item.tID)
         const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
           <li className={styleDropdownToggle}>
             <a
@@ -272,9 +243,9 @@ const NavBar = (props) => {
 
   const clicked = (e) => {
     e.preventDefault()
-    // console.log("left < click")
+
     // var element = document.querySelector("#navbarNav > ul")
-    // console.log(element)
+
     // element.scrollTop -= 10;
     // // element.scroll({
     // //     right: 100,
@@ -442,7 +413,7 @@ const NavBar = (props) => {
   function handleClickSearch() {
     goToSearchPage()
   }
-  //console.log('showMenu', showMenu)
+
   return (
     <div className='NavBar bg-white navbar navbar-expand-lg sticky-top navbar-light p-0'>
       <div className='container-fluid p-0'>

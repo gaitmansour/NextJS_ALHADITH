@@ -20,11 +20,8 @@ const CommanderieCroyants = () => {
   const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
   const url = getCommanderieCroyantsData('ar', 'عناية أمير المؤمنين')
   const getDataMenu = async (x) => {
-    //console.log('xxxxxxxxxxxxxxxxxxxxxx', x)
     FetchAPI(getMenuByName(x)).then((data) => {
       if (data.success) {
-        //console.log('dataSuccess')
-        //console.log(data?.data[0])
         localStorage.setItem(
           'categorieTitle',
           JSON.stringify({
@@ -45,9 +42,7 @@ const CommanderieCroyants = () => {
     })
   }
   const getData = async () => {
-    // console.log("fi khitab data  ==> ", data)
     FetchAPI(url).then((data) => {
-      //console.log('fi khitab data  ==> ', data)
       if (data.success) {
         setDataAPI(data?.data)
       }
@@ -72,7 +67,8 @@ const CommanderieCroyants = () => {
           {dataAPI?.data?.map((item, i) => {
             const { title, body, field_code_couleur, field_lien } =
               item?.attributes
-           // console.log('commanderieCroyants', dataAPI?.data)
+
+            // console.log('commanderieCroyants', dataAPI?.data)
             // $(document).ready(function () {
             //   $('.linksCroyants').contextmenu(function (event) {
             //     localStorage.setItem(
@@ -127,7 +123,12 @@ const CommanderieCroyants = () => {
                   <Link
                     role='button'
                     href={{
-                      pathname: `/article/${title?.split(' ').join('-')}`,
+                      pathname: field_lien[0].uri.includes('internal:')
+                        ? field_lien[0].uri
+                            .replace('internal:', '')
+                            .split(' ')
+                            .join('-')
+                        : field_lien[0].uri.split(' ').join('-'),
                       search: '',
                       hash: '',
                       query: {
@@ -138,7 +139,14 @@ const CommanderieCroyants = () => {
                         contenuArticle: '',
                       },
                     }}
-                    as={`/article/${title?.split(' ').join('-')}`}
+                    as={
+                      field_lien[0].uri.includes('internal:')
+                        ? field_lien[0].uri
+                            .replace('internal:', '')
+                            .split(' ')
+                            .join('-')
+                        : field_lien[0].uri.split(' ').join('-')
+                    }
                   >
                     <a
                       className='text-decoration-none text-black'
