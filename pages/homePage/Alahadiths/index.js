@@ -21,8 +21,6 @@ const Alahadiths = (props) => {
         // className={`text-secondary nav-tabs nav-tabs ${styles.navTabs}`}
         onSelect={(key) => {
           setKey(key)
-         // console.log('key------------------------------')
-         // console.log(key)
         }}
         variant={'tabs'}
         activeKey={key}

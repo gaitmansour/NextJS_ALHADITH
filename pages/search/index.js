@@ -104,7 +104,6 @@ const SearchPage = (props) => {
     return FetchAPI(urlDegree).then((data) => {
       if (data.success) {
         const newDegree = data?.data.map((item) => {
-          // console.log('data?.data========================>', data?.data)
           return (item = {
             label: item.label,
             value: item.id,
@@ -149,7 +148,6 @@ const SearchPage = (props) => {
   const getDataNarrator = async () => {
     return FetchAPI(urlNarrator).then((data) => {
       if (data.success) {
-        // console.log('dataNarrator-------------',data?.data)
         const newNarrator = data?.data.map((item) => {
           return (item = {
             label: item.label,
@@ -165,7 +163,6 @@ const SearchPage = (props) => {
   const getDataCategory = async () => {
     return await FetchAPI(urlCategory).then((data) => {
       if (data.success) {
-        // console.log('dataNarrator-------------',data?.data)
         const newCategory = data?.data.map((item) => {
           return (item = {
             label: item.label,
@@ -177,7 +174,7 @@ const SearchPage = (props) => {
       }
     })
   }
-  // console.log('ChoiceCategory', ChoiceCategory)
+
   const handleSearch = async (
     word,
     topic,
@@ -255,7 +252,6 @@ const SearchPage = (props) => {
       setShowForm(false)
     }
     if (from === 'topBar') {
-      // console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)
