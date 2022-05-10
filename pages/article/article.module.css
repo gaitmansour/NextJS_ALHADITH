@@ -130,6 +130,7 @@ display: list-item;
 .desc table tr td{
     border: 1.5px solid #129D59 !important;
 }
+
 /*table{
     background-color: transparent !important;
 }
@@ -172,7 +173,11 @@ table td p a{
     .TemplateArticleBody .badg{
         width: 100%;
     }
-
+    .desc tbody {
+        overflow-x: auto;
+        display: block;
+        width: 94vw;
+    }
 }
 @media (max-width: 360px)  {
     .TemplateArticleBody .desc{
