@@ -71,7 +71,7 @@ const CustomSelect = (props) => {
           } custom-select ${classNameSelect}`}
           placeholder={placeholder}
           isMulti={false}
-          isClearable
+          isClearable={props.isClearable}
           menuPortalTarget={typeof window !== 'undefined' && document.body}
           value={defaultInputValue}
           name={'form-field-name'}
@@ -91,6 +91,9 @@ const CustomSelect = (props) => {
       </div>
     </div>
   )
+}
+CustomSelect.defaultProps = {
+  isClearable: true,
 }
 
 export default CustomSelect
