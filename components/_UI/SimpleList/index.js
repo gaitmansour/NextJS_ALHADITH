@@ -22,7 +22,7 @@ const SimpleList = (props) => {
                 as: `/media/${item?.title}`,
               }
             } else if (
-              item?.parentID == 'التواصل' &&
+              item?.title == 'التواصل' ||
               item?.title == 'تواصل معنا'
             ) {
               var path1 = {
