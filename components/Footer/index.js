@@ -211,7 +211,12 @@ const Footer = () => {
                     color: '#FFF',
                   }}
                 >
-                  {'212-0537766812+'}
+                  <a
+                    style={{ color: '#fff', textDecoration: 'none' }}
+                    href='tel:212-537766812+'
+                  >
+                    {'212-537766812+'}
+                  </a>
                 </p>
                 <p
                   className={`${styles.FooterLink}`}
