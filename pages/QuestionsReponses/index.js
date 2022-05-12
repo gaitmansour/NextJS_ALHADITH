@@ -159,10 +159,12 @@ const ListQuestions = (props) => {
   }
   //facebook
   const responseFacebook = (response) => {
-    setLogged(true)
-    setMail(response.email)
-
-    sessionStorage.setItem('UserInfos', JSON.stringify(response.email))
+    console.log('response============>>>>>>', response)
+    if (response?.email) {
+      setMail(response.email)
+      setLogged(true)
+      sessionStorage.setItem('UserInfos', JSON.stringify(response.email))
+    }
   }
 
   //Gooogle
