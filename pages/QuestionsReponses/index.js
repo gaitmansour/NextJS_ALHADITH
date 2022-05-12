@@ -159,7 +159,7 @@ const ListQuestions = (props) => {
   }
   //facebook
   const responseFacebook = (response) => {
-    console.log('response============>>>>>>', response)
+    // console.log('response============>>>>>>', response)
     if (response?.email) {
       setMail(response.email)
       setLogged(true)
