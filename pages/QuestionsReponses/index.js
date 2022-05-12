@@ -441,13 +441,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                         className='googleLogin'
                       />
                       <FacebookLogin
-                        appId='451461503355998'
-                        autoLoad={false}
-                        fields='name,email'
-                        callback={responseFacebook}
-                        icon='fa-facebook'
-                        textButton=''
-                        cssClass={styles.btnFacebook}
+                          appId='451461503355998'
+                          autoLoad={false}
+                          disableMobileRedirect={true}
+                          fields='name,email'
+                          callback={responseFacebook}
+                          icon='fa-facebook'
+                          textButton=''
+                          cssClass={styles.btnFacebook}
                       />
                       {/* <button
                         type='button'
