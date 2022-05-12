@@ -17,11 +17,12 @@ const Questions = () => {
   const itemTitle = useRouter()?.query?.itemTitle
   const item_id = useRouter()?.query?.itemId
   const [dataQuestion, setDataQuestion] = useState([])
+  const [questionInfos, setQuestionInfos] = useState(null)
   const urlSearchQuestion = searchQuestion()
 
   const handleSearchQuestion = async () => {
     const data = {
-      query: itemTitle,
+      query: itemTitle || questionInfos?.sujetQuestion,
       size: 10,
       start: 0,
     }
@@ -34,9 +35,11 @@ const Questions = () => {
     })
   }
 
+  console.log('dataQuestion====>>>>>', dataQuestion)
+
   useEffect(() => {
     handleSearchQuestion()
-  }, [itemQuestion])
+  }, [itemQuestion, questionInfos?.sujetQuestion])
 
   const data = [
     {
@@ -68,7 +71,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         ></noscript>
         <div className={`${styles.quesList} px-4 flex-fill`}>
-          {itemReponse ? (
+          {questionInfos ? (
+            questionInfos?.descriptionReponse ? (
+              <div>
+                <h3>السؤال</h3>
+                <div className={`${styles.card} card w-100 mb-5 mt-3`}>
+                  <div
+                    className={`${styles.CardQuestion} card-body Card-question`}
+                  >
+                    <h5 className='col-9 d-flex card-subtitle'>
+                      {questionInfos?.sujetQuestion}
+                    </h5>
+                    <p className='p mt-3 card-text'>
+                      {questionInfos?.descriptionQuestion}
+                    </p>
+                  </div>
+                </div>
+                <h3>الإجابة</h3>
+                <div
+                  className={` ${styles.cardAnswer} card Card-answer1 w-100 mb-5 mt-3`}
+                  style={styles.CardAnswer1}
+                >
+                  <div className='card-body '>
+                    <p className='p card-text text-justify '>
+                      {questionInfos?.descriptionReponse}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <h3 className={'h3'}>السؤال</h3>
+                <div className='card w-100 mb-5 mt-3'>
+                  <div
+                    className={`${styles.CardQuestion} card-body Card-question `}
+                  >
+                    <h5 className='col-9 d-flex card-subtitle'>
+                      {questionInfos?.sujetQuestion}
+                    </h5>
+                    <p className='p mt-3 card-text'>
+                      {questionInfos?.descriptionQuestion}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.cardAnswer} card Card-answer1 w-100 my-5`}
+                >
+                  <div className='card-body '>
+                    <p className='p card-text'>{'لا توجد إجابات حتى الآن'}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          ) : itemReponse ? (
             <div>
               <h3>السؤال</h3>
               <div className={`${styles.card} card w-100 mb-5 mt-3`}>
@@ -109,6 +164,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
               </div>
             </div>
           )}
+          {/* {itemReponse ? (
+            <div>
+              <h3>السؤال</h3>
+              <div className={`${styles.card} card w-100 mb-5 mt-3`}>
+                <div
+                  className={`${styles.CardQuestion} card-body Card-question`}
+                >
+                  <h5 className='col-9 d-flex card-subtitle'>{itemTitle}</h5>
+                  <p className='p mt-3 card-text'>{itemQuestion}</p>
+                </div>
+              </div>
+              <h3>الإجابة</h3>
+              <div
+                className={` ${styles.cardAnswer} card Card-answer1 w-100 mb-5 mt-3`}
+                style={styles.CardAnswer1}
+              >
+                <div className='card-body '>
+                  <p className='p card-text text-justify '>{itemReponse}</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h3 className={'h3'}>السؤال</h3>
+              <div className='card w-100 mb-5 mt-3'>
+                <div
+                  className={`${styles.CardQuestion} card-body Card-question `}
+                >
+                  <h5 className='col-9 d-flex card-subtitle'>{itemTitle}</h5>
+                  <p className='p mt-3 card-text'>{itemQuestion}</p>
+                </div>
+              </div>
+              <div
+                className={`${styles.cardAnswer} card Card-answer1 w-100 my-5`}
+              >
+                <div className='card-body '>
+                  <p className='p card-text'>{'لا توجد إجابات حتى الآن'}</p>
+                </div>
+              </div>
+            </div>
+          )} */}
         </div>
         <div className={`${styles.sidBar} side-bar px-4`}>
           <p className={`${styles.p} ${styles.tiitle}`}>مواد ذات صلة</p>
@@ -122,7 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                   className='item d-flex align-items-center py-3 px-1'
                   passHref={true}
                   href={{
-                    pathname: '/questions',
+                    pathname: '/detailsQuestion',
                     query: {
                       itemTitle: item?._source?.sujetQuestion,
                       itemQuestion: item?._source?.descriptionQuestion,
@@ -131,9 +227,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                   }}
                   as={'/detailsQuestion'}
                   onClick={() => {
-                    if (typeof window != 'undefined') {
-                      window.location.reload()
-                    }
+                    // if (typeof window != 'undefined') {
+                    //   window.location.reload()
+                    // }
+                    setQuestionInfos(item?._source)
                   }}
                 >
                   <a
