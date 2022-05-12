@@ -35,8 +35,6 @@ const Questions = () => {
     })
   }
 
-  console.log('dataQuestion====>>>>>', dataQuestion)
-
   useEffect(() => {
     handleSearchQuestion()
   }, [itemQuestion, questionInfos?.sujetQuestion])
