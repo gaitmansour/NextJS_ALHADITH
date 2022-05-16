@@ -3,7 +3,7 @@ import { useField, ErrorMessage } from 'formik'
 import styles from './ContactUs.module.css'
 
 const TextareaField = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
+  const [field, meta] = useField(props.name)
   //   console.log('field', field)
   return (
     <div className={`${styles.inputField} mb-4`}>
