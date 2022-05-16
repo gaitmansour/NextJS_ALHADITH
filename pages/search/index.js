@@ -50,6 +50,7 @@ const SearchPage = (props) => {
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
   const codeDegree = state?.codeDegree
+  const numberH = state?.numberH
 
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
@@ -63,6 +64,7 @@ const SearchPage = (props) => {
   const [ChoiceCategory, setChoiceCategory] = useState('')
   const [ChoiceNarrator, setChoiceNarrator] = useState('')
   const [EvaluationSource, setEvaluationSource] = useState('')
+  const [numberHadith, setNumberHadith] = useState('')
   const [dataSearch, setdataSearch] = useState([])
   const [input, setInput] = useState('')
   const [pageNum, setPageNum] = useState(0)
@@ -175,6 +177,7 @@ const SearchPage = (props) => {
     })
   }
 
+  console.log('numberHadith =======>>>>>>', numberHadith)
   const handleSearch = async (
     word,
     topic,
@@ -182,7 +185,8 @@ const SearchPage = (props) => {
     src,
     degree,
     codeDegree,
-    nrs
+    nrs,
+    numberH
   ) => {
     const data = {
       content: word?.replace(/[-_,;.&:!?،؟]/g, ''),
@@ -212,7 +216,7 @@ const SearchPage = (props) => {
         ? ChoiceCategory.value
         : '',
 
-      numeroHadith: '',
+      numeroHadith: numberH ? numberH : numberHadith ? numberHadith : '',
       size: 10,
       start: StartPage < 1 ? 0 : StartPage,
       tags: '',
@@ -282,7 +286,8 @@ const SearchPage = (props) => {
         ArraySource[0]?.label != '' ? ArraySource[0]?.value : '',
         ArrayDegree[0],
         undefined,
-        ArrayNars[0]
+        ArrayNars[0],
+        numberH
       )
     }
   }
@@ -355,7 +360,8 @@ const SearchPage = (props) => {
       !ChoiceSource &&
       !ChoiceNarrator &&
       !ChoiceDegree &&
-      !ChoiceCategory
+      !ChoiceCategory &&
+      !numberHadith
     ) {
       setMessage('يرجى ملء كلمة البحث ')
       handleShow()
@@ -401,6 +407,7 @@ const SearchPage = (props) => {
     ChoiceNarrator,
     ChoiceDegree,
     ChoiceCategory,
+    numberHadith,
   ])
 
   let route = useRouter()
@@ -431,7 +438,8 @@ const SearchPage = (props) => {
         ChoiceSource ||
         ChoiceNarrator ||
         ChoiceDegree ||
-        ChoiceCategory) &&
+        ChoiceCategory ||
+        numberHadith) &&
       from !== 'home'
     ) {
       handleSearch(input)
@@ -499,7 +507,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             !ChoiceSource &&
             !ChoiceNarrator &&
             !ChoiceDegree &&
-            !ChoiceCategory ? (
+            !ChoiceCategory &&
+            !numberHadith ? (
               <div
                 className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
                 style={{
@@ -583,13 +592,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  {/* <Input
+                  <Input
+                    type='number'
                     className='col-md-4'
-                    label='مصدر الحكم'
-                    placeholder='ابحث بمصدر الحكم'
-                    value={EvaluationSource}
-                    onChange={(v) => setEvaluationSource(v.target.value)}
-                  /> */}
+                    label='رقم الحديث'
+                    placeholder='اكتب رقم الحديث'
+                    value={numberHadith}
+                    onChange={(v) => setNumberHadith(v.target.value)}
+                  />
                 </div>
                 {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
                  <CustomSelect

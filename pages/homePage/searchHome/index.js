@@ -39,6 +39,7 @@ const SearchSection = (props) => {
   const [ChoiceCategory, setChoiceCategory] = useState('')
   const [ChoiceNarrator, setChoiceNarrator] = useState('')
   const [EvaluationSource, setEvaluationSource] = useState('')
+  const [numberHadith, setNumberHadith] = useState('')
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
   const [message, setMessage] = useState('')
@@ -165,7 +166,8 @@ const SearchSection = (props) => {
       !ChoiceSource &&
       !ChoiceNarrator &&
       !ChoiceDegree &&
-      !ChoiceCategory
+      !ChoiceCategory &&
+      !numberHadith
     ) {
       setMessage('يرجى ملء كلمة البحث ')
       handleShow()
@@ -189,6 +191,7 @@ const SearchSection = (props) => {
               sourceHokm: EvaluationSource.label,
               narrator: ChoiceNarrator?.label,
               word: input,
+              numberH: numberHadith,
             },
           },
           '/search'
@@ -221,6 +224,7 @@ const SearchSection = (props) => {
     ChoiceSource,
     ChoiceNarrator,
     ChoiceDegree,
+    numberHadith,
   ])
 
   function handleClickSearch() {
@@ -322,6 +326,14 @@ const SearchSection = (props) => {
                 defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
                 placeholder='اكتب الحكم'
                 onChange={(v) => setChoiceDegree(v)}
+              />
+              <Input
+                type='number'
+                className='col-md-4'
+                label='رقم الحديث'
+                placeholder='اكتب رقم الحديث'
+                value={numberHadith}
+                onChange={(v) => setNumberHadith(v.target.value)}
               />
               {/* <Input
                 className='col-md-4'
