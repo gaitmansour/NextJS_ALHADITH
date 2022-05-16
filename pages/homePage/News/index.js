@@ -23,7 +23,7 @@ const News = () => {
         if (data.success) {
           setDataAPI(data?.data)
           setIsLoding(false)
-          //   console.log('dataaaa Newsssss ===>', data?.data)
+          // console.log('dataaaa Newsssss ===>', data?.data)
         }
       })
     } catch (error) {
