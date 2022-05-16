@@ -443,7 +443,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                       <FacebookLogin
                           appId='451461503355998'
                           autoLoad={false}
-                          disableMobileRedirect={true}
+                          disableMobileRedirect={false}
                           fields='name,email'
                           callback={responseFacebook}
                           icon='fa-facebook'
