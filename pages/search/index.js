@@ -177,7 +177,6 @@ const SearchPage = (props) => {
     })
   }
 
-  console.log('numberHadith =======>>>>>>', numberHadith)
   const handleSearch = async (
     word,
     topic,
