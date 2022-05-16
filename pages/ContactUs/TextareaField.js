@@ -1,28 +1,20 @@
 import React from 'react'
-import { useField, ErrorMessage } from 'formik'
+import { ErrorMessage } from 'formik'
 import styles from './ContactUs.module.css'
 
-const TextareaField = ({ label, ...props }) => {
-  const [field, meta] = useField(props.name)
-  //   console.log('field', field)
+const TextareaField = ({ label, name, error, ...props }) => {
   return (
     <div className={`${styles.inputField} mb-4`}>
-      <label className='' htmlfor={field.name}>
+      <label className='' htmlfor={name}>
         {label}
       </label>
       <textarea
-        className={`form-control shadow-none rounded ${
-          meta.touched && meta.error && 'is-invalid'
-        }`}
-        {...field}
+        className={`form-control shadow-none rounded `}
+        name={name}
         {...props}
         rows='5'
       ></textarea>
-      <ErrorMessage
-        component='dev'
-        name={field.name}
-        className={styles.error}
-      />
+      {error ? <p className={styles.error}>{error}</p> : null}
     </div>
   )
 }
