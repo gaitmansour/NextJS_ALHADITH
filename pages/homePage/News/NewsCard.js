@@ -7,7 +7,7 @@ import { base_url } from '../../../endpoints'
 const NewsCard = (props) => {
   const { title, description, image, category_news } = props
   let strippedString = title.replace(/(<([^>]+)>)/gi, '')
-  console.log('title', strippedString)
+  //   console.log('title', strippedString)
 
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
