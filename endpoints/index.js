@@ -13,6 +13,7 @@ export const api_newsletter = `https://apisearch.hadithm6.com/api/addmembre`
 
 // export const base_url = `https://api.pray.zone/`
 
+export const getNews = () => `${base_url}/en/newsarticle/preview`
 export const getResourcesData = (langcode, value = 'موارد') =>
   `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
 export const getCommanderieCroyantsData = (
