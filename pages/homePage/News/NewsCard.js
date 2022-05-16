@@ -6,7 +6,7 @@ import { base_url } from '../../../endpoints'
 
 const NewsCard = (props) => {
   const { title, description, image, category_news } = props
-  let strippedString = title.replace(/(<([^>]+)>)/gi, '')
+  let strippedString = title?.replace(/(<([^>]+)>)/gi, '')
   //   console.log('title', strippedString)
 
   const myLoader = ({ src, width, quality }) => {
@@ -17,7 +17,7 @@ const NewsCard = (props) => {
       <div class={styles.ribbon}>
         <span>{category_news}</span>
       </div>
-      {image.trim() ? (
+      {image?.trim() ? (
         <Image
           className='card-img-top p-2 pt-3'
           objectFit='cover'
