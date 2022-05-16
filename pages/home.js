@@ -17,6 +17,7 @@ import Theme1 from '../components/Theme1'
 import Theme2 from '../components/Theme2'
 import ScrollButton from '../components/ScrollButton'
 import DoroussHaditha from './homePage/DoroussHaditha'
+import News from './homePage/News'
 
 const HomeScreen = (props) => {
   const [sections, setSections] = useState([])
@@ -66,7 +67,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <CarouselHome />
-        {<SearchSection />}
+        <SearchSection />
+        <News />
         <CommanderieCroyants />
         <DoroussHaditha />
         <Resources />
