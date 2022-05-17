@@ -151,7 +151,7 @@ const Footer = () => {
       <div
         className={`${styles.footerContainer} footer-container overflow-hidden w-100`}
       >
-        <div className={`${styles.bgFooter} bgFooter w-100 h-100`} />
+        <div className={`${styles.bgFooter} bgFooter w-100 `} />
         <div className={`${styles.footer} footer w-100 h-100`}>
           <div className='row p-3'>
             <div
