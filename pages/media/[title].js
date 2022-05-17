@@ -40,6 +40,8 @@ const media = ({ props }) => {
   const [dataTab, setDataTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [mediaSelected, setMediaSelected] = useState(null)
+  const [isError, setIsError] = useState('')
+  const [isLoding, setIsLoding] = useState(false)
   const PER_PAGE = 12
 
   const refVideo = useRef()
@@ -53,11 +55,18 @@ const media = ({ props }) => {
   const router = useRouter()
 
   useEffect(() => {
-    FetchAPI(urlAllVideo).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
+    try {
+      setIsLoding(true)
+      FetchAPI(urlAllVideo).then((data) => {
+        if (data.success) {
+          setDataAPI(data?.data)
+          setIsLoding(false)
+        }
+      })
+    } catch (error) {
+      setIsError(error)
+      setIsLoding(true)
+    }
   }, [title, router.isReady, _id])
 
   //
@@ -146,7 +155,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <div>
-          {dataAPI?.length > 0 ? (
+          {isLoding ? (
+            <div className='d-flex align-items-center justify-content-center py-5'>
+              <Loading />
+            </div>
+          ) : dataAPI?.length > 0 ? (
             <>
               <div
                 className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
