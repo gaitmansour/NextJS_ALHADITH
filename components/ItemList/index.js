@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {
   FacebookIcon,
   FacebookShareButton,
+  FacebookShareCount,
   LinkedinIcon,
   LinkedinShareButton,
   TwitterIcon,
@@ -13,13 +14,47 @@ import {
 import Cards from '../_UI/Cards'
 
 const ItemList = (props) => {
+  const params =
+    props.content +
+    `\n# الحكم : ${props.degree} \n # الراوي : ${props.narrator} \n# المصدر : ${
+      props.source
+    } \n# مصدر الحكم : ${
+      props.sourceGlobal ? props.sourceGlobal : ''
+    } \n# الموضوع : ${props.category}  \n 
+  منصة محمد السادس للحديث الشريف `
+  const [show, setShow] = useState(false)
+  const [message, setMessage] = useState('')
+  const [content, setContent] = useState(params)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  function handleWhatsappshare() {
+    if (props.content.length > 5510) {
+      handleShow()
+      setMessage('hello')
+      return true
+    }
+    return false
+  }
+
   const className = props?.className ? props.className : ''
-  const params = `${props.content}\n# الحكم : ${props.degree} \n # الراوي : ${
+
+  const regex = /(<([^>]+)>)/gi
+
+  const text =
+    props?.content.length <= 5110
+      ? props?.content
+      : props?.content
+          ?.substring(0, 5110)
+          .replace('\n', '')
+          .replace(regex, '')
+          .replace(/(\r\n|\n|\r)/gm, ' ') + '...'
+  const params2 = `${text}\n# الحكم : ${props.degree.label} \n # الراوي : ${
     props.narrator
-  } \n# مصدر الحكم : ${
+  } \n# المصدر : ${props.source} \n# مصدر الحكم : ${
     props.sourceGlobal ? props.sourceGlobal : ''
-  } \n# الموضوع : ${props.category} \n# المصدر : ${props.source} \n 
-  منصة محمد السادس للحديث النبوي الشريف `
+  } \n# الموضوع : ${props.category}  \n 
+  منصة محمد السادس للحديث الشريف `
 
   const toShow = params.substring(0, 251) + ' ...'
   // console.log("toShow",toShow)
@@ -29,20 +64,23 @@ const ItemList = (props) => {
       className={`${styles.ItemList} my-2 w-100 px-0 pb-0 ${className} ${
         styles.result
       } result ${
-        props.degree === 'صحيح'
+        props.degree?.code === '1'
           ? styles.bckg1
-          : props.degree === 'ضعيف'
+          : props.degree?.code === '2'
           ? styles.bckg2
-          : props.degree === 'موضوع'
-          ? styles.bckg3
-          : 'bckgCard'
+          : props.degree?.code === '28'
+          ? 'bckgCard'
+          : ''
       }`}
     >
       <div className={styles.content}>
         {props.highlight ? (
-          <p className='m-0' dangerouslySetInnerHTML={{ __html: props.text }} />
+          <p
+            className='m-0 content-hadith'
+            dangerouslySetInnerHTML={{ __html: props.text }}
+          />
         ) : (
-          <p className='m-0'>{props.text}</p>
+          <p className='m-0 content-hadith'>{props.text}</p>
         )}
         <div className={`${styles.metaData} meta-data mt-3`}>
           <div
@@ -57,35 +95,21 @@ const ItemList = (props) => {
               </span>
               :{' '}
               <span className={`${styles.resultat} fw-bold`}>
-                {props.degree}
+                {props.degree?.label}
               </span>
             </p>
           </div>
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex m-0 mb-2'>
-              <span className={styles.output} style={{ color: '#b17d00' }}>
-                الراوي
-              </span>
-              : <span className={styles.resultat}>{props.narrator}</span>
-            </p>
-            <div className={styles.devider} />
             <p className='d-flex text-success m-0 mb-2'>
-              <span className={`text-success ${styles.output}`}>
-                مصدر الحكم
-              </span>
-              :<span className={styles.resultat}>{props.sourceGlobal}</span>
+              <span className={`text-success ${styles.output}`}>الراوي</span>:{' '}
+              <span className={styles.resultat}>{props.narrator}</span>
             </p>
           </div>
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex text-success m-0 mb-2'>
-              <span className={`text-success ${styles.output}`}>الموضوع</span>:{' '}
-              <span className={styles.resultat}>{props.category}</span>
-            </p>
-            <div className={styles.devider} />
             <p className='d-flex m-0 mb-2'>
               <span className={styles.output} style={{ color: '#b17d00' }}>
                 المصدر
@@ -99,6 +123,27 @@ const ItemList = (props) => {
               <span className="resultat">{props.topic}</span>
             </p> */}
           </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex text-success m-0 mb-2'>
+              <span className={`text-success ${styles.output}`}>
+                مصدر الحكم
+              </span>
+              :<span className={styles.resultat}>{props.sourceGlobal}</span>
+            </p>
+          </div>
+          <div
+            className={`d-flex align-items-center alignItem ${styles.alignItem}`}
+          >
+            <p className='d-flex m-0 mb-2'>
+              <span className={styles.output} style={{ color: '#b17d00' }}>
+                الموضوع
+              </span>
+              : <span className={styles.resultat}>{props.category}</span>
+            </p>
+          </div>
+
           {props.comments && (
             <div
               className={`d-flex align-items-center alignItem ${styles.alignItem}`}
@@ -116,21 +161,15 @@ const ItemList = (props) => {
           <div
             className={`d-flex align-items-center alignItem ${styles.alignItem}`}
           >
-            <p className='d-flex text-warning m-0 mb-2'>
+            <p className='d-flex m-0 mb-2'>
               {' '}
-              <span className={styles.output} style={{ color: '#b17d00' }}>
+              <span className={`text-success ${styles.output}`}>
                 {' '}
                 رقم الحديث{' '}
               </span>
               : <span className={styles.resultat}>{props.numeroHadith}</span>
             </p>
           </div>
-          {/*props.tags && props.tags.map((item, index) =>
-                        <div key={index} className="p-1 d-inline-flex p-2 bd-highlight">
-                                <span className="badge badge-default badge-outlined text-black-50">
-                                    {`#${item.name}`}
-                                </span>
-                        </div>)*/}
         </div>
       </div>
       <hr />
@@ -139,19 +178,15 @@ const ItemList = (props) => {
         style={{ alignItems: 'center' }}
       >
         <FacebookShareButton
+          openShareDialogOnClick={props.showDialog}
+          beforeOnClick={props.onSubmit}
           url={'https://hadithm6.ma/'}
           quote={params}
           className='justify-content-center mx-2'
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        {/* <LinkedinShareButton
-                    url={'www.habouss.com'}
-                    quote={params}
-                    className="mx-2"
-                >
-                    <LinkedinIcon size={32} round/>
-                </LinkedinShareButton> */}
+        <FacebookShareCount url={'https://hadithm6.ma/'} />
         <TwitterShareButton
           url={'https://hadithm6.ma/'}
           title={toShow}
@@ -160,8 +195,10 @@ const ItemList = (props) => {
           <TwitterIcon size={32} round />
         </TwitterShareButton>
         <WhatsappShareButton
+          openShareDialogOnClick={props.showDialog}
+          beforeOnClick={props.onSubmitWTSP}
           url={'https://hadithm6.ma/'}
-          title={params}
+          title={params2}
           separator={'\n'}
           className='mx-2'
         >

@@ -15,6 +15,26 @@
             rgba(14, 65, 40, 1) 100%
     );
 }
+/* .scrollNav li ul {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    width: 165px;
+    top: 35px;
+    visibility: hidden;
+    z-index: 10;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+  }
+  
+  .scrollNav li:hover ul {
+    opacity: 1;
+    top: 50px;
+    visibility: visible;
+  } */
 .show {
     display: block;
   }
@@ -105,11 +125,10 @@
     content: none;
 }
 
-#navbarNav {
+/* #navbarNav {
     max-width: 70%;
     overflow-x: clip;
-    /* max-width: 67%; */
-}
+} */
 
 .NavBar .navbarNav .dropdownMenu {
     border: 0;
@@ -157,15 +176,24 @@
     display: inline-block;
 } */
 .listMenu li{
+    flex: 1 1 auto;
     color: black;
-    padding: 12px 16px;
+    /* padding: 12px 16px; */
+    padding: 0.4rem 1rem !important;
     text-decoration: none;
     display: block;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     text-align: right;
+    border-bottom: 1px solid rgba(175, 172, 172, 0.561);
+}
+.logoSticky img{
+    width: 8vw !important;
+}
+.listMenu li:hover{
+    background-color: rgba(219, 224, 221, 0.561);
 }
 /* .contentDropdown{
-    position: fixed !important;
+    z-index: 999;
 } */
 .btnFaq {
     /*min-width: 270px !important;*/
@@ -399,10 +427,20 @@
         width: 90% !important;
     }
     .responsiveSearch div{
-        width: 96% !important;
+        width: 98% !important;
     }
     .search{
         color: #000 !important;
+    }
+    .iconSearchInput{
+        background-color: '#157646';
+        margin-right: -12px !important;
+        padding: 0% !important;
+        width: 15px !important;
+        margin: 0% !important;
+    }
+    .responsiveSearch input {
+        width: 270% !important;
     }
 }
 
@@ -415,6 +453,9 @@
 @media (max-width: 425px) {
     .logo {
         width: 100px;
+    }
+    .linkQa img{
+        zoom: 0.8 !important;
     }
 }
 
@@ -438,6 +479,7 @@
     .NavBar a {
         padding: 0 !important;
     }
+    
 }
 @media screen and (max-width: 450px){
     .quesAnserImg{

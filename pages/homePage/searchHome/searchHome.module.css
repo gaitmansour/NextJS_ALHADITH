@@ -40,9 +40,13 @@
     padding: 0 1.5em;
     margin: 0 5em;
     color: #fff;
-    background-color: #129D59;
+    background-color: #FEBB1A;
     border:none;
     border-radius: 32px;
+}
+
+.buttonSearch:hover{
+    box-shadow: 2px 2px 12px #a9aeb6;
 }
 
 @media (max-width: 480px){

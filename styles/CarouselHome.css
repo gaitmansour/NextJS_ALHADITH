@@ -15,13 +15,15 @@
     z-index: 1000;
     right: -60px;
     list-style: none;
-    display: block;
+    /* display: block; */
     position: absolute;
     top: 10%;
     margin-top: -10px;
     text-align: right;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 1rem 0;
+    display: flex !important;
+    flex-direction: column-reverse;
 }
 
 .vertical-dots li {
@@ -30,6 +32,7 @@
     height: 10px;
     cursor: pointer;
     z-index: 9999;
+    flex-direction: column-reverse;
 }
 
 .vertical-dots li button {
@@ -65,20 +68,16 @@
     font-family: 'slick';
     font-size: 6px;
     line-height: 20px;
-
     position: absolute;
     top: 0;
     left: 0;
      z-index: 9999;
     width: 20px;
     height: 20px;
-
     content: '•';
     text-align: center;
-
     opacity: .25;
     color: white;
-
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -96,6 +95,7 @@
         right: 20px !important;
         list-style: none;
         display: flex !important;
+        flex-direction: row;
         position: absolute;
         top: 92% !important;
         margin-right: 40%;
@@ -139,9 +139,10 @@
         right: 20px !important;
         list-style: none;
         display: flex !important;
+        justify-content: center !important;
         position: absolute;
-        top: 91% !important;
-        margin-right: 34%;
+        top: 93% !important;
+        /* margin-right: 34%; */
         text-align: center !important;
         /* background-color: rebeccapurple; */
     } 
@@ -179,7 +180,7 @@
     .vertical-dots {
         right: 20px !important;
         top: 92% !important;
-        margin-right: 34%;
+        /* margin-right: 34%; */
     } 
     
 }
@@ -187,7 +188,7 @@
     .vertical-dots {
         right: 20px !important;
         top: 90% !important;
-        margin-right: 34%;
+        /* margin-right: 34%; */
     } 
 }
 

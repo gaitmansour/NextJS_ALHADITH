@@ -17,15 +17,14 @@ import Theme1 from '../components/Theme1'
 import Theme2 from '../components/Theme2'
 import ScrollButton from '../components/ScrollButton'
 import DoroussHaditha from './homePage/DoroussHaditha'
+import News from './homePage/News'
 
 const HomeScreen = (props) => {
-  //console.log('props*************************',props)
   const [sections, setSections] = useState([])
   const [dataSection, setdataSection] = useState([])
   const url = getNewSections()
   const getData = async () => {
     FetchAPI(url).then((data) => {
-      //  console.log("data Resources ==> ", data)
       if (data.success) {
         setSections(data?.data)
       }
@@ -59,9 +58,17 @@ const HomeScreen = (props) => {
       <TopBar />
       <NavBar {...props} />
       <Body>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
+        {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <CarouselHome />
         <SearchSection />
+        <News />
         <CommanderieCroyants {...props}/>
         <DoroussHaditha />
         <Resources />

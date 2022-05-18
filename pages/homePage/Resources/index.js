@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Link from 'next/link'
 import _ from 'lodash'
-import { getResourcesData, base_url } from '../../../endpoints'
+import { getResourcesData, base_url, getMenuByName } from '../../../endpoints'
 import FetchAPI from '../../../API'
 import Loading from '../../../components/_UI/Loading'
 import Cards from '../../../components/_UI/Cards'
@@ -21,6 +21,7 @@ const Resources = () => {
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    speed: 4000,
     arrows: false,
     responsive: [
       {
@@ -86,7 +87,28 @@ const Resources = () => {
   const [dataAPI, setDataAPI] = useState({})
   const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
   const url = getResourcesData(getLanguage)
-
+  const getDataMenu = async (x) => {
+    FetchAPI(getMenuByName(x)).then((data) => {
+      if (data.success) {
+        localStorage.setItem(
+          'categorieTitle',
+          JSON.stringify({
+            tidChild: data?.data[0]?.tid,
+            parent: data?.data[0]?.parent_target_id_1,
+            child: data?.data[0]?.name_1,
+            contenuArticle:
+              data?.data[0]?.field_contenu_default !== ''
+                ? data?.data[0]?.field_contenu_default
+                : data?.data[0]?.name_1,
+          })
+        )
+        localStorage.setItem(
+          'tid',
+          JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
@@ -121,21 +143,21 @@ const Resources = () => {
           <Slider {...settings} className={`${styles.slide} slide px-2 `}>
             {dataAPI?.data?.map((item, i) => {
               const { title, body, field_icone, field_lien } = item?.attributes
-              console.log('title-----------------------', title)
+
               const toShow = body?.processed?.substring(0, 80) + '.....'
-              $(document).ready(function () {
-                $('.links').contextmenu(function (event) {
-                  localStorage.setItem(
-                    'routeState',
-                    JSON.stringify({
-                      fromNav: {},
-                      selectedItem: title,
-                      from: 'ressources',
-                      contenuArticle:""
-                    })
-                  )
-                })
-              })
+              // $(document).ready(function () {
+              //   $('.links').contextmenu(function (event) {
+              //     localStorage.setItem(
+              //       'routeState',
+              //       JSON.stringify({
+              //         fromNav: {},
+              //         selectedItem: title,
+              //         from: 'ressources',
+              //         contenuArticle: '',
+              //       })
+              //     )
+              //   })
+              // })
               return (
                 <Cards
                   id={'cards'}
@@ -147,27 +169,35 @@ const Resources = () => {
                     role='button'
                     href={{
                       pathname:
-                        field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
+                        title === 'المصحف المحمدي'
                           ? '/Almoshaf'
-                          : field_lien[0]?.uri.slice(9),
-                      query: { from: 'ressources', selectedItem: title ,contenuArticle:""},
+                          : `/article/${title?.split(' ').join('-')}`,
+                      query: {
+                        from: 'ressources',
+                        selectedItem: title,
+                        contenuArticle: '',
+                      },
                     }}
                     as={
-                      field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
-                        ? '/المصحف المحمدي'
-                        : field_lien[0]?.uri.slice(9)
+                      title === 'المصحف المحمدي'
+                        ? '/المصحف-المحمدي'
+                        : `/article/${title?.split(' ').join('-')}`
                     }
                   >
-                    <a className='text-decoration-none' onClick={()=>{
-                      localStorage.setItem(
+                    <a
+                      className='text-decoration-none'
+                      onClick={() => {
+                        getDataMenu(title)
+                        /*localStorage.setItem(
                           'categorieTitle',
                           JSON.stringify({
                             parent: 'موارد',
                             child: title,
                             contenuArticle: title
                           })
-                      )
-                    }}>
+                      )*/
+                      }}
+                    >
                       <div className={`${styles.boxImg} m-auto`}>
                         <Image
                           loader={myLoader}
@@ -185,23 +215,15 @@ const Resources = () => {
                       />
 
                       <a
-                        className={`${
-                          styles.action
-                        } d-flex justify-content-between ${
-                          styles.btn
-                        } btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${
-                          dataAPI?.data.length < 4
-                            ? 'flex-row-reverse'
-                            : 'flex-row'
-                        } button`}
+                        className={`${styles.action} d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 button`}
                       >
-                        <i className='fas fa-long-arrow-alt-left text-white' />
+                        <i className='fas fa-long-arrow-alt-left text-white mx-2' />
                         <p
-                          className='m-0'
-                          style={{
-                            textAlign: 'justify !important',
-                            textJustify: 'inter-word !important',
-                          }}
+                          className='m-0 mx-2'
+                          // style={{
+                          //   textAlign: 'justify !important',
+                          //   textJustify: 'inter-word !important',
+                          // }}
                         >
                           {'لمعرفة المزيد'}
                         </p>

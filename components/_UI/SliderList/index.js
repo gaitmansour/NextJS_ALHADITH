@@ -41,74 +41,84 @@ const SliderList = (props) => {
 
   return (
     <Widget className={`${className}`}>
-      <div className={`${styles.SliderList} SliderList`}>
-        {/* <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2> */}
-        <SectionTitle
-          className={styles.titleSection}
-          title={'مواضيع ذات صلة'}
-        />
-        <Slider {...settings} className='slide my-4'>
-          {data?.map((item, index) => {
-            var stripedTitle = item.title.replace(/<[^>]+>/g, '')
+      {data.length > 0 ? (
+        <div className={`${styles.SliderList} SliderList`}>
+          {/* <h2 className='text-success fw-bold'> مواضيع ذات صلة</h2> */}
+          <SectionTitle
+            className={styles.titleSection}
+            title={'مواضيع ذات صلة'}
+          />
+          <Slider {...settings} className='slide my-4'>
+            {data?.map((item, index) => {
+              //console.log('____item slider', item)
+              var stripedTitle = item.title.replace(/<[^>]+>/g, '')
 
-            var rmSpaces = stripedTitle.trim()
-            if (rmSpaces === 'جدول الدروس الحسنية') {
-              var pathN = '/جدول الدروس الحسنية'
-            } else {
-              pathN = rmSpaces
-            }
-            return (
-              <Link
-                passHref
-                href={{pathname:pathN,query:{contenuArticle:rmSpaces}}}
-                key={index.toString()}
-                className='text-white'
-              >
-                <a
-                  style={{ textDecoration: 'none' }}
-                  className={`${data?.length > 5 ? 'flex-row-reverse' : ''} ${
-                    styles.cardSlid
-                  } linksSlider item-card-content d-flex  align-items-center  py-2`}
-                  onClick={()=>console.log('item????????????????????',item)}
+              var rmSpaces = stripedTitle.trim()
+              if (rmSpaces === 'جدول الدروس الحسنية') {
+                var pathN = '/جدول الدروس الحسنية'
+              } else {
+                pathN = rmSpaces
+              }
+              return (
+                <Link
+                  passHref
+                  href={{
+                    pathname: pathN?.split(' ').join('-'),
+                    query: { contenuArticle: rmSpaces },
+                  }}
+                  key={index.toString()}
+                  className='text-white'
                 >
-                  {item?.field_image ? (
-                    <Image
-                      src={item?.field_image}
-                      alt=''
-                      objectFit='cover'
-                      className={'ImageSlider'}
-                      width='100%'
-                      height='100%'
-                      loader={props.loader}
-                    />
-                  ) : (
-                    <Image
-                      src={Logos.logo_web}
-                      alt=''
-                      objectFit='cover'
-                      className={'ImageSlider'}
-                      width={160}
-                      height='90%'
-                    />
-                  )}
+                  <a
+                    style={{ textDecoration: 'none' }}
+                    className={`${data?.length > 5 ? 'flex-row-reverse' : ''} ${
+                      styles.cardSlid
+                    } linksSlider item-card-content d-flex  align-items-center  py-2`}
+                    onClick={() =>
+                      console.log('item????????????????????', item)
+                    }
+                  >
+                    {item?.field_image.trim() ? (
+                      <Image
+                        src={item?.field_image}
+                        alt=''
+                        objectFit='cover'
+                        className={'ImageSlider'}
+                        width='100%'
+                        height='100%'
+                        loader={props.loader}
+                      />
+                    ) : (
+                      <Image
+                        src={Logos.logo_hadith_m6}
+                        alt=''
+                        objectFit='cover'
+                        className={'ImageSlider'}
+                        width={170}
+                        height='90%'
+                      />
+                    )}
 
-                  <div className='mx-3  w-100'>
-                    <p
-                      className='text-success text-end'
-                      onClick={props.onClick}
-                    >
-                      {rmSpaces}
-                    </p>
-                    {/* <span className='text-success text-decoration-underline'>
+                    <div className='mx-3  w-100'>
+                      <p
+                        className='text-success text-end'
+                        onClick={props.onClick}
+                      >
+                        {rmSpaces}
+                      </p>
+                      {/* <span className='text-success text-decoration-underline'>
                               لمعرفة المزيد
                             </span> */}
-                  </div>
-                </a>
-              </Link>
-            )
-          })}
-        </Slider>
-      </div>
+                    </div>
+                  </a>
+                </Link>
+              )
+            })}
+          </Slider>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </Widget>
   )
 }

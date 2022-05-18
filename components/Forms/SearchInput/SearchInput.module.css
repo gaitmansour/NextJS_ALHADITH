@@ -20,6 +20,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: white;
+    padding: 1rem;
 }
 
 .boxSearch .iconSearch {
@@ -50,12 +51,24 @@ er {
 /* .inputSearch::placeholder{
     text-overflow: ellipsis;
 } */
+.input::placeholder{
+    font-size: 15px;
+}
 .inputSearch::placeholder{
     overflow: hidden;
     text-overflow:ellipsis !important;
-    font-size: 18px;
+    font-size: 15px;
 }
 /* Style for viewports greater than 480px wide. */
+@media screen and (min-width: 1610px) and (max-width: 1922px) {
+    .iconKeyboard{
+        margin-left: -25px !important;
+    }
+    .input{
+        width: 100% !important;
+        margin-left: -15 !important;
+    }
+}
 @media (max-width: 835px) {
     .boxSearch input{
         box-shadow: none !important;
@@ -67,7 +80,7 @@ er {
     .boxSearch input{
         box-shadow: none !important;
         background: none !important;
-        width: 80% !important;
+        width: 90% !important;
     }
 }
 @media (max-width: 480px) {
@@ -77,13 +90,19 @@ er {
 
     .boxSearch {
         margin: 0;
-        padding: 0 17px;
+        padding: 0px;
         margin-bottom: 0.5rem !important;
     }
     .boxSearch input{
         box-shadow: none !important;
         background: none !important;
-        width: 80% !important;
+        width: 95% !important;
+    }
+    .inputSearch::placeholder{
+        font-size: 13px;
+    }
+    .boxSearch .iconSearch{
+        zoom: 0.8;
     }
 }
 

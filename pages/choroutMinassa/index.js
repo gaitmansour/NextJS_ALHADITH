@@ -19,14 +19,13 @@ const ChoroutMinassa = (props) => {
       path: '/شرط المنصة',
     },
   ]
-  const url = getArticleById('منصة الحديث النبوي')
+  const url = getArticleById('شرط المنصة')
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
         setDataAPI(data?.data)
       }
     })
-    // console.log('data condition', dataAPI?.data[0]?.attributes?.body?.value)
   }
   useEffect(() => {
     getData()
@@ -42,6 +41,12 @@ const ChoroutMinassa = (props) => {
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='شرط المنصة'>
       <Body className='TemplateArticleBody Media d-flex p-4'>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
         <>
           <div
             className={styles.desc}

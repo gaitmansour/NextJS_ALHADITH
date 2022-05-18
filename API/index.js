@@ -21,7 +21,7 @@ const FetchAPI = async (url) => {
   })
   .catch(function (error) {
     // handle error
-    console.log(error);
+   // console.log(error);
     return {
         data: null,
         success: false,

@@ -2,10 +2,11 @@
     background-color: #badbcb;
 }
 .badge{
-    font-size: 16px !important;
-    padding: 0.5em 1.5em !important;
+    font-size: 14px !important;
+    padding: 0.4em 1.2em !important;
     color: #fff;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 /* @media screen and (min-width: 240px) and (max-width: 540px)  {

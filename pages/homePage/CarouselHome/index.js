@@ -4,7 +4,14 @@ import { Backgrounds } from '../../../assets'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import _ from 'lodash'
-import { getCarousel, base_url, getSlider } from '../../../endpoints'
+import {
+  getCarousel,
+  base_url,
+  getSlider,
+  getMenuByName,
+  getArticleById,
+  getArticleByIdName,
+} from '../../../endpoints'
 import FetchAPI from '../../../API'
 import { Carousel } from 'react-bootstrap'
 import Loading from '../../../components/_UI/Loading'
@@ -16,19 +23,40 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 const CarouselHome = (props) => {
-
-
   const [dataAPI, setDataAPI] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [newData, setNewData] = useState([])
   const { t, i18n } = useTranslation('home')
   const isRTL = i18n?.language === 'ar'
   const getLanguage = isRTL ? 'ar' : 'fr'
   const more = 'اقرأ المزيد'
   const url = getCarousel()
   const urlSlider = getSlider()
+
+  const getDataSliderHome = () => {
+    setIsLoading(true)
+    try {
+      FetchAPI(urlSlider).then((data) => {
+        if (data.success) {
+          setDataAPI(data?.data)
+          setIsLoading(false)
+        }
+      })
+    } catch (error) {
+      setIsLoading(false)
+    }
+  }
+  useEffect(() => {
+    getDataSliderHome()
+  }, [])
+  useEffect(() => {
+    setNewData(_.sortBy(dataAPI, 'field_ordre_slider'))
+  }, [isLoading, dataAPI])
+
   let settings = {
     dotsClass: 'vertical-dots',
     dots: true,
-    infinite: dataAPI.length > 3,
+    infinite: newData.length > 3,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -94,17 +122,7 @@ const CarouselHome = (props) => {
       },
     ],
   }
-  const getDataSliderHome = () => {
-    FetchAPI(urlSlider).then((data) => {
-      // console.log("data CarouselHome ==> ", data)
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
-  }
-  useEffect(() => {
-    getDataSliderHome()
-  }, [])
+
   if (_.isEmpty(dataAPI)) {
     return (
       <div className='d-flex align-items-center justify-content-center py-5'>
@@ -113,9 +131,49 @@ const CarouselHome = (props) => {
     )
   }
 
+  const getData = async (x) => {
+    return FetchAPI(getArticleByIdName(x)).then((data) => {
+      if (data.success) {
+        let array = data?.data?.included.filter(
+          (item) => item.type === 'taxonomy_term--alahadyt'
+        )
+
+        return array[0]?.attributes?.name
+      }
+    })
+  }
+  const getDataMenu = async (x) => {
+    getData(x).then((r) => {
+      FetchAPI(getMenuByName(r)).then((data) => {
+        if (data.success) {
+          localStorage.setItem(
+            'categorieTitle',
+            JSON.stringify({
+              tidChild: data?.data[0]?.tid,
+              parent: data?.data[0]?.parent_target_id_1,
+              child: data?.data[0]?.name_1,
+              contenuArticle:
+                data?.data[0]?.field_contenu_default !== ''
+                  ? data?.data[0]?.field_contenu_default
+                  : x,
+            })
+          )
+          localStorage.setItem(
+            'tid',
+            JSON.stringify(data?.data[0]?.parent_target_id)
+          )
+        }
+      })
+    })
+  }
   const myLoader = ({ src, width, quality }) => {
     return `${base_url}/${src}`
   }
+
+  let sortData = _.sortBy(dataAPI, 'field_ordre_slider')
+  let test = sortData?.map((item, index) => {
+    return item
+  })
 
   return (
     <div
@@ -127,9 +185,12 @@ const CarouselHome = (props) => {
         <SMLinks className='smLinks' />
       </div>
       <Slider {...settings} className={`w-100 slide`}>
-        {dataAPI?.map((item, index) => {
-          console.log('data slider----------',item)
-          const toShow = item?.body_1?.substring(0, 251)
+        {newData?.map((item, index) => {
+          const toShow = item?.body_1
+            ?.split(' ')
+            .slice(0, 20)
+            .join(' ')
+            .concat('...')
           if (item.field_image.includes('src=')) {
             var str = item.field_image
               .substr(item.field_image.lastIndexOf('src='))
@@ -137,23 +198,22 @@ const CarouselHome = (props) => {
               .slice(5)
             var element2 = str.slice(0, -1)
           }
-          $(document).ready(function () {
-            $('.linksCarousel').contextmenu(function (event) {
-              localStorage.setItem(
-                'routeState',
-                JSON.stringify({
-                  fromNav: {},
-                  selectedItem: item?.term_node_tid,
-                  from: 'CarouselHome',
-                  contenuArticle:""
-                })
-              )
-            })
-          })
-
+          // $(document).ready(function () {
+          //   $('.linksCarousel').contextmenu(function (event) {
+          //     localStorage.setItem(
+          //       'routeState',
+          //       JSON.stringify({
+          //         fromNav: {},
+          //         selectedItem: item?.term_node_tid,
+          //         from: 'CarouselHome',
+          //         contenuArticle: '',
+          //       })
+          //     )
+          //   })
+          // })
           return (
             <Carousel.Item
-              key={index}
+              key={index.toString()}
               className={`${styles.ImgSlide} w-100 `}
             >
               <Image
@@ -174,36 +234,31 @@ const CarouselHome = (props) => {
                   marginLeft: 150,
                 }}
               >
-                <p>{toShow}</p>
                 <Link
                   href={{
-                    pathname: '/article/' + item?.title,
+                    pathname: '/article/' + item?.title?.split(' ').join('-'),
                     query: {
                       from: 'CarouselHome',
                       selectedItem: item?.term_node_tid,
-                      contenuArticle:""
+                      contenuArticle: '',
                     },
                   }}
-                  as={'/article/' + item?.title}
+                  as={'/article/' + item?.title?.split(' ').join('-')}
                 >
-                  <a
-                    role={'button'}
-                    className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
-                  onClick={()=>{
-                    localStorage.setItem(
-                        'categorieTitle',
-                        JSON.stringify({
-                          parent: 'عناية أمير المؤمنين',
-                          child: item?.title,
-                          contenuArticle: item?.title
-                        })
-                    )
-                  }}
-                  >
-                    <h6 className='m-0 px-4'>{more}</h6>
-                    <i
-                      className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
-                    />
+                  <a className='text-decoration-none text-black'>
+                    <p>{toShow}</p>
+                    <a
+                      role={'button'}
+                      className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
+                      onClick={() => {
+                        getDataMenu(item?.title)
+                      }}
+                    >
+                      <h6 className='m-0 px-4'>{more}</h6>
+                      <i
+                        className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
+                      />
+                    </a>
                   </a>
                 </Link>
               </div>

@@ -28,6 +28,12 @@
 .backToTop:focus {
   color: #000000;
 }
+
+@media (max-width: 480px) {
+  .backToTop {
+    display: none !important;
+}
+}
 @media (max-width: 426px) {
   .backToTop {
     position: fixed; /* Fixed/sticky position */

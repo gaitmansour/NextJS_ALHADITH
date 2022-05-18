@@ -38,6 +38,19 @@
 list-style: number !important;
 display: list-item;
 }
+/* .desc ol > li > h2 {
+list-style: number !important;
+display: list-item;
+} */
+/* .desc ol > li > h2{
+    color: #129D59 !important;
+    list-style: none !important;
+} */
+
+/* .desc li::marker  {
+    color: orange;
+} */
+
 
 .desc p{
     font-family: 'Almarai', sans-serif !important;
@@ -69,12 +82,26 @@ display: list-item;
     line-height: 1.6;
     margin-bottom: 15px;
 }
+.desc h2 > span {
+    margin-top: 0%;
+    font-size: 24px;
+    font-weight: 700;
+    color: #129D59;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
 .desc h3{
     margin-top: 0%;
     font-size: 20px;
     font-weight: 600;
     line-height: 1.6;
     margin-bottom: 15px;
+}
+.desc h6{
+    font-family: 'AALMAGHRIBI', sans-serif !important;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 24px;
 }
 .desc figure {
     text-align: center;
@@ -97,6 +124,13 @@ display: list-item;
 .sectionImage span {
     font-size: 13px;
 }
+.desc table{
+    border: 2px solid #129D59 !important;
+}
+.desc table tr td{
+    border: 1.5px solid #129D59 !important;
+}
+
 /*table{
     background-color: transparent !important;
 }
@@ -106,6 +140,19 @@ table td{
 table td p a{
     text-decoration: underline !important;
 }*/
+
+.articleTags{
+    display: grid !important;
+    grid-gap: 0.4rem !important;
+    grid-template-columns: repeat(auto-fill, minmax(149px, 0.4fr)) !important;
+}
+.sectionTags{
+    text-align: center;
+    margin: 0%;
+}
+.badgTag{
+    margin: 0% ;
+}
 
 @media (max-width: 480px)  {
     .TemplateArticleBody .desc{
@@ -126,7 +173,11 @@ table td p a{
     .TemplateArticleBody .badg{
         width: 100%;
     }
-
+    .desc tbody {
+        overflow-x: auto;
+        display: block;
+        width: 94vw;
+    }
 }
 @media (max-width: 360px)  {
     .TemplateArticleBody .desc{
@@ -157,7 +208,7 @@ table td p a{
         background-color: #ffffff;
     }
     .TemplateArticleBody .desc{
-        width:94vw !important;
+        width:91vw !important;
         max-width: 95vw !important;
         
     }
