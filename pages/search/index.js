@@ -593,6 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                   />
                   <Input
                     type='number'
+                    min='1'
                     className='col-md-4'
                     label='رقم الحديث'
                     placeholder='اكتب رقم الحديث'
