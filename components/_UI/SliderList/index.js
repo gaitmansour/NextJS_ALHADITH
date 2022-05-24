@@ -80,13 +80,13 @@ const SliderList = (props) => {
                   >
                     {item?.field_image.trim() ? (
                       <Image
-                        src={item?.field_image}
+                        src={`${base_url}/${item?.field_image}`}
                         alt=''
                         objectFit='cover'
                         className={'ImageSlider'}
                         width='100%'
                         height='100%'
-                        loader={props.loader}
+                        // loader={props.loader}
                       />
                     ) : (
                       <Image

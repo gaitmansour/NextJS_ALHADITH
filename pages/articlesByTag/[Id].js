@@ -104,8 +104,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                             height={9}
                             layout='responsive'
                             quality={65}
-                            loader={myLoader}
-                            src={data.field_image}
+                            // loader={myLoader}
+                            src={`${base_url}/${data.field_image}`}
                             alt='Card image cap'
                           />
                         ) : (

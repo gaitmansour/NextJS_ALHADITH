@@ -7,23 +7,14 @@ import Slider from 'react-slick'
 import _ from 'lodash'
 import Loading from '../../../components/_UI/Loading'
 import styles from './DoroussHaditha.module.css'
-import {
-  base_url,
-  getVideoByParent,
-  getVideoDorouss,
-  getVideoMedia,
-} from '../../../endpoints'
+import { base_url, getVideoByParent } from '../../../endpoints'
 import FetchAPI from '../../../API'
-import $ from 'jquery'
-import ReactPlayer from 'react-player'
 import { Icons } from '../../../assets'
 import Image from 'next/image'
 
 const DoroussTab = ({ title, tid }) => {
-  const url = getVideoMedia(title)
   const [dataAPI, setDataAPI] = useState([])
   const [isLoding, setIsLoding] = useState(false)
-  const [start, setStart] = useState(false)
   const urlgetData = getVideoByParent(null, tid)
 
   useEffect(() => {
@@ -41,24 +32,8 @@ const DoroussTab = ({ title, tid }) => {
     }
   }, [tid])
 
-  // useEffect(() => {
-  //   try {
-  //     setIsLoding(true)
-  //     FetchAPI(url).then((data) => {
-  //       if (data.success) {
-  //         setDataAPI(data?.data)
-  //         setIsLoding(false)
-  //         console.log('dataaaa D.H ===>', data?.data)
-  //       }
-  //     })
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }, [])
-
   const settings = {
     dots: true,
-    infinite: false,
     autoplay: true,
     slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
     slidesToScroll: 2,
@@ -97,9 +72,7 @@ const DoroussTab = ({ title, tid }) => {
       },
     ],
   }
-  const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
-  }
+
   const renderData = () => {
     try {
       if (isLoding) {
@@ -111,8 +84,6 @@ const DoroussTab = ({ title, tid }) => {
       } else {
         if (dataAPI?.length > 0) {
           return dataAPI?.map((item, i) => {
-            //console.log('-item----', item)
-
             return (
               <div
                 key={i.toString()}
@@ -141,14 +112,14 @@ const DoroussTab = ({ title, tid }) => {
                 >
                   <a className='text-decoration-none'>
                     <Image
-                      src={item?.field_thumbnail_video}
+                      src={`${base_url}/${item?.field_thumbnail_video}`}
                       className=''
                       objectFit='cover'
                       width={10}
                       height={6}
                       layout='responsive'
-                      quality={65}
-                      loader={myLoader}
+                      quality={70}
+                      // loader={myLoader}
                       alt={title}
                     />
                     <p

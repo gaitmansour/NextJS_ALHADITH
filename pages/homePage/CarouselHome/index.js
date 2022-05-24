@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CarouselHome.module.css'
-import { Backgrounds } from '../../../assets'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import _ from 'lodash'
@@ -9,7 +8,6 @@ import {
   base_url,
   getSlider,
   getMenuByName,
-  getArticleById,
   getArticleByIdName,
 } from '../../../endpoints'
 import FetchAPI from '../../../API'
@@ -17,7 +15,6 @@ import { Carousel } from 'react-bootstrap'
 import Loading from '../../../components/_UI/Loading'
 import SMLinks from '../../../components/_UI/SMLinks'
 import Image from 'next/image'
-import $ from 'jquery'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -123,14 +120,6 @@ const CarouselHome = (props) => {
     ],
   }
 
-  if (_.isEmpty(dataAPI)) {
-    return (
-      <div className='d-flex align-items-center justify-content-center py-5'>
-        <Loading />
-      </div>
-    )
-  }
-
   const getData = async (x) => {
     return FetchAPI(getArticleByIdName(x)).then((data) => {
       if (data.success) {
@@ -166,14 +155,6 @@ const CarouselHome = (props) => {
       })
     })
   }
-  const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
-  }
-
-  let sortData = _.sortBy(dataAPI, 'field_ordre_slider')
-  let test = sortData?.map((item, index) => {
-    return item
-  })
 
   return (
     <div
@@ -184,92 +165,84 @@ const CarouselHome = (props) => {
       >
         <SMLinks className='smLinks' />
       </div>
-      <Slider {...settings} className={`w-100 slide`}>
-        {newData?.map((item, index) => {
-          const toShow = item?.body_1
-            ?.split(' ')
-            .slice(0, 20)
-            .join(' ')
-            .concat('...')
-          if (item.field_image.includes('src=')) {
-            var str = item.field_image
-              .substr(item.field_image.lastIndexOf('src='))
-              .split(' ')[0]
-              .slice(5)
-            var element2 = str.slice(0, -1)
-          }
-          // $(document).ready(function () {
-          //   $('.linksCarousel').contextmenu(function (event) {
-          //     localStorage.setItem(
-          //       'routeState',
-          //       JSON.stringify({
-          //         fromNav: {},
-          //         selectedItem: item?.term_node_tid,
-          //         from: 'CarouselHome',
-          //         contenuArticle: '',
-          //       })
-          //     )
-          //   })
-          // })
-          return (
-            <Carousel.Item
-              key={index.toString()}
-              className={`${styles.ImgSlide} w-100 `}
-            >
-              <Image
-                src={element2}
-                loader={myLoader}
-                alt={''}
-                // layout='fill'
-                objectFit='cover'
-                height={1850}
-                width={5000}
-              />
+      {isLoading ? (
+        <div className='d-flex align-items-center justify-content-center py-5'>
+          <Loading />
+        </div>
+      ) : (
+        <Slider {...settings} className={`w-100 slide`}>
+          {newData?.map((item, index) => {
+            const toShow = item?.body_1
+              ?.split(' ')
+              .slice(0, 20)
+              .join(' ')
+              .concat('...')
+            if (item.field_image.includes('src=')) {
+              var str = item.field_image
+                .substr(item.field_image.lastIndexOf('src='))
+                .split(' ')[0]
+                .slice(5)
+              var element2 = str.slice(0, -1)
+            }
 
-              <div
-                className={`${styles.carouselCaption} px-4 carousel-caption d-md-block`}
-                style={{
-                  backgroundColor: 'white',
-                  opacity: 0.8,
-                  marginLeft: 150,
-                }}
+            return (
+              <Carousel.Item
+                key={index.toString()}
+                className={`${styles.ImgSlide} w-100 `}
               >
-                <Link
-                  href={{
-                    pathname: '/article/' + item?.title?.split(' ').join('-'),
-                    query: {
-                      from: 'CarouselHome',
-                      selectedItem: item?.term_node_tid,
-                      contenuArticle: '',
-                    },
-                  }}
-                  as={'/article/' + item?.title?.split(' ').join('-')}
-                >
-                  <a className='text-decoration-none text-black'>
-                    <p>{toShow}</p>
-                    <a
-                      role={'button'}
-                      className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
-                      onClick={() => {
-                        getDataMenu(item?.title)
-                      }}
-                    >
-                      <h6 className='m-0 px-4'>{more}</h6>
-                      <i
-                        className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
-                      />
-                    </a>
-                  </a>
-                </Link>
-              </div>
-            </Carousel.Item>
-          )
-        })}
-      </Slider>
+                <Image
+                  src={`${base_url}/${element2}`}
+                  // loader={myLoader}
+                  alt={''}
+                  // layout='fill'
+                  objectFit='cover'
+                  height={1850}
+                  width={5000}
+                  quality={70}
+                  // priority
+                />
 
-      {/*  <div className={`${styles.bg_dashed}bg_dashed position-absolute w-100`}
-                 style={{backgroundImage: `url(${Backgrounds.bg_dashed})`}}/>
-           <div className="bg_arabic_design_slide h-100 position-absolute w-100" style={{ backgroundImage: `url(${Backgrounds.bg_arabic_design_slide.default})`, opacity: .7 }} /> */}
+                <div
+                  className={`${styles.carouselCaption} px-4 carousel-caption d-md-block`}
+                  style={{
+                    backgroundColor: 'white',
+                    opacity: 0.8,
+                    marginLeft: 150,
+                  }}
+                >
+                  <Link
+                    href={{
+                      pathname: '/article/' + item?.title?.split(' ').join('-'),
+                      query: {
+                        from: 'CarouselHome',
+                        selectedItem: item?.term_node_tid,
+                        contenuArticle: '',
+                      },
+                    }}
+                    as={'/article/' + item?.title?.split(' ').join('-')}
+                  >
+                    <a className='text-decoration-none text-black'>
+                      <p>{toShow}</p>
+                      <button
+                        role={'button'}
+                        className={`${styles.btn} linksCarousel btn bg-success rounded-0 text-white d-flex align-items-center p-0 ${styles.carouselItem} itemCarousel`}
+                        onClick={() => {
+                          getDataMenu(item?.title)
+                        }}
+                      >
+                        <h6 className='m-0 px-4'>{more}</h6>
+                        <i
+                          className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
+                        />
+                      </button>
+                    </a>
+                  </Link>
+                </div>
+              </Carousel.Item>
+            )
+          })}
+        </Slider>
+      )}
     </div>
   )
 }

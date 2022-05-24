@@ -148,7 +148,9 @@ const TopBar = (props) => {
       ref={elementRef}
     >
       <div className={`${styles.sectionHeader} container-fluid my-2`}>
-        <Brand className={styles.SecBrand} />
+        <Link href='/' passHref>
+          <Brand className={styles.SecBrand} />
+        </Link>
         {elementShow && (
           <SearchInput
             className={`${styles.search} text-white `}

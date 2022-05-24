@@ -1,25 +1,15 @@
-import useTranslation from 'next-translate/useTranslation'
+import React from 'react'
 import Link from 'next/link'
 import styles from './CommanderieCroyants.module.css'
 import _ from 'lodash'
-import {
-  getCommanderieCroyantsData,
-  base_url,
-  getMenuByName,
-} from '../../../endpoints'
+import { getMenuByName } from '../../../endpoints'
 import FetchAPI from '../../../API'
 import Loading from '../../../components/_UI/Loading'
 import Cards from '../../../components/_UI/Cards'
 import SectionTitle from '../../../components/_UI/SectionTitle'
-import React, { useEffect, useState } from 'react'
-import $ from 'jquery'
-import {getAllCommanderie} from "../../../lib/home/commanderieCroyants";
+import { getAllCommanderie } from '../../../lib/home/commanderieCroyants'
 
 const CommanderieCroyants = (props) => {
-  const { t, i18n } = useTranslation('CommanderieCroyants')
-  //const [dataAPI, setDataAPI] = useState({})
-  /*const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
-  */const url = getCommanderieCroyantsData('ar', 'عناية أمير المؤمنين')
   const getDataMenu = async (x) => {
     FetchAPI(getMenuByName(x)).then((data) => {
       if (data.success) {
@@ -42,18 +32,7 @@ const CommanderieCroyants = (props) => {
       }
     })
   }
- /* const getData = async () => {
-    FetchAPI(url).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
-  }
 
-  useEffect(() => {
-    getData()
-  }, [])
-*/
   const renderContent = () => {
     try {
       if (_.isEmpty(props.dataAPI)) {
@@ -65,133 +44,99 @@ const CommanderieCroyants = (props) => {
       }
       return (
         <div className='row my-4'>
-          {props.dataAPI && props.dataAPI?.data?.map((item, i) => {
-            const { title, body, field_code_couleur, field_lien } =
-              item?.attributes
+          {props.dataAPI &&
+            props.dataAPI?.data?.map((item, i) => {
+              const { title, body, field_code_couleur, field_lien } =
+                item?.attributes
 
-            // console.log('commanderieCroyants', dataAPI?.data)
-            // $(document).ready(function () {
-            //   $('.linksCroyants').contextmenu(function (event) {
-            //     localStorage.setItem(
-            //       'routeState',
-            //       JSON.stringify({
-            //         fromNav: {},
-            //         selectedItem: title,
-            //         title: title,
-            //         from: 'Croyants',
-            //         contenuArticle: '',
-            //       })
-            //     )
-            //   })
-            // })
-
-            // $(document).ready(function () {
-            //   $('.linksCroyants').bind('click', function (e) {
-            //     //console.log("hello ctrl")
-            //     localStorage.setItem(
-            //       'routeState',
-            //       JSON.stringify({
-            //         pathname: `/article/${title?.split(' ').join('-')}`,
-            //         search: '',
-            //         hash: '',
-            //         query: {
-            //           fromNav: {},
-            //           title: title,
-            //           selectedItem: title,
-            //           from: 'Croyants',
-            //           contenuArticle: '',
-            //         },
-            //       })
-            //     )
-            //   })
-            // })
-            const toShow = body?.processed?.substring(0, 50) + '...'
-
-            return (
-              <div
-                className={`${styles.groupCard} col col-12 col-lg-3 col-md-6 col-sm-1`}
-              >
-                <Cards
-                  key={i.toString()}
-                  className={`${styles.CardCommanderieCroyants}  m-auto d-flex justify-content-right align-items-right flex-column`}
-                  style={{
-                    justifyContent: 'flex-end',
-                    flex: 1,
-                    alignItems: 'center',
-                    backgroundColor: 'white',
-                  }}
+              return (
+                <div
+                  key={i}
+                  className={`${styles.groupCard} col col-12 col-lg-3 col-md-6 col-sm-1`}
                 >
-                  <Link
-                    role='button'
-                    href={{
-                      pathname: field_lien[0].uri.includes('internal:')
-                        ? field_lien[0].uri
-                            .replace('internal:', '')
-                            .split(' ')
-                            .join('-')
-                        : field_lien[0].uri.split(' ').join('-'),
-                      search: '',
-                      hash: '',
-                      query: {
-                        fromNav: {},
-                        title: title,
-                        selectedItem: title,
-                        from: 'Croyants',
-                        contenuArticle: '',
-                      },
+                  <Cards
+                    key={i.toString()}
+                    className={`${styles.CardCommanderieCroyants}  m-auto d-flex justify-content-right align-items-right flex-column`}
+                    style={{
+                      justifyContent: 'flex-end',
+                      flex: 1,
+                      alignItems: 'center',
+                      backgroundColor: 'white',
                     }}
-                    as={
-                      field_lien[0].uri.includes('internal:')
-                        ? field_lien[0].uri
-                            .replace('internal:', '')
-                            .split(' ')
-                            .join('-')
-                        : field_lien[0].uri.split(' ').join('-')
-                    }
                   >
-                    <a
-                      className='text-decoration-none text-black'
+                    <Link
                       role='button'
-                      onClick={() => getDataMenu(title)}
-                    >
-                      <h5
-                        className={`${styles.title}  mt-3`}
-                        style={{ color: `#${field_code_couleur}` }}
-                      >
-                        {title}
-                      </h5>
-                      {
-                        <div
-                          className={`${styles.description} pt-3 pb-2`}
-                          dangerouslySetInnerHTML={{ __html: body?.processed }}
-                        />
+                      href={{
+                        pathname: field_lien[0].uri.includes('internal:')
+                          ? field_lien[0].uri
+                              .replace('internal:', '')
+                              .split(' ')
+                              .join('-')
+                          : field_lien[0].uri.split(' ').join('-'),
+                        search: '',
+                        hash: '',
+                        query: {
+                          fromNav: {},
+                          title: title,
+                          selectedItem: title,
+                          from: 'Croyants',
+                          contenuArticle: '',
+                        },
+                      }}
+                      as={
+                        field_lien[0].uri.includes('internal:')
+                          ? field_lien[0].uri
+                              .replace('internal:', '')
+                              .split(' ')
+                              .join('-')
+                          : field_lien[0].uri.split(' ').join('-')
                       }
-
+                    >
                       <a
-                        className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
-                        style={{ background: `#${field_code_couleur}` }}
+                        className='text-decoration-none text-black'
+                        role='button'
                         onClick={() => getDataMenu(title)}
                       >
-                        <i
-                          className='fas fa-long-arrow-alt-left text-white'
-                          style={{
-                            marginRight: '1em',
-                            transform: 'rotate(0deg )',
-                          }}
-                        />
-                        <p
-                          className='m-0'
-                          style={{ textAlign: 'justify !important' }}
+                        <h5
+                          className={`${styles.title}  mt-3`}
+                          style={{ color: `#${field_code_couleur}` }}
                         >
-                          {'لمعرفة المزيد'}
-                        </p>
+                          {title}
+                        </h5>
+                        {body?.processed && (
+                          <div
+                            className={`${styles.description} pt-3 pb-2`}
+                            dangerouslySetInnerHTML={{
+                              __html: body?.processed,
+                            }}
+                          />
+                        )}
+
+                        <button
+                          className={`${styles.shadowSm} linksCroyants  d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white`}
+                          style={{ background: `#${field_code_couleur}` }}
+                          onClick={() => getDataMenu(title)}
+                        >
+                          <i
+                            className='fas fa-long-arrow-alt-left text-white'
+                            style={{
+                              marginRight: '1em',
+                              transform: 'rotate(0deg )',
+                            }}
+                          />
+                          <p
+                            className='m-0'
+                            style={{ textAlign: 'justify !important' }}
+                          >
+                            {'لمعرفة المزيد'}
+                          </p>
+                        </button>
                       </a>
-                    </a>
-                  </Link>
-                </Cards>
-              </div>
-            )
-          })}
+                    </Link>
+                  </Cards>
+                </div>
+              )
+            })}
         </div>
       )
     } catch (error) {
@@ -210,8 +155,7 @@ const CommanderieCroyants = (props) => {
 export const getServerSideProps = async () => {
   const dataAPI = await getAllCommanderie()
   return {
-    props: JSON.parse(JSON.stringify({dataAPI}))
-
+    props: JSON.parse(JSON.stringify({ dataAPI })),
   }
 }
 export default CommanderieCroyants

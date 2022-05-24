@@ -66,6 +66,7 @@ const CustomSelect = (props) => {
         {label && <label className='form-label'>{label}</label>}
 
         <Select
+          instanceId
           className={`${defaultInputValue ? styles.borderInputSelect : ''} ${
             styles.customSelect
           } custom-select ${classNameSelect}`}

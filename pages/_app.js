@@ -24,9 +24,7 @@ import '../styles/DownloadAPK.css'
 import '../styles/articleByTags.css'
 import '../styles/sliderList.css'
 import '../styles/itemList.css'
-import $ from 'jquery'
-//import 'react-touch-screen-keyboard/lib/Keyboard.css'; // if you just want css
-//import 'react-touch-screen-keyboard/lib/Keyboard.scss';
+
 import { SSRProvider } from '@react-aria/ssr'
 
 function MyApp({ Component, pageProps }) {
@@ -47,8 +45,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         ></script>
         <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width' />
         <link rel='icon' href='/static/Hadith_m6.ico' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        {/* <meta name='viewport' content='width=device-width, initial-scale=1' /> */}
         <meta name='theme-color' content='#129D59' />
         <meta name='description' content='منصة محمد السادس للحديث الشريف' />
         <meta
@@ -57,6 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <link rel='apple-touch-icon' href='/static/logo192.png' />
         <link rel='manifest' href='/static/manifest.json' />
+        <link rel='preconnect' href='https://backend.hadithm6.com' />
+        <link rel='preconnect' href='https://apisearch.hadithm6.com' />
         <title>منصة محمد السادس للحديث الشريف</title>
       </Head>
       <SSRProvider>

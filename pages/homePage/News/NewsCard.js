@@ -14,7 +14,7 @@ const NewsCard = (props) => {
   }
   return (
     <div className={`${styles.CardNews} card m-2`}>
-      <div class={styles.ribbon}>
+      <div className={styles.ribbon}>
         <span>{category_news}</span>
       </div>
       {image?.trim() ? (
@@ -24,9 +24,9 @@ const NewsCard = (props) => {
           width={16}
           height={9}
           layout='responsive'
-          quality={65}
-          loader={myLoader}
-          src={image}
+          quality={70}
+          // loader={myLoader}
+          src={`${base_url}/${image}`}
           alt='Card image cap'
         />
       ) : (
@@ -37,7 +37,7 @@ const NewsCard = (props) => {
           width={16}
           height={9}
           layout='responsive'
-          quality={65}
+          quality={70}
           alt='logo-Al-hadith-Mohammed-VI'
           title='logo Al hadith Mohammed VI'
         />

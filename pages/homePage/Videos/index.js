@@ -1,65 +1,13 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './Videos.module.css'
 import { Icons } from '../../../assets'
-import VideosList from '../../../data/VideosList'
-import useTranslation from 'next-translate/useTranslation'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import Link from 'next/link'
-import { getLive } from '../../../endpoints'
 import _ from 'lodash'
-import FetchAPI from '../../../API'
-import Moment from 'moment'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 import PrayTimes from '../../../components/_Advanced/PrayTimes'
 import Image from 'next/image'
-import Loading from '../../../components/_UI/Loading'
-import React from 'react'
 
 const Videos = () => {
-  var myCurrentDate = new Date()
-  var curD = Moment(myCurrentDate).format('YYYY-MM-DDTHH:mm:ssZ')
-  const { t } = useTranslation('Videos')
-
-  const [data, setData] = useState([])
-
-  const [ApiData, setDataAPI] = useState({})
-  const url = getLive()
-
-  const getData = async () => {
-    FetchAPI(url).then((data1) => {
-      if (data1.success) {
-        setDataAPI(data1.data)
-      }
-    })
-  }
-
-  useEffect(() => {
-    getData()
-    setData(VideosList)
-  }, [])
-
-  try {
-    if (!data?.length > 0) {
-      return (
-        <div className='d-flex align-items-center justify-content-center py-5'>
-          <Loading />
-        </div>
-      )
-    }
-  } catch (error) {
-    //console.log(`CATCH Videos ${error}`)
-  }
-
-  var Exist = []
-  if (!_.isEmpty(ApiData)) {
-    var Exist = ApiData.filter(
-      (item) =>
-        Moment(item.field_date_debut, 'YYYY-MM-DDTHH:mm:ssZ').format() <=
-          curD &&
-        curD < Moment(item.field_date_fin, 'YYYY-MM-DDTHH:mm:ssZ').format()
-    )
-  }
   return (
     <div className={`${styles.container} container Videos px-lg-5 py-5 mx-7`}>
       <Link

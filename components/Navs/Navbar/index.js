@@ -16,8 +16,8 @@ import $ from 'jquery'
 import SearchInput from '../../Forms/SearchInput'
 import CustomModal from '../../_UI/Modal'
 import { useRouter } from 'next/router'
-import {getAllCommanderie} from "../../../lib/home/commanderieCroyants";
-import {getMenuList} from "../../../lib/menu";
+import { getAllCommanderie } from '../../../lib/home/commanderieCroyants'
+import { getMenuList } from '../../../lib/menu'
 
 let isItemDropdown = null
 
@@ -129,8 +129,8 @@ const NavBar = (props) => {
     const navLinks =
       MenuLinks &&
       MenuLinks?.map((item, index) => {
-       // console.log('---------------------------------',item)
-        const CustomDropDown = React.forwardRef(({ onClick }, ref) => (
+        // console.log('---------------------------------',item)
+        const CustomDropDown = React.forwardRef(({ onClick, href }, ref) => (
           <li className={styleDropdownToggle}>
             <a
               className='item-dropdown'
@@ -155,7 +155,7 @@ const NavBar = (props) => {
         // Dropdown needs access to the DOM of the Menu to measure it
         const MenuDropDown = React.forwardRef(
           (
-            { children, style, className, 'aria-labelledby': labeledBy },
+            { children, style, className, 'aria-labelledby': labeledBy, href },
             ref
           ) => {
             const lengthListItems = item?.items?.length
@@ -249,8 +249,8 @@ const NavBar = (props) => {
 
   const renderGlobalMenu = () => {
     const menuLinks =
-        props.MenuGlobal &&
-        props.MenuGlobal?.map((item, index) => {
+      props.MenuGlobal &&
+      props.MenuGlobal?.map((item, index) => {
         if (item?.label !== 'الرئيسية') {
           return item?.label === 'روابط مهمة' ? null : (
             <div
@@ -557,13 +557,10 @@ const NavBar = (props) => {
 }
 export const getServerSideProps = async () => {
   const MenuGlobal = await getMenuList()
-  console.log('xx---------------------',MenuGlobal)
+  console.log('xx---------------------', MenuGlobal)
 
   return {
-    props: JSON.parse(JSON.stringify({MenuGlobal}))
-
+    props: JSON.parse(JSON.stringify({ MenuGlobal })),
   }
 }
 export default NavBar
-
-

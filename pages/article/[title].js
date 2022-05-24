@@ -25,13 +25,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
-import {getAllCommanderie} from "../../lib/home/commanderieCroyants";
-import {getData} from "../../lib/article";
-import {getMenuList} from "../../lib/menu";
+import { getAllCommanderie } from '../../lib/home/commanderieCroyants'
+import { getData, getDataMenu } from '../../lib/article'
+import { getMenuList } from '../../lib/menu'
 import dynamic from 'next/dynamic'
 // import { isMobile, isIOS } from 'react-device-detect'
 
-export default function ArticlePage(props, {dataAPI}) {
+export default function ArticlePage(props, { dataAPI }) {
   let params = useRouter()?.query
   const title = useRouter()?.query?.title?.split('-').join(' ')
 
@@ -39,14 +39,7 @@ export default function ArticlePage(props, {dataAPI}) {
     typeof window !== 'undefined' &&
     JSON.parse(localStorage.getItem('categorieTitle'))
 
-  // params?.contenuArticle !== '' || dataValue.contenuArticle !== ''
-  //   ? params?.contenuArticle || dataValue.contenuArticle
-  //   : title
-  const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
-  }
-
-  const [dataAPI, setDataAPI] = useState({})
+  // const [dataAPI, setDataAPI] = useState({})
   const [showBlockSlider, setShowBlockSlider] = useState(true)
   const [dataTags, setDataTags] = useState([])
   const [dataMenu, setdataMenu] = useState({})
@@ -69,35 +62,6 @@ export default function ArticlePage(props, {dataAPI}) {
     })
   }
 
-  let contenuArticle =
-    params?.from == 'Croyants' && dataMenu?.field_contenu_default
-      ? dataMenu?.field_contenu_default
-      : params?.from == 'CarouselHome' ||
-        params?.from == 'ressources' ||
-        params?.from == 'Croyants'
-      ? title
-      : (params?.contenuArticle !== '' &&
-          params?.contenuArticle !== undefined) ||
-        (dataValue?.contenuArticle !== '' &&
-          dataValue?.contenuArticle !== undefined)
-      ? params?.contenuArticle || dataValue?.contenuArticle
-      : dataMenu?.field_contenu_default
-      ? dataMenu?.field_contenu_default
-      : title
-
-  const url = getArticleById(contenuArticle)
-  /*const getData = async () => {
-    FetchAPI(url).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-        setDataTags(data?.data?.included)
-      }
-    })
-  }
-  useEffect(() => {
-    getData()
-  }, [contenuArticle])*/
-
   const getDataSlider = async (name, tid, parent_target) => {
     const urlSlider = getSideArticle(name, tid, parent_target)
     FetchAPI(urlSlider).then((data) => {
@@ -105,7 +69,9 @@ export default function ArticlePage(props, {dataAPI}) {
         let dataArray = data?.data
         let array = [...dataArray] // make a separate copy of the array
         let index = array.filter(
-          (item) => item.title.replace(/<[^>]+>/g, '') !== contenuArticle
+          (item) =>
+            item.title.replace(/<[^>]+>/g, '') !==
+            props.dataAPI?.data[0]?.attributes?.title
         )
 
         if (index.length === 0) {
@@ -146,7 +112,7 @@ export default function ArticlePage(props, {dataAPI}) {
   }
   let { query } = useRouter()
   let route = useRouter()
-    let router = useRouter().query
+  let router = useRouter().query
 
   useEffect(() => {
     getDataMenu(title?.split('-').join(' ')).then((r) => {
@@ -172,7 +138,7 @@ export default function ArticlePage(props, {dataAPI}) {
   let TID =
     typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
       ? typeof window !== 'undefined' && JSON.parse(localStorage.getItem('tid'))
-      : dataMenu?.parent_target_id
+      : props?.dataMenuA?.parent_target_id
 
   useEffect(() => {
     getItemsMenu(TID)
@@ -184,52 +150,24 @@ export default function ArticlePage(props, {dataAPI}) {
       path: '',
     },
     {
-      title: dataValue?.parent || dataMenu?.parent_target_id_1,
+      title: dataValue?.parent || props?.dataMenuA?.parent_target_id_1,
       path: '',
     },
     {
-      title: dataValue?.child || dataMenu?.name_1,
+      title: dataValue?.child || props?.dataMenuA?.name_1,
       path: '#',
     },
   ]
-    useEffect(() => {
-        if (route && !route.query) {
-            return null;
-        }
-    }, [route]);
-  /*  const removeSelectedItem = (e) => {
-        let array = [...e]; // make a separate copy of the array
-        let index = array.filter((item) => item.title.replace(/<[^>]+>/g, '') !== dataValue.child)
 
-        if (index.length === 0) {
-            setShowBlockSlider(false)
-        } else {
-            setdataSlider(index)
-
-        }
-    }*/
-
-    if (_.isEmpty(props.dataAPI)) {
-        return (
-            <div className='d-flex align-items-center justify-content-center py-5'>
-                <Loading/>
-            </div>
-        )
-    }
-  // if (dataAPI?.data[0]?.attributes?.body?.processed.includes("src=")) {
-  //     var str = dataAPI?.data[0]?.attributes?.body?.processed.substr(dataAPI?.data[0]?.attributes?.body?.processed.lastIndexOf("src=")).split(' ')[0].slice(5)
-  // }
-
-  let contentMeta = props.dataAPI?.data[0]?.attributes?.body?.summary
   return (
     <TemplateArticle
       {...props}
       ListBreadcrumb={data}
-      titlePage={contenuArticle}
+      titlePage={props.dataAPI?.data[0]?.attributes?.title}
       createdArticle={!!props.dataAPI?.data[0]?.attributes?.created}
-      dateArticlePage={Moment(props.dataAPI?.data[0]?.attributes?.created).format(
-        'DD-MM-YYYY'
-      )}
+      dateArticlePage={Moment(
+        props.dataAPI?.data[0]?.attributes?.created
+      ).format('DD-MM-YYYY')}
     >
       <Body
         id='templateArticleBody'
@@ -238,40 +176,40 @@ export default function ArticlePage(props, {dataAPI}) {
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         ></noscript>
         {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
-        <div className={`${styles.articleContent} flex-fill`}>
+        <article className={`${styles.articleContent} flex-fill`}>
           <PageSummary
             className={`${styles.summ} summ my-3`}
             summary={props.dataAPI?.data[0]?.attributes?.body?.summary}
           />
           {/* <PageTitleSecond className="page-title-second py-3" title="مبادرة ملكية لتعميم الحديث النبوي الشريف الصحيح على نطاق واسع" /> */}
           {props.dataAPI?.included &&
-            props.dataAPI?.included[props.dataAPI?.included?.length - 1]?.attributes?.uri
-              ?.url && (
+            props.dataAPI?.included[props.dataAPI?.included?.length - 1]
+              .attributes?.uri?.url && (
               <div className={`${styles.sectionImage}`}>
                 <Image
-                  src={
-                    props.dataAPI?.included[dataAPI?.included?.length - 1]?.attributes
-                      ?.uri?.url
-                  }
+                  src={`${base_url}/${
+                    props.dataAPI?.included[props.dataAPI?.included?.length - 1]
+                      .attributes?.uri?.url
+                  }`}
                   className='m-auto w-100 my-4'
                   objectFit='cover'
                   width={850}
                   height={500}
-                  loader={myLoader}
+                  // loader={myLoader}
                   alt={
-                    props.dataAPI?.data[0]?.relationships?.field_image?.data?.meta
-                      ?.alt
+                    props.dataAPI?.data[0]?.relationships?.field_image?.data
+                      ?.meta?.alt
                   }
                 />
                 <span className='my-3'>
                   {
-                    props.dataAPI?.data[0]?.relationships?.field_image?.data?.meta
-                      ?.alt
+                    props.dataAPI?.data[0]?.relationships?.field_image?.data
+                      ?.meta?.alt
                   }
                 </span>
               </div>
@@ -323,11 +261,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                 )
               })}
           </div>
-        </div>
-        {items[0]?.path === 'article/تعریف' ? (
+        </article>
+        {items[0]?.path === 'article/تعریف الحديث الموضوع' ? (
           <div className={styles.slider} style={{ width: '30%' }}>
             <ListAhadith data={dataAhadith} />
-            <SliderList className='pt-5' data={dataSlider} loader={myLoader} />
+            <SliderList className='pt-5' data={dataSlider} />
           </div>
         ) : (
           <div
@@ -340,11 +278,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
               <SimpleList data={items} />
             )}
             {showBlockSlider ? (
-              <SliderList
-                className='pt-5'
-                data={dataSlider}
-                loader={myLoader}
-              />
+              <SliderList className='pt-5' data={dataSlider} />
             ) : null}
           </div>
         )}
@@ -353,16 +287,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
   )
 }
 
-export const getServerSideProps = async ({query, params}) => {
+export const getServerSideProps = async ({ query, params }) => {
+  // console.log('query=====>>>>>>>>', query)
+  // console.log('params=====>>>>>>>>', params)
+  // let contenuArticle =
+  //   query?.contenuArticle !== '' ? query?.contenuArticle : params?.title
+  const dataMenuArticle = await getDataMenu(params?.title?.split('-').join(' '))
+  let contenuArticle =
+    params?.from == 'Croyants' && dataMenuArticle?.dataMA?.field_contenu_default
+      ? dataMenuArticle?.dataMA?.field_contenu_default
+      : params?.from == 'CarouselHome' ||
+        params?.from == 'ressources' ||
+        params?.from == 'Croyants'
+      ? params?.title?.split('-').join(' ')
+      : query?.contenuArticle
+      ? query?.contenuArticle
+      : dataMenuArticle?.dataMA?.field_contenu_default
+      ? dataMenuArticle?.dataMA?.field_contenu_default
+      : params?.title?.split('-').join(' ')
+  const data = await getData(contenuArticle)
 
-    let contenuArticle = query?.contenuArticle !== "" ? query?.contenuArticle : params?.title
-    const data = await getData(contenuArticle)
-    const MenuGlobal = await getMenuList()
-    console.log('contenuArticle', params?.title)
-    const dataAPI = data.DataAPI
-    const dataTags = data.DataTags
+  const MenuGlobal = await getMenuList()
+  const dataAPI = data?.DataAPI
+  const dataTags = data?.DataTags
+  const dataMenuA = dataMenuArticle?.dataMA
 
-    return {
-        props: JSON.parse(JSON.stringify({MenuGlobal: MenuGlobal, dataAPI: dataAPI, dataTags: dataTags}))
-    }
+  console.log('dataAPI ====>>>>', dataAPI)
+  return {
+    props: JSON.parse(
+      JSON.stringify({
+        MenuGlobal: MenuGlobal,
+        dataAPI: dataAPI,
+        dataTags: dataTags,
+        dataMenuA: dataMenuA,
+      })
+    ),
+  }
 }

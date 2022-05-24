@@ -4,11 +4,12 @@ import { Logos } from '../../../assets'
 import styles from './Brand.module.css'
 import React from 'react'
 
-const Brand = (props) => {
+const Brand = React.forwardRef(({ onClick, href }, ref, props) => {
   const className = props?.className ? props.className : ''
   return (
     <div className={`my-0 ${className} ${styles.logo}`}>
-      <Link href='/' passHref={true}>
+      {/* <Link href='/' passHref={true}> */}
+      <a href={href} onClick={onClick} ref={ref}>
         <Image
           src={Logos.logo_hadith_m6}
           objectFit='cover'
@@ -19,9 +20,10 @@ const Brand = (props) => {
           quality={95}
           alt='logo-Al-hadith-Mohammed-VI'
         />
-      </Link>
+      </a>
+      {/* </Link> */}
     </div>
   )
-}
+})
 
 export default Brand

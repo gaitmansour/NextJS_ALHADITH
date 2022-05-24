@@ -1,39 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Backgrounds } from '../../../assets'
 import Link from 'next/link'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import _ from 'lodash'
-import { getTopic } from '../../../endpoints'
-import FetchAPI from '../../../API'
 import $ from 'jquery'
 import styles from './Alahadiths.module.css'
 import Loading from '../../../components/_UI/Loading'
-import {useRouter} from 'next/router'
-import {getMenuList} from "../../../lib/menu";
-import {getAllCommanderie} from "../../../lib/home/commanderieCroyants";
-import {getDataAhadith} from "../../../lib/ahadith";
 
-const HadithTab = (props, { CodeTopic, Content }) => {
-  let dataALhadith = props?.dataAhadith
+const HadithTab = ({ CodeTopic, Content, ...props }) => {
+  let dataALhadith = props?.dtatttt
 
-  /*const url = getTopic()
-  const [dataAPI, setDataAPI] = useState([])
-  // const {dataAPI} = props
-  useEffect(() => {
-    FetchAPI(`${url}/${CodeTopic}`).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
-  }, [])*/
   const settings = {
     dots: true,
     infinite: false,
     autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: dataALhadith.length > 7 ? 7 : dataAPI.length,
+    slidesToShow: dataALhadith?.length > 5 ? 5 : dataALhadith?.length,
     slidesToScroll: 4,
     speed: 4000,
     arrows: false,
@@ -71,8 +54,6 @@ const HadithTab = (props, { CodeTopic, Content }) => {
     ],
   }
 
-  let router = useRouter()
-
   const renderData = () => {
     try {
       if (_.isEmpty(dataALhadith)) {
@@ -93,7 +74,7 @@ const HadithTab = (props, { CodeTopic, Content }) => {
                   hash: '',
                   query: {
                     word: '',
-                    topic: item.label,
+                    topic: item?.label,
                     content: Content,
                     codeDegree: CodeTopic,
                     from: 'home',
@@ -105,7 +86,7 @@ const HadithTab = (props, { CodeTopic, Content }) => {
 
           return (
             <Link
-              key={item.id}
+              key={i}
               //className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               as={'/search'}
               href={{
@@ -114,7 +95,7 @@ const HadithTab = (props, { CodeTopic, Content }) => {
                 hash: '',
                 query: {
                   word: '',
-                  topic: item.label,
+                  topic: item?.label,
                   content: Content,
                   codeDegree: CodeTopic,
                   from: 'home',
@@ -123,8 +104,8 @@ const HadithTab = (props, { CodeTopic, Content }) => {
               passHref={true}
             >
               <a
-                dir='rtl'
-                className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                key={i}
+                className={`${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
                   style={{ justifyContent: 'center', alignItems: 'center' }}
@@ -154,16 +135,18 @@ const HadithTab = (props, { CodeTopic, Content }) => {
     <>
       <div className={`${styles.Alhadiths}  overflow-hidden position-relative`}>
         <div className='bg-blue-100 '>
-          <div
-            className='bg-arabic-design h-100 w-100'
-            style={{
-              backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
-              opacity: 0.7,
-            }}
-          />
-          <Slider {...settings} className='slide mb-4'>
-            {renderData()}
-          </Slider>
+          <div dir='ltr' className='container'>
+            <div
+              className='bg-arabic-design h-100 w-100'
+              style={{
+                backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
+                opacity: 0.7,
+              }}
+            />
+            <Slider {...settings} className='slide mb-4'>
+              {renderData()}
+            </Slider>
+          </div>
         </div>
       </div>
     </>
@@ -171,11 +154,3 @@ const HadithTab = (props, { CodeTopic, Content }) => {
 }
 
 export default HadithTab
-/*export const getServerSideProps = async () => {
-
-  const dataALhadith = await getDataAhadith()
-
-  return {
-    props: JSON.parse(JSON.stringify(dataALhadith))
-  }
-}*/

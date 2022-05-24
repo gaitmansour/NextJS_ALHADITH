@@ -278,7 +278,7 @@ const SearchSection = (props) => {
           className={`${styles.formSearch} form-search p-2`}
           style={{ backgroundColor: '#e9fbf1' }}
         >
-          <div className='d-flex flex-wrap flex-column'>
+          <form className='d-flex flex-wrap flex-column'>
             <div className={`${styles.alignsec} d-flex alignIte`}>
               {/*<Input className="col-md-4" label="نص الحديث" placeholder="ابحث نص الحديث"/>
                */}
@@ -352,7 +352,7 @@ const SearchSection = (props) => {
                 onChange={(v) => setChoiceNarrator(v)}
               /> */}
             </div>
-          </div>
+          </form>
         </Cards>
       )}
       <div className='d-flex justify-content-center'>

@@ -12,8 +12,7 @@ import Cards from '../../../components/_UI/Cards'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 import Image from 'next/image'
 import styles from './Resources.module.css'
-import { Logos } from '../../../assets'
-import $ from 'jquery'
+
 const Resources = () => {
   let settings = {
     dots: true,
@@ -121,10 +120,6 @@ const Resources = () => {
     getData()
   }, [])
 
-  const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
-  }
-
   const renderContent = () => {
     try {
       if (dataAPI?.data?.length <= 4) {
@@ -144,20 +139,6 @@ const Resources = () => {
             {dataAPI?.data?.map((item, i) => {
               const { title, body, field_icone, field_lien } = item?.attributes
 
-              const toShow = body?.processed?.substring(0, 80) + '.....'
-              // $(document).ready(function () {
-              //   $('.links').contextmenu(function (event) {
-              //     localStorage.setItem(
-              //       'routeState',
-              //       JSON.stringify({
-              //         fromNav: {},
-              //         selectedItem: title,
-              //         from: 'ressources',
-              //         contenuArticle: '',
-              //       })
-              //     )
-              //   })
-              // })
               return (
                 <Cards
                   id={'cards'}
@@ -200,8 +181,8 @@ const Resources = () => {
                     >
                       <div className={`${styles.boxImg} m-auto`}>
                         <Image
-                          loader={myLoader}
-                          src={dataAPI?.included[i]?.attributes?.uri?.url}
+                          // loader={myLoader}
+                          src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`}
                           width={350}
                           height={400}
                           alt='book'
@@ -214,20 +195,12 @@ const Resources = () => {
                         dangerouslySetInnerHTML={{ __html: body?.processed }}
                       />
 
-                      <a
+                      <button
                         className={`${styles.action} d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 button`}
                       >
                         <i className='fas fa-long-arrow-alt-left text-white mx-2' />
-                        <p
-                          className='m-0 mx-2'
-                          // style={{
-                          //   textAlign: 'justify !important',
-                          //   textJustify: 'inter-word !important',
-                          // }}
-                        >
-                          {'لمعرفة المزيد'}
-                        </p>
-                      </a>
+                        <p className='m-0 mx-2'>{'لمعرفة المزيد'}</p>
+                      </button>
                     </a>
                   </Link>
                 </Cards>

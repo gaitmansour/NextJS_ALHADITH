@@ -545,7 +545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           </div>
           {showForm && (
             <Cards className={`${styles.formSearch} form-search p-2`}>
-              <div className='d-flex flex-wrap flex-column'>
+              <form className='d-flex flex-wrap flex-column'>
                 <div className={`d-flex alignIte ${styles.alignIte}`}>
                   <CustomSelect
                     className='col-md-4'
@@ -612,7 +612,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                   />
                   <div className='col-md-6'></div>
                 </div> */}
-              </div>
+              </form>
             </Cards>
           )}
           {dataSearch && dataSearch?.hits?.hits?.length > 0 && (

@@ -23,7 +23,6 @@ const News = () => {
         if (data.success) {
           setDataAPI(data?.data)
           setIsLoding(false)
-          // console.log('dataaaa Newsssss ===>', data?.data)
         }
       })
     } catch (error) {
@@ -33,17 +32,15 @@ const News = () => {
 
   const settings = {
     dots: true,
-    infinite: false,
     autoplay: true,
-    slidesToShow: dataAPI.length > 3 ? 3 : dataAPI.length,
+    slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
     slidesToScroll: 2,
     arrows: false,
-    speed: 4000,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: dataAPI.length > 3 ? 3 : dataAPI.length,
+          slidesToShow: dataAPI?.length > 3 ? 3 : dataAPI?.length,
           slidesToScroll: 2,
         },
       },
@@ -84,6 +81,7 @@ const News = () => {
           dataAPI?.map((item, index) => {
             return (
               <div
+                key={index}
                 className={`${styles.groupCard} ${
                   dataAPI?.length <= 2 ? styles.newWidth : ''
                 }`}

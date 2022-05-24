@@ -1,20 +1,11 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './media.module.css'
 import TemplateArticle from '../../components/TemplateArticle'
 import ScrollButton from '../../components/ScrollButton'
 import Body from '../../components/Body'
 import Loading from '../../components/_UI/Loading'
 import _ from 'lodash'
-import PageTitleSecond from '../../components/_UI/PageTitleSecond'
-import {
-  base_url,
-  getMenuByName,
-  getSideItems,
-  getVideo,
-  getVideoMedia,
-  getMenu,
-  getVideoByParent,
-} from '../../endpoints'
+import { base_url, getSideItems, getVideoByParent } from '../../endpoints'
 import FetchAPI from '../../API'
 import ReactPlayer from 'react-player'
 import ReactPaginate from 'react-paginate'
@@ -22,8 +13,6 @@ import { useRouter } from 'next/router'
 import TabMedia from './TabMedia'
 import Image from 'next/image'
 import { Icons } from '../../assets'
-import { handleMenu } from '../../helpers'
-// import { isMobile, isIOS } from 'react-device-detect'
 
 const media = ({ props }) => {
   const video = useRouter()?.query?.video
@@ -40,6 +29,8 @@ const media = ({ props }) => {
   const [dataTab, setDataTab] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [mediaSelected, setMediaSelected] = useState(null)
+  const [isError, setIsError] = useState('')
+  const [isLoding, setIsLoding] = useState(false)
   const PER_PAGE = 12
 
   const refVideo = useRef()
@@ -53,11 +44,18 @@ const media = ({ props }) => {
   const router = useRouter()
 
   useEffect(() => {
-    FetchAPI(urlAllVideo).then((data) => {
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
+    try {
+      setIsLoding(true)
+      FetchAPI(urlAllVideo).then((data) => {
+        if (data.success) {
+          setDataAPI(data?.data)
+          setIsLoding(false)
+        }
+      })
+    } catch (error) {
+      setIsError(error)
+      setIsLoding(true)
+    }
   }, [title, router.isReady, _id])
 
   //
@@ -109,26 +107,11 @@ const media = ({ props }) => {
     handlePageClick({ selected: 0 })
   }, [title])
 
-  // if (_.isEmpty(currentItems)) {
-  //   return (
-  //     <div className='d-flex align-items-center justify-content-center py-5'>
-  //       <Loading />
-  //     </div>
-  //   )
-  // }
-  const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
-  }
   const loadURLVideo = (item) => {
     return !_.isEmpty(item?.field_lien_video)
       ? item?.field_lien_video
       : [{ src: `${base_url}${item?.field_upload_video}`, type: 'video/mp4' }]
   }
-  // var leng = dataAPI?.included?.length
-
-  // const URLVideo = () => {
-  //   if(video?.includes('youtu'))
-  // }
 
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} title={'t'}>
@@ -140,13 +123,16 @@ const media = ({ props }) => {
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         ></noscript>
-        {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <div>
-          {dataAPI?.length > 0 ? (
+          {isLoding ? (
+            <div className='d-flex align-items-center justify-content-center py-5'>
+              <Loading />
+            </div>
+          ) : dataAPI?.length > 0 ? (
             <>
               <div
                 className={`${styles.boxFirstVideo} d-flex align-items-center justify-content-center mb-2 mt-5`}
@@ -280,14 +266,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                       >
                         <div className={``}>
                           <Image
-                            src={item?.field_thumbnail_video}
+                            src={`${base_url}/${item?.field_thumbnail_video}`}
                             className=''
                             objectFit='cover'
                             width={10}
                             height={6}
                             layout='responsive'
                             quality={65}
-                            loader={myLoader}
+                            // loader={myLoader}
                             alt={item?.title}
                           />
                           {/* <ReactPlayer

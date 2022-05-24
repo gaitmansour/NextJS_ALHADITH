@@ -80,17 +80,17 @@ const Footer = () => {
       MenuGlobal &&
       MenuGlobal?.map((item, index) => {
         if (item?.label !== 'الرئيسية') {
-          return item?.label === 'روابط مهمة' ? (
-            <>
-              {item?.items?.length > 0 && (
+          return item?.label === 'روابط مهمة'
+            ? item?.items?.length > 0 && (
                 <ul
+                  key={index}
                   className={`${styles.FooterLink}  m-0 p-0 d-flex flex-column align-items-start`}
                 >
                   {item?.items?.map((data, i) => {
                     return (
                       <Link
+                        key={i}
                         passHref={true}
-                        key={i.toString()}
                         exact
                         activeClassName=''
                         as={`/${data?.path.split(' ').join('-')}`}
@@ -137,9 +137,8 @@ const Footer = () => {
                     )
                   })}
                 </ul>
-              )}
-            </>
-          ) : null
+              )
+            : null
         }
       })
     return menuLinks
@@ -157,7 +156,9 @@ const Footer = () => {
             <div
               className={`col col-lg-3 col-md-12 col-sm-1 d-flex justify-content-center align-items-center brd`}
             >
-              <Brand className={` ${styles.brand} brand`} />
+              <Link href='/' passHref>
+                <Brand className={` ${styles.brand} brand`} />
+              </Link>
             </div>
             <div
               className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
