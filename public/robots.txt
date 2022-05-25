@@ -1,0 +1,6 @@
+Sitemap: https://hadithm6.ma/api/sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
