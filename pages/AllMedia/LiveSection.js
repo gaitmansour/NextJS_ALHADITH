@@ -13,10 +13,11 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-const LiveSection = () => {
-  const [dataLive, setDataLive] = useState([])
+const LiveSection = (props) => {
+ /* const [dataLive, setDataLive] = useState([])
   const [isLoding, setIsLoding] = useState(false)
-  const urlLive = getLive()
+  const urlLive = getLive()*/
+  let dataLive = props.dataLive
   const settings = {
     // infinite: props?.data?.length > 3,
     autoplay: false,
@@ -28,6 +29,7 @@ const LiveSection = () => {
     slidesPerRow: 1,
   }
   var myCurrentDate = new Date().getHours()
+/*
 
   const getDataLive = async () => {
     try {
@@ -43,6 +45,7 @@ const LiveSection = () => {
   useEffect(() => {
     getDataLive()
   }, [])
+*/
 
   /////// loader Image
   const myLoader = ({ src, width, quality }) => {
