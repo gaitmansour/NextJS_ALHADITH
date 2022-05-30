@@ -329,6 +329,7 @@ const SearchSection = (props) => {
               />
               <Input
                 type='number'
+                min='1'
                 className='col-md-4'
                 label='رقم الحديث'
                 name='numberHadith'

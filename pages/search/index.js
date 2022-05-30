@@ -176,7 +176,6 @@ const SearchPage = (props) => {
     })
   }
 
-  console.log('numberHadith =======>>>>>>', numberHadith)
   const handleSearch = async (
     word,
     topic,
@@ -597,6 +596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                   />
                   <Input
                     type='number'
+                    min='1'
                     className='col-md-4'
                     label='رقم الحديث'
                     name='numberHadith'

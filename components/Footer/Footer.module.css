@@ -6,6 +6,10 @@
 
 .bgFooter {
     background-image: url('../../assets/Images/backgrounds/bg-arabic-design.svg');
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    margin-top: -12px;
+    height: 110%;
     position: absolute;
     z-index: 1;
 }
