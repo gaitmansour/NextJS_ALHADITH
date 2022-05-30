@@ -141,7 +141,7 @@ const ListQuestions = (props) => {
     }
     FetchPostAPI(urlSearchQuestion, data).then((data) => {
       if (data.success) {
-        console.log('dataaaaaaaaaa', data?.data)
+
         setDataQuestions(data?.data?.hits?.hits)
         setPagePagination(data?.data?.hits?.total?.value)
         return data?.data?.hits?.hits
@@ -365,7 +365,7 @@ const ListQuestions = (props) => {
     ['ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'],
     ['؟', '!', '-', '،', '.', 'ء', 'ؤ', 'ى', 'ة', 'أ', 'إ', 'ٱ', 'آ', 'ئ'],
   ]
-  console.log('characterSearch======>', characterSearch)
+
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='أسئلة'>
       <Body
