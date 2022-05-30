@@ -1,5 +1,5 @@
 import styles from './ItemList.module.css'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   FacebookIcon,
   FacebookShareButton,

@@ -9,6 +9,10 @@ const withPlugins = require('next-compose-plugins')
 module.exports = withPlugins([nextTranslate], { trailingSlash: true })
 
 module.exports = {
+  i18n: {
+    locales: ['ar', 'fr'],
+    defaultLocale: 'ar',
+  },
   images: {
     domains: ['backend.hadithm6.com'],
   },

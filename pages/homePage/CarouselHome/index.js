@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CarouselHome.module.css'
-import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import _ from 'lodash'
 import {
-  getCarousel,
   base_url,
   getSlider,
   getMenuByName,
@@ -23,11 +21,7 @@ const CarouselHome = (props) => {
   const [dataAPI, setDataAPI] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [newData, setNewData] = useState([])
-  const { t, i18n } = useTranslation('home')
-  const isRTL = i18n?.language === 'ar'
-  const getLanguage = isRTL ? 'ar' : 'fr'
-  const more = 'اقرأ المزيد'
-  const url = getCarousel()
+
   const urlSlider = getSlider()
 
   const getDataSliderHome = () => {
@@ -193,7 +187,7 @@ const CarouselHome = (props) => {
                 <Image
                   src={`${base_url}/${element2}`}
                   // loader={myLoader}
-                  alt={''}
+                  alt={item.title}
                   // layout='fill'
                   objectFit='cover'
                   height={1850}
@@ -230,7 +224,7 @@ const CarouselHome = (props) => {
                           getDataMenu(item?.title)
                         }}
                       >
-                        <h6 className='m-0 px-4'>{more}</h6>
+                        <p className='m-0 px-4'>{'اقرأ المزيد'}</p>
                         <i
                           className={`fas fa-caret-right align-items-center d-flex align-self-stretch`}
                         />

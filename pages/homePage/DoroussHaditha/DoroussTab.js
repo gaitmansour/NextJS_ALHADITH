@@ -120,7 +120,7 @@ const DoroussTab = ({ title, tid }) => {
                       layout='responsive'
                       quality={70}
                       // loader={myLoader}
-                      alt={title}
+                      alt={item?.title}
                     />
                     <p
                       className={`${styles.titleVideo} my-3 text-center fw-bold description text-black`}

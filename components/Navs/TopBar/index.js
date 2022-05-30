@@ -1,4 +1,3 @@
-import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './TopBar.module.css'
@@ -21,16 +20,14 @@ const TopBar = (props) => {
     },
   }
   let router = useRouter()
-  const { t, i18n } = useTranslation()
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
   const [elementShow, setElementShow] = useState(true)
   const [message, setMessage] = useState('')
-  const isRTL = i18n?.language === 'ar'
-  const title = 'التواصل'
+
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const history = []
+
   const elementRef = useRef()
 
   const getDataMenu = async (x) => {
@@ -171,6 +168,9 @@ const TopBar = (props) => {
         >
           <ul className={`${styles.navbarNav} navbar-nav align-items-center`}>
             <li
+              onClick={() => {
+                getDataMenu('شرط المنصة')
+              }}
               className={`${styles.navItem} nav-item mx-3 ${styles.callToAction} call-to-action align-items-center d-flex`}
             >
               <Link
@@ -183,13 +183,7 @@ const TopBar = (props) => {
                   hash: '',
                 }}
               >
-                <a
-                  onClick={() => {
-                    getDataMenu('شرط المنصة')
-                  }}
-                >
-                  {'شرط المنصة'}
-                </a>
+                {'شرط المنصة'}
               </Link>
             </li>
             {/* <li
@@ -201,19 +195,18 @@ const TopBar = (props) => {
             </li> */}
             <Lottie options={defaultOptions} height={55} width={55} />
             <li className={`${styles.navItem} nav-item`}>
-              <div style={{ marginLeft: 20 }}>
-                <Link
-                  exact
-                  activeClassName='active'
-                  href={{
-                    pathname: '/AllMedia',
-                    query: { title: 'التلفزة الرقمية' },
-                  }}
-                  as='/AllMedia'
-                >
-                  {'البث المباشر'}
-                </Link>
-              </div>
+              <Link
+                style={{ marginLeft: 20 }}
+                exact
+                activeClassName='active'
+                href={{
+                  pathname: '/AllMedia',
+                  query: { title: 'التلفزة الرقمية' },
+                }}
+                as='/AllMedia'
+              >
+                {'البث المباشر'}
+              </Link>
             </li>
           </ul>
         </div>

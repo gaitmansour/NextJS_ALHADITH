@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import styles from './Theme1.module.css'
 import _ from 'lodash'
@@ -9,9 +8,7 @@ import Cards from '../_UI/Cards'
 import SectionTitle from '../_UI/SectionTitle'
 
 const Theme1 = (props) => {
-  const { t, i18n } = useTranslation('CommanderieCroyants')
   const [dataAPI, setDataAPI] = useState({})
-  const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
 
   useEffect(() => {
     if (props.title) {

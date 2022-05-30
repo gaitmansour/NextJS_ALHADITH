@@ -11,7 +11,7 @@ const Breadcrumb = (props) => {
         const lastItem = _.last(props.data)
 
         const renderData = props?.data?.map((item, index) => {
-         // console.log('breadcrumb______________', item)
+          // console.log('breadcrumb______________', item)
           const isLenght = props?.data.length !== index + 1
           //console.log('title is isLenght', isLenght)
           if (item !== lastItem) {
@@ -40,8 +40,8 @@ const Breadcrumb = (props) => {
             return (
               <Link
                 passHref={true}
-                href={`/${item?.path}`}
-                as={`/${item?.path}`}
+                href={`${item?.path}`}
+                as={`${item?.path}`}
                 key={index.toString()}
               >
                 <a className='btn d-flex align-items-center p-0'>

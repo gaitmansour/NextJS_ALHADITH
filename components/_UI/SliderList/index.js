@@ -4,24 +4,15 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import _ from 'lodash'
-import { Article } from '../../../assets'
-import useTranslation from 'next-translate/useTranslation'
-import Brand from '../Brand'
-import Side from './Sidebar.png'
-import { Icons } from '../../../assets'
 import { Logos } from '../../../assets'
 import { base_url } from '../../../endpoints'
 
 import styles from './SliderList.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import $ from 'jquery'
 import SectionTitle from '../SectionTitle'
 
 const SliderList = (props) => {
-  const { i18n } = useTranslation()
-  const isRTL = i18n?.language === 'ar'
-
   const settings = {
     // infinite: props?.data?.length > 3,
     autoplay: true,
@@ -37,7 +28,6 @@ const SliderList = (props) => {
   // const _data = _.chunk(props?.data, 2)
   // const data = isRTL ? _.reverse(_data) : _data
   const data = props?.data
-  // console.log('test slid', data)
 
   return (
     <Widget className={`${className}`}>

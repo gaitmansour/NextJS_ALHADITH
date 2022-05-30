@@ -27,12 +27,11 @@ const Alahadiths = (props) => {
       >
         {props?.dataAhadith?.map((t, key) => {
           return (
-            <Tab key={key} {...t} eventKey={t?.content}>
+            <Tab key={key} title={t.title} eventKey={t?.content}>
               <HadithTab
-                {...props}
-                CodeTopic={t?.codeTopic}
+                codeTopic={t?.codeTopic}
                 dtatttt={t[Object.keys(t)[0]]}
-                Content={t?.content}
+                content={t?.content}
               />
             </Tab>
           )

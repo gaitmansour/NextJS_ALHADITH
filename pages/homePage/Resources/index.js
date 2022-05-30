@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -81,10 +80,8 @@ const Resources = () => {
     ],
   }
 
-  const { t, i18n } = useTranslation('ressource')
-
   const [dataAPI, setDataAPI] = useState({})
-  const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
+  const getLanguage = 'ar'
   const url = getResourcesData(getLanguage)
   const getDataMenu = async (x) => {
     FetchAPI(getMenuByName(x)).then((data) => {
@@ -185,11 +182,11 @@ const Resources = () => {
                           src={`${base_url}/${dataAPI?.included[i]?.attributes?.uri?.url}`}
                           width={350}
                           height={400}
-                          alt='book'
+                          alt={title}
                           className={`${styles.img} img img-responsive`}
                         />
                       </div>
-                      <h5 className={`${styles.title} my-4`}>{title}</h5>
+                      <h3 className={`${styles.title} my-4`}>{title}</h3>
                       <div
                         className={`${styles.desc}`}
                         dangerouslySetInnerHTML={{ __html: body?.processed }}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
 import { Icons } from '../../../assets'
 import Cards from '../../_UI/Cards'
 import Loading from '../../_UI/Loading'
@@ -17,9 +16,6 @@ const PrayTimes = () => {
   const [date, setDate] = useState('')
   const [dataCities, setDataCities] = useState([])
   const [currentCity, setCurrentCity] = useState(1)
-
-  const { t, i18n } = useTranslation('PrayTimes')
-  // const isRTL = i18n?.language === "ar"
 
   const fetchAPI = async () => {
     // const url_all_pray = "https://api.pray.zone/v2/times/day.json?city=rabat&date=2021-07-23&school=8"
@@ -156,6 +152,8 @@ const PrayTimes = () => {
           isClearable={false}
           options={dataCities}
           placeholder='الرباط'
+          label
+          name='currentCity'
           onChange={(city) => setCurrentCity(city.value)}
         />
       )}

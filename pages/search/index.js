@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styles from './search.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -77,7 +76,7 @@ const SearchPage = (props) => {
   const dataPerPage = dataSearch?.hits?.hits?.length
   const pagevisited = pageNum * dataPerPage
   const [show, setShow] = useState(false)
-  const { t } = useTranslation()
+
   const data = [
     {
       title: 'الرئيسية',
@@ -552,6 +551,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     options={dataCategory && dataCategory}
                     defaultInputValue={ChoiceCategory ? ChoiceCategory : ''}
                     label='موضوع'
+                    name='ChoiceCategory'
                     placeholder='اكتب الموضوع'
                     onChange={(v) => setChoiceCategory(v)}
                   />
@@ -567,6 +567,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     className='col-md-4'
                     options={dataNarrator && dataNarrator}
                     label='الراوي'
+                    name='ChoiceNarrator'
                     defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
                     placeholder='اكتب اسم الراوي'
                     onChange={(v) => setChoiceNarrator(v)}
@@ -578,6 +579,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     options={dataSource && dataSource}
                     defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                     label='المصدر'
+                    name='ChoiceSource'
                     placeholder='اكتب اسم المصدر'
                     onChange={(v) => {
                       setChoiceSource(v)
@@ -588,6 +590,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     className='col-md-4'
                     options={dataDegree && dataDegree}
                     label='الحكم'
+                    name='ChoiceDegree'
                     defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
@@ -596,6 +599,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     type='number'
                     className='col-md-4'
                     label='رقم الحديث'
+                    name='numberHadith'
                     placeholder='اكتب رقم الحديث'
                     value={numberHadith}
                     onChange={(v) => setNumberHadith(v.target.value)}

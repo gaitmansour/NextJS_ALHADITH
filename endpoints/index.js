@@ -3,7 +3,7 @@
 export const base_url = `https://backend.hadithm6.com`
 const { BASE_URL_CMS } = process.env
 export const api_url = `${base_url}/en/jsonapi/node`
-//export const api_url = `https://backend.7adith.ma:8000/en/jsonapi/node`
+//export const api_url = `https://backend.hadithm6.com/en/jsonapi/node`
 
 export const api_search = `https://apisearch.hadithm6.com`
 export const api_newsletter = `https://apisearch.hadithm6.com/api/addmembre`
@@ -15,10 +15,10 @@ export const api_newsletter = `https://apisearch.hadithm6.com/api/addmembre`
 
 export const getNews = () => `${base_url}/en/newsarticle/preview`
 export const getResourcesData = (langcode, value = 'موارد') =>
-    `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
+  `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
 export const getCommanderieCroyantsData = (
-    langcode,
-    value = 'عناية أمير المومنين'
+  langcode,
+  value = 'عناية أمير المومنين'
 ) =>
   `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien,field_code_couleur&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
 export const getMawdouaData = (langcode, value = 'الاحاديت الموضوعة') =>

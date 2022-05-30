@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
 import {
   base_url,
-  getArticleById,
   getMenuByName,
   getSideArticle,
   getSideItems,
@@ -20,15 +19,12 @@ import SimpleList from '../../components/_UI/SimpleList'
 import SliderList from '../../components/_UI/SliderList'
 import Badgs from '../../components/_UI/Badgs'
 import ListAhadith from '../../components/_UI/ListAhadith'
-import loadNamespaces from 'next-translate/loadNamespaces'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icons } from '../../assets'
 import ScrollButton from '../../components/ScrollButton'
-import { getAllCommanderie } from '../../lib/home/commanderieCroyants'
 import { getData, getDataMenu } from '../../lib/article'
 import { getMenuList } from '../../lib/menu'
-import dynamic from 'next/dynamic'
 // import { isMobile, isIOS } from 'react-device-detect'
 
 export default function ArticlePage(props, { dataAPI }) {

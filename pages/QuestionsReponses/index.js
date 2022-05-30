@@ -1,13 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styles from './listQuestions.module.css'
 import Iicon from '../../components/_UI/QuestionsList/speech-bubblee1.png'
-import {
-  AllForums,
-  getQuestionAPI,
-  getTaxonomyForum,
-  addQuestions,
-  searchQuestion,
-} from '../../endpoints'
+import { addQuestions, searchQuestion } from '../../endpoints'
 import Link from 'next/link'
 import { Icons } from '../../assets'
 import _ from 'lodash'
@@ -26,6 +20,7 @@ import Image from 'next/image'
 import FacebookLogin from 'react-facebook-login'
 import KeyboardedInput from 'react-touch-screen-keyboard/lib/KeyboardedInput'
 import ModalQuestionForm from '../../components/_UI/ModalQuestionForm'
+import SearchInput from '../../components/Forms/SearchInput'
 
 const ListQuestions = (props) => {
   const title = props?.match?.params?.title
@@ -34,13 +29,7 @@ const ListQuestions = (props) => {
   const [checked, setChecked] = useState(false)
   const [logged, setLogged] = useState(false)
   const [Subject, setSubject] = useState('')
-  // const [email, setEmail] = useState('');
-  const [inputs, setInputs] = useState({})
-  const [layoutName, setLayoutName] = useState('default')
-  const [inputName, setInputName] = useState('default')
   const Myinputsubject = useRef()
-  const textInput = useRef('')
-  const subjectInput = useRef('')
   const [Forum, setForum] = useState('')
   const [output, setOutput] = useState([])
   const [message, setMessage] = useState('')
@@ -58,6 +47,7 @@ const ListQuestions = (props) => {
   const [showModalQuestions, setShowModalQuestion] = useState(false)
   const [InputShow, setInputShow] = useState(false)
   const [infos, setInfos] = useState('')
+  const [characterSearch, setCharacterSearch] = useState('')
   const handleClose = () => setShow(false)
   const handleCloseModalQuestions = () => {
     setShowModalQuestion(false)
@@ -145,12 +135,13 @@ const ListQuestions = (props) => {
 
   const getDataQuestions = async () => {
     const data = {
-      query: '',
+      query: !characterSearch ? '' : characterSearch,
       size: 10,
       start: StartPage < 1 ? 0 : StartPage,
     }
     FetchPostAPI(urlSearchQuestion, data).then((data) => {
       if (data.success) {
+        console.log('dataaaaaaaaaa', data?.data)
         setDataQuestions(data?.data?.hits?.hits)
         setPagePagination(data?.data?.hits?.total?.value)
         return data?.data?.hits?.hits
@@ -374,7 +365,7 @@ const ListQuestions = (props) => {
     ['ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'],
     ['؟', '!', '-', '،', '.', 'ء', 'ؤ', 'ى', 'ة', 'أ', 'إ', 'ٱ', 'آ', 'ئ'],
   ]
-
+  console.log('characterSearch======>', characterSearch)
   return (
     <TemplateArticle ListBreadcrumb={data} titlePage='أسئلة'>
       <Body
@@ -389,38 +380,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         <ScrollButton />
         {/* {isIOS ? null : <ScrollButton />} */}
         <div className='flex-fill'>
-          <button
-            type='button'
-            style={{
-              backgroundColor: '#feb400',
-              color: '#fff',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            onClick={() => handleShowHide()}
-            className={`${styles.btnquestion} btnquestion mb-3`}
+          <div
+            className={`w-75 px-1 d-flex justify-content-between ${styles.topSection}`}
           >
-            {!showForum ? (
-              <div
-                className={`${styles.paragraph} item d-flex align-items-center justify-content-evenly`}
-                style={{ textDecoration: 'none' }}
-              >
-                <p className={`fw-bold pt-2 ${styles.question}`}>
-                  {'اطرح سؤالك'}
-                </p>{' '}
-                <Image
-                  alt={'icon'}
-                  src={Icons.icon_faq}
-                  width={'40%'}
-                  height={'40%'}
-                  style={{ marginHorizontal: 20 }}
-                  className=''
+            <button
+              type='button'
+              style={{
+                backgroundColor: '#feb400',
+                color: '#fff',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onClick={() => handleShowHide()}
+              className={`${styles.btnquestion} btnquestion mb-3`}
+            >
+              {!showForum ? (
+                <div
+                  className={`${styles.paragraph} item d-flex align-items-center justify-content-evenly`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <p className={`fw-bold pt-2 ${styles.question}`}>
+                    {'اطرح سؤالك'}
+                  </p>{' '}
+                  <Image
+                    alt={'icon'}
+                    src={Icons.icon_faq}
+                    width={'40%'}
+                    height={'40%'}
+                    style={{ marginHorizontal: 20 }}
+                    className=''
+                  />
+                </div>
+              ) : (
+                <p className={`fw-bold pt-2 ${styles.question}`}>إغلاق</p>
+              )}
+            </button>
+
+            <form className={styles.inline}>
+              <div className={styles.inputIcons}>
+                <i
+                  className={`fas fa-search ${styles.icon}`}
+                  type='submit'
+                  onClick={() => getDataQuestions()}
+                ></i>
+                <input
+                  className={`${styles.inputSearchQues} input-field`}
+                  type='text'
+                  placeholder='البحث في منصة الحديث النبوي الشريف'
+                  value={characterSearch}
+                  onChange={(e) => setCharacterSearch(e.target.value)}
                 />
               </div>
-            ) : (
-              <p className={`fw-bold pt-2 ${styles.question}`}>إغلاق</p>
-            )}
-          </button>
+            </form>
+          </div>
           {showForum ? (
             <div className={`${styles.sideBar1} side-bar1`}>
               <div className={`${styles.SimpleList} SimpleList`}>
@@ -441,14 +453,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                         className='googleLogin'
                       />
                       <FacebookLogin
-                          appId='451461503355998'
-                          autoLoad={false}
-                          disableMobileRedirect={false}
-                          fields='name,email'
-                          callback={responseFacebook}
-                          icon='fa-facebook'
-                          textButton=''
-                          cssClass={styles.btnFacebook}
+                        appId='451461503355998'
+                        autoLoad={false}
+                        disableMobileRedirect={false}
+                        fields='name,email'
+                        callback={responseFacebook}
+                        icon='fa-facebook'
+                        textButton=''
+                        cssClass={styles.btnFacebook}
                       />
                       {/* <button
                         type='button'

@@ -197,14 +197,14 @@ const RowMedia = (props) => {
                     >
                       <div className={``}>
                         <Image
-                          src={item?.field_thumbnail_video}
+                          src={`${base_url}/${item?.field_thumbnail_video}`}
                           className=''
                           objectFit='cover'
                           width={10}
                           height={6}
                           layout='responsive'
                           quality={65}
-                          loader={myLoader}
+                          // loader={myLoader}
                           alt={item?.title}
                         />
                         {/* <ReactPlayer

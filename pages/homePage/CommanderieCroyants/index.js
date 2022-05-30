@@ -97,12 +97,12 @@ const CommanderieCroyants = (props) => {
                         role='button'
                         onClick={() => getDataMenu(title)}
                       >
-                        <h5
+                        <h3
                           className={`${styles.title}  mt-3`}
                           style={{ color: `#${field_code_couleur}` }}
                         >
                           {title}
-                        </h5>
+                        </h3>
                         {body?.processed && (
                           <div
                             className={`${styles.description} pt-3 pb-2`}

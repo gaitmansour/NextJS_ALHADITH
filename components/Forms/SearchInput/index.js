@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './SearchInput.module.css'
 import Link from 'next/link'
 //import KeyboardedInput from "react-touch-screen-keyboard";

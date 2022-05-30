@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styles from './searchHome.module.css'
 //import {useLocation, useHistory} from "next/";
 import { useRouter } from 'next/router'
@@ -11,10 +10,8 @@ import {
   getNarrator,
   getSource,
   getTopic,
-  Search,
 } from '../../../endpoints'
 import FetchAPI from '../../../API'
-import { FetchPostAPI } from '../../../data/APiSectionSearch/API'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 import SearchInput from '../../../components/Forms/SearchInput'
 import Cards from '../../../components/_UI/Cards'
@@ -26,7 +23,6 @@ import Link from 'next/link'
 const SearchSection = (props) => {
   //const {state} = useLocation();
   let router = useRouter()
-  const { state } = useRouter().query
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
   const [ChoiceDegree, setChoiceDegree] = useState('')
@@ -43,7 +39,7 @@ const SearchSection = (props) => {
   const [input, setInput] = useState('')
   const [show, setShow] = useState(false)
   const [message, setMessage] = useState('')
-  const { t } = useTranslation()
+
   let resultsRef = useRef()
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -287,6 +283,7 @@ const SearchSection = (props) => {
                 options={dataCategory && dataCategory}
                 defaultInputValue={ChoiceCategory ? ChoiceCategory : ''}
                 label='موضوع'
+                name='ChoiceCategory'
                 placeholder='اكتب الموضوع'
                 onChange={(v) => setChoiceCategory(v)}
               />
@@ -302,6 +299,7 @@ const SearchSection = (props) => {
                 className='col-md-4'
                 options={dataNarrator && dataNarrator}
                 label='الراوي'
+                name='ChoiceNarrator'
                 defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
                 placeholder='اكتب اسم الراوي'
                 onChange={(v) => setChoiceNarrator(v)}
@@ -313,6 +311,7 @@ const SearchSection = (props) => {
                 options={dataSource && dataSource}
                 defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                 label='المصدر'
+                name='ChoiceSource'
                 placeholder='اكتب اسم المصدر'
                 onChange={(v) => {
                   setChoiceSource(v)
@@ -323,6 +322,7 @@ const SearchSection = (props) => {
                 className='col-md-4'
                 options={dataDegree && dataDegree}
                 label='الحكم'
+                name='ChoiceDegree'
                 defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
                 placeholder='اكتب الحكم'
                 onChange={(v) => setChoiceDegree(v)}
@@ -331,6 +331,7 @@ const SearchSection = (props) => {
                 type='number'
                 className='col-md-4'
                 label='رقم الحديث'
+                name='numberHadith'
                 placeholder='اكتب رقم الحديث'
                 value={numberHadith}
                 onChange={(v) => setNumberHadith(v.target.value)}

@@ -1,6 +1,5 @@
 import './Theme2.module.css'
 import React, { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -79,10 +78,7 @@ const Theme2 = (props) => {
     ],
   }
 
-  const { t, i18n } = useTranslation('ressource')
-
   const [dataAPI, setDataAPI] = useState({})
-  const getLanguage = i18n?.language === 'ar' ? 'ar' : 'fr'
 
   useEffect(() => {
     if (props.title) {

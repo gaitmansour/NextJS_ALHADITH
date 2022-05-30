@@ -63,10 +63,14 @@ const CustomSelect = (props) => {
   return (
     <div className={`custom-input flex-fill ${className}`}>
       <div className='d-flex flex-column flex-fill mb-3 px-2'>
-        {label && <label className='form-label'>{label}</label>}
+        {label && (
+          <label htmlFor={props.name} className='form-label'>
+            {label}
+          </label>
+        )}
 
         <Select
-          instanceId
+          inputId={props.name}
           className={`${defaultInputValue ? styles.borderInputSelect : ''} ${
             styles.customSelect
           } custom-select ${classNameSelect}`}
@@ -75,7 +79,7 @@ const CustomSelect = (props) => {
           isClearable={props.isClearable}
           menuPortalTarget={typeof window !== 'undefined' && document.body}
           value={defaultInputValue}
-          name={'form-field-name'}
+          name={props.name}
           options={options}
           onChange={(data) => (onChange ? onChange(data) : {})}
           //menuPortalTarget={document.body}

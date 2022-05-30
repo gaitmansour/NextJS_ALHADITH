@@ -15,7 +15,7 @@ const DownloadApk = () => {
           </h4>
           <div className={`${styles.iconGroup}`}>
             <Link href='https://play.google.com/store/apps/details?id=com.hadithApp'>
-              <a target='_blank' rel='noreferrer'>
+              <a target='_blank' rel='noreferrer' aria-label='app hadithm6'>
                 <Image
                   src={Icons.icon_googlPlay}
                   alt=''

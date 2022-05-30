@@ -1,17 +1,15 @@
 import Contact from '../Contact/index'
 import Brand from '../_UI/Brand'
-import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import FetchAPIData from '../../data/API_Newsletter'
 import { getMenu, newsletter } from '../../endpoints'
 import CustomModal from '../_UI/Modal'
 import styles from './Footer.module.css'
-import { getMenuLink, handleMenu } from '../../helpers'
+import { handleMenu } from '../../helpers'
 import FetchAPI from '../../API'
 
 const Footer = () => {
-  const [MenuLinks, setMenuLinks] = useState([])
   const [MenuGlobal, setMenuGlobal] = useState([])
   const [inputEmail, setInputEmail] = useState('')
   const [contentMessage, setContentMessage] = useState('')
@@ -21,7 +19,7 @@ const Footer = () => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const urlSubscribe = newsletter()
-  const { t } = useTranslation()
+
   const url = getMenu()
 
   // const handleLinks = () => {
@@ -163,7 +161,9 @@ const Footer = () => {
             <div
               className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
             >
-              <h5 className='text-white pb-3'>{'روابط مهمة'}</h5>
+              <p className={`${styles.titleCol} text-white pb-3`}>
+                {'روابط مهمة'}
+              </p>
               <div className='p-0'>
                 {renderItemMenu()}
                 {/* <p className={`${styles.FooterLink}`}>
@@ -195,7 +195,9 @@ const Footer = () => {
             <div
               className={`${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3`}
             >
-              <h5 className='text-white pb-3'>{'تواصلوا معنا عبر'}</h5>
+              <p className={`${styles.titleCol} text-white pb-3`}>
+                {'تواصلوا معنا عبر'}
+              </p>
               <ul className='p-0'>
                 <p
                   className={`${styles.FooterLink}`}
@@ -246,9 +248,9 @@ const Footer = () => {
             <div
               className={`${styles.newsletter} ${styles.gridsection} col col-12 col-lg-3 col-md-4 col-sm-1 mt-5 mb-3 newsletter`}
             >
-              <h5 className='text-white pb-3 mb-4'>
+              <p className={`${styles.titleCol} text-white pb-3 mb-4`}>
                 {'التسجيل في النشرة البريدية'}
-              </h5>
+              </p>
               <div className='p-0 form'>
                 <div className='form-group'>
                   {/* <label

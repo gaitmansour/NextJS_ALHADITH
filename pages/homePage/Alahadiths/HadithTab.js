@@ -9,7 +9,7 @@ import $ from 'jquery'
 import styles from './Alahadiths.module.css'
 import Loading from '../../../components/_UI/Loading'
 
-const HadithTab = ({ CodeTopic, Content, ...props }) => {
+const HadithTab = ({ codeTopic, content, ...props }) => {
   let dataALhadith = props?.dtatttt
 
   const settings = {
@@ -75,8 +75,8 @@ const HadithTab = ({ CodeTopic, Content, ...props }) => {
                   query: {
                     word: '',
                     topic: item?.label,
-                    content: Content,
-                    codeDegree: CodeTopic,
+                    content: content,
+                    codeDegree: codeTopic,
                     from: 'home',
                   },
                 })
@@ -96,8 +96,8 @@ const HadithTab = ({ CodeTopic, Content, ...props }) => {
                 query: {
                   word: '',
                   topic: item?.label,
-                  content: Content,
-                  codeDegree: CodeTopic,
+                  content: content,
+                  codeDegree: codeTopic,
                   from: 'home',
                 },
               }}
@@ -110,9 +110,9 @@ const HadithTab = ({ CodeTopic, Content, ...props }) => {
                 <div
                   style={{ justifyContent: 'center', alignItems: 'center' }}
                   className={`${
-                    Content === 'صحيح'
+                    content === 'صحيح'
                       ? styles.icon1
-                      : Content === 'ضعيف'
+                      : content === 'ضعيف'
                       ? styles.icon2
                       : styles.icon3
                   } text-center ${

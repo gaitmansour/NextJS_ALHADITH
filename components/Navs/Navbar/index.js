@@ -5,18 +5,15 @@ import { Icons, Logos } from '../../../assets'
 
 import styles from './Navbar.module.css'
 import _ from 'lodash'
-import FetchAPI from '../../../API'
-import { getMenu, getMenuLinks, base_url } from '../../../endpoints'
-import { getMenuLink, handleMenu } from '../../../helpers'
+import { getMenu } from '../../../endpoints'
+import { getMenuLink } from '../../../helpers'
 import Contact from '../../Contact'
 import Image from 'next/image'
 import { Dropdown } from 'react-bootstrap'
-import useTranslation from 'next-translate/useTranslation'
-import $ from 'jquery'
+
 import SearchInput from '../../Forms/SearchInput'
 import CustomModal from '../../_UI/Modal'
 import { useRouter } from 'next/router'
-import { getAllCommanderie } from '../../../lib/home/commanderieCroyants'
 import { getMenuList } from '../../../lib/menu'
 
 let isItemDropdown = null
@@ -27,7 +24,7 @@ const NavBar = (props) => {
   const divref = useRef()
   let router = useRouter()
 
-  const { t, lang } = useTranslation()
+  const lang = 'ar'
 
   const [showMenu, setShowMenu] = useState(false)
   const [Menu, setMenu] = useState([])
@@ -508,15 +505,16 @@ const NavBar = (props) => {
               className={`${visible ? 'd-block' : 'd-none'}`}
               href={'/search'}
             >
-              <a
+              <button
+                aria-label='search'
                 onClick={props.onClickSettings}
                 className={` d-flex align-items-center btn m-0 p-0 searchSticky`}
               >
                 <i
                   className='fas fa-search p-3 fa-2x iconSearch'
-                  style={{ color: '#ADABAB' }}
+                  style={{ color: '#ADABABAB' }}
                 />
-              </a>
+              </button>
             </Link>
           )}
         </div>

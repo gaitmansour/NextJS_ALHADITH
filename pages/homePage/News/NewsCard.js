@@ -27,7 +27,7 @@ const NewsCard = (props) => {
           quality={70}
           // loader={myLoader}
           src={`${base_url}/${image}`}
-          alt='Card image cap'
+          alt={strippedString}
         />
       ) : (
         <Image
@@ -44,7 +44,7 @@ const NewsCard = (props) => {
       )}
 
       <div className={`${styles.cardBody} card-body`}>
-        <h5 className='card-title'>{strippedString}</h5>
+        <h3 className='card-title'>{strippedString}</h3>
         <p className='card-text'>{description}</p>
         <div className='d-flex justify-content-center'>
           <button className='btn btn-md mt-3' type='submit'>

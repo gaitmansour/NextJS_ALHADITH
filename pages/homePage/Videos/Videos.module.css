@@ -82,6 +82,14 @@
   background-color: #CEBB97;
 }
 
+.iconMedia{
+  margin-right: 55%;
+}
+
+.icomRess{
+  margin-right: 31% ;
+}
+
 /*=========Media============*/
 
 @media (max-width: 480px) {

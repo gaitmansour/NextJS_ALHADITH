@@ -1,7 +1,6 @@
 import Widget from '../Widget'
 import styles from './SimpleList.module.css'
 import Link from 'next/link'
-import $ from 'jquery'
 
 const SimpleList = (props) => {
   const className = props?.className ? props.className : ''

@@ -100,8 +100,7 @@ const Videos = () => {
                       src={Icons.icon_media}
                       alt=''
                       //width="55%"
-                      //className="my-3"
-                      style={{ marginRight: '55%' }}
+                      className={styles.iconMedia}
                     />
                     <h3 style={{ width: '100%', marginRight: '10%' }}>
                       برامج اذاعية
@@ -124,8 +123,7 @@ const Videos = () => {
                       src={Icons.icon_res_sociaux}
                       alt=''
                       // width="28%"
-                      // className="my-3"
-                      style={{ marginRight: '31%' }}
+                      className={styles.icomRess}
                     />
                     <h3 style={{ width: '100%', marginRight: '5%' }}>
                       برامج على الشبكات الاجتماعية

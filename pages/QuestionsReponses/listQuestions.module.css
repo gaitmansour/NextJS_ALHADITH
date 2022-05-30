@@ -7,6 +7,58 @@
     border-top: solid 7px #FEB400;
     border-radius: 7px;
 }
+.topSection{
+    width: 80%;
+}
+.inline{
+    max-width: 25vw;
+}
+.inputIcons{
+    border: 1.5px solid #feb400;
+    border-radius: 32px;
+    width: 25vw;
+    height: 68%;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 4px 8px rgb(0 0 0 / 8%);
+}
+.inputIcons input{
+    border: none;
+    background: none;
+    margin-right: 6px;
+}
+.inputIcons i{
+    margin-right: 8px;
+    color: #feb400;
+}
+
+/* .inline{
+    max-width: 450px;
+    margin:auto;
+}
+.inputIcons i {
+    position: absolute;
+}
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}   
+.inputIcons {
+    width: 135%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.inputSearchQues{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    height: 100%; 
+    width: 150%;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 3px;
+} */
+
 .inputSubject{
     border: 1px solid #8e8e8e;
     border-radius: 5px;
@@ -200,7 +252,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .bg1 div h5 {
         margin-top: 2% !important;
         text-align: center !important;
@@ -255,6 +307,11 @@
         width: 85% !important;
         /* margin-top: 8px !important; */
     }
+    .inputIcons{
+        width: 70vw !important;
+        height: 78% !important;
+        padding: 3.5% !important;
+    }
 }
 @media (max-width: 330px) {
     .TemplateArticleBody{
@@ -265,5 +322,16 @@
     }
     .cardListAnswer{
         width: 92vw !important;
+    }
+}
+@media (max-width: 930px) {
+    .topSection {
+       display: block !important;
+       margin-bottom: 2%;
+    }
+    .inputIcons{
+        width: 35vw;
+        height: 78%;
+        padding: 2.5%;
     }
 }
