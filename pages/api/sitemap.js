@@ -7,7 +7,7 @@ import axios from 'axios'
 export default async (req, res) => {
   try {
     const smStream = new SitemapStream({
-      hostname: `http://${req.headers.host}`,
+      hostname: `https://${req.headers.host}`,
       cacheTime: 600000,
     })
 
