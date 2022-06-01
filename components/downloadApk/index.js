@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './downloadAPK.module.css'
+import styles from './downloadApk.module.css'
 import { Icons } from '../../assets'
 import Image from 'next/image'
 import Link from 'next/link'
