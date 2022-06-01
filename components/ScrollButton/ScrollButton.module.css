@@ -11,6 +11,12 @@
     font-size: 18px; /* Increase font size */
 }
 
+.backToTop .iconToTop{
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
 .backToTop i {
   font-size: 40px; 
   color: #000000 !important;
@@ -21,6 +27,12 @@
 .backToTop:active,
 .backToTop:focus {
   color: #000000;
+}
+
+@media (max-width: 480px) {
+  .backToTop {
+    display: none !important;
+}
 }
 @media (max-width: 426px) {
   .backToTop {

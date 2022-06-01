@@ -1,0 +1,138 @@
+/* .groupCard{
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column !important;
+  } */
+  .CardNews{
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px;
+    /* flex: 1; */
+    /* display: flex;         
+    flex-direction: column; */
+    border-radius: 17px !important;
+    padding: 3%; 
+    background: #FFFFFF;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    border: none;
+    -webkit-box-shadow: 0 1px 7px rgba(0,0,0,.05);
+    box-shadow: 0 1px 7px rgba(0,0,0,.05);
+    
+  }
+  .CardNews:hover{
+        transform: scale(1.04);
+ }
+
+/* .cardBody{
+    font-size: 13px;
+    overflow: hidden;
+    margin: 1.5em 0 2em 0;
+    padding: 0 !important;
+} */
+.cardBody p{
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    margin: 1.5em 0 2em 0;
+    padding: 0 !important; 
+    max-height: 100px !important;
+    height: 100px !important;
+}
+.cardBody h5{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    margin: 1.5em 0 2em 0;
+    padding: 0 !important;
+    max-height: 50px !important;
+    height: 50px !important;
+}
+.newWidth{
+    width: 60% !important;
+}
+.CardNews button{
+    background-color: #FEB400;
+    color: #FFFFFF;
+    border-radius: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+}
+.CardNews button:hover, .CardNews i:hover{
+    color: #FEB400;
+    background-color: #fef6e2;
+}
+
+
+.ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 93px;
+    height: 93px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 0.8rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    line-height: 32px;
+    transform: rotate(45deg);
+    width: 125px;
+    display: block;
+    background: #FEB400;
+    background: linear-gradient(#d49b0d 0%, #FEB400 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 17px; 
+    right: -29px;
+  }
+  
+  .ribbon span::before {
+     content: '';
+     position: absolute; 
+     left: 0px; top: 100%;
+     z-index: -1;
+     border-left: 3px solid #FEB400;
+     border-right: 3px solid transparent;
+     border-bottom: 3px solid transparent;
+     border-top: 3px solid #FEB400;
+  }
+  .ribbon span::after {
+     content: '';
+     position: absolute; 
+     right: 0%; top: 100%;
+     z-index: -1;
+     border-right: 3px solid #FEB400;
+     border-left: 3px solid transparent;
+     border-bottom: 3px solid transparent;
+     border-top: 3px solid #FEB400;
+  }
+
+  @media (max-width: 480px) {
+    .newWidth{
+        width: 100% !important;
+    }
+    .CardNews{
+        zoom: 0.99;
+        direction: rtl !important;
+    }
+
+  }
+  @media (max-width: 950px) {
+    .newWidth{
+        width: 100% !important;
+    }
+    .CardNews{
+        direction: rtl !important;
+    }
+  }

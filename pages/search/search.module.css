@@ -9,8 +9,6 @@
     font-size: 2rem;
     padding: 0;
 }
-
-
 .SearchPage .box-search {
     border: none;
     box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.25);
@@ -35,6 +33,11 @@
     background-color: #157646;
     border-radius: 8px;
     margin-left: 1em !important;
+}
+.boxIconEpingle{
+    background-color: #157646;
+    border-radius: 8px;
+    margin-right: 1em !important;
 }
 
 .SearchPage .searchElement .boxIconSetting .icon-setting {
@@ -104,6 +107,7 @@
     height: auto;
     display: flex;
     justify-content: right;
+    margin-right: 10px;
 }
 
 *[dir='ltr'] .paginationn {
@@ -132,11 +136,18 @@
 
     .paginationButtons li {
         padding:0px 2px !important;
-        margin: 4px !important;
+        margin: 6px !important;
         height: 5%;
         width: 10%;
     }
     .boxIconSetting{
+        margin-bottom: 1.5% !important;  
+        padding: 1% !important;  
+    }
+    .boxIconSetting p , .boxIconSetting i {
+        zoom: 0.8;
+    }
+    .boxIconEpingle{
         margin-bottom: 1.5% !important;
     }
 }
@@ -144,7 +155,7 @@
 @media (max-width: 375px) {
     .paginationButtons li {
         padding:0% 0% 0% 5% !important;
-        /* margin: 4px !important; */
+        margin: 4px !important;
         height: 5%;
         width: 15% !important;
     }
@@ -157,5 +168,7 @@
     .boxIconSetting{
         margin-bottom: 2% !important;
     }
-    
+    .boxIconEpingle{
+        margin-bottom: 2% !important;
+    }
 }

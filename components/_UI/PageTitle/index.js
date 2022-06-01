@@ -5,23 +5,13 @@ const PageTitle = (props) => {
   return (
     <div
       className={`${styles.PageTitle} PageTitle p-4 ${className}`}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
+      // style={{
+      //   display: 'flex',
+      //   alignItems: 'center',
+      //   justifyContent: 'space-between',
+      // }}
     >
       <div>
-        {/* <div
-          style={{
-            width: 8,
-            right: 16,
-            height: 54,
-            borderRadius: 6,
-            position: 'absolute',
-            backgroundColor: '#FBBF31',
-          }}
-        /> */}
         <h1
           className={`${styles.title} title m-0`}
           style={{
@@ -32,7 +22,7 @@ const PageTitle = (props) => {
           {props?.title}
         </h1>
       </div>
-      {props.created && (
+      {/*{props.created && (
         <div
           className={`${styles.dateCreat} w-25`}
           style={{ alignItems: 'center', marginTop: 25 }}
@@ -45,7 +35,7 @@ const PageTitle = (props) => {
             {props.dateArticle}
           </p>
         </div>
-      )}
+      )}*/}
     </div>
   )
 }

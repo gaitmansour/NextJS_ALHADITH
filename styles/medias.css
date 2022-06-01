@@ -7,12 +7,15 @@
   ##Screen = 1281px to higher resolution desktops
 */
 
+
 @media (min-width: 1281px) {
   
   /* CSS */
   
 }
-
+/* .react-player__shadow{
+  display: none !important;
+} */
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
@@ -188,9 +191,9 @@
   
 }
 @media (max-width: 425px) {
-  .CarouselHome{
+  /* .CarouselHome{
     margin-bottom: 10%;
-  }
+  } */
   .logo {
     width: 100px;
   }

@@ -1,4 +1,5 @@
 import Document, {Html, Head, Main, NextScript, DocumentContext} from 'next/document'
+import React from "react";
 
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {
@@ -14,6 +15,8 @@ class MyDocument extends Document {
                 <Head>
                 </Head>
                 <body dir={dir} lang={locale}>
+                <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
                 <Main />
                 <NextScript />
                 </body>

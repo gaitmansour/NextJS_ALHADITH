@@ -1,35 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Backgrounds } from '../../../assets'
 import Link from 'next/link'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import _ from 'lodash'
-import { getTopic } from '../../../endpoints'
-import FetchAPI from '../../../API'
 import $ from 'jquery'
 import styles from './Alahadiths.module.css'
 import Loading from '../../../components/_UI/Loading'
-import { useRouter } from 'next/router'
 
-const HadithTab = ({ CodeTopic, Content }) => {
-  const url = getTopic()
-  const [dataAPI, setDataAPI] = useState([])
-  // const {dataAPI} = props
-  useEffect(() => {
-    FetchAPI(`${url}/${CodeTopic}`).then((data) => {
-      //  console.log(`${url}/${CodeTopic}`)
-      if (data.success) {
-        setDataAPI(data?.data)
-      }
-    })
-  }, [])
+const HadithTab = ({ codeTopic, content, ...props }) => {
+  let dataALhadith = props?.dtatttt
+
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     autoplay: true,
-    slidesToShow: dataAPI.length > 7 ? 7 : dataAPI.length,
+    slidesToShow: dataALhadith?.length > 5 ? 5 : dataALhadith?.length,
     slidesToScroll: 4,
+    speed: 4000,
     arrows: false,
     responsive: [
       {
@@ -65,19 +54,16 @@ const HadithTab = ({ CodeTopic, Content }) => {
     ],
   }
 
-  let router = useRouter()
-
   const renderData = () => {
     try {
-      if (_.isEmpty(dataAPI)) {
+      if (_.isEmpty(dataALhadith)) {
         return (
           <div className='d-flex align-items-center justify-content-center py-5'>
             <Loading />
           </div>
         )
       } else {
-        const dataList = dataAPI?.map((item, i) => {
-          //console.log('item--------------------------------', item)
+        const dataList = dataALhadith?.map((item, i) => {
           $(document).ready(function () {
             $(`.${i}`).contextmenu(function (event) {
               localStorage.setItem(
@@ -88,9 +74,9 @@ const HadithTab = ({ CodeTopic, Content }) => {
                   hash: '',
                   query: {
                     word: '',
-                    topic: item.label,
-                    content: Content,
-                    codeDegree: CodeTopic,
+                    topic: item?.label,
+                    content: content,
+                    codeDegree: codeTopic,
                     from: 'home',
                   },
                 })
@@ -100,7 +86,7 @@ const HadithTab = ({ CodeTopic, Content }) => {
 
           return (
             <Link
-              key={i.toString()}
+              key={i}
               //className={`${i} ${styles["item-link"]}item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               as={'/search'}
               href={{
@@ -109,32 +95,24 @@ const HadithTab = ({ CodeTopic, Content }) => {
                 hash: '',
                 query: {
                   word: '',
-                  topic: item.label,
-                  content: Content,
-                  codeDegree: CodeTopic,
+                  topic: item?.label,
+                  content: content,
+                  codeDegree: codeTopic,
                   from: 'home',
                 },
               }}
               passHref={true}
             >
               <a
-                className={`${i} ${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
+                key={i}
+                className={`${styles.itemLink} item-link d-flex flex-column  btn align-self-stretch my-5 px-0 p-5 hadithItem`}
               >
                 <div
-                  onClick={() =>
-                    console.log('item--------------------------------', {
-                      word: '',
-                      topic: item,
-                      content: Content,
-                      codeDegree: CodeTopic,
-                      from: 'home',
-                    })
-                  }
                   style={{ justifyContent: 'center', alignItems: 'center' }}
                   className={`${
-                    Content === 'صحيح'
+                    content === 'صحيح'
                       ? styles.icon1
-                      : Content === 'ضعيف'
+                      : content === 'ضعيف'
                       ? styles.icon2
                       : styles.icon3
                   } text-center ${
@@ -151,24 +129,24 @@ const HadithTab = ({ CodeTopic, Content }) => {
         })
         return dataList
       }
-    } catch (error) {
-      console.log(`CATCH Alhadiths ${error}`)
-    }
+    } catch (error) {}
   }
   return (
     <>
       <div className={`${styles.Alhadiths}  overflow-hidden position-relative`}>
         <div className='bg-blue-100 '>
-          <div
-            className='bg-arabic-design h-100 w-100'
-            style={{
-              backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
-              opacity: 0.7,
-            }}
-          />
-          <Slider {...settings} className='slide mb-4'>
-            {renderData()}
-          </Slider>
+          <div dir='ltr' className='container'>
+            <div
+              className='bg-arabic-design h-100 w-100'
+              style={{
+                backgroundImage: `url(${Backgrounds.bg_arabic_design})`,
+                opacity: 0.7,
+              }}
+            />
+            <Slider {...settings} className='slide mb-4'>
+              {renderData()}
+            </Slider>
+          </div>
         </div>
       </div>
     </>

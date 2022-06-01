@@ -23,7 +23,7 @@
 
 @media screen and (max-width: 480px) {
     .Contact{
-        width: 90% !important;
+        width: 80% !important;
         border-top-left-radius: 50px !important;
     }
     .devider{

@@ -30,6 +30,10 @@ body,
   flex-direction: column;
 }
 
+.h3, h3 {
+  font-size: 1.3rem !important;
+}
+
 textarea:focus,
 input:focus,
 button:focus,

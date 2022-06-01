@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import useTranslation from 'next-translate/useTranslation'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import Link from 'next/link'
 import _ from 'lodash'
-import { getResourcesData, base_url } from '../../../endpoints'
+import { getResourcesData, base_url, getMenuByName } from '../../../endpoints'
 import FetchAPI from '../../../API'
 import Loading from '../../../components/_UI/Loading'
 import Cards from '../../../components/_UI/Cards'
 import SectionTitle from '../../../components/_UI/SectionTitle'
 import Image from 'next/image'
 import styles from './Resources.module.css'
-import { Logos } from '../../../assets'
-import $ from 'jquery'
+
 const Resources = () => {
   let settings = {
     dots: true,
@@ -21,6 +19,7 @@ const Resources = () => {
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    speed: 4000,
     arrows: false,
     responsive: [
       {
@@ -81,12 +80,31 @@ const Resources = () => {
     ],
   }
 
-  const { t, i18n } = useTranslation('ressource')
-
   const [dataAPI, setDataAPI] = useState({})
-  const getLanguage = i18n?.language === 'fr' ? 'fr' : 'ar'
+  const getLanguage = 'ar'
   const url = getResourcesData(getLanguage)
-
+  const getDataMenu = async (x) => {
+    FetchAPI(getMenuByName(x)).then((data) => {
+      if (data.success) {
+        localStorage.setItem(
+          'categorieTitle',
+          JSON.stringify({
+            tidChild: data?.data[0]?.tid,
+            parent: data?.data[0]?.parent_target_id_1,
+            child: data?.data[0]?.name_1,
+            contenuArticle:
+              data?.data[0]?.field_contenu_default !== ''
+                ? data?.data[0]?.field_contenu_default
+                : data?.data[0]?.name_1,
+          })
+        )
+        localStorage.setItem(
+          'tid',
+          JSON.stringify(data?.data[0]?.parent_target_id)
+        )
+      }
+    })
+  }
   const getData = async () => {
     FetchAPI(url).then((data) => {
       if (data.success) {
@@ -100,7 +118,7 @@ const Resources = () => {
   }, [])
 
   const myLoader = ({ src, width, quality }) => {
-    return `${base_url}/${src}`
+    return `${base_url}/${src}?w=${width}&q=${quality || 75}`
   }
 
   const renderContent = () => {
@@ -121,20 +139,7 @@ const Resources = () => {
           <Slider {...settings} className={`${styles.slide} slide px-2 `}>
             {dataAPI?.data?.map((item, i) => {
               const { title, body, field_icone, field_lien } = item?.attributes
-              console.log('title-----------------------', title)
-              const toShow = body?.processed?.substring(0, 80) + '.....'
-              $(document).ready(function () {
-                $('.links').contextmenu(function (event) {
-                  localStorage.setItem(
-                    'routeState',
-                    JSON.stringify({
-                      fromNav: {},
-                      selectedItem: title,
-                      from: 'ressources',
-                    })
-                  )
-                })
-              })
+
               return (
                 <Cards
                   id={'cards'}
@@ -146,56 +151,57 @@ const Resources = () => {
                     role='button'
                     href={{
                       pathname:
-                        field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
+                        title === 'المصحف المحمدي'
                           ? '/Almoshaf'
-                          : field_lien[0]?.uri.slice(9),
-                      query: { from: 'ressources', selectedItem: title },
+                          : `/article/${title?.split(' ').join('-')}`,
+                      query: {
+                        from: 'ressources',
+                        selectedItem: title,
+                        contenuArticle: '',
+                      },
                     }}
                     as={
-                      field_lien[0]?.uri.slice(9) === '/المصحف المحمدي'
-                        ? '/المصحف المحمدي'
-                        : field_lien[0]?.uri.slice(9)
+                      title === 'المصحف المحمدي'
+                        ? '/المصحف-المحمدي'
+                        : `/article/${title?.split(' ').join('-')}`
                     }
                   >
-                    <a className='text-decoration-none'>
+                    <a
+                      className='text-decoration-none'
+                      onClick={() => {
+                        getDataMenu(title)
+                        /*localStorage.setItem(
+                          'categorieTitle',
+                          JSON.stringify({
+                            parent: 'موارد',
+                            child: title,
+                            contenuArticle: title
+                          })
+                      )*/
+                      }}
+                    >
                       <div className={`${styles.boxImg} m-auto`}>
                         <Image
                           loader={myLoader}
                           src={dataAPI?.included[i]?.attributes?.uri?.url}
                           width={350}
                           height={400}
-                          alt='book'
+                          alt={title}
                           className={`${styles.img} img img-responsive`}
                         />
                       </div>
-                      <h5 className={`${styles.title} my-4`}>{title}</h5>
+                      <h3 className={`${styles.title} my-4`}>{title}</h3>
                       <div
                         className={`${styles.desc}`}
                         dangerouslySetInnerHTML={{ __html: body?.processed }}
                       />
 
-                      <a
-                        className={`${
-                          styles.action
-                        } d-flex justify-content-between ${
-                          styles.btn
-                        } btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 ${
-                          dataAPI?.data.length < 4
-                            ? 'flex-row-reverse'
-                            : 'flex-row'
-                        } button`}
+                      <button
+                        className={`${styles.action} d-flex justify-content-between ${styles.btn} btn align-items-center mb-2 text-white bg-success-light m-auto py-2 px-3 button`}
                       >
-                        <i className='fas fa-long-arrow-alt-left text-white' />
-                        <p
-                          className='m-0'
-                          style={{
-                            textAlign: 'justify !important',
-                            textJustify: 'inter-word !important',
-                          }}
-                        >
-                          {'لمعرفة المزيد'}
-                        </p>
-                      </a>
+                        <i className='fas fa-long-arrow-alt-left text-white mx-2' />
+                        <p className='m-0 mx-2'>{'لمعرفة المزيد'}</p>
+                      </button>
                     </a>
                   </Link>
                 </Cards>

@@ -13,7 +13,7 @@ const TemplateArticle = (props) => {
   return (
     <Layout className={`${styles.TemplateArticle}TemplateArticle`}>
       <TopBar {...props} />
-      <NavBar />
+      <NavBar {...props}/>
       <div className={styles.bodyTemplate}>
         <div
           className={`${styles.templateHeader} template-header position-relative pb-2`}
@@ -31,12 +31,14 @@ const TemplateArticle = (props) => {
             />
           </div>
           <Breadcrumb data={props?.ListBreadcrumb} />
-          <PageTitle
-            className={`${styles.pb0} pb-0 titre`}
-            title={props?.titlePage}
-            dateArticle={props?.dateArticlePage}
-            created={props?.createdArticle}
-          />
+          {props.title === 't' ? null : (
+            <PageTitle
+              className={`${styles.pb0} pb-0 titre`}
+              title={props?.titlePage}
+              dateArticle={props?.dateArticlePage}
+              created={props?.createdArticle}
+            />
+          )}
         </div>
         {props.children}
       </div>

@@ -1,16 +1,19 @@
 //export const base_url = `https://back.alhadith.dialtechnologies.net`
-export const base_url = `https://backend.7adith.ma:8000`
-//export const base_url = `https://backend.hadithm6.ma`
+//export const base_url = `https://backend.7adith.ma:8000`
+export const base_url = `https://backend.hadithm6.com`
 const { BASE_URL_CMS } = process.env
 export const api_url = `${base_url}/en/jsonapi/node`
-//export const api_url = `https://backend.7adith.ma:8000/en/jsonapi/node`
-//export const api_search = `https://apisearch.hadithm6.ma`
-//export const api_newsletter = `https://apisearch.hadithm6.ma/api/addmembre`
+//export const api_url = `https://backend.hadithm6.com/en/jsonapi/node`
 
-export const api_search = `https://apisearch.7adith.ma:8000`
-export const api_newsletter = `https://apisearch.7adith.ma:8000/api/addmembre`
+export const api_search = `https://apisearch.hadithm6.com`
+export const api_newsletter = `https://apisearch.hadithm6.com/api/addmembre`
+
+// export const api_search = `https://apisearch.7adith.ma:8000`
+// export const api_newsletter = `https://apisearch.7adith.ma:8000/api/addmembre`
+
 // export const base_url = `https://api.pray.zone/`
 
+export const getNews = () => `${base_url}/en/newsarticle/preview`
 export const getResourcesData = (langcode, value = 'موارد') =>
   `${api_url}/section?fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}&include=field_icone`
 export const getCommanderieCroyantsData = (
@@ -26,6 +29,10 @@ export const AllVideo = () =>
   `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video`
 export const getArticlesByTag = (value) =>
   `${base_url}/meta-tags?field_tags_target_id=${value}`
+export const getVideoMedia = (title) =>
+  `${base_url}/videos?field_categorie_video_name=${title}`
+export const getVideoByParent = (parent_id, id) =>
+  `${base_url}/videos-by-parent-id?parent_id=${parent_id}&tid=${id}`
 export const getVideo = (title) =>
   `${api_url}/video?include=field_thumbnail_video,field_upload_video&fields[node--video]=title,field_description_video,field_lien_video,field_thumbnail_video,field_categorie_video,field_upload_video&&filter[field_categorie_video][condition][path]=field_categorie_video.name&filter[field_categorie_video][condition][value]=${title}`
 // export const getArticleById = (title) => `${api_url}/article?include=field_image&fields[node--article]=title,body,created,field_image&filter[title]=${title}`
@@ -33,6 +40,9 @@ export const getVideo = (title) =>
 //   `${api_url}/article?fields[node--article]=title,body&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${title}&include=field_tags.vid`;
 export const getArticleById = (title) =>
   `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image`
+export const getArticleByIdName = (title) =>
+  `${api_url}/article?fields[node--article]=title,body,created,field_image&filter[alqsm][condition][path]=title&filter[alqsm][condition][value]=${title}&include=field_tags.vid,field_image,field_alqsm.vid`
+
 export const getOurPartners = (langcode, value = 'شركاؤنا') =>
   `${api_url}/section?include=field_icone&fields[node--section]=title,body,field_icone,field_lien&filter[langcode]=${langcode}&filter[alqsm][condition][path]=field_alqsm.name&filter[alqsm][condition][value]=${value}`
 export const getSideArticle = (name, tid, parent_target) =>

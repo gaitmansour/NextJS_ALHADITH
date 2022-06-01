@@ -27,15 +27,30 @@
     margin-top: 5% !important;
     margin-right: 5% !important;
 }
-@media screen and (min-width : 900px) and (max-width : 1200px){
+.dwdApk{
+    cursor: pointer;
+}
+@media screen and (min-width : 895px) and (max-width : 1200px){
     .download{
         margin-right: 350px; 
-        margin-top: -300px ;
+        margin-top: -380px ;
      }
      
      .download img{
          margin-top: 11px !important;
      }
+     .download .titleSec{
+        margin-right: -100px;  
+    }
+    
+    .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
+    }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
+    }
 }
 @media screen and (min-width : 1200px) and (max-width: 1280px){
     .downloadApk {
@@ -63,32 +78,76 @@
 @media screen and (max-width : 480px){
     .download{
         margin: 0px !important;
-        padding-top: 10px;
+        padding: 8px 0% 0% 0% !important;
+    }
+     .titleSec{
+        font-size: 15px !important;
+        width: 55%;
+        margin: 2% 0% 10px 0% !important;
+        float: left;
     }
     .download img{
         width: 45% !important;
         height: 45% !important;
-        margin-right: 90px !important;
+        margin-right: 70px !important;
         margin-left: 0px !important;
     }
     .downloadApk{
-        margin-top: -180px !important;
+        margin-top: -230px !important;
         margin-right: 0px !important;
+        padding: 0% !important;
+        height: 22% !important;
     }
     .download img{
         margin-top: 0px !important;
     }
-    
+    .mobile .iconMobile{
+        margin-right: -18px !important;
+    }
 }
 
 @media screen and (max-width : 330px){
     .downloadApk{
-        margin-top: -175px !important;
+        /* margin-top: -175px !important; */
         margin-right: 0px !important;
-        height: 26vh !important;
+        /* height: 26 !important; */
     }
     .download img{
         margin-top: 0px !important;
-        margin-right: 80px !important;
+        /* margin-right: 80px !important; */
+    }
+    .mobile .iconMobile{
+        margin-right: -26px !important;
+    }
+}
+
+@media screen and (min-width: 540px) and (max-width: 890px)  {
+    .download .titleSec{
+        margin-right: -100px;  
+    }
+    
+    .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
+    }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
+    }
+   
+}
+
+@media screen and (min-width: 480px) and (max-width: 540px)  {
+    .download .titleSec{
+        margin-right: -100px;  
+    }
+    
+    .downloadApk{
+        margin-top: 130px !important;
+        height: 22% !important;
+    }
+    .iconGroup{
+        display: flex;
+        margin-right: -100px;
     }
 }

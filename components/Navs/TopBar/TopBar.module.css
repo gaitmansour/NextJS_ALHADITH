@@ -87,16 +87,27 @@
 
 /* Style for viewports greater than 480px wide. */
 @media (max-width: 480px) {
-  .TopBar .navItem,
-  .TopBar .navbar-nav .callToAction {
-    margin-top: 1em;
+  
+  .sectionHeader{
+    display: block !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .SecBrand{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbarCollapse ul li{
+    margin: 0px !important;
+  }
+  .navItem{
+    font-size: 13px;
   }
   .TopBar .dropdown .nav-link {
     padding: 0;
   }
-  .TopBar .navbarCollapse {
-    padding-bottom: 1em;
-  }
+  
   .TopBar .navbar-nav {
     padding: 0;
   }
@@ -107,8 +118,7 @@
 
 @media (max-width: 1024px) {
   .TopBar .search{
-    /* width: 30%;
-    min-width: 30%; */
+ 
     margin-left: 4%;
     margin-right: 8%;
   }

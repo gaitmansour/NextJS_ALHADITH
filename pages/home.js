@@ -1,22 +1,40 @@
-import TopBar from '../components/Navs/TopBar'
-import NavBar from '../components/Navs/Navbar'
+import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
-import Body from '../components/Body'
-import Layout from '../components/Layout'
-import Footer from '../components/Footer'
-import CarouselHome from './homePage/CarouselHome'
-import CommanderieCroyants from './homePage/CommanderieCroyants'
-import Resources from './homePage/Resources'
-import Alahadiths from './homePage/Alahadiths'
-import SearchSection from './homePage/searchHome'
-import DownloadApk from '../components/downloadApk'
-import Videos from './homePage/Videos'
 import FetchAPI from '../API'
 import { getNewSections } from '../endpoints'
-import Theme1 from '../components/Theme1'
-import Theme2 from '../components/Theme2'
-import ScrollButton from '../components/ScrollButton'
-import DoroussHaditha from './homePage/DoroussHaditha'
+import TopBar from '../components/Navs/TopBar'
+import NavBar from '../components/Navs/Navbar'
+import Body from '../components/Body'
+import Layout from '../components/Layout'
+const Footer = dynamic(() => import('../components/Footer'))
+const CarouselHome = dynamic(() => import('./homePage/CarouselHome'))
+const CommanderieCroyants = dynamic(() =>
+  import('./homePage/CommanderieCroyants')
+)
+const Resources = dynamic(() => import('./homePage/Resources'))
+const Alahadiths = dynamic(() => import('./homePage/Alahadiths'))
+const SearchSection = dynamic(() => import('./homePage/searchHome'))
+const DownloadApk = dynamic(() => import('../components/downloadApk'))
+const Videos = dynamic(() => import('./homePage/Videos'))
+const Theme1 = dynamic(() => import('../components/Theme1'))
+const Theme2 = dynamic(() => import('../components/Theme2'))
+const ScrollButton = dynamic(() => import('../components/ScrollButton'))
+const DoroussHaditha = dynamic(() => import('./homePage/DoroussHaditha'))
+const News = dynamic(() => import('./homePage/News'))
+
+// import Footer from '../components/Footer'
+// import CarouselHome from './homePage/CarouselHome'
+// import CommanderieCroyants from './homePage/CommanderieCroyants'
+// import Resources from './homePage/Resources'
+// import Alahadiths from './homePage/Alahadiths'
+// import SearchSection from './homePage/searchHome'
+// import DownloadApk from '../components/downloadApk'
+// import Videos from './homePage/Videos'
+// import Theme1 from '../components/Theme1'
+// import Theme2 from '../components/Theme2'
+// import ScrollButton from '../components/ScrollButton'
+// import DoroussHaditha from './homePage/DoroussHaditha'
+// import News from './homePage/News'
 
 const HomeScreen = (props) => {
   const [sections, setSections] = useState([])
@@ -24,8 +42,7 @@ const HomeScreen = (props) => {
   const url = getNewSections()
   const getData = async () => {
     FetchAPI(url).then((data) => {
-      //  console.log("data Resources ==> ", data)
-      if (data.success) {
+      if (data?.success) {
         setSections(data?.data)
       }
     })
@@ -56,21 +73,29 @@ const HomeScreen = (props) => {
   return (
     <Layout>
       <TopBar />
-      <NavBar />
+      <NavBar {...props} />
       <Body>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
+        {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <CarouselHome />
         <SearchSection />
-        <CommanderieCroyants />
+        <News />
+        <CommanderieCroyants {...props} />
         <DoroussHaditha />
         <Resources />
-        <Alahadiths />
+        <Alahadiths {...props} />
         <Videos />
         {sections &&
-          sections.length > 0 &&
-          sections.map((item, index) => {
+          sections?.length > 0 &&
+          sections?.map((item, index) => {
             // getdataSection(item.term_node_tid)
-            return renderSwitch(item.field_theme_accueil, item.term_node_tid)
+            return renderSwitch(item?.field_theme_accueil, item?.term_node_tid)
           })}
         <DownloadApk />
       </Body>

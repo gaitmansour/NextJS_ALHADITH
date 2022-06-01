@@ -1,8 +1,17 @@
 @font-face {
+  font-family: 'Almarai';
+  src:local('Almarai'), local('Almarai'), url('../Fonts/Almarai-Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: 'NotoKufiArabic';
-  src: url('../Fonts/NotoKufiArabic.ttf');
+  /* src: url('../Fonts/NotoKufiArabic.ttf'); */
+  src: local('NotoKufiArabic'), local('NotoKufiArabic'), url('../Fonts/NotoKufiArabic.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'AALMAGHRIBI';
@@ -21,6 +30,7 @@
   src: url('../Fonts/Almarai-Bold.ttf');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +38,7 @@
   src: url('../Fonts/Almarai-ExtraBold.ttf');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -35,6 +46,7 @@
   src: url('../Fonts/Almarai-Light.ttf');
   font-weight: 100;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -42,6 +54,7 @@
   src: url('../Fonts/Almarai-Regular.ttf');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -51,5 +64,5 @@
 }
 
 *[dir='rtl'] {
-  font-family: 'NotoKufiArabic', sans-serif !important;
+  font-family: 'Almarai', sans-serif !important;
 }

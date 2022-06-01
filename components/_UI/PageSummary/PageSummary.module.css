@@ -7,12 +7,12 @@
     color:#000000;
     font-weight: 600;
     font-size: 18px;
-    padding-right: .7em;
+    /* padding-right: .7em; */
     list-style-type: none;
 }
 
 *[dir='ltr'] .SummaryPage .summary {
-    padding-left: .7em;
+    /* padding-left: .7em; */
 }
 
 @media screen and (max-width: 541px) {
@@ -30,7 +30,7 @@
     }
     *[dir='ltr'] .SummaryPage .summary {
         padding-left: 0em;
-        width: 100% !important;
+        width: 92vw !important;
     }
 }
 @media screen and (max-width : 360px){

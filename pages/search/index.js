@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styles from './search.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -26,6 +25,8 @@ import PageTitleSecond from '../../components/_UI/PageTitleSecond'
 import CustomModal from '../../components/_UI/Modal'
 import _ from 'lodash'
 import ScrollButton from '../../components/ScrollButton'
+import * as VscIcons from 'react-icons/vsc'
+// import { isMobile, isIOS } from 'react-device-detect'
 
 const SearchPage = (props) => {
   let router = ''
@@ -38,6 +39,7 @@ const SearchPage = (props) => {
   router = params ? params?.query : varRouter
 
   const state = router
+
   const content = state?.content
   const topic = state?.topic
 
@@ -46,6 +48,8 @@ const SearchPage = (props) => {
   const source = state?.source
   const narrator = state?.narrator
   const hokm = state?.sourceHokm
+  const codeDegree = state?.codeDegree
+  const numberH = state?.numberH
 
   const [showForm, setShowForm] = useState(true)
   const [dataDegree, setdataDegree] = useState([])
@@ -59,16 +63,20 @@ const SearchPage = (props) => {
   const [ChoiceCategory, setChoiceCategory] = useState('')
   const [ChoiceNarrator, setChoiceNarrator] = useState('')
   const [EvaluationSource, setEvaluationSource] = useState('')
+  const [numberHadith, setNumberHadith] = useState('')
   const [dataSearch, setdataSearch] = useState([])
   const [input, setInput] = useState('')
   const [pageNum, setPageNum] = useState(0)
   const [pagePagination, setPagePagination] = useState(1)
   const [StartPage, setStartPage] = useState(0)
   const [success, setSuccess] = useState(false)
+  const [showDialog, setshowDialog] = useState(false)
+  const [showDialogModal, setshowDialogModal] = useState(false)
+  const [message, setMessage] = useState('')
   const dataPerPage = dataSearch?.hits?.hits?.length
   const pagevisited = pageNum * dataPerPage
   const [show, setShow] = useState(false)
-  const { t } = useTranslation()
+
   const data = [
     {
       title: 'الرئيسية',
@@ -82,6 +90,7 @@ const SearchPage = (props) => {
   const searchSpacific = dataSearch?.hits?.total?.value
   const searchNotSpacific = 336
   let resultsRef = useRef()
+  let BodyRef = useRef()
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const urlDegree = getDegree()
@@ -99,6 +108,7 @@ const SearchPage = (props) => {
           return (item = {
             label: item.label,
             value: item.id,
+            code: item.code,
           })
         })
         setdataDegree(newDegree)
@@ -139,7 +149,6 @@ const SearchPage = (props) => {
   const getDataNarrator = async () => {
     return FetchAPI(urlNarrator).then((data) => {
       if (data.success) {
-        // console.log('dataNarrator-------------',data?.data)
         const newNarrator = data?.data.map((item) => {
           return (item = {
             label: item.label,
@@ -155,7 +164,6 @@ const SearchPage = (props) => {
   const getDataCategory = async () => {
     return await FetchAPI(urlCategory).then((data) => {
       if (data.success) {
-        // console.log('dataNarrator-------------',data?.data)
         const newCategory = data?.data.map((item) => {
           return (item = {
             label: item.label,
@@ -167,35 +175,51 @@ const SearchPage = (props) => {
       }
     })
   }
-  console.log('masderlhokem', EvaluationSource)
-  const handleSearch = async (word, topic, degree, src, nrs) => {
+
+  const handleSearch = async (
+    word,
+    topic,
+    evSrc,
+    src,
+    degree,
+    codeDegree,
+    nrs,
+    numberH
+  ) => {
     const data = {
-      content: word,
-      evaluationSource: hokm ? hokm : EvaluationSource ? EvaluationSource : '',
-      idDegree: degree ? degree.value : ChoiceDegree ? ChoiceDegree.value : '',
+      content: word?.replace(/[-_,;.&:!?،؟]/g, ''),
+      evaluationSource: evSrc
+        ? evSrc
+        : EvaluationSource
+        ? EvaluationSource
+        : '',
+      idDegree: codeDegree
+        ? ''
+        : degree
+        ? degree.value
+        : ChoiceDegree
+        ? ChoiceDegree.value
+        : '',
+      codeDegree: codeDegree ? codeDegree : '',
       idNarrator: nrs
         ? nrs.value
         : ChoiceNarrator
         ? JSON.stringify(ChoiceNarrator.value)
         : '',
-      idSource: src
-        ? src.value
-        : ChoiceSource
-        ? JSON.stringify(ChoiceSource.value)
-        : '',
+      idSource: src ? src : ChoiceSource ? ChoiceSource.value : '',
       idTopic: '',
       idCategorie: topic
         ? JSON.stringify(topic.value)
         : ChoiceCategory
         ? ChoiceCategory.value
         : '',
-      numeroHadith: '',
+
+      numeroHadith: numberH ? numberH : numberHadith ? numberHadith : '',
       size: 10,
       start: StartPage < 1 ? 0 : StartPage,
       tags: '',
     }
-    console.log('data---------------------------')
-    console.log(data)
+
     FetchPostAPI(urlSearch, data).then((data) => {
       if (data.success) {
         setdataSearch(data?.data)
@@ -208,23 +232,28 @@ const SearchPage = (props) => {
   const handleTopicFrom = async (res, r, router, narList, sourceList) => {
     const word = router?.word
     const from = router?.from
-    console.log(
-      'from-----------------------------------------------------------------',
-      from
-    )
+
     if (from === 'home') {
       const ArrayCategory =
         res && res.length > 0 && res?.filter((item) => item.label === topic)
+      // const ArrayDegree =
+      //   r && r.length > 0 && r?.filter((item) => item.label === content)
       const ArrayDegree =
-        r && r.length > 0 && r?.filter((item) => item.label === content)
+        r && r.length > 0 && r?.filter((item) => item.code === codeDegree)
       setChoiceCategory(ArrayCategory[0])
       setChoiceDegree(ArrayDegree[0])
-      await handleSearch(word, ArrayCategory[0], ArrayDegree[0])
+      await handleSearch(
+        word,
+        ArrayCategory[0],
+        undefined,
+        undefined,
+        undefined,
+        codeDegree,
+        undefined
+      )
       setShowForm(false)
     }
     if (from === 'topBar') {
-      console.log('wordddddddddddddddddddddd')
-      console.log(word)
       setInput(word)
       setShowForm(false)
       handleSearch(word)
@@ -251,9 +280,12 @@ const SearchPage = (props) => {
       handleSearch(
         word,
         ArrayCategory[0],
+        hokm,
+        ArraySource[0]?.label != '' ? ArraySource[0]?.value : '',
         ArrayDegree[0],
-        ArraySource[0],
-        ArrayNars[0]
+        undefined,
+        ArrayNars[0],
+        numberH
       )
     }
   }
@@ -266,14 +298,35 @@ const SearchPage = (props) => {
         category={item?._source?.categorie?.label}
         content={item?._source?.content}
         highlight={!!item.highlight}
+        onSubmitWTSP={() => {
+          if (item?._source?.content.length > 5110) {
+            //handleShow();
+            setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
+            setshowDialog(false)
+            setshowDialogModal(true)
+          } else {
+            setshowDialog(true)
+            setshowDialogModal(false)
+          }
+        }}
+        onSubmit={() => {
+          if (item?._source?.content.length > 750) {
+            //handleShow();
+            setMessage('هذا الحديث طويل, لن يتم مشاركته بالكامل')
+            setshowDialog(false)
+            setshowDialogModal(true)
+          } else {
+            setshowDialog(true)
+            setshowDialogModal(false)
+          }
+        }}
+        showDialog={true}
         text={
-          item?.highlight
-            ? item?.highlight['content.multi_words'].join(' ')
-            : item?._source?.content
+          item?.highlight ? item?.highlight?.content[0] : item?._source?.content
         }
         narrator={item?._source?.narrator?.label}
         source={item?._source?.source?.label}
-        degree={item?._source?.degree?.label}
+        degree={item?._source?.degree}
         sourceGlobal={item?._source?.evaluationSource}
         comments={item?._source?.comments}
         tags={item?._source?.tags}
@@ -286,6 +339,7 @@ const SearchPage = (props) => {
   const changePage = (v) => {
     setPageNum(v.selected)
     setStartPage(10 * v.selected)
+    resultsRef.current.scrollIntoView()
   }
 
   function handleInput(v) {
@@ -304,8 +358,16 @@ const SearchPage = (props) => {
       !ChoiceSource &&
       !ChoiceNarrator &&
       !ChoiceDegree &&
-      !ChoiceCategory
+      !ChoiceCategory &&
+      !numberHadith
     ) {
+      setMessage('يرجى ملء كلمة البحث ')
+      handleShow()
+    } else if (input && input.trim().length < 2) {
+      setMessage('يرجى كتابة كلمة تتكون من حرفين فما فوق')
+      handleShow()
+    } else if (input && input.length >= 100) {
+      setMessage('يرجى كتابة جملة لا تتعدى مائة حرف')
       handleShow()
     } else {
       setShowForm(false)
@@ -320,7 +382,7 @@ const SearchPage = (props) => {
     const handleKeyDown = (event) => {
       // const x = window.matchMedia('(max-height: 200px)')
       if (event.keyCode === 13) {
-        handleSearch(input)
+        handleClickSearch()
       }
     }
     if (elementRef && elementRef?.current) {
@@ -337,16 +399,20 @@ const SearchPage = (props) => {
     }
   }, [
     input,
+    EvaluationSource,
     ChoiceTopic,
     ChoiceSource,
     ChoiceNarrator,
     ChoiceDegree,
     ChoiceCategory,
+    numberHadith,
   ])
 
   let route = useRouter()
 
   useEffect(() => {
+    const word = router?.word
+    const from = router?.from
     if (StartPage === 0) {
       getDataDegree().then((r) =>
         getDataCategory().then((res) =>
@@ -360,34 +426,60 @@ const SearchPage = (props) => {
       getDataSource()
       getDataNarrator()
       getDataTopic()
+      getDataDegree()
     }
 
     if (
-      input ||
-      ChoiceTopic ||
-      EvaluationSource ||
-      ChoiceSource ||
-      ChoiceNarrator ||
-      ChoiceDegree ||
-      ChoiceCategory
+      (input ||
+        ChoiceTopic ||
+        EvaluationSource ||
+        ChoiceSource ||
+        ChoiceNarrator ||
+        ChoiceDegree ||
+        ChoiceCategory ||
+        numberHadith) &&
+      from !== 'home'
     ) {
       handleSearch(input)
     }
-    if (typeof window != 'undefined') {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: resultsRef.current.offsetTop,
-      })
-    }
-    route.isReady &&
-      console.log('route----------------------------------', route)
-  }, [pageNum, StartPage, route])
 
+    // if (typeof window != 'undefined') {
+    //       window.scrollTo({
+    //         behavior: 'smooth',
+    //         top: resultsRef?.current?.offsetTop,
+    //       })
+    //     }
+  }, [pageNum, StartPage, router])
+
+  useEffect(() => {
+    const word = router?.word
+    const from = router?.from
+    if (from === 'home' && StartPage !== 0) {
+      handleSearch(
+        word,
+        ChoiceCategory,
+        undefined,
+        undefined,
+        undefined,
+        codeDegree,
+        undefined
+      )
+      setShowForm(false)
+    }
+  }, [StartPage, pageNum, topic, codeDegree])
   return (
     <TemplateArticle {...props} ListBreadcrumb={data} titlePage='البحث'>
       <Body
+        ref={BodyRef}
         className={`${styles.SearchPage} TemplateArticleBody SearchPage  p-4`}
       >
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGQL2RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        ></noscript>
+        {/* {isIOS ? null : <ScrollButton />} */}
         <ScrollButton />
         <div ref={elementRef} className={`${styles.SearchBox} `}>
           <div
@@ -407,37 +499,77 @@ const SearchPage = (props) => {
               className='bg-white mx-0 shadow-card'
               clickSearch={() => handleClickSearch()}
             />
-
+            {!input &&
+            !ChoiceTopic &&
+            !EvaluationSource &&
+            !ChoiceSource &&
+            !ChoiceNarrator &&
+            !ChoiceDegree &&
+            !ChoiceCategory &&
+            !numberHadith ? (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#fde5ac',
+                  height: '45px',
+                  width: '46px',
+                }}
+              >
+                <VscIcons.VscPinned color='#fff' size={24} />
+              </div>
+            ) : (
+              <div
+                className={`${styles.boxIconEpingle} d-flex justify-content-center align-items-center`}
+                style={{
+                  backgroundColor: '#FBBF31',
+                  height: '45px',
+                  width: '46px',
+                }}
+              >
+                <VscIcons.VscPinnedDirty color='#fff' size={24} />
+              </div>
+            )}
             <div
-              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  p-0`}
+              className={`${styles.boxIconSetting} box-icon-setting d-flex align-items-center align-self-center btn mx-2  px-2 py-1`}
               onClick={() => handleClickSearch()}
               style={{
                 backgroundColor: '#157646',
                 height: '46px',
               }}
             >
-              <i className='fas fa-search p-3' style={{ color: '#fff' }} />
+              {/* <i className='fas fa-search ' style={{ color: '#fff' }} /> */}
+              <p className='text-white fw-bold my-2 mx-2'>{'ابحث'}</p>
             </div>
           </div>
           {showForm && (
             <Cards className={`${styles.formSearch} form-search p-2`}>
-              <div className='d-flex flex-wrap flex-column'>
+              <form className='d-flex flex-wrap flex-column'>
                 <div className={`d-flex alignIte ${styles.alignIte}`}>
                   <CustomSelect
                     className='col-md-4'
                     options={dataCategory && dataCategory}
                     defaultInputValue={ChoiceCategory ? ChoiceCategory : ''}
                     label='موضوع'
+                    name='ChoiceCategory'
                     placeholder='اكتب الموضوع'
                     onChange={(v) => setChoiceCategory(v)}
                   />
 
-                  <Input
+                  {/* <Input
                     className='col-md-4'
                     label='مصدر الحكم'
                     placeholder='ابحث بمصدر الحكم'
                     value={EvaluationSource}
                     onChange={(v) => setEvaluationSource(v.target.value)}
+                  /> */}
+                  <CustomSelect
+                    className='col-md-4'
+                    options={dataNarrator && dataNarrator}
+                    label='الراوي'
+                    name='ChoiceNarrator'
+                    defaultInputValue={ChoiceNarrator ? ChoiceNarrator : ''}
+                    placeholder='اكتب اسم الراوي'
+                    onChange={(v) => setChoiceNarrator(v)}
                   />
                 </div>
                 <div className={`d-flex alignIte ${styles.alignIte}`}>
@@ -446,20 +578,35 @@ const SearchPage = (props) => {
                     options={dataSource && dataSource}
                     defaultInputValue={ChoiceSource ? ChoiceSource : ''}
                     label='المصدر'
+                    name='ChoiceSource'
                     placeholder='اكتب اسم المصدر'
                     onChange={(v) => {
                       setChoiceSource(v)
                     }}
                   />
+                  {/* <div className='col-md-6'></div> */}
                   <CustomSelect
                     className='col-md-4'
                     options={dataDegree && dataDegree}
                     label='الحكم'
+                    name='ChoiceDegree'
                     defaultInputValue={ChoiceDegree ? ChoiceDegree : ''}
                     placeholder='اكتب الحكم'
                     onChange={(v) => setChoiceDegree(v)}
                   />
-                  <CustomSelect
+                  <Input
+                    type='number'
+                    min='1'
+                    className='col-md-4'
+                    label='رقم الحديث'
+                    name='numberHadith'
+                    placeholder='اكتب رقم الحديث'
+                    value={numberHadith}
+                    onChange={(v) => setNumberHadith(v.target.value)}
+                  />
+                </div>
+                {/* <div className={`d-flex alignIte ${styles.alignIte}`}>
+                 <CustomSelect
                     className='col-md-4'
                     options={dataNarrator && dataNarrator}
                     label='الراوي'
@@ -467,8 +614,9 @@ const SearchPage = (props) => {
                     placeholder='اكتب اسم الراوي'
                     onChange={(v) => setChoiceNarrator(v)}
                   />
-                </div>
-              </div>
+                  <div className='col-md-6'></div>
+                </div> */}
+              </form>
             </Cards>
           )}
           {dataSearch && dataSearch?.hits?.hits?.length > 0 && (
@@ -480,10 +628,16 @@ const SearchPage = (props) => {
               {displayData}
               <ReactPaginate
                 previousLabel={
-                  <i id='paginationn' className={`fa fa-chevron-right`} />
+                  <i
+                    id='paginationn'
+                    className={`fa fa-chevron-right text-success`}
+                  />
                 }
                 nextLabel={
-                  <i id='paginationn' className='fa fa-chevron-left' />
+                  <i
+                    id='paginationn'
+                    className='fa fa-chevron-left text-success'
+                  />
                 }
                 pageCount={pageCount}
                 forcePage={pageNum}
@@ -507,9 +661,11 @@ const SearchPage = (props) => {
                   as={'/QuestionsReponses'}
                   style={{ color: 'black' }}
                 >
-                  <p className='fw-100 link-primary'>
-                    {'يرجي طرح سؤالك أو محاولة البحث في الموقع'}
-                  </p>
+                  <a className='pe-auto text-decoration-none'>
+                    <p className='fw-100 link-primary '>
+                      {'يرجى طرح سؤالك أو محاولة البحث في الموقع'}
+                    </p>
+                  </a>
                 </Link>
               </div>
             </div>
@@ -518,11 +674,26 @@ const SearchPage = (props) => {
         <div className='side-bar' />
         <CustomModal
           title={'تنبيه'}
-          body={'يرجى ملء كلمة البحث '}
+          body={message}
           show={show}
           onHide={handleClose}
           onClick={handleClose}
         />
+        {showDialogModal && (
+          <CustomModal
+            title={'تنبيه'}
+            body={message}
+            show={showDialogModal}
+            onHide={() => {
+              setshowDialog(false)
+              setshowDialogModal(false)
+            }}
+            onClick={() => {
+              setshowDialog(true)
+              setshowDialogModal(false)
+            }}
+          />
+        )}
       </Body>
     </TemplateArticle>
   )

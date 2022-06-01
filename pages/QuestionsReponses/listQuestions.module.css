@@ -7,6 +7,68 @@
     border-top: solid 7px #FEB400;
     border-radius: 7px;
 }
+.topSection{
+    width: 80%;
+}
+.inline{
+    max-width: 25vw;
+}
+.inputIcons{
+    border: 1.5px solid #feb400;
+    border-radius: 32px;
+    width: 25vw;
+    height: 68%;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 4px 8px rgb(0 0 0 / 8%);
+}
+.inputIcons input{
+    border: none;
+    background: none;
+    margin-right: 6px;
+}
+.inputIcons i{
+    margin-right: 8px;
+    color: #feb400;
+}
+
+/* .inline{
+    max-width: 450px;
+    margin:auto;
+}
+.inputIcons i {
+    position: absolute;
+}
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}   
+.inputIcons {
+    width: 135%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.inputSearchQues{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    height: 100%; 
+    width: 150%;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 3px;
+} */
+
+.inputSubject{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    height: 4%;
+    padding: 1% 3%;
+}
+.inputSubject:focus{
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+}
 .summ {
     margin-bottom: 4%;
 }
@@ -19,6 +81,9 @@
 .sideBar1{
     width: 75%;
 }
+.readMore{
+    text-underline-offset: 3px;
+}
 /* #pagination {
     color: #157BFF;
     margin: 5px;
@@ -30,8 +95,20 @@
     display: flex;
     justify-content: right;
 }
-.paragraph .question{
+ .question{
     font-size: 20px !important;
+}
+.descQuestion{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  color: #000;
+  width: 90%;
+  max-height: 50px;
+}
+.descQuestion:hover{
+    color:#129D59;
 }
 .questionDesc{
     color: #000;
@@ -58,6 +135,7 @@
 .dateParagraph {
     text-align: left;
     font-family: 'Almarai', sans-serif !important;
+    /* white-space: nowrap; */
 }
 .pagination {
     padding:10px
@@ -100,6 +178,28 @@
     left: 12%;
 }
 
+.btnFacebook {
+    width: 65px;
+    height:45px;
+    border-radius: 4px;
+    background: #3b5998;
+    color:white;
+    border:0px transparent;
+    text-align: center;
+    margin-right:5px;
+    display: inline-block;
+}
+.btnForm{
+    width: 20%;
+    height:45px;
+    border-radius: 4px;
+    color:white;
+    border:0px transparent;
+    text-align: center;
+    margin-right:5px;
+    display: inline-block;
+}
+
 /* .btnquestion p {
     display: inline-block;
     padding-top: 4%;
@@ -110,6 +210,11 @@
 @media (max-width: 685px) {
     .btnquestion {
         width: 40vw;
+    }
+}
+@media (max-width: 890px) {
+    .btnquestion {
+        width: 30vw;
     }
 }
 
@@ -147,7 +252,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .bg1 div h5 {
         margin-top: 2% !important;
         text-align: center !important;
@@ -181,17 +286,52 @@
         width: 100% !important;
     }
     .cardListAnswer{
-        width: 100% !important;
+        width: 90vw !important;
+    }
+    .CardQuestion{
+        width: 85vw !important;
+    }
+    .SimpleList{
+        width: 85vw !important;
+    }
+    .btnLogin{
+        display: block !important;
+    }
+    .btnIcon{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 80vw !important;
+    }
+    .btnForm{
+        width: 85% !important;
+        /* margin-top: 8px !important; */
+    }
+    .inputIcons{
+        width: 70vw !important;
+        height: 78% !important;
+        padding: 3.5% !important;
     }
 }
-.btnFacebook {
-    width: 65px;
-    height:45px;
-    border-radius: 4px;
-    background: #3b5998;
-    color:white;
-    border:0px transparent;
-    text-align: center;
-    margin-right:5px;
-    display: inline-block;
+@media (max-width: 330px) {
+    .TemplateArticleBody{
+        zoom: 0.95;
+    }
+    .listQuestions {
+        width: 94vw !important;
+    }
+    .cardListAnswer{
+        width: 92vw !important;
+    }
+}
+@media (max-width: 930px) {
+    .topSection {
+       display: block !important;
+       margin-bottom: 2%;
+    }
+    .inputIcons{
+        width: 35vw;
+        height: 78%;
+        padding: 2.5%;
+    }
 }

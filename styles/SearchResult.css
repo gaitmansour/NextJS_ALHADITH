@@ -3,3 +3,9 @@
     font-weight: 700;
     font-style: normal;
 }
+
+.content-hadith span{
+    font-family: 'Font_Maghribi';
+    font-weight: bold;
+    font-size: large;
+}
